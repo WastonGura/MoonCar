@@ -38,15 +38,15 @@ A dedicated SSH key for GitHub was generated on the VM:
 ~/.ssh/id_ed25519_mooncar_github.pub
 ```
 
-The VM SSH config has a `github.com` entry that uses this key. The public key still needs to be added to GitHub before the VM can clone/pull/push the private repository over SSH.
+The VM SSH config has a `github.com` entry that uses this key. The public key has been added to GitHub account SSH keys and authentication has been verified with `ssh -T git@github.com`.
 
-Recommended final VM clone location:
+Active VM clone location:
 
 ```text
 ~/MoonCar
 ```
 
-Temporary build verification was performed from:
+Earlier temporary build verification was performed from:
 
 ```text
 ~/MoonCar_local_verify
@@ -71,22 +71,23 @@ Current packages:
 - `mooncar_terrain`
 - `mooncar_msgs`
 
-Build verification on the VM passed:
+Build verification on the VM passed from both the temporary copy and the active SSH clone:
 
 ```text
-Summary: 8 packages finished [7.64s]
+Temporary copy: Summary: 8 packages finished [7.64s]
+Active clone: Summary: 8 packages finished [12.3s]
 ```
 
 ## Next Recommended Milestone
 
-1. Add the VM public SSH key to GitHub.
-2. Clone the repository on the VM using SSH:
+1. Keep the VM repository synchronized with GitHub using SSH:
 
 ```bash
-git clone git@github.com:WastonGura/MoonCar.git ~/MoonCar
+cd ~/MoonCar
+git pull --ff-only origin master
 ```
 
-3. Build from the VM clone:
+2. Build from the VM clone:
 
 ```bash
 cd ~/MoonCar/ros2_ws
@@ -94,4 +95,5 @@ source /opt/ros/jazzy/setup.bash
 colcon build --symlink-install
 ```
 
-4. Start implementing `mooncar_description` with a four-wheel skid-steer URDF/Xacro rover model.
+3. Start implementing `mooncar_description` with a four-wheel skid-steer URDF/Xacro rover model.
+
