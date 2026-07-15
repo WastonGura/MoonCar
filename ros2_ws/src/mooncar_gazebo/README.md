@@ -30,3 +30,53 @@ Gazebo sensor placeholders are attached to frames from `mooncar_description` and
 - `/mooncar/imu` from `imu_link`
 - `/mooncar/depth/image` from `depth_camera_optical_frame`
 - `/mooncar/depth/camera_info` from `depth_camera_optical_frame`
+
+## Verify on the Ubuntu VM
+
+From the active VM clone:
+
+```bash
+cd ~/MoonCar
+git pull --ff-only origin master
+cd ros2_ws
+source /opt/ros/jazzy/setup.bash
+colcon build --symlink-install --packages-select mooncar_description mooncar_gazebo
+source install/setup.bash
+```
+
+Run a server-only smoke test:
+
+```bash
+ros2 launch mooncar_gazebo simulation.launch.py gz_args:="-r -s -v 3"
+```
+
+In a second terminal:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+cd ~/MoonCar/ros2_ws
+source install/setup.bash
+ros2 topic list | grep -E '/clock|/mooncar'
+ros2 topic echo --once /clock
+```
+
+Expected early M2 behavior:
+
+- Gazebo loads `lunar_yard.sdf`.
+- `spawn_mooncar` reports entity creation successful.
+- `/clock` is available in ROS2.
+- Sensor topics are expected to appear after Gazebo sensor systems initialize; rendering-backed topics may require a graphical or headless-rendering capable VM session.
+
+## Troubleshooting
+
+- If Gazebo cannot find the world file, rebuild `mooncar_gazebo` and source `install/setup.bash`.
+- If `/clock` is missing, confirm `mooncar_gazebo/config/ros_gz_bridge.yaml` is installed and that `mooncar_gz_bridge` started.
+- If sensor topics are missing in server-only mode, rerun with GUI or a headless rendering setup before treating it as a model failure.
+- If the rover does not spawn, confirm `/robot_description` is being published by `robot_state_publisher`.
+
+## Follow-up dependencies
+
+- M3 control should attach wheel control to the existing four wheel joints.
+- M4 SLAM should use `/mooncar/scan` and `lidar_link`.
+- Nav2 work should treat `base_footprint` as the planar robot base frame.
+- Hardware selection should replace placeholder sensor rates, noise values, masses, and poses.
