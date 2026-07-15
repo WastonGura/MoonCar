@@ -3,7 +3,7 @@
 <package format="3">
   <name>mooncar_gazebo</name>
   <version>0.1.0</version>
-  <description>MoonCar mooncar_gazebo package.</description>
+  <description>Gazebo simulation assets and launch files for MoonCar.</description>
   <maintainer email="jiker@mooncar.dev">jiker</maintainer>
   <license>MIT</license>
 
@@ -14,5 +14,7 @@
 
   <export>
     <build_type>ament_cmake</build_type>
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+    <gazebo_ros gazebo_media_path="${prefix}/worlds"/>
   </export>
 </package>

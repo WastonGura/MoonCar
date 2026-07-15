@@ -4,7 +4,11 @@ project(mooncar_gazebo)
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY launch config
+  DIRECTORY
+    config
+    launch
+    models
+    worlds
   DESTINATION share/${PROJECT_NAME}
 )
 
