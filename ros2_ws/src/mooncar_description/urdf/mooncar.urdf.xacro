@@ -6,6 +6,7 @@
   <xacro:include filename="$(find mooncar_description)/urdf/common/materials.xacro"/>
   <xacro:include filename="$(find mooncar_description)/urdf/common/inertial_macros.xacro"/>
   <xacro:include filename="$(find mooncar_description)/urdf/common/rover_macros.xacro"/>
+  <xacro:include filename="$(find mooncar_description)/urdf/common/gazebo_sensors.xacro"/>
 
   <xacro:property name="prefix" value="$(arg prefix)"/>
   <xacro:property name="chassis_length" value="0.72"/>
@@ -230,4 +231,6 @@
     <child link="${prefix}nav_reference_link"/>
     <origin xyz="-0.16 0 ${chassis_height / 2.0 + nav_reference_size / 2.0}" rpy="0 0 0"/>
   </joint>
+
+  <xacro:mooncar_gazebo_sensors prefix="${prefix}"/>
 </robot>
