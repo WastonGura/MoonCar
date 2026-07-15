@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <material name="mooncar_dark_gray">
+    <color rgba="0.18 0.20 0.22 1.0"/>
+  </material>
+
+  <material name="mooncar_light_gray">
+    <color rgba="0.62 0.66 0.68 1.0"/>
+  </material>
+
+  <material name="mooncar_wheel_black">
+    <color rgba="0.03 0.03 0.03 1.0"/>
+  </material>
+
+  <material name="mooncar_sensor_blue">
+    <color rgba="0.10 0.30 0.55 1.0"/>
+  </material>
+</robot>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mooncar">
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="use_sim_time" default="true"/>
+
+  <xacro:include filename="$(find mooncar_description)/urdf/common/materials.xacro"/>
+  <xacro:include filename="$(find mooncar_description)/urdf/common/inertial_macros.xacro"/>
+
+  <xacro:property name="prefix" value="$(arg prefix)"/>
+  <xacro:property name="chassis_length" value="0.72"/>
+  <xacro:property name="chassis_width" value="0.48"/>
+  <xacro:property name="chassis_height" value="0.18"/>
+  <xacro:property name="chassis_mass" value="12.0"/>
+
+  <link name="${prefix}base_footprint"/>
+
+  <joint name="${prefix}base_footprint_joint" type="fixed">
+    <parent link="${prefix}base_footprint"/>
+    <child link="${prefix}base_link"/>
+    <origin xyz="0 0 ${chassis_height / 2.0}" rpy="0 0 0"/>
+  </joint>
+
+  <link name="${prefix}base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+      </geometry>
+      <material name="mooncar_dark_gray"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+      </geometry>
+    </collision>
+    <xacro:box_inertial
+      mass="${chassis_mass}"
+      x="${chassis_length}"
+      y="${chassis_width}"
+      z="${chassis_height}">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:box_inertial>
+  </link>
+</robot>

@@ -3,11 +3,13 @@
 <package format="3">
   <name>mooncar_description</name>
   <version>0.1.0</version>
-  <description>MoonCar mooncar_description package.</description>
+  <description>Robot description assets for the MoonCar rover simulation model.</description>
   <maintainer email="jiker@mooncar.dev">jiker</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>xacro</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
