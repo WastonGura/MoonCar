@@ -80,6 +80,12 @@ source install/setup.bash
 ros2 run mooncar_control drive_smoke_test.py
 ```
 
+Keyboard teleop option:
+
+```bash
+ros2 run mooncar_control keyboard_teleop.py
+```
+
 Useful inspection commands:
 
 ```bash
