@@ -10,14 +10,35 @@ The top-level model is:
 urdf/mooncar.urdf.xacro
 ```
 
-It currently defines a minimal, valid rover root structure with:
+It currently defines a valid rover root structure with:
 
 - `base_footprint`
 - `base_link`
-- placeholder chassis dimensions and mass properties
+- four continuous skid-steer wheel joints
+- placeholder chassis and wheel dimensions
+- visual, collision, and inertial properties for the chassis and wheels
 - reusable material and inertial macros in `urdf/common/`
 
-The placeholder chassis is intentionally small in scope. Four-wheel skid-steer links, joints, and sensor frames will be added in the next focused milestones.
+The dimensions are conservative placeholders until hardware is selected. Sensor frames will be added in a later focused milestone.
+
+## Frame and joint names
+
+Physical links:
+
+- `base_link`
+- `front_left_wheel_link`
+- `front_right_wheel_link`
+- `rear_left_wheel_link`
+- `rear_right_wheel_link`
+
+Wheel joints:
+
+- `front_left_wheel_joint`
+- `front_right_wheel_joint`
+- `rear_left_wheel_joint`
+- `rear_right_wheel_joint`
+
+The wheel joints rotate around their local `Y` axis. Left and right wheels use the same positive joint axis so controller sign conventions can be handled explicitly in the control layer.
 
 ## Verify on the Ubuntu VM
 

@@ -5,19 +5,28 @@
 
   <xacro:include filename="$(find mooncar_description)/urdf/common/materials.xacro"/>
   <xacro:include filename="$(find mooncar_description)/urdf/common/inertial_macros.xacro"/>
+  <xacro:include filename="$(find mooncar_description)/urdf/common/rover_macros.xacro"/>
 
   <xacro:property name="prefix" value="$(arg prefix)"/>
   <xacro:property name="chassis_length" value="0.72"/>
   <xacro:property name="chassis_width" value="0.48"/>
   <xacro:property name="chassis_height" value="0.18"/>
   <xacro:property name="chassis_mass" value="12.0"/>
+  <xacro:property name="chassis_ground_clearance" value="0.12"/>
+  <xacro:property name="wheel_radius" value="0.16"/>
+  <xacro:property name="wheel_width" value="0.11"/>
+  <xacro:property name="wheel_mass" value="1.2"/>
+  <xacro:property name="wheel_x_offset" value="0.26"/>
+  <xacro:property name="wheel_y_offset" value="${chassis_width / 2.0 + wheel_width / 2.0}"/>
+  <xacro:property name="base_link_z_offset" value="${chassis_ground_clearance + chassis_height / 2.0}"/>
+  <xacro:property name="wheel_z_offset" value="${wheel_radius - base_link_z_offset}"/>
 
   <link name="${prefix}base_footprint"/>
 
   <joint name="${prefix}base_footprint_joint" type="fixed">
     <parent link="${prefix}base_footprint"/>
     <child link="${prefix}base_link"/>
-    <origin xyz="0 0 ${chassis_height / 2.0}" rpy="0 0 0"/>
+    <origin xyz="0 0 ${base_link_z_offset}" rpy="0 0 0"/>
   </joint>
 
   <link name="${prefix}base_link">
@@ -42,4 +51,48 @@
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </xacro:box_inertial>
   </link>
+
+  <xacro:skid_steer_wheel
+    prefix="${prefix}"
+    name="front_left_wheel"
+    parent="base_link"
+    x="${wheel_x_offset}"
+    y="${wheel_y_offset}"
+    z="${wheel_z_offset}"
+    radius="${wheel_radius}"
+    width="${wheel_width}"
+    mass="${wheel_mass}"/>
+
+  <xacro:skid_steer_wheel
+    prefix="${prefix}"
+    name="front_right_wheel"
+    parent="base_link"
+    x="${wheel_x_offset}"
+    y="${-wheel_y_offset}"
+    z="${wheel_z_offset}"
+    radius="${wheel_radius}"
+    width="${wheel_width}"
+    mass="${wheel_mass}"/>
+
+  <xacro:skid_steer_wheel
+    prefix="${prefix}"
+    name="rear_left_wheel"
+    parent="base_link"
+    x="${-wheel_x_offset}"
+    y="${wheel_y_offset}"
+    z="${wheel_z_offset}"
+    radius="${wheel_radius}"
+    width="${wheel_width}"
+    mass="${wheel_mass}"/>
+
+  <xacro:skid_steer_wheel
+    prefix="${prefix}"
+    name="rear_right_wheel"
+    parent="base_link"
+    x="${-wheel_x_offset}"
+    y="${-wheel_y_offset}"
+    z="${wheel_z_offset}"
+    radius="${wheel_radius}"
+    width="${wheel_width}"
+    mass="${wheel_mass}"/>
 </robot>
