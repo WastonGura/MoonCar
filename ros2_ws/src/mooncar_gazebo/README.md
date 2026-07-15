@@ -70,6 +70,8 @@ ros2 topic list | grep -E '/clock|/mooncar'
 ros2 topic echo --once /clock
 ```
 
+For M3 drive control checks, see `mooncar_control/README.md`.
+
 Expected early M2 behavior:
 
 - Gazebo loads `lunar_yard.sdf`.

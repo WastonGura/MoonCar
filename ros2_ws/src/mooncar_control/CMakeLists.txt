@@ -11,6 +11,7 @@ install(
 install(
   PROGRAMS
     scripts/cmd_vel_safety_relay.py
+    scripts/drive_smoke_test.py
     scripts/wheel_odometry.py
   DESTINATION lib/${PROJECT_NAME}
 )

@@ -56,3 +56,54 @@ The accepted M3 path is:
 ```
 
 Future hardware control should keep `/cmd_vel`, odometry, and joint state topic contracts stable while replacing the Gazebo-only implementation.
+
+## Verify on the Ubuntu VM
+
+Terminal 1:
+
+```bash
+cd ~/MoonCar
+git pull --ff-only origin master
+cd ros2_ws
+source /opt/ros/jazzy/setup.bash
+colcon build --symlink-install --packages-select mooncar_description mooncar_control mooncar_gazebo
+source install/setup.bash
+ros2 launch mooncar_gazebo simulation.launch.py gz_args:="-r -s -v 3"
+```
+
+Terminal 2:
+
+```bash
+cd ~/MoonCar/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+ros2 run mooncar_control drive_smoke_test.py
+```
+
+Useful inspection commands:
+
+```bash
+ros2 topic list | grep -E '/cmd_vel|/mooncar/cmd_vel_safe|/joint_states|/odom|/tf'
+ros2 topic echo --once /joint_states
+ros2 topic echo --once /odom
+```
+
+Manual command example:
+
+```bash
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.16}, angular: {z: 0.0}}" --rate 10
+```
+
+Expected result:
+
+- The rover moves forward for positive `linear.x`.
+- Wheel positions in `/joint_states` change.
+- `/odom.pose.pose.position.x` changes during forward motion.
+- `/cmd_vel` automatically times out through `mooncar_cmd_vel_safety_relay` when commands stop.
+
+## Troubleshooting
+
+- If `/mooncar/cmd_vel_safe` is missing, check that `mooncar_cmd_vel_safety_relay` started in the launch log.
+- If `/joint_states` is missing, check the Gazebo `JointStatePublisher` plugin and bridge config.
+- If `/odom` is missing, check that `mooncar_wheel_odometry` is running and receiving `/joint_states`.
+- If the rover does not move but `/mooncar/cmd_vel_safe` is active, inspect Gazebo `/cmd_vel` and the DiffDrive plugin configuration.
