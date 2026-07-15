@@ -24,10 +24,13 @@ The launch starts Gazebo, publishes the MoonCar description, spawns the rover in
 
 M3 control topics bridged by this launch:
 
-- `/cmd_vel` from ROS2 to Gazebo
+- `/mooncar/cmd_vel_safe` from ROS2 to Gazebo `/cmd_vel`
 - `/joint_states` from Gazebo to ROS2
-- `/odom` from Gazebo to ROS2
-- `/tf` from Gazebo to ROS2
+
+M3 ROS control nodes started by this launch:
+
+- `mooncar_cmd_vel_safety_relay`: clamps `/cmd_vel` and times out stale commands.
+- `mooncar_wheel_odometry`: integrates `/joint_states` and publishes `/odom` plus `odom -> base_footprint` TF.
 
 ## M2 sensor topics
 

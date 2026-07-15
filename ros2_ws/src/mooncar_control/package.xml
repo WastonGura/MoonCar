@@ -3,11 +3,17 @@
 <package format="3">
   <name>mooncar_control</name>
   <version>0.1.0</version>
-  <description>MoonCar mooncar_control package.</description>
+  <description>Simulation control nodes and configuration for MoonCar.</description>
   <maintainer email="jiker@mooncar.dev">jiker</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

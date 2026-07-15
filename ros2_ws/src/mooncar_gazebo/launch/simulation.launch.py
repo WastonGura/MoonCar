@@ -97,6 +97,20 @@ def generate_launch_description():
                 parameters=[robot_description, {"use_sim_time": use_sim_time}],
                 output="screen",
             ),
+            Node(
+                package="mooncar_control",
+                executable="cmd_vel_safety_relay.py",
+                name="mooncar_cmd_vel_safety_relay",
+                parameters=[{"use_sim_time": use_sim_time}],
+                output="screen",
+            ),
+            Node(
+                package="mooncar_control",
+                executable="wheel_odometry.py",
+                name="mooncar_wheel_odometry",
+                parameters=[{"use_sim_time": use_sim_time}],
+                output="screen",
+            ),
             TimerAction(
                 period=3.0,
                 actions=[

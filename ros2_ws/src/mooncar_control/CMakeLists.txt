@@ -8,4 +8,11 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
+install(
+  PROGRAMS
+    scripts/cmd_vel_safety_relay.py
+    scripts/wheel_odometry.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 ament_package()

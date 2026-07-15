@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+import math
+
+import rclpy
+from geometry_msgs.msg import Twist
+from rclpy.node import Node
+
+
+class CmdVelSafetyRelay(Node):
+    def __init__(self):
+        super().__init__("mooncar_cmd_vel_safety_relay")
+        self.declare_parameter("input_topic", "/cmd_vel")
+        self.declare_parameter("output_topic", "/mooncar/cmd_vel_safe")
+        self.declare_parameter("publish_rate_hz", 20.0)
+        self.declare_parameter("timeout_s", 0.5)
+        self.declare_parameter("max_linear_x", 0.35)
+        self.declare_parameter("max_angular_z", 0.8)
+
+        input_topic = self.get_parameter("input_topic").value
+        output_topic = self.get_parameter("output_topic").value
+        publish_rate_hz = float(self.get_parameter("publish_rate_hz").value)
+
+        self.timeout_s = float(self.get_parameter("timeout_s").value)
+        self.max_linear_x = float(self.get_parameter("max_linear_x").value)
+        self.max_angular_z = float(self.get_parameter("max_angular_z").value)
+        self.last_cmd = Twist()
+        self.last_cmd_time = self.get_clock().now()
+
+        self.publisher = self.create_publisher(Twist, output_topic, 10)
+        self.subscription = self.create_subscription(Twist, input_topic, self.on_cmd_vel, 10)
+        self.timer = self.create_timer(1.0 / publish_rate_hz, self.on_timer)
+        self.get_logger().info(f"Relaying {input_topic} to {output_topic} with timeout {self.timeout_s:.2f}s")
+
+    def on_cmd_vel(self, msg):
+        self.last_cmd = self.clamp(msg)
+        self.last_cmd_time = self.get_clock().now()
+
+    def on_timer(self):
+        age = (self.get_clock().now() - self.last_cmd_time).nanoseconds * 1e-9
+        if age > self.timeout_s:
+            self.publisher.publish(Twist())
+        else:
+            self.publisher.publish(self.last_cmd)
+
+    def clamp(self, msg):
+        cmd = Twist()
+        cmd.linear.x = self.clamp_value(msg.linear.x, self.max_linear_x)
+        cmd.angular.z = self.clamp_value(msg.angular.z, self.max_angular_z)
+        return cmd
+
+    @staticmethod
+    def clamp_value(value, limit):
+        if not math.isfinite(value):
+            return 0.0
+        return max(-limit, min(limit, value))
+
+
+def main():
+    rclpy.init()
+    node = CmdVelSafetyRelay()
+    try:
+        rclpy.spin(node)
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
+
+
+if __name__ == "__main__":
+    main()

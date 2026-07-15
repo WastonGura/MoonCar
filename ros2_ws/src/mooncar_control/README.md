@@ -9,10 +9,11 @@ M3 uses Gazebo Sim's built-in `gz::sim::systems::DiffDrive` plugin as the first 
 This keeps the first moving prototype small and repeatable:
 
 - ROS2 publishes `geometry_msgs/msg/Twist` on `/cmd_vel`.
-- `ros_gz_bridge` forwards `/cmd_vel` to Gazebo.
+- `mooncar_cmd_vel_safety_relay` clamps `/cmd_vel`, applies a timeout, and republishes `/mooncar/cmd_vel_safe`.
+- `ros_gz_bridge` forwards `/mooncar/cmd_vel_safe` to Gazebo `/cmd_vel`.
 - Gazebo `DiffDrive` maps commands to the four skid-steer wheel joints.
-- Gazebo publishes `/odom`, `/tf`, and wheel `joint_states`.
-- `ros_gz_bridge` forwards those state topics back into ROS2.
+- Gazebo publishes wheel `joint_states`.
+- `mooncar_wheel_odometry` integrates wheel joint states into `/odom` and publishes `odom -> base_footprint` TF.
 
 ## Drive joints
 
@@ -51,7 +52,7 @@ These values are placeholders and should be revisited when wheel motors, rover m
 The accepted M3 path is:
 
 ```text
-/cmd_vel -> ros_gz_bridge -> Gazebo DiffDrive -> wheel joints -> /odom + /joint_states
+/cmd_vel -> safety relay -> ros_gz_bridge -> Gazebo DiffDrive -> wheel joints -> /joint_states -> wheel odometry -> /odom
 ```
 
 Future hardware control should keep `/cmd_vel`, odometry, and joint state topic contracts stable while replacing the Gazebo-only implementation.
