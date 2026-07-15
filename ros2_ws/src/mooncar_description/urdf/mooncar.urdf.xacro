@@ -7,6 +7,7 @@
   <xacro:include filename="$(find mooncar_description)/urdf/common/inertial_macros.xacro"/>
   <xacro:include filename="$(find mooncar_description)/urdf/common/rover_macros.xacro"/>
   <xacro:include filename="$(find mooncar_description)/urdf/common/gazebo_sensors.xacro"/>
+  <xacro:include filename="$(find mooncar_description)/urdf/common/gazebo_drive.xacro"/>
 
   <xacro:property name="prefix" value="$(arg prefix)"/>
   <xacro:property name="chassis_length" value="0.72"/>
@@ -19,6 +20,7 @@
   <xacro:property name="wheel_mass" value="1.2"/>
   <xacro:property name="wheel_x_offset" value="0.26"/>
   <xacro:property name="wheel_y_offset" value="${chassis_width / 2.0 + wheel_width / 2.0}"/>
+  <xacro:property name="wheel_separation" value="${2.0 * wheel_y_offset}"/>
   <xacro:property name="base_link_z_offset" value="${chassis_ground_clearance + chassis_height / 2.0}"/>
   <xacro:property name="wheel_z_offset" value="${wheel_radius - base_link_z_offset}"/>
   <xacro:property name="lidar_radius" value="0.055"/>
@@ -233,4 +235,8 @@
   </joint>
 
   <xacro:mooncar_gazebo_sensors prefix="${prefix}"/>
+  <xacro:mooncar_gazebo_drive
+    prefix="${prefix}"
+    wheel_radius="${wheel_radius}"
+    wheel_separation="${wheel_separation}"/>
 </robot>

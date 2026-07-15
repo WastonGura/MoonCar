@@ -22,6 +22,13 @@ ros2 launch mooncar_gazebo simulation.launch.py gz_args:="-r -s -v 3"
 
 The launch starts Gazebo, publishes the MoonCar description, spawns the rover into the `lunar_yard` world, and bridges `/clock` into ROS2.
 
+M3 control topics bridged by this launch:
+
+- `/cmd_vel` from ROS2 to Gazebo
+- `/joint_states` from Gazebo to ROS2
+- `/odom` from Gazebo to ROS2
+- `/tf` from Gazebo to ROS2
+
 ## M2 sensor topics
 
 Gazebo sensor placeholders are attached to frames from `mooncar_description` and bridged into ROS2:
