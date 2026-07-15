@@ -4,3 +4,16 @@ Thumbs.db
 
 # 交流使用的文件夹
 /contact
+# ROS2 build outputs
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local VM/IDE files
+.vscode/
+.idea/
+known_hosts_vm
