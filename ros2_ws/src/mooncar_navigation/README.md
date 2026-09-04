@@ -72,6 +72,15 @@ following, and their lifecycle managers. The costmaps use the rover's
 
 ## Run navigation
 
+For the repeatable end-to-end acceptance run, use:
+
+```bash
+~/MoonCar/scripts/accept_m5.sh
+```
+
+Use `--server-only` for a headless run. The commands below are retained for
+manual development and custom maps.
+
 Start Gazebo, filtered odometry, saved-map localization, Nav2, and RViz:
 
 ```bash
