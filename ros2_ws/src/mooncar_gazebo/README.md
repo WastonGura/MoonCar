@@ -4,7 +4,7 @@ Gazebo simulation package for the MoonCar ROS2 stack.
 
 ## Worlds
 
-- `worlds/lunar_yard.sdf`: 50 m lunar-like yard with low gravity, a stable spawn area, a gentle ramp, a shallow crater, a ridge, and scattered rocks for mobility and mapping tests.
+- `worlds/lunar_yard.sdf`: lightweight lunar-like yard with low gravity, a stable spawn area, a gentle ramp, and small rock markers for later mobility tests.
 
 ## Launch
 
@@ -21,8 +21,6 @@ ros2 launch mooncar_gazebo simulation.launch.py gz_args:="-r -s -v 3"
 ```
 
 The launch starts Gazebo, publishes the MoonCar description, spawns the rover into the `lunar_yard` world, and bridges `/clock` into ROS2.
-
-The world selects Ogre for the Gazebo GUI, which avoids the blank Ogre2 viewport seen on the VMware development VM. Rendering-backed sensors continue to use Ogre2 on the Gazebo server.
 
 M3 control topics bridged by this launch:
 
@@ -49,7 +47,7 @@ From the active VM clone:
 
 ```bash
 cd ~/MoonCar
-git pull --ff-only origin main
+git pull --ff-only origin master
 cd ros2_ws
 source /opt/ros/jazzy/setup.bash
 colcon build --symlink-install --packages-select mooncar_description mooncar_gazebo
