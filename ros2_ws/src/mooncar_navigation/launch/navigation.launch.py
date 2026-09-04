@@ -112,7 +112,7 @@ def generate_launch_description():
             parameters=node_parameters,
             output="screen",
         ),
-        Node(
+        TimerAction(period=10.0, actions=[Node(
             package="nav2_lifecycle_manager",
             executable="lifecycle_manager",
             name="lifecycle_manager_navigation",
@@ -130,7 +130,7 @@ def generate_launch_description():
                 },
             ],
             output="screen",
-        ),
+        )]),
     ]
 
     return LaunchDescription(
@@ -144,7 +144,7 @@ def generate_launch_description():
                 description="Nav2 parameter file.",
             ),
             DeclareLaunchArgument(
-                "gz_args", default_value="-r -v 3 --render-engine-gui ogre"
+                "gz_args", default_value="-r -v 3 --render-engine ogre"
             ),
             DeclareLaunchArgument("initial_x", default_value="0.5"),
             DeclareLaunchArgument("initial_y", default_value="0.0"),

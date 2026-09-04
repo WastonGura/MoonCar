@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, SetEnvironmentVariable, TimerAction
 from launch.conditions import IfCondition
@@ -8,6 +10,8 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
+    product = Path('/sys/class/dmi/id/product_name')
+    vmware = product.is_file() and 'VMware' in product.read_text()
     gz_args = LaunchConfiguration("gz_args")
     odom_track_width = LaunchConfiguration("odom_track_width")
     robot_name = LaunchConfiguration("robot_name")
@@ -50,7 +54,7 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
-            DeclareLaunchArgument('software_rendering', default_value='false'),
+            DeclareLaunchArgument('software_rendering', default_value='true' if vmware else 'false'),
             SetEnvironmentVariable('LIBGL_ALWAYS_SOFTWARE', '1',
                                    condition=IfCondition(LaunchConfiguration('software_rendering'))),
             DeclareLaunchArgument(
@@ -65,7 +69,7 @@ def generate_launch_description():
             ),
             DeclareLaunchArgument(
                 "gz_args",
-                default_value="-r -v 3",
+                default_value="-r -v 3 --render-engine ogre",
                 description="Arguments passed to `gz sim` before the world path.",
             ),
             DeclareLaunchArgument(

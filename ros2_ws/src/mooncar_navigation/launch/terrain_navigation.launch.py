@@ -22,6 +22,7 @@ def setup(context):
         costmap = params[name][name]['ros__parameters']
         # Jazzy StaticLayer reads this from the costmap namespace, not the plugin.
         costmap['use_maximum'] = True
+        costmap['obstacle_layer']['scan']['expected_update_rate'] = 0.5
         costmap['plugins'].insert(-1, 'terrain_obstacles')
         costmap['plugins'].insert(-1, 'terrain_zones')
         costmap['terrain_zones'] = {
@@ -64,7 +65,7 @@ def generate_launch_description():
     navigation = get_package_share_directory('mooncar_navigation')
     return LaunchDescription([
         DeclareLaunchArgument('map', default_value=os.path.join(navigation, 'maps', 'lunar_yard.yaml')),
-        DeclareLaunchArgument('gz_args', default_value='-r -v 2 --render-engine-gui ogre'),
+        DeclareLaunchArgument('gz_args', default_value='-r -v 2 --render-engine ogre'),
         DeclareLaunchArgument('use_rviz', default_value='true'),
         OpaqueFunction(function=setup),
     ])

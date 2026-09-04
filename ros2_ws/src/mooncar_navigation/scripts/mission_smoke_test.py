@@ -13,10 +13,11 @@ from diagnostic_msgs.msg import DiagnosticArray, DiagnosticStatus
 from geometry_msgs.msg import PoseStamped
 from nav2_msgs.action import ComputePathToPose
 from nav_msgs.msg import OccupancyGrid
+from sensor_msgs.msg import LaserScan
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.parameter import Parameter
-from rclpy.qos import QoSProfile, DurabilityPolicy
+from rclpy.qos import QoSProfile, DurabilityPolicy, qos_profile_sensor_data
 
 from navigation_smoke_test import NavigationSmokeTest
 
@@ -26,12 +27,19 @@ class MissionTest(NavigationSmokeTest):
         super().__init__()
         self.terrain = None
         self.costmap = None
+        self.scan_evidence = None
         self.planner = ActionClient(self, ComputePathToPose, '/compute_path_to_pose')
         self.create_subscription(DiagnosticArray, '/mooncar/terrain/status', self.on_status, 10)
+        self.create_subscription(LaserScan, '/mooncar/scan', self.on_scan, qos_profile_sensor_data)
         self.create_subscription(OccupancyGrid, '/global_costmap/costmap',
                                  self.on_costmap, QoSProfile(depth=1,
                                  durability=DurabilityPolicy.TRANSIENT_LOCAL))
         self.evidence = {}
+
+    def on_scan(self, msg):
+        valid = [v for v in msg.ranges if math.isfinite(v) and msg.range_min+0.02 < v < msg.range_max]
+        if len(valid) >= 10 and max(valid)-min(valid) > 0.2:
+            self.scan_evidence = {'finite_returns': len(valid), 'min_m': min(valid), 'max_m': max(valid)}
 
     def on_status(self, msg):
         for status in msg.status:
@@ -90,6 +98,9 @@ class MissionTest(NavigationSmokeTest):
                    for dx in range(-10, 11) for dy in range(-10, 11))
 
     def run_mission(self):
+        self.wait(lambda: self.scan_evidence is not None,
+                  'Lidar has no varied obstacle returns in the known test yard; check rendering')
+        self.evidence['live_lidar'] = self.scan_evidence
         self.wait(lambda: self.terrain is not None, 'No valid depth terrain observation')
         self.wait(lambda: self.occupied(-1.5, -0.8), 'Known soil zone absent from global costmap')
         self.evidence['live_depth'] = self.terrain

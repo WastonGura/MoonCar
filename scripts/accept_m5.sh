@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
+if [[ -z "${DISPLAY:-}" ]]; then
+  command -v xvfb-run >/dev/null || { echo 'Install xvfb and xauth for SSH/server-only acceptance.' >&2; exit 1; }
+  exec xvfb-run -a -s '-screen 0 1280x800x24' "$0" "$@"
+fi
+
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 workspace="${repo_root}/ros2_ws"
 launch_log="/tmp/mooncar_m5_acceptance.log"
@@ -72,7 +77,7 @@ echo "[2/4] Starting Gazebo, localization, Nav2, and RViz"
 rm -f "${launch_log}"
 launch_args=(map:="${map_yaml}" use_rviz:="${use_rviz}")
 if [[ "${use_rviz}" == false ]]; then
-  launch_args+=(gz_args:="-r -s -v 2")
+  launch_args+=(gz_args:="-r -s -v 2 --render-engine ogre")
 fi
 setsid ros2 launch mooncar_navigation "${launch_file}" "${launch_args[@]}" \
   >"${launch_log}" 2>&1 &
