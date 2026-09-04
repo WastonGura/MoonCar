@@ -22,6 +22,12 @@ class GeometryTest(unittest.TestCase):
             self.assertEqual(reason, 0) if bit == 0 else self.assertTrue(reason & bit)
         self.assertEqual(classify_cells([[0, 0, float('nan')]]), [])
 
+    def test_scanline_is_unknown_not_a_vertical_obstacle(self):
+        x = np.linspace(0.01, 0.28, 20)
+        for y in [x*0+0.1, 0.1+0.00001*np.sin(x*100)]:
+            points = np.column_stack((x, y, 0.002+0.0001*np.cos(x*100)))
+            self.assertEqual(classify_cells(points), [])
+
     def test_depth_padding_endian_units_and_invalid_input(self):
         data = np.array([[1000, 2000, 0], [3000, 0, 0]], dtype='>u2').tobytes()
         points = project_depth(data, 2, 2, 6, '16UC1', True, (1, 1, 0, 0), stride=1)

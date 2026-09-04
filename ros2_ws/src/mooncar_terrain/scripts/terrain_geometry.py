@@ -59,8 +59,11 @@ def classify_cells(points, resolution=0.3, slope_deg=18.0, roughness=0.04,
             continue
         xy = sample[:, :2] - sample[:, :2].mean(axis=0)
         design = np.column_stack((xy, np.ones(len(sample))))
-        plane, _, rank, _ = np.linalg.lstsq(design, sample[:, 2], rcond=None)
-        slope = math.degrees(math.atan(np.linalg.norm(plane[:2]))) if rank == 3 else 90.0
+        plane, _, rank, singular = np.linalg.lstsq(design, sample[:, 2], rcond=None)
+        # A single depth scanline cannot establish a surface normal.
+        if rank < 3 or singular[-1] / math.sqrt(len(sample)) < resolution * 0.05:
+            continue
+        slope = math.degrees(math.atan(np.linalg.norm(plane[:2])))
         residual = float(np.sqrt(np.mean((design @ plane - sample[:, 2])**2)))
         reason = ((1 if slope > slope_deg else 0) |
                   (2 if residual > roughness else 0) |
