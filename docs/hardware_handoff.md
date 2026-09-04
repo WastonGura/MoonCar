@@ -41,7 +41,7 @@ OLED 的 I2C 地址、近距传感器阈值、BMS 状态与电量估计同样在
 
 | 数据 | 话题 | 要求 |
 | --- | --- | --- |
-| 2D 雷达 | `/mooncar/scan` | LaserScan，米/弧度，`lidar_link`，建议 >=10Hz |
+| 2D 雷达 | `/mooncar/scan` | LaserScan，米/弧度，扫描平面 TF（仿真为 `lidar_scan_frame`），建议 >=10Hz |
 | 深度 | `/mooncar/depth/image` | Image，32FC1 米或 16UC1 毫米，光学坐标系 |
 | 相机内参 | `/mooncar/depth/camera_info` | 与深度同分辨率、已校准、同 frame |
 | IMU | `/mooncar/imu` | Imu，SI 单位、ENU/轴向核对、有效协方差；不要直接融合失真的磁航向 |

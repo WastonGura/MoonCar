@@ -118,13 +118,14 @@ class MissionTest(NavigationSmokeTest):
             raise RuntimeError('Dynamic-obstacle baseline is already obstructed')
         name = 'm6_obstacle_' + uuid.uuid4().hex[:8]
         sdf = (f'<sdf version="1.9"><model name="{name}"><static>true</static>'
-               '<pose>1.5 2.5 0.4 0 0 0</pose><link name="box">'
+               '<link name="box">'
                '<collision name="c"><geometry><box><size>0.8 0.8 0.8</size></box></geometry></collision>'
                '<visual name="v"><geometry><box><size>0.8 0.8 0.8</size></box></geometry></visual>'
                '</link></model></sdf>')
         try:
             subprocess.run(['ros2', 'run', 'ros_gz_sim', 'create', '-world', 'lunar_yard',
-                            '-string', sdf], check=True, timeout=30)
+                            '-string', sdf, '-x', '1.5', '-y', '2.5', '-z', '0.4'],
+                           check=True, timeout=30)
             self.wait(lambda: self.obstacle_surface_observed(*center), 'New obstacle absent from costmap', 60)
             after = self.plan(start, end)
             clearance = min(math.hypot(x-center[0], y-center[1]) for x, y in after)

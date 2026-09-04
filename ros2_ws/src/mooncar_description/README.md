@@ -32,6 +32,7 @@ Physical links:
 - `rear_left_wheel_link`
 - `rear_right_wheel_link`
 - `lidar_link`
+- `lidar_scan_frame` (scan plane above the visual housing)
 - `depth_camera_link`
 - `depth_camera_optical_frame`
 - `imu_link`
