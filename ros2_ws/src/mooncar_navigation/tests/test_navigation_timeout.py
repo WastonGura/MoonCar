@@ -9,6 +9,23 @@ import navigation_smoke_test as smoke  # noqa: E402
 
 
 class NavigationTimeoutTest(unittest.TestCase):
+    def test_lifecycle_readiness_without_cli_polling(self):
+        node = Mock()
+        node.get_parameter.return_value.value = 90.0
+        node.create_client.return_value.call_async.return_value.result.return_value.current_state.id = 3
+        with patch.object(smoke.rclpy, 'ok', return_value=True), \
+                patch.object(smoke.rclpy, 'spin_once'):
+            smoke.NavigationSmokeTest.wait_for_navigation(node)
+        self.assertEqual(node.create_client.call_count, 6)
+
+    def test_lifecycle_readiness_has_wall_deadline(self):
+        node = Mock()
+        node.get_parameter.return_value.value = 90.0
+        with patch.object(smoke.rclpy, 'ok', return_value=True), \
+                patch.object(smoke.time, 'monotonic', side_effect=[0.0, 91.0]):
+            with self.assertRaisesRegex(RuntimeError, 'Nav2 not ready'):
+                smoke.NavigationSmokeTest.wait_for_navigation(node)
+
     def run_goal(self, speed, finish_at, **overrides):
         params = {'goal_x': 3.5, 'goal_y': 3.0, 'goal_yaw': 0.0,
                   'server_timeout_s': 30.0, 'goal_timeout_s': 180.0,

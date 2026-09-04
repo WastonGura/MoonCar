@@ -23,6 +23,7 @@ class TerrainNode(Node):
         self.frame = self.get_parameter('frame').value
         self.intrinsics = None
         self.camera_frame = None
+        self.camera_size = None
         self.last_processed = 0.0
         self.last_valid = 0.0
         self.pending = None
@@ -40,6 +41,7 @@ class TerrainNode(Node):
     def on_info(self, msg):
         self.intrinsics = (msg.k[0], msg.k[4], msg.k[2], msg.k[5])
         self.camera_frame = msg.header.frame_id
+        self.camera_size = (msg.width, msg.height)
 
     def status(self, level, message, values=()):
         status = DiagnosticStatus(level=level, name='terrain_geometry',
@@ -74,6 +76,8 @@ class TerrainNode(Node):
         try:
             if msg.header.frame_id != self.camera_frame:
                 raise ValueError('Depth and CameraInfo frames differ')
+            if (msg.width, msg.height) != self.camera_size:
+                raise ValueError('Depth and CameraInfo dimensions differ')
             points = project_depth(msg.data, msg.width, msg.height, msg.step,
                                    msg.encoding, msg.is_bigendian, self.intrinsics)
             if len(points) < 100:

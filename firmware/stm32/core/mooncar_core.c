@@ -36,13 +36,14 @@ void mc_receive(mc_core *c, uint8_t byte, uint32_t now_ms) {
     uint16_t delta = (uint16_t)(seq-c->seq);
     if ((flags & ~3) || linear < -350 || linear > 350 || angular < -800 || angular > 800)
       goto skip;
+    c->estop |= (flags & 2) != 0;
+    if (!c->received && (flags & 1)) goto skip;
     /* A disarm packet establishes a new host session; motion requires newer sequence. */
-    if (!(flags & 1) || !c->received || (delta > 0 && delta < 32768)) {
+    if (!(flags & 1) || (delta > 0 && delta < 32768)) {
       bool session_ready = c->received;
       c->seq = seq;
       c->last_command_ms = now_ms;
       c->received = true;
-      c->estop |= (flags & 2) != 0;
       c->armed = session_ready && (flags & 1) && !c->estop;
       c->linear = c->armed ? linear*0.001f : 0;
       c->angular = c->armed ? angular*0.001f : 0;

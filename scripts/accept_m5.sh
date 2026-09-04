@@ -79,26 +79,12 @@ setsid ros2 launch mooncar_navigation "${launch_file}" "${launch_args[@]}" \
 launch_pid=$!
 
 echo "[3/4] Waiting for Nav2 lifecycle nodes"
-deadline=$((SECONDS + 90))
-nodes=(map_server amcl controller_server planner_server behavior_server bt_navigator)
-while true; do
-  all_active=true
-  for node in "${nodes[@]}"; do
-    if ! timeout -k 2s 5s ros2 lifecycle get "/${node}" 2>/dev/null | grep -q '^active '; then
-      all_active=false
-      break
-    fi
-  done
-  if [[ "${all_active}" == true ]]; then
-    break
-  fi
-  if ! kill -0 "${launch_pid}" 2>/dev/null || ((SECONDS >= deadline)); then
-    echo "Nav2 did not become active. Launch log:" >&2
-    tail -n 80 "${launch_log}" >&2
-    exit 1
-  fi
-  sleep 1
-done
+if ! ros2 run mooncar_navigation navigation_smoke_test.py --ros-args \
+  -p ready_only:=true -p server_timeout_s:=90.0; then
+  echo "Nav2 did not become active. Launch log:" >&2
+  tail -n 80 "${launch_log}" >&2
+  exit 1
+fi
 
 echo "[4/4] Running obstacle-navigation goal"
 if ! ros2 run mooncar_navigation "${test_file}" --ros-args \

@@ -15,6 +15,7 @@ int main(void) {
   mc_init(&c, 0.16f, 0.59f, 0.1f, 0.1f, 0.0f);
   assert(mc_crc((const uint8_t *)"123456789", 9) == 0x29b1);
   mc_step(&c, 0, 0.01f, speed, false, pwm); assert(pwm[0] == 0);
+  command(&c, 0, 1, 0, false); assert(!c.received && !c.armed);
   command(&c, 1, 0, 1, false);
   command(&c, 2, 1, 2, false);
   mc_step(&c, 3, 0.01f, speed, false, pwm); assert(pwm[0] > 0 && pwm[0] <= 1);
