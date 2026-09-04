@@ -40,8 +40,8 @@ SSH runs without a display need Ubuntu packages `xvfb` and `xauth`. The scripts
 start a private virtual display and clean it up automatically. VMware defaults
 to software-rendered Ogre for both sensor data and the GUI; a visible scene alone
 does not prove that the virtual GPU produces valid laser/depth measurements.
-Acceptance uses `rmw_cyclonedds_cpp` by default (install
-`ros-jazzy-rmw-cyclonedds-cpp`, or resolve workspace dependencies with rosdep).
+Acceptance uses Jazzy's `rmw_fastrtps_cpp` by default (resolve workspace
+dependencies with rosdep).
 Use the same `RMW_IMPLEMENTATION` in additional ROS terminals. An explicit
 environment override is preserved.
 Evidence is written to `~/mooncar_m6_acceptance.json` and
