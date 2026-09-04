@@ -16,7 +16,7 @@ The project is currently simulation-first:
 ```text
 docs/          Project documents, plans, reports, and meeting notes
 ros2_ws/       ROS2 workspace, added after structure confirmation
-firmware/      STM32 firmware, added during hardware stage
+firmware/      Portable STM32 control core and host tests; board HAL is hardware-gated
 scripts/       Build, environment, and deployment helper scripts
 assets/        Images, models, and presentation assets
 reports/       Innovation-project report and defense materials
@@ -53,3 +53,6 @@ M4 mapping remains available through `scripts/accept_m4.sh`; M5 navigation throu
 See [hardware handoff](docs/hardware_handoff.md) and [UART v1](docs/uart_protocol.md)
 before connecting real motors. The hardware launch is a disarmed bench profile,
 not an already validated autonomous real-rover deployment.
+
+The [M6 delivery report](reports/delivery_2026-09-05.md) includes actual VM
+acceptance results, screenshots, known limits and the five hardware-gated M7 issues.

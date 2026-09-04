@@ -5,18 +5,22 @@ Last updated: 2026-09-05
 ## Current Direction
 
 MoonCar is a simulation-first ROS2 project for a four-wheel lunar-terrain
-rover. Development currently targets a repeatable Gazebo, SLAM, Nav2, and
-terrain-aware autonomy pipeline before physical hardware integration.
+rover. The M6 software prototype now passes the full GUI acceptance, including
+terrain constraints, new-obstacle replanning and two ground-truth-checked goals.
+The next development stage is hardware commissioning, not an unverified motor launch.
 
 The final deadline in `docs/requirements.md` is 2027-01-10. No rover hardware
-has been purchased yet, so hardware procurement must run in parallel with the
-remaining simulation milestones if a physical demonstration is required.
+has been purchased yet. Board pinout, motor/current data and independent stop
+circuitry must be confirmed before HAL integration and powered bench testing.
 
 ## Repository
 
 - Windows path: `D:\Document\Repositories\MoonCar`
 - GitHub: `https://github.com/WastonGura/MoonCar.git`
-- Default branch: `main`
+- Active development branch: `main`; GitHub default remains historical `master`
+- Always explicitly target `main` for PRs; do not assume closing keywords close issues
+- M6 worktree: `D:\Document\Repositories\MoonCar-m6`, PR #51
+- Original Windows worktree has unrelated local edits and was left untouched
 - Ubuntu clone: `~/MoonCar`
 - Workflow: Issue -> branch/worktree -> build/runtime verification -> merge
 
@@ -42,10 +46,41 @@ the ROS repository remains `packages.ros.org`.
 - M3 simulated control stack: complete and re-verified on the active VM
 - M4 SLAM mapping pipeline: complete, Issues #19 through #24
 - M5 Nav2 autonomous navigation: complete, Issues #30 through #35
-- M6 terrain-aware autonomy and hardware readiness: planned
+- M6 terrain-aware autonomy and hardware readiness: software and VM acceptance verified in PR #51
+- M7 hardware commissioning: open, Issues #52 through #56, all `hardware-required`
 
-The post-M2 Gazebo GUI polish task remains open as Issue #12 and does not block
-the mapping pipeline.
+Issue #12 GUI polish is closed. The M6 GUI additionally removes helper-plugin
+description text from the scene and includes a working RViz Nav2 panel.
+
+## M6 Delivery Baseline
+
+Runtime code `0cc383e` passed the GUI acceptance on 2026-09-05 in the isolated
+VM checkout `/home/homura/MoonCar-m6.KPloMc`. The delivery commit adds only
+documentation and captured evidence after this code baseline.
+
+- 15 Python regression tests plus portable C11 firmware checks with UBSan passed.
+- Eight ROS packages built. GitHub Software checks passed.
+- Live laser: 146 finite varied returns; depth: 3185 projected points.
+- Keepout center clearance: 1.329 m; new-obstacle replanning clearance: 1.000 m.
+- Goals `(1.5, 0)` and `(3.5, 3)` succeeded; Gazebo truth errors 0.173 m and 0.282 m.
+- M4 regression saved a 298 x 201 map at 0.05 m/pixel.
+- Captured Gazebo and RViz screenshots confirm visible scenes and active Nav2/localization.
+- Human mouse-click navigation is not part of the automated goal evidence.
+
+Read `reports/delivery_2026-09-05.md`, `docs/hardware_handoff.md` and
+`docs/uart_protocol.md` before continuing. Do not claim hardware readiness from
+the PTY emulator: there is no board HAL, flashable image or validated physical stop.
+
+VM-specific fixes: software-rendered Ogre (both sensors and GUI), Cyclone DDS
+for acceptance, Xvfb for SSH runs without DISPLAY, staggered lifecycle startup,
+timestamped depth TF buffering, degenerate scanline rejection, nonholonomic EKF
+constraint, and verified simulated turn settings. Real covariance, friction,
+wheel dimensions and PID settings must be measured again on the bench.
+
+Run `~/MoonCar/scripts/accept_m6.sh` (GUI) or add `--server-only`; use
+`~/MoonCar/scripts/check_software.sh` for the logic/UART regression only.
+The acceptance script clears old evidence first and returns nonzero on failure.
+Use `RMW_IMPLEMENTATION=rmw_cyclonedds_cpp` in additional ROS terminals.
 
 ## Verified M3 Baseline
 
