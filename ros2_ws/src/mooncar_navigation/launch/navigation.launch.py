@@ -3,8 +3,7 @@ from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, Time
 from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
-from launch_ros.actions import ComposableNodeContainer, Node
-from launch_ros.descriptions import ComposableNode
+from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 
@@ -33,19 +32,20 @@ def generate_launch_description():
     )
 
     node_parameters = [params_file, {"use_sim_time": use_sim_time}]
-    navigation_nodes = [
-        ComposableNode(
+    localization_nodes = [
+        Node(
             package="nav2_map_server",
-            plugin="nav2_map_server::MapServer",
+            executable="map_server",
             name="map_server",
             parameters=[
                 params_file,
                 {"yaml_filename": map_yaml, "use_sim_time": use_sim_time},
             ],
+            output="screen",
         ),
-        ComposableNode(
+        Node(
             package="nav2_amcl",
-            plugin="nav2_amcl::AmclNode",
+            executable="amcl",
             name="amcl",
             parameters=[
                 params_file,
@@ -56,53 +56,70 @@ def generate_launch_description():
                     "use_sim_time": use_sim_time,
                 },
             ],
+            output="screen",
         ),
-        ComposableNode(
+        TimerAction(period=10.0, actions=[Node(
+            package="nav2_lifecycle_manager",
+            executable="lifecycle_manager",
+            name="lifecycle_manager_localization",
+            parameters=[
+                {"autostart": True, "use_sim_time": use_sim_time},
+                {"node_names": ["map_server", "amcl"]},
+            ],
+            output="screen",
+        )]),
+    ]
+    navigation_nodes = [
+        Node(
             package="nav2_controller",
-            plugin="nav2_controller::ControllerServer",
+            executable="controller_server",
             name="controller_server",
             parameters=node_parameters,
+            output="screen",
         ),
-        ComposableNode(
+        Node(
             package="nav2_smoother",
-            plugin="nav2_smoother::SmootherServer",
+            executable="smoother_server",
             name="smoother_server",
             parameters=node_parameters,
+            output="screen",
         ),
-        ComposableNode(
+        Node(
             package="nav2_planner",
-            plugin="nav2_planner::PlannerServer",
+            executable="planner_server",
             name="planner_server",
             parameters=node_parameters,
+            output="screen",
         ),
-        ComposableNode(
+        Node(
             package="nav2_behaviors",
-            plugin="behavior_server::BehaviorServer",
+            executable="behavior_server",
             name="behavior_server",
             parameters=node_parameters,
+            output="screen",
         ),
-        ComposableNode(
+        Node(
             package="nav2_bt_navigator",
-            plugin="nav2_bt_navigator::BtNavigator",
+            executable="bt_navigator",
             name="bt_navigator",
             parameters=node_parameters,
+            output="screen",
         ),
-        ComposableNode(
+        Node(
             package="nav2_waypoint_follower",
-            plugin="nav2_waypoint_follower::WaypointFollower",
+            executable="waypoint_follower",
             name="waypoint_follower",
             parameters=node_parameters,
+            output="screen",
         ),
-        ComposableNode(
+        TimerAction(period=10.0, actions=[Node(
             package="nav2_lifecycle_manager",
-            plugin="nav2_lifecycle_manager::LifecycleManager",
+            executable="lifecycle_manager",
             name="lifecycle_manager_navigation",
             parameters=[
                 {"autostart": True, "use_sim_time": use_sim_time},
                 {
                     "node_names": [
-                        "map_server",
-                        "amcl",
                         "controller_server",
                         "smoother_server",
                         "planner_server",
@@ -112,7 +129,8 @@ def generate_launch_description():
                     ]
                 },
             ],
-        ),
+            output="screen",
+        )]),
     ]
 
     return LaunchDescription(
@@ -156,16 +174,7 @@ def generate_launch_description():
             TimerAction(
                 period=5.0,
                 actions=[
-                    ComposableNodeContainer(
-                        name="mooncar_navigation_container",
-                        namespace="",
-                        package="rclcpp_components",
-                        executable="component_container_isolated",
-                        # Costmap child nodes inherit the container's parameter file.
-                        parameters=node_parameters,
-                        composable_node_descriptions=navigation_nodes,
-                        output="screen",
-                    ),
+                    *localization_nodes,
                 ],
             ),
             TimerAction(period=30.0, actions=[Node(
@@ -177,5 +186,6 @@ def generate_launch_description():
                         condition=IfCondition(use_rviz),
                         output="screen",
                     )]),
+            TimerAction(period=10.0, actions=navigation_nodes),
         ]
     )
