@@ -15,4 +15,20 @@
   <material name="mooncar_sensor_blue">
     <color rgba="0.10 0.30 0.55 1.0"/>
   </material>
+
+  <material name="mooncar_hub_silver">
+    <color rgba="0.58 0.62 0.65 1.0"/>
+  </material>
+
+  <material name="mooncar_panel_white">
+    <color rgba="0.82 0.84 0.82 1.0"/>
+  </material>
+
+  <material name="mooncar_warning_gold">
+    <color rgba="0.86 0.57 0.10 1.0"/>
+  </material>
+
+  <material name="mooncar_lens_black">
+    <color rgba="0.01 0.02 0.025 1.0"/>
+  </material>
 </robot>

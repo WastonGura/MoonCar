@@ -1,99 +1,103 @@
 # Working Context
 
-Last updated: 2026-07-15
+Last updated: 2026-09-05
 
 ## Current Direction
 
-MoonCar is a simulation-first ROS2 project for a four-wheel lunar-terrain rover prototype. The final project still targets a physical rover, but no hardware has been purchased yet, so current development should focus on Gazebo simulation, SLAM, Nav2 navigation, and terrain-aware planning.
+MoonCar is a simulation-first ROS2 project for a four-wheel lunar-terrain
+rover. Development currently targets a repeatable Gazebo, SLAM, Nav2, and
+terrain-aware autonomy pipeline before physical hardware integration.
+
+The final deadline in `docs/requirements.md` is 2027-01-10. No rover hardware
+has been purchased yet, so hardware procurement must run in parallel with the
+remaining simulation milestones if a physical demonstration is required.
 
 ## Repository
 
-- Formal repository path on Windows: `D:\Document\Repositories\MoonCar`
-- GitHub remote: `https://github.com/WastonGura/MoonCar.git`
-- Main branch: `master`
-- Commit style: commit after each small concrete function or document milestone, with specific messages.
+- Windows path: `D:\Document\Repositories\MoonCar`
+- GitHub: `https://github.com/WastonGura/MoonCar.git`
+- Default branch: `main`
+- Ubuntu clone: `~/MoonCar`
+- Workflow: Issue -> branch/worktree -> build/runtime verification -> merge
 
-## Development Machine Plan
+## Active VM Environment
 
-- Windows host: documentation, Git coordination, Codex-side editing.
-- Ubuntu VM: ROS2 build, Gazebo simulation, runtime verification.
-- Raspberry Pi: later onboard deployment after hardware procurement.
-- STM32: later low-level motor, encoder, and near-field sensor control.
-
-## Confirmed VM Environment
-
-- VM IP: `192.168.1.15`
-- VM user: `jiker`
+- IP: `192.168.248.128`
+- User: `homura`
 - OS: Ubuntu 24.04.4 LTS
 - ROS2: Jazzy
-- Gazebo: 8.11.0
-- Installed/available: Nav2, SLAM Toolbox, robot_localization, ros_gz_sim, ros_gz_bridge, colcon, CMake, Python 3.12, Git.
+- Gazebo Sim: 8.11.0
+- Resources: 4 vCPU, 8 GB RAM, 60 GB disk
+- Services: SSH and open-vm-tools enabled
+- ROS environment: `/opt/ros/jazzy/setup.bash` sourced from `~/.bashrc`
 
-## SSH/GitHub Status
+The VM uses NAT networking. Its Ubuntu package source is the Tsinghua mirror;
+the ROS repository remains `packages.ros.org`.
 
-A dedicated SSH key for GitHub was generated on the VM:
+## Milestone Status
 
-```text
-~/.ssh/id_ed25519_mooncar_github
-~/.ssh/id_ed25519_mooncar_github.pub
-```
+- M0 project foundation: complete
+- M1 rover description and visualization: complete
+- M2 Gazebo lunar simulation: complete
+- M3 simulated control stack: complete and re-verified on the active VM
+- M4 SLAM mapping pipeline: complete, Issues #19 through #24
+- M5 Nav2 autonomous navigation: complete, Issues #30 through #35
+- M6 terrain-aware autonomy and hardware readiness: planned
 
-The VM SSH config has a `github.com` entry that uses this key. The public key has been added to GitHub account SSH keys and authentication has been verified with `ssh -T git@github.com`.
+The post-M2 Gazebo GUI polish task remains open as Issue #12 and does not block
+the mapping pipeline.
 
-Active VM clone location:
+## Verified M3 Baseline
 
-```text
-~/MoonCar
-```
+The active VM builds all eight packages. Server-only Gazebo starts the
+`lunar_yard` world, spawns MoonCar, publishes sensor topics, accepts scripted
+drive commands, and publishes odometry. The latest drive check reported about
+0.608 m of forward travel followed by rotation.
 
-Earlier temporary build verification was performed from:
+## Completed M4 Pipeline
 
-```text
-~/MoonCar_local_verify
-```
+M4 adds:
 
-## ROS2 Workspace State
+1. Runtime validation of `/mooncar/scan`, `/mooncar/imu`, `/odom`, and TF.
+2. `robot_localization` filtered odometry at `/odometry/filtered`.
+3. SLAM Toolbox online asynchronous mapping at 0.05 m resolution.
+4. One-command mapping bringup with optional RViz.
+5. A failing smoke check that saves `.yaml` and `.pgm` map artifacts.
 
-The repository contains a buildable skeleton workspace at:
+The VM acceptance run received laser, IMU, filtered odometry, map, and TF data.
+After the scripted drive sequence, server-only Gazebo saved a 58 x 44 map at
+0.05 m/pixel. The GUI launch also kept Gazebo, SLAM Toolbox, EKF, and RViz alive
+for a 90-second smoke run without a process failure.
 
-```text
-ros2_ws/
-```
+## Completed M5 Pipeline
 
-Current packages:
+M5 adds saved-map localization, NavFn planning, Regulated Pure Pursuit control,
+bounded recovery behavior, and a one-command autonomous goal acceptance run.
+The verified lunar-yard route from `(0.5, 0.0)` to `(3.5, 3.0)` crosses rock
+marker A on a straight line; Nav2 routed around it and completed `4.22 m` of
+filtered travel. A goal inside the ramp timed out, cancelled, and returned the
+safety command to zero.
 
-- `mooncar_description`
-- `mooncar_gazebo`
-- `mooncar_bringup`
-- `mooncar_control`
-- `mooncar_slam`
-- `mooncar_navigation`
-- `mooncar_terrain`
-- `mooncar_msgs`
-
-Build verification on the VM passed from both the temporary copy and the active SSH clone:
-
-```text
-Temporary copy: Summary: 8 packages finished [7.64s]
-Active clone: Summary: 8 packages finished [12.3s]
-```
-
-## Next Recommended Milestone
-
-1. Keep the VM repository synchronized with GitHub using SSH:
+Run the complete GUI acceptance with:
 
 ```bash
-cd ~/MoonCar
-git pull --ff-only origin master
+~/MoonCar/scripts/accept_m5.sh
 ```
 
-2. Build from the VM clone:
+Use `--server-only` for a headless VM check.
+
+## VM Build Workflow
 
 ```bash
 cd ~/MoonCar/ros2_ws
 source /opt/ros/jazzy/setup.bash
+rosdep install --from-paths src --ignore-src -r -y
 colcon build --symlink-install
+source install/setup.bash
 ```
 
-3. Start implementing `mooncar_description` with a four-wheel skid-steer URDF/Xacro rover model.
+Run M4 mapping with:
 
+```bash
+ros2 launch mooncar_slam mapping.launch.py
+```
