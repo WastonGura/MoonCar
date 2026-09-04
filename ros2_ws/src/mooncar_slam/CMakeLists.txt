@@ -8,4 +8,9 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
+install(
+  PROGRAMS scripts/mapping_smoke_test.sh
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 ament_package()
