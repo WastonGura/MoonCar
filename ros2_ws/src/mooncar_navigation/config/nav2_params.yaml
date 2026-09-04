@@ -99,7 +99,7 @@ controller_server:
       use_cost_regulated_linear_velocity_scaling: true
       use_rotate_to_heading: true
       allow_reversing: false
-      max_angular_accel: 0.8
+      max_angular_accel: 2.5
 
 local_costmap:
   local_costmap:

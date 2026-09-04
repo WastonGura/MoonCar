@@ -72,7 +72,7 @@ nodes=(map_server amcl controller_server planner_server behavior_server bt_navig
 while true; do
   all_active=true
   for node in "${nodes[@]}"; do
-    if ! ros2 lifecycle get "/${node}" 2>/dev/null | grep -q '^active '; then
+    if ! timeout -k 2s 5s ros2 lifecycle get "/${node}" 2>/dev/null | grep -q '^active '; then
       all_active=false
       break
     fi
@@ -89,9 +89,14 @@ while true; do
 done
 
 echo "[4/4] Running obstacle-navigation goal"
-ros2 run mooncar_navigation navigation_smoke_test.py --ros-args \
+if ! ros2 run mooncar_navigation navigation_smoke_test.py --ros-args \
+  -p use_sim_time:=true \
   -p goal_x:=3.5 -p goal_y:=3.0 \
-  -p goal_timeout_s:=180.0 -p min_displacement_m:=2.0
+  -p goal_timeout_s:=180.0 -p min_displacement_m:=2.0; then
+  echo "Navigation acceptance failed. Launch log: ${launch_log}" >&2
+  tail -n 40 "${launch_log}" >&2
+  exit 1
+fi
 
 echo
 echo "M5 acceptance passed."

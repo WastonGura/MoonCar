@@ -18,6 +18,8 @@ class NavigationSmokeTest(Node):
         self.declare_parameter('goal_yaw', 0.0)
         self.declare_parameter('server_timeout_s', 30.0)
         self.declare_parameter('goal_timeout_s', 120.0)
+        self.declare_parameter('wall_timeout_s', 600.0)
+        self.declare_parameter('clock_stall_timeout_s', 30.0)
         self.declare_parameter('min_displacement_m', 0.5)
         self.position = None
         self.create_subscription(Odometry, '/odometry/filtered', self.on_odometry, 10)
@@ -63,11 +65,44 @@ class NavigationSmokeTest(Node):
 
         result_future = goal_handle.get_result_async()
         timeout = float(self.get_parameter('goal_timeout_s').value)
-        rclpy.spin_until_future_complete(self, result_future, timeout_sec=timeout)
-        if not result_future.done():
+        wall_timeout = float(self.get_parameter('wall_timeout_s').value)
+        stall_timeout = float(self.get_parameter('clock_stall_timeout_s').value)
+        started = self.get_clock().now().nanoseconds
+        wall_started = last_tick = last_report = time.monotonic()
+        previous = started
+        failure = None
+        while rclpy.ok() and not result_future.done():
+            rclpy.spin_once(self, timeout_sec=0.1)
+            if result_future.done():
+                break
+            now = self.get_clock().now().nanoseconds
+            wall_now = time.monotonic()
+            elapsed = (now - started) * 1e-9
+            wall_elapsed = wall_now - wall_started
+            if now != previous:
+                last_tick = wall_now
+            if now < previous:
+                failure = 'Navigation clock moved backwards'
+            elif elapsed >= timeout:
+                failure = f'Navigation goal timed out after {elapsed:.1f} ROS seconds'
+            elif wall_elapsed >= wall_timeout:
+                failure = f'Navigation exceeded {wall_timeout:.1f} wall seconds'
+            elif wall_now - last_tick >= stall_timeout:
+                failure = f'Navigation clock stopped for {stall_timeout:.1f} seconds'
+            previous = now
+            if failure:
+                break
+            if wall_now - last_report >= 15.0:
+                self.get_logger().info(
+                    f'Navigating: ROS elapsed={elapsed:.1f}/{timeout:.1f} s, '
+                    f'wall elapsed={wall_elapsed:.1f} s, '
+                    f'odom=({self.position[0]:.2f}, {self.position[1]:.2f})'
+                )
+                last_report = wall_now
+        if failure or not result_future.done():
             cancel_future = goal_handle.cancel_goal_async()
             rclpy.spin_until_future_complete(self, cancel_future, timeout_sec=5.0)
-            raise RuntimeError(f'Navigation goal timed out after {timeout:.1f} s')
+            raise RuntimeError(failure or 'Navigation interrupted')
 
         status = result_future.result().status
         if status != GoalStatus.STATUS_SUCCEEDED:

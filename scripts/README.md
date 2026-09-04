@@ -33,6 +33,11 @@ rock marker A. A passing run ends with `M5 acceptance passed.` and leaves the
 GUI open until Enter is pressed. The launch log is
 `/tmp/mooncar_m5_acceptance.log`.
 
+The navigation deadline is 180 seconds of simulation time. GUI rendering can
+make the VMware simulation slower than real time; progress prints ROS elapsed
+time, wall elapsed time, and odometry every 15 seconds. A 600-second wall limit
+and a 30-second stopped-clock watchdog still cancel stalled runs.
+
 Run without Gazebo or RViz windows, or select another saved map:
 
 ```bash
