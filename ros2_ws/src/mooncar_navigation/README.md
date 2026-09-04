@@ -117,6 +117,8 @@ For simulation, also pass `-p use_sim_time:=true` so the navigation deadline
 uses `/clock`. The one-command acceptance script sets this automatically.
 `wall_timeout_s` (600 seconds) and `clock_stall_timeout_s` (30 seconds) bound
 slow or paused runs independently of simulation time.
+The turn acceleration limit is `2.5 rad/s^2` to avoid low-speed skid-steer
+stalling at the final heading; the rotation speed remains capped at `0.45 rad/s`.
 
 Run the timeout regression checks in a sourced ROS environment with
 `python3 -m unittest discover -s src/mooncar_navigation/tests` from `ros2_ws`.
