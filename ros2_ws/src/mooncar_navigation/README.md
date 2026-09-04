@@ -104,3 +104,31 @@ ros2 run mooncar_navigation navigation_smoke_test.py
 The test exits successfully only when Nav2 reports success and filtered
 odometry shows at least `0.5 m` of travel. Override the defaults with ROS
 parameters such as `--ros-args -p goal_x:=2.0 -p goal_timeout_s:=180.0`.
+
+## Lunar-yard obstacle route
+
+The package includes a deterministic simulation map for navigation tuning:
+
+```bash
+MAP="$(ros2 pkg prefix mooncar_navigation)/share/mooncar_navigation/maps/lunar_yard.yaml"
+ros2 launch mooncar_navigation navigation.launch.py map:="$MAP"
+```
+
+The tested obstacle route starts at `(0.5, 0.0)` and ends at `(3.5, 3.0)`.
+The direct path crosses rock marker A, so the planned route must pass around it:
+
+```bash
+ros2 run mooncar_navigation navigation_smoke_test.py --ros-args \
+  -p goal_x:=3.5 -p goal_y:=3.0 \
+  -p goal_timeout_s:=180.0 -p min_displacement_m:=2.0
+```
+
+The costmaps use the rover footprint plus `0.65 m` inflation, mark laser
+obstacles to `6 m`, and raytrace clearing observations to `8 m`. Unknown cells
+remain traversable for sparse SLAM maps, while laser collision checking remains
+enabled. Simulated wheel odometry uses a calibrated `0.83 m` effective track
+width to account for skid-steer slip under lunar gravity. The progress checker
+requires `0.10 m` within `20 s`; recovery remains bounded to clear, spin, wait,
+and backup behaviors before returning failure. The EKF takes forward velocity
+from wheel odometry and heading from the IMU so skid-steer yaw error does not
+accumulate into the navigation pose.

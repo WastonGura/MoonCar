@@ -8,6 +8,7 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     gz_args = LaunchConfiguration("gz_args")
+    odom_track_width = LaunchConfiguration("odom_track_width")
     robot_name = LaunchConfiguration("robot_name")
     publish_odom_tf = LaunchConfiguration("publish_odom_tf")
     spawn_x = LaunchConfiguration("spawn_x")
@@ -73,6 +74,11 @@ def generate_launch_description():
                 default_value="true",
                 description="Publish odom -> base_footprint from wheel odometry.",
             ),
+            DeclareLaunchArgument(
+                "odom_track_width",
+                default_value="0.83",
+                description="Effective skid-steer track width for simulated odometry.",
+            ),
             DeclareLaunchArgument("spawn_x", default_value="0.0"),
             DeclareLaunchArgument("spawn_y", default_value="0.0"),
             DeclareLaunchArgument("spawn_z", default_value="0.0"),
@@ -117,6 +123,7 @@ def generate_launch_description():
                 parameters=[
                     {
                         "publish_tf": publish_odom_tf,
+                        "track_width": odom_track_width,
                         "use_sim_time": use_sim_time,
                     }
                 ],
