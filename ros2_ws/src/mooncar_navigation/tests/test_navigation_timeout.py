@@ -24,7 +24,7 @@ class NavigationTimeoutTest(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, 'covariance diverged'):
             MissionTest.on_odometry(node, msg)
         with patch('mission_smoke_test.subprocess.run', return_value=SimpleNamespace(
-                stdout='{"pose":[{"name":"mooncar","position":{"x":1.5,"y":3.0}}]}')):
+                stdout='{"pose":[{"name":"mooncar","position":{"x":1.5,"y":3.0}}]}\n{"pose":[]}')):
             self.assertEqual(MissionTest.ground_truth(), (1.5, 3.0))
 
     def test_lifecycle_readiness_without_cli_polling(self):

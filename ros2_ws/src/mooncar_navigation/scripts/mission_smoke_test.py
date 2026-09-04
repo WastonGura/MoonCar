@@ -50,7 +50,8 @@ class MissionTest(NavigationSmokeTest):
         result = subprocess.run(['gz', 'topic', '-e', '-t', '/world/lunar_yard/pose/info',
                                  '-n', '1', '--json-output'], capture_output=True,
                                 text=True, check=True, timeout=15)
-        poses = json.loads(result.stdout)['pose']
+        # Gazebo may print another queued sample before --num 1 shuts down.
+        poses = json.JSONDecoder().raw_decode(result.stdout.lstrip())[0]['pose']
         pose = next(p['position'] for p in poses if p.get('name') == 'mooncar')
         return float(pose.get('x', 0)), float(pose.get('y', 0))
 
