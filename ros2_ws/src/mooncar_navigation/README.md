@@ -69,3 +69,28 @@ than silently choosing a map.
 Pure Pursuit, local and global costmaps, recovery behaviors, waypoint
 following, and their lifecycle managers. The costmaps use the rover's
 `0.86 m x 0.72 m` footprint and consume `/mooncar/scan` for obstacle updates.
+
+## Run navigation
+
+Start Gazebo, filtered odometry, saved-map localization, Nav2, and RViz:
+
+```bash
+ros2 launch mooncar_navigation navigation.launch.py \
+  map:="$HOME/mooncar_m4_acceptance.yaml"
+```
+
+The `map` argument is required. For a server-only VM check:
+
+```bash
+ros2 launch mooncar_navigation navigation.launch.py \
+  map:="$HOME/mooncar_m4_acceptance.yaml" \
+  use_rviz:=false gz_args:="-r -s -v 2"
+```
+
+The launch keeps wheel-odometry TF disabled, starts the EKF as the sole
+`odom -> base_footprint` publisher, and uses AMCL as the sole `map -> odom`
+publisher.
+
+The default initial pose is `x=0.5, y=0.0, yaw=0.0`, safely inside maps made
+by the M4 acceptance run. Override `initial_x`, `initial_y`, and `initial_yaw`
+when using a map created from a different starting pose.
