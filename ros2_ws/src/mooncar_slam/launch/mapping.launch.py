@@ -18,6 +18,9 @@ def generate_launch_description():
     simulation_launch = PathJoinSubstitution(
         [FindPackageShare("mooncar_gazebo"), "launch", "simulation.launch.py"]
     )
+    slam_launch = PathJoinSubstitution(
+        [FindPackageShare("slam_toolbox"), "launch", "online_async_launch.py"]
+    )
     default_ekf_params = PathJoinSubstitution(
         [FindPackageShare("mooncar_slam"), "config", "ekf.yaml"]
     )
@@ -55,12 +58,13 @@ def generate_launch_description():
                 parameters=[ekf_params, {"use_sim_time": use_sim_time}],
                 output="screen",
             ),
-            Node(
-                package="slam_toolbox",
-                executable="async_slam_toolbox_node",
-                name="slam_toolbox",
-                parameters=[slam_params, {"use_sim_time": use_sim_time}],
-                output="screen",
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(slam_launch),
+                launch_arguments={
+                    "autostart": "true",
+                    "slam_params_file": slam_params,
+                    "use_sim_time": use_sim_time,
+                }.items(),
             ),
             Node(
                 package="rviz2",
