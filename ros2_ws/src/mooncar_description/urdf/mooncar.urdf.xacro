@@ -44,12 +44,54 @@
   </joint>
 
   <link name="${prefix}base_link">
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+    <visual name="lower_chassis">
+      <origin xyz="0 0 -0.025" rpy="0 0 0"/>
       <geometry>
-        <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+        <box size="${chassis_length} ${chassis_width} 0.13"/>
       </geometry>
       <material name="mooncar_dark_gray"/>
+    </visual>
+    <visual name="upper_equipment_deck">
+      <origin xyz="-0.03 0 0.075" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.54 0.36 0.07"/>
+      </geometry>
+      <material name="mooncar_panel_white"/>
+    </visual>
+    <visual name="top_service_panel">
+      <origin xyz="-0.06 0 0.116" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.28 0.25 0.012"/>
+      </geometry>
+      <material name="mooncar_sensor_blue"/>
+    </visual>
+    <visual name="left_frame_rail">
+      <origin xyz="0 0.255 -0.035" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.62 0.045 0.055"/>
+      </geometry>
+      <material name="mooncar_sensor_blue"/>
+    </visual>
+    <visual name="right_frame_rail">
+      <origin xyz="0 -0.255 -0.035" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.62 0.045 0.055"/>
+      </geometry>
+      <material name="mooncar_sensor_blue"/>
+    </visual>
+    <visual name="front_bumper">
+      <origin xyz="0.385 0 -0.035" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.54 0.065"/>
+      </geometry>
+      <material name="mooncar_hub_silver"/>
+    </visual>
+    <visual name="rear_bumper">
+      <origin xyz="-0.385 0 -0.035" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.54 0.065"/>
+      </geometry>
+      <material name="mooncar_hub_silver"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -111,12 +153,26 @@
     mass="${wheel_mass}"/>
 
   <link name="${prefix}lidar_link">
-    <visual>
+    <visual name="lidar_housing">
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="${lidar_radius}" length="${lidar_height}"/>
       </geometry>
       <material name="mooncar_sensor_blue"/>
+    </visual>
+    <visual name="lidar_mount">
+      <origin xyz="0 0 -0.045" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.027" length="0.07"/>
+      </geometry>
+      <material name="mooncar_hub_silver"/>
+    </visual>
+    <visual name="lidar_top_cap">
+      <origin xyz="0 0 ${lidar_height / 2.0 + 0.006}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${lidar_radius * 0.82}" length="0.012"/>
+      </geometry>
+      <material name="mooncar_lens_black"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -140,12 +196,26 @@
   </joint>
 
   <link name="${prefix}depth_camera_link">
-    <visual>
+    <visual name="camera_body">
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="${camera_length} ${camera_width} ${camera_height}"/>
+        <box size="${camera_length} 0.10 0.055"/>
       </geometry>
       <material name="mooncar_light_gray"/>
+    </visual>
+    <visual name="camera_left_lens">
+      <origin xyz="${camera_length / 2.0 + 0.006} 0.027 0" rpy="0 1.57079632679 0"/>
+      <geometry>
+        <cylinder radius="0.014" length="0.012"/>
+      </geometry>
+      <material name="mooncar_lens_black"/>
+    </visual>
+    <visual name="camera_right_lens">
+      <origin xyz="${camera_length / 2.0 + 0.006} -0.027 0" rpy="0 1.57079632679 0"/>
+      <geometry>
+        <cylinder radius="0.014" length="0.012"/>
+      </geometry>
+      <material name="mooncar_lens_black"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -177,12 +247,12 @@
   </joint>
 
   <link name="${prefix}imu_link">
-    <visual>
+    <visual name="imu_module">
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <box size="${imu_size} ${imu_size} ${imu_size}"/>
       </geometry>
-      <material name="mooncar_sensor_blue"/>
+      <material name="mooncar_warning_gold"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -206,12 +276,26 @@
   </joint>
 
   <link name="${prefix}nav_reference_link">
-    <visual>
+    <visual name="antenna_base">
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <box size="${nav_reference_size} ${nav_reference_size} ${nav_reference_size}"/>
       </geometry>
-      <material name="mooncar_light_gray"/>
+      <material name="mooncar_warning_gold"/>
+    </visual>
+    <visual name="antenna_mast">
+      <origin xyz="0 0 0.09" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.012" length="0.18"/>
+      </geometry>
+      <material name="mooncar_hub_silver"/>
+    </visual>
+    <visual name="antenna_head">
+      <origin xyz="0 0 0.19" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.032"/>
+      </geometry>
+      <material name="mooncar_sensor_blue"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
