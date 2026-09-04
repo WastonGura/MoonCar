@@ -93,6 +93,26 @@
       </geometry>
       <material name="mooncar_hub_silver"/>
     </visual>
+    <visual name="front_left_suspension_arm">
+      <origin xyz="0.26 0.255 -0.055" rpy="0 0 0"/>
+      <geometry><box size="0.055 0.18 0.035"/></geometry>
+      <material name="mooncar_warning_gold"/>
+    </visual>
+    <visual name="front_right_suspension_arm">
+      <origin xyz="0.26 -0.255 -0.055" rpy="0 0 0"/>
+      <geometry><box size="0.055 0.18 0.035"/></geometry>
+      <material name="mooncar_warning_gold"/>
+    </visual>
+    <visual name="rear_left_suspension_arm">
+      <origin xyz="-0.26 0.255 -0.055" rpy="0 0 0"/>
+      <geometry><box size="0.055 0.18 0.035"/></geometry>
+      <material name="mooncar_warning_gold"/>
+    </visual>
+    <visual name="rear_right_suspension_arm">
+      <origin xyz="-0.26 -0.255 -0.055" rpy="0 0 0"/>
+      <geometry><box size="0.055 0.18 0.035"/></geometry>
+      <material name="mooncar_warning_gold"/>
+    </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
