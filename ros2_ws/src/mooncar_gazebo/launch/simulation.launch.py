@@ -1,5 +1,8 @@
+from pathlib import Path
+
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, TimerAction
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, SetEnvironmentVariable, TimerAction
+from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
@@ -7,6 +10,8 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
+    product = Path('/sys/class/dmi/id/product_name')
+    vmware = product.is_file() and 'VMware' in product.read_text()
     gz_args = LaunchConfiguration("gz_args")
     odom_track_width = LaunchConfiguration("odom_track_width")
     robot_name = LaunchConfiguration("robot_name")
@@ -49,6 +54,9 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
+            DeclareLaunchArgument('software_rendering', default_value='true' if vmware else 'false'),
+            SetEnvironmentVariable('LIBGL_ALWAYS_SOFTWARE', '1',
+                                   condition=IfCondition(LaunchConfiguration('software_rendering'))),
             DeclareLaunchArgument(
                 "world",
                 default_value=default_world,
@@ -61,7 +69,7 @@ def generate_launch_description():
             ),
             DeclareLaunchArgument(
                 "gz_args",
-                default_value="-r -v 3",
+                default_value="-r -v 3 --render-engine ogre",
                 description="Arguments passed to `gz sim` before the world path.",
             ),
             DeclareLaunchArgument(
@@ -80,6 +88,7 @@ def generate_launch_description():
                 description="Effective skid-steer track width for simulated odometry.",
             ),
             DeclareLaunchArgument("spawn_x", default_value="0.0"),
+            DeclareLaunchArgument("require_terrain", default_value="false"),
             DeclareLaunchArgument("spawn_y", default_value="0.0"),
             DeclareLaunchArgument("spawn_z", default_value="0.0"),
             DeclareLaunchArgument("spawn_yaw", default_value="0.0"),
@@ -113,7 +122,8 @@ def generate_launch_description():
                 package="mooncar_control",
                 executable="cmd_vel_safety_relay.py",
                 name="mooncar_cmd_vel_safety_relay",
-                parameters=[{"use_sim_time": use_sim_time}],
+                parameters=[{"use_sim_time": use_sim_time,
+                             "require_terrain": LaunchConfiguration("require_terrain")}],
                 output="screen",
             ),
             Node(

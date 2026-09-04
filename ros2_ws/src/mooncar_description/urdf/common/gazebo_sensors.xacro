@@ -3,11 +3,12 @@
   <xacro:macro name="mooncar_gazebo_sensors" params="prefix">
     <gazebo reference="${prefix}lidar_link">
       <sensor name="mooncar_lidar" type="gpu_lidar">
+        <pose>0 0 ${lidar_height / 2.0 + 0.02} 0 0 0</pose>
         <always_on>true</always_on>
         <visualize>true</visualize>
         <update_rate>10</update_rate>
         <topic>/mooncar/scan</topic>
-        <gz_frame_id>${prefix}lidar_link</gz_frame_id>
+        <gz_frame_id>${prefix}lidar_scan_frame</gz_frame_id>
         <ray>
           <scan>
             <horizontal>
@@ -33,6 +34,7 @@
 
     <gazebo reference="${prefix}depth_camera_link">
       <sensor name="mooncar_depth_camera" type="depth">
+        <pose>${camera_length / 2.0} 0 0 0 0 0</pose>
         <always_on>true</always_on>
         <visualize>true</visualize>
         <update_rate>10</update_rate>

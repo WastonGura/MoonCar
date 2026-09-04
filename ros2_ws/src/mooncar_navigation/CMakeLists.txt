@@ -4,12 +4,12 @@ project(mooncar_navigation)
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY launch config maps
+  DIRECTORY launch config maps rviz
   DESTINATION share/${PROJECT_NAME}
 )
 
 install(
-  PROGRAMS scripts/navigation_smoke_test.py
+  PROGRAMS scripts/navigation_smoke_test.py scripts/mission_smoke_test.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

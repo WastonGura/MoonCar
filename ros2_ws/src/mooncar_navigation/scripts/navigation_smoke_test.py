@@ -5,6 +5,7 @@ import time
 from action_msgs.msg import GoalStatus
 from nav2_msgs.action import NavigateToPose
 from nav_msgs.msg import Odometry
+from lifecycle_msgs.srv import GetState
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.node import Node
@@ -21,9 +22,32 @@ class NavigationSmokeTest(Node):
         self.declare_parameter('wall_timeout_s', 600.0)
         self.declare_parameter('clock_stall_timeout_s', 30.0)
         self.declare_parameter('min_displacement_m', 0.5)
+        self.declare_parameter('ready_only', False)
         self.position = None
         self.create_subscription(Odometry, '/odometry/filtered', self.on_odometry, 10)
         self.client = ActionClient(self, NavigateToPose, '/navigate_to_pose')
+
+    def wait_for_navigation(self):
+        names = ('map_server', 'amcl', 'controller_server', 'planner_server',
+                 'behavior_server', 'bt_navigator')
+        clients = {name: self.create_client(GetState, f'/{name}/get_state') for name in names}
+        pending, active = {}, set()
+        deadline = time.monotonic() + float(self.get_parameter('server_timeout_s').value)
+        while rclpy.ok() and time.monotonic() < deadline:
+            for name, client in clients.items():
+                future = pending.get(name)
+                if future is not None and future.done():
+                    response = future.result()
+                    if response is not None and response.current_state.id == 3:
+                        active.add(name)
+                    pending.pop(name)
+                if name not in active and name not in pending and client.service_is_ready():
+                    pending[name] = client.call_async(GetState.Request())
+            if len(active) == len(names):
+                self.get_logger().info('Nav2 lifecycle nodes are active')
+                return
+            rclpy.spin_once(self, timeout_sec=0.2)
+        raise RuntimeError('Nav2 not ready: ' + ', '.join(sorted(set(names)-active)))
 
     def on_odometry(self, msg):
         self.position = (msg.pose.pose.position.x, msg.pose.pose.position.y)
@@ -125,7 +149,10 @@ def main():
     node = NavigationSmokeTest()
     exit_code = 0
     try:
-        node.run()
+        if node.get_parameter('ready_only').value:
+            node.wait_for_navigation()
+        else:
+            node.run()
     except Exception as error:
         node.get_logger().error(str(error))
         exit_code = 1

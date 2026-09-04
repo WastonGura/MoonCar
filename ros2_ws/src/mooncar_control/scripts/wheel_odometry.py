@@ -84,6 +84,10 @@ class WheelOdometry(Node):
         odom.pose.pose.orientation = orientation
         odom.twist.twist.linear.x = linear_x
         odom.twist.twist.angular.z = angular_z
+        # Nominal bench uncertainties; real wheel slip requires calibration.
+        odom.twist.covariance[0] = 0.0025
+        odom.twist.covariance[7] = 0.01
+        odom.twist.covariance[35] = 0.04
         self.odom_pub.publish(odom)
 
         if self.tf_broadcaster is not None:

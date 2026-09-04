@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import math
+import time
 
+from diagnostic_msgs.msg import DiagnosticArray, DiagnosticStatus
 import rclpy
 from geometry_msgs.msg import Twist
 from rclpy.node import Node
@@ -15,6 +17,7 @@ class CmdVelSafetyRelay(Node):
         self.declare_parameter("timeout_s", 0.5)
         self.declare_parameter("max_linear_x", 0.35)
         self.declare_parameter("max_angular_z", 0.8)
+        self.declare_parameter("require_terrain", False)
 
         input_topic = self.get_parameter("input_topic").value
         output_topic = self.get_parameter("output_topic").value
@@ -25,6 +28,10 @@ class CmdVelSafetyRelay(Node):
         self.max_angular_z = float(self.get_parameter("max_angular_z").value)
         self.last_cmd = Twist()
         self.last_cmd_time = self.get_clock().now()
+        self.require_terrain = self.get_parameter("require_terrain").value
+        self.terrain_ok = False
+        self.terrain_time = 0.0
+        self.create_subscription(DiagnosticArray, "/mooncar/terrain/status", self.on_terrain, 10)
 
         self.publisher = self.create_publisher(Twist, output_topic, 10)
         self.subscription = self.create_subscription(Twist, input_topic, self.on_cmd_vel, 10)
@@ -37,10 +44,17 @@ class CmdVelSafetyRelay(Node):
 
     def on_timer(self):
         age = (self.get_clock().now() - self.last_cmd_time).nanoseconds * 1e-9
-        if age > self.timeout_s:
+        terrain_stale = not self.terrain_ok or time.monotonic() - self.terrain_time > 5.0
+        if age < 0 or age > self.timeout_s or (self.require_terrain and terrain_stale):
             self.publisher.publish(Twist())
         else:
             self.publisher.publish(self.last_cmd)
+
+    def on_terrain(self, msg):
+        for status in msg.status:
+            if status.name == "terrain_geometry":
+                self.terrain_ok = status.level == DiagnosticStatus.OK
+                self.terrain_time = time.monotonic()
 
     def clamp(self, msg):
         cmd = Twist()
@@ -60,9 +74,12 @@ def main():
     node = CmdVelSafetyRelay()
     try:
         rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        if rclpy.ok():
+            rclpy.shutdown()
 
 
 if __name__ == "__main__":

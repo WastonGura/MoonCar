@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 set -eo pipefail
+export RMW_IMPLEMENTATION="${RMW_IMPLEMENTATION:-rmw_cyclonedds_cpp}"
+
+if [[ -z "${DISPLAY:-}" ]]; then
+  command -v xvfb-run >/dev/null || { echo 'Install xvfb and xauth for SSH/server-only acceptance.' >&2; exit 1; }
+  exec xvfb-run -a -s '-screen 0 1280x800x24' "$0" "$@"
+fi
+
+use_rviz=true
+if [[ "${1:-}" == --server-only ]]; then
+  use_rviz=false
+  shift
+fi
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 workspace="${repo_root}/ros2_ws"
@@ -42,7 +54,11 @@ set -u
 
 echo "[2/4] Starting Gazebo, SLAM, EKF, and RViz"
 rm -f "${launch_log}"
-setsid ros2 launch mooncar_slam mapping.launch.py >"${launch_log}" 2>&1 &
+launch_args=(use_rviz:="${use_rviz}")
+if [[ "${use_rviz}" == false ]]; then
+  launch_args+=(gz_args:="-r -s -v 2 --render-engine ogre")
+fi
+setsid ros2 launch mooncar_slam mapping.launch.py "${launch_args[@]}" >"${launch_log}" 2>&1 &
 launch_pid=$!
 
 echo "[3/4] Waiting for laser data"
@@ -71,6 +87,6 @@ echo "M4 acceptance passed."
 echo "Map: ${map_prefix}.yaml"
 echo "Launch log: ${launch_log}"
 
-if [[ -t 0 ]]; then
+if [[ "${use_rviz}" == true && -t 0 ]]; then
   read -r -p "Press Enter to close Gazebo and RViz..."
 fi

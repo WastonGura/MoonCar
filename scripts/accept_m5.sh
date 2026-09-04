@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
 set -eo pipefail
+export RMW_IMPLEMENTATION="${RMW_IMPLEMENTATION:-rmw_cyclonedds_cpp}"
+
+if [[ -z "${DISPLAY:-}" ]]; then
+  command -v xvfb-run >/dev/null || { echo 'Install xvfb and xauth for SSH/server-only acceptance.' >&2; exit 1; }
+  exec xvfb-run -a -s '-screen 0 1280x800x24' "$0" "$@"
+fi
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 workspace="${repo_root}/ros2_ws"
 launch_log="/tmp/mooncar_m5_acceptance.log"
 launch_pid=""
 use_rviz=true
+launch_file=navigation.launch.py
+test_file=navigation_smoke_test.py
+milestone=M5
 
 cleanup() {
   local status=$?
@@ -29,12 +38,21 @@ cleanup() {
 trap cleanup EXIT
 trap 'exit 130' INT TERM
 
-if [[ "${1:-}" == "--server-only" ]]; then
-  use_rviz=false
+while [[ "${1:-}" == --* ]]; do
+  case "$1" in
+    --server-only) use_rviz=false ;;
+    --terrain)
+      launch_file=terrain_navigation.launch.py
+      test_file=mission_smoke_test.py
+      milestone=M6
+      launch_log=/tmp/mooncar_m6_acceptance.log
+      ;;
+    *) echo "Unknown option: $1" >&2; exit 2 ;;
+  esac
   shift
-fi
+done
 if (( $# > 1 )); then
-  echo "Usage: $0 [--server-only] [map.yaml]" >&2
+  echo "Usage: $0 [--server-only] [--terrain] [map.yaml]" >&2
   exit 2
 fi
 if [[ ! -f /opt/ros/jazzy/setup.bash ]]; then
@@ -60,36 +78,22 @@ echo "[2/4] Starting Gazebo, localization, Nav2, and RViz"
 rm -f "${launch_log}"
 launch_args=(map:="${map_yaml}" use_rviz:="${use_rviz}")
 if [[ "${use_rviz}" == false ]]; then
-  launch_args+=(gz_args:="-r -s -v 2")
+  launch_args+=(gz_args:="-r -s -v 2 --render-engine ogre")
 fi
-setsid ros2 launch mooncar_navigation navigation.launch.py "${launch_args[@]}" \
+setsid ros2 launch mooncar_navigation "${launch_file}" "${launch_args[@]}" \
   >"${launch_log}" 2>&1 &
 launch_pid=$!
 
 echo "[3/4] Waiting for Nav2 lifecycle nodes"
-deadline=$((SECONDS + 90))
-nodes=(map_server amcl controller_server planner_server behavior_server bt_navigator)
-while true; do
-  all_active=true
-  for node in "${nodes[@]}"; do
-    if ! timeout -k 2s 5s ros2 lifecycle get "/${node}" 2>/dev/null | grep -q '^active '; then
-      all_active=false
-      break
-    fi
-  done
-  if [[ "${all_active}" == true ]]; then
-    break
-  fi
-  if ! kill -0 "${launch_pid}" 2>/dev/null || ((SECONDS >= deadline)); then
-    echo "Nav2 did not become active. Launch log:" >&2
-    tail -n 80 "${launch_log}" >&2
-    exit 1
-  fi
-  sleep 1
-done
+if ! ros2 run mooncar_navigation navigation_smoke_test.py --ros-args \
+  -p ready_only:=true -p server_timeout_s:=90.0; then
+  echo "Nav2 did not become active. Launch log:" >&2
+  tail -n 80 "${launch_log}" >&2
+  exit 1
+fi
 
 echo "[4/4] Running obstacle-navigation goal"
-if ! ros2 run mooncar_navigation navigation_smoke_test.py --ros-args \
+if ! ros2 run mooncar_navigation "${test_file}" --ros-args \
   -p use_sim_time:=true \
   -p goal_x:=3.5 -p goal_y:=3.0 \
   -p goal_timeout_s:=180.0 -p min_displacement_m:=2.0; then
@@ -99,7 +103,7 @@ if ! ros2 run mooncar_navigation navigation_smoke_test.py --ros-args \
 fi
 
 echo
-echo "M5 acceptance passed."
+echo "${milestone} acceptance passed."
 echo "Map: ${map_yaml}"
 echo "Launch log: ${launch_log}"
 

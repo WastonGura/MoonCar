@@ -28,7 +28,7 @@ def generate_launch_description():
         [FindPackageShare("mooncar_slam"), "config", "ekf.yaml"]
     )
     rviz_config = PathJoinSubstitution(
-        [FindPackageShare("mooncar_slam"), "rviz", "mapping.rviz"]
+        [FindPackageShare("mooncar_navigation"), "rviz", "navigation.rviz"]
     )
 
     node_parameters = [params_file, {"use_sim_time": use_sim_time}]
@@ -58,7 +58,7 @@ def generate_launch_description():
             ],
             output="screen",
         ),
-        Node(
+        TimerAction(period=10.0, actions=[Node(
             package="nav2_lifecycle_manager",
             executable="lifecycle_manager",
             name="lifecycle_manager_localization",
@@ -67,7 +67,7 @@ def generate_launch_description():
                 {"node_names": ["map_server", "amcl"]},
             ],
             output="screen",
-        ),
+        )]),
     ]
     navigation_nodes = [
         Node(
@@ -112,7 +112,7 @@ def generate_launch_description():
             parameters=node_parameters,
             output="screen",
         ),
-        Node(
+        TimerAction(period=10.0, actions=[Node(
             package="nav2_lifecycle_manager",
             executable="lifecycle_manager",
             name="lifecycle_manager_navigation",
@@ -130,7 +130,7 @@ def generate_launch_description():
                 },
             ],
             output="screen",
-        ),
+        )]),
     ]
 
     return LaunchDescription(
@@ -144,12 +144,13 @@ def generate_launch_description():
                 description="Nav2 parameter file.",
             ),
             DeclareLaunchArgument(
-                "gz_args", default_value="-r -v 3 --render-engine-gui ogre"
+                "gz_args", default_value="-r -v 3 --render-engine ogre"
             ),
             DeclareLaunchArgument("initial_x", default_value="0.5"),
             DeclareLaunchArgument("initial_y", default_value="0.0"),
             DeclareLaunchArgument("initial_yaw", default_value="0.0"),
             DeclareLaunchArgument("use_rviz", default_value="true"),
+            DeclareLaunchArgument("require_terrain", default_value="false"),
             DeclareLaunchArgument("use_sim_time", default_value="true"),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(simulation_launch),
@@ -160,6 +161,7 @@ def generate_launch_description():
                     "spawn_y": initial_y,
                     "spawn_yaw": initial_yaw,
                     "use_sim_time": use_sim_time,
+                    "require_terrain": LaunchConfiguration("require_terrain"),
                 }.items(),
             ),
             Node(
@@ -173,7 +175,9 @@ def generate_launch_description():
                 period=5.0,
                 actions=[
                     *localization_nodes,
-                    Node(
+                ],
+            ),
+            TimerAction(period=30.0, actions=[Node(
                         package="rviz2",
                         executable="rviz2",
                         name="mooncar_navigation_rviz",
@@ -181,9 +185,7 @@ def generate_launch_description():
                         parameters=[{"use_sim_time": use_sim_time}],
                         condition=IfCondition(use_rviz),
                         output="screen",
-                    ),
-                ],
-            ),
+                    )]),
             TimerAction(period=10.0, actions=navigation_nodes),
         ]
     )

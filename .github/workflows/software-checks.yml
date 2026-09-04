@@ -1,0 +1,28 @@
+name: Software checks
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-24.04
+    container: ros:jazzy-ros-base
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install test dependencies
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends gcc python3-numpy python3-serial ros-jazzy-nav2-msgs ros-jazzy-diagnostic-msgs
+      - name: Python and portable firmware checks
+        shell: bash
+        run: scripts/check_software.sh
+      - name: Validate script syntax
+        shell: bash
+        run: |
+          python3 -m compileall -q ros2_ws/src
+          for script in scripts/*.sh; do bash -n "$script"; done
