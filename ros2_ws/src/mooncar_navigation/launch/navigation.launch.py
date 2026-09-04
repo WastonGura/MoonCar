@@ -58,7 +58,7 @@ def generate_launch_description():
             ],
             output="screen",
         ),
-        Node(
+        TimerAction(period=10.0, actions=[Node(
             package="nav2_lifecycle_manager",
             executable="lifecycle_manager",
             name="lifecycle_manager_localization",
@@ -67,7 +67,7 @@ def generate_launch_description():
                 {"node_names": ["map_server", "amcl"]},
             ],
             output="screen",
-        ),
+        )]),
     ]
     navigation_nodes = [
         Node(
@@ -175,7 +175,9 @@ def generate_launch_description():
                 period=5.0,
                 actions=[
                     *localization_nodes,
-                    Node(
+                ],
+            ),
+            TimerAction(period=30.0, actions=[Node(
                         package="rviz2",
                         executable="rviz2",
                         name="mooncar_navigation_rviz",
@@ -183,9 +185,7 @@ def generate_launch_description():
                         parameters=[{"use_sim_time": use_sim_time}],
                         condition=IfCondition(use_rviz),
                         output="screen",
-                    ),
-                ],
-            ),
+                    )]),
             TimerAction(period=10.0, actions=navigation_nodes),
         ]
     )
