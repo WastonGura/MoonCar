@@ -58,6 +58,17 @@ class NavigationTimeoutTest(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, 'Nav2 not ready'):
                 smoke.NavigationSmokeTest.wait_for_navigation(node)
 
+    def test_lifecycle_queries_are_limited_to_one_per_second(self):
+        node = Mock()
+        node.get_parameter.return_value.value = 90.0
+        node.create_client.return_value.call_async.return_value.result.return_value.current_state.id = 2
+        with patch.object(smoke.rclpy, 'ok', return_value=True), \
+                patch.object(smoke.rclpy, 'spin_once'), \
+                patch.object(smoke.time, 'monotonic', side_effect=[0.0, 0.0, 0.1, 0.2, 1.0, 91.0]):
+            with self.assertRaisesRegex(RuntimeError, 'Nav2 not ready'):
+                smoke.NavigationSmokeTest.wait_for_navigation(node)
+        self.assertEqual(node.create_client.return_value.call_async.call_count, 12)
+
     def run_goal(self, speed, finish_at, **overrides):
         params = {'goal_x': 3.5, 'goal_y': 3.0, 'goal_yaw': 0.0,
                   'server_timeout_s': 30.0, 'goal_timeout_s': 180.0,

@@ -33,7 +33,11 @@ class NavigationSmokeTest(Node):
         clients = {name: self.create_client(GetState, f'/{name}/get_state') for name in names}
         pending, active = {}, set()
         deadline = time.monotonic() + float(self.get_parameter('server_timeout_s').value)
-        while rclpy.ok() and time.monotonic() < deadline:
+        next_poll = 0.0
+        while rclpy.ok():
+            now = time.monotonic()
+            if now >= deadline:
+                break
             for name, client in clients.items():
                 future = pending.get(name)
                 if future is not None and future.done():
@@ -41,8 +45,11 @@ class NavigationSmokeTest(Node):
                     if response is not None and response.current_state.id == 3:
                         active.add(name)
                     pending.pop(name)
-                if name not in active and name not in pending and client.service_is_ready():
+                if (now >= next_poll and name not in active and name not in pending
+                        and client.service_is_ready()):
                     pending[name] = client.call_async(GetState.Request())
+            if now >= next_poll:
+                next_poll = now + 1.0
             if len(active) == len(names):
                 self.get_logger().info('Nav2 lifecycle nodes are active')
                 return
