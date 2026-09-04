@@ -37,5 +37,8 @@ rm -f "${map_prefix}.yaml" "${map_prefix}.pgm"
 timeout -k 2s "${timeout_seconds}s" ros2 run nav2_map_server map_saver_cli -f "${map_prefix}"
 test -s "${map_prefix}.yaml"
 test -s "${map_prefix}.pgm"
+read -r map_width map_height < <(awk '!/^#/ && NR > 1 { print $1, $2; exit }' "${map_prefix}.pgm")
+test "${map_width}" -gt 0
+test "${map_height}" -gt 0
 
 echo "Mapping smoke test passed: ${map_prefix}.yaml"
