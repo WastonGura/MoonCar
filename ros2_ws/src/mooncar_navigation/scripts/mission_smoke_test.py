@@ -82,6 +82,11 @@ class MissionTest(NavigationSmokeTest):
         return (0 <= col < info.width and 0 <= row < info.height and
                 self.costmap.data[row*info.width+col] >= 99)
 
+    def obstacle_surface_observed(self, x, y):
+        # A laser sees the near surface, not the unobserved box interior.
+        return any(self.occupied(x+dx, y+dy) for dx in (-0.4, -0.3, 0, 0.3, 0.4)
+                   for dy in (-0.4, -0.3, 0, 0.3, 0.4))
+
     def run_mission(self):
         self.wait(lambda: self.terrain is not None, 'No valid depth terrain observation')
         self.wait(lambda: self.occupied(-1.5, -0.8), 'Known soil zone absent from global costmap')
@@ -107,7 +112,7 @@ class MissionTest(NavigationSmokeTest):
         try:
             subprocess.run(['ros2', 'run', 'ros_gz_sim', 'create', '-world', 'lunar_yard',
                             '-string', sdf], check=True, timeout=30)
-            self.wait(lambda: self.occupied(*center), 'New obstacle absent from costmap', 60)
+            self.wait(lambda: self.obstacle_surface_observed(*center), 'New obstacle absent from costmap', 60)
             after = self.plan(start, end)
             clearance = min(math.hypot(x-center[0], y-center[1]) for x, y in after)
             if clearance < 0.5:
@@ -136,6 +141,8 @@ class MissionTest(NavigationSmokeTest):
 
 
 def main():
+    output = Path(os.environ.get('MOONCAR_M6_REPORT', str(Path.home()/'mooncar_m6_acceptance.json')))
+    output.unlink(missing_ok=True)
     rclpy.init()
     node = MissionTest()
     try:

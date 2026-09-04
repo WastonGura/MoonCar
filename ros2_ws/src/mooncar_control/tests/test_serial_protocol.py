@@ -9,10 +9,49 @@ import time
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from serial_protocol import COMMAND, TELEMETRY, Decoder, SerialLink, frame
+from serial_protocol import COMMAND, TELEMETRY, TELEMETRY_DATA, COMMAND_DATA, Decoder, SerialLink, frame
 
 
 class ProtocolTests(unittest.TestCase):
+    def test_ros_bridge_arm_timeout_and_encoder_wrap(self):
+        import math
+        import rclpy
+        from geometry_msgs.msg import Twist
+        from std_srvs.srv import SetBool
+        from serial_bridge import SerialBridge
+        master, slave = pty.openpty()
+        os.set_blocking(master, False)
+        rclpy.init(args=['--ros-args', '-p', 'port:=' + os.ttyname(slave),
+                        '-p', 'encoder_ticks_per_rev:=1000'])
+        node = None
+        try:
+            node = SerialBridge()
+            self.assertFalse(node.armed)
+            for tick in (2147483646, -2147483647):
+                os.write(master, frame(TELEMETRY, 1, TELEMETRY_DATA.pack(*([tick]*4), 12000, 0)))
+                time.sleep(0.02)
+                node.update()
+            self.assertAlmostEqual(node.positions[0], 3*2*math.pi/1000)
+            response = node.on_arm(SetBool.Request(data=True), SetBool.Response())
+            self.assertTrue(response.success)
+            command = Twist()
+            command.linear.x = 0.2
+            node.on_command(command)
+            node.update()
+            packets = Decoder().feed(os.read(master, 4096))
+            self.assertEqual(COMMAND_DATA.unpack(packets[-1][2]), (200, 0, 1))
+            node.command_time -= 1
+            node.update()
+            packets = Decoder().feed(os.read(master, 4096))
+            self.assertEqual(COMMAND_DATA.unpack(packets[-1][2]), (0, 0, 0))
+        finally:
+            if node is not None:
+                node.link.close()
+                node.destroy_node()
+            rclpy.shutdown()
+            os.close(master)
+            os.close(slave)
+
     def test_stream_corruption_and_fragmentation(self):
         self.assertEqual(binascii.crc_hqx(b'123456789', 0xffff), 0x29b1)
         packet = frame(COMMAND, 65535, b'abc')

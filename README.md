@@ -23,3 +23,25 @@ reports/       Innovation-project report and defense materials
 ```
 
 See `docs/architecture.md` and `docs/simulation_plan.md` for the current technical plan.
+
+## One-command Acceptance
+
+On Ubuntu 24.04 with ROS 2 Jazzy and the project dependencies installed:
+
+```bash
+~/MoonCar/scripts/accept_m6.sh
+```
+
+Use `--server-only` to omit Gazebo GUI and RViz. The script builds the workspace,
+runs software/UART regression checks, tests terrain keepout and a newly introduced
+obstacle, then drives two goals. Exit status is nonzero on failure. Close any previous
+MoonCar simulation before running; press Enter after a GUI run to close its processes.
+Evidence is written to `~/mooncar_m6_acceptance.json` and
+`/tmp/mooncar_m6_acceptance.log`. A JSON result is created only on success.
+
+M4 mapping remains available through `scripts/accept_m4.sh`; M5 navigation through
+`scripts/accept_m5.sh`. Software-only checks: `scripts/check_software.sh`.
+
+See [hardware handoff](docs/hardware_handoff.md) and [UART v1](docs/uart_protocol.md)
+before connecting real motors. The hardware launch is a disarmed bench profile,
+not an already validated autonomous real-rover deployment.
