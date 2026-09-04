@@ -9,6 +9,7 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     gz_args = LaunchConfiguration("gz_args")
     robot_name = LaunchConfiguration("robot_name")
+    publish_odom_tf = LaunchConfiguration("publish_odom_tf")
     spawn_x = LaunchConfiguration("spawn_x")
     spawn_y = LaunchConfiguration("spawn_y")
     spawn_z = LaunchConfiguration("spawn_z")
@@ -67,6 +68,11 @@ def generate_launch_description():
                 default_value="mooncar",
                 description="Entity name used when spawning the rover.",
             ),
+            DeclareLaunchArgument(
+                "publish_odom_tf",
+                default_value="true",
+                description="Publish odom -> base_footprint from wheel odometry.",
+            ),
             DeclareLaunchArgument("spawn_x", default_value="0.0"),
             DeclareLaunchArgument("spawn_y", default_value="0.0"),
             DeclareLaunchArgument("spawn_z", default_value="0.0"),
@@ -108,7 +114,12 @@ def generate_launch_description():
                 package="mooncar_control",
                 executable="wheel_odometry.py",
                 name="mooncar_wheel_odometry",
-                parameters=[{"use_sim_time": use_sim_time}],
+                parameters=[
+                    {
+                        "publish_tf": publish_odom_tf,
+                        "use_sim_time": use_sim_time,
+                    }
+                ],
                 output="screen",
             ),
             TimerAction(
