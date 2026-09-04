@@ -37,7 +37,9 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
-            DeclareLaunchArgument("gz_args", default_value="-r -v 3"),
+            DeclareLaunchArgument(
+                "gz_args", default_value="-r -v 3 --render-engine-gui ogre"
+            ),
             DeclareLaunchArgument("use_rviz", default_value="true"),
             DeclareLaunchArgument("use_sim_time", default_value="true"),
             DeclareLaunchArgument("ekf_params_file", default_value=default_ekf_params),

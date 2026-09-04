@@ -34,7 +34,8 @@ check_transform odom base_footprint
 check_transform base_footprint lidar_link
 
 rm -f "${map_prefix}.yaml" "${map_prefix}.pgm"
-timeout -k 2s "${timeout_seconds}s" ros2 run nav2_map_server map_saver_cli -f "${map_prefix}"
+timeout -k 2s "${timeout_seconds}s" ros2 run nav2_map_server map_saver_cli \
+  -f "${map_prefix}" --ros-args -p save_map_timeout:=10.0
 test -s "${map_prefix}.yaml"
 test -s "${map_prefix}.pgm"
 read -r map_width map_height < <(awk '!/^#/ && NR > 1 { print $1, $2; exit }' "${map_prefix}.pgm")
