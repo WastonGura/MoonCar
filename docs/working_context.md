@@ -41,7 +41,7 @@ the ROS repository remains `packages.ros.org`.
 - M2 Gazebo lunar simulation: complete
 - M3 simulated control stack: complete and re-verified on the active VM
 - M4 SLAM mapping pipeline: complete, Issues #19 through #24
-- M5 Nav2 autonomous navigation: planned
+- M5 Nav2 autonomous navigation: complete, Issues #30 through #35
 - M6 terrain-aware autonomy and hardware readiness: planned
 
 The post-M2 Gazebo GUI polish task remains open as Issue #12 and does not block
@@ -69,10 +69,22 @@ After the scripted drive sequence, server-only Gazebo saved a 58 x 44 map at
 0.05 m/pixel. The GUI launch also kept Gazebo, SLAM Toolbox, EKF, and RViz alive
 for a 90-second smoke run without a process failure.
 
-## Next Milestone
+## Completed M5 Pipeline
 
-M5 adds Nav2 localization, planning, control, and a repeatable autonomous goal
-acceptance run against an M4 map.
+M5 adds saved-map localization, NavFn planning, Regulated Pure Pursuit control,
+bounded recovery behavior, and a one-command autonomous goal acceptance run.
+The verified lunar-yard route from `(0.5, 0.0)` to `(3.5, 3.0)` crosses rock
+marker A on a straight line; Nav2 routed around it and completed `4.22 m` of
+filtered travel. A goal inside the ramp timed out, cancelled, and returned the
+safety command to zero.
+
+Run the complete GUI acceptance with:
+
+```bash
+~/MoonCar/scripts/accept_m5.sh
+```
+
+Use `--server-only` for a headless VM check.
 
 ## VM Build Workflow
 
