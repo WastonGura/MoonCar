@@ -161,6 +161,8 @@ def generate_launch_description():
                         namespace="",
                         package="rclcpp_components",
                         executable="component_container_isolated",
+                        # Costmap child nodes inherit the container's parameter file.
+                        parameters=node_parameters,
                         composable_node_descriptions=navigation_nodes,
                         output="screen",
                     ),
