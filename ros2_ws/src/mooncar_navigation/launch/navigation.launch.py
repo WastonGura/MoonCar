@@ -28,7 +28,7 @@ def generate_launch_description():
         [FindPackageShare("mooncar_slam"), "config", "ekf.yaml"]
     )
     rviz_config = PathJoinSubstitution(
-        [FindPackageShare("mooncar_slam"), "rviz", "mapping.rviz"]
+        [FindPackageShare("mooncar_navigation"), "rviz", "navigation.rviz"]
     )
 
     node_parameters = [params_file, {"use_sim_time": use_sim_time}]
@@ -150,6 +150,7 @@ def generate_launch_description():
             DeclareLaunchArgument("initial_y", default_value="0.0"),
             DeclareLaunchArgument("initial_yaw", default_value="0.0"),
             DeclareLaunchArgument("use_rviz", default_value="true"),
+            DeclareLaunchArgument("require_terrain", default_value="false"),
             DeclareLaunchArgument("use_sim_time", default_value="true"),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(simulation_launch),
@@ -160,6 +161,7 @@ def generate_launch_description():
                     "spawn_y": initial_y,
                     "spawn_yaw": initial_yaw,
                     "use_sim_time": use_sim_time,
+                    "require_terrain": LaunchConfiguration("require_terrain"),
                 }.items(),
             ),
             Node(

@@ -80,6 +80,7 @@ def generate_launch_description():
                 description="Effective skid-steer track width for simulated odometry.",
             ),
             DeclareLaunchArgument("spawn_x", default_value="0.0"),
+            DeclareLaunchArgument("require_terrain", default_value="false"),
             DeclareLaunchArgument("spawn_y", default_value="0.0"),
             DeclareLaunchArgument("spawn_z", default_value="0.0"),
             DeclareLaunchArgument("spawn_yaw", default_value="0.0"),
@@ -113,7 +114,8 @@ def generate_launch_description():
                 package="mooncar_control",
                 executable="cmd_vel_safety_relay.py",
                 name="mooncar_cmd_vel_safety_relay",
-                parameters=[{"use_sim_time": use_sim_time}],
+                parameters=[{"use_sim_time": use_sim_time,
+                             "require_terrain": LaunchConfiguration("require_terrain")}],
                 output="screen",
             ),
             Node(
