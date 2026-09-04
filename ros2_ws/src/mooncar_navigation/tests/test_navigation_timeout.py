@@ -12,6 +12,20 @@ import yaml
 
 
 class NavigationTimeoutTest(unittest.TestCase):
+    def test_scan_self_filter_matches_navigation_footprint(self):
+        root = pathlib.Path(__file__).resolve().parents[2]
+        bridge = yaml.safe_load((root/'mooncar_gazebo/config/ros_gz_bridge.yaml').read_text())
+        self.assertTrue(any(x['ros_topic_name'] == '/mooncar/scan_raw' and
+                            x['gz_topic_name'] == '/mooncar/scan' for x in bridge))
+        config = yaml.safe_load((root/'mooncar_gazebo/config/laser_filter.yaml').read_text())
+        box = config['scan_to_scan_filter_chain']['ros__parameters']['filter1']['params']
+        nav = yaml.safe_load((root/'mooncar_navigation/config/nav2_params.yaml').read_text())
+        footprint = yaml.safe_load(nav['local_costmap']['local_costmap']['ros__parameters']['footprint'])
+        self.assertEqual(box['box_frame'], 'base_footprint')
+        self.assertFalse(box['invert'])
+        self.assertEqual((box['min_x'], box['max_x']), (min(p[0] for p in footprint), max(p[0] for p in footprint)))
+        self.assertEqual((box['min_y'], box['max_y']), (min(p[1] for p in footprint), max(p[1] for p in footprint)))
+
     def test_localization_quality_and_ground_truth(self):
         root = pathlib.Path(__file__).resolve().parents[2]
         config = yaml.safe_load((root/'mooncar_slam/config/ekf.yaml').read_text())

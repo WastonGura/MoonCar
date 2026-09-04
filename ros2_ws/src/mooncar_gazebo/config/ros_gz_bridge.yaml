@@ -6,7 +6,7 @@
   lazy: false
   qos_profile: CLOCK
 
-- ros_topic_name: "/mooncar/scan"
+- ros_topic_name: "/mooncar/scan_raw"
   gz_topic_name: "/mooncar/scan"
   ros_type_name: "sensor_msgs/msg/LaserScan"
   gz_type_name: "gz.msgs.LaserScan"

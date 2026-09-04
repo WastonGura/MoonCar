@@ -119,6 +119,16 @@ def generate_launch_description():
                 output="screen",
             ),
             Node(
+                package="laser_filters",
+                executable="scan_to_scan_filter_chain",
+                parameters=[PathJoinSubstitution([
+                    FindPackageShare("mooncar_gazebo"), "config", "laser_filter.yaml"
+                ]), {"use_sim_time": use_sim_time}],
+                remappings=[("scan", "/mooncar/scan_raw"),
+                            ("scan_filtered", "/mooncar/scan")],
+                output="screen",
+            ),
+            Node(
                 package="mooncar_control",
                 executable="cmd_vel_safety_relay.py",
                 name="mooncar_cmd_vel_safety_relay",
