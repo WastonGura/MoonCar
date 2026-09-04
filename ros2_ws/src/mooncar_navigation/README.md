@@ -62,3 +62,10 @@ Generate the map before starting localization:
 The default output is `~/mooncar_m4_acceptance.yaml` with its adjacent PGM
 image. The M5 launch will accept the YAML path as an explicit argument rather
 than silently choosing a map.
+
+## Navigation parameters
+
+`config/nav2_params.yaml` configures AMCL, the map server, NavFn, Regulated
+Pure Pursuit, local and global costmaps, recovery behaviors, waypoint
+following, and their lifecycle managers. The costmaps use the rover's
+`0.86 m x 0.72 m` footprint and consume `/mooncar/scan` for obstacle updates.
