@@ -94,3 +94,13 @@ publisher.
 The default initial pose is `x=0.5, y=0.0, yaw=0.0`, safely inside maps made
 by the M4 acceptance run. Override `initial_x`, `initial_y`, and `initial_yaw`
 when using a map created from a different starting pose.
+
+In another sourced terminal, send the repeatable acceptance goal:
+
+```bash
+ros2 run mooncar_navigation navigation_smoke_test.py
+```
+
+The test exits successfully only when Nav2 reports success and filtered
+odometry shows at least `0.5 m` of travel. Override the defaults with ROS
+parameters such as `--ros-args -p goal_x:=2.0 -p goal_timeout_s:=180.0`.
