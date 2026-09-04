@@ -25,6 +25,7 @@ class TerrainNode(Node):
         self.camera_frame = None
         self.last_processed = 0.0
         self.last_valid = 0.0
+        self.pending = None
         self.buffer = Buffer()
         self.listener = TransformListener(self.buffer, self)
         self.cloud_pub = self.create_publisher(PointCloud2, '/mooncar/terrain/obstacles', 10)
@@ -34,6 +35,7 @@ class TerrainNode(Node):
         self.create_subscription(Image, '/mooncar/depth/image', self.on_depth,
                                  qos_profile_sensor_data)
         self.create_timer(1.0, self.check_stale)
+        self.create_timer(0.1, self.process_pending)
 
     def on_info(self, msg):
         self.intrinsics = (msg.k[0], msg.k[4], msg.k[2], msg.k[5])
@@ -51,8 +53,23 @@ class TerrainNode(Node):
             self.status(DiagnosticStatus.STALE, 'No recent valid depth/TF; terrain unknown')
 
     def on_depth(self, msg):
+        if self.pending is None:
+            self.pending = (msg, time.monotonic())
+
+    def process_pending(self):
+        if self.pending is None:
+            return
+        msg, received = self.pending
         if self.intrinsics is None or time.monotonic() - self.last_processed < 0.5:
             return
+        # Wait for the timestamped EKF transform without blocking its subscription.
+        stamp = rclpy.time.Time.from_msg(msg.header.stamp)
+        if not self.buffer.can_transform(self.frame, msg.header.frame_id, stamp):
+            if time.monotonic() - received > 3.0:
+                self.pending = None
+                self.status(DiagnosticStatus.WARN, 'Depth transform unavailable within 3 seconds')
+            return
+        self.pending = None
         self.last_processed = time.monotonic()
         try:
             if msg.header.frame_id != self.camera_frame:
@@ -78,7 +95,8 @@ class TerrainNode(Node):
                         [('points', len(points)), ('cells', len(cells)),
                          ('hazard_cells', len(hazards))])
         except (ValueError, TransformException) as error:
-            self.status(DiagnosticStatus.WARN, str(error))
+            if time.monotonic() - self.last_valid > 2.0:
+                self.status(DiagnosticStatus.WARN, str(error))
 
 
 def main():
