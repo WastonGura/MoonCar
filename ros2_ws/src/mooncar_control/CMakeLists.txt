@@ -14,7 +14,10 @@ install(
     scripts/drive_smoke_test.py
     scripts/keyboard_teleop.py
     scripts/wheel_odometry.py
+    scripts/serial_bridge.py
   DESTINATION lib/${PROJECT_NAME}
 )
+
+install(FILES scripts/serial_protocol.py DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
