@@ -31,7 +31,8 @@ class KeepoutNode(Node):
         px, py = (col+0.5)*msg.info.resolution, (row+0.5)*msg.info.resolution
         x = msg.info.origin.position.x + px*math.cos(yaw) - py*math.sin(yaw)
         y = msg.info.origin.position.y + px*math.sin(yaw) + py*math.cos(yaw)
-        data = np.zeros(row.shape, dtype=np.int8)
+        # The prior adds hazards only; it must not clear unknown map cells.
+        data = np.full(row.shape, -1, dtype=np.int8)
         for zone in self.zones:
             data[(x-zone['x'])**2+(y-zone['y'])**2 <= zone['radius']**2] = 100
         mask.data = data.ravel().tolist()
