@@ -20,16 +20,21 @@ def setup(context):
         params = yaml.safe_load(stream)
     for name in ('local_costmap', 'global_costmap'):
         costmap = params[name][name]['ros__parameters']
+        # Jazzy StaticLayer reads this from the costmap namespace, not the plugin.
+        costmap['use_maximum'] = True
+        costmap['plugins'].insert(-1, 'terrain_obstacles')
         costmap['plugins'].insert(-1, 'terrain_zones')
         costmap['terrain_zones'] = {
             'plugin': 'nav2_costmap_2d::StaticLayer', 'map_topic': '/mooncar/terrain/keepout',
-            'map_subscribe_transient_local': True, 'use_maximum': True,
+            'map_subscribe_transient_local': True,
         }
-        costmap['obstacle_layer']['observation_sources'] = 'scan terrain'
-        costmap['obstacle_layer']['terrain'] = {
+        costmap['terrain_obstacles'] = {
+            'plugin': 'nav2_costmap_2d::ObstacleLayer', 'observation_sources': 'terrain',
+            'terrain': {
             'topic': '/mooncar/terrain/obstacles', 'data_type': 'PointCloud2',
             'sensor_frame': 'base_footprint', 'marking': True, 'clearing': False,
             'obstacle_max_range': 6.5, 'max_obstacle_height': 1.0,
+            },
         }
     with tempfile.NamedTemporaryFile(mode='w', suffix='.yaml', delete=False) as stream:
         yaml.safe_dump(params, stream)

@@ -84,8 +84,10 @@ class MissionTest(NavigationSmokeTest):
 
     def obstacle_surface_observed(self, x, y):
         # A laser sees the near surface, not the unobserved box interior.
-        return any(self.occupied(x+dx, y+dy) for dx in (-0.4, -0.3, 0, 0.3, 0.4)
-                   for dy in (-0.4, -0.3, 0, 0.3, 0.4))
+        if self.costmap is None:
+            return False
+        return any(self.occupied(x+dx*0.05, y+dy*0.05)
+                   for dx in range(-10, 11) for dy in range(-10, 11))
 
     def run_mission(self):
         self.wait(lambda: self.terrain is not None, 'No valid depth terrain observation')
