@@ -6,9 +6,27 @@ from unittest.mock import Mock, patch
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / 'scripts'))
 import navigation_smoke_test as smoke  # noqa: E402
+from mission_smoke_test import MissionTest
+from nav_msgs.msg import Odometry
+import yaml
 
 
 class NavigationTimeoutTest(unittest.TestCase):
+    def test_localization_quality_and_ground_truth(self):
+        root = pathlib.Path(__file__).resolve().parents[2]
+        config = yaml.safe_load((root/'mooncar_slam/config/ekf.yaml').read_text())
+        self.assertTrue(config['mooncar_ekf']['ros__parameters']['odom0_config'][7])
+        node = object.__new__(MissionTest)
+        node.max_position_variance = 0.0
+        msg = Odometry()
+        MissionTest.on_odometry(node, msg)
+        msg.pose.covariance[7] = 26.0
+        with self.assertRaisesRegex(RuntimeError, 'covariance diverged'):
+            MissionTest.on_odometry(node, msg)
+        with patch('mission_smoke_test.subprocess.run', return_value=SimpleNamespace(
+                stdout='{"pose":[{"name":"mooncar","position":{"x":1.5,"y":3.0}}]}')):
+            self.assertEqual(MissionTest.ground_truth(), (1.5, 3.0))
+
     def test_lifecycle_readiness_without_cli_polling(self):
         node = Mock()
         node.get_parameter.return_value.value = 90.0

@@ -35,6 +35,24 @@ class MissionTest(NavigationSmokeTest):
                                  self.on_costmap, QoSProfile(depth=1,
                                  durability=DurabilityPolicy.TRANSIENT_LOCAL))
         self.evidence = {}
+        self.max_position_variance = 0.0
+
+    def on_odometry(self, msg):
+        super().on_odometry(msg)
+        variances = (msg.pose.covariance[0], msg.pose.covariance[7])
+        variance = max(variances)
+        self.max_position_variance = max(self.max_position_variance, variance)
+        if not all(math.isfinite(v) and 0 <= v <= 25.0 for v in variances):
+            raise RuntimeError('Filtered odometry covariance diverged')
+
+    @staticmethod
+    def ground_truth():
+        result = subprocess.run(['gz', 'topic', '-e', '-t', '/world/lunar_yard/pose/info',
+                                 '-n', '1', '--json-output'], capture_output=True,
+                                text=True, check=True, timeout=15)
+        poses = json.loads(result.stdout)['pose']
+        pose = next(p['position'] for p in poses if p.get('name') == 'mooncar')
+        return float(pose.get('x', 0)), float(pose.get('y', 0))
 
     def on_scan(self, msg):
         valid = [v for v in msg.ranges if math.isfinite(v) and msg.range_min+0.02 < v < msg.range_max]
@@ -147,8 +165,14 @@ class MissionTest(NavigationSmokeTest):
             self.set_parameters([Parameter('goal_x', value=x), Parameter('goal_y', value=y),
                                  Parameter('min_displacement_m', value=minimum)])
             self.run()
+            truth = self.ground_truth()
+            error = math.hypot(truth[0]-x, truth[1]-y)
+            if error > 0.4:
+                raise RuntimeError(f'Goal succeeded but Gazebo ground-truth error is {error:.2f} m')
             self.evidence['goals'].append({'x': x, 'y': y, 'status': 'SUCCEEDED',
-                                           'final_odom': self.position})
+                                           'final_odom': self.position,
+                                           'ground_truth': truth, 'goal_error_m': error})
+        self.evidence['max_position_variance_m2'] = self.max_position_variance
         output = Path(os.environ.get('MOONCAR_M6_REPORT', str(Path.home()/'mooncar_m6_acceptance.json')))
         output.write_text(json.dumps(self.evidence, indent=2) + '\n')
         self.get_logger().info(f'M6 acceptance passed. Evidence: {output}')
