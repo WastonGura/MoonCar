@@ -9,7 +9,7 @@ install(
 )
 
 install(
-  PROGRAMS scripts/navigation_smoke_test.py
+  PROGRAMS scripts/navigation_smoke_test.py scripts/mission_smoke_test.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

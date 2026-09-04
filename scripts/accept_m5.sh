@@ -6,6 +6,9 @@ workspace="${repo_root}/ros2_ws"
 launch_log="/tmp/mooncar_m5_acceptance.log"
 launch_pid=""
 use_rviz=true
+launch_file=navigation.launch.py
+test_file=navigation_smoke_test.py
+milestone=M5
 
 cleanup() {
   local status=$?
@@ -29,12 +32,21 @@ cleanup() {
 trap cleanup EXIT
 trap 'exit 130' INT TERM
 
-if [[ "${1:-}" == "--server-only" ]]; then
-  use_rviz=false
+while [[ "${1:-}" == --* ]]; do
+  case "$1" in
+    --server-only) use_rviz=false ;;
+    --terrain)
+      launch_file=terrain_navigation.launch.py
+      test_file=mission_smoke_test.py
+      milestone=M6
+      launch_log=/tmp/mooncar_m6_acceptance.log
+      ;;
+    *) echo "Unknown option: $1" >&2; exit 2 ;;
+  esac
   shift
-fi
+done
 if (( $# > 1 )); then
-  echo "Usage: $0 [--server-only] [map.yaml]" >&2
+  echo "Usage: $0 [--server-only] [--terrain] [map.yaml]" >&2
   exit 2
 fi
 if [[ ! -f /opt/ros/jazzy/setup.bash ]]; then
@@ -62,7 +74,7 @@ launch_args=(map:="${map_yaml}" use_rviz:="${use_rviz}")
 if [[ "${use_rviz}" == false ]]; then
   launch_args+=(gz_args:="-r -s -v 2")
 fi
-setsid ros2 launch mooncar_navigation navigation.launch.py "${launch_args[@]}" \
+setsid ros2 launch mooncar_navigation "${launch_file}" "${launch_args[@]}" \
   >"${launch_log}" 2>&1 &
 launch_pid=$!
 
@@ -89,7 +101,7 @@ while true; do
 done
 
 echo "[4/4] Running obstacle-navigation goal"
-if ! ros2 run mooncar_navigation navigation_smoke_test.py --ros-args \
+if ! ros2 run mooncar_navigation "${test_file}" --ros-args \
   -p use_sim_time:=true \
   -p goal_x:=3.5 -p goal_y:=3.0 \
   -p goal_timeout_s:=180.0 -p min_displacement_m:=2.0; then
@@ -99,7 +111,7 @@ if ! ros2 run mooncar_navigation navigation_smoke_test.py --ros-args \
 fi
 
 echo
-echo "M5 acceptance passed."
+echo "${milestone} acceptance passed."
 echo "Map: ${map_yaml}"
 echo "Launch log: ${launch_log}"
 
