@@ -40,7 +40,7 @@ the ROS repository remains `packages.ros.org`.
 - M1 rover description and visualization: complete
 - M2 Gazebo lunar simulation: complete
 - M3 simulated control stack: complete and re-verified on the active VM
-- M4 SLAM mapping pipeline: active, Issues #19 through #24
+- M4 SLAM mapping pipeline: complete, Issues #19 through #24
 - M5 Nav2 autonomous navigation: planned
 - M6 terrain-aware autonomy and hardware readiness: planned
 
@@ -54,7 +54,7 @@ The active VM builds all eight packages. Server-only Gazebo starts the
 drive commands, and publishes odometry. The latest drive check reported about
 0.608 m of forward travel followed by rotation.
 
-## Active M4 Goal
+## Completed M4 Pipeline
 
 M4 adds:
 
@@ -63,6 +63,16 @@ M4 adds:
 3. SLAM Toolbox online asynchronous mapping at 0.05 m resolution.
 4. One-command mapping bringup with optional RViz.
 5. A failing smoke check that saves `.yaml` and `.pgm` map artifacts.
+
+The VM acceptance run received laser, IMU, filtered odometry, map, and TF data.
+After the scripted drive sequence, server-only Gazebo saved a 58 x 44 map at
+0.05 m/pixel. The GUI launch also kept Gazebo, SLAM Toolbox, EKF, and RViz alive
+for a 90-second smoke run without a process failure.
+
+## Next Milestone
+
+M5 adds Nav2 localization, planning, control, and a repeatable autonomous goal
+acceptance run against an M4 map.
 
 ## VM Build Workflow
 
