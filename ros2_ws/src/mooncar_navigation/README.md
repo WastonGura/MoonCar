@@ -93,7 +93,7 @@ The `map` argument is required. For a server-only VM check:
 ```bash
 ros2 launch mooncar_navigation navigation.launch.py \
   map:="$HOME/mooncar_m4_acceptance.yaml" \
-  use_rviz:=false gz_args:="-r -s -v 2"
+  use_rviz:=false gz_args:="-r -s -v 2 --render-engine ogre"
 ```
 
 The launch keeps wheel-odometry TF disabled, starts the EKF as the sole
@@ -117,8 +117,12 @@ For simulation, also pass `-p use_sim_time:=true` so the navigation deadline
 uses `/clock`. The one-command acceptance script sets this automatically.
 `wall_timeout_s` (600 seconds) and `clock_stall_timeout_s` (30 seconds) bound
 slow or paused runs independently of simulation time.
-The turn acceleration limit is `2.5 rad/s^2` to avoid low-speed skid-steer
-stalling at the final heading; the rotation speed remains capped at `0.45 rad/s`.
+The simulated controller uses `8.0 rad/s^2` and a `0.8 rad/s` rotation command
+to break the four-wheel skid-steer dead zone from rest. Gazebo's drivetrain
+still limits actual commanded acceleration to `1.0 rad/s^2`, and the safety
+relay caps rotation at `0.8 rad/s`. These are simulation settings, not validated
+motor-bench parameters. The one-command scripts select Cyclone DDS and provide
+Xvfb when no display is available; the manual command above requires an X display.
 
 Run the timeout regression checks in a sourced ROS environment with
 `python3 -m unittest discover -s src/mooncar_navigation/tests` from `ros2_ws`.
@@ -148,5 +152,14 @@ enabled. Simulated wheel odometry uses a calibrated `0.83 m` effective track
 width to account for skid-steer slip under lunar gravity. The progress checker
 requires `0.10 m` within `20 s`; recovery remains bounded to clear, spin, wait,
 and backup behaviors before returning failure. The EKF takes forward velocity
-from wheel odometry and heading from the IMU so skid-steer yaw error does not
-accumulate into the navigation pose.
+and a zero lateral-velocity constraint from wheel odometry, with heading from
+the IMU. Wheel velocity uncertainties are nominal and require real calibration.
+
+## M6 acceptance
+
+`~/MoonCar/scripts/accept_m6.sh` adds depth terrain risks, prior keepout zones,
+new-obstacle replanning and two consecutive goals. Success requires Gazebo
+ground-truth position error below 0.4 m for each goal and bounded EKF covariance,
+not merely a successful Nav2 action. Results are written to
+`~/mooncar_m6_acceptance.json`; unknown or nearly collinear depth samples are
+not labeled as safe terrain. This is a geometric prototype, not soil recognition.
