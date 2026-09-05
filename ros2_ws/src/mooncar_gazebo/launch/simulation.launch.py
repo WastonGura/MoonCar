@@ -113,6 +113,15 @@ def generate_launch_description():
                 }.items(),
             ),
             Node(
+                # Gazebo 8.11 ignores JointStatePublisher's update_rate.
+                package="topic_tools",
+                executable="throttle",
+                name="mooncar_joint_state_throttle",
+                arguments=["messages", "/mooncar/joint_states_raw", "30.0", "/joint_states"],
+                parameters=[{"use_sim_time": use_sim_time, "use_wall_clock": False}],
+                output="screen",
+            ),
+            Node(
                 package="robot_state_publisher",
                 executable="robot_state_publisher",
                 name="robot_state_publisher",

@@ -7,13 +7,14 @@ from pathlib import Path
 import subprocess
 import time
 import uuid
+from collections import deque
 
 from action_msgs.msg import GoalStatus
 from diagnostic_msgs.msg import DiagnosticArray, DiagnosticStatus
 from geometry_msgs.msg import PoseStamped
 from nav2_msgs.action import ComputePathToPose
 from nav_msgs.msg import OccupancyGrid
-from sensor_msgs.msg import LaserScan
+from sensor_msgs.msg import JointState, LaserScan
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.parameter import Parameter
@@ -28,9 +29,12 @@ class MissionTest(NavigationSmokeTest):
         self.terrain = None
         self.costmap = None
         self.scan_evidence = None
+        self.joint_stamps = deque(maxlen=31)
+        self.joint_rate = None
         self.planner = ActionClient(self, ComputePathToPose, '/compute_path_to_pose')
         self.create_subscription(DiagnosticArray, '/mooncar/terrain/status', self.on_status, 10)
         self.create_subscription(LaserScan, '/mooncar/scan', self.on_scan, qos_profile_sensor_data)
+        self.create_subscription(JointState, '/joint_states', self.on_joint_state, 10)
         self.create_subscription(OccupancyGrid, '/global_costmap/costmap',
                                  self.on_costmap, QoSProfile(depth=1,
                                  durability=DurabilityPolicy.TRANSIENT_LOCAL))
@@ -54,6 +58,15 @@ class MissionTest(NavigationSmokeTest):
         poses = json.JSONDecoder().raw_decode(result.stdout.lstrip())[0]['pose']
         pose = next(p['position'] for p in poses if p.get('name') == 'mooncar')
         return float(pose.get('x', 0)), float(pose.get('y', 0))
+
+    def on_joint_state(self, msg):
+        stamp = msg.header.stamp.sec + msg.header.stamp.nanosec * 1e-9
+        if self.joint_stamps and stamp <= self.joint_stamps[-1]:
+            self.joint_stamps.clear()
+            self.joint_rate = None
+        self.joint_stamps.append(stamp)
+        if len(self.joint_stamps) == self.joint_stamps.maxlen:
+            self.joint_rate = (len(self.joint_stamps)-1)/(stamp-self.joint_stamps[0])
 
     def on_scan(self, msg):
         valid = [v for v in msg.ranges if math.isfinite(v) and msg.range_min+0.02 < v < msg.range_max]
@@ -117,6 +130,10 @@ class MissionTest(NavigationSmokeTest):
                    for dx in range(-10, 11) for dy in range(-10, 11))
 
     def run_mission(self):
+        self.wait(lambda: self.joint_rate is not None, 'No sustained wheel-state stream')
+        if not 20.0 <= self.joint_rate <= 35.0:
+            raise RuntimeError(f'Wheel-state rate is {self.joint_rate:.1f} Hz in simulation time; expected 30 Hz')
+        self.evidence['joint_states_hz_sim'] = self.joint_rate
         self.wait(lambda: self.scan_evidence is not None,
                   'Lidar has no varied obstacle returns in the known test yard; check rendering')
         self.evidence['live_lidar'] = self.scan_evidence
