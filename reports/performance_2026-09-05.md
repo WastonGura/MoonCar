@@ -1,6 +1,7 @@
 # Simulation performance follow-up
 
 Issue #58 / PR #59. Runtime code: `00bdcf3`, following baseline `14b88f5`.
+Verification finished 2026-09-06 (Asia/Tokyo); production candidate `bebf3d4`.
 Ubuntu 24.04.4, ROS Jazzy, Gazebo 8.11.0, VMware 4 vCPU / 8 GB,
 CPU-rendered Ogre and Fast DDS. Windows settings were not changed.
 
@@ -33,6 +34,7 @@ RTF means elapsed simulation time divided by elapsed real time. A value of
 | Wheel throttle only, RViz only | 200 | 0.260 | 0.191 |
 | Final clock/wheel throttles, RViz only | 200 | 0.325 | 0.252 |
 | Final clock/wheel throttles, full GUI | 200 | 0.295 | 0.211 |
+| Final production, no windows | 200 | 0.749 | 0.754 |
 
 These are short 10-20 second windows, not a controlled statistical benchmark:
 the first two were stationary, final windows overlapped acceptance motion, and
@@ -56,8 +58,11 @@ wall-time arrivals and will show lower rates in slow simulation.
   resumed at 1.631 s. This verifies clock forwarding, not navigation-state reset
   support. Restart the acceptance script for a fresh mission.
 - Full-GUI M6 passed the same gates, with truth errors 0.07047 / 0.06690 m;
-  the Gazebo screenshot confirms a rendered scene. Production deployment is
-  verified separately before closing Issue #58.
+  the Gazebo screenshot confirms a rendered scene.
+- Production `~/MoonCar` passed from a clean environment with `--server-only`,
+  exit 0. Truth errors: 0.07523 / 0.06442 m. Both goals took about 63 seconds
+  wall time including the intervening truth check. The isolated and production
+  runtime code is identical; three passes are not long-term reliability proof.
 
 Raw sampled stats, first/last-window summaries, mission JSON and screenshots
 are in [evidence/performance58](evidence/performance58/).

@@ -1,6 +1,6 @@
 # Working Context
 
-Last updated: 2026-09-05
+Last updated: 2026-09-06
 
 ## Current Direction
 
@@ -24,6 +24,8 @@ these are not controlled speedup guarantees. See
 `reports/performance_2026-09-05.md` for evidence and limitations.
 Vehicle speed, sensor resolution and 1 ms physics step are unchanged.
 Nav2 action acknowledgement is 200 ms; goal/safety deadlines are unchanged.
+Production candidate `bebf3d4` also passed clean-environment server-only M6
+(exit 0), truth errors 0.07523 / 0.06442 m; its sampled RTF was 0.749.
 
 - Windows path: `D:\Document\Repositories\MoonCar`
 - GitHub: `https://github.com/WastonGura/MoonCar.git`
