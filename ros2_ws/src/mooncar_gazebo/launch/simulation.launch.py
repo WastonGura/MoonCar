@@ -113,6 +113,16 @@ def generate_launch_description():
                 }.items(),
             ),
             Node(
+                package="topic_tools",
+                executable="throttle",
+                name="mooncar_clock_throttle",
+                arguments=["messages", "/mooncar/clock_raw", "100.0", "/clock_out"],
+                parameters=[{"use_sim_time": True, "use_wall_clock": False}],
+                # Read the raw clock, not our own throttled output.
+                remappings=[("/clock", "/mooncar/clock_raw"), ("/clock_out", "/clock")],
+                output="screen",
+            ),
+            Node(
                 # Gazebo 8.11 ignores JointStatePublisher's update_rate.
                 package="topic_tools",
                 executable="throttle",
