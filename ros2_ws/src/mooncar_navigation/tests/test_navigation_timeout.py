@@ -8,10 +8,27 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / 'scripts'))
 import navigation_smoke_test as smoke  # noqa: E402
 from mission_smoke_test import MissionTest
 from nav_msgs.msg import Odometry
+from sensor_msgs.msg import JointState
+from collections import deque
 import yaml
 
 
 class NavigationTimeoutTest(unittest.TestCase):
+    def test_joint_rate_uses_message_time_and_resets(self):
+        node = object.__new__(MissionTest)
+        node.joint_stamps = deque(maxlen=31)
+        node.joint_rate = None
+        msg = JointState()
+        for period, expected in [(34_000_000, 1000/34), (1_000_000, 1000.0)]:
+            for i in range(31):
+                ns = i * period
+                msg.header.stamp.sec, msg.header.stamp.nanosec = divmod(ns, 1_000_000_000)
+                node.on_joint_state(msg)
+            self.assertAlmostEqual(node.joint_rate, expected)
+        msg.header.stamp.sec = msg.header.stamp.nanosec = 0
+        node.on_joint_state(msg)
+        self.assertIsNone(node.joint_rate)
+
     def test_scan_self_filter_matches_navigation_footprint(self):
         root = pathlib.Path(__file__).resolve().parents[2]
         bridge = yaml.safe_load((root/'mooncar_gazebo/config/ros_gz_bridge.yaml').read_text())

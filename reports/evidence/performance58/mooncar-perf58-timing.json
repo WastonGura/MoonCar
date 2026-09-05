@@ -1,0 +1,212 @@
+{
+  "baseline": {
+    "samples": 100,
+    "median_rtf": 0.1845007419706413,
+    "window_rtf": 0.23517956650314129,
+    "first": {
+      "simTime": {
+        "sec": "12",
+        "nsec": 159000000
+      },
+      "realTime": {
+        "sec": "37",
+        "nsec": 877583724
+      },
+      "iterations": "12159",
+      "realTimeFactor": 0.13529227528460422,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    },
+    "last": {
+      "simTime": {
+        "sec": "14",
+        "nsec": 561000000
+      },
+      "realTime": {
+        "sec": "48",
+        "nsec": 91056075
+      },
+      "iterations": "14561",
+      "realTimeFactor": 0.1361347319997212,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    }
+  },
+  "throttled-full": {
+    "samples": 100,
+    "median_rtf": 0.14950928896645616,
+    "window_rtf": 0.20285915331582852,
+    "first": {
+      "simTime": {
+        "sec": "14",
+        "nsec": 201000000
+      },
+      "realTime": {
+        "sec": "44",
+        "nsec": 449585369
+      },
+      "iterations": "14201",
+      "realTimeFactor": 0.016000299269597538,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    },
+    "last": {
+      "simTime": {
+        "sec": "16",
+        "nsec": 294000000
+      },
+      "realTime": {
+        "sec": "54",
+        "nsec": 767088749
+      },
+      "iterations": "16294",
+      "realTimeFactor": 0.1128626644211511,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    }
+  },
+  "rviz": {
+    "samples": 200,
+    "median_rtf": 0.19086090884692045,
+    "window_rtf": 0.2595668222961773,
+    "first": {
+      "simTime": {
+        "sec": "18",
+        "nsec": 279000000
+      },
+      "realTime": {
+        "sec": "48",
+        "nsec": 167559757
+      },
+      "iterations": "18279",
+      "realTimeFactor": 0.08981557001406601,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    },
+    "last": {
+      "simTime": {
+        "sec": "23",
+        "nsec": 590000000
+      },
+      "realTime": {
+        "sec": "68",
+        "nsec": 628572274
+      },
+      "iterations": "23590",
+      "realTimeFactor": 0.28699189161808614,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    }
+  },
+  "clock-rviz": {
+    "samples": 200,
+    "median_rtf": 0.23294684653310324,
+    "window_rtf": 0.319278592322457,
+    "first": {
+      "simTime": {
+        "sec": "15",
+        "nsec": 618000000
+      },
+      "realTime": {
+        "sec": "27",
+        "nsec": 161142887
+      },
+      "iterations": "15618",
+      "realTimeFactor": 0.26207195133009376,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    },
+    "last": {
+      "simTime": {
+        "sec": "22",
+        "nsec": 251000000
+      },
+      "realTime": {
+        "sec": "47",
+        "nsec": 936102936
+      },
+      "iterations": "22251",
+      "realTimeFactor": 0.3047268930929688,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    }
+  },
+  "final-rviz": {
+    "samples": 200,
+    "median_rtf": 0.2515673822977619,
+    "window_rtf": 0.32452373312466326,
+    "first": {
+      "simTime": {
+        "sec": "26",
+        "nsec": 347000000
+      },
+      "realTime": {
+        "sec": "57",
+        "nsec": 3120207
+      },
+      "iterations": "26347",
+      "realTimeFactor": 0.6031166656815761,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    },
+    "last": {
+      "simTime": {
+        "sec": "32",
+        "nsec": 954000000
+      },
+      "realTime": {
+        "sec": "77",
+        "nsec": 362185895
+      },
+      "iterations": "32954",
+      "realTimeFactor": 0.06953166322450167,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    }
+  },
+  "final-full": {
+    "samples": 200,
+    "median_rtf": 0.21138049037477885,
+    "window_rtf": 0.2951668964110675,
+    "first": {
+      "simTime": {
+        "sec": "21",
+        "nsec": 553000000
+      },
+      "realTime": {
+        "sec": "59",
+        "nsec": 68918992
+      },
+      "iterations": "21553",
+      "realTimeFactor": 0.12591082315585658,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    },
+    "last": {
+      "simTime": {
+        "sec": "27",
+        "nsec": 584000000
+      },
+      "realTime": {
+        "sec": "79",
+        "nsec": 501427086
+      },
+      "iterations": "27584",
+      "realTimeFactor": 0.07885742530190959,
+      "stepSize": {
+        "nsec": 1000000
+      }
+    }
+  }
+}

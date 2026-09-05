@@ -78,7 +78,9 @@ For the repeatable end-to-end acceptance run, use:
 ~/MoonCar/scripts/accept_m5.sh
 ```
 
-Use `--server-only` for a headless run. The commands below are retained for
+Use `--rviz-only` to keep RViz without the Gazebo 3D window, or `--server-only`
+for a headless run. Both options also work with `accept_m6.sh`.
+The commands below are retained for
 manual development and custom maps.
 
 Start Gazebo, filtered odometry, saved-map localization, Nav2, and RViz:

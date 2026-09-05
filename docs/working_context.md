@@ -1,6 +1,6 @@
 # Working Context
 
-Last updated: 2026-09-05
+Last updated: 2026-09-06
 
 ## Current Direction
 
@@ -14,6 +14,18 @@ has been purchased yet. Board pinout, motor/current data and independent stop
 circuitry must be confirmed before HAL integration and powered bench testing.
 
 ## Repository
+
+Performance follow-up #58 / PR #59 adds native `topic_tools` wheel/clock
+throttles and `accept_m6.sh --rviz-only` (also supported by M5). Runtime
+`00bdcf3` passed isolated RViz-only and full-GUI M6, with truth errors below
+0.074 m. Clock pause/resume and time-reset forwarding passed. Short RTF
+windows were about 0.325 RViz-only / 0.295 full GUI versus 0.235 baseline;
+these are not controlled speedup guarantees. See
+`reports/performance_2026-09-05.md` for evidence and limitations.
+Vehicle speed, sensor resolution and 1 ms physics step are unchanged.
+Nav2 action acknowledgement is 200 ms; goal/safety deadlines are unchanged.
+Production candidate `bebf3d4` also passed clean-environment server-only M6
+(exit 0), truth errors 0.07523 / 0.06442 m; its sampled RTF was 0.749.
 
 - Windows path: `D:\Document\Repositories\MoonCar`
 - GitHub: `https://github.com/WastonGura/MoonCar.git`

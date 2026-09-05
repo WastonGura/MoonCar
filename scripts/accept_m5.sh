@@ -12,6 +12,7 @@ workspace="${repo_root}/ros2_ws"
 launch_log="/tmp/mooncar_m5_acceptance.log"
 launch_pid=""
 use_rviz=true
+use_gz_gui=true
 launch_file=navigation.launch.py
 test_file=navigation_smoke_test.py
 milestone=M5
@@ -40,7 +41,8 @@ trap 'exit 130' INT TERM
 
 while [[ "${1:-}" == --* ]]; do
   case "$1" in
-    --server-only) use_rviz=false ;;
+    --server-only) use_rviz=false; use_gz_gui=false ;;
+    --rviz-only) use_rviz=true; use_gz_gui=false ;;
     --terrain)
       launch_file=terrain_navigation.launch.py
       test_file=mission_smoke_test.py
@@ -52,7 +54,7 @@ while [[ "${1:-}" == --* ]]; do
   shift
 done
 if (( $# > 1 )); then
-  echo "Usage: $0 [--server-only] [--terrain] [map.yaml]" >&2
+  echo "Usage: $0 [--server-only|--rviz-only] [--terrain] [map.yaml]" >&2
   exit 2
 fi
 if [[ ! -f /opt/ros/jazzy/setup.bash ]]; then
@@ -74,10 +76,10 @@ if [[ ! -f "${map_yaml}" ]]; then
   exit 1
 fi
 
-echo "[2/4] Starting Gazebo, localization, Nav2, and RViz"
+echo "[2/4] Starting simulation (Gazebo GUI: ${use_gz_gui}, RViz: ${use_rviz})"
 rm -f "${launch_log}"
 launch_args=(map:="${map_yaml}" use_rviz:="${use_rviz}")
-if [[ "${use_rviz}" == false ]]; then
+if [[ "${use_gz_gui}" == false ]]; then
   launch_args+=(gz_args:="-r -s -v 2 --render-engine ogre")
 fi
 setsid ros2 launch mooncar_navigation "${launch_file}" "${launch_args[@]}" \
@@ -108,5 +110,5 @@ echo "Map: ${map_yaml}"
 echo "Launch log: ${launch_log}"
 
 if [[ "${use_rviz}" == true && -t 0 ]]; then
-  read -r -p "Press Enter to close Gazebo and RViz..."
+  read -r -p "Press Enter to stop simulation and close its windows..."
 fi
