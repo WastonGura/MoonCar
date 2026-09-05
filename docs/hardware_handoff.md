@@ -54,6 +54,10 @@ OLED 的 I2C 地址、近距传感器阈值、BMS 状态与电量估计同样在
 `odom -> base_footprint`，此时关闭 wheel_odometry 的 `publish_tf`。
 当前 `hardware.launch.py` 仅用于电机台架，默认只由轮里程计发布该 TF。
 
+仿真保留 `/mooncar/scan_raw`，标准 `laser_filters` 包围盒过滤器剔除车体范围内回波，
+输出 `/mooncar/scan`。真机应按实测外形配置该过滤器；不要扩大包围盒来隐藏外部障碍。
+软件回归脚本关闭自动 ROS 发现，虚拟编码器与控制测试不应连接正在运行的真机 ROS 图。
+
 ## 真机验收门槛
 
 每项记录日期、硬件版本、软件提交、参数、日志/视频和结论。没有记录即未验收。

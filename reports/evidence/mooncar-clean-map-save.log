@@ -1,0 +1,20 @@
+Waiting for /mooncar/scan
+Waiting for /odometry/filtered
+Waiting for /map
+[INFO] [1788565653.343643081] [map_saver]: 
+	map_saver lifecycle node launched. 
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[INFO] [1788565653.344371166] [map_saver]: Creating
+[INFO] [1788565653.344563671] [map_saver]: Configuring
+[INFO] [1788565653.352247064] [map_saver]: Saving map from 'map' topic to '/home/homura/mooncar_m6_survey_map' file
+[WARN] [1788565653.352385453] [map_saver]: Free threshold unspecified. Setting it to default value: 0.250000
+[WARN] [1788565653.352404420] [map_saver]: Occupied threshold unspecified. Setting it to default value: 0.650000
+[WARN] [1788565655.167013103] [map_io]: Image format unspecified. Setting it to: pgm
+[INFO] [1788565655.167341942] [map_io]: Received a 314 X 238 map @ 0.05 m/pix
+[INFO] [1788565655.208585052] [map_io]: Writing map occupancy data to /home/homura/mooncar_m6_survey_map.pgm
+[INFO] [1788565655.211314376] [map_io]: Writing map metadata to /home/homura/mooncar_m6_survey_map.yaml
+[INFO] [1788565655.211907799] [map_io]: Map saved
+[INFO] [1788565655.211934010] [map_saver]: Map saved successfully
+[INFO] [1788565655.215980234] [map_saver]: Destroying
+Mapping smoke test passed: /home/homura/mooncar_m6_survey_map.yaml

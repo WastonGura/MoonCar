@@ -6,6 +6,7 @@ from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 
 
@@ -41,7 +42,7 @@ def generate_launch_description():
     )
 
     robot_description = {
-        "robot_description": Command(
+        "robot_description": ParameterValue(Command(
             [
                 FindExecutable(name="xacro"),
                 " ",
@@ -49,7 +50,7 @@ def generate_launch_description():
                 " use_sim_time:=",
                 use_sim_time,
             ]
-        )
+        ), value_type=str)
     }
 
     return LaunchDescription(
@@ -116,6 +117,16 @@ def generate_launch_description():
                 executable="robot_state_publisher",
                 name="robot_state_publisher",
                 parameters=[robot_description, {"use_sim_time": use_sim_time}],
+                output="screen",
+            ),
+            Node(
+                package="laser_filters",
+                executable="scan_to_scan_filter_chain",
+                parameters=[PathJoinSubstitution([
+                    FindPackageShare("mooncar_gazebo"), "config", "laser_filter.yaml"
+                ]), {"use_sim_time": use_sim_time}],
+                remappings=[("scan", "/mooncar/scan_raw"),
+                            ("scan_filtered", "/mooncar/scan")],
                 output="screen",
             ),
             Node(

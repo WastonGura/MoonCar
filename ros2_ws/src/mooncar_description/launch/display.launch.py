@@ -3,6 +3,7 @@ from launch.actions import DeclareLaunchArgument
 from launch.conditions import IfCondition
 from launch.substitutions import Command, LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 from launch.substitutions import FindExecutable
 
@@ -20,7 +21,7 @@ def generate_launch_description():
     )
 
     robot_description = {
-        "robot_description": Command(
+        "robot_description": ParameterValue(Command(
             [
                 FindExecutable(name="xacro"),
                 " ",
@@ -30,7 +31,7 @@ def generate_launch_description():
                 " use_sim_time:=",
                 use_sim_time,
             ]
-        )
+        ), value_type=str)
     }
 
     return LaunchDescription(

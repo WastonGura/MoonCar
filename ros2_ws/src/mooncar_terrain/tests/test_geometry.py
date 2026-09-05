@@ -1,14 +1,28 @@
 import pathlib
 import sys
 import unittest
+from unittest.mock import Mock
 
 import numpy as np
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / 'scripts'))
 from terrain_geometry import classify_cells, project_depth, transform_points  # noqa: E402
+from keepout_node import KeepoutNode
+from nav_msgs.msg import OccupancyGrid
 
 
 class GeometryTest(unittest.TestCase):
+    def test_keepout_does_not_clear_unknown_and_respects_map_rotation(self):
+        grid = OccupancyGrid()
+        grid.info.width, grid.info.height, grid.info.resolution = 2, 1, 1.0
+        grid.info.origin.position.x = 3.0
+        grid.info.origin.orientation.z = np.sin(np.pi/4)
+        grid.info.origin.orientation.w = np.cos(np.pi/4)
+        node = Mock(zones=[{'x': 2.5, 'y': 0.5, 'radius': 0.4}])
+        KeepoutNode.on_map(node, grid)
+        mask = node.publisher.publish.call_args.args[0]
+        self.assertEqual(list(mask.data), [100, -1])
+
     def surface(self, z):
         x, y = np.meshgrid(np.linspace(0.01, 0.28, 12), np.linspace(0.01, 0.28, 12))
         return np.column_stack((x.ravel(), y.ravel(), z(x, y).ravel()))

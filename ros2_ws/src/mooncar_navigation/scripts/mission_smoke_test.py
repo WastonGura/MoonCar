@@ -169,7 +169,8 @@ class MissionTest(NavigationSmokeTest):
             truth = self.ground_truth()
             error = math.hypot(truth[0]-x, truth[1]-y)
             if error > 0.4:
-                raise RuntimeError(f'Goal succeeded but Gazebo ground-truth error is {error:.2f} m')
+                raise RuntimeError(f'Goal succeeded but Gazebo ground-truth error is {error:.2f} m; '
+                                   f'truth={truth}, goal={(x, y)}, odom={self.position}')
             self.evidence['goals'].append({'x': x, 'y': y, 'status': 'SUCCEEDED',
                                            'final_odom': self.position,
                                            'ground_truth': truth, 'goal_error_m': error})

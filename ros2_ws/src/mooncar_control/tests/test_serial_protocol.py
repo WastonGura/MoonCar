@@ -2,6 +2,7 @@ import binascii
 import os
 from pathlib import Path
 import pty
+import select
 import subprocess
 import sys
 import tempfile
@@ -24,12 +25,22 @@ class ProtocolTests(unittest.TestCase):
         rclpy.init(args=['--ros-args', '-p', 'port:=' + os.ttyname(slave),
                         '-p', 'encoder_ticks_per_rev:=1000'])
         node = None
+        def command_packet():
+            decoder = Decoder()
+            deadline = time.monotonic() + 1.0
+            while time.monotonic() < deadline:
+                if select.select([master], [], [], 0.05)[0]:
+                    for kind, sequence, payload in decoder.feed(os.read(master, 4096)):
+                        if kind == COMMAND and sequence == node.link.sequence:
+                            return COMMAND_DATA.unpack(payload)
+            self.fail('Latest command was not delivered through the PTY')
+
         try:
             node = SerialBridge()
             self.assertFalse(node.armed)
             for tick in (2147483646, -2147483647):
                 os.write(master, frame(TELEMETRY, 1, TELEMETRY_DATA.pack(*([tick]*4), 12000, 0)))
-                time.sleep(0.02)
+                self.assertTrue(select.select([slave], [], [], 1.0)[0])
                 node.update()
             self.assertAlmostEqual(node.positions[0], 3*2*math.pi/1000)
             response = node.on_arm(SetBool.Request(data=True), SetBool.Response())
@@ -38,12 +49,10 @@ class ProtocolTests(unittest.TestCase):
             command.linear.x = 0.2
             node.on_command(command)
             node.update()
-            packets = Decoder().feed(os.read(master, 4096))
-            self.assertEqual(COMMAND_DATA.unpack(packets[-1][2]), (200, 0, 1))
+            self.assertEqual(command_packet(), (200, 0, 1))
             node.command_time -= 1
             node.update()
-            packets = Decoder().feed(os.read(master, 4096))
-            self.assertEqual(COMMAND_DATA.unpack(packets[-1][2]), (0, 0, 0))
+            self.assertEqual(command_packet(), (0, 0, 0))
         finally:
             if node is not None:
                 node.link.close()

@@ -117,11 +117,12 @@ For simulation, also pass `-p use_sim_time:=true` so the navigation deadline
 uses `/clock`. The one-command acceptance script sets this automatically.
 `wall_timeout_s` (600 seconds) and `clock_stall_timeout_s` (30 seconds) bound
 slow or paused runs independently of simulation time.
-The simulated controller uses `8.0 rad/s^2` and a `0.8 rad/s` rotation command
-to break the four-wheel skid-steer dead zone from rest. Gazebo's drivetrain
+The simulated controller uses `8.0 rad/s^2` and a `0.8 rad/s` rotation command.
+Wheel collisions define axle-aligned lateral and longitudinal friction so
+the four-wheel chassis can skid-steer at low turn rates. Gazebo's drivetrain
 still limits actual commanded acceleration to `1.0 rad/s^2`, and the safety
 relay caps rotation at `0.8 rad/s`. These are simulation settings, not validated
-motor-bench parameters. The one-command scripts select Cyclone DDS and provide
+motor-bench parameters. The one-command scripts select Fast DDS and provide
 Xvfb when no display is available; the manual command above requires an X display.
 
 Run the timeout regression checks in a sourced ROS environment with
@@ -129,7 +130,8 @@ Run the timeout regression checks in a sourced ROS environment with
 
 ## Lunar-yard obstacle route
 
-The package includes a deterministic simulation map for navigation tuning:
+The package includes a fixed SLAM observation map for navigation tuning
+(314 x 238 cells at 0.05 m, with unknown cells preserved; see `maps/README.md`):
 
 ```bash
 MAP="$(ros2 pkg prefix mooncar_navigation)/share/mooncar_navigation/maps/lunar_yard.yaml"
@@ -137,7 +139,8 @@ ros2 launch mooncar_navigation navigation.launch.py map:="$MAP"
 ```
 
 The tested obstacle route starts at `(0.5, 0.0)` and ends at `(3.5, 3.0)`.
-The direct path crosses rock marker A, so the planned route must pass around it:
+The M6 terrain profile is required for rocks below the laser scan plane;
+the basic M5 profile only uses the saved map and live 2D laser:
 
 ```bash
 ros2 run mooncar_navigation navigation_smoke_test.py --ros-args \
@@ -148,8 +151,8 @@ ros2 run mooncar_navigation navigation_smoke_test.py --ros-args \
 The costmaps use the rover footprint plus `0.65 m` inflation, mark laser
 obstacles to `6 m`, and raytrace clearing observations to `8 m`. Unknown cells
 remain traversable for sparse SLAM maps, while laser collision checking remains
-enabled. Simulated wheel odometry uses a calibrated `0.83 m` effective track
-width to account for skid-steer slip under lunar gravity. The progress checker
+enabled. Simulated wheel odometry retains the nominal `0.83 m` effective track
+setting; raw wheel yaw is not ground truth and is not fused by the EKF. The progress checker
 requires `0.10 m` within `20 s`; recovery remains bounded to clear, spin, wait,
 and backup behaviors before returning failure. The EKF takes forward velocity
 and a zero lateral-velocity constraint from wheel odometry, with heading from

@@ -1,0 +1,85 @@
+test_terrain_gate_and_invalid_command (test_safety_relay.RelayTests.test_terrain_gate_and_invalid_command) ... [INFO] [1788565922.574440106] [mooncar_cmd_vel_safety_relay]: Relaying /cmd_vel to /mooncar/cmd_vel_safe with timeout 0.50s
+ok
+test_real_c_core_over_virtual_uart (test_serial_protocol.ProtocolTests.test_real_c_core_over_virtual_uart) ... ok
+test_ros_bridge_arm_timeout_and_encoder_wrap (test_serial_protocol.ProtocolTests.test_ros_bridge_arm_timeout_and_encoder_wrap) ... ok
+test_stream_corruption_and_fragmentation (test_serial_protocol.ProtocolTests.test_stream_corruption_and_fragmentation) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.787s
+
+OK
+test_lifecycle_queries_are_limited_to_one_per_second (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_queries_are_limited_to_one_per_second) ... ok
+test_lifecycle_readiness_has_wall_deadline (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_readiness_has_wall_deadline) ... ok
+test_lifecycle_readiness_without_cli_polling (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_readiness_without_cli_polling) ... ok
+test_localization_quality_and_ground_truth (test_navigation_timeout.NavigationTimeoutTest.test_localization_quality_and_ground_truth) ... ok
+test_ros_timeout_cancels (test_navigation_timeout.NavigationTimeoutTest.test_ros_timeout_cancels) ... ok
+test_scan_self_filter_matches_navigation_footprint (test_navigation_timeout.NavigationTimeoutTest.test_scan_self_filter_matches_navigation_footprint) ... ok
+test_slow_simulation_can_finish_after_180_wall_seconds (test_navigation_timeout.NavigationTimeoutTest.test_slow_simulation_can_finish_after_180_wall_seconds) ... ok
+test_stopped_clock_cancels (test_navigation_timeout.NavigationTimeoutTest.test_stopped_clock_cancels) ... ok
+test_wall_limit_cancels_slow_clock (test_navigation_timeout.NavigationTimeoutTest.test_wall_limit_cancels_slow_clock) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.184s
+
+OK
+test_depth_padding_endian_units_and_invalid_input (test_geometry.GeometryTest.test_depth_padding_endian_units_and_invalid_input) ... ok
+test_flat_slope_roughness_step_and_pit (test_geometry.GeometryTest.test_flat_slope_roughness_step_and_pit) ... ok
+test_keepout_does_not_clear_unknown_and_respects_map_rotation (test_geometry.GeometryTest.test_keepout_does_not_clear_unknown_and_respects_map_rotation) ... ok
+test_optical_transform (test_geometry.GeometryTest.test_optical_transform) ... ok
+test_scanline_is_unknown_not_a_vertical_obstacle (test_geometry.GeometryTest.test_scanline_is_unknown_not_a_vertical_obstacle) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.136s
+
+OK
+firmware core: CRC, framing, sequence, watchdog, estop, rollover, NaN passed
+Software regression checks passed.
+[1/4] Building MoonCar workspace
+Starting >>> mooncar_control
+Starting >>> mooncar_description
+Starting >>> mooncar_terrain
+Starting >>> mooncar_msgs
+Finished <<< mooncar_terrain [0.77s]
+Finished <<< mooncar_control [0.81s]
+Finished <<< mooncar_description [0.83s]
+Finished <<< mooncar_msgs [0.83s]
+Starting >>> mooncar_gazebo
+Starting >>> mooncar_bringup
+Finished <<< mooncar_gazebo [0.67s]
+Starting >>> mooncar_slam
+Finished <<< mooncar_bringup [0.70s]
+Finished <<< mooncar_slam [0.67s]
+Starting >>> mooncar_navigation
+Finished <<< mooncar_navigation [0.69s]
+
+Summary: 8 packages finished [3.15s]
+[2/4] Starting Gazebo, localization, Nav2, and RViz
+[3/4] Waiting for Nav2 lifecycle nodes
+[INFO] [1788565964.070672637] [mooncar_navigation_smoke_test]: Nav2 lifecycle nodes are active
+[4/4] Running obstacle-navigation goal
+[INFO] [1788565977.675295245] [mooncar_navigation_smoke_test]: Keepout detour passed; center clearance=1.25 m
+[INFO] [1788565979.922132911] [ros_gz_sim]: Entity creation successful.
+[INFO] [1788565983.603079429] [mooncar_navigation_smoke_test]: New obstacle replanning passed; clearance=0.90 m
+[INFO] [1788565985.001618708] [mooncar_navigation_smoke_test]: Sending goal x=1.50, y=0.00, yaw=0.00
+[INFO] [1788566000.026100276] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=3.3/180.0 s, wall elapsed=15.0 s, odom=(0.48, -0.01)
+[INFO] [1788566015.024814680] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=6.7/180.0 s, wall elapsed=30.0 s, odom=(0.87, -0.01)
+[INFO] [1788566019.327330211] [mooncar_navigation_smoke_test]: Navigation smoke test complete; displacement=0.92 m
+[INFO] [1788566020.188461394] [mooncar_navigation_smoke_test]: Sending goal x=3.50, y=3.00, yaw=0.00
+[INFO] [1788566035.209056271] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=3.3/180.0 s, wall elapsed=15.0 s, odom=(1.00, 0.21)
+[INFO] [1788566050.220446075] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=6.4/180.0 s, wall elapsed=30.0 s, odom=(0.75, 0.62)
+[INFO] [1788566065.219789253] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=9.5/180.0 s, wall elapsed=45.0 s, odom=(0.37, 0.94)
+[INFO] [1788566080.219221725] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=12.7/180.0 s, wall elapsed=60.0 s, odom=(0.15, 1.39)
+[INFO] [1788566095.220718142] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=15.8/180.0 s, wall elapsed=75.0 s, odom=(0.28, 1.83)
+[INFO] [1788566110.227538210] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=18.8/180.0 s, wall elapsed=90.0 s, odom=(0.70, 2.05)
+[INFO] [1788566125.225966717] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=21.7/180.0 s, wall elapsed=105.0 s, odom=(1.16, 2.15)
+[INFO] [1788566140.227804855] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=24.8/180.0 s, wall elapsed=120.0 s, odom=(1.64, 2.26)
+[INFO] [1788566155.231529720] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=27.8/180.0 s, wall elapsed=135.0 s, odom=(2.11, 2.40)
+[INFO] [1788566170.233430485] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=31.0/180.0 s, wall elapsed=150.0 s, odom=(2.59, 2.60)
+[INFO] [1788566185.247708235] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=34.0/180.0 s, wall elapsed=165.0 s, odom=(2.94, 2.80)
+[INFO] [1788566198.580852720] [mooncar_navigation_smoke_test]: Navigation smoke test complete; displacement=3.57 m
+[INFO] [1788566199.477025507] [mooncar_navigation_smoke_test]: M6 acceptance passed. Evidence: /tmp/mooncar-m6-survey-gui.json
+
+M6 acceptance passed.
+Map: /home/homura/MoonCar-m6.KPloMc/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/maps/lunar_yard.yaml
+Launch log: /tmp/mooncar_m6_acceptance.log
+Press Enter to close Gazebo and RViz...

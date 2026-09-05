@@ -65,5 +65,12 @@
       <axis xyz="0 1 0"/>
       <dynamics damping="0.05" friction="0.0"/>
     </joint>
+    <!-- Collision-local Z is the axle: skid steering needs lateral compliance.
+         These are nominal simulator coefficients, not measured soil properties. -->
+    <gazebo reference="${prefix}${name}_link">
+      <fdir1>0 0 1</fdir1>
+      <mu1>0.2</mu1>
+      <mu2>0.85</mu2>
+    </gazebo>
   </xacro:macro>
 </robot>
