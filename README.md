@@ -32,7 +32,9 @@ On Ubuntu 24.04 with ROS 2 Jazzy and the project dependencies installed:
 ~/MoonCar/scripts/accept_m6.sh
 ```
 
-Use `--server-only` to omit Gazebo GUI and RViz. The script builds the workspace,
+Use `--rviz-only` for navigation with RViz but no Gazebo 3D window, or
+`--server-only` to omit both windows. No flag retains the full GUI. These modes
+also work with `accept_m5.sh`. The script builds the workspace,
 runs software/UART regression checks, tests terrain keepout and a newly introduced
 obstacle, then drives two goals. Exit status is nonzero on failure. Close any previous
 MoonCar simulation before running; press Enter after a GUI run to close its processes.
@@ -42,6 +44,10 @@ to software-rendered Ogre for both sensor data and the GUI; a visible scene alon
 does not prove that the virtual GPU produces valid laser/depth measurements.
 Acceptance uses Jazzy's `rmw_fastrtps_cpp` by default (resolve workspace
 dependencies with rosdep).
+The simulation uses `topic_tools` to cap wheel-state delivery at 30 Hz and clock
+notifications at 100 Hz of simulation time. Raw samples remain on
+`/mooncar/joint_states_raw` and `/mooncar/clock_raw`. This does not change
+commanded speed, sensor resolution, or the physics step.
 Use the same `RMW_IMPLEMENTATION` in additional ROS terminals. An explicit
 environment override is preserved.
 Evidence is written to `~/mooncar_m6_acceptance.json` and

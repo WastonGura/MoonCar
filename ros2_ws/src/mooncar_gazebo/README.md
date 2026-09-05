@@ -17,17 +17,31 @@ ros2 launch mooncar_gazebo simulation.launch.py
 For a server-only VM smoke test:
 
 ```bash
-ros2 launch mooncar_gazebo simulation.launch.py gz_args:="-r -s -v 3"
+ros2 launch mooncar_gazebo simulation.launch.py gz_args:="-r -s -v 3 --render-engine ogre"
 ```
 
 The launch starts Gazebo, publishes the MoonCar description, spawns the rover into the `lunar_yard` world, and bridges `/clock` into ROS2.
 
-The world selects Ogre for the Gazebo GUI, which avoids the blank Ogre2 viewport seen on the VMware development VM. Rendering-backed sensors continue to use Ogre2 on the Gazebo server.
+Gazebo's per-step clock is bridged to `/mooncar/clock_raw`. A standard
+`topic_tools` throttle forwards it to `/clock` at up to 100 Hz of simulation
+time, so every ROS node need not process all 1,000 physics ticks per second.
+The throttle reads the raw clock itself; pause and backward time jumps remain
+simulation-time driven. The physical integration step stays at 1 ms.
+
+The launch selects Ogre for both GUI and sensors. VMware defaults to CPU
+software rendering because the virtual GPU previously produced invalid sensor
+measurements. Server-only rendering still requires an X display; acceptance
+scripts provide Xvfb when needed.
 
 M3 control topics bridged by this launch:
 
 - `/mooncar/cmd_vel_safe` from ROS2 to Gazebo `/cmd_vel`
-- `/joint_states` from Gazebo to ROS2
+- `/mooncar/joint_states_raw` from Gazebo, then `/joint_states` through the
+  standard `topic_tools` throttle at up to 30 Hz of simulation time. Gazebo 8.11
+  ignores the model's `JointStatePublisher/update_rate`; without the throttle,
+  every physics iteration propagates through wheel odometry. Message timestamps
+  and positions are preserved. `ros2 topic hz` measures wall-time arrival rate,
+  so it reports less than 30 Hz when the simulation runs slower than real time.
 
 M3 ROS control nodes started by this launch:
 
@@ -59,7 +73,7 @@ source install/setup.bash
 Run a server-only smoke test:
 
 ```bash
-ros2 launch mooncar_gazebo simulation.launch.py gz_args:="-r -s -v 3"
+ros2 launch mooncar_gazebo simulation.launch.py gz_args:="-r -s -v 3 --render-engine ogre"
 ```
 
 In a second terminal:

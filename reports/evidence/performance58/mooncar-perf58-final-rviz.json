@@ -1,0 +1,49 @@
+{
+  "joint_states_hz_sim": 24.752475247524757,
+  "live_lidar": {
+    "finite_returns": 256,
+    "min_m": 1.9491950273513794,
+    "max_m": 8.454447746276855
+  },
+  "live_depth": {
+    "points": "3185",
+    "cells": "40",
+    "hazard_cells": "26"
+  },
+  "keepout_center_clearance_m": 1.2498631673797276,
+  "new_obstacle": {
+    "baseline_center_distance_m": 0.010816627377778675,
+    "replanned_center_distance_m": 0.8985646722726058
+  },
+  "goals": [
+    {
+      "x": 1.5,
+      "y": 0.0,
+      "status": "SUCCEEDED",
+      "final_odom": [
+        0.9220427712034445,
+        -0.005505967287394612
+      ],
+      "ground_truth": [
+        1.4287364198641748,
+        -0.01938929709859381
+      ],
+      "goal_error_m": 0.07385419890400764
+    },
+    {
+      "x": 3.5,
+      "y": 3.0,
+      "status": "SUCCEEDED",
+      "final_odom": [
+        3.034799565285279,
+        2.868260962352985
+      ],
+      "ground_truth": [
+        3.4596232536698546,
+        2.938084632865724
+      ],
+      "goal_error_m": 0.07391748326059995
+    }
+  ],
+  "max_position_variance_m2": 3.1926943422016985
+}
