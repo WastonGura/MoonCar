@@ -55,60 +55,17 @@ function turboColormap(t) {
   return new THREE.Color(stops.at(-1)[1][0], stops.at(-1)[1][1], stops.at(-1)[1][2]);
 }
 
-function vehicleMarker(direction, origin, quaternion=null) {
+function vehicleMarker(direction, origin) {
   latestRobotPose = {position: origin.clone(), direction: direction.clone()};
-  const rover = new THREE.Group();
-
-  // Chassis main body (metallic dark graphite)
-  const bodyGeom = new THREE.BoxGeometry(0.42, 0.30, 0.10);
-  const bodyMat = new THREE.MeshStandardMaterial({color: 0x363a40, roughness: 0.5, metalness: 0.4});
-  const body = new THREE.Mesh(bodyGeom, bodyMat);
-  body.position.set(0, 0, 0.07);
-  rover.add(body);
-
-  // Solar panel top deck (deep navy)
-  const deckGeom = new THREE.BoxGeometry(0.38, 0.26, 0.015);
-  const deckMat = new THREE.MeshStandardMaterial({color: 0x142032, roughness: 0.2, metalness: 0.8});
-  const deck = new THREE.Mesh(deckGeom, deckMat);
-  deck.position.set(0, 0, 0.13);
-  rover.add(deck);
-
-  // 4 Off-road wheels
-  const wheelGeom = new THREE.CylinderGeometry(0.065, 0.065, 0.05, 16);
-  const wheelMat = new THREE.MeshStandardMaterial({color: 0x1a1a1a, roughness: 0.8});
-  for (const [wx, wy] of [[0.16, 0.17], [-0.16, 0.17], [0.16, -0.17], [-0.16, -0.17]]) {
-    const wheel = new THREE.Mesh(wheelGeom, wheelMat);
-    wheel.rotation.x = Math.PI / 2;
-    wheel.position.set(wx, wy, 0.04);
-    rover.add(wheel);
-  }
-
-  // Mast & Pan-Tilt Camera head
-  const mastGeom = new THREE.CylinderGeometry(0.012, 0.012, 0.18, 12);
-  const mastMat = new THREE.MeshStandardMaterial({color: 0xbbbbbb, metalness: 0.6});
-  const mast = new THREE.Mesh(mastGeom, mastMat);
-  mast.position.set(0.14, 0, 0.22);
-  rover.add(mast);
-
-  const headGeom = new THREE.BoxGeometry(0.06, 0.08, 0.045);
-  const headMat = new THREE.MeshStandardMaterial({color: 0x111111});
-  const head = new THREE.Mesh(headGeom, headMat);
-  head.position.set(0.14, 0, 0.31);
-  rover.add(head);
-
-  // Directional gold indicator arrow
-  const arrow = new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 0, 0.33), 0.35, 0xe0a020, 0.10, 0.07);
-  arrow.traverse(o => { if (o.material) { o.material.depthTest = false; o.material.depthWrite = false; } o.renderOrder = 10; });
-  rover.add(arrow);
-
-  rover.position.copy(origin);
-  if (quaternion) {
-    rover.quaternion.copy(quaternion);
-  } else {
-    const yaw = Math.atan2(direction.y, direction.x);
-    rover.rotation.z = yaw;
-  }
-  groups.vehicle.add(rover);
+  const arrow = new THREE.ArrowHelper(direction, origin, 0.45, 0x111111, 0.14, 0.10);
+  arrow.traverse(o => {
+    if (o.material) {
+      o.material.depthTest = false;
+      o.material.depthWrite = false;
+    }
+    o.renderOrder = 10;
+  });
+  groups.vehicle.add(arrow);
 }
 function fit(top=false) {
   let box=new THREE.Box3().setFromObject(groups.cloud);
@@ -155,8 +112,8 @@ function draw(data, refit=false, preserveSelection=false) {
   if(data.robot) {
     const orientation=new THREE.Quaternion().fromArray(data.robot.quaternion);
     const direction=new THREE.Vector3(1,0,0).applyQuaternion(orientation);
-    const origin=new THREE.Vector3().fromArray(data.robot.position);origin.z+=.02;
-    vehicleMarker(direction,origin,orientation);
+    const origin=new THREE.Vector3().fromArray(data.robot.position);origin.z+=.1;
+    vehicleMarker(direction,origin);
   } else if(data.trajectory.length) {
     const cursor=new THREE.Mesh(new THREE.SphereGeometry(.055,12,8),new THREE.MeshBasicMaterial({color:0x222222}));
     cursor.position.fromArray(data.trajectory.at(-1).position); groups.track.add(cursor);
