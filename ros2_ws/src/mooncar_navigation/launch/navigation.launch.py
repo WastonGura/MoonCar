@@ -1,6 +1,6 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, TimerAction
-from launch.conditions import IfCondition
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, TimerAction, GroupAction
+from launch.conditions import IfCondition, UnlessCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
@@ -17,6 +17,7 @@ def generate_launch_description():
     params_file = LaunchConfiguration("params_file")
     use_rviz = LaunchConfiguration("use_rviz")
     use_sim_time = LaunchConfiguration("use_sim_time")
+    online = LaunchConfiguration('online_mapping')
 
     simulation_launch = PathJoinSubstitution(
         [FindPackageShare("mooncar_gazebo"), "launch", "simulation.launch.py"]
@@ -151,17 +152,22 @@ def generate_launch_description():
             DeclareLaunchArgument("initial_yaw", default_value="0.0"),
             DeclareLaunchArgument("use_rviz", default_value="true"),
             DeclareLaunchArgument("require_terrain", default_value="false"),
+            DeclareLaunchArgument("require_workbench", default_value="false"),
             DeclareLaunchArgument("use_sim_time", default_value="true"),
+            DeclareLaunchArgument('online_mapping', default_value='false'),
+            DeclareLaunchArgument('world', default_value=PathJoinSubstitution([FindPackageShare('mooncar_gazebo'),'worlds','lunar_yard.sdf'])),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(simulation_launch),
                 launch_arguments={
                     "gz_args": gz_args,
+                    "world": LaunchConfiguration('world'),
                     "publish_odom_tf": "false",
                     "spawn_x": initial_x,
                     "spawn_y": initial_y,
                     "spawn_yaw": initial_yaw,
                     "use_sim_time": use_sim_time,
                     "require_terrain": LaunchConfiguration("require_terrain"),
+                    "require_workbench": LaunchConfiguration("require_workbench"),
                 }.items(),
             ),
             Node(
@@ -174,9 +180,17 @@ def generate_launch_description():
             TimerAction(
                 period=5.0,
                 actions=[
-                    *localization_nodes,
+                    GroupAction(localization_nodes, condition=UnlessCondition(online)),
                 ],
             ),
+            Node(package='tf2_ros', executable='static_transform_publisher',
+                 arguments=['--x',initial_x,'--y',initial_y,'--yaw',initial_yaw,
+                            '--frame-id','survey_odom','--child-frame-id','odom'],
+                 condition=IfCondition(online)),
+            IncludeLaunchDescription(PythonLaunchDescriptionSource(PathJoinSubstitution([
+                FindPackageShare('slam_toolbox'),'launch','online_async_launch.py'])),
+                launch_arguments={'use_sim_time':use_sim_time,'autostart':'true',
+                    'slam_params_file':params_file}.items(),condition=IfCondition(online)),
             TimerAction(period=30.0, actions=[Node(
                         package="rviz2",
                         executable="rviz2",

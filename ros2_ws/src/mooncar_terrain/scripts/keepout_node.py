@@ -25,12 +25,26 @@ class KeepoutNode(Node):
 
     def on_map(self, msg):
         mask = OccupancyGrid(header=copy.deepcopy(msg.header), info=copy.deepcopy(msg.info))
-        row, col = np.mgrid[0:msg.info.height, 0:msg.info.width]
         q = msg.info.origin.orientation
         yaw = math.atan2(2*(q.w*q.z+q.x*q.y), 1-2*(q.y*q.y+q.z*q.z))
-        px, py = (col+0.5)*msg.info.resolution, (row+0.5)*msg.info.resolution
-        x = msg.info.origin.position.x + px*math.cos(yaw) - py*math.sin(yaw)
-        y = msg.info.origin.position.y + px*math.sin(yaw) + py*math.cos(yaw)
+        c, s = math.cos(yaw), math.sin(yaw)
+        ox, oy, resolution = msg.info.origin.position.x, msg.info.origin.position.y, msg.info.resolution
+        min_x = min_y = 0
+        max_x, max_y = msg.info.width, msg.info.height
+        for zone in self.zones:
+            dx, dy = zone['x']-ox, zone['y']-oy
+            local_x, local_y = c*dx+s*dy, -s*dx+c*dy
+            min_x = min(min_x, math.floor((local_x-zone['radius'])/resolution))
+            min_y = min(min_y, math.floor((local_y-zone['radius'])/resolution))
+            max_x = max(max_x, math.ceil((local_x+zone['radius'])/resolution))
+            max_y = max(max_y, math.ceil((local_y+zone['radius'])/resolution))
+        mask.info.width, mask.info.height = max_x-min_x, max_y-min_y
+        mask.info.origin.position.x = ox + resolution*(c*min_x-s*min_y)
+        mask.info.origin.position.y = oy + resolution*(s*min_x+c*min_y)
+        row, col = np.mgrid[0:mask.info.height, 0:mask.info.width]
+        px, py = (col+0.5)*resolution, (row+0.5)*resolution
+        x = mask.info.origin.position.x + px*c - py*s
+        y = mask.info.origin.position.y + px*s + py*c
         # The prior adds hazards only; it must not clear unknown map cells.
         data = np.full(row.shape, -1, dtype=np.int8)
         for zone in self.zones:
