@@ -70,7 +70,7 @@ def report(source,output):
     import matplotlib.pyplot as plt
     names={'nearest_view_v1':'Nearest','coverage_view_v1':'Coverage','surface_view_v1':'Surface',
            'nearest_view_v2':'Nearest v2','coverage_view_v2':'Coverage v2','surface_view_v2':'Surface v2',
-           'coverage_view_v3':'Coverage v3','surface_view_v3':'Surface v3'}
+           'nearest_view_v3':'Nearest v3','coverage_view_v3':'Coverage v3','surface_view_v3':'Surface v3'}
     fig,axes=plt.subplots(2,2,figsize=(11,8),layout='constrained')
     keys=('new_observed_area_m2','valid_surface_gain_m2','resampling_success_fraction','path_m')
     titles=('New observed projected area (m2)','Net valid fitted surface (m2)','Initial deficient cells recovered (fraction)','Sampled localization path (m)')
