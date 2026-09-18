@@ -34,8 +34,38 @@
         <joint_name>${prefix}rear_left_wheel_joint</joint_name>
         <joint_name>${prefix}front_right_wheel_joint</joint_name>
         <joint_name>${prefix}rear_right_wheel_joint</joint_name>
+        <joint_name>${prefix}camera_pan_joint</joint_name>
+        <joint_name>${prefix}camera_tilt_joint</joint_name>
         <topic>joint_states</topic>
         <update_rate>30</update_rate>
+      </plugin>
+
+      <plugin
+        filename="gz-sim-joint-position-controller-system"
+        name="gz::sim::systems::JointPositionController">
+        <joint_name>${prefix}camera_pan_joint</joint_name>
+        <topic>/mooncar/cmd_camera_pan</topic>
+        <p_gain>20.0</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>0.5</d_gain>
+        <i_max>1.0</i_max>
+        <i_min>-1.0</i_min>
+        <cmd_max>5.0</cmd_max>
+        <cmd_min>-5.0</cmd_min>
+      </plugin>
+
+      <plugin
+        filename="gz-sim-joint-position-controller-system"
+        name="gz::sim::systems::JointPositionController">
+        <joint_name>${prefix}camera_tilt_joint</joint_name>
+        <topic>/mooncar/cmd_camera_tilt</topic>
+        <p_gain>20.0</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>0.5</d_gain>
+        <i_max>1.0</i_max>
+        <i_min>-1.0</i_min>
+        <cmd_max>5.0</cmd_max>
+        <cmd_min>-5.0</cmd_min>
       </plugin>
     </gazebo>
   </xacro:macro>

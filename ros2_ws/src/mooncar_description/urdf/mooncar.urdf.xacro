@@ -222,6 +222,100 @@
     <origin xyz="0 0 ${lidar_height / 2.0 + 0.02}" rpy="0 0 0"/>
   </joint>
 
+  <!-- 2-DOF Pan-Tilt Gimbal for Depth Camera -->
+  <link name="${prefix}camera_mount_link">
+    <visual name="camera_mount_base">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.025" length="0.03"/>
+      </geometry>
+      <material name="mooncar_dark_gray"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.025" length="0.03"/>
+      </geometry>
+    </collision>
+    <xacro:cylinder_inertial
+      mass="0.08"
+      radius="0.025"
+      length="0.03"
+      axis="z">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:cylinder_inertial>
+  </link>
+
+  <joint name="${prefix}camera_mount_joint" type="fixed">
+    <parent link="${prefix}base_link"/>
+    <child link="${prefix}camera_mount_link"/>
+    <origin xyz="${chassis_length / 2.0 - 0.02} 0 0.04" rpy="0 0 0"/>
+  </joint>
+
+  <link name="${prefix}camera_pan_link">
+    <visual name="camera_pan_bracket">
+      <origin xyz="0 0 0.015" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.035 0.045 0.035"/>
+      </geometry>
+      <material name="mooncar_sensor_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.015" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.035 0.045 0.035"/>
+      </geometry>
+    </collision>
+    <xacro:box_inertial
+      mass="0.06"
+      x="0.035"
+      y="0.045"
+      z="0.035">
+      <origin xyz="0 0 0.015" rpy="0 0 0"/>
+    </xacro:box_inertial>
+  </link>
+
+  <joint name="${prefix}camera_pan_joint" type="revolute">
+    <parent link="${prefix}camera_mount_link"/>
+    <child link="${prefix}camera_pan_link"/>
+    <origin xyz="0 0 0.015" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.35619" upper="2.35619" effort="5.0" velocity="3.14159"/>
+    <dynamics damping="0.05" friction="0.02"/>
+  </joint>
+
+  <link name="${prefix}camera_tilt_link">
+    <visual name="camera_tilt_bracket">
+      <origin xyz="0.01 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.05 0.025"/>
+      </geometry>
+      <material name="mooncar_hub_silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.01 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.05 0.025"/>
+      </geometry>
+    </collision>
+    <xacro:box_inertial
+      mass="0.04"
+      x="0.03"
+      y="0.05"
+      z="0.025">
+      <origin xyz="0.01 0 0" rpy="0 0 0"/>
+    </xacro:box_inertial>
+  </link>
+
+  <joint name="${prefix}camera_tilt_joint" type="revolute">
+    <parent link="${prefix}camera_pan_link"/>
+    <child link="${prefix}camera_tilt_link"/>
+    <origin xyz="0.015 0 0.025" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-0.610865" upper="0.261799" effort="5.0" velocity="3.14159"/>
+    <dynamics damping="0.05" friction="0.02"/>
+  </joint>
+
   <link name="${prefix}depth_camera_link">
     <visual name="camera_body">
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -260,9 +354,9 @@
   </link>
 
   <joint name="${prefix}depth_camera_joint" type="fixed">
-    <parent link="${prefix}base_link"/>
+    <parent link="${prefix}camera_tilt_link"/>
     <child link="${prefix}depth_camera_link"/>
-    <origin xyz="${chassis_length / 2.0 + camera_length / 2.0} 0 0.025" rpy="0 0 0"/>
+    <origin xyz="${camera_length / 2.0 + 0.01} 0 0" rpy="0 0 0"/>
   </joint>
 
   <link name="${prefix}depth_camera_optical_frame"/>

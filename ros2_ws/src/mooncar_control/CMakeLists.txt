@@ -15,6 +15,7 @@ install(
     scripts/keyboard_teleop.py
     scripts/wheel_odometry.py
     scripts/serial_bridge.py
+    scripts/pan_tilt_controller.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

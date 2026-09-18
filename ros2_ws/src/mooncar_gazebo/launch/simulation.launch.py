@@ -90,6 +90,7 @@ def generate_launch_description():
             ),
             DeclareLaunchArgument("spawn_x", default_value="0.0"),
             DeclareLaunchArgument("require_terrain", default_value="false"),
+            DeclareLaunchArgument("require_workbench", default_value="false"),
             DeclareLaunchArgument("spawn_y", default_value="0.0"),
             DeclareLaunchArgument("spawn_z", default_value="0.0"),
             DeclareLaunchArgument("spawn_yaw", default_value="0.0"),
@@ -153,7 +154,8 @@ def generate_launch_description():
                 executable="cmd_vel_safety_relay.py",
                 name="mooncar_cmd_vel_safety_relay",
                 parameters=[{"use_sim_time": use_sim_time,
-                             "require_terrain": LaunchConfiguration("require_terrain")}],
+                             "require_terrain": LaunchConfiguration("require_terrain"),
+                             "require_workbench": LaunchConfiguration("require_workbench")}],
                 output="screen",
             ),
             Node(
