@@ -513,10 +513,10 @@ class AutonomousSurvey:
                                   health=motion_state.get('diagnostics'))
                     self.save()
                 if not self.data['active']:break
-                if not success and decision['kind']!='turn':
+                if not success:
                     decision['blocked']=True
                     record['retry_blocked']=True
-                failures=0 if success else failures+1
+                failures=failures+1 if not success and decision['kind']!='turn' else (0 if success else failures)
                 if failures>=3:self.stop('连续三个候选动作未能执行，已停止；请检查场地与导航','fault')
         except Exception as error:self.stop(f'自主探测已停止：{error}','fault')
         finally:
