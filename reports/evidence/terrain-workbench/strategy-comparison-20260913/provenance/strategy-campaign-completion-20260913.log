@@ -1,0 +1,16 @@
+Trial 1/6 {'start': [0.0, -3.0, 0.0], 'repeat': 1, 'strategy': 'nearest_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [0.0, -3.0, 0.0], "repeat": 1, "strategy": "nearest_view_v1", "budget_seconds": 90, "radius": 8, "index": 1, "status": "no_candidates", "experiment": "experiment-963e931ca59f", "archive": "autonomy-9a9300631a.json", "reason": "当前预算内没有新的安全候选观察位置；不代表整个环境已探测完毕", "folder": "/evidence/frontend-experiments/experiment-963e931ca59f/research/autonomy-9a9300631a"}
+Trial 2/6 {'start': [0.0, -3.0, 0.0], 'repeat': 1, 'strategy': 'coverage_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [0.0, -3.0, 0.0], "repeat": 1, "strategy": "coverage_view_v1", "budget_seconds": 90, "radius": 8, "index": 2, "status": "no_candidates", "experiment": "experiment-dce2bba59bf9", "archive": "autonomy-180258d1ca.json", "reason": "当前预算内没有新的安全候选观察位置；不代表整个环境已探测完毕", "folder": "/evidence/frontend-experiments/experiment-dce2bba59bf9/research/autonomy-180258d1ca"}
+Trial 3/6 {'start': [0.0, -3.0, 0.0], 'repeat': 1, 'strategy': 'surface_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [0.0, -3.0, 0.0], "repeat": 1, "strategy": "surface_view_v1", "budget_seconds": 90, "radius": 8, "index": 3, "status": "no_candidates", "experiment": "experiment-972c4eab8fe1", "archive": "autonomy-67b3e940ce.json", "reason": "当前预算内没有新的安全候选观察位置；不代表整个环境已探测完毕", "folder": "/evidence/frontend-experiments/experiment-972c4eab8fe1/research/autonomy-67b3e940ce"}
+Trial 4/6 {'start': [0.0, -3.0, 0.0], 'repeat': 2, 'strategy': 'coverage_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [0.0, -3.0, 0.0], "repeat": 2, "strategy": "coverage_view_v1", "budget_seconds": 90, "radius": 8, "index": 4, "status": "fault", "experiment": "experiment-e63088c41a34", "archive": "autonomy-3f90f90422.json", "reason": "定位、传感器或质量数据失效，已停止", "folder": "/evidence/frontend-experiments/experiment-e63088c41a34/research/autonomy-3f90f90422"}
+Trial 5/6 {'start': [0.0, -3.0, 0.0], 'repeat': 2, 'strategy': 'surface_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [0.0, -3.0, 0.0], "repeat": 2, "strategy": "surface_view_v1", "budget_seconds": 90, "radius": 8, "index": 5, "status": "trial_failed", "error": "Workbench state deadline exceeded"}
+Trial 6/6 {'start': [0.0, -3.0, 0.0], 'repeat': 2, 'strategy': 'nearest_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [0.0, -3.0, 0.0], "repeat": 2, "strategy": "nearest_view_v1", "budget_seconds": 90, "radius": 8, "index": 6, "status": "no_candidates", "experiment": "experiment-f866abb68aa7", "archive": "autonomy-0296d5a3ca.json", "reason": "当前预算内没有新的安全候选观察位置；不代表整个环境已探测完毕", "folder": "/evidence/frontend-experiments/experiment-f866abb68aa7/research/autonomy-0296d5a3ca"}
+All strategy trials and aggregate report complete
+{"condition": "stationary", "experiment": "experiment-b7460b2b0851", "status": "completed", "capture_exit": 0}
+{"condition": "approach", "experiment": "experiment-2b47672f0ecb", "status": "failed", "error": "[Errno 2] No such file or directory: '/evidence/slope-resampling-20260913/approach/manifest.json'"}
+Slope captures complete

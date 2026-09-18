@@ -1,0 +1,9 @@
+{
+  "image_id": "sha256:065aeeaf2447399d53e4f665a83e321153c355f96d06690f3c0b729e4591aa0d",
+  "image_name": "mooncar-terrain:jazzy",
+  "cpu_limit": 4.0,
+  "memory_bytes": 6442450944,
+  "source_worktree": "D:\\Document\\Repositories\\MoonCar-mapping",
+  "ros_domain_id": 89,
+  "notes": "Unchanged container limits during all strategy trials; no hardware validation"
+}

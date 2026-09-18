@@ -1,0 +1,17 @@
+﻿scope,arm,rule,tp,fp,fn,tn,precision,recall,meaning
+all_decision_deficient,turn,v1_prediction,4,0,138,322,1.0,0.028169014084507043,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+all_decision_deficient,turn,swept_visible,117,152,25,170,0.4349442379182156,0.823943661971831,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+all_decision_deficient,turn,swept_prediction,75,38,67,284,0.6637168141592921,0.528169014084507,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+all_decision_deficient,turn,marginal_prediction,68,34,74,288,0.6666666666666666,0.4788732394366197,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+all_decision_deficient,no_turn,v1_prediction,0,6,0,492,0.0,,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+all_decision_deficient,no_turn,swept_visible,0,303,0,195,0.0,,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+all_decision_deficient,no_turn,swept_prediction,0,126,0,372,0.0,,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+all_decision_deficient,no_turn,marginal_prediction,0,117,0,381,0.0,,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+initial_deficient,turn,v1_prediction,0,0,7,54,,0.0,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+initial_deficient,turn,swept_visible,5,2,2,52,0.7142857142857143,0.7142857142857143,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+initial_deficient,turn,swept_prediction,3,0,4,54,1.0,0.42857142857142855,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+initial_deficient,turn,marginal_prediction,3,0,4,54,1.0,0.42857142857142855,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+initial_deficient,no_turn,v1_prediction,0,0,0,62,,,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+initial_deficient,no_turn,swept_visible,0,10,0,52,0.0,,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+initial_deficient,no_turn,swept_prediction,0,4,0,58,0.0,,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy
+initial_deficient,no_turn,marginal_prediction,0,4,0,58,0.0,,Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy

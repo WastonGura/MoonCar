@@ -1,0 +1,24 @@
+{
+  "groups": [
+    {
+      "arm": "turn",
+      "misses": 7,
+      "outside_candidate_fov": 2,
+      "insufficient_spread": 2,
+      "too_few_voxels": 5,
+      "unchanged_voxel_count": 0
+    },
+    {
+      "arm": "no_turn",
+      "misses": 0,
+      "outside_candidate_fov": 0,
+      "insufficient_spread": 0,
+      "too_few_voxels": 0,
+      "unchanged_voxel_count": 0
+    }
+  ],
+  "limits": [
+    "Post-hoc explanation of frozen prediction errors, not fitted parameters or proof of why the sensor changed.",
+    "No-turn candidate heading is counterfactual; observed recovery does not establish a turn benefit."
+  ]
+}

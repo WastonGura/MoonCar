@@ -1,0 +1,3160 @@
+{
+  "rows": [
+    {
+      "ix": -3,
+      "iy": 3,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -3,
+      "iy": 4,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -2,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -2,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -2,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -2,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -2,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -1,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -1,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -1,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -1,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -1,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": -1,
+      "iy": 1,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 0,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 0,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 0,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 0,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 0,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 0,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 0,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 1,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 1,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 1,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 1,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 1,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 1,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 1,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 1,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": -2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": -2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": -4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": -3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": -2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": -2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": -5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": -4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": -3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": -2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": -5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": -4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": -3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": -8,
+      "baseline_state": "insufficient_xy_spread",
+      "baseline_consistent": true,
+      "predicted_state": "insufficient_xy_spread",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": -7,
+      "baseline_state": "insufficient_xy_spread",
+      "baseline_consistent": true,
+      "predicted_state": "insufficient_xy_spread",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": -2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": -6,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": -6,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": -5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": -4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": -4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": -3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": -2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": -5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": -4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": -3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": -2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": -12,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": -11,
+      "baseline_state": "insufficient_xy_spread",
+      "baseline_consistent": true,
+      "predicted_state": "insufficient_xy_spread",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": -10,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": -9,
+      "baseline_state": "insufficient_xy_spread",
+      "baseline_consistent": true,
+      "predicted_state": "insufficient_xy_spread",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": -8,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 9,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": 4,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": -5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": -4,
+      "baseline_state": "insufficient_xy_spread",
+      "baseline_consistent": true,
+      "predicted_state": "insufficient_xy_spread",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": -3,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": -2,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": -1,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": 0,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 17,
+      "iy": 4,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 17,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 18,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 18,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 18,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 18,
+      "iy": 9,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 9,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 10,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": -5,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 11,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 0,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 1,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": -3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": -5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": -4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": -3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": 9,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": -7,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": true,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": -5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 9,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 10,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 11,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": -11,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": -10,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": -9,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": true,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 17,
+      "iy": 6,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 18,
+      "iy": 10,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 12,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": -2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": 9,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": 10,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": -3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": -2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 10,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 12,
+      "baseline_state": "insufficient_xy_spread",
+      "baseline_consistent": true,
+      "predicted_state": "insufficient_xy_spread",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": -5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": -4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": -3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": -2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": -10,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": -9,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 18,
+      "iy": 11,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 18,
+      "iy": 12,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 13,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 14,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": 8,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": 9,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": 7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 11,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 18,
+      "iy": 4,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 18,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 18,
+      "iy": 13,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 15,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": 9,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": 10,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": -2,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": true,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": -1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 13,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": 9,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": 10,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": -4,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": -3,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 9,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 10,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 11,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 1,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 2,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": 9,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": 10,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": 11,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": 12,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": 9,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 7,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": 8,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": 0,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": 5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": 6,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": 7,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 10,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 11,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 16,
+      "iy": -10,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 4,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 5,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 6,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 19,
+      "iy": 7,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 20,
+      "iy": 9,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 20,
+      "iy": 10,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 20,
+      "iy": 11,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 20,
+      "iy": 12,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 20,
+      "iy": 13,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": -8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": -8,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": 8,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": -13,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": -12,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": -11,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 7,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 8,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 9,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 16,
+      "iy": 9,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 20,
+      "iy": 5,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 20,
+      "iy": 6,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 20,
+      "iy": 7,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 20,
+      "iy": 8,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 21,
+      "iy": 8,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 21,
+      "iy": 9,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 21,
+      "iy": 10,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": -5,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": -7,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": -6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": -10,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": -9,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": -9,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": -7,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": true,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": -14,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": -1,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": true,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": -13,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": -12,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": true,
+      "lost": false
+    },
+    {
+      "ix": 14,
+      "iy": -12,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 15,
+      "iy": 5,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 16,
+      "iy": 6,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 16,
+      "iy": 7,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 20,
+      "iy": 4,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 21,
+      "iy": 5,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 21,
+      "iy": 6,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 21,
+      "iy": 7,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 22,
+      "iy": 7,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 22,
+      "iy": 8,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 1,
+      "iy": -2,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": -3,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": -4,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": -3,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 3,
+      "iy": -5,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": -6,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": -6,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": -8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 5,
+      "iy": -4,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": -8,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": -7,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 6,
+      "iy": -6,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": -11,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": -11,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": -10,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 8,
+      "iy": -9,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": -8,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": -16,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": -16,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": -15,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 11,
+      "iy": -14,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": -14,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": -13,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 12,
+      "iy": -6,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 13,
+      "iy": -11,
+      "baseline_state": "valid",
+      "baseline_consistent": true,
+      "predicted_state": "valid",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 16,
+      "iy": 4,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 22,
+      "iy": 4,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 2,
+      "iy": -4,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 4,
+      "iy": -5,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": -12,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 7,
+      "iy": -10,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 9,
+      "iy": -17,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    },
+    {
+      "ix": 10,
+      "iy": -15,
+      "baseline_state": "too_few_voxels",
+      "baseline_consistent": true,
+      "predicted_state": "too_few_voxels",
+      "recovered": false,
+      "lost": false
+    }
+  ],
+  "summary": {
+    "folder": "ramp-repeat2-small_turn",
+    "model": "common-known-surface-v5",
+    "nominal_motion_seconds": 0.04000000000074477,
+    "path_m": 0.0,
+    "turn_rad": 0.020000000000372387,
+    "completed_with_observation_budget": true,
+    "sampled_poses": 2,
+    "recovered_cells": 6,
+    "lost_cells": 0,
+    "known_net_m2": 0.375,
+    "known_net_m2_per_budget_second": 0.01875,
+    "inconsistent_baseline_cells": 0,
+    "predicted_new_area_m2": null,
+    "total_action_rank": null,
+    "limitations": "Known-cell median-height support only; no calibrated occlusion/noise/unknown-surface model. Not an online choice.",
+    "tp": 3,
+    "fp": 3,
+    "fn": 3,
+    "loss_tp": 0,
+    "loss_fp": 0,
+    "loss_fn": 2,
+    "precommand_changed": 0
+  }
+}

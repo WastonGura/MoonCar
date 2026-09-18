@@ -1,0 +1,23 @@
+{
+  "camera-info.json": "e12449faa0bcee496bb0ffd123f9d3312d4791e506532a4e1028d5074cb2e98a",
+  "capture_source.py": "7dd10801abe9b80ff2eab25e445e7e7bd8d4ed66d75946dd9546fcc78caaa9e9",
+  "depth-format.json": "694796a1545d32f9f1ee81d66fd12953b75b562d744c4be427842255b6179167",
+  "drops.json": "17898301e3344eef4aade5da7afb6aae3c762b384315cd438be9cfda72e55db6",
+  "frames.csv": "a6096ed3c45186db1956af9d94e03ebe5849a4d2e39d460f54d9c96619c77af9",
+  "gazebo.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "manifest.json": "654a825282451ae02be6fab3e7e1c4b55b74f61b4febadb613da027477283624",
+  "raw-depth.npz": "4bb3dedacb06a9130dd4e370944bc6aebf39bbb6e3235a4a94ec56058f3961b1",
+  "robot.sdf": "c6be4801ba4025dda35cec6eaa224b6d695be1f0990f59ee2f9f2df36951b56f",
+  "samples.npz": "c950fd7433eec3ad220fa3819a814fd87a32f80d9a50afaa034b311ec0109e93",
+  "simulation_experiment.py": "df5e80a12890c190e97cbba48cc8d99b7fafd72ee1c201097b3418dbbfbf7c59",
+  "summary.json": "5baffbf2c711205c9560a8a23003ee2c63002ae8133b149138c848e0eee7698d",
+  "survey_evaluation.py": "84197f22f1ec2c2c48e441d704055e861e5cd93cfea4b25fcd6c3cd86590f201",
+  "survey_yard.sdf": "6f1c9e24fe0dc1b4b83c099a9235927f97fb9039a11cd273b3bcee3618ff0505",
+  "terrain_geometry.py": "9ef1c21dfb8d0503d99286a6bde35fb2f0a938dbc9bcbf923e5897fbb7f25ed4",
+  "terrain_node.py": "d3287b583df5b737f08e695bb18402b9eeef1f317e3c9a4e9f526d0d77ee204b",
+  "terrain_reference.py": "7fe9587e2bcdb8341a952db429ca51f4aece0208a36c38dfb600d4526884b051",
+  "trajectory-height.pdf": "5b88b7bcfa3fb17495a9d906c9da7997f2e39e1e83ae2c4cc3d731c50c6cf3ab",
+  "trajectory-height.png": "28fd13e6dfec76e4bee2bda6722779f6b1a26f65f759e10e73037056353125e0",
+  "trajectory_evaluation.py": "92898f7ef14f8b157affe830df43b7c12a3294f1acc0b77537028b72a3796119",
+  "truth.jsonl": "c437c6b5ca075fccd4ff966b7953b43d4999ede14de5a7e342d690d1998c8302"
+}

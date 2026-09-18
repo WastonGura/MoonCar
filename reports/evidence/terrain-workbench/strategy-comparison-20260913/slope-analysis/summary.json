@@ -1,0 +1,107 @@
+{
+  "trials": [
+    {
+      "condition": "stationary",
+      "status": "captured",
+      "frames": 80,
+      "baseline_frames": 9,
+      "motion_phase": "idle",
+      "intervention_completed": true,
+      "elapsed_seconds": 44.8,
+      "true_path_m": 2.3302309395400824e-14,
+      "slope_observed": 59,
+      "slope_invalid": 43,
+      "slope_paired": 16,
+      "slope_height_rmse_m": 1.6965447440425745e-07,
+      "slope_mae_deg": 1.2521979136814743e-05
+    },
+    {
+      "condition": "approach",
+      "status": "captured",
+      "frames": 82,
+      "baseline_frames": 10,
+      "motion_phase": "succeeded",
+      "intervention_completed": true,
+      "elapsed_seconds": 44.4,
+      "true_path_m": 0.7138451836198796,
+      "slope_observed": 69,
+      "slope_invalid": 14,
+      "slope_paired": 55,
+      "slope_height_rmse_m": 7.604558127978218e-07,
+      "slope_mae_deg": 6.601970239886027e-05
+    }
+  ],
+  "baseline_recovery": [
+    {
+      "condition": "stationary",
+      "category": "all",
+      "baseline_cells": 117,
+      "eligible": 63,
+      "recovered": 0,
+      "recovery_fraction": 0.0
+    },
+    {
+      "condition": "stationary",
+      "category": "ground",
+      "baseline_cells": 36,
+      "eligible": 17,
+      "recovered": 0,
+      "recovery_fraction": 0.0
+    },
+    {
+      "condition": "stationary",
+      "category": "sloped_top",
+      "baseline_cells": 59,
+      "eligible": 43,
+      "recovered": 0,
+      "recovery_fraction": 0.0
+    },
+    {
+      "condition": "stationary",
+      "category": "mixed",
+      "baseline_cells": 22,
+      "eligible": 3,
+      "recovered": 0,
+      "recovery_fraction": 0.0
+    },
+    {
+      "condition": "approach",
+      "category": "all",
+      "baseline_cells": 117,
+      "eligible": 63,
+      "recovered": 42,
+      "recovery_fraction": 0.6666666666666666
+    },
+    {
+      "condition": "approach",
+      "category": "ground",
+      "baseline_cells": 34,
+      "eligible": 15,
+      "recovered": 7,
+      "recovery_fraction": 0.4666666666666667
+    },
+    {
+      "condition": "approach",
+      "category": "sloped_top",
+      "baseline_cells": 56,
+      "eligible": 40,
+      "recovered": 34,
+      "recovery_fraction": 0.85
+    },
+    {
+      "condition": "approach",
+      "category": "mixed",
+      "baseline_cells": 27,
+      "eligible": 8,
+      "recovered": 1,
+      "recovery_fraction": 0.125
+    }
+  ],
+  "limits": [
+    "One live pair with fresh simulation each time; not repeated statistical evidence.",
+    "Independent initial images may differ; denominators and baseline frames are explicit.",
+    "Approach uses Nav2 and the same safety lease; true poses are evaluator-only.",
+    "Valid-fit recovery is separate from paired visible-surface error; mixed cells are not accuracy evidence.",
+    "A fixed new-bearing utility does not model nearer views within the same bearing bin."
+  ]
+}

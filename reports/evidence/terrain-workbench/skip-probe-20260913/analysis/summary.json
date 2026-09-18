@@ -1,0 +1,582 @@
+{
+  "trials": [
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "experiment": "experiment-524e61a9a1c0",
+      "pair": "visible_ramp_v1-repeat1",
+      "arm": "no_turn",
+      "status": "evaluated",
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 4.381594237371592,
+        "remaining_seconds": 41.875,
+        "angle_rad": 0.6907971186857962,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 4
+      },
+      "old_gate": {
+        "version": "arrival-recheck-v1",
+        "turn": true,
+        "reason": "try_observation",
+        "remaining_deficient": 125,
+        "opportunity_cells": [
+          [
+            15,
+            5
+          ],
+          [
+            16,
+            5
+          ],
+          [
+            19,
+            5
+          ],
+          [
+            20,
+            5
+          ]
+        ],
+        "estimated_seconds": 4.381594237371592,
+        "angle_rad": 0.6907971186857962,
+        "remaining_seconds": 41.875,
+        "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+      },
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 12,
+        "arrival": 21,
+        "decision": 31,
+        "post_turn": null,
+        "final": 108
+      },
+      "v2_gate": {
+        "version": "swept-support-v2",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 4.381594237371592,
+        "remaining_seconds": 41.875,
+        "angle_rad": 0.6907971186857962,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration"
+      },
+      "observation_yaw": 0.0,
+      "decision_stamp": 28.925,
+      "last_feature_stamp": 27.6,
+      "turn_sim_seconds": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "pair": "visible_ramp_v1-repeat1",
+      "arm": "turn",
+      "status": "failed",
+      "error": "Observation heading not reached"
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "pair": "visible_curve_v1-repeat1",
+      "arm": "turn",
+      "status": "failed",
+      "error": "Observation heading not reached"
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "experiment": "experiment-fe4d253208f4",
+      "pair": "visible_curve_v1-repeat1",
+      "arm": "no_turn",
+      "status": "evaluated",
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 4.895495744796637,
+        "remaining_seconds": 41.757,
+        "angle_rad": 0.9477478723983186,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 5
+      },
+      "old_gate": {
+        "version": "arrival-recheck-v1",
+        "turn": true,
+        "reason": "try_observation",
+        "remaining_deficient": 117,
+        "opportunity_cells": [
+          [
+            6,
+            10
+          ],
+          [
+            10,
+            7
+          ],
+          [
+            13,
+            7
+          ],
+          [
+            14,
+            7
+          ],
+          [
+            19,
+            7
+          ]
+        ],
+        "estimated_seconds": 4.895495744796637,
+        "angle_rad": 0.9477478723983186,
+        "remaining_seconds": 41.757,
+        "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+      },
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 22,
+        "decision": 31,
+        "post_turn": null,
+        "final": 109
+      },
+      "v2_gate": {
+        "version": "swept-support-v2",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 4.895495744796637,
+        "remaining_seconds": 41.757,
+        "angle_rad": 0.9477478723983186,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration"
+      },
+      "observation_yaw": 0.0,
+      "decision_stamp": 29.043,
+      "last_feature_stamp": 27.6,
+      "turn_sim_seconds": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "pair": "visible_ramp_v1-repeat2",
+      "arm": "turn",
+      "status": "failed",
+      "error": "Observation heading not reached"
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "experiment": "experiment-0598635ef7b9",
+      "pair": "visible_ramp_v1-repeat2",
+      "arm": "no_turn",
+      "status": "evaluated",
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 5.028905311471538,
+        "remaining_seconds": 41.12800000000001,
+        "angle_rad": 1.014452655735769,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 6
+      },
+      "old_gate": {
+        "version": "arrival-recheck-v1",
+        "turn": true,
+        "reason": "try_observation",
+        "remaining_deficient": 173,
+        "opportunity_cells": [
+          [
+            11,
+            10
+          ],
+          [
+            14,
+            5
+          ],
+          [
+            15,
+            5
+          ],
+          [
+            16,
+            5
+          ],
+          [
+            19,
+            5
+          ],
+          [
+            20,
+            5
+          ]
+        ],
+        "estimated_seconds": 5.028905311471538,
+        "angle_rad": 1.014452655735769,
+        "remaining_seconds": 41.12800000000001,
+        "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+      },
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 22,
+        "decision": 32,
+        "post_turn": null,
+        "final": 106
+      },
+      "v2_gate": {
+        "version": "swept-support-v2",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 5.028905311471538,
+        "remaining_seconds": 41.12800000000001,
+        "angle_rad": 1.014452655735769,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration"
+      },
+      "observation_yaw": 0.0,
+      "decision_stamp": 30.772,
+      "last_feature_stamp": 29.2,
+      "turn_sim_seconds": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "experiment": "experiment-685b930bc01c",
+      "pair": "visible_curve_v1-repeat2",
+      "arm": "no_turn",
+      "status": "evaluated",
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 6.01380069150143,
+        "remaining_seconds": 40.11,
+        "angle_rad": 1.5069003457507153,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 8
+      },
+      "old_gate": {
+        "version": "arrival-recheck-v1",
+        "turn": true,
+        "reason": "try_observation",
+        "remaining_deficient": 201,
+        "opportunity_cells": [
+          [
+            10,
+            7
+          ],
+          [
+            10,
+            8
+          ],
+          [
+            13,
+            7
+          ],
+          [
+            13,
+            8
+          ],
+          [
+            13,
+            9
+          ],
+          [
+            13,
+            11
+          ],
+          [
+            14,
+            7
+          ],
+          [
+            14,
+            8
+          ],
+          [
+            19,
+            7
+          ]
+        ],
+        "estimated_seconds": 6.01380069150143,
+        "angle_rad": 1.5069003457507153,
+        "remaining_seconds": 40.11,
+        "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+      },
+      "stage_frames": {
+        "baseline": 10,
+        "preaction": 12,
+        "arrival": 23,
+        "decision": 34,
+        "post_turn": null,
+        "final": 110
+      },
+      "v2_gate": {
+        "version": "swept-support-v2",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 6.01380069150143,
+        "remaining_seconds": 40.11,
+        "angle_rad": 1.5069003457507153,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration"
+      },
+      "observation_yaw": 0.0,
+      "decision_stamp": 31.99,
+      "last_feature_stamp": 30.1,
+      "turn_sim_seconds": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "pair": "visible_curve_v1-repeat2",
+      "arm": "turn",
+      "status": "failed",
+      "error": "Observation heading not reached"
+    }
+  ],
+  "metrics": [
+    {
+      "scope": "all_decision_deficient",
+      "arm": "turn",
+      "rule": "v1_prediction",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": null,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "all_decision_deficient",
+      "arm": "turn",
+      "rule": "swept_visible",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": null,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "all_decision_deficient",
+      "arm": "turn",
+      "rule": "swept_prediction",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": null,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "all_decision_deficient",
+      "arm": "turn",
+      "rule": "marginal_prediction",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": null,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "all_decision_deficient",
+      "arm": "no_turn",
+      "rule": "v1_prediction",
+      "tp": 0,
+      "fp": 24,
+      "fn": 1,
+      "tn": 591,
+      "precision": 0.0,
+      "recall": 0.0,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "all_decision_deficient",
+      "arm": "no_turn",
+      "rule": "swept_visible",
+      "tp": 1,
+      "fp": 429,
+      "fn": 0,
+      "tn": 186,
+      "precision": 0.002325581395348837,
+      "recall": 1.0,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "all_decision_deficient",
+      "arm": "no_turn",
+      "rule": "swept_prediction",
+      "tp": 0,
+      "fp": 204,
+      "fn": 1,
+      "tn": 411,
+      "precision": 0.0,
+      "recall": 0.0,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "all_decision_deficient",
+      "arm": "no_turn",
+      "rule": "marginal_prediction",
+      "tp": 0,
+      "fp": 198,
+      "fn": 1,
+      "tn": 417,
+      "precision": 0.0,
+      "recall": 0.0,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "initial_deficient",
+      "arm": "turn",
+      "rule": "v1_prediction",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": null,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "initial_deficient",
+      "arm": "turn",
+      "rule": "swept_visible",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": null,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "initial_deficient",
+      "arm": "turn",
+      "rule": "swept_prediction",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": null,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "initial_deficient",
+      "arm": "turn",
+      "rule": "marginal_prediction",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": null,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "initial_deficient",
+      "arm": "no_turn",
+      "rule": "v1_prediction",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 54,
+      "precision": null,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "initial_deficient",
+      "arm": "no_turn",
+      "rule": "swept_visible",
+      "tp": 0,
+      "fp": 10,
+      "fn": 0,
+      "tn": 44,
+      "precision": 0.0,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "initial_deficient",
+      "arm": "no_turn",
+      "rule": "swept_prediction",
+      "tp": 0,
+      "fp": 6,
+      "fn": 0,
+      "tn": 48,
+      "precision": 0.0,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    },
+    {
+      "scope": "initial_deficient",
+      "arm": "no_turn",
+      "rule": "marginal_prediction",
+      "tp": 0,
+      "fp": 6,
+      "fn": 0,
+      "tn": 48,
+      "precision": 0.0,
+      "recall": null,
+      "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+    }
+  ],
+  "pairs": [
+    {
+      "pair": "visible_curve_v1-repeat1",
+      "status": "incomplete"
+    },
+    {
+      "pair": "visible_curve_v1-repeat2",
+      "status": "incomplete"
+    },
+    {
+      "pair": "visible_ramp_v1-repeat1",
+      "status": "incomplete"
+    },
+    {
+      "pair": "visible_ramp_v1-repeat2",
+      "status": "incomplete"
+    }
+  ],
+  "input_sha256": {
+    "visible_ramp_v1-repeat1-no_turn/approach-control.json": "73fc3b40b5e9588fc3c71f74dfdbb3d99d61091ef56c085b4125284c4915a892",
+    "visible_ramp_v1-repeat1-no_turn/approach/samples.npz": "56bc526818e858dfcae8929524a023830c6df936097cfce9e84feca97d8d2e02",
+    "visible_ramp_v1-repeat1-no_turn/approach/manifest.json": "34f9ae6244f49390ba18fb79ad6a9112d9e27dd186c109995766f27ee8854469",
+    "visible_ramp_v1-repeat1-no_turn/approach/camera-info.json": "e12449faa0bcee496bb0ffd123f9d3312d4791e506532a4e1028d5074cb2e98a",
+    "visible_ramp_v1-repeat1-turn/approach-control.json": "bebb936f6148eac5daa3f47b2f337f4162b65a72ea4e51d0ea506e6424af388d",
+    "visible_ramp_v1-repeat1-turn/approach/samples.npz": "3b99616a6591d2eba72bfbbbc3455615ba2642b2637d0b459028f96eedd6ceee",
+    "visible_ramp_v1-repeat1-turn/approach/manifest.json": "9393e745203185f8b3f29f9cfaf0a99e5084f4a9f8d30211ab334249cddbe4e7",
+    "visible_ramp_v1-repeat1-turn/approach/camera-info.json": "e12449faa0bcee496bb0ffd123f9d3312d4791e506532a4e1028d5074cb2e98a",
+    "visible_curve_v1-repeat1-turn/approach-control.json": "731078773a020ea359b9f93745ca3573b4b6bf45bfb48e3f037f389a640e8741",
+    "visible_curve_v1-repeat1-turn/approach/samples.npz": "184dedbe4e76a3215d01760027d19c04009fbb7ff912c8b954cb97f101a2c176",
+    "visible_curve_v1-repeat1-turn/approach/manifest.json": "69e8b148c9c4541ba27eb667d03446bd3796b9f066dd6c260aa946f42af2b6ca",
+    "visible_curve_v1-repeat1-turn/approach/camera-info.json": "e12449faa0bcee496bb0ffd123f9d3312d4791e506532a4e1028d5074cb2e98a",
+    "visible_curve_v1-repeat1-no_turn/approach-control.json": "5360ce0b7925a80451790ebf9caadc76eb11847fa98dc4cf56bb3f8077f0b57d",
+    "visible_curve_v1-repeat1-no_turn/approach/samples.npz": "f8aaa3857e5bc0f41910ea60664d10a83135158250e99c19038941ad5d23e45a",
+    "visible_curve_v1-repeat1-no_turn/approach/manifest.json": "ef281f4ba97721d73576b53ddbe1c96b10b95c7849570f331de59590e6912f97",
+    "visible_curve_v1-repeat1-no_turn/approach/camera-info.json": "e12449faa0bcee496bb0ffd123f9d3312d4791e506532a4e1028d5074cb2e98a",
+    "visible_ramp_v1-repeat2-turn/approach-control.json": "10980a1375128dcf675af717fe729e496d64f87ab8610e15458571dbf602d76e",
+    "visible_ramp_v1-repeat2-turn/approach/samples.npz": "4809226f1542e306dc27bf7d4bc907bb36499df346bc701108f58fdcb4cf872a",
+    "visible_ramp_v1-repeat2-turn/approach/manifest.json": "e0b6e0893e80905f0133a43dce6b0c90b1a998f8a9c48f6f525e6b0981893ac1",
+    "visible_ramp_v1-repeat2-turn/approach/camera-info.json": "e12449faa0bcee496bb0ffd123f9d3312d4791e506532a4e1028d5074cb2e98a",
+    "visible_ramp_v1-repeat2-no_turn/approach-control.json": "bae6e8a1bed98e4ca1365ee2d0e419f5c8a77d1d598d85128f908a6f7daa723d",
+    "visible_ramp_v1-repeat2-no_turn/approach/samples.npz": "f2066237bafeeba91a1d8a94020f8530c5b49460b1eb4c6d9f9f14864ad18908",
+    "visible_ramp_v1-repeat2-no_turn/approach/manifest.json": "2694928fa594c73809bd79904295d5943adfbc77412a8af11ed4f924a325657f",
+    "visible_ramp_v1-repeat2-no_turn/approach/camera-info.json": "e12449faa0bcee496bb0ffd123f9d3312d4791e506532a4e1028d5074cb2e98a",
+    "visible_curve_v1-repeat2-no_turn/approach-control.json": "22d4840d75d3fe40b6fde722b21312d64e0b9b6ea14e0154dccb2d2d693d9858",
+    "visible_curve_v1-repeat2-no_turn/approach/samples.npz": "bcd6b38840ec8c2f0e77b2fa120912e26ee7eb1ac63ba786ccfc581903670b65",
+    "visible_curve_v1-repeat2-no_turn/approach/manifest.json": "d2d177ad09545b120e9cefd639ed65255cc50cdd9cc695dbaa06280325da444b",
+    "visible_curve_v1-repeat2-no_turn/approach/camera-info.json": "e12449faa0bcee496bb0ffd123f9d3312d4791e506532a4e1028d5074cb2e98a",
+    "visible_curve_v1-repeat2-turn/approach-control.json": "0ebc3a5ec92df5f24ef87115eaa5209d9b9fcbacbbbaf9fe282bf110ad5c3c3f",
+    "visible_curve_v1-repeat2-turn/approach/samples.npz": "e378427785d9b38f43f7e4d1b6e9b25a83710e16f8586b9e704b6a567ca1a817",
+    "visible_curve_v1-repeat2-turn/approach/manifest.json": "80d05357788f88e1ccb8fc1aa822c673892a433481d4cada01a6aaa1515bdd68",
+    "visible_curve_v1-repeat2-turn/approach/camera-info.json": "e12449faa0bcee496bb0ffd123f9d3312d4791e506532a4e1028d5074cb2e98a"
+  },
+  "online_policy_changed": false,
+  "accepted_policy": false,
+  "limits": [
+    "Sensor-only median-height ray patches; no occlusion, surface tilt or temporal noise model.",
+    "Hypothesized points remain outside observed maps; support is not fit validity or accuracy.",
+    "Correlated cell instances, descriptive paired results; no causal ground truth for individual cells.",
+    "Both experimental arms are executed regardless of the shadow gate; failures retained."
+  ]
+}

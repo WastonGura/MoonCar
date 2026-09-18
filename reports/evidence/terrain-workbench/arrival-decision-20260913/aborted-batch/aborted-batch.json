@@ -1,0 +1,6 @@
+{
+  "reason": "Configuration precheck found ramp start overlapping operator loose_soil_trial prior. Interrupted before motion; eight-run replacement plan has explicit prior-circle footprint checks. No outcome-based tuning.",
+  "experiment": "experiment-f8bc4f33289e",
+  "motion_started": false,
+  "cleanup": "SIGINT stopped recorder and batch; ROS duplicate shutdown exception subsequently changed to try_shutdown."
+}

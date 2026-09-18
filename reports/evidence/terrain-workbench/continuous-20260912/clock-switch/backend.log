@@ -1,0 +1,4 @@
+Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained
+MoonCar archive viewer: http://127.0.0.1:8766
+172.17.0.1 - - [12/Sep/2026 12:21:45] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+[WARN] [1789215765.946214414] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.

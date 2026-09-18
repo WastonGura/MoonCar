@@ -1,0 +1,59 @@
+{
+  "version": "survey-metrics-v1",
+  "run_id": "autonomy-4523abf581",
+  "created_utc": "2026-09-13T02:53:25.938505+00:00",
+  "task": {
+    "version": 1,
+    "region": [
+      -25,
+      -25,
+      25,
+      25
+    ],
+    "start": [
+      3.5,
+      3.0,
+      0.0
+    ],
+    "id": "experiment-33e968dbfe29"
+  },
+  "mission": {
+    "active": true,
+    "phase": "planning",
+    "reason": "根据当前观测比较转向、前进与换位补采",
+    "origin": [
+      3.5,
+      3.0
+    ],
+    "budget_seconds": 90,
+    "radius": 8,
+    "started": 8.991,
+    "elapsed_seconds": 0.0,
+    "history": [],
+    "decision": null,
+    "archive": "autonomy-4523abf581.json",
+    "strategy": "nearest_view_v1",
+    "metrics_version": "survey-metrics-v1",
+    "remaining_seconds": 90.0
+  },
+  "strategy": "nearest_view_v1",
+  "quality_formula": "C * (0.7 + 0.3 * min(V/3, 1))",
+  "sufficient_threshold": 0.8,
+  "scope": "cell centres inside start-relative disk intersected with [-25,25]^2",
+  "runtime": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+  "status": "captured",
+  "reference_status": "not_provided",
+  "ros_distro": "jazzy",
+  "limitations": [
+    "sampling quality is not accuracy or traversability",
+    "pose path length includes localization drift; sampled, not wheel odometry",
+    "ROI coverage is projected observed cells, including obstacles; not reachable-ground completion",
+    "scene images are asynchronous GUI captures, not timestamp-synchronized sensor frames"
+  ],
+  "raw_source": "survey-20260913T025305046795Z.npz",
+  "raw_saved_stamp": 93.5,
+  "final_quality_stamp": 93.5,
+  "capture_errors": [],
+  "report_source_sha256": "d4d4e13f420e1321e3221e70100f406352c2a9bc8bb8874b950544d7030fca0d",
+  "report_status": "ready"
+}

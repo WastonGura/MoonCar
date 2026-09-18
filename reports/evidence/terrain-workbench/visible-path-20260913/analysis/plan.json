@@ -1,0 +1,52 @@
+{
+  "created_utc": "2026-09-13T07:44:00.384565+00:00",
+  "trials": [
+    {
+      "scene": "visible_ramp_v1",
+      "start": [
+        0,
+        -0.6,
+        0.463648
+      ],
+      "goal": [
+        0.8,
+        -0.2
+      ],
+      "seconds": 25
+    },
+    {
+      "scene": "visible_curve_v1",
+      "start": [
+        0,
+        0.6,
+        -0.463648
+      ],
+      "goal": [
+        0.8,
+        0.2
+      ],
+      "seconds": 25
+    }
+  ],
+  "conditions": [
+    "stationary",
+    "approach"
+  ],
+  "baseline_seconds": 5,
+  "path_spacing_m": 0.1,
+  "rule": "Union of frozen range+direction rule across planned straight segment; deduplicate cell IDs",
+  "endpoint_rule": "Same unchanged range+direction rule at planned goal",
+  "split": "Two prospectively fixed independent world geometries; no fitted parameters or policy tuning",
+  "limits": [
+    "Straight planned segment is not Nav2 global path; measured deviation is evaluation only",
+    "Correlated cells; one pair per world, no efficacy significance claim",
+    "World and true poses used only for evaluator visibility and setup checks"
+  ],
+  "source_sha256": {
+    "scripts/simulation_experiment.py": "464f9682f3bcd7d1d2b5156d26e3517889ba97d73eb4f690607a089f1e29f92b",
+    "scripts/resampling_dataset.py": "373d5f70afa3263a4a52f51a04debfe77cde8a46c28134e32563f73c61c5c7c3",
+    "scripts/capture_slope_resampling.py": "31dc5dab95ba05aaa6ec34ac3cb72eb66abfb5f896b9e0e5aa6c9cfd254c0fbf",
+    "scripts/autonomous_survey.py": "1b1ee3a62d418f44dd3c9ab62e4b4a5f931da62e6bc85b356281e00680d32202",
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_map.py": "d43e3abdee30d4b70701fef793d65f8067149ae9bfdcbf4ada3041b407a1a856"
+  }
+}

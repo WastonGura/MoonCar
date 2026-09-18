@@ -1,0 +1,6 @@
+PASS: same-bearing range, unchanged views, FOV/conflict exclusions, no post-action feature leakage
+......
+----------------------------------------------------------------------
+Ran 6 tests in 3.171s
+
+OK

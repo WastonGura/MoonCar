@@ -1,0 +1,4 @@
+# Operator-provided prior knowledge, not camera material classification.
+zones:
+  - {name: south_crater, x: 6.5, y: -4.5, radius: 1.7}
+  - {name: loose_soil_trial, x: -1.5, y: -0.8, radius: 0.65}

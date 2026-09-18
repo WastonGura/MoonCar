@@ -1,0 +1,23 @@
+{
+  "sim_stamp": 185.656,
+  "elapsed_seconds": 180.06300000000002,
+  "phase": "budget_reached",
+  "pose": {
+    "x": -9.96557426451827,
+    "y": -5.251648212448113,
+    "z": 0.0,
+    "yaw": -1.6580547083349437
+  },
+  "ready": true,
+  "motion_error": "自主探测时间预算已用尽",
+  "path_m": 10.055574725709715,
+  "roi_area_m2": 314.0,
+  "observed_area_m2": 194.8125,
+  "observed_fraction": 0.620421974522293,
+  "quality_area_m2": 129.58825,
+  "sufficient_area_m2": 91.5,
+  "mean_observed_quality": 0.6651947385306384,
+  "frames": 298,
+  "quality_stamp": 184.7,
+  "scene_age_wall_seconds": 0.39853596687316895
+}

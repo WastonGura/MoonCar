@@ -1,0 +1,15 @@
+{
+  "version": "mooncar-planner-v2-freeze-v1",
+  "created": "2026-09-16",
+  "files": {
+    "scripts/autonomous_survey.py": "8bd826d968720b465792fee544bcc3f677ab9be8ce75ad51c7c1b1201326df42",
+    "ros2_ws/src/mooncar_terrain/tests/test_autonomous_survey.py": "ac3abdab436e671eb91275c127aa79355e800b2332294c94483f10a1ad2751ee",
+    "web/index.html": "c403209a0fcd62af16794050bda6da34516d7a1866ec4bcc2adabb641e71b71f",
+    "docs/autonomous_survey.md": "5287862e879878d33bbadb846e75e6f536a99899c66d3727da78793c53c9f5b8",
+    "scripts/compare_survey_strategies.py": "02078363542c51bf8a04706e090a766a23e0636b475aa72cdef8dff7aedeb304",
+    "scripts/report_strategy_comparison.py": "bf8bdb6be024bac1fb0d8e375dbb08b325d918c0f5fbda492a573812816f702c",
+    "scripts/mapping_acceptance.py": "ad833a25f061773629fd7fb41c0af473efac91e7eb5d9d0dad7ad0c771efd461",
+    "docs/mapping_acceptance.md": "c438ac2c961c64468f14097fce154cb68efb091f762588f7bd2922f45eac8aa9",
+    "ros2_ws/src/mooncar_navigation/launch/terrain_navigation.launch.py": "cc6f010a7012f7a90bcb70810adfd6179bf23e43f6b42cc6a601792afc52afb3"
+  }
+}

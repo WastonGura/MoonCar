@@ -1,0 +1,5 @@
+﻿scene,folder,arm,experiment,capture_status,navigation,turn,error,frames,captured_span_sim_seconds,action_window_sim_seconds,final_truth_yaw_deg,travel_m,turn_sim_seconds,hold_sim_seconds,final_valid_cells,final_valid_area_m2,initial_deficient,recovered
+visible_ramp_v1,visible_ramp_v1-no_turn,no_turn,experiment-d30e44a4386c,completed,succeeded,,,63,34.3,28.236,47.35230595571746,0.7949888851057242,,22.361,175,10.9375,75,57
+visible_ramp_v1,visible_ramp_v1-turn,turn,experiment-8a93a530d6b7,completed,succeeded,succeeded,,64,34.8,28.758,-1.0766994578744986,0.8041845943329815,2.1620000000000026,20.750999999999998,187,11.6875,75,60
+visible_curve_v1,visible_curve_v1-turn,turn,experiment-1d6b4b2adeb8,completed,succeeded,succeeded,,63,34.800000000000004,28.736000000000004,1.5605883410634311,0.771592171006184,1.7910000000000004,21.302000000000003,181,11.3125,63,48
+visible_curve_v1,visible_curve_v1-no_turn,no_turn,experiment-ae2ccb7bff04,completed,succeeded,,,63,34.5,28.671,-47.39987537873597,0.7780893647540235,,22.892,169,10.5625,63,49

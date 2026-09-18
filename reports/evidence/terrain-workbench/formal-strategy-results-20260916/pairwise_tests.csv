@@ -1,0 +1,4 @@
+﻿left,right,conditions,mean_S_difference_left_minus_right,median_S_difference_left_minus_right,raw_exact_p,holm_adjusted_p
+nearest_view_v1,coverage_view_v1,6,0.3427544835384199,-1.344435921245644,0.875,1
+nearest_view_v1,surface_view_v1,6,0.036823604397598096,0.06855686178796105,0.90625,1
+coverage_view_v1,surface_view_v1,6,-0.3059308791408218,0.23134837763494787,0.78125,1

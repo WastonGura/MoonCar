@@ -1,0 +1,15 @@
+test_full_q_can_be_invalid_or_biased_and_denominators_survive (test_surface_quality_evaluation.SurfaceQualityTests.test_full_q_can_be_invalid_or_biased_and_denominators_survive) ... ok
+test_independent_faces_and_rotated_slope (test_surface_quality_evaluation.SurfaceQualityTests.test_independent_faces_and_rotated_slope) ... ok
+test_nearest_visible_faces_caps_rotation_and_misses (test_depth_projection_evaluation.RayTests.test_nearest_visible_faces_caps_rotation_and_misses) ... ok
+test_raw_roundtrip_and_absolute_hypotheses_after_producer_correction (test_depth_projection_evaluation.RayTests.test_raw_roundtrip_and_absolute_hypotheses_after_producer_correction) ... ok
+test_atomic_replacement_during_fusion_keeps_one_snapshot (test_terrain_map.TerrainMapTests.test_atomic_replacement_during_fusion_keeps_one_snapshot) ... ok
+test_cached_surface_matches_fresh_fit_after_new_observations (test_terrain_map.TerrainMapTests.test_cached_surface_matches_fresh_fit_after_new_observations) ... ok
+test_robot_pose_is_distinct_from_camera_and_survives_reload (test_terrain_map.TerrainMapTests.test_robot_pose_is_distinct_from_camera_and_survives_reload) ... ok
+test_rotation_negative_cells_and_empty_archive (test_terrain_map.TerrainMapTests.test_rotation_negative_cells_and_empty_archive) ... ok
+test_transform_fusion_archive_replay_and_export (test_terrain_map.TerrainMapTests.test_transform_fusion_archive_replay_and_export) ... ok
+test_unknown_degenerate_multilevel_and_rejected_input (test_terrain_map.TerrainMapTests.test_unknown_degenerate_multilevel_and_rejected_input) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.890s
+
+OK

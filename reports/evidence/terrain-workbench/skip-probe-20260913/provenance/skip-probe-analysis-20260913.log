@@ -1,0 +1,211 @@
+visible_ramp_v1-repeat1-no_turn evaluated
+visible_ramp_v1-repeat1-turn failed
+visible_curve_v1-repeat1-turn failed
+visible_curve_v1-repeat1-no_turn evaluated
+visible_ramp_v1-repeat2-turn failed
+visible_ramp_v1-repeat2-no_turn evaluated
+visible_curve_v1-repeat2-no_turn evaluated
+visible_curve_v1-repeat2-turn failed
+{
+  "stop_validation_passed": false,
+  "rejections": [
+    "no_executable_candidate:visible_ramp_v1-repeat1-no_turn",
+    "no_executable_candidate:visible_ramp_v1-repeat1-turn",
+    "no_executable_candidate:visible_curve_v1-repeat1-turn",
+    "no_executable_candidate:visible_curve_v1-repeat1-no_turn",
+    "no_executable_candidate:visible_ramp_v1-repeat2-turn",
+    "no_executable_candidate:visible_ramp_v1-repeat2-no_turn",
+    "no_executable_candidate:visible_curve_v1-repeat2-no_turn",
+    "no_executable_candidate:visible_curve_v1-repeat2-turn",
+    "insufficient_actual_negative_probes",
+    "insufficient_matched_pairs"
+  ],
+  "execution": [],
+  "pairs": [],
+  "repeated_positive_net_scenes": [],
+  "online_policy_changed": false,
+  "online_ready": false,
+  "limits": "Engineering admission, not statistical significance. Hold snapshot/trajectory differ. Turn-only recovery is a warning, not cellwise causal truth."
+}
+PREFIX AUDIT 8 attempts 8 verified
+[]
+[
+  {
+    "folder": "visible_ramp_v1-repeat1-no_turn",
+    "no_turn_command": true,
+    "first_candidate_delta": 0.02,
+    "window_seconds": 10,
+    "deficient": 125,
+    "hold_predicted": 4,
+    "hold_recovered": 0,
+    "missed_hold_recovery": 0,
+    "hypothetical_marginal": 7,
+    "hypothetical_marginal_already_recovered_holding": 0,
+    "drift": {
+      "estimated_robot": {
+        "xy_m": 1.0446542176592036e-06,
+        "yaw_rad": 2.8550495301260526e-12
+      },
+      "truth_robot": {
+        "xy_m": 1.1102230246251565e-16,
+        "yaw_rad": 0.0
+      }
+    }
+  },
+  {
+    "folder": "visible_ramp_v1-repeat1-turn",
+    "no_turn_command": true,
+    "first_candidate_delta": 0.02,
+    "window_seconds": 10,
+    "deficient": 112,
+    "hold_predicted": 3,
+    "hold_recovered": 0,
+    "missed_hold_recovery": 0,
+    "hypothetical_marginal": 6,
+    "hypothetical_marginal_already_recovered_holding": 0,
+    "drift": {
+      "estimated_robot": {
+        "xy_m": 9.7085035435946e-07,
+        "yaw_rad": 2.918887354041999e-12
+      },
+      "truth_robot": {
+        "xy_m": 0.0,
+        "yaw_rad": 0.0
+      }
+    }
+  },
+  {
+    "folder": "visible_curve_v1-repeat1-turn",
+    "no_turn_command": true,
+    "first_candidate_delta": 0.02,
+    "window_seconds": 10,
+    "deficient": 131,
+    "hold_predicted": 2,
+    "hold_recovered": 0,
+    "missed_hold_recovery": 0,
+    "hypothetical_marginal": 7,
+    "hypothetical_marginal_already_recovered_holding": 0,
+    "drift": {
+      "estimated_robot": {
+        "xy_m": 4.654312919012959e-07,
+        "yaw_rad": -2.885913730210632e-12
+      },
+      "truth_robot": {
+        "xy_m": 0.0,
+        "yaw_rad": 3.3306690738754696e-16
+      }
+    }
+  },
+  {
+    "folder": "visible_curve_v1-repeat1-no_turn",
+    "no_turn_command": true,
+    "first_candidate_delta": 0.02,
+    "window_seconds": 10,
+    "deficient": 117,
+    "hold_predicted": 0,
+    "hold_recovered": 0,
+    "missed_hold_recovery": 0,
+    "hypothetical_marginal": 3,
+    "hypothetical_marginal_already_recovered_holding": 0,
+    "drift": {
+      "estimated_robot": {
+        "xy_m": 6.765728060509443e-07,
+        "yaw_rad": 5.225042620793374e-12
+      },
+      "truth_robot": {
+        "xy_m": 0.0,
+        "yaw_rad": 0.0
+      }
+    }
+  },
+  {
+    "folder": "visible_ramp_v1-repeat2-turn",
+    "no_turn_command": true,
+    "first_candidate_delta": 0.02,
+    "window_seconds": 10,
+    "deficient": 115,
+    "hold_predicted": 3,
+    "hold_recovered": 0,
+    "missed_hold_recovery": 0,
+    "hypothetical_marginal": 5,
+    "hypothetical_marginal_already_recovered_holding": 0,
+    "drift": {
+      "estimated_robot": {
+        "xy_m": 1.654363487545791e-06,
+        "yaw_rad": -1.8570700532904993e-12
+      },
+      "truth_robot": {
+        "xy_m": 0.0,
+        "yaw_rad": 0.0
+      }
+    }
+  },
+  {
+    "folder": "visible_ramp_v1-repeat2-no_turn",
+    "no_turn_command": true,
+    "first_candidate_delta": 0.02,
+    "window_seconds": 10,
+    "deficient": 173,
+    "hold_predicted": 2,
+    "hold_recovered": 0,
+    "missed_hold_recovery": 0,
+    "hypothetical_marginal": 7,
+    "hypothetical_marginal_already_recovered_holding": 0,
+    "drift": {
+      "estimated_robot": {
+        "xy_m": 5.486663309538707e-08,
+        "yaw_rad": 4.21729318134112e-12
+      },
+      "truth_robot": {
+        "xy_m": 2.482534153247273e-16,
+        "yaw_rad": 0.0
+      }
+    }
+  },
+  {
+    "folder": "visible_curve_v1-repeat2-no_turn",
+    "no_turn_command": true,
+    "first_candidate_delta": 0.02,
+    "window_seconds": 10,
+    "deficient": 201,
+    "hold_predicted": 0,
+    "hold_recovered": 0,
+    "missed_hold_recovery": 0,
+    "hypothetical_marginal": 18,
+    "hypothetical_marginal_already_recovered_holding": 0,
+    "drift": {
+      "estimated_robot": {
+        "xy_m": 1.3783345905463086e-07,
+        "yaw_rad": -1.930233750613297e-12
+      },
+      "truth_robot": {
+        "xy_m": 2.220446049250313e-16,
+        "yaw_rad": 0.0
+      }
+    }
+  },
+  {
+    "folder": "visible_curve_v1-repeat2-turn",
+    "no_turn_command": true,
+    "first_candidate_delta": 0.02,
+    "window_seconds": 10,
+    "deficient": 182,
+    "hold_predicted": 0,
+    "hold_recovered": 0,
+    "missed_hold_recovery": 0,
+    "hypothetical_marginal": 11,
+    "hypothetical_marginal_already_recovered_holding": 0,
+    "drift": {
+      "estimated_robot": {
+        "xy_m": 5.345312924088649e-07,
+        "yaw_rad": 5.5502269447060826e-12
+      },
+      "truth_robot": {
+        "xy_m": 1.1102230246251565e-16,
+        "yaw_rad": 0.0
+      }
+    }
+  }
+]
+Saved candidate table and actual scene/observed-map panels
+ANALYSIS, PREFIX REPRODUCTION AND PLOTS FINISHED

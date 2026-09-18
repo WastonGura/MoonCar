@@ -1,0 +1,134 @@
+{
+  "status": "captured",
+  "frames": 54,
+  "dropped_selected_frames": 1,
+  "duration": 29.499999999999996,
+  "xy_rmse_m": 0.00978201276671027,
+  "xy_max_m": 0.046704304309629165,
+  "robot_z_max_abs_m": 8.674806672878748e-10,
+  "camera_z_max_abs_m": 1.1276379829894267e-09,
+  "yaw_max_abs_deg": 0.05264747997160298,
+  "extrinsic_max_abs_matrix_difference": 4.897147545620988e-12,
+  "sampled_truth_path_m": 0.5856310831552612,
+  "ground_points": 97346,
+  "correction_fitted": false,
+  "accepted_global_accuracy": false,
+  "true_pose_ground_rmse_m": 2.0582678264844857e-07,
+  "true_pose_ground_bias_m": -9.07884360019346e-08,
+  "map_pose_ground_rmse_m": 2.0527905137127206e-07,
+  "map_pose_ground_bias_m": -8.95159051054363e-08,
+  "interior_points": 27836,
+  "true_pose_interior_rmse_m": 2.5064790087760426e-07,
+  "true_pose_interior_bias_m": -1.2421735596445344e-07,
+  "map_pose_interior_rmse_m": 2.5049350131002577e-07,
+  "map_pose_interior_bias_m": -1.236183328394604e-07,
+  "interior_spatial_margin_m": 0.25,
+  "limitations": [
+    "One controlled trajectory, not global or hardware calibration.",
+    "Truth interpolation requires bracketing gap <= 0.05 simulation seconds; rejected samples are retained in drops.json.",
+    "Ground subset uses independent world XY top-surface identity; no height-error rejection. Points are temporally correlated.",
+    "Interior subset additionally excludes non-plane visual AABBs inflated by 0.25 m; excluded footprint points remain in full-ground statistics.",
+    "True-pose reprojection isolates pose contribution but still includes sensor projection/rendering errors; no depth image refit.",
+    "Fixed camera extrinsics come from the converted simulator model, not fitted against observed ground."
+  ]
+}
+Replayed 1/54 synchronized frames
+Replayed 41/54 synchronized frames
+[
+  {
+    "category": "all",
+    "cells": 1258,
+    "observed": 171,
+    "unobserved": 1087,
+    "invalid": 55,
+    "paired": 114,
+    "single_surface_pairs": 109,
+    "valid_fraction": 0.6783625730994152,
+    "height_rmse_m": 0.0017601859099698508,
+    "slope_mae_deg": 0.3716618584841388
+  },
+  {
+    "category": "ground",
+    "cells": 146,
+    "observed": 146,
+    "unobserved": 0,
+    "invalid": 36,
+    "paired": 109,
+    "single_surface_pairs": 109,
+    "valid_fraction": 0.7534246575342466,
+    "height_rmse_m": 2.649015073867957e-06,
+    "slope_mae_deg": 0.0009021320715903394
+  },
+  {
+    "category": "sloped_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "level_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "curved_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "steep_side",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "mixed",
+    "cells": 24,
+    "observed": 24,
+    "unobserved": 0,
+    "invalid": 18,
+    "paired": 5,
+    "single_surface_pairs": 0,
+    "valid_fraction": 0.25,
+    "height_rmse_m": 0.008404763423311982,
+    "slope_mae_deg": 8.454223894277694
+  },
+  {
+    "category": "no_visible_reference",
+    "cells": 1088,
+    "observed": 1,
+    "unobserved": 1087,
+    "invalid": 1,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": 0.0,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  }
+]

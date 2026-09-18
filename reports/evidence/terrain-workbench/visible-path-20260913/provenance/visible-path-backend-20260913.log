@@ -1,0 +1,19 @@
+MoonCar archive viewer: http://127.0.0.1:8766
+172.17.0.1 - - [13/Sep/2026 07:44:33] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 07:45:23] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 07:45:54] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 07:46:23] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 07:46:29] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 07:46:30] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+[WARN] [1789285595.449789615] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+172.17.0.1 - - [13/Sep/2026 07:48:21] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 07:48:22] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 07:48:28] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 07:48:38] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 07:48:39] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+[WARN] [1789285724.041211574] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+172.17.0.1 - - [13/Sep/2026 07:50:28] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 07:50:35] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+[WARN] [1789285840.245693100] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+172.17.0.1 - - [13/Sep/2026 07:52:14] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 07:52:24] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -

@@ -1,0 +1,1629 @@
+{
+  "trials": [
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scene": "visible_ramp_v1",
+      "experiment": "experiment-baa6ebe5e4eb",
+      "status": "evaluated",
+      "frames": 65,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 12,
+        "arrival": 22,
+        "decision": 24,
+        "post_turn": null,
+        "final": 65
+      },
+      "stage_last_stamps": {
+        "baseline": 16.1,
+        "preaction": 17.6,
+        "arrival": 22.7,
+        "decision": 23.7,
+        "post_turn": null,
+        "final": 46.2
+      },
+      "action_stamp": 17.777,
+      "arrival_event_stamp": 23.18,
+      "decision_event_stamp": 24.187,
+      "turn_event_stamp": null,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 11,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.6337623637225445,
+          "angle_rad": 0.816881181861272,
+          "remaining_seconds": 22.313,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 127,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.6337623637225445,
+          "angle_rad": 0.816881181861272,
+          "remaining_seconds": 22.313,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scene": "visible_ramp_v1",
+      "experiment": "experiment-2607cc3cf93e",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 10,
+        "preaction": 12,
+        "arrival": 21,
+        "decision": 23,
+        "post_turn": 27,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 15.7,
+        "preaction": 16.7,
+        "arrival": 21.5,
+        "decision": 22.6,
+        "post_turn": 25.1,
+        "final": 45.6
+      },
+      "action_stamp": 16.761,
+      "arrival_event_stamp": 22.051,
+      "decision_event_stamp": 23.059,
+      "turn_event_stamp": 25.443,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 7,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.794746535036421,
+          "angle_rad": 0.8973732675182106,
+          "remaining_seconds": 22.840999999999998,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 133,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.794746535036421,
+          "angle_rad": 0.8973732675182106,
+          "remaining_seconds": 22.840999999999998,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scene": "visible_curve_v1",
+      "experiment": "experiment-ee557ce32859",
+      "status": "evaluated",
+      "frames": 62,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 20,
+        "decision": 21,
+        "post_turn": 24,
+        "final": 62
+      },
+      "stage_last_stamps": {
+        "baseline": 16.7,
+        "preaction": 17.8,
+        "arrival": 22.8,
+        "decision": 23.3,
+        "post_turn": 25.0,
+        "final": 46.5
+      },
+      "action_stamp": 18.077,
+      "arrival_event_stamp": 22.877,
+      "decision_event_stamp": 23.883,
+      "turn_event_stamp": 25.279,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 22,
+          "opportunity_cells": [],
+          "estimated_seconds": 3.8941493238288096,
+          "angle_rad": 0.4470746619144048,
+          "remaining_seconds": 23.117,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 100,
+          "opportunity_cells": [
+            [
+              14,
+              6
+            ],
+            [
+              19,
+              6
+            ]
+          ],
+          "estimated_seconds": 3.8941493238288096,
+          "angle_rad": 0.4470746619144048,
+          "remaining_seconds": 23.117,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scene": "visible_curve_v1",
+      "experiment": "experiment-502f834ea0a7",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 19,
+        "decision": 21,
+        "post_turn": null,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 15.3,
+        "preaction": 16.3,
+        "arrival": 21.0,
+        "decision": 22.1,
+        "post_turn": null,
+        "final": 45.2
+      },
+      "action_stamp": 16.678,
+      "arrival_event_stamp": 21.546,
+      "decision_event_stamp": 22.547,
+      "turn_event_stamp": null,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 20,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.060392071676854,
+          "angle_rad": 0.530196035838427,
+          "remaining_seconds": 23.053,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 114,
+          "opportunity_cells": [
+            [
+              15,
+              6
+            ],
+            [
+              16,
+              6
+            ],
+            [
+              19,
+              6
+            ]
+          ],
+          "estimated_seconds": 4.060392071676854,
+          "angle_rad": 0.530196035838427,
+          "remaining_seconds": 23.053,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scene": "visible_ramp_v1",
+      "experiment": "experiment-e9097adbf361",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 22,
+        "decision": 23,
+        "post_turn": 27,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 16.3,
+        "preaction": 17.5,
+        "arrival": 23.2,
+        "decision": 23.8,
+        "post_turn": 25.9,
+        "final": 46.5
+      },
+      "action_stamp": 17.998,
+      "arrival_event_stamp": 23.301,
+      "decision_event_stamp": 24.308,
+      "turn_event_stamp": 26.475,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 9,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.632428098977692,
+          "angle_rad": 0.8162140494888459,
+          "remaining_seconds": 22.592,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 131,
+          "opportunity_cells": [
+            [
+              10,
+              9
+            ]
+          ],
+          "estimated_seconds": 4.632428098977692,
+          "angle_rad": 0.8162140494888459,
+          "remaining_seconds": 22.592,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scene": "visible_ramp_v1",
+      "experiment": "experiment-1a60b19ba566",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 10,
+        "preaction": 11,
+        "arrival": 21,
+        "decision": 23,
+        "post_turn": null,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 16.4,
+        "preaction": 17.0,
+        "arrival": 22.8,
+        "decision": 23.8,
+        "post_turn": null,
+        "final": 46.2
+      },
+      "action_stamp": 17.578,
+      "arrival_event_stamp": 22.873,
+      "decision_event_stamp": 23.878,
+      "turn_event_stamp": null,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 8,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.785738391670513,
+          "angle_rad": 0.8928691958352566,
+          "remaining_seconds": 22.622,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 152,
+          "opportunity_cells": [
+            [
+              16,
+              4
+            ],
+            [
+              20,
+              4
+            ]
+          ],
+          "estimated_seconds": 4.785738391670513,
+          "angle_rad": 0.8928691958352566,
+          "remaining_seconds": 22.622,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scene": "visible_curve_v1",
+      "experiment": "experiment-6526cf6eeb8a",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 20,
+        "decision": 22,
+        "post_turn": null,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 15.5,
+        "preaction": 16.6,
+        "arrival": 21.5,
+        "decision": 22.5,
+        "post_turn": null,
+        "final": 45.2
+      },
+      "action_stamp": 16.72,
+      "arrival_event_stamp": 21.656,
+      "decision_event_stamp": 22.664,
+      "turn_event_stamp": null,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 23,
+          "opportunity_cells": [],
+          "estimated_seconds": 3.8879827953920354,
+          "angle_rad": 0.44399139769601775,
+          "remaining_seconds": 23.235999999999997,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 105,
+          "opportunity_cells": [
+            [
+              14,
+              6
+            ]
+          ],
+          "estimated_seconds": 3.8879827953920354,
+          "angle_rad": 0.44399139769601775,
+          "remaining_seconds": 23.235999999999997,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scene": "visible_curve_v1",
+      "experiment": "experiment-5dbf867bf5f8",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 19,
+        "decision": 21,
+        "post_turn": 24,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 16.5,
+        "preaction": 17.7,
+        "arrival": 22.3,
+        "decision": 23.3,
+        "post_turn": 24.9,
+        "final": 46.5
+      },
+      "action_stamp": 17.959,
+      "arrival_event_stamp": 22.62,
+      "decision_event_stamp": 23.624,
+      "turn_event_stamp": 24.991,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 23,
+          "opportunity_cells": [],
+          "estimated_seconds": 3.8247365643737976,
+          "angle_rad": 0.41236828218689886,
+          "remaining_seconds": 23.276,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 100,
+          "opportunity_cells": [
+            [
+              19,
+              6
+            ]
+          ],
+          "estimated_seconds": 3.8247365643737976,
+          "angle_rad": 0.41236828218689886,
+          "remaining_seconds": 23.276,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    }
+  ],
+  "groups": [
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 109,
+      "gained": 109,
+      "lost": 0,
+      "net": 109
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 121,
+      "valid_before": 109,
+      "valid_after": 110,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 121,
+      "valid_before": 110,
+      "valid_after": 110,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 121,
+      "valid_before": 109,
+      "valid_after": 110,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 121,
+      "valid_before": 110,
+      "valid_after": 110,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 43,
+      "gained": 43,
+      "lost": 0,
+      "net": 43
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 44,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 46,
+      "valid_before": 44,
+      "valid_after": 44,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 44,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 46,
+      "valid_before": 44,
+      "valid_after": 44,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 110,
+      "gained": 110,
+      "lost": 0,
+      "net": 110
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 121,
+      "valid_before": 110,
+      "valid_after": 114,
+      "gained": 4,
+      "lost": 0,
+      "net": 4
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "post_turn",
+      "cells": 121,
+      "valid_before": 114,
+      "valid_after": 116,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 121,
+      "valid_before": 116,
+      "valid_after": 116,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 121,
+      "valid_before": 110,
+      "valid_after": 116,
+      "gained": 6,
+      "lost": 0,
+      "net": 6
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 121,
+      "valid_before": 114,
+      "valid_after": 116,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 43,
+      "gained": 43,
+      "lost": 0,
+      "net": 43
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 45,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "post_turn",
+      "cells": 46,
+      "valid_before": 45,
+      "valid_after": 45,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 46,
+      "valid_before": 45,
+      "valid_after": 45,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 45,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 46,
+      "valid_before": 45,
+      "valid_after": 45,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 93,
+      "gained": 93,
+      "lost": 0,
+      "net": 93
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 117,
+      "valid_before": 93,
+      "valid_after": 95,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "post_turn",
+      "cells": 117,
+      "valid_before": 95,
+      "valid_after": 96,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 117,
+      "valid_before": 96,
+      "valid_after": 96,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 117,
+      "valid_before": 93,
+      "valid_after": 96,
+      "gained": 3,
+      "lost": 0,
+      "net": 3
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 117,
+      "valid_before": 95,
+      "valid_after": 96,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 17,
+      "gained": 17,
+      "lost": 0,
+      "net": 17
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "post_turn",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 89,
+      "gained": 89,
+      "lost": 0,
+      "net": 89
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 117,
+      "valid_before": 89,
+      "valid_after": 97,
+      "gained": 8,
+      "lost": 0,
+      "net": 8
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 117,
+      "valid_before": 97,
+      "valid_after": 97,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 117,
+      "valid_before": 89,
+      "valid_after": 97,
+      "gained": 8,
+      "lost": 0,
+      "net": 8
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 117,
+      "valid_before": 97,
+      "valid_after": 97,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 16,
+      "gained": 16,
+      "lost": 0,
+      "net": 16
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 20,
+      "valid_before": 16,
+      "valid_after": 17,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 20,
+      "valid_before": 16,
+      "valid_after": 17,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 111,
+      "gained": 111,
+      "lost": 0,
+      "net": 111
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 121,
+      "valid_before": 111,
+      "valid_after": 112,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "post_turn",
+      "cells": 121,
+      "valid_before": 112,
+      "valid_after": 113,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 121,
+      "valid_before": 113,
+      "valid_after": 113,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 121,
+      "valid_before": 111,
+      "valid_after": 113,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 121,
+      "valid_before": 112,
+      "valid_after": 113,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 43,
+      "gained": 43,
+      "lost": 0,
+      "net": 43
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 43,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "post_turn",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 43,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 43,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 43,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 43,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 111,
+      "gained": 111,
+      "lost": 0,
+      "net": 111
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 121,
+      "valid_before": 111,
+      "valid_after": 113,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 121,
+      "valid_before": 113,
+      "valid_after": 113,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 121,
+      "valid_before": 111,
+      "valid_after": 113,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 121,
+      "valid_before": 113,
+      "valid_after": 113,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 43,
+      "gained": 43,
+      "lost": 0,
+      "net": 43
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 44,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 46,
+      "valid_before": 44,
+      "valid_after": 44,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 44,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 46,
+      "valid_before": 44,
+      "valid_after": 44,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 92,
+      "gained": 92,
+      "lost": 0,
+      "net": 92
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 117,
+      "valid_before": 92,
+      "valid_after": 94,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 117,
+      "valid_before": 94,
+      "valid_after": 94,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 117,
+      "valid_before": 92,
+      "valid_after": 94,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 117,
+      "valid_before": 94,
+      "valid_after": 94,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 18,
+      "gained": 18,
+      "lost": 0,
+      "net": 18
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 93,
+      "gained": 93,
+      "lost": 0,
+      "net": 93
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 117,
+      "valid_before": 93,
+      "valid_after": 94,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "post_turn",
+      "cells": 117,
+      "valid_before": 94,
+      "valid_after": 96,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 117,
+      "valid_before": 96,
+      "valid_after": 97,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 117,
+      "valid_before": 93,
+      "valid_after": 97,
+      "gained": 4,
+      "lost": 0,
+      "net": 4
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 117,
+      "valid_before": 94,
+      "valid_after": 97,
+      "gained": 3,
+      "lost": 0,
+      "net": 3
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 18,
+      "gained": 18,
+      "lost": 0,
+      "net": 18
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "post_turn",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 19,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 19,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 19,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    }
+  ],
+  "input_bundle": "/evidence/arrival-validation-evaluation-20260913",
+  "input_sha256": {
+    "captures/visible_ramp_v1-repeat1-no_turn/approach/samples.npz": "9b115ec2996929d835d07cb37170a6adc2d9860b9e354522b3b838acdffb7e5f",
+    "captures/visible_ramp_v1-repeat1-no_turn/approach-control.json": "2c206493fa4854a7cf6b56dca32f1411564ad50e26eeca8f1a2b53bfbf4a601c",
+    "captures/visible_ramp_v1-repeat1-turn/approach/samples.npz": "22b9c73788fcbe95a1cbabe4124838f0deca2379bd7171f887db7b7172cdb581",
+    "captures/visible_ramp_v1-repeat1-turn/approach-control.json": "20a16cd63c3f753fa788ea8c7a13dc4eeb5dec7ac632bed9b4b2ec3ed92692fe",
+    "captures/visible_curve_v1-repeat1-turn/approach/samples.npz": "9ce8798d4c9cd3f4650d6e082035a267b2b97d8323dc4fbaa6d93d93339be971",
+    "captures/visible_curve_v1-repeat1-turn/approach-control.json": "d3c8a85c502bb19c6155aa0bd7847c85094b0dd25107b1e9cc78300e116e2148",
+    "captures/visible_curve_v1-repeat1-no_turn/approach/samples.npz": "8dae455e98eef868442bf4d1381e72df7a770b5b72d5a34d734b1effcf9673fb",
+    "captures/visible_curve_v1-repeat1-no_turn/approach-control.json": "5168745333397642235d906b9362cbd4c13d48c8b258f164991fcb30bbc52d31",
+    "captures/visible_ramp_v1-repeat2-turn/approach/samples.npz": "03f15b5270f2b9196e9b7fdf1e77f31767076767d0c81b04b0b29dfa55f40663",
+    "captures/visible_ramp_v1-repeat2-turn/approach-control.json": "c656f6151e41131c6e95cf3231046eb0dedb16d79b4db5076dd0101c0d7dd5b3",
+    "captures/visible_ramp_v1-repeat2-no_turn/approach/samples.npz": "dde69f07320722df5830ebc1b03ade970f9562a06381110ad8332e685a35a12d",
+    "captures/visible_ramp_v1-repeat2-no_turn/approach-control.json": "319f988e64ea0e63046207cb3d955042320c6c8eeef16bcca3392bdca2ffdf12",
+    "captures/visible_curve_v1-repeat2-no_turn/approach/samples.npz": "2b4f4ce2ab6d0c26418a9cee111f7e6727b79cb96ce13b7b5b545598e2fd60f8",
+    "captures/visible_curve_v1-repeat2-no_turn/approach-control.json": "844ee2030de3d61a4b811c7b962146209e3295c7740a5ad9c2c3a03960aa291e",
+    "captures/visible_curve_v1-repeat2-turn/approach/samples.npz": "4d766b4ee908e5a5fafe4e8dd73da8ea6d73594af873f6bf97ea082f5de67f0f",
+    "captures/visible_curve_v1-repeat2-turn/approach-control.json": "c4b68e5860067e07112a12d5010b7b2552c4697ede8c2c335caaaa72e3fee775"
+  },
+  "limits": [
+    "Cumulative replay at observed Nav2 completion events; stage gains are temporal associations, not isolated causal effects.",
+    "Last synchronized observation at or before each event; exact sensor pose history is unchanged.",
+    "Truth surface labels stratify evaluation only; gate uses estimated poses and sensor-only arrival snapshots.",
+    "Fixed 35s protocol, no probability fitting, no online deployment. Gate addresses resampling, not unknown-area coverage."
+  ]
+}

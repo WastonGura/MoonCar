@@ -1,0 +1,49 @@
+{
+  "selected": {
+    "delta": 0.02,
+    "yaw": -0.5055924655916583,
+    "gate": {
+      "version": "swept-support-v3",
+      "turn": false,
+      "reason": "no_modelled_marginal_support",
+      "estimated_seconds": 3.04,
+      "remaining_seconds": 22.9,
+      "angle_rad": 0.020000000000000018,
+      "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+      "sampled_poses": 2,
+      "support_model": "measured-hold-v4"
+    },
+    "deficient_cells": 20,
+    "marginal_cells": 0
+  },
+  "candidates": [
+    {
+      "delta": 0.02,
+      "yaw": -0.5055924655916583,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": false,
+        "reason": "no_modelled_marginal_support",
+        "estimated_seconds": 3.04,
+        "remaining_seconds": 22.9,
+        "angle_rad": 0.020000000000000018,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2,
+        "support_model": "measured-hold-v4"
+      },
+      "deficient_cells": 20,
+      "marginal_cells": 0
+    }
+  ],
+  "feature_stamp": 27.9,
+  "completed_sim_stamp": 28.524,
+  "feature_age_seconds": 0.6240000000000023,
+  "remaining_seconds": 22.275999999999996,
+  "executable": true,
+  "checkpoint_sha256": "0620fb7d8c22b60783cf1bff2c939814e064873cd3104a510c22d48edc7d8bc5",
+  "reason": "selected_negative_probe",
+  "scope": "initial_deficient_targets",
+  "target_count": 131,
+  "support_model": "v4",
+  "meaning": "Skip this target-set observation only; global exploration continues"
+}

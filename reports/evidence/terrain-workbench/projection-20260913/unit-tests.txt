@@ -1,0 +1,14 @@
+test_depth_padding_endian_units_and_invalid_input (test_geometry.GeometryTest.test_depth_padding_endian_units_and_invalid_input) ... ok
+test_explicit_gazebo_pixel_centers_preserve_default_camera_convention (test_geometry.GeometryTest.test_explicit_gazebo_pixel_centers_preserve_default_camera_convention) ... ok
+test_flat_slope_roughness_step_and_pit (test_geometry.GeometryTest.test_flat_slope_roughness_step_and_pit) ... ok
+test_keepout_does_not_clear_unknown_and_respects_map_rotation (test_geometry.GeometryTest.test_keepout_does_not_clear_unknown_and_respects_map_rotation) ... ok
+test_optical_transform (test_geometry.GeometryTest.test_optical_transform) ... ok
+test_scanline_is_unknown_not_a_vertical_obstacle (test_geometry.GeometryTest.test_scanline_is_unknown_not_a_vertical_obstacle) ... ok
+test_nearest_visible_faces_caps_rotation_and_misses (test_depth_projection_evaluation.RayTests.test_nearest_visible_faces_caps_rotation_and_misses) ... ok
+test_raw_roundtrip_and_absolute_hypotheses_after_producer_correction (test_depth_projection_evaluation.RayTests.test_raw_roundtrip_and_absolute_hypotheses_after_producer_correction) ... ok
+test_bracket_rotation_and_optical_height (test_trajectory_evaluation.TrajectoryTests.test_bracket_rotation_and_optical_height) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.610s
+
+OK

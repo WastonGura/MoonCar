@@ -1,0 +1,10 @@
+[
+  {
+    "stamp": 10.7,
+    "reason": "Ground truth does not bracket observation"
+  },
+  {
+    "stamp": 11.3,
+    "reason": "Matching raw depth or CameraInfo unavailable"
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "version": "mooncar-pipeline-pilot-v1",
+  "frozen_utc": "2026-09-14T15:52:39.9021261Z",
+  "status": "ready_not_started",
+  "purpose": "Verify stable evidence production for all three online strategies after the headless batch change; do not infer strategy superiority",
+  "research_freeze": {
+    "version": "mooncar-research-freeze-v3",
+    "freeze_json_sha256": "066f9a05b159ba9f99587e017b4719b1efe0ba07561940b015a53e0911d5ea47",
+    "source_zip_sha256": "eb164cd4c7c6b556c1f5b9f722cc7cabfb53e9f7cf3e23ad06dcf041f8aaf3eb",
+    "runner_sha256": "7e908efa4bc36d35b1e2640ec2f952ed0d876168c29f9122ce8a6a039d01414d",
+    "evaluator_sha256": "df87081e629f30c125c8ca11de0ca9028d69c7f56753abbfd90a1ae720b809ff"
+  },
+  "scene": "visible_ramp_v1",
+  "starts": [
+    [-1.4, 1.55, -0.3],
+    [6.5, -2.0, 2.4]
+  ],
+  "strategies": [
+    "nearest_view_v1",
+    "coverage_view_v1",
+    "surface_view_v1"
+  ],
+  "repeats_per_strategy_condition": 1,
+  "budget_seconds": 30,
+  "radius_m": 8,
+  "capture_gui": false,
+  "declared_trials": 6,
+  "run_script_sha256": "f5b7dff113f610b5f4fcf0d5213e163540fd748748cd78fa980c6b8f91721966",
+  "output_root": "tmp/ros_acceptance/pipeline-pilot-20260915",
+  "completion": "Retain a terminal record for all six declared trials, including failed or not-evaluable outcomes",
+  "interpretation": "Pipeline feasibility only; no statistical or strategy-superiority claim",
+  "next_gate": "After all six terminal records are reviewed for evidence completeness and host runtime, freeze one finite replacement formal protocol without consulting strategy scores"
+}

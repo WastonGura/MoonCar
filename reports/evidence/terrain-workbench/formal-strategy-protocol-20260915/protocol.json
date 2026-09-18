@@ -1,0 +1,61 @@
+{
+  "version": "mooncar-formal-strategy-protocol-v2",
+  "frozen_utc": "2026-09-15T09:26:17.8909047Z",
+  "status": "ready_not_started",
+  "purpose": "Compare the performance and applicable conditions of three frozen online exploration strategies without prespecifying a winner",
+  "research_freeze": {
+    "version": "mooncar-research-freeze-v3",
+    "freeze_json_sha256": "066f9a05b159ba9f99587e017b4719b1efe0ba07561940b015a53e0911d5ea47",
+    "source_zip_sha256": "eb164cd4c7c6b556c1f5b9f722cc7cabfb53e9f7cf3e23ad06dcf041f8aaf3eb",
+    "runner_sha256": "7e908efa4bc36d35b1e2640ec2f952ed0d876168c29f9122ce8a6a039d01414d",
+    "evaluator_sha256": "df87081e629f30c125c8ca11de0ca9028d69c7f56753abbfd90a1ae720b809ff"
+  },
+  "supersedes": {
+    "aborted_campaign": "tmp/ros_acceptance/formal-strategy-20260914",
+    "reuse_old_results": false,
+    "cancelled_unstarted_pilot": "mooncar-pipeline-pilot-v1",
+    "reason": "User chose the original full design after reviewing the scientific impact of reducing trials and duration"
+  },
+  "strategies": [
+    "nearest_view_v1",
+    "coverage_view_v1",
+    "surface_view_v1"
+  ],
+  "scenes": [
+    {
+      "name": "survey",
+      "starts": [[-15.0, -16.0, 0.0], [15.0, 16.0, 3.141592653589793]]
+    },
+    {
+      "name": "visible_ramp_v1",
+      "starts": [[-1.4, 1.55, -0.3], [6.5, -2.0, 2.4]]
+    },
+    {
+      "name": "visible_curve_v1",
+      "starts": [[-1.4, 1.55, -0.3], [6.5, -2.0, 2.4]]
+    }
+  ],
+  "repeats_per_strategy_condition": 3,
+  "budget_seconds": 90,
+  "radius_m": 8,
+  "capture_gui": false,
+  "declared_trials": 54,
+  "run_script_sha256": "00fcab7f0a956a4d4b09ab20f70800c30b3bf591e2b7cef8cef587041e23fcb6",
+  "reset": "New Gazebo process, SLAM state, map recorder and evidence capture for every trial",
+  "ordering": "Within each scene, rotate strategy order by repeat and start index using the frozen runner",
+  "primary_outcome": "S at the recorded terminal time, using mapping-acceptance-v1",
+  "secondary_outcomes": [
+    "C_obs", "C", "P", "height_rmse_m", "slope_mae_deg",
+    "elapsed_seconds", "path_m", "actions_failed", "terminal_status"
+  ],
+  "analysis": {
+    "condition_unit": "Six scene-by-start conditions",
+    "repeat_summary": "For every strategy and condition report all three trials, mean, median, standard deviation, minimum and maximum",
+    "overall_summary": "Compare the six condition means; do not pool 18 repeats as 18 independent terrain conditions",
+    "pairwise_test": "Exploratory exact paired sign-flip test on the six condition-mean S differences, with Holm correction across three strategy pairs",
+    "missing_data": "Retain failed and not-evaluable trials, report counts and reasons, never replace or impute; omit a pairwise test if either strategy lacks a condition mean",
+    "interpretation": "Report effect direction, magnitude, dispersion and scene dependence; no universal superiority or cross-world generalization claim"
+  },
+  "stopping_rule": "Run the 54 declared trials once. Stop on an orchestration failure for diagnosis; resume only unstarted declared trials after a documented implementation fix. Never replace a completed poor result.",
+  "output_root": "tmp/ros_acceptance/formal-strategy-20260915"
+}

@@ -1,0 +1,26 @@
+visible_ramp_v1-repeat1-no_turn evaluated
+visible_ramp_v1-repeat1-turn evaluated
+visible_curve_v1-repeat1-turn evaluated
+visible_curve_v1-repeat1-no_turn evaluated
+visible_ramp_v1-repeat2-turn evaluated
+visible_ramp_v1-repeat2-no_turn evaluated
+visible_curve_v1-repeat2-no_turn evaluated
+visible_curve_v1-repeat2-turn evaluated
+visible_ramp_v1-repeat1-no_turn evaluated
+visible_ramp_v1-repeat1-turn evaluated
+visible_curve_v1-repeat1-turn evaluated
+visible_curve_v1-repeat1-no_turn evaluated
+visible_ramp_v1-repeat2-turn evaluated
+visible_ramp_v1-repeat2-no_turn evaluated
+visible_curve_v1-repeat2-no_turn evaluated
+visible_curve_v1-repeat2-turn evaluated
+{
+  "development_only": true,
+  "legacy_candidates_reproduced": 48,
+  "zero_view_checks": 8,
+  "old_hold_predictions": 14,
+  "new_hold_predictions": 0,
+  "negative_candidates": [],
+  "online_ready": false,
+  "limits": "Existing captures are development data. Zero-view checks are not nonzero negative experiments. Future views remain unoccluded horizontal-plane hypotheses."
+}

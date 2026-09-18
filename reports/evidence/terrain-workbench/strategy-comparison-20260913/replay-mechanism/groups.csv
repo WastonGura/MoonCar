@@ -1,0 +1,9 @@
+﻿condition,category,baseline_cells,eligible,recovered,success_fraction,invalid_conflict
+held_image,all,1211,453,0,0.0,54
+held_image,ground,1100,425,0,0.0,1
+held_image,sloped_top,0,0,0,,0
+held_image,mixed,90,13,0,0.0,50
+changed_view,all,1211,453,109,0.24061810154525387,68
+changed_view,ground,1100,425,106,0.24941176470588236,1
+changed_view,sloped_top,0,0,0,,0
+changed_view,mixed,90,13,2,0.15384615384615385,63

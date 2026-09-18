@@ -1,0 +1,23 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2026-09-09-14-35-17-263034-820fd683c147-998
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [map_recorder.py-1]: process started with pid [1017]
+[map_recorder.py-1] [INFO] [1788964517.863134264] [mooncar_map_recorder]: Observation archive: /evidence/gazebo-map-0ftPXy/survey-20260909T143517827513Z.npz
+[map_recorder.py-1] Traceback (most recent call last):
+[map_recorder.py-1]   File "/work/ros2_ws/install/mooncar_terrain/lib/mooncar_terrain/map_recorder.py", line 146, in <module>
+[map_recorder.py-1]     main()
+[map_recorder.py-1]   File "/work/ros2_ws/install/mooncar_terrain/lib/mooncar_terrain/map_recorder.py", line 131, in main
+[map_recorder.py-1]     rclpy.spin(node)
+[map_recorder.py-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+[map_recorder.py-1]     executor.spin_once()
+[map_recorder.py-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+[map_recorder.py-1]     self._spin_once_impl(timeout_sec)
+[map_recorder.py-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+[map_recorder.py-1]     handler, entity, node = self.wait_for_ready_callbacks(
+[map_recorder.py-1]                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[map_recorder.py-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+[map_recorder.py-1]     return next(self._cb_iter)
+[map_recorder.py-1]            ^^^^^^^^^^^^^^^^^^^
+[map_recorder.py-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+[map_recorder.py-1]     raise ExternalShutdownException()
+[map_recorder.py-1] rclpy.executors.ExternalShutdownException
+[ERROR] [map_recorder.py-1]: process has died [pid 1017, exit code 1, cmd '/work/ros2_ws/install/mooncar_terrain/lib/mooncar_terrain/map_recorder.py --ros-args --params-file /tmp/launch_params_emicokcq'].

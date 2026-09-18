@@ -1,0 +1,69 @@
+{
+  "active": false,
+  "phase": "stopped",
+  "reason": "已手动停止自主探测",
+  "origin": [
+    4.502005034219876,
+    8.471758244363011
+  ],
+  "budget_seconds": 90,
+  "radius": 3,
+  "started": 203.383,
+  "elapsed_seconds": 34.1,
+  "history": [
+    {
+      "x": 4.502,
+      "y": 8.472,
+      "yaw": -1.5707963267948966,
+      "kind": "turn",
+      "expected_new_m2": 0.188,
+      "expected_improvement_m2": 0.396,
+      "estimated_seconds": 6.5,
+      "score": 0.08958338793399243,
+      "success": true,
+      "actual_quality_gain_m2": 2.183,
+      "elapsed_seconds": 5.2,
+      "motion_error": ""
+    },
+    {
+      "x": 4.502,
+      "y": 6.972,
+      "yaw": 1.5707963267948966,
+      "kind": "resample",
+      "expected_new_m2": 0.0,
+      "expected_improvement_m2": 0.681,
+      "estimated_seconds": 18.8,
+      "score": 0.036159280404840295,
+      "success": true,
+      "actual_quality_gain_m2": 6.783,
+      "elapsed_seconds": 24.6,
+      "motion_error": ""
+    },
+    {
+      "x": 4.528,
+      "y": 7.109,
+      "yaw": 0.7853981633974483,
+      "kind": "turn",
+      "expected_new_m2": 0.0,
+      "expected_improvement_m2": 0.349,
+      "estimated_seconds": 6.5,
+      "score": 0.05362093369797825,
+      "success": true,
+      "actual_quality_gain_m2": 1.982,
+      "elapsed_seconds": 29.9,
+      "motion_error": ""
+    }
+  ],
+  "decision": {
+    "x": 4.528,
+    "y": 7.109,
+    "yaw": 2.356194490192345,
+    "kind": "turn",
+    "expected_new_m2": 0.0,
+    "expected_improvement_m2": 0.205,
+    "estimated_seconds": 8.2,
+    "score": 0.025049194484892186
+  },
+  "archive": "autonomy-2cc6280d70.json",
+  "remaining_seconds": 55.9
+}

@@ -1,0 +1,17 @@
+{
+  "cells.csv": "1bdaaac4400e5eca21d9904ced770180ebab7b9c07988115f98b00022946c202",
+  "maps.pdf": "58d7a27af0c16a65b7ebf7e24345f7d2d9a442597d6f186a81fa4689b5f995b6",
+  "maps.png": "c229898b337251b6e0c2d99a08f3447b66bf17cfa604951d8cb6ce1fe4fddf48",
+  "observations.npz": "86700660bbc7abea9cb8eaec2277a19cd59d2eae7451af2d62e7e87738ffb423",
+  "README.md": "c843333769f90faa78e1b2b0f30a413d47c7e115bd494a266583c82cb0527c9b",
+  "reference.json": "265bdd90dab9c3d901117d0786aeef2b306f3a92a71abb72c2980835d672f862",
+  "summary.json": "acbd79a95e7602c6eb755066e9c768794a0d93ece783401c159342cc4793b748",
+  "source/mapping_acceptance.py": "df87081e629f30c125c8ca11de0ca9028d69c7f56753abbfd90a1ae720b809ff",
+  "source/report_mapping_acceptance.py": "6dcd10a08a6e23e3fb744ade7d293ab7225d36084a2e606366504e1d9316d63c",
+  "source/simulation_experiment.py": "c9f5bf8177ce2dbf07089aba7d6782f0c5d2bc2d90d566f47e8749915d63e1b4",
+  "source/survey_evaluation.py": "004780a0d96f23b751ef8a5ef783730187dbdbc9847d2f84ca3fee30e8dd9f23",
+  "source/terrain_geometry.py": "9ef1c21dfb8d0503d99286a6bde35fb2f0a938dbc9bcbf923e5897fbb7f25ed4",
+  "source/terrain_map.py": "d43e3abdee30d4b70701fef793d65f8067149ae9bfdcbf4ada3041b407a1a856",
+  "source/terrain_reference.py": "9f8a367e1ccb8ee55942d42471e6322665a350322836a96c018982c2ab732c69",
+  "source/trajectory_evaluation.py": "2e318fb6d2bf7ba80d674630f6c29ad0bad428dd1d674a286b719f7b36c89822"
+}

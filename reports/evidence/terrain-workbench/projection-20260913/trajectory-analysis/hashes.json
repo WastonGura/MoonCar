@@ -1,0 +1,14 @@
+{
+  "depth-comparison.pdf": "84b1a16e78e55061201def7b503d887ff5cca5081827368a2b72a5a5454ed1e2",
+  "depth-comparison.png": "c8d7a8e964088ba9fb96d18307f6aa2cec607091bce90140fbd4695532d66321",
+  "depth_projection_evaluation.py": "1a07a75ac5ffebc2f5c1881155d5a59cd723a90cc57aed8b49215fd9f24adf6e",
+  "frames.csv": "bcdae10570cd58e3fc327e80f325b90408ed3da290bb4d3df95a2fd67aff2039",
+  "groups.csv": "e3cb4508e4e44bb080a6358d02d981faa80d93cd2ef1c0be96b0f621a69fcf56",
+  "residuals.npz": "dad77bb7daa79266375391e6d84894197c16fbbe41ceac78658d6b31fcecc483",
+  "simulation_experiment.py": "df5e80a12890c190e97cbba48cc8d99b7fafd72ee1c201097b3418dbbfbf7c59",
+  "summary.json": "78d4fde400c10972130bd53605738da729c50a4ca4fc7031e1c5d29ddff35332",
+  "survey_evaluation.py": "84197f22f1ec2c2c48e441d704055e861e5cd93cfea4b25fcd6c3cd86590f201",
+  "terrain_geometry.py": "9ef1c21dfb8d0503d99286a6bde35fb2f0a938dbc9bcbf923e5897fbb7f25ed4",
+  "terrain_reference.py": "7fe9587e2bcdb8341a952db429ca51f4aece0208a36c38dfb600d4526884b051",
+  "trajectory_evaluation.py": "92898f7ef14f8b157affe830df43b7c12a3294f1acc0b77537028b72a3796119"
+}

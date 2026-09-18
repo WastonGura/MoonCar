@@ -1,0 +1,20 @@
+{
+  "arm": "wide_turn",
+  "goal": [
+    0.1,
+    1.05
+  ],
+  "pose": {
+    "x": -0.6990622760491408,
+    "y": 1.4789543404459398,
+    "z": 0.0,
+    "yaw": -0.5999772033980493
+  },
+  "yaw": -0.19997720339804928,
+  "requested_delta": 0.4,
+  "feature_stamp": 28.1,
+  "decision_stamp": 28.708,
+  "window_seconds": 20.0,
+  "checkpoint_sha256": "d8fecd3643b59679caafb8cc7f9504373badd72008e7e35fa946a88689f78eb6",
+  "path_file": "alternative-nav2-plan.json"
+}

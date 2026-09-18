@@ -1,0 +1,4 @@
+﻿first,second,conditions,mean_S_difference,exact_sign_flip_p,holm_p
+nearest_view_v2,coverage_view_v2,6,3.021784142224422,0.3125,0.9375
+nearest_view_v2,surface_view_v2,6,-2.3201235384485797,0.5,0.9375
+coverage_view_v2,surface_view_v2,6,-5.3419076806730015,0.40625,0.9375

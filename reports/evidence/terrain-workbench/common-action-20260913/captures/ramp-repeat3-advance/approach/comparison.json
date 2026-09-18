@@ -1,0 +1,20 @@
+{
+  "arm": "advance",
+  "goal": [
+    0.1,
+    1.05
+  ],
+  "pose": {
+    "x": -0.7265995960387183,
+    "y": 1.437827550468279,
+    "z": 0.0,
+    "yaw": -0.5751583535132542
+  },
+  "yaw": -0.5751583535132542,
+  "requested_delta": 0.0,
+  "feature_stamp": 28.5,
+  "decision_stamp": 29.173,
+  "window_seconds": 20.0,
+  "checkpoint_sha256": "b46047552da723c64474940c639c52dd7c9db5dc50b8011437a892bdcf7caba6",
+  "path_file": "alternative-nav2-plan.json"
+}

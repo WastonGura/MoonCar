@@ -1,0 +1,49 @@
+{
+  "trials": [
+    {
+      "experiment": "experiment-348f798f421b",
+      "split": "heldout_curved_region",
+      "frames": 54,
+      "baseline_frames": 9,
+      "baseline_last_stamp": 14.4,
+      "action_stamp": 16.088,
+      "motion_phase": "idle",
+      "planned_goal": [
+        -9.2,
+        6.45
+      ],
+      "initial_deficient": 95
+    },
+    {
+      "experiment": "experiment-77c20d5e42f8",
+      "split": "heldout_curved_region",
+      "frames": 54,
+      "baseline_frames": 9,
+      "baseline_last_stamp": 14.8,
+      "action_stamp": 16.206,
+      "motion_phase": "succeeded",
+      "planned_goal": [
+        -9.2,
+        6.45
+      ],
+      "initial_deficient": 95
+    }
+  ],
+  "input_sha256": {
+    "/evidence/ridge-heldout-20260913/stationary/samples.npz": "ec9fe531976d10cb49b4e31bf371b579e3acff66062d99e6a6e29a442aea7ca9",
+    "/evidence/ridge-heldout-20260913/stationary-control.json": "4b827fe8913bbd5f7e570b0a89a245a1d9c09d698ef7da5b718fdcda49be04ff",
+    "/evidence/ridge-heldout-20260913/plan.json": "2dcbb28dcd3285e0fbe87488d8af41c89e52504db727c82b5686afc50cf20a40",
+    "/evidence/ridge-heldout-20260913/approach/samples.npz": "b0b44b7f19b7cfa6eb58a4e26b0a4656bc426ed555939e006f21e2ccb9e5400c",
+    "/evidence/ridge-heldout-20260913/approach-control.json": "5b8fabd8ff8249c3edcf037f69d84620a3e4ed6f7a2f4e519afdca62eff08320"
+  },
+  "features_use_truth": false,
+  "fitted_parameters": false,
+  "accepted_policy": false,
+  "limits": [
+    "Different curved ridge and starting point within the same world, not an independent-world generalization test.",
+    "Both captures have 30 simulation-second budgets and fresh resets; baseline cells/timing may differ.",
+    "Rules unchanged before reading these outcomes; no probability fitting or online policy update.",
+    "Sensor-derived fit recovery is not accuracy, traversability or a surface truth label.",
+    "Cells and frames are correlated; these two trajectories are not a statistical sample of environments."
+  ]
+}

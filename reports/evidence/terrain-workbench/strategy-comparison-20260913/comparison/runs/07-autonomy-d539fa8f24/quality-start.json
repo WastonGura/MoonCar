@@ -1,0 +1,1338 @@
+{
+  "resolution": 0.25,
+  "cells": [
+    {
+      "ix": 17,
+      "iy": 10,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 17,
+      "iy": 11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 17,
+      "iy": 12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 17,
+      "iy": 13,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 18,
+      "iy": 10,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "valid",
+      "points": 17,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 18,
+      "iy": 11,
+      "coverage": 1.0,
+      "view_directions": 1,
+      "quality": 0.8,
+      "fit_state": "valid",
+      "points": 25,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 18,
+      "iy": 12,
+      "coverage": 1.0,
+      "view_directions": 1,
+      "quality": 0.8,
+      "fit_state": "valid",
+      "points": 25,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 18,
+      "iy": 13,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "valid",
+      "points": 18,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 19,
+      "iy": 10,
+      "coverage": 1.0,
+      "view_directions": 1,
+      "quality": 0.8,
+      "fit_state": "valid",
+      "points": 20,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 19,
+      "iy": 11,
+      "coverage": 1.0,
+      "view_directions": 1,
+      "quality": 0.8,
+      "fit_state": "valid",
+      "points": 20,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 19,
+      "iy": 12,
+      "coverage": 1.0,
+      "view_directions": 1,
+      "quality": 0.8,
+      "fit_state": "valid",
+      "points": 20,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 19,
+      "iy": 13,
+      "coverage": 1.0,
+      "view_directions": 1,
+      "quality": 0.8,
+      "fit_state": "valid",
+      "points": 20,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 19,
+      "iy": 9,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 19,
+      "iy": 14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 20,
+      "iy": 9,
+      "coverage": 0.5625,
+      "view_directions": 1,
+      "quality": 0.45,
+      "fit_state": "valid",
+      "points": 12,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 20,
+      "iy": 10,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "valid",
+      "points": 15,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 20,
+      "iy": 11,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "valid",
+      "points": 15,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 20,
+      "iy": 12,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "valid",
+      "points": 15,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 20,
+      "iy": 13,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "valid",
+      "points": 15,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 20,
+      "iy": 14,
+      "coverage": 0.5625,
+      "view_directions": 1,
+      "quality": 0.45,
+      "fit_state": "valid",
+      "points": 12,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 21,
+      "iy": 8,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 21,
+      "iy": 9,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 21,
+      "iy": 10,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 21,
+      "iy": 11,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 21,
+      "iy": 12,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 21,
+      "iy": 13,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 21,
+      "iy": 14,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 21,
+      "iy": 15,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": 8,
+      "coverage": 0.4375,
+      "view_directions": 1,
+      "quality": 0.35,
+      "fit_state": "valid",
+      "points": 9,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 22,
+      "iy": 9,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 22,
+      "iy": 10,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 22,
+      "iy": 11,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 22,
+      "iy": 12,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": 13,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": 14,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": 15,
+      "coverage": 0.4375,
+      "view_directions": 1,
+      "quality": 0.35,
+      "fit_state": "valid",
+      "points": 9,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": 7,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 22,
+      "iy": 16,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 23,
+      "iy": 7,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 23,
+      "iy": 8,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 23,
+      "iy": 9,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 23,
+      "iy": 10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 23,
+      "iy": 11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 23,
+      "iy": 12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 23,
+      "iy": 13,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 23,
+      "iy": 14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 23,
+      "iy": 15,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 23,
+      "iy": 16,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 24,
+      "iy": 6,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 24,
+      "iy": 7,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 24,
+      "iy": 8,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 24,
+      "iy": 9,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 24,
+      "iy": 10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 24,
+      "iy": 11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 24,
+      "iy": 12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 24,
+      "iy": 13,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 24,
+      "iy": 14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 24,
+      "iy": 15,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 24,
+      "iy": 16,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 24,
+      "iy": 17,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 26,
+      "iy": 5,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 26,
+      "iy": 6,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 26,
+      "iy": 7,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 26,
+      "iy": 8,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 26,
+      "iy": 9,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 26,
+      "iy": 10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 26,
+      "iy": 11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 26,
+      "iy": 12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 26,
+      "iy": 13,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 26,
+      "iy": 14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 26,
+      "iy": 15,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 26,
+      "iy": 16,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 26,
+      "iy": 17,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 26,
+      "iy": 18,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 27,
+      "iy": 5,
+      "coverage": 0.3125,
+      "view_directions": 1,
+      "quality": 0.25,
+      "fit_state": "nonplanar",
+      "points": 50,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 27,
+      "iy": 6,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 28,
+      "iy": 4,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "steep_fit",
+      "points": 6,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 28,
+      "iy": 5,
+      "coverage": 0.9375,
+      "view_directions": 1,
+      "quality": 0.75,
+      "fit_state": "steep_fit",
+      "points": 48,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 28,
+      "iy": 6,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "nonplanar",
+      "points": 73,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 28,
+      "iy": 7,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 28,
+      "iy": 8,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 28,
+      "iy": 9,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 28,
+      "iy": 10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 28,
+      "iy": 11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 28,
+      "iy": 12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 28,
+      "iy": 13,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 28,
+      "iy": 14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 28,
+      "iy": 15,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 28,
+      "iy": 16,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 28,
+      "iy": 17,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 28,
+      "iy": 18,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 28,
+      "iy": 19,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 29,
+      "iy": 4,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 29,
+      "iy": 5,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 29,
+      "iy": 6,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "nonplanar",
+      "points": 8,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 31,
+      "iy": 5,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 31,
+      "iy": 6,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 31,
+      "iy": 7,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 31,
+      "iy": 8,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 31,
+      "iy": 9,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 31,
+      "iy": 10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 31,
+      "iy": 11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 31,
+      "iy": 12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 31,
+      "iy": 13,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 31,
+      "iy": 14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 31,
+      "iy": 15,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 31,
+      "iy": 16,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 31,
+      "iy": 17,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 31,
+      "iy": 18,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 31,
+      "iy": 19,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 31,
+      "iy": 20,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 31,
+      "iy": 21,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 3,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 36,
+      "iy": 4,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 36,
+      "iy": 5,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 36,
+      "iy": 6,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 36,
+      "iy": 7,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 36,
+      "iy": 8,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 36,
+      "iy": 9,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 36,
+      "iy": 10,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 36,
+      "iy": 11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 36,
+      "iy": 12,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 13,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 15,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 16,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 17,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 18,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 19,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 20,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 21,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 22,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 36,
+      "iy": 23,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    }
+  ],
+  "frames": 3,
+  "stamp": 3.2,
+  "meaning": "spatial sampling and bearing diversity; not accuracy or safety probability"
+}

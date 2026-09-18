@@ -1,0 +1,23 @@
+{
+  "sim_stamp": 68.481,
+  "elapsed_seconds": 62.88799999999999,
+  "phase": "turning",
+  "pose": {
+    "x": -6.029494991127525,
+    "y": -1.635303964647162,
+    "z": 0.0,
+    "yaw": 2.7177406554747705
+  },
+  "ready": true,
+  "motion_error": "",
+  "path_m": 1.372893742940625,
+  "roi_area_m2": 314.0,
+  "observed_area_m2": 121.625,
+  "observed_fraction": 0.3873407643312102,
+  "quality_area_m2": 61.048500000000004,
+  "sufficient_area_m2": 29.3125,
+  "mean_observed_quality": 0.5019403905447071,
+  "frames": 79,
+  "quality_stamp": 63.8,
+  "scene_age_wall_seconds": 0.5053691864013672
+}

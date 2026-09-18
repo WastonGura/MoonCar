@@ -1,0 +1,112 @@
+{
+  "created_utc": "2026-09-13T14:12:10.061116+00:00",
+  "trials": [
+    {
+      "folder": "ramp-repeat3-hold",
+      "repeat": 3,
+      "arm": "hold",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    },
+    {
+      "folder": "ramp-repeat3-wide_turn",
+      "repeat": 3,
+      "arm": "wide_turn",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    },
+    {
+      "folder": "ramp-repeat3-advance",
+      "repeat": 3,
+      "arm": "advance",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    },
+    {
+      "folder": "ramp-repeat3-small_turn",
+      "repeat": 3,
+      "arm": "small_turn",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    }
+  ],
+  "source_sha256": {
+    "scripts/compare_observation_actions.py": "7e23d55ee215166c33e453288d1ddff034f01879a6ab0b78367205f898e61311",
+    "scripts/capture_slope_resampling.py": "3e51a5df88636f75ea4e43c63cc6f6a30c52db33b4cb160e8dd422727a947205",
+    "scripts/trajectory_evaluation.py": "315ea631800071d89aa1af7cbf707a7f25411a05f1a77642ed30f5165de9fafe",
+    "scripts/skip_probe.py": "b990f14e010645d8fe170e9ffadc32ea37c95d27741ce5ca4dd3611322923afa",
+    "scripts/swept_resampling.py": "1a038b2eebb36913165b450db43c86e43c12fc42ab41ac85fd49f1b4064f8c34",
+    "scripts/survey_evaluation.py": "004780a0d96f23b751ef8a5ef783730187dbdbc9847d2f84ca3fee30e8dd9f23",
+    "scripts/observation_path.py": "af3d01f56c0ccae98262c5d326b8f70fa23ffea72176b95874bfa89265ae8d93",
+    "scripts/resampling_dataset.py": "6abc429cc48228781b44484eabdf144c6faae11fa00e94a049c36fef5c367a85",
+    "scripts/autonomous_survey.py": "1b1ee3a62d418f44dd3c9ab62e4b4a5f931da62e6bc85b356281e00680d32202",
+    "scripts/experiment_motion.py": "59a67e5d05a0b657e9ce08ad8d783bf7e501d03849a156a92c41ee36b430479e",
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_map.py": "d43e3abdee30d4b70701fef793d65f8067149ae9bfdcbf4ada3041b407a1a856",
+    "tmp/evaluate_common_action.py": "5a269bd275954201b9288d30dca5ffc3afaf581fef01256b4ba3feef93bc8e27",
+    "scripts/action_support.py": "e2b79aea021ee2562efaab31852b6bf9fffde2f33f8a88e0d0c88f0e0a154f3d",
+    "scripts/compare_survey_strategies.py": "5691fd53e08024d4b2bac7d4bb1cc84a753b096c828d1ace4229991072beab57"
+  },
+  "protocol": [
+    "Four new resets as a supplemental quartet; previous8-attempt protocol and failures remain unchanged. Hold, +.02rad, +.4rad, next Nav2 location then restore decision heading.",
+    "60simseconds, >=5s pre-move baseline and frozen targets, same initial Nav2 move,5s arrival holding. All arms query the same alternative path.",
+    "Pre-action sensor-only checkpoint <=5s old and >=22s remaining. Primary equal20simsecond window from command, INCLUDING movement/turn costs.",
+    "ROI is fixed radius8m disk around initial XY intersected with50m world. Utility=new observed area + recovered previously deficient area; report each separately, plus loss of previously valid area.",
+    "Retain shared-cohort comparisons: old deficits common to all4arms; novel cells absent from all4decision maps. Pre-move target versus outside-target separate. No per-arm subtraction of unequal eligible sets.",
+    "Record failures and incomplete windows; never replace a failed run. Require4 valid windows and successful prescribed movement/headings for comparison completeness, not superiority.",
+    "Common known-surface-v5 ray/voxel/fit model for all actions; predicted recovery minus predicted loss over20s. Unknown new-area prediction and total ranking are absent. No online admission.",
+    "Report both original positive utility and loss-adjusted utility; shared loss cohort is the intersection of initially valid cells across all4arms.",
+    "No parameter fitting on outcomes, no significance/accuracy/hardware claim; wide-turn .4rad and .75m onward displacement fixed in advance."
+  ]
+}

@@ -17,3 +17,5 @@ __pycache__/
 .vscode/
 .idea/
 known_hosts_vm
+web/node_modules/
+tmp/

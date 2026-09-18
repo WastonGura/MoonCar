@@ -1,0 +1,10 @@
+[
+  {
+    "stamp": 10.3,
+    "reason": "Ground truth does not bracket observation"
+  },
+  {
+    "stamp": 10.9,
+    "reason": "Lookup would require extrapolation into the past.  Requested time 10.900000 but the earliest data is at time 11.200000, when looking up transform from frame [base_footprint] to frame [map]"
+  }
+]

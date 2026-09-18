@@ -1,0 +1,10 @@
+ramp-repeat1-hold invalid None
+ramp-repeat1-small_turn invalid None
+ramp-repeat1-wide_turn evaluated 2.9375
+ramp-repeat1-advance evaluated 6.625
+ramp-repeat2-advance evaluated 6.1875
+ramp-repeat2-wide_turn evaluated 2.8125
+ramp-repeat2-small_turn evaluated 0.5
+ramp-repeat2-hold evaluated 0.0
+Saved measured action charts and scene/observed-map panels
+PASS current evaluation sources match the pre-capture frozen protocol

@@ -1,0 +1,172 @@
+{
+  "created_utc": "2026-09-13T10:00:48.271340+00:00",
+  "trials": [
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "pair": "visible_ramp_v1-repeat1",
+      "repeat": 1,
+      "arm": "no_turn",
+      "start": [
+        -1.0,
+        1.2,
+        -0.15
+      ],
+      "goal": [
+        -0.3,
+        1.0
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "pair": "visible_ramp_v1-repeat1",
+      "repeat": 1,
+      "arm": "turn",
+      "start": [
+        -1.0,
+        1.2,
+        -0.15
+      ],
+      "goal": [
+        -0.3,
+        1.0
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-repeat1-turn",
+      "pair": "visible_curve_v1-repeat1",
+      "repeat": 1,
+      "arm": "turn",
+      "start": [
+        -1.5,
+        1.8,
+        -0.35
+      ],
+      "goal": [
+        -0.8,
+        1.6
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "pair": "visible_curve_v1-repeat1",
+      "repeat": 1,
+      "arm": "no_turn",
+      "start": [
+        -1.5,
+        1.8,
+        -0.35
+      ],
+      "goal": [
+        -0.8,
+        1.6
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "pair": "visible_ramp_v1-repeat2",
+      "repeat": 2,
+      "arm": "turn",
+      "start": [
+        -1.0,
+        1.2,
+        -0.15
+      ],
+      "goal": [
+        -0.3,
+        1.0
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "pair": "visible_ramp_v1-repeat2",
+      "repeat": 2,
+      "arm": "no_turn",
+      "start": [
+        -1.0,
+        1.2,
+        -0.15
+      ],
+      "goal": [
+        -0.3,
+        1.0
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "pair": "visible_curve_v1-repeat2",
+      "repeat": 2,
+      "arm": "no_turn",
+      "start": [
+        -1.5,
+        1.8,
+        -0.35
+      ],
+      "goal": [
+        -0.8,
+        1.6
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-repeat2-turn",
+      "pair": "visible_curve_v1-repeat2",
+      "repeat": 2,
+      "arm": "turn",
+      "start": [
+        -1.5,
+        1.8,
+        -0.35
+      ],
+      "goal": [
+        -0.8,
+        1.6
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    }
+  ],
+  "conditions": [
+    "approach"
+  ],
+  "source_sha256": {
+    "ros2_ws/src/mooncar_terrain/config/zones.yaml": "14ebe3f79a0337c6f9114631ce369375808d567b36b15a2cb185ef0aec40162e",
+    "scripts/arrival_resampling.py": "f1619dab69552040b1474c960d67e228180a519988e8de6a6eba5eef028aa93b",
+    "scripts/observation_path.py": "af3d01f56c0ccae98262c5d326b8f70fa23ffea72176b95874bfa89265ae8d93",
+    "scripts/resampling_dataset.py": "6abc429cc48228781b44484eabdf144c6faae11fa00e94a049c36fef5c367a85",
+    "scripts/capture_slope_resampling.py": "064b3f314adebff8a40db0480cc3a1cab45ce8421d393049523ba8dc71bce1f8",
+    "scripts/path_resampling_evaluation.py": "b2b14b8bd0f8f6bfd5ed126a75c7853eaa96c288e1d3865a4a2bebda6ff8179d",
+    "scripts/experiment_motion.py": "59a67e5d05a0b657e9ce08ad8d783bf7e501d03849a156a92c41ee36b430479e",
+    "scripts/simulation_experiment.py": "c9f5bf8177ce2dbf07089aba7d6782f0c5d2bc2d90d566f47e8749915d63e1b4",
+    "scripts/autonomous_survey.py": "1b1ee3a62d418f44dd3c9ab62e4b4a5f931da62e6bc85b356281e00680d32202",
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_map.py": "d43e3abdee30d4b70701fef793d65f8067149ae9bfdcbf4ada3041b407a1a856"
+  },
+  "limits": [
+    "Prospective eight fresh captures: two farther target distances, changed start headings, two repeats per arm; no parameter changes after outcomes",
+    "35 simulation seconds including 5s baseline and 1s common settling interval after navigation; turn time counts within budget",
+    "Gate evaluated in shadow from observations no later than recorded decision time; experimental arm executed regardless of gate to reveal false skips",
+    "Primary: shared eligible decision-time cells, turn vs no-turn final recovery. Record net and paired exclusive recovery; pure target evaluator-only",
+    "Gate is not accepted online if a skipped turn arm has extra recovered common cells over its paired hold control, or recovery after decision contradicts zero-opportunity claims",
+    "Few controlled trajectories cannot establish overall strategy superiority; failures retained; no early integration or parameter tuning"
+  ]
+}

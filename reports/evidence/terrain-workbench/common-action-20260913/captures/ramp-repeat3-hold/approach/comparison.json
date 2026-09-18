@@ -1,0 +1,20 @@
+{
+  "arm": "hold",
+  "goal": [
+    0.1,
+    1.05
+  ],
+  "pose": {
+    "x": -0.7158895612620134,
+    "y": 1.4686548421326513,
+    "z": 0.0,
+    "yaw": -0.644156868507517
+  },
+  "yaw": -0.644156868507517,
+  "requested_delta": 0.0,
+  "feature_stamp": 27.7,
+  "decision_stamp": 28.326,
+  "window_seconds": 20.0,
+  "checkpoint_sha256": "80c216c3e0706b7d78795456e47b5e890280639b12ed7bceaa9f81ff74611206",
+  "path_file": "alternative-nav2-plan.json"
+}

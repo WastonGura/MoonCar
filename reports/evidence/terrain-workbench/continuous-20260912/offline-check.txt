@@ -1,0 +1,1 @@
+PASS: three distinct continuous runs, frozen raw evidence, normal stops, stale-map stop and recovery

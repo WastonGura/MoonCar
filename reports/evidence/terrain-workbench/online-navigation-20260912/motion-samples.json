@@ -1,0 +1,234 @@
+[
+  {
+    "time": "2026-09-12T18:07:57.5096445+09:00",
+    "experiment": "experiment-aefe3133cc85",
+    "phase": "executing",
+    "error": "",
+    "pose": {
+      "x": 4.933986562416179,
+      "y": 3.0491152432460438,
+      "z": 0.0,
+      "yaw": -0.05340006328448264
+    },
+    "goal": [
+      9,
+      3
+    ],
+    "feedback": {
+      "distance_remaining": 4.14,
+      "navigation_seconds": 9.113,
+      "recoveries": 0
+    },
+    "bounds": [
+      -6.098643412348117,
+      -5.762213371853509,
+      12.301356861833249,
+      12.83778690530809
+    ],
+    "path_points": 81,
+    "track_points": 23
+  },
+  {
+    "time": "2026-09-12T18:08:12.6300057+09:00",
+    "experiment": "experiment-aefe3133cc85",
+    "phase": "executing",
+    "error": "",
+    "pose": {
+      "x": 5.557703968232565,
+      "y": 3.021333873628062,
+      "z": 0.0,
+      "yaw": 0.03800502090115584
+    },
+    "goal": [
+      9,
+      3
+    ],
+    "feedback": {
+      "distance_remaining": 3.44,
+      "navigation_seconds": 13.044,
+      "recoveries": 0
+    },
+    "bounds": [
+      -6.2094978711745785,
+      -5.762213371853509,
+      13.39050242088818,
+      12.83778690530809
+    ],
+    "path_points": 67,
+    "track_points": 33
+  },
+  {
+    "time": "2026-09-12T18:08:27.6682409+09:00",
+    "experiment": "experiment-aefe3133cc85",
+    "phase": "executing",
+    "error": "",
+    "pose": {
+      "x": 6.18113557975575,
+      "y": 3.0461692617240024,
+      "z": 0.0,
+      "yaw": -0.0007991325278938795
+    },
+    "goal": [
+      9,
+      3
+    ],
+    "feedback": {
+      "distance_remaining": 2.84,
+      "navigation_seconds": 17.005,
+      "recoveries": 0
+    },
+    "bounds": [
+      -6.2094978711745785,
+      -5.762213371853509,
+      13.490502422378297,
+      12.83778690530809
+    ],
+    "path_points": 55,
+    "track_points": 43
+  },
+  {
+    "time": "2026-09-12T18:08:42.7233388+09:00",
+    "experiment": "experiment-aefe3133cc85",
+    "phase": "executing",
+    "error": "",
+    "pose": {
+      "x": 6.804469130175914,
+      "y": 3.0396714550625936,
+      "z": 0.0,
+      "yaw": -0.05622906658052142
+    },
+    "goal": [
+      9,
+      3
+    ],
+    "feedback": {
+      "distance_remaining": 2.24,
+      "navigation_seconds": 20.894,
+      "recoveries": 0
+    },
+    "bounds": [
+      -6.2094978711745785,
+      -5.762213371853509,
+      13.490502422378297,
+      12.83778690530809
+    ],
+    "path_points": 43,
+    "track_points": 52
+  },
+  {
+    "time": "2026-09-12T18:08:57.7805399+09:00",
+    "experiment": "experiment-aefe3133cc85",
+    "phase": "executing",
+    "error": "",
+    "pose": {
+      "x": 7.4120860501453425,
+      "y": 3.0156991705004184,
+      "z": 0.0,
+      "yaw": 0.05582007507471044
+    },
+    "goal": [
+      9,
+      3
+    ],
+    "feedback": {
+      "distance_remaining": 1.64,
+      "navigation_seconds": 24.659,
+      "recoveries": 0
+    },
+    "bounds": [
+      -6.2094978711745785,
+      -5.762213371853509,
+      13.490502422378297,
+      12.83778690530809
+    ],
+    "path_points": 31,
+    "track_points": 62
+  },
+  {
+    "time": "2026-09-12T18:09:12.8452014+09:00",
+    "experiment": "experiment-aefe3133cc85",
+    "phase": "executing",
+    "error": "",
+    "pose": {
+      "x": 7.97156006216759,
+      "y": 3.056055478710208,
+      "z": 0.0,
+      "yaw": -0.012792668714927293
+    },
+    "goal": [
+      9,
+      3
+    ],
+    "feedback": {
+      "distance_remaining": 1.04,
+      "navigation_seconds": 28.111,
+      "recoveries": 0
+    },
+    "bounds": [
+      -6.2094978711745785,
+      -5.762213371853509,
+      13.490502422378297,
+      12.83778690530809
+    ],
+    "path_points": 19,
+    "track_points": 70
+  },
+  {
+    "time": "2026-09-12T18:09:27.8829064+09:00",
+    "experiment": "experiment-aefe3133cc85",
+    "phase": "executing",
+    "error": "",
+    "pose": {
+      "x": 8.642817720825741,
+      "y": 3.038791820886837,
+      "z": 0.0,
+      "yaw": -0.0224968532140532
+    },
+    "goal": [
+      9,
+      3
+    ],
+    "feedback": {
+      "distance_remaining": 0.34,
+      "navigation_seconds": 32.319,
+      "recoveries": 0
+    },
+    "bounds": [
+      -6.2094978711745785,
+      -5.762213371853509,
+      19.990502519235847,
+      12.83778690530809
+    ],
+    "path_points": 7,
+    "track_points": 81
+  },
+  {
+    "time": "2026-09-12T18:09:42.9720220+09:00",
+    "experiment": "experiment-aefe3133cc85",
+    "phase": "succeeded",
+    "error": "",
+    "pose": {
+      "x": 8.861130127093928,
+      "y": 3.0198499337082914,
+      "z": 0.0,
+      "yaw": -0.0893273824079023
+    },
+    "goal": [
+      9,
+      3
+    ],
+    "feedback": {
+      "distance_remaining": 0.14,
+      "navigation_seconds": 34.335,
+      "recoveries": 0
+    },
+    "bounds": [
+      -6.2094978711745785,
+      -5.762213371853509,
+      19.990502519235847,
+      12.83778690530809
+    ],
+    "path_points": 3,
+    "track_points": 85
+  }
+]

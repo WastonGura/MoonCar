@@ -1,0 +1,290 @@
+{
+  "status": "diagnostic_only",
+  "source": "/evidence/projection-20260913/raw-02",
+  "input_sha256": {
+    "camera-info.json": "e12449faa0bcee496bb0ffd123f9d3312d4791e506532a4e1028d5074cb2e98a",
+    "depth-format.json": "694796a1545d32f9f1ee81d66fd12953b75b562d744c4be427842255b6179167",
+    "manifest.json": "0bf79f1abe49dcf5ccf25076fa0192d630c342b30273e0aba3e3c03e989d7754",
+    "raw-depth.npz": "c32f9f9e68731d13419479e5f080b1e1115ac3df9622c4afb6ba0da110e3efb7",
+    "samples.npz": "248cc33602eefd85b955666273370ee3d804ee2cdf38b94f92dc8b371f1fb95f",
+    "survey_yard.sdf": "6f1c9e24fe0dc1b4b83c099a9235927f97fb9039a11cd273b3bcee3618ff0505"
+  },
+  "frames": 14,
+  "observed_points": 34188,
+  "raw_frames_bitwise_reprojected": 14,
+  "recovered_pixel_max_fraction": 1.52587890625e-05,
+  "groups": [
+    {
+      "pixel_offset": 0.0,
+      "category": "all",
+      "points": 34146,
+      "rmse_m": 0.29708782571999487,
+      "bias_m": -0.027073511820450674,
+      "median_abs_m": 0.004588303573349051,
+      "p95_abs_m": 0.1052861698298877
+    },
+    {
+      "pixel_offset": 0.0,
+      "category": "plane",
+      "points": 24864,
+      "rmse_m": 0.3103407330901768,
+      "bias_m": -0.02245139097986271,
+      "median_abs_m": 0.006238710666181202,
+      "p95_abs_m": 0.05538736965394975
+    },
+    {
+      "pixel_offset": 0.0,
+      "category": "solid",
+      "points": 9282,
+      "rmse_m": 0.25825734157288766,
+      "bias_m": -0.039454939592523414,
+      "median_abs_m": 8.6068518045046e-05,
+      "p95_abs_m": 0.1627180237787096
+    },
+    {
+      "pixel_offset": 0.5,
+      "category": "all",
+      "points": 34188,
+      "rmse_m": 0.00040521403599243336,
+      "bias_m": 5.283394995252651e-05,
+      "median_abs_m": 4.3137091521039395e-07,
+      "p95_abs_m": 1.0361700327088386e-05
+    },
+    {
+      "pixel_offset": 0.5,
+      "category": "plane",
+      "points": 24878,
+      "rmse_m": 2.2631320646911796e-06,
+      "bias_m": 1.038285835825628e-06,
+      "median_abs_m": 4.5098021062006666e-07,
+      "p95_abs_m": 4.713177875537156e-06
+    },
+    {
+      "pixel_offset": 0.5,
+      "category": "solid",
+      "points": 9310,
+      "rmse_m": 0.000776500175954069,
+      "bias_m": 0.0001912413110583573,
+      "median_abs_m": 3.83732585929053e-07,
+      "p95_abs_m": 0.0012560790372759811
+    }
+  ],
+  "nominal_missing_reference": 42,
+  "half_pixel_missing_reference": 0,
+  "changed_first_surface": 154,
+  "shapes": [
+    {
+      "name": "lunar_regolith_plane/ground/visual",
+      "kind": "plane"
+    },
+    {
+      "name": "gentle_ramp/ramp/visual",
+      "kind": "box"
+    },
+    {
+      "name": "rock_field_marker_a/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "rock_field_marker_b/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "south_crater/crater/floor",
+      "kind": "cylinder"
+    },
+    {
+      "name": "south_crater/crater/north_rim",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "south_crater/crater/south_rim",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "south_crater/crater/east_rim",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "south_crater/crater/west_rim",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "north_ridge/ridge/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "scattered_rock_c/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "scattered_rock_d/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "navigation_rock_field/west_south/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "navigation_rock_field/west_north/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "navigation_rock_field/north_middle/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "navigation_rock_field/north_east/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "navigation_rock_field/east_middle/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "navigation_rock_field/south_middle/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "scattered_rock_e/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_0/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_1/ramp/visual",
+      "kind": "box"
+    },
+    {
+      "name": "survey_landmark_2/ridge/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_3/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_4/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_5/ramp/visual",
+      "kind": "box"
+    },
+    {
+      "name": "survey_landmark_6/ramp/visual",
+      "kind": "box"
+    },
+    {
+      "name": "survey_landmark_7/ridge/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_8/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_9/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_10/ramp/visual",
+      "kind": "box"
+    },
+    {
+      "name": "survey_landmark_11/ridge/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_12/ridge/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_13/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_14/ridge/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_15/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_16/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_17/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_18/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_19/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_20/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_21/ramp/visual",
+      "kind": "box"
+    },
+    {
+      "name": "survey_landmark_22/ridge/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_23/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_24/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_25/ramp/visual",
+      "kind": "box"
+    },
+    {
+      "name": "survey_landmark_26/ramp/visual",
+      "kind": "box"
+    },
+    {
+      "name": "survey_landmark_27/ridge/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_28/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_29/rock/visual",
+      "kind": "ellipsoid"
+    },
+    {
+      "name": "survey_landmark_30/ramp/visual",
+      "kind": "box"
+    },
+    {
+      "name": "survey_landmark_31/ridge/visual",
+      "kind": "ellipsoid"
+    }
+  ],
+  "source_pixel_offset": 0.0,
+  "source_offset_provenance": "legacy_zero_projection",
+  "limitations": [
+    "Compare optical-axis depth with first visible analytic visual surface, not vertical highest elevation.",
+    "Absolute pixel offsets 0 and 0.5 are evaluated independently of producer offset; no hardware rule implied.",
+    "Analytic primitives may differ from rendered meshes, sampling and edge rasterization.",
+    "Same observed valid pixels in both hypotheses; missing reference counts and first-surface changes retained.",
+    "Points and stationary frames are correlated; no statistical superiority claim."
+  ]
+}

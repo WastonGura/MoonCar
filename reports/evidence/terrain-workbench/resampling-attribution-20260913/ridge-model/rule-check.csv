@@ -1,0 +1,9 @@
+﻿experiment,split,scope,rule,eligible,missing,tp,fp,fn,tn,precision,recall
+experiment-348f798f421b,heldout_curved_region,all_initial_deficient,direction_prediction,95,0,0,0,0,95,,
+experiment-348f798f421b,heldout_curved_region,all_initial_deficient,distance_direction_prediction,95,0,0,0,0,95,,
+experiment-348f798f421b,heldout_curved_region,candidate_fov,direction_prediction,69,0,0,0,0,69,,
+experiment-348f798f421b,heldout_curved_region,candidate_fov,distance_direction_prediction,69,0,0,0,0,69,,
+experiment-77c20d5e42f8,heldout_curved_region,all_initial_deficient,direction_prediction,95,0,0,1,65,29,0.0,0.0
+experiment-77c20d5e42f8,heldout_curved_region,all_initial_deficient,distance_direction_prediction,95,0,13,6,52,24,0.6842105263157895,0.2
+experiment-77c20d5e42f8,heldout_curved_region,candidate_fov,direction_prediction,58,0,0,1,39,18,0.0,0.0
+experiment-77c20d5e42f8,heldout_curved_region,candidate_fov,distance_direction_prediction,58,0,13,6,26,13,0.6842105263157895,0.3333333333333333

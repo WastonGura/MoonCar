@@ -1,0 +1,6 @@
+{
+  "cells": 100,
+  "seconds": 0.4157620469995891,
+  "sampled_poses": 3,
+  "notes": "One local timing under running Gazebo workload; no runtime guarantee, excludes map reconstruction."
+}

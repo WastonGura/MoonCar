@@ -1,0 +1,9 @@
+START ramp-repeat1-no_turn
+{"condition": "approach", "experiment": "experiment-a4248dd6a0c6", "status": "completed", "capture_exit": 0}
+START ramp-repeat1-turn
+{"condition": "approach", "experiment": "experiment-1bece01823f7", "status": "completed", "capture_exit": 0}
+START ramp-repeat2-turn
+{"condition": "approach", "experiment": "experiment-618942803305", "status": "completed", "capture_exit": 0}
+START ramp-repeat2-no_turn
+{"condition": "approach", "experiment": "experiment-5e63836661fd", "status": "completed", "capture_exit": 0}
+FOUR TARGET PROBE ATTEMPTS FINISHED

@@ -1,0 +1,51 @@
+{
+  "sim_stamp": 99.358,
+  "elapsed_seconds": 90.071,
+  "phase": "budget_reached",
+  "pose": {
+    "x": -13.797595324112194,
+    "y": -15.880512932715863,
+    "z": 0.0,
+    "yaw": 0.3406348050706932
+  },
+  "ready": true,
+  "motion_error": "自主探测时间预算已用尽",
+  "path_m": 6.890327463487329,
+  "diagnostics": {
+    "sim_stamp": 99.358,
+    "pose_error": "",
+    "navigation_ready": true,
+    "depth_age_wall_seconds": 0.173,
+    "depth_message": "Depth active; pose unchanged, redundant frame omitted",
+    "quality_age_wall_seconds": 0.47,
+    "quality_present": true,
+    "costmap_age_wall_seconds": 1.844,
+    "costmap_fresh": true,
+    "costmap_age_sim_seconds": 0.6640000000000015
+  },
+  "stop_diagnostics": {
+    "reason": "自主探测时间预算已用尽",
+    "health": {
+      "sim_stamp": 99.288,
+      "pose_error": "",
+      "navigation_ready": true,
+      "depth_age_wall_seconds": 0.154,
+      "depth_message": "Depth frame recorded; historical pose errors are not corrected by loop closure",
+      "quality_age_wall_seconds": 0.226,
+      "quality_present": true,
+      "costmap_age_wall_seconds": 1.599,
+      "costmap_fresh": true,
+      "costmap_age_sim_seconds": 0.5939999999999941
+    }
+  },
+  "roi_area_m2": 201.75,
+  "observed_area_m2": 134.1875,
+  "observed_fraction": 0.6651177199504337,
+  "quality_area_m2": 85.27625,
+  "sufficient_area_m2": 56.25,
+  "mean_observed_quality": 0.635500698649278,
+  "valid_surface_area_m2": 114.5625,
+  "frames": 213,
+  "quality_stamp": 98.5,
+  "scene_age_wall_seconds": 0.38889145851135254
+}

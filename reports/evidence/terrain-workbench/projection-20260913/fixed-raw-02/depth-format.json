@@ -1,0 +1,8 @@
+{
+  "width": 320,
+  "height": 240,
+  "step": 1280,
+  "encoding": "32FC1",
+  "bigendian": false,
+  "frame": "depth_camera_optical_frame"
+}

@@ -1,0 +1,22 @@
+...127.0.0.1 - - [13/Sep/2026 08:33:56] "POST /api/simulation/apply HTTP/1.1" 403 -
+127.0.0.1 - - [13/Sep/2026 08:33:56] "GET /api/info?session=../survey.npz HTTP/1.1" 400 -
+127.0.0.1 - - [13/Sep/2026 08:33:56] "GET /api/info?session=experiment-test/../survey.npz HTTP/1.1" 400 -
+127.0.0.1 - - [13/Sep/2026 08:33:56] "GET /api/info?session=%2Fetc%2Ftest.npz HTTP/1.1" 400 -
+127.0.0.1 - - [13/Sep/2026 08:33:56] "GET /api/info?session=experiment-test%5Csurvey.npz HTTP/1.1" 400 -
+.127.0.0.1 - - [13/Sep/2026 08:33:57] "POST /api/simulation/move HTTP/1.1" 403 -
+.
+----------------------------------------------------------------------
+Ran 5 tests in 2.188s
+
+OK
+.....[WARN] [1789288442.943924332] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+..
+----------------------------------------------------------------------
+Ran 7 tests in 1.493s
+
+OK
+PASS: free route, unknown/occupied segment interiors, out-of-map, endpoint mismatch and non-finite poses
+PASS: same-bearing range, unchanged views, FOV/conflict exclusions, no post-action feature leakage
+PASS: ROS planner imports and stationary precondition
+PASS: free route, unknown/occupied segment interiors, out-of-map, endpoint mismatch and non-finite poses
+PASS: ROS imports and stationary precondition

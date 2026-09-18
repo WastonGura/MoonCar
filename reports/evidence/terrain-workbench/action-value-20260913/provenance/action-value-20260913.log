@@ -1,0 +1,17 @@
+START ramp-repeat1-hold
+{"condition": "approach", "experiment": "experiment-1385cd34d3cb", "status": "failed", "error": "[Errno 61] No data available"}
+START ramp-repeat1-small_turn
+{"condition": "approach", "experiment": "experiment-c230a449ce3c", "status": "failed", "capture_exit": 1}
+START ramp-repeat1-wide_turn
+{"condition": "approach", "experiment": "experiment-693a8273d5de", "status": "completed", "capture_exit": 0}
+START ramp-repeat1-advance
+{"condition": "approach", "experiment": "experiment-3504318187dd", "status": "completed", "capture_exit": 0}
+START ramp-repeat2-advance
+{"condition": "approach", "experiment": "experiment-b76e1fbf62bf", "status": "completed", "capture_exit": 0}
+START ramp-repeat2-wide_turn
+{"condition": "approach", "experiment": "experiment-842b05370e8e", "status": "completed", "capture_exit": 0}
+START ramp-repeat2-small_turn
+{"condition": "approach", "experiment": "experiment-bbbfa920361a", "status": "completed", "capture_exit": 0}
+START ramp-repeat2-hold
+{"condition": "approach", "experiment": "experiment-2f2d79bc1238", "status": "completed", "capture_exit": 0}
+EIGHT ACTION VALUE ATTEMPTS FINISHED

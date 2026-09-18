@@ -1,0 +1,38 @@
+{
+  "start": [
+    -1.4,
+    1.55,
+    -0.3
+  ],
+  "goal": [
+    0.0,
+    1.15
+  ],
+  "seconds": 30,
+  "baseline_seconds": 5,
+  "conditions": [
+    "approach"
+  ],
+  "scene": "visible_ramp_v1",
+  "planned_path": [
+    [
+      -1.4,
+      1.55
+    ],
+    [
+      0.0,
+      1.15
+    ]
+  ],
+  "path_kind": "Predeclared straight segment; not a queried Nav2 global path",
+  "nav2_plan": false,
+  "observe_turn": false,
+  "arrival_wait": 0.0,
+  "observation_delta": null,
+  "skip_probe": false,
+  "targeted_probe": false,
+  "observation_yaw": null,
+  "observation_tolerance_rad": null,
+  "comparison_action": null,
+  "limits": "One paired mechanism trial; not strategy efficacy or physical validation"
+}

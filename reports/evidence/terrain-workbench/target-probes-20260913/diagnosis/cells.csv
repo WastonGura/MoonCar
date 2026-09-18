@@ -1,0 +1,15 @@
+﻿folder,ix,iy,observed_points,baseline_can_fit,hypothesis_points,actual_ray_replay_points,actual_ray_replay_can_fit,invented_new_voxels,new_voxels_supported_by_depth,hypothetical_rays,invalid_actual_rays,actual_rays_hit_other_cell,mean_abs_depth_difference_m
+visible_ramp_v1-repeat1-no_turn,7,-4,8,False,10,8,False,2,0,5,0,1,0.03463764439653207
+visible_ramp_v1-repeat1-no_turn,15,-4,10,False,13,10,False,3,0,5,0,1,0.10021123521276003
+visible_ramp_v1-repeat1-no_turn,11,-3,5,False,6,5,False,1,0,2,0,2,0.06274113354101618
+visible_ramp_v1-repeat1-no_turn,11,-2,6,False,10,6,False,4,0,6,0,1,0.049057286555196956
+visible_ramp_v1-repeat1-turn,15,-4,10,False,11,10,False,1,0,4,0,0,0.0448141244460083
+visible_ramp_v1-repeat1-turn,11,-2,5,False,7,5,False,2,0,4,0,1,0.03519916729865935
+visible_ramp_v1-repeat1-turn,13,-1,6,False,9,6,False,3,0,4,0,0,0.031113060365717038
+visible_curve_v1-repeat1-turn,9,-5,5,False,7,5,False,2,0,5,0,2,0.07073760953919592
+visible_curve_v1-repeat1-turn,10,-5,1,False,6,1,False,5,0,5,0,5,0.7428343028199059
+visible_ramp_v1-repeat2-turn,15,-5,9,False,11,9,False,2,0,4,0,1,0.048280096065602685
+visible_ramp_v1-repeat2-turn,15,-4,9,False,13,9,False,4,0,4,0,0,0.10488276723682333
+visible_ramp_v1-repeat2-turn,13,-2,5,False,7,5,False,2,0,3,0,0,0.025204651500351154
+visible_ramp_v1-repeat2-no_turn,13,-12,5,False,6,5,False,1,0,1,0,0,5.728507725066834e-06
+visible_ramp_v1-repeat2-no_turn,11,-12,5,False,6,5,False,1,0,1,0,0,3.4154424826127183e-06

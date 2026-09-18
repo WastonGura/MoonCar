@@ -1,0 +1,35 @@
+{
+  "enabled": true,
+  "phase": "recording",
+  "error": "",
+  "task": {
+    "version": 1,
+    "region": [
+      -1.27,
+      -2.38,
+      8.81,
+      7.39
+    ],
+    "start": [
+      3.5,
+      3.0,
+      0.0
+    ],
+    "id": "experiment-a608e74eefb5"
+  },
+  "motion": {
+    "active": false,
+    "phase": "idle",
+    "error": "",
+    "pose": {
+      "x": 3.500000000000343,
+      "y": 2.999999999999912,
+      "z": 0.0,
+      "yaw": -4.807709785836778E-12
+    },
+    "ready": true,
+    "depth_active": true,
+    "depth_message": "Depth active; pose unchanged, redundant frame omitted"
+  },
+  "session": "experiment-a608e74eefb5/survey-20260912T083508719572Z.npz"
+}

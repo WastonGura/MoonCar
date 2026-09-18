@@ -1,0 +1,1955 @@
+[
+  {
+    "experiment": "experiment-03ed51d5ff45",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ]
+    },
+    "sha256": "a686e5f26dd9e58464dbf07cb24a2aba1f3419f3643742b75e4fc517bac8c75a"
+  },
+  {
+    "experiment": "experiment-040fe2633b4e",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-0579aef073fb",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-0598635ef7b9",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-070cd9c45b32",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-074c5cf51b10",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.8,
+        2.0,
+        -0.25
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "37da762e6baa72ddee30a93cb9e8b4a0261f1aed824074267ecc6ebd2828451f"
+  },
+  {
+    "experiment": "experiment-0c9ad3a43e69",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -6.0,
+        -3.0,
+        1.57079632679
+      ]
+    },
+    "sha256": "a4a90f8cd6b244e7db26bbbb9b890a3f6812bde9b6eb6020c96b12e06c1648d4"
+  },
+  {
+    "experiment": "experiment-10b4f48bd30e",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.3,
+        1.3,
+        -0.4
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "87ea4689e0b684b3b45dc87d897d2361d5dc34837e610ff5459e4a9bce6da788"
+  },
+  {
+    "experiment": "experiment-11ae1100fd3f",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-1385cd34d3cb",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-13c89b8018dd",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        0.6,
+        -0.463648
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "5f0058f219fec8e104921b280eb72784d1174a36d8a5ae84b3c40aa663514454"
+  },
+  {
+    "experiment": "experiment-1a60b19ba566",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.0,
+        1.2,
+        -0.15
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "91e664480197184245e3fbb5c55b3aee5baef8cd508565a22a999f1a9b84311e"
+  },
+  {
+    "experiment": "experiment-1bece01823f7",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-1c504da3bdbf",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.8,
+        2.0,
+        -0.25
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "37da762e6baa72ddee30a93cb9e8b4a0261f1aed824074267ecc6ebd2828451f"
+  },
+  {
+    "experiment": "experiment-1d50c65d2873",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -0.6,
+        0.463648
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "f7467c05f3f8bf9785df0a9fe168109f9a80aa3c602a37e278988bf36219b523"
+  },
+  {
+    "experiment": "experiment-1d6b4b2adeb8",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        1.0,
+        -0.463648
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "48971829716f8f7bd9098c569c84811fb525213a2331a7885c3fed36ecec2249"
+  },
+  {
+    "experiment": "experiment-1f39903fb4d9",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        12.0,
+        0.0,
+        0.0
+      ]
+    },
+    "sha256": "4b83e56535cf9db327a84041db9cc3d64c93735284d56aeac3f0093d704a157a"
+  },
+  {
+    "experiment": "experiment-226fc790d974",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-23b486559f42",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        12.0,
+        0.0,
+        0.0
+      ]
+    },
+    "sha256": "4b83e56535cf9db327a84041db9cc3d64c93735284d56aeac3f0093d704a157a"
+  },
+  {
+    "experiment": "experiment-2607cc3cf93e",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.0,
+        1.2,
+        -0.15
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "91e664480197184245e3fbb5c55b3aee5baef8cd508565a22a999f1a9b84311e"
+  },
+  {
+    "experiment": "experiment-293abd8290c4",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-29aad644b335",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-2b47672f0ecb",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        6.5,
+        -2.0,
+        2.4
+      ]
+    },
+    "sha256": "06f44b09ebf24959635d6b2cb0f87057cf647b6e85e396ea70ba87f7669f9a50"
+  },
+  {
+    "experiment": "experiment-2f2d79bc1238",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-300a6f2d306c",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        6.5,
+        -2.0,
+        2.4
+      ]
+    },
+    "sha256": "06f44b09ebf24959635d6b2cb0f87057cf647b6e85e396ea70ba87f7669f9a50"
+  },
+  {
+    "experiment": "experiment-318049231643",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-33e968dbfe29",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-348f798f421b",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -9.8,
+        6.8,
+        -0.528074
+      ]
+    },
+    "sha256": "ea2273cb0b11bc4eed1d6389754add694f76f33fea2c7ae5e693356a9b097298"
+  },
+  {
+    "experiment": "experiment-3504318187dd",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-376da1b59ff1",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.8,
+        2.0,
+        -0.25
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "37da762e6baa72ddee30a93cb9e8b4a0261f1aed824074267ecc6ebd2828451f"
+  },
+  {
+    "experiment": "experiment-398d17bcf7f9",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -0.6,
+        0.463648
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "f7467c05f3f8bf9785df0a9fe168109f9a80aa3c602a37e278988bf36219b523"
+  },
+  {
+    "experiment": "experiment-3a3ee9362e37",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ]
+    },
+    "sha256": "a686e5f26dd9e58464dbf07cb24a2aba1f3419f3643742b75e4fc517bac8c75a"
+  },
+  {
+    "experiment": "experiment-3a7b85338e72",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-41f7fa512ec0",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-448dc3b1957c",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-458823bf9e4f",
+    "task": {
+      "version": 1,
+      "region": [
+        -3.13,
+        -4.47,
+        16.57,
+        9.23
+      ],
+      "start": [
+        0.23,
+        -2.8,
+        0.2548180707911721
+      ]
+    },
+    "sha256": "7dd252f129aa7e88788a865ad2e111f88dd83b2859c88b5f27cadecafbd8625e"
+  },
+  {
+    "experiment": "experiment-4df840bb3e12",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        0.6,
+        -0.463648
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "5f0058f219fec8e104921b280eb72784d1174a36d8a5ae84b3c40aa663514454"
+  },
+  {
+    "experiment": "experiment-502f834ea0a7",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.5,
+        1.8,
+        -0.35
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "e88a52de053793703245197b5c6724589e469693be6b602216f33bf3ab25daf0"
+  },
+  {
+    "experiment": "experiment-504b6c4b9b34",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "2c04237afd71bbc269f139a64ff9344eb506fd51a93346d03c1aa20df51e435f"
+  },
+  {
+    "experiment": "experiment-524e61a9a1c0",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-577682b19fd6",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.3,
+        1.3,
+        -0.4
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "87ea4689e0b684b3b45dc87d897d2361d5dc34837e610ff5459e4a9bce6da788"
+  },
+  {
+    "experiment": "experiment-58b2cc6297e7",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        6.5,
+        -2.0,
+        2.4
+      ]
+    },
+    "sha256": "06f44b09ebf24959635d6b2cb0f87057cf647b6e85e396ea70ba87f7669f9a50"
+  },
+  {
+    "experiment": "experiment-5b5d7cb662c1",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "2c04237afd71bbc269f139a64ff9344eb506fd51a93346d03c1aa20df51e435f"
+  },
+  {
+    "experiment": "experiment-5dbf867bf5f8",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.5,
+        1.8,
+        -0.35
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "e88a52de053793703245197b5c6724589e469693be6b602216f33bf3ab25daf0"
+  },
+  {
+    "experiment": "experiment-5df595697453",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.8,
+        2.0,
+        -0.25
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "37da762e6baa72ddee30a93cb9e8b4a0261f1aed824074267ecc6ebd2828451f"
+  },
+  {
+    "experiment": "experiment-5e63836661fd",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-5eca666e3265",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-5ecf3821b77a",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -6.0,
+        -3.0,
+        1.57079632679
+      ]
+    },
+    "sha256": "a4a90f8cd6b244e7db26bbbb9b890a3f6812bde9b6eb6020c96b12e06c1648d4"
+  },
+  {
+    "experiment": "experiment-5fc18793bef3",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        0.6,
+        -0.463648
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "5f0058f219fec8e104921b280eb72784d1174a36d8a5ae84b3c40aa663514454"
+  },
+  {
+    "experiment": "experiment-618942803305",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-622800100952",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -0.6,
+        0.463648
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "f7467c05f3f8bf9785df0a9fe168109f9a80aa3c602a37e278988bf36219b523"
+  },
+  {
+    "experiment": "experiment-62e19893ee8f",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "2c04237afd71bbc269f139a64ff9344eb506fd51a93346d03c1aa20df51e435f"
+  },
+  {
+    "experiment": "experiment-64ec3a34f637",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-6526cf6eeb8a",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.5,
+        1.8,
+        -0.35
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "e88a52de053793703245197b5c6724589e469693be6b602216f33bf3ab25daf0"
+  },
+  {
+    "experiment": "experiment-685b930bc01c",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "2c04237afd71bbc269f139a64ff9344eb506fd51a93346d03c1aa20df51e435f"
+  },
+  {
+    "experiment": "experiment-693a8273d5de",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-6ec8ae0c0bc7",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.3,
+        1.3,
+        -0.4
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "87ea4689e0b684b3b45dc87d897d2361d5dc34837e610ff5459e4a9bce6da788"
+  },
+  {
+    "experiment": "experiment-7670cb590c1d",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-77c20d5e42f8",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -9.8,
+        6.8,
+        -0.528074
+      ]
+    },
+    "sha256": "ea2273cb0b11bc4eed1d6389754add694f76f33fea2c7ae5e693356a9b097298"
+  },
+  {
+    "experiment": "experiment-7983ce4c6913",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        0.6,
+        -0.463648
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "5f0058f219fec8e104921b280eb72784d1174a36d8a5ae84b3c40aa663514454"
+  },
+  {
+    "experiment": "experiment-7c8a9a6d1f25",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        0.6,
+        -0.463648
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "5f0058f219fec8e104921b280eb72784d1174a36d8a5ae84b3c40aa663514454"
+  },
+  {
+    "experiment": "experiment-808b6be2c81a",
+    "task": {
+      "version": 1,
+      "region": [
+        -1.27,
+        -2.38,
+        8.81,
+        7.39
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "3700d78a2081fb54ed9d9e5481e250b6c519757728e49f8c1c4b535077244913"
+  },
+  {
+    "experiment": "experiment-842b05370e8e",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-8a93a530d6b7",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -1.0,
+        0.463648
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "9a7cc410d6c9835a01aab6d4a671a3f4f8da6daf41cc5f70b8399cf6b0c89272"
+  },
+  {
+    "experiment": "experiment-8bf2a52102b7",
+    "task": {
+      "version": 1,
+      "region": [
+        -3.13,
+        -4.47,
+        16.57,
+        9.23
+      ],
+      "start": [
+        0.23,
+        -2.8,
+        0.2548180707911721
+      ]
+    },
+    "sha256": "7dd252f129aa7e88788a865ad2e111f88dd83b2859c88b5f27cadecafbd8625e"
+  },
+  {
+    "experiment": "experiment-8ef2dddbf5b3",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-963e931ca59f",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ]
+    },
+    "sha256": "a686e5f26dd9e58464dbf07cb24a2aba1f3419f3643742b75e4fc517bac8c75a"
+  },
+  {
+    "experiment": "experiment-972c4eab8fe1",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ]
+    },
+    "sha256": "a686e5f26dd9e58464dbf07cb24a2aba1f3419f3643742b75e4fc517bac8c75a"
+  },
+  {
+    "experiment": "experiment-97853a88e3b4",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-9a5f5a96be4a",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-9d39b7482383",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        6.5,
+        -2.0,
+        2.4
+      ]
+    },
+    "sha256": "06f44b09ebf24959635d6b2cb0f87057cf647b6e85e396ea70ba87f7669f9a50"
+  },
+  {
+    "experiment": "experiment-9e55513816f4",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.23,
+        -2.8,
+        0.2548180707911721
+      ]
+    },
+    "sha256": "f430fd979b9da421f61ff2ebcc3e425579b112e1955b720673c6c83c870864bf"
+  },
+  {
+    "experiment": "experiment-a4248dd6a0c6",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-a470c17236d6",
+    "task": {
+      "version": 1,
+      "region": [
+        -0.75,
+        -1.18,
+        5.25,
+        3.41
+      ],
+      "start": [
+        0.5,
+        0.0,
+        0.0
+      ]
+    },
+    "sha256": "1c8f8c87fa2e8c2831bb133babb86a2c2e34d2e75b1dfd5f8f671488c245b369"
+  },
+  {
+    "experiment": "experiment-a50e945f191e",
+    "task": {
+      "version": 1,
+      "region": [
+        -0.75,
+        -1.18,
+        5.25,
+        3.41
+      ],
+      "start": [
+        3.5,
+        3.0,
+        1.5707963267948966
+      ]
+    },
+    "sha256": "89f758043fc99afba61f02b233763a0e0d76bfd39d50d4478b78e166be27ce2d"
+  },
+  {
+    "experiment": "experiment-a608e74eefb5",
+    "task": {
+      "version": 1,
+      "region": [
+        -1.27,
+        -2.38,
+        8.81,
+        7.39
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "3700d78a2081fb54ed9d9e5481e250b6c519757728e49f8c1c4b535077244913"
+  },
+  {
+    "experiment": "experiment-a93dc053f485",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-ab0e51d6ee09",
+    "task": {
+      "version": 1,
+      "region": [
+        -4.17,
+        -2.52,
+        7.71,
+        9.42
+      ],
+      "start": [
+        2.04,
+        3.95,
+        0.23212879051524585
+      ]
+    },
+    "sha256": "1942dff876f30e26ce28dfba83a0c525c912275cd8a1278a3d1403e44055bf51"
+  },
+  {
+    "experiment": "experiment-ae2ccb7bff04",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        1.0,
+        -0.463648
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "48971829716f8f7bd9098c569c84811fb525213a2331a7885c3fed36ecec2249"
+  },
+  {
+    "experiment": "experiment-aefe3133cc85",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-b2fdd48b5400",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "2c04237afd71bbc269f139a64ff9344eb506fd51a93346d03c1aa20df51e435f"
+  },
+  {
+    "experiment": "experiment-b3be8707a7b1",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-b7460b2b0851",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        6.5,
+        -2.0,
+        2.4
+      ]
+    },
+    "sha256": "06f44b09ebf24959635d6b2cb0f87057cf647b6e85e396ea70ba87f7669f9a50"
+  },
+  {
+    "experiment": "experiment-b76e1fbf62bf",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-baa6ebe5e4eb",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.0,
+        1.2,
+        -0.15
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "91e664480197184245e3fbb5c55b3aee5baef8cd508565a22a999f1a9b84311e"
+  },
+  {
+    "experiment": "experiment-bbbfa920361a",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-c230a449ce3c",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-c612422471a4",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-ca9e30bd5b9e",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "2c04237afd71bbc269f139a64ff9344eb506fd51a93346d03c1aa20df51e435f"
+  },
+  {
+    "experiment": "experiment-cc1a461fd8ca",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.3,
+        1.3,
+        -0.4
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "87ea4689e0b684b3b45dc87d897d2361d5dc34837e610ff5459e4a9bce6da788"
+  },
+  {
+    "experiment": "experiment-cf3e12a48ae7",
+    "task": {
+      "version": 1,
+      "region": [
+        -1.27,
+        -2.38,
+        8.81,
+        7.39
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "3700d78a2081fb54ed9d9e5481e250b6c519757728e49f8c1c4b535077244913"
+  },
+  {
+    "experiment": "experiment-d30e44a4386c",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -1.0,
+        0.463648
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "9a7cc410d6c9835a01aab6d4a671a3f4f8da6daf41cc5f70b8399cf6b0c89272"
+  },
+  {
+    "experiment": "experiment-d374f69fdb0c",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "0fe2b8c4c1da5f3e2305e58de9c1b870349e73c2fc552eaba48c3721830e8ae6"
+  },
+  {
+    "experiment": "experiment-d4676fb59baf",
+    "task": {
+      "version": 1,
+      "region": [
+        -4.17,
+        -2.52,
+        7.71,
+        9.42
+      ],
+      "start": [
+        2.04,
+        3.95,
+        0.23212879051524585
+      ]
+    },
+    "sha256": "1942dff876f30e26ce28dfba83a0c525c912275cd8a1278a3d1403e44055bf51"
+  },
+  {
+    "experiment": "experiment-dce2bba59bf9",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ]
+    },
+    "sha256": "a686e5f26dd9e58464dbf07cb24a2aba1f3419f3643742b75e4fc517bac8c75a"
+  },
+  {
+    "experiment": "experiment-de36034fbaf0",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -0.6,
+        0.463648
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "f7467c05f3f8bf9785df0a9fe168109f9a80aa3c602a37e278988bf36219b523"
+  },
+  {
+    "experiment": "experiment-e63088c41a34",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ]
+    },
+    "sha256": "a686e5f26dd9e58464dbf07cb24a2aba1f3419f3643742b75e4fc517bac8c75a"
+  },
+  {
+    "experiment": "experiment-e9097adbf361",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.0,
+        1.2,
+        -0.15
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "91e664480197184245e3fbb5c55b3aee5baef8cd508565a22a999f1a9b84311e"
+  },
+  {
+    "experiment": "experiment-ed3769707404",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "2c04237afd71bbc269f139a64ff9344eb506fd51a93346d03c1aa20df51e435f"
+  },
+  {
+    "experiment": "experiment-edb683fc4ee7",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ]
+    },
+    "sha256": "cc64ca959e391d6722ff2850bdacbe74ca964c52ed172110e43786e0ac78fca7"
+  },
+  {
+    "experiment": "experiment-ee557ce32859",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.5,
+        1.8,
+        -0.35
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "e88a52de053793703245197b5c6724589e469693be6b602216f33bf3ab25daf0"
+  },
+  {
+    "experiment": "experiment-f866abb68aa7",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ]
+    },
+    "sha256": "a686e5f26dd9e58464dbf07cb24a2aba1f3419f3643742b75e4fc517bac8c75a"
+  },
+  {
+    "experiment": "experiment-f8bc4f33289e",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.0,
+        -1.2,
+        0.15
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "eafde419f380530212a53eb77c0be715c78d8097ce1ad1f1af899d11bfebbe00"
+  },
+  {
+    "experiment": "experiment-f9cba59fa1ca",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        0.0,
+        -0.6,
+        0.463648
+      ],
+      "scene": "visible_ramp_v1"
+    },
+    "sha256": "f7467c05f3f8bf9785df0a9fe168109f9a80aa3c602a37e278988bf36219b523"
+  },
+  {
+    "experiment": "experiment-fe4d253208f4",
+    "task": {
+      "version": 1,
+      "region": [
+        -25.0,
+        -25.0,
+        25.0,
+        25.0
+      ],
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "scene": "visible_curve_v1"
+    },
+    "sha256": "2c04237afd71bbc269f139a64ff9344eb506fd51a93346d03c1aa20df51e435f"
+  }
+]

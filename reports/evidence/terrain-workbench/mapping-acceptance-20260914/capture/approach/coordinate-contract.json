@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "task": {
+    "version": 1,
+    "region": [
+      -25.0,
+      -25.0,
+      25.0,
+      25.0
+    ],
+    "start": [
+      -1.4,
+      1.55,
+      -0.3
+    ],
+    "scene": "visible_ramp_v1"
+  },
+  "frames": {
+    "map_frame": "map",
+    "odom_frame": "survey_odom",
+    "base_frame": "base_footprint"
+  },
+  "partition": "mooncar-experiment-ca299d4be2fa",
+  "world_from_map": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "convention": "Declared surveyed world/map axes; initial spawn anchors survey_odom. No pose or map fit.",
+  "navigation_launch_sha256": "156c27e89f0bc00bd2e64ee8587c7f89c89d146e8e2b5552089c1a53022f17db"
+}

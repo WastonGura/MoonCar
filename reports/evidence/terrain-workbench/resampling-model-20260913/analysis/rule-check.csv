@@ -1,0 +1,13 @@
+﻿experiment,split,scope,rule,eligible,missing,tp,fp,fn,tn,precision,recall
+experiment-b7460b2b0851,exploratory,all_initial_deficient,direction_prediction,71,0,0,0,0,71,,
+experiment-b7460b2b0851,exploratory,all_initial_deficient,distance_direction_prediction,71,0,0,0,0,71,,
+experiment-b7460b2b0851,exploratory,candidate_fov,direction_prediction,55,0,0,0,0,55,,
+experiment-b7460b2b0851,exploratory,candidate_fov,distance_direction_prediction,55,0,0,0,0,55,,
+experiment-300a6f2d306c,exploratory,all_initial_deficient,direction_prediction,71,0,2,0,43,26,1.0,0.044444444444444446
+experiment-300a6f2d306c,exploratory,all_initial_deficient,distance_direction_prediction,71,0,19,0,26,26,1.0,0.4222222222222222
+experiment-300a6f2d306c,exploratory,candidate_fov,direction_prediction,45,0,2,0,35,8,1.0,0.05405405405405406
+experiment-300a6f2d306c,exploratory,candidate_fov,distance_direction_prediction,45,0,19,0,18,8,1.0,0.5135135135135135
+experiment-9d39b7482383,prospective_short_distance,all_initial_deficient,direction_prediction,71,0,0,0,42,29,,0.0
+experiment-9d39b7482383,prospective_short_distance,all_initial_deficient,distance_direction_prediction,71,0,12,1,30,28,0.9230769230769231,0.2857142857142857
+experiment-9d39b7482383,prospective_short_distance,candidate_fov,direction_prediction,52,0,0,0,36,16,,0.0
+experiment-9d39b7482383,prospective_short_distance,candidate_fov,distance_direction_prediction,52,0,12,1,24,15,0.9230769230769231,0.3333333333333333

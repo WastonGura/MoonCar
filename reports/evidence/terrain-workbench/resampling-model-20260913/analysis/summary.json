@@ -1,0 +1,68 @@
+{
+  "trials": [
+    {
+      "experiment": "experiment-b7460b2b0851",
+      "split": "exploratory",
+      "frames": 80,
+      "baseline_frames": 9,
+      "baseline_last_stamp": 14.3,
+      "action_stamp": 14.905,
+      "motion_phase": "idle",
+      "planned_goal": [
+        5.9,
+        -1.4
+      ],
+      "initial_deficient": 71
+    },
+    {
+      "experiment": "experiment-300a6f2d306c",
+      "split": "exploratory",
+      "frames": 82,
+      "baseline_frames": 9,
+      "baseline_last_stamp": 14.6,
+      "action_stamp": 15.989,
+      "motion_phase": "succeeded",
+      "planned_goal": [
+        5.9,
+        -1.4
+      ],
+      "initial_deficient": 71
+    },
+    {
+      "experiment": "experiment-9d39b7482383",
+      "split": "prospective_short_distance",
+      "frames": 53,
+      "baseline_frames": 9,
+      "baseline_last_stamp": 15.4,
+      "action_stamp": 16.853,
+      "motion_phase": "succeeded",
+      "planned_goal": [
+        6.15,
+        -1.7
+      ],
+      "initial_deficient": 71
+    }
+  ],
+  "input_sha256": {
+    "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures/stationary/samples.npz": "9e245be3f7c2696822f6d020fc7ae52a2600a70b5d4ecc694d29d522f04acc58",
+    "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures/stationary-control.json": "f2d4374958939fd4138cf3b1a2b7744186fc1b292781d85e8002252d77c0fc84",
+    "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures/plan.json": "1f663831096298e8e549c0c57ac4f6f9757287b4031b818c755e9e45188b2d45",
+    "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures/approach/samples.npz": "e5ef306e40143301540ddcd631987c657f6b801e97345af75c88ea98230f070a",
+    "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures/approach-control.json": "f181f12ecf5f2ccb89905a42af56805aaa198f1341641aae52f9c292a41d1280",
+    "/evidence/slope-short-approach-20260913/approach/samples.npz": "d0910eebf66c3d4c7dd870fcf9d97373ab219dd3b5100f97ac96e4a7357c336f",
+    "/evidence/slope-short-approach-20260913/approach-control.json": "3c058d85aa4c46998b3c1aa02782e844d2cc3ce4a1d5d6348215f153e9b6adfc",
+    "/evidence/slope-short-approach-20260913/plan.json": "339fa64de3ad6d7937567998611046b4a36e2d4dc0ed85c71451c209af00728d"
+  },
+  "features_use_truth": false,
+  "fitted_parameters": false,
+  "accepted_policy": false,
+  "limits": [
+    "Fixed geometric opportunity rule, not a learned probability; online policy unchanged.",
+    "Rule documented before examining new trial labels; this is not formal preregistration.",
+    "Same scene/start and nearby cells are correlated; no statistical or cross-scene generalization claim.",
+    "Features only use baseline estimated poses, clouds and planned candidate; final clouds supply labels only.",
+    "Fit recovery includes observations during transit, not just at the planned endpoint.",
+    "30s prospective versus 45s exploratory capture; no equal-budget strategy efficacy claim.",
+    "Inverse-square horizontal density ignores incidence, voxel saturation and occlusion."
+  ]
+}

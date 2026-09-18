@@ -1,0 +1,5 @@
+﻿folder,stage,elapsed,new_observed_m2,resampling_eligible_cells,resampling_recovered_cells,recovered_surface_m2,new_quality_m2,resampling_quality_m2,quality_gain_m2,target_recovered_cells,outside_target_recovered_cells,lost_valid_surface_m2,utility_m2,utility_m2_per_sim_second,net_utility_m2,net_utility_m2_per_sim_second
+ramp-repeat3-wide_turn,after_turn,1.4149999999999991,0.3125,120,11,0.6875,0.0375,0.49718750000000006,0.5346875000000004,0,11,0.0,1.0,0.05,1.0,0.05
+ramp-repeat3-advance,after_move,5.922999999999998,3.0625,110,26,1.625,0.9456875,1.78675,2.7324374999999996,5,21,0.0,4.6875,0.234375,4.6875,0.234375
+ramp-repeat3-advance,after_turn,6.023,3.4375,110,27,1.6875,1.10275,1.886875,2.989625,5,22,0.0,5.125,0.25625,5.125,0.25625
+ramp-repeat3-small_turn,after_turn,0.36599999999999966,0.0,126,0,0.0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0.0,0.0

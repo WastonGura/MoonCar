@@ -1,0 +1,44 @@
+{
+  "command": [
+    "gz",
+    "sim",
+    "-g",
+    "--render-engine",
+    "ogre",
+    "--gui-config",
+    "/evidence/frontend-experiments/experiment-a608e74eefb5/gui.config"
+  ],
+  "running": true,
+  "labels": {
+    "mooncar.experiment": "experiment-a608e74eefb5",
+    "mooncar.viewer": "mooncar.wslg",
+    "org.opencontainers.image.version": "24.04"
+  },
+  "mounts": [
+    {
+      "Type": "bind",
+      "Source": "/run/desktop/mnt/host/d/Document/Repositories/MoonCar-mapping/tmp/ros_acceptance",
+      "Destination": "/evidence",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/run/desktop/mnt/host/d/Document/Repositories/MoonCar-mapping",
+      "Destination": "/source",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/run/desktop/mnt/host/wslg/.X11-unix",
+      "Destination": "/tmp/.X11-unix",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    }
+  ],
+  "id": "8409e097d6a458a4c6cfd2cff7cbc2cc2dc8d2ed721525ce9096285b741b2359"
+}

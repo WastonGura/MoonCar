@@ -1,0 +1,16 @@
+{
+  "trials": [
+    {"folder": "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures", "condition": "stationary", "goal": [5.9, -1.4], "split": "exploratory"},
+    {"folder": "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures", "condition": "approach", "goal": [5.9, -1.4], "split": "exploratory"},
+    {"folder": "/evidence/slope-short-approach-20260913", "condition": "approach", "goal": [6.15, -1.7], "split": "prospective_short_distance"}
+  ],
+  "limits": [
+    "Fixed geometric opportunity rule, not a learned probability; online policy unchanged.",
+    "Rule documented before examining new trial labels; this is not formal preregistration.",
+    "Same scene/start and nearby cells are correlated; no statistical or cross-scene generalization claim.",
+    "Features only use baseline estimated poses, clouds and planned candidate; final clouds supply labels only.",
+    "Fit recovery includes observations during transit, not just at the planned endpoint.",
+    "30s prospective versus 45s exploratory capture; no equal-budget strategy efficacy claim.",
+    "Inverse-square horizontal density ignores incidence, voxel saturation and occlusion."
+  ]
+}

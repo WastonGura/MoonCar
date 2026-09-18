@@ -1,0 +1,127 @@
+{
+  "trials": [
+    {
+      "experiment": "experiment-b7460b2b0851",
+      "condition": "stationary",
+      "frames": 80,
+      "baseline_frames": 9,
+      "begin_index": 9,
+      "settled_index": 9,
+      "motion_start_pose_stamp": null,
+      "settled_pose_stamp": 14.8,
+      "arrival_definition": "post-hoc stable suffix within .03m/.03rad of final estimated pose; not Nav2 event",
+      "single_transit_false_negative_counts": [],
+      "estimated_translation_m": 0.0
+    },
+    {
+      "experiment": "experiment-300a6f2d306c",
+      "condition": "approach",
+      "frames": 82,
+      "baseline_frames": 9,
+      "begin_index": 12,
+      "settled_index": 21,
+      "motion_start_pose_stamp": 16.6,
+      "settled_pose_stamp": 21.4,
+      "arrival_definition": "post-hoc stable suffix within .03m/.03rad of final estimated pose; not Nav2 event",
+      "single_transit_false_negative_counts": [
+        {
+          "frame": 12,
+          "stamp": 16.6,
+          "recovered": 6
+        },
+        {
+          "frame": 13,
+          "stamp": 17.1,
+          "recovered": 9
+        },
+        {
+          "frame": 14,
+          "stamp": 17.6,
+          "recovered": 6
+        },
+        {
+          "frame": 15,
+          "stamp": 18.2,
+          "recovered": 7
+        },
+        {
+          "frame": 16,
+          "stamp": 18.7,
+          "recovered": 8
+        },
+        {
+          "frame": 17,
+          "stamp": 19.2,
+          "recovered": 10
+        },
+        {
+          "frame": 18,
+          "stamp": 19.8,
+          "recovered": 8
+        },
+        {
+          "frame": 19,
+          "stamp": 20.4,
+          "recovered": 9
+        },
+        {
+          "frame": 20,
+          "stamp": 20.9,
+          "recovered": 9
+        }
+      ],
+      "estimated_translation_m": 0.7112687435415422
+    },
+    {
+      "experiment": "experiment-9d39b7482383",
+      "condition": "approach",
+      "frames": 53,
+      "baseline_frames": 9,
+      "begin_index": 12,
+      "settled_index": 16,
+      "motion_start_pose_stamp": 17.6,
+      "settled_pose_stamp": 19.8,
+      "arrival_definition": "post-hoc stable suffix within .03m/.03rad of final estimated pose; not Nav2 event",
+      "single_transit_false_negative_counts": [
+        {
+          "frame": 12,
+          "stamp": 17.6,
+          "recovered": 6
+        },
+        {
+          "frame": 13,
+          "stamp": 18.2,
+          "recovered": 19
+        },
+        {
+          "frame": 14,
+          "stamp": 18.7,
+          "recovered": 16
+        },
+        {
+          "frame": 15,
+          "stamp": 19.2,
+          "recovered": 18
+        }
+      ],
+      "estimated_translation_m": 0.3227883084296107
+    }
+  ],
+  "input_sha256": {
+    "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures/stationary/samples.npz": "9e245be3f7c2696822f6d020fc7ae52a2600a70b5d4ecc694d29d522f04acc58",
+    "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures/stationary-control.json": "f2d4374958939fd4138cf3b1a2b7744186fc1b292781d85e8002252d77c0fc84",
+    "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures/approach/samples.npz": "e5ef306e40143301540ddcd631987c657f6b801e97345af75c88ea98230f070a",
+    "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures/approach-control.json": "f181f12ecf5f2ccb89905a42af56805aaa198f1341641aae52f9c292a41d1280",
+    "/source/reports/evidence/terrain-workbench/resampling-model-20260913/short-approach/approach/samples.npz": "d0910eebf66c3d4c7dd870fcf9d97373ab219dd3b5100f97ac96e4a7357c336f",
+    "/source/reports/evidence/terrain-workbench/resampling-model-20260913/short-approach/approach-control.json": "3c058d85aa4c46998b3c1aa02782e844d2cc3ce4a1d5d6348215f153e9b6adfc",
+    "/source/reports/evidence/terrain-workbench/resampling-model-20260913/analysis/samples.csv": "6d3d3db1b5fa6196dc4a4e78356647ab18976092c29d436d342aec059ee87fd9"
+  },
+  "limits": [
+    "Frame-subset ablation of the same observations, not independent controlled trials.",
+    "Subset recovery counts overlap; do not add them or call them causal contributions.",
+    "Any-single-transit is a per-cell oracle over different single frames, not one shared image or deployable prediction.",
+    "Unequal frame counts/exposure; a stable suffix is not a matched-duration control.",
+    "Estimated poses and sensor fit labels only; no accuracy or safety acceptance.",
+    "Actual endpoint and recovery times are post-hoc diagnostics, never prediction features."
+  ]
+}

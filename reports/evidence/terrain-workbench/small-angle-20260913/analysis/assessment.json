@@ -1,0 +1,120 @@
+{
+  "shadow_check_passed": true,
+  "rejections": [],
+  "branches": {
+    "try_observation": 7,
+    "no_modelled_marginal_support": 1
+  },
+  "model_metrics": {
+    "scope": "all_decision_deficient",
+    "arm": "turn",
+    "rule": "swept_prediction",
+    "tp": 26,
+    "fp": 10,
+    "fn": 20,
+    "tn": 438,
+    "precision": 0.7222222222222222,
+    "recall": 0.5652173913043478,
+    "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+  },
+  "old_metrics": {
+    "scope": "all_decision_deficient",
+    "arm": "turn",
+    "rule": "v1_prediction",
+    "tp": 0,
+    "fp": 7,
+    "fn": 46,
+    "tn": 441,
+    "precision": 0.0,
+    "recall": 0.0,
+    "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+  },
+  "pairs": [
+    {
+      "pair": "visible_curve_v1-repeat1",
+      "scope": "all_decision_deficient",
+      "status": "evaluated",
+      "common_remaining": 90,
+      "missing": 0,
+      "turn_only": 8,
+      "hold_only": 0,
+      "net_recovered": 8,
+      "would_turn": true,
+      "false_skip": false,
+      "no_positive_net": false
+    },
+    {
+      "pair": "visible_curve_v1-repeat2",
+      "scope": "all_decision_deficient",
+      "status": "evaluated",
+      "common_remaining": 79,
+      "missing": 0,
+      "turn_only": 6,
+      "hold_only": 0,
+      "net_recovered": 6,
+      "would_turn": true,
+      "false_skip": false,
+      "no_positive_net": false
+    },
+    {
+      "pair": "visible_ramp_v1-repeat1",
+      "scope": "all_decision_deficient",
+      "status": "evaluated",
+      "common_remaining": 87,
+      "missing": 0,
+      "turn_only": 4,
+      "hold_only": 0,
+      "net_recovered": 4,
+      "would_turn": true,
+      "false_skip": false,
+      "no_positive_net": false
+    },
+    {
+      "pair": "visible_ramp_v1-repeat2",
+      "scope": "all_decision_deficient",
+      "status": "evaluated",
+      "common_remaining": 82,
+      "missing": 0,
+      "turn_only": 3,
+      "hold_only": 0,
+      "net_recovered": 3,
+      "would_turn": true,
+      "false_skip": false,
+      "no_positive_net": false
+    }
+  ],
+  "execution": [
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "requested": 0.02,
+      "actual": 0.029747960542318323,
+      "verified": true
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "requested": 0.08,
+      "actual": 0.08239152548492745,
+      "verified": true
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "requested": 0.02,
+      "actual": 0.021926092187923074,
+      "verified": true
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "requested": 0.08,
+      "actual": 0.08837006720285212,
+      "verified": true
+    }
+  ],
+  "v2_false_skips": [
+    "visible_curve_v1-repeat1",
+    "visible_curve_v1-repeat2",
+    "visible_ramp_v1-repeat1",
+    "visible_ramp_v1-repeat2"
+  ],
+  "online_policy_changed": false,
+  "meaning": "Predeclared exploratory admission check, not statistical significance or overall autonomous strategy acceptance"
+}

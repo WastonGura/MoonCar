@@ -1,0 +1,77 @@
+{
+  "checks": [
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "status": "verified",
+      "frames": 31,
+      "sensor_only": true,
+      "exact_final_prefix": true,
+      "selection_reproduced": true,
+      "selected": false
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "status": "verified",
+      "frames": 29,
+      "sensor_only": true,
+      "exact_final_prefix": true,
+      "selection_reproduced": true,
+      "selected": false
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "status": "verified",
+      "frames": 31,
+      "sensor_only": true,
+      "exact_final_prefix": true,
+      "selection_reproduced": true,
+      "selected": false
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "status": "verified",
+      "frames": 31,
+      "sensor_only": true,
+      "exact_final_prefix": true,
+      "selection_reproduced": true,
+      "selected": false
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "status": "verified",
+      "frames": 31,
+      "sensor_only": true,
+      "exact_final_prefix": true,
+      "selection_reproduced": true,
+      "selected": false
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "status": "verified",
+      "frames": 32,
+      "sensor_only": true,
+      "exact_final_prefix": true,
+      "selection_reproduced": true,
+      "selected": false
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "status": "verified",
+      "frames": 34,
+      "sensor_only": true,
+      "exact_final_prefix": true,
+      "selection_reproduced": true,
+      "selected": false
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "status": "verified",
+      "frames": 33,
+      "sensor_only": true,
+      "exact_final_prefix": true,
+      "selection_reproduced": true,
+      "selected": false
+    }
+  ],
+  "meaning": "All saved selections reproduced from exact sensor-only prefixes, including missing candidates. No later observations or truth inputs."
+}

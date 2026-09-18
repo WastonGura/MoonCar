@@ -1,0 +1,16 @@
+{
+  "writes": 1000,
+  "read_count": 1754,
+  "missing_or_transient": 2,
+  "warnings": [
+    "Transient pending JSON read: /evidence/polling-diagnosis-20260913/atomic-manifest.json: [Errno 61] No data available",
+    "Transient pending JSON read: /evidence/polling-diagnosis-20260913/atomic-manifest.json: [Errno 61] No data available"
+  ],
+  "writer_errors": [],
+  "reader_errors": [],
+  "final": {
+    "sequence": 1000
+  },
+  "scope": "Actual atomic replacement stress on the Windows bind mount. Absence of ENODATA does not establish old host-level cause.",
+  "source_sha256": "5691fd53e08024d4b2bac7d4bb1cc84a753b096c828d1ace4229991072beab57"
+}

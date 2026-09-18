@@ -1,0 +1,10 @@
+[
+  {
+    "stamp": 10.3,
+    "reason": "Ground truth does not bracket observation"
+  },
+  {
+    "stamp": 10.8,
+    "reason": "Ground truth does not bracket observation"
+  }
+]

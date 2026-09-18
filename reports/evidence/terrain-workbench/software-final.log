@@ -1,0 +1,77 @@
+Starting >>> mooncar_control
+Finished <<< mooncar_control [0.15s]
+Starting >>> mooncar_description
+Finished <<< mooncar_description [0.12s]
+Starting >>> mooncar_msgs
+Finished <<< mooncar_msgs [0.12s]
+Starting >>> mooncar_terrain
+Finished <<< mooncar_terrain [0.12s]
+Starting >>> mooncar_bringup
+Finished <<< mooncar_bringup [0.12s]
+Starting >>> mooncar_gazebo
+Finished <<< mooncar_gazebo [0.12s]
+Starting >>> mooncar_slam
+Finished <<< mooncar_slam [0.12s]
+Starting >>> mooncar_navigation
+Finished <<< mooncar_navigation [0.13s]
+
+Summary: 8 packages finished [1.17s]
+test_terrain_gate_and_invalid_command (test_safety_relay.RelayTests.test_terrain_gate_and_invalid_command) ... [INFO] [1788967772.899827473] [mooncar_cmd_vel_safety_relay]: Relaying /cmd_vel to /mooncar/cmd_vel_safe with timeout 0.50s
+ok
+test_real_c_core_over_virtual_uart (test_serial_protocol.ProtocolTests.test_real_c_core_over_virtual_uart) ... ok
+test_ros_bridge_arm_timeout_and_encoder_wrap (test_serial_protocol.ProtocolTests.test_ros_bridge_arm_timeout_and_encoder_wrap) ... ok
+test_stream_corruption_and_fragmentation (test_serial_protocol.ProtocolTests.test_stream_corruption_and_fragmentation) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.675s
+
+OK
+test_joint_rate_uses_message_time_and_resets (test_navigation_timeout.NavigationTimeoutTest.test_joint_rate_uses_message_time_and_resets) ... ok
+test_lifecycle_queries_are_limited_to_one_per_second (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_queries_are_limited_to_one_per_second) ... ok
+test_lifecycle_readiness_has_wall_deadline (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_readiness_has_wall_deadline) ... ok
+test_lifecycle_readiness_without_cli_polling (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_readiness_without_cli_polling) ... ok
+test_localization_quality_and_ground_truth (test_navigation_timeout.NavigationTimeoutTest.test_localization_quality_and_ground_truth) ... ok
+test_ros_timeout_cancels (test_navigation_timeout.NavigationTimeoutTest.test_ros_timeout_cancels) ... ok
+test_scan_self_filter_matches_navigation_footprint (test_navigation_timeout.NavigationTimeoutTest.test_scan_self_filter_matches_navigation_footprint) ... ok
+test_slow_simulation_can_finish_after_180_wall_seconds (test_navigation_timeout.NavigationTimeoutTest.test_slow_simulation_can_finish_after_180_wall_seconds) ... ok
+test_stopped_clock_cancels (test_navigation_timeout.NavigationTimeoutTest.test_stopped_clock_cancels) ... ok
+test_wall_limit_cancels_slow_clock (test_navigation_timeout.NavigationTimeoutTest.test_wall_limit_cancels_slow_clock) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.114s
+
+OK
+test_expired_browser_lease_withholds_motion_even_with_valid_pose (test_execution_safety.ExecutionSafetyTests.test_expired_browser_lease_withholds_motion_even_with_valid_pose) ... ok
+test_primitives_preserve_turns_and_reject_curves (test_execution_safety.ExecutionSafetyTests.test_primitives_preserve_turns_and_reject_curves) ... ok
+test_replan_confirms_cancellation_before_new_route (test_execution_safety.ExecutionSafetyTests.test_replan_confirms_cancellation_before_new_route) ... ok
+test_depth_padding_endian_units_and_invalid_input (test_geometry.GeometryTest.test_depth_padding_endian_units_and_invalid_input) ... ok
+test_flat_slope_roughness_step_and_pit (test_geometry.GeometryTest.test_flat_slope_roughness_step_and_pit) ... ok
+test_keepout_does_not_clear_unknown_and_respects_map_rotation (test_geometry.GeometryTest.test_keepout_does_not_clear_unknown_and_respects_map_rotation) ... ok
+test_optical_transform (test_geometry.GeometryTest.test_optical_transform) ... ok
+test_scanline_is_unknown_not_a_vertical_obstacle (test_geometry.GeometryTest.test_scanline_is_unknown_not_a_vertical_obstacle) ... ok
+test_action_result_and_missing_costmap_failure (test_planner_action.PlannerActionTests.test_action_result_and_missing_costmap_failure) ... ok
+test_initial_support_then_translation_or_rotation (test_recording_keyframes.KeyframeTests.test_initial_support_then_translation_or_rotation) ... ok
+test_atomic_replacement_during_fusion_keeps_one_snapshot (test_terrain_map.TerrainMapTests.test_atomic_replacement_during_fusion_keeps_one_snapshot) ... ok
+test_robot_pose_is_distinct_from_camera_and_survives_reload (test_terrain_map.TerrainMapTests.test_robot_pose_is_distinct_from_camera_and_survives_reload) ... ok
+test_rotation_negative_cells_and_empty_archive (test_terrain_map.TerrainMapTests.test_rotation_negative_cells_and_empty_archive) ... ok
+test_transform_fusion_archive_replay_and_export (test_terrain_map.TerrainMapTests.test_transform_fusion_archive_replay_and_export) ... ok
+test_unknown_degenerate_multilevel_and_rejected_input (test_terrain_map.TerrainMapTests.test_unknown_degenerate_multilevel_and_rejected_input) ... ok
+test_directional_slope_and_unknown_footprint (test_terrain_planner.PlannerTests.test_directional_slope_and_unknown_footprint) ... ok
+test_exact_endpoints_and_explicit_checked_turns (test_terrain_planner.PlannerTests.test_exact_endpoints_and_explicit_checked_turns) ... ok
+test_reachable_goal_near_observed_boundary (test_terrain_planner.PlannerTests.test_reachable_goal_near_observed_boundary) ... ok
+test_routes_and_support_ablation (test_terrain_planner.PlannerTests.test_routes_and_support_ablation) ... ok
+test_wall_step_failure_and_budget (test_terrain_planner.PlannerTests.test_wall_step_failure_and_budget) ... ok
+test_archive_replay_bad_input_and_origin (test_workbench_api.WorkbenchApiTests.test_archive_replay_bad_input_and_origin) ... 127.0.0.1 - - [09/Sep/2026 15:29:38] "GET /api/map?session=../test.npz HTTP/1.1" 400 -
+127.0.0.1 - - [09/Sep/2026 15:29:38] "GET /api/map?session=broken.npz HTTP/1.1" 400 -
+127.0.0.1 - - [09/Sep/2026 15:29:38] "GET /api/map?session=test.npz&frame=9 HTTP/1.1" 400 -
+127.0.0.1 - - [09/Sep/2026 15:29:38] "GET /vendor/../../docs/requirements.md HTTP/1.1" 400 -
+127.0.0.1 - - [09/Sep/2026 15:29:38] "POST /api/plan HTTP/1.1" 403 -
+ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 1.938s
+
+OK
+firmware core: CRC, framing, sequence, watchdog, estop, rollover, NaN passed
+Software regression checks passed.
+Container build and ROS software regression passed; Gazebo runtime is a separate gate.

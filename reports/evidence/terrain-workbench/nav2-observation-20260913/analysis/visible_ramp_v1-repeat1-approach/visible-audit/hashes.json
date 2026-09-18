@@ -1,0 +1,20 @@
+{
+  "cells.csv": "2d004436ac5fd24990a1737765892684151ab1010680185c0c85e6b70976a231",
+  "depth_projection_evaluation.py": "1a07a75ac5ffebc2f5c1881155d5a59cd723a90cc57aed8b49215fd9f24adf6e",
+  "groups.csv": "6eea1e58bb469141fa33e607072bf32a37652d817de6e109fc0062d5c3f1e9a7",
+  "measured-true-pose.npz": "d5b5729b3e231a7da0eaead46964506bd6f23654efc3e4e9363f7e6d7f272182",
+  "quality-bins.csv": "ca9ac47f693d0584feb7ba2509df9e07977b949657bff809f1d0fc3d4ca21010",
+  "quality-vs-surface.pdf": "10751b9711138c98b9ea3394474b0646122cff972289260928324ddde53ed981",
+  "quality-vs-surface.png": "7df0bc42dc7bac88e75b5a0d0f1c314f26382842df071af082474a07dd596c50",
+  "simulation_experiment.py": "c9f5bf8177ce2dbf07089aba7d6782f0c5d2bc2d90d566f47e8749915d63e1b4",
+  "summary.json": "5c856fce7faccaa73230bf3ef74f35425595c45871feb7b5e9c3e2423ddb517e",
+  "surface-correspondence.pdf": "f04374e91bf8a65bb10b28a02641df90534043309dd46dbe6c34994fc8557cf9",
+  "surface-correspondence.png": "eccda4ac511b05d3c860d2c103dfcbb4070a3422bcada23e31e645a83c45665f",
+  "surface_quality_evaluation.py": "c48de4a272234b78650ca11b852186eee5d44673a68426fb0bfdfca11fe69ede",
+  "survey_evaluation.py": "004780a0d96f23b751ef8a5ef783730187dbdbc9847d2f84ca3fee30e8dd9f23",
+  "terrain_geometry.py": "9ef1c21dfb8d0503d99286a6bde35fb2f0a938dbc9bcbf923e5897fbb7f25ed4",
+  "terrain_map.py": "d43e3abdee30d4b70701fef793d65f8067149ae9bfdcbf4ada3041b407a1a856",
+  "terrain_reference.py": "7fe9587e2bcdb8341a952db429ca51f4aece0208a36c38dfb600d4526884b051",
+  "trajectory_evaluation.py": "36c52d1810188360e91072b99da50ea3e494568b9948cee59be13148b7bcda28",
+  "visible-reference.npz": "ed5cb79c43df2b808d10c920afa68538064ad95bd7c23d0628f34f651a85557d"
+}

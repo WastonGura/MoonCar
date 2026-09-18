@@ -1,0 +1,6 @@
+﻿case,C,P,S,height_rmse_m,status
+real_capture,0.5671296296296297,1.0,56.71296296296296,0.000846340383095868,failed
+synthetic_height_plus_20cm,0.5671296296296297,0.0,0.0,0.20040380527655902,failed
+synthetic_remove_alternating_cells,0.29398148148148145,1.0,29.39814814814815,0.0009169435108113784,failed
+synthetic_empty,0.0,,0.0,,failed
+synthetic_unverified_coordinates,,,,,not_evaluable

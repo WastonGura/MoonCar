@@ -1,0 +1,43 @@
+[
+  {
+    "experiment": "experiment-348f798f421b",
+    "split": "heldout_curved_region",
+    "frames": 54,
+    "baseline_frames": 9,
+    "baseline_last_stamp": 14.4,
+    "action_stamp": 16.088,
+    "motion_phase": "idle",
+    "planned_goal": [
+      -9.2,
+      6.45
+    ],
+    "initial_deficient": 95
+  },
+  {
+    "experiment": "experiment-77c20d5e42f8",
+    "split": "heldout_curved_region",
+    "frames": 54,
+    "baseline_frames": 9,
+    "baseline_last_stamp": 14.8,
+    "action_stamp": 16.206,
+    "motion_phase": "succeeded",
+    "planned_goal": [
+      -9.2,
+      6.45
+    ],
+    "initial_deficient": 95
+  }
+]
+PASS: phase partition, shared baseline, no duplicate frames and no-motion detection
+PASS: same-bearing range, unchanged views, FOV/conflict exclusions, no post-action feature leakage
+..127.0.0.1 - - [13/Sep/2026 07:31:12] "POST /api/simulation/apply HTTP/1.1" 403 -
+127.0.0.1 - - [13/Sep/2026 07:31:12] "GET /api/info?session=../survey.npz HTTP/1.1" 400 -
+127.0.0.1 - - [13/Sep/2026 07:31:12] "GET /api/info?session=experiment-test/../survey.npz HTTP/1.1" 400 -
+127.0.0.1 - - [13/Sep/2026 07:31:12] "GET /api/info?session=%2Fetc%2Ftest.npz HTTP/1.1" 400 -
+127.0.0.1 - - [13/Sep/2026 07:31:12] "GET /api/info?session=experiment-test%5Csurvey.npz HTTP/1.1" 400 -
+.127.0.0.1 - - [13/Sep/2026 07:31:13] "POST /api/simulation/move HTTP/1.1" 403 -
+.
+----------------------------------------------------------------------
+Ran 4 tests in 1.128s
+
+OK

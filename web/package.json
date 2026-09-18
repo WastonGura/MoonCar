@@ -1,0 +1,7 @@
+{
+  "name": "mooncar-map-workbench",
+  "private": true,
+  "type": "module",
+  "description": "Local Three.js view of recorded MoonCar terrain observations",
+  "dependencies": { "three": "0.180.0" }
+}

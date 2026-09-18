@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "csv_scores_independently_recounted": true,
+  "all_valid_height_errors_in_rmse": true,
+  "perturbation_checks": [
+    {
+      "case": "real_capture",
+      "C": 0.5671296296296297,
+      "P": 1.0,
+      "S": 56.71296296296296,
+      "height_rmse_m": 0.000846340383095868,
+      "status": "failed"
+    },
+    {
+      "case": "synthetic_height_plus_20cm",
+      "C": 0.5671296296296297,
+      "P": 0.0,
+      "S": 0.0,
+      "height_rmse_m": 0.20040380527655902,
+      "status": "failed"
+    },
+    {
+      "case": "synthetic_remove_alternating_cells",
+      "C": 0.29398148148148145,
+      "P": 1.0,
+      "S": 29.39814814814815,
+      "height_rmse_m": 0.0009169435108113784,
+      "status": "failed"
+    },
+    {
+      "case": "synthetic_empty",
+      "C": 0.0,
+      "P": null,
+      "S": 0.0,
+      "height_rmse_m": null,
+      "status": "failed"
+    },
+    {
+      "case": "synthetic_unverified_coordinates",
+      "C": null,
+      "P": null,
+      "S": null,
+      "height_rmse_m": null,
+      "status": "not_evaluable"
+    }
+  ],
+  "limitation": "Artificial corruption validates evaluator response; it is not another rover strategy or independent physical experiment."
+}

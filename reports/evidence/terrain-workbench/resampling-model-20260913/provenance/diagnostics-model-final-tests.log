@@ -1,0 +1,29 @@
+.....[WARN] [1789281817.805055271] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+.
+----------------------------------------------------------------------
+Ran 6 tests in 0.254s
+
+OK
+..127.0.0.1 - - [13/Sep/2026 06:43:38] "POST /api/simulation/apply HTTP/1.1" 403 -
+127.0.0.1 - - [13/Sep/2026 06:43:38] "GET /api/info?session=../survey.npz HTTP/1.1" 400 -
+127.0.0.1 - - [13/Sep/2026 06:43:38] "GET /api/info?session=experiment-test/../survey.npz HTTP/1.1" 400 -
+127.0.0.1 - - [13/Sep/2026 06:43:38] "GET /api/info?session=%2Fetc%2Ftest.npz HTTP/1.1" 400 -
+127.0.0.1 - - [13/Sep/2026 06:43:38] "GET /api/info?session=experiment-test%5Csurvey.npz HTTP/1.1" 400 -
+.127.0.0.1 - - [13/Sep/2026 06:43:39] "POST /api/simulation/move HTTP/1.1" 403 -
+.
+----------------------------------------------------------------------
+Ran 4 tests in 1.116s
+
+OK
+......
+----------------------------------------------------------------------
+Ran 6 tests in 3.367s
+
+OK
+1 runs -> /tmp/tmp0_rla188/summary
+...
+----------------------------------------------------------------------
+Ran 3 tests in 5.589s
+
+OK
+PASS: same-bearing range, unchanged views, FOV and conflict exclusions
