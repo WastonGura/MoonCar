@@ -59,8 +59,11 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
         if distance!=distances[(x,y)]:continue
         for dx,dy in ((1,0),(-1,0),(0,1),(0,-1)):
             nx,ny=x+dx,y+dy
-            if not inside(nx,ny) or not 0<=costs[ny,nx]<99:continue
+            if not inside(nx,ny):continue
             px,py=ox+(nx+.5)*resolution,oy+(ny+.5)*resolution
+            dist_to_robot=math.hypot(px-pose['x'],py-pose['y'])
+            max_cost=100 if dist_to_robot<=.65 else 99
+            if not 0<=costs[ny,nx]<max_cost:continue
             if abs(px)>24.3 or abs(py)>24.3 or math.hypot(px-origin[0],py-origin[1])>radius-.75:continue
             if planner_v3:
                 terrain_weight = 1.0 + 2.5 * ((max(0, int(costs[ny, nx])) / 100.0) ** 2)
