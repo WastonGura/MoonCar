@@ -126,6 +126,7 @@ function draw(data, refit=false, preserveSelection=false) {
   if(inspected)showCell(inspected);else $('cell-detail').textContent='点击地表查看观测结果。';
   const retain=old=>old&&data.cells.find(c=>c.valid&&c.ix===old.ix&&c.iy===old.iy)||null;
   start=preserveSelection?retain(previousStart):null;goal=preserveSelection?retain(previousGoal):null;
+  if(meshObj)updateMeshColors(meshObj);
   renderMarkers(); if(refit)fit();
 }
 function renderMarkers() {
@@ -156,18 +157,40 @@ function updateMeshColors(obj) {
 
   const range = (maxZ - minZ) || 1;
   const isColormap = $('colormap-mode')?.checked || false;
+  const isQuality = $('quality-mode')?.checked || false;
+  const isWireframe = $('wireframe')?.checked || false;
+
+  const res = map?.resolution || 0.25;
+  const cellMap = new Map();
+  if (map?.cells) {
+    for (const c of map.cells) {
+      if (c.valid) {
+        cellMap.set(`${c.ix},${c.iy}`, c);
+      }
+    }
+  }
 
   obj.traverse(child => {
     if (child.isMesh && child.geometry) {
+      if (!child.geometry.attributes.normal) child.geometry.computeVertexNormals();
       const pos = child.geometry.attributes.position;
       if (pos) {
         const colors = [];
         for (let i = 0; i < pos.count; i++) {
+          const x = pos.getX(i);
+          const y = pos.getY(i);
           const z = pos.getZ(i);
           const ratio = (z - minZ) / range;
           if (isColormap) {
             const c = turboColormap(ratio);
             colors.push(c.r, c.g, c.b);
+          } else if (isQuality) {
+            const ix = Math.floor(x / res);
+            const iy = Math.floor(y / res);
+            const cell = cellMap.get(`${ix},${iy}`);
+            const q = cell && cell.valid ? (cell.quality || 0) : 0;
+            const shade = 0.92 - 0.65 * q;
+            colors.push(shade, shade, shade);
           } else {
             const r = 0.50 + 0.38 * ratio;
             const g = 0.52 + 0.38 * ratio;
@@ -177,6 +200,18 @@ function updateMeshColors(obj) {
         }
         child.geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
         child.geometry.attributes.color.needsUpdate = true;
+      }
+
+      const MatClass = isQuality && !isColormap ? THREE.MeshBasicMaterial : THREE.MeshLambertMaterial;
+      if (!child.material || child.material.constructor !== MatClass) {
+        child.material?.dispose();
+        child.material = new MatClass({
+          vertexColors: true,
+          wireframe: isWireframe,
+          side: THREE.DoubleSide
+        });
+      } else {
+        child.material.wireframe = isWireframe;
       }
     }
   });
@@ -193,18 +228,6 @@ async function loadMesh(sessionName) {
     const object = objLoader.parse(text);
 
     updateMeshColors(object);
-    const isWireframe = $('wireframe')?.checked || false;
-
-    object.traverse(child => {
-      if (child.isMesh && child.geometry) {
-        child.geometry.computeVertexNormals();
-        child.material = new THREE.MeshLambertMaterial({
-          vertexColors: true,
-          wireframe: isWireframe,
-          side: THREE.DoubleSide
-        });
-      }
-    });
 
     meshObj = object;
     groups.mesh.add(object);
@@ -340,8 +363,22 @@ $('session').onchange=async()=>{
   }catch(e){if(token===generation)message(e.message,true);}
 };
 $('refresh').onclick=sessions;$('fit').onclick=()=>fit();$('top').onclick=()=>fit(true);
-$('quality-mode').onchange=()=>{$('quality-legend').hidden=!$('quality-mode').checked;if(map)draw(map,false,true);};
-if($('colormap-mode')) $('colormap-mode').onchange=()=>{if(map)draw(map,false,true);if(meshObj)updateMeshColors(meshObj);};
+$('quality-mode').onchange = () => {
+  if ($('quality-mode').checked && $('colormap-mode')?.checked) {
+    $('colormap-mode').checked = false;
+  }
+  $('quality-legend').hidden = !$('quality-mode').checked;
+  if (map) draw(map, false, true);
+  if (meshObj) updateMeshColors(meshObj);
+};
+if ($('colormap-mode')) $('colormap-mode').onchange = () => {
+  if ($('colormap-mode').checked && $('quality-mode')?.checked) {
+    $('quality-mode').checked = false;
+    $('quality-legend').hidden = true;
+  }
+  if (map) draw(map, false, true);
+  if (meshObj) updateMeshColors(meshObj);
+};
 for(const key of Object.keys(groups)) if($(key)) { groups[key].visible = $(key).checked; $(key).onchange=()=>groups[key].visible=$(key).checked; }
 if($('wireframe')) $('wireframe').onchange=()=>{if(meshObj)meshObj.traverse(c=>{if(c.isMesh&&c.material)c.material.wireframe=$('wireframe').checked;});};
 for(const name of ['start','goal'])$(`pick-${name}`).onclick=()=>{experiment.cancel();stopPlayback();pickMode=name;message(`请点击已观测地表选择${name==='start'?'起点':'终点'}。`);};
