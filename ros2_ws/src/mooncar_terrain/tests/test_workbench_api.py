@@ -101,6 +101,34 @@ class WorkbenchApiTests(unittest.TestCase):
                 server.server_close()
                 thread.join()
 
+    def test_mesh_and_dem_endpoints(self):
+        with tempfile.TemporaryDirectory() as directory:
+            terrain = TerrainMap(source='unit test, not vehicle data')
+            terrain.add_frame([[0., 0., 0.], [.1, 0., 0.], [0., .1, 0.]], 1.)
+            terrain.save(Path(directory) / 'test.npz')
+            server = create_server(directory, port=0)
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            connection = http.client.HTTPConnection('127.0.0.1', server.server_port, timeout=5)
+            try:
+                connection.request('GET', '/api/mesh?session=test.npz')
+                response = connection.getresponse()
+                self.assertEqual(response.status, 200)
+                mesh_content = response.read().decode('utf-8')
+                self.assertTrue('# MoonCar 3D Surface Mesh' in mesh_content or '# Empty mesh' in mesh_content)
+
+                connection.request('GET', '/api/dem?session=test.npz&download=1')
+                response = connection.getresponse()
+                self.assertEqual(response.status, 200)
+                self.assertEqual(response.getheader('Content-Disposition'), 'attachment; filename="test.asc"')
+                dem_content = response.read().decode('utf-8')
+                self.assertTrue('ncols' in dem_content)
+            finally:
+                connection.close()
+                server.shutdown()
+                server.server_close()
+                thread.join()
+
 
 if __name__ == '__main__':
     unittest.main()

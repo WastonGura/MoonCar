@@ -61,14 +61,21 @@
       </section>
       <label for="session">采集记录</label><select id="session"><option value="">请选择记录</option></select>
       <p id="source" class="note">加载的是车辆观测档案，三维场景模型不作为建图结果。</p>
-      <div class="actions"><button id="refresh">刷新列表</button><a id="download" aria-disabled="true">下载档案</a></div>
+      <div class="actions">
+        <button id="refresh">刷新列表</button>
+        <a id="download" aria-disabled="true">下载档案 (.npz)</a>
+        <a id="download-mesh" aria-disabled="true">下载 3D 网格 (.obj)</a>
+        <a id="download-dem" aria-disabled="true">下载 DEM (.asc)</a>
+      </div>
       <label class="check"><input id="live" type="checkbox">跟随采集更新</label>
       <p id="live-status" class="note">离线回放；实时模式读取采集节点定期保存的档案。</p>
       <p id="cache-status" class="note" role="status">选择档案后自动准备回放缓存。</p>
       <h2>地图图层</h2>
-      <label class="check"><input id="quality-mode" type="checkbox" checked>采样质量热力图</label>
+      <label class="check"><input id="mesh" type="checkbox" checked>3D 连续地表网格</label>
+      <label class="check"><input id="wireframe" type="checkbox">网格线框透视</label>
+      <label class="check"><input id="surface" type="checkbox">地表格栅高程</label>
+      <label class="check"><input id="quality-mode" type="checkbox" checked>格栅采样质量热力</label>
       <p id="quality-legend" class="note">浅灰 0% → 深灰 100%。表示格内覆盖与观察方向的充分程度，不是准确率或安全概率；只为可表达的地表着色。</p>
-      <label class="check"><input id="surface" type="checkbox" checked>地表高程</label>
       <label class="check"><input id="cloud" type="checkbox" checked>观测点云</label>
       <label class="check"><input id="hazards" type="checkbox" checked>几何风险</label>
       <label class="check"><input id="track" type="checkbox" checked>采集轨迹</label>

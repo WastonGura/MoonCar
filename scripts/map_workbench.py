@@ -141,12 +141,26 @@ def create_server(directory, port=8765, host='127.0.0.1', navigator=None, simula
                     return self.send(validate_task(json.loads(value)), attachment='mooncar-experiment.json')
                 if parts.path == '/api/navigation':
                     return self.send(navigator.state() if navigator else dict(enabled=False))
-                if parts.path in ('/api/map', '/api/info', '/api/archive'):
+                if parts.path in ('/api/map', '/api/info', '/api/archive', '/api/mesh', '/api/dem'):
                     name = query.get('session', [''])[0]
                     if parts.path == '/api/archive':
                         return self.send(archive(name).read_bytes(), mime='application/octet-stream')
                     if parts.path == '/api/info':
                         return self.send(TerrainMap.inspect(archive(name)))
+                    if parts.path == '/api/mesh':
+                        target = archive(name).with_suffix('.obj')
+                        if not target.is_file() or target.stat().st_mtime_ns < archive(name).stat().st_mtime_ns:
+                            terrain = load(str(archive(name)), archive(name).stat().st_mtime_ns)
+                            terrain.export_mesh(target)
+                        attachment = target.name if 'download' in query else None
+                        return self.send(target.read_bytes(), mime='text/plain; charset=utf-8', attachment=attachment)
+                    if parts.path == '/api/dem':
+                        target = archive(name).with_suffix('.asc')
+                        if not target.is_file() or target.stat().st_mtime_ns < archive(name).stat().st_mtime_ns:
+                            terrain = load(str(archive(name)), archive(name).stat().st_mtime_ns)
+                            terrain.export_dem(target)
+                        attachment = target.name if 'download' in query else None
+                        return self.send(target.read_bytes(), mime='text/plain; charset=utf-8', attachment=attachment)
                     frame = int(query['frame'][0]) if 'frame' in query else None
                     return self.send(read(name, frame))
                 files = {'/': 'index.html', '/index.html': 'index.html', '/app.js': 'app.js',
