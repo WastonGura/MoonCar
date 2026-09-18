@@ -109,10 +109,11 @@ def run(output, budget=90, repeats=2, starts=None, strategies=STRATEGIES, scene=
             state=wait_for(lambda s:(s.get('task') or {}).get('id') not in (None,old)
                            and s.get('motion',{}).get('ready') and s.get('session'),240)
             ident=state['task']['id'];row['experiment']=ident
-            capture=output/'captures'/f'trial-{number:02d}'
+            trial_tag=f"trial-{number:02d}-{trial['strategy']}"
+            capture=output/'captures'/trial_tag
             world=Path('/evidence/frontend-experiments')/ident/'survey_yard.sdf'
             command,env,stop_file=capture_command(capture,world,ident,budget,robot_sdf)
-            capture_log=(output/'logs'/f'trial-{number:02d}-capture.log').open('w')
+            capture_log=(output/'logs'/f'{trial_tag}-capture.log').open('w')
             capture_process=subprocess.Popen(command,env=env,stdout=capture_log,stderr=subprocess.STDOUT)
             manifest=wait_for_capture(capture,capture_process)
             request('explore',dict(experiment=ident,budget_seconds=budget,radius=8,strategy=trial['strategy']))
@@ -126,7 +127,7 @@ def run(output, budget=90, repeats=2, starts=None, strategies=STRATEGIES, scene=
             capture_log.close();capture_log=None;row['capture']=str(capture)
             final_manifest=read_pending_json(capture/'manifest.json') or {}
             row['capture_lead_seconds']=autonomy_started-final_manifest['first_stamp']
-            evidence=output/'evaluations'/f'trial-{number:02d}'
+            evidence=output/'evaluations'/trial_tag
             acceptance=evaluate(capture,references/f"start-{trial['start_index']:02d}",evidence)
             row['evaluation']=str(evidence)
             row['acceptance']={k:acceptance.get(k) for k in ('status','S','C_obs','C','P','height_rmse_m',
@@ -144,7 +145,7 @@ def run(output, budget=90, repeats=2, starts=None, strategies=STRATEGIES, scene=
             try:
                 state=request();task=state.get('task') or {}
                 if applied and task.get('id') not in (None,old):
-                    row['experiment']=task['id'];write_json(output/f'trial-{number:02d}-failure-state.json',state)
+                    row['experiment']=task['id'];write_json(output/f'{trial_tag}-failure-state.json',state)
                 request('explore_stop',{})
             except Exception as diagnostic_error:
                 row['diagnostic_error']=str(diagnostic_error);write_json(output/'trials.json',results)

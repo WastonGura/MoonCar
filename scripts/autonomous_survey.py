@@ -343,7 +343,7 @@ class AutonomousSurvey:
                 started=self.now()
                 self.motion.mission_limits=dict(origin=self.origin,radius=radius,deadline=started+budget)
             self.task=dict(task,region=[-25,-25,25,25])
-            self.path=Path(directory)/task['id']/f'autonomy-{uuid.uuid4().hex[:10]}.json'
+            self.path=Path(directory)/task['id']/f'autonomy-{strategy}-{uuid.uuid4().hex[:8]}.json'
             self.data=dict(active=True,phase='planning',reason='根据当前观测比较转向、前进与换位补采',
                            origin=self.origin,budget_seconds=budget,radius=radius,started=started,
                            elapsed_seconds=0,history=[],decision=None,archive=self.path.name,strategy=strategy)

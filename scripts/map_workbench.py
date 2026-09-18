@@ -128,7 +128,30 @@ def create_server(directory, port=8765, host='127.0.0.1', navigator=None, simula
             query = parse_qs(parts.query)
             try:
                 if parts.path == '/api/sessions':
-                    return self.send(dict(sessions=[dict(name=p.relative_to(directory).as_posix()) for p in sorted(directory.rglob('*.npz')) if p.resolve().is_relative_to(directory) and 'research' not in p.relative_to(directory).parts]))
+                    sessions = []
+                    for p in sorted(directory.rglob('*.npz')):
+                        if p.resolve().is_relative_to(directory) and 'research' not in p.relative_to(directory).parts:
+                            info = dict(name=p.relative_to(directory).as_posix())
+                            strategy = None
+                            manifests = sorted(p.parent.glob('research/*/manifest.json'))
+                            if manifests:
+                                try:
+                                    data = json.loads(manifests[-1].read_text(encoding='utf-8'))
+                                    strategy = data.get('strategy')
+                                except Exception:
+                                    pass
+                            if not strategy:
+                                autonomies = sorted(p.parent.glob('autonomy-*.json'))
+                                if autonomies:
+                                    try:
+                                        data = json.loads(autonomies[-1].read_text(encoding='utf-8'))
+                                        strategy = data.get('strategy')
+                                    except Exception:
+                                        pass
+                            if strategy:
+                                info['strategy'] = strategy
+                            sessions.append(info)
+                    return self.send(dict(sessions=sessions))
                 if parts.path == '/api/simulation':
                     return self.send(simulation.state() if simulation else dict(enabled=False))
                 if parts.path == '/api/simulation/scene.jpg':

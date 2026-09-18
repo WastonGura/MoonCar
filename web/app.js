@@ -316,7 +316,7 @@ function compareSessions(a,b) {
   const stamp=name=>name.match(/(?:^|\/)survey-(\d{8}T\d{12}Z)\.npz$/)?.[1]||'';
   return stamp(b.name).localeCompare(stamp(a.name))||a.name.localeCompare(b.name);
 }
-function sessionLabel(name) {
+function sessionLabel(name, strategy) {
   const match=name.match(/(?:^|\/)survey-(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})(\d{6})Z\.npz$/);
   if(!match)return name;
   const [,year,month,day,hour,minute,second,microsecond]=match;
@@ -325,13 +325,27 @@ function sessionLabel(name) {
   const pad=n=>String(n).padStart(2,'0');
   const time=`${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
   const experiment=name.match(/(?:^|\/)experiment-([a-f0-9]+)\//)?.[1];
-  return `${time} · 地形采集${experiment?` · ${experiment.slice(0,6)}`:''}`;
+  const labels={
+    coverage_view_v3:'[覆盖优先 v3]',
+    surface_view_v3:'[地表补采 v3]',
+    nearest_view_v3:'[就近观察 v3]',
+    coverage_view_v2:'[覆盖优先 v2]',
+    surface_view_v2:'[地表补采 v2]',
+    nearest_view_v2:'[就近观察 v2]',
+    quality_view_heuristic_v1:'[启发式 v1]'
+  };
+  const tag = strategy ? (labels[strategy] || `[${strategy}]`) : '地形采集';
+  return `${time} · ${tag}${experiment?` · ${experiment.slice(0,6)}`:''}`;
 }
 
 async function sessions(preferred=null){
   try{const data=await api('/api/sessions'); const previous=$('session').value;$('session').replaceChildren(new Option('请选择记录',''));
     data.sessions.sort(compareSessions);
-    for(const item of data.sessions){const option=new Option(sessionLabel(item.name),item.name);option.title=`电脑本地时间 · ${item.name}`;$('session').add(option);}
+    for(const item of data.sessions){
+      const option=new Option(sessionLabel(item.name, item.strategy),item.name);
+      option.title=`电脑本地时间 · ${item.name}${item.strategy?` · 策略: ${item.strategy}`:''}`;
+      $('session').add(option);
+    }
     if(typeof preferred==='string'&&data.sessions.some(s=>s.name===preferred)){$('session').value=preferred;await $('session').onchange();}
     else if(data.sessions.some(s=>s.name===previous))$('session').value=previous;
     else if(data.sessions.length){
