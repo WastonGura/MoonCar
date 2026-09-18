@@ -73,6 +73,7 @@
       <h2>地图图层</h2>
       <label class="check"><input id="mesh" type="checkbox" checked>3D 连续地表网格</label>
       <label class="check"><input id="wireframe" type="checkbox">网格线框透视</label>
+      <label class="check"><input id="colormap-mode" type="checkbox">高程科学伪彩</label>
       <label class="check"><input id="surface" type="checkbox">地表格栅高程</label>
       <label class="check"><input id="quality-mode" type="checkbox" checked>格栅采样质量热力</label>
       <p id="quality-legend" class="note">浅灰 0% → 深灰 100%。表示格内覆盖与观察方向的充分程度，不是准确率或安全概率；只为可表达的地表着色。</p>
@@ -98,7 +99,7 @@
       </section>
     </aside>
     <section class="map-area" aria-label="三维地图">
-      <div class="map-toolbar"><span id="map-info">尚未加载地图</span><div><button id="fit">适应地图</button><button id="top">俯视</button><button id="capture">保存图片</button></div></div>
+      <div class="map-toolbar"><span id="map-info">尚未加载地图</span><div><button id="measure-btn" title="三维两点测距与坡度分析">测量标尺</button><button id="fpv-btn" title="切换至车载云台第一人称视角">车载视角</button><button id="fit">适应地图</button><button id="top">俯视</button><button id="capture">保存图片</button></div></div>
       <div id="scene-comparison">
         <section id="gazebo-scene" hidden aria-label="Gazebo 仿真现场">
           <div class="scene-heading"><b>Gazebo 仿真现场</b><span id="scene-status">等待仿真画面</span></div>
@@ -108,6 +109,7 @@
         <div class="observed-scene"><div class="scene-heading"><b>传感器采集成果</b><span>随采集档案更新</span></div><div id="viewport"><div id="empty">等待车辆观测到地形</div></div></div>
       </div>
       <div id="message" role="status">左键旋转 · 右键平移 · 滚轮缩放 · 点击地表查看详情</div>
+      <div id="measure-bar" hidden class="measure-bar"><span id="measure-result">点击地表选择测量第 1 个点</span><button id="measure-clear" type="button">清除标尺</button></div>
       <footer>
         <button id="play" disabled>播放</button>
         <label for="playback-speed" class="sr-only">播放速度</label>

@@ -12,11 +12,12 @@ renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); $('viewport').appendChild
 const controls = new OrbitControls(camera, renderer.domElement); controls.enableDamping = true;
 const ambient = new THREE.HemisphereLight(0xffffff, 0x888888, 2); scene.add(ambient);
 const light = new THREE.DirectionalLight(0xffffff, 2); light.position.set(5, -5, 12); scene.add(light);
-const groups = Object.fromEntries(['surface','mesh','cloud','hazards','track','vehicle','routes'].map(k => [k,new THREE.Group()]));
+const groups = Object.fromEntries(['surface','mesh','cloud','hazards','track','vehicle','routes','measure'].map(k => [k,new THREE.Group()]));
 Object.values(groups).forEach(g => scene.add(g));
 const markers = new THREE.Group(); scene.add(markers);
 const objLoader = new OBJLoader();
 let map = null, pickMode = null, start = null, goal = null, surfaceMesh = null, meshObj = null, inspectedCell = null;
+let measureMode = false, measureA = null, measureB = null, fpvMode = false, latestRobotPose = null;
 let generation = 0, frameCount = 0, playing = false, playTimer = null, loading = false;
 let mapTask=null, pendingMap=null, seekTimer=null, playbackGeneration=0;
 let seekRAF=null, replayCache=null, cacheController=null;
@@ -33,8 +34,82 @@ async function api(url, body) {
 }
 function clear(group) {while(group.children.length) {const child=group.children[0]; group.remove(child); child.traverse(o=>{o.geometry?.dispose();if(Array.isArray(o.material))o.material.forEach(m=>m.dispose());else o.material?.dispose();});}}
 function geometry(vertices) {const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3)); return g;}
-function line(points, material, group) {if(points.length<2)return; const object=new THREE.Line(geometry(points.flat()),material); object.computeLineDistances(); group.add(object);}
-function vehicleMarker(direction,origin){const arrow=new THREE.ArrowHelper(direction,origin,.45,0x111111,.14,.10);arrow.traverse(o=>{if(o.material){o.material.depthTest=false;o.material.depthWrite=false;}o.renderOrder=10;});groups.vehicle.add(arrow);}
+function line(points, material, group) {if(points.length<2)return; const coords=points.map(p=>Array.isArray(p)?p:[p.x,p.y,p.z]).flat(); const object=new THREE.Line(geometry(coords),material); object.computeLineDistances(); group.add(object);}
+
+function turboColormap(t) {
+  t = Math.max(0, Math.min(1, t));
+  const stops = [
+    [0.00, [0.18, 0.22, 0.78]],
+    [0.25, [0.12, 0.65, 0.85]],
+    [0.50, [0.22, 0.82, 0.32]],
+    [0.75, [0.95, 0.72, 0.12]],
+    [1.00, [0.88, 0.18, 0.15]]
+  ];
+  for (let i = 0; i < stops.length - 1; i++) {
+    const [t0, c0] = stops[i], [t1, c1] = stops[i + 1];
+    if (t >= t0 && t <= t1) {
+      const u = (t - t0) / (t1 - t0);
+      return new THREE.Color(c0[0] + u * (c1[0] - c0[0]), c0[1] + u * (c1[1] - c0[1]), c0[2] + u * (c1[2] - c0[2]));
+    }
+  }
+  return new THREE.Color(stops.at(-1)[1][0], stops.at(-1)[1][1], stops.at(-1)[1][2]);
+}
+
+function vehicleMarker(direction, origin, quaternion=null) {
+  latestRobotPose = {position: origin.clone(), direction: direction.clone()};
+  const rover = new THREE.Group();
+
+  // Chassis main body (metallic dark graphite)
+  const bodyGeom = new THREE.BoxGeometry(0.42, 0.30, 0.10);
+  const bodyMat = new THREE.MeshStandardMaterial({color: 0x363a40, roughness: 0.5, metalness: 0.4});
+  const body = new THREE.Mesh(bodyGeom, bodyMat);
+  body.position.set(0, 0, 0.07);
+  rover.add(body);
+
+  // Solar panel top deck (deep navy)
+  const deckGeom = new THREE.BoxGeometry(0.38, 0.26, 0.015);
+  const deckMat = new THREE.MeshStandardMaterial({color: 0x142032, roughness: 0.2, metalness: 0.8});
+  const deck = new THREE.Mesh(deckGeom, deckMat);
+  deck.position.set(0, 0, 0.13);
+  rover.add(deck);
+
+  // 4 Off-road wheels
+  const wheelGeom = new THREE.CylinderGeometry(0.065, 0.065, 0.05, 16);
+  const wheelMat = new THREE.MeshStandardMaterial({color: 0x1a1a1a, roughness: 0.8});
+  for (const [wx, wy] of [[0.16, 0.17], [-0.16, 0.17], [0.16, -0.17], [-0.16, -0.17]]) {
+    const wheel = new THREE.Mesh(wheelGeom, wheelMat);
+    wheel.rotation.x = Math.PI / 2;
+    wheel.position.set(wx, wy, 0.04);
+    rover.add(wheel);
+  }
+
+  // Mast & Pan-Tilt Camera head
+  const mastGeom = new THREE.CylinderGeometry(0.012, 0.012, 0.18, 12);
+  const mastMat = new THREE.MeshStandardMaterial({color: 0xbbbbbb, metalness: 0.6});
+  const mast = new THREE.Mesh(mastGeom, mastMat);
+  mast.position.set(0.14, 0, 0.22);
+  rover.add(mast);
+
+  const headGeom = new THREE.BoxGeometry(0.06, 0.08, 0.045);
+  const headMat = new THREE.MeshStandardMaterial({color: 0x111111});
+  const head = new THREE.Mesh(headGeom, headMat);
+  head.position.set(0.14, 0, 0.31);
+  rover.add(head);
+
+  // Directional gold indicator arrow
+  const arrow = new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 0, 0.33), 0.35, 0xe0a020, 0.10, 0.07);
+  arrow.traverse(o => { if (o.material) { o.material.depthTest = false; o.material.depthWrite = false; } o.renderOrder = 10; });
+  rover.add(arrow);
+
+  rover.position.copy(origin);
+  if (quaternion) {
+    rover.quaternion.copy(quaternion);
+  } else {
+    const yaw = Math.atan2(direction.y, direction.x);
+    rover.rotation.z = yaw;
+  }
+  groups.vehicle.add(rover);
+}
 function fit(top=false) {
   let box=new THREE.Box3().setFromObject(groups.cloud);
   if(box.isEmpty())box=new THREE.Box3().setFromObject(groups.mesh);
@@ -51,18 +126,28 @@ function draw(data, refit=false, preserveSelection=false) {
   const vertices=[],colors=[],pickCells=[],hazardEdges=[];
   const heights=data.cells.filter(c=>c.valid).map(c=>c.z);
   let min=Infinity,max=-Infinity; for(const h of heights){min=Math.min(min,h);max=Math.max(max,h);}
+  const isColormap = $('colormap-mode')?.checked || false;
   for(const cell of data.cells) {
     if(!cell.valid) continue;
     const half=data.resolution/2;
     const corners=[[-half,-half],[half,-half],[half,half],[-half,half]].map(([dx,dy])=>[cell.x+dx,cell.y+dy,cell.z+cell.gx*dx+cell.gy*dy]);
-    const shade=$('quality-mode').checked ? .92-.65*(cell.quality||0) : .78-.20*(cell.z-min)/(max-min || 1), color=new THREE.Color(shade,shade,shade);
+    let color;
+    if (isColormap) {
+      color = turboColormap((cell.z - min) / (max - min || 1));
+    } else if ($('quality-mode').checked) {
+      const shade = .92 - .65 * (cell.quality || 0);
+      color = new THREE.Color(shade, shade, shade);
+    } else {
+      const shade = .78 - .20 * (cell.z - min) / (max - min || 1);
+      color = new THREE.Color(shade, shade, shade);
+    }
     for(const i of [0,1,2,0,2,3]) {vertices.push(...corners[i]);colors.push(color.r,color.g,color.b);}
     pickCells.push(cell);
     if(cell.slope>12 || cell.roughness>.04 || cell.support<.34) for(let i=0;i<4;i++) for(const p of [corners[i],corners[(i+1)%4]]) hazardEdges.push(p[0],p[1],p[2]+.008);
   }
   groups.hazards.add(new THREE.LineSegments(geometry(hazardEdges),new THREE.LineBasicMaterial({color:0x222222})));
   const g=geometry(vertices); g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3)); g.computeVertexNormals();
-  const SurfaceMaterial=$('quality-mode').checked?THREE.MeshBasicMaterial:THREE.MeshLambertMaterial;
+  const SurfaceMaterial=$('quality-mode').checked && !isColormap ? THREE.MeshBasicMaterial : THREE.MeshLambertMaterial;
   surfaceMesh=new THREE.Mesh(g,new SurfaceMaterial({vertexColors:true,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:1}));
   surfaceMesh.userData.cells=pickCells; groups.surface.add(surfaceMesh);
   const track=data.robot_trajectory?.length?data.robot_trajectory:data.trajectory;
@@ -70,8 +155,8 @@ function draw(data, refit=false, preserveSelection=false) {
   if(data.robot) {
     const orientation=new THREE.Quaternion().fromArray(data.robot.quaternion);
     const direction=new THREE.Vector3(1,0,0).applyQuaternion(orientation);
-    const origin=new THREE.Vector3().fromArray(data.robot.position);origin.z+=.1;
-    vehicleMarker(direction,origin);
+    const origin=new THREE.Vector3().fromArray(data.robot.position);origin.z+=.02;
+    vehicleMarker(direction,origin,orientation);
   } else if(data.trajectory.length) {
     const cursor=new THREE.Mesh(new THREE.SphereGeometry(.055,12,8),new THREE.MeshBasicMaterial({color:0x222222}));
     cursor.position.fromArray(data.trajectory.at(-1).position); groups.track.add(cursor);
@@ -96,10 +181,53 @@ function renderMarkers() {
   $('plan').disabled=!(start&&goal) || loading;
   navigationControls();
 }
+function updateMeshColors(obj) {
+  if (!obj) return;
+  let minZ = Infinity, maxZ = -Infinity;
+  obj.traverse(child => {
+    if (child.isMesh && child.geometry) {
+      const pos = child.geometry.attributes.position;
+      if (pos) {
+        for (let i = 0; i < pos.count; i++) {
+          const z = pos.getZ(i);
+          if (z < minZ) minZ = z;
+          if (z > maxZ) maxZ = z;
+        }
+      }
+    }
+  });
+
+  const range = (maxZ - minZ) || 1;
+  const isColormap = $('colormap-mode')?.checked || false;
+
+  obj.traverse(child => {
+    if (child.isMesh && child.geometry) {
+      const pos = child.geometry.attributes.position;
+      if (pos) {
+        const colors = [];
+        for (let i = 0; i < pos.count; i++) {
+          const z = pos.getZ(i);
+          const ratio = (z - minZ) / range;
+          if (isColormap) {
+            const c = turboColormap(ratio);
+            colors.push(c.r, c.g, c.b);
+          } else {
+            const r = 0.50 + 0.38 * ratio;
+            const g = 0.52 + 0.38 * ratio;
+            const b = 0.55 + 0.38 * ratio;
+            colors.push(r, g, b);
+          }
+        }
+        child.geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+        child.geometry.attributes.color.needsUpdate = true;
+      }
+    }
+  });
+}
+
 async function loadMesh(sessionName) {
   clear(groups.mesh);
   meshObj = null;
-  if (!sessionName) return;
   try {
     const res = await fetch(`/api/mesh?session=${encodeURIComponent(sessionName)}`);
     if (!res.ok) return;
@@ -107,39 +235,12 @@ async function loadMesh(sessionName) {
     if (!text || text.startsWith('# Empty mesh')) return;
     const object = objLoader.parse(text);
 
-    let minZ = Infinity, maxZ = -Infinity;
-    object.traverse(child => {
-      if (child.isMesh && child.geometry) {
-        const pos = child.geometry.attributes.position;
-        if (pos) {
-          for (let i = 0; i < pos.count; i++) {
-            const z = pos.getZ(i);
-            if (z < minZ) minZ = z;
-            if (z > maxZ) maxZ = z;
-          }
-        }
-      }
-    });
-
-    const range = (maxZ - minZ) || 1;
+    updateMeshColors(object);
     const isWireframe = $('wireframe')?.checked || false;
 
     object.traverse(child => {
       if (child.isMesh && child.geometry) {
         child.geometry.computeVertexNormals();
-        const pos = child.geometry.attributes.position;
-        if (pos) {
-          const colors = [];
-          for (let i = 0; i < pos.count; i++) {
-            const z = pos.getZ(i);
-            const ratio = (z - minZ) / range;
-            const r = 0.50 + 0.38 * ratio;
-            const g = 0.52 + 0.38 * ratio;
-            const b = 0.55 + 0.38 * ratio;
-            colors.push(r, g, b);
-          }
-          child.geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-        }
         child.material = new THREE.MeshLambertMaterial({
           vertexColors: true,
           wireframe: isWireframe,
@@ -283,10 +384,80 @@ $('session').onchange=async()=>{
 };
 $('refresh').onclick=sessions;$('fit').onclick=()=>fit();$('top').onclick=()=>fit(true);
 $('quality-mode').onchange=()=>{$('quality-legend').hidden=!$('quality-mode').checked;if(map)draw(map,false,true);};
+if($('colormap-mode')) $('colormap-mode').onchange=()=>{if(map)draw(map,false,true);if(meshObj)updateMeshColors(meshObj);};
 for(const key of Object.keys(groups)) if($(key)) { groups[key].visible = $(key).checked; $(key).onchange=()=>groups[key].visible=$(key).checked; }
 if($('wireframe')) $('wireframe').onchange=()=>{if(meshObj)meshObj.traverse(c=>{if(c.isMesh&&c.material)c.material.wireframe=$('wireframe').checked;});};
 for(const name of ['start','goal'])$(`pick-${name}`).onclick=()=>{experiment.cancel();stopPlayback();pickMode=name;message(`请点击已观测地表选择${name==='start'?'起点':'终点'}。`);};
 $('heading').onchange=()=>{clear(groups.routes);$('results').textContent='朝向已改变，请重新规划。';};
+
+function clearMeasure(exit = false) {
+  clear(groups.measure);
+  measureA = null;
+  measureB = null;
+  if (exit) {
+    measureMode = false;
+    if ($('measure-btn')) $('measure-btn').classList.remove('active');
+    if ($('measure-bar')) $('measure-bar').hidden = true;
+  } else {
+    if ($('measure-result')) $('measure-result').textContent = '点击地表选择测量第 1 个点';
+  }
+}
+if ($('measure-btn')) {
+  $('measure-btn').onclick = () => {
+    measureMode = !measureMode;
+    $('measure-btn').classList.toggle('active', measureMode);
+    $('measure-bar').hidden = !measureMode;
+    if (measureMode) {
+      clearMeasure(false);
+      message('已开启三维测量标尺：请在 3D 地表上依次点击测量起点与终点。');
+    } else {
+      clearMeasure(true);
+      message('已退出测量模式。');
+    }
+  };
+}
+if ($('measure-clear')) $('measure-clear').onclick = () => clearMeasure(false);
+
+if ($('fpv-btn')) {
+  $('fpv-btn').onclick = () => {
+    fpvMode = !fpvMode;
+    $('fpv-btn').classList.toggle('active', fpvMode);
+    if (fpvMode) {
+      if (latestRobotPose) {
+        const eye = latestRobotPose.position.clone().add(latestRobotPose.direction.clone().multiplyScalar(0.24));
+        eye.z += 0.32;
+        const look = eye.clone().add(latestRobotPose.direction.clone().multiplyScalar(4.0));
+        camera.position.copy(eye);
+        controls.target.copy(look);
+        controls.update();
+        message('已进入车载第一人称视角 (FPV)。右键平移或滚轮缩放可环顾四周；再次点击切回全景。');
+      } else {
+        message('当前记录中未包含车体位姿数据，无法定位车载视角。', true);
+        fpvMode = false;
+        $('fpv-btn').classList.remove('active');
+      }
+    } else {
+      fit();
+      message('已切回全景轨道视角。');
+    }
+  };
+}
+
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (measureMode) {
+      clearMeasure(true);
+      message('已退出测量模式。');
+    }
+    if (fpvMode) {
+      fpvMode = false;
+      $('fpv-btn')?.classList.remove('active');
+      fit();
+      message('已切回全景视角。');
+    }
+  }
+});
+
 function showCell(cell){
   const dl=document.createElement('dl');
   for(const [label,value] of [['坐标',`${cell.x.toFixed(2)}, ${cell.y.toFixed(2)} m`],['高度',`${cell.z.toFixed(3)} m`],['坡度',`${cell.slope.toFixed(1)}°`],['粗糙度',`${(cell.roughness*1000).toFixed(1)} mm`],['采样充分度',`${Math.round((cell.quality||0)*100)}%`],['格内覆盖',`${Math.round((cell.coverage||0)*100)}%`],['观察方向数',cell.view_directions||0],['观测支持度',`${Math.round(cell.support*100)} / 100`],['观测帧数',cell.observations]]) {const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;dl.append(dt,dd);}
@@ -298,6 +469,49 @@ renderer.domElement.addEventListener('pointerup',e=>{
   if(e.button!==0||!pointerDown||Math.hypot(e.clientX-pointerDown[0],e.clientY-pointerDown[1])>4)return;
   if(experiment.pick(e)){pickMode=null;return;}
   const rect=renderer.domElement.getBoundingClientRect(); ray.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);
+
+  if (measureMode) {
+    let hitPoint = null;
+    if (surfaceMesh && groups.surface.visible) {
+      const hit = ray.intersectObject(surfaceMesh)[0];
+      if (hit) hitPoint = hit.point;
+    }
+    if (!hitPoint && meshObj && groups.mesh.visible) {
+      const hit = ray.intersectObject(meshObj, true)[0];
+      if (hit) hitPoint = hit.point;
+    }
+    if (!hitPoint) return;
+
+    if (!measureA) {
+      clear(groups.measure);
+      measureA = hitPoint.clone();
+      measureB = null;
+      const sphereA = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 12), new THREE.MeshBasicMaterial({color: 0x00d2ff}));
+      sphereA.position.copy(measureA);
+      groups.measure.add(sphereA);
+      $('measure-result').textContent = `起点已选定 (${measureA.x.toFixed(2)}, ${measureA.y.toFixed(2)}, ${measureA.z.toFixed(2)} m)，请点击地表选择终点`;
+    } else {
+      measureB = hitPoint.clone();
+      const sphereB = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 12), new THREE.MeshBasicMaterial({color: 0xff5533}));
+      sphereB.position.copy(measureB);
+      groups.measure.add(sphereB);
+
+      line([measureA, measureB], new THREE.LineBasicMaterial({color: 0xffd700, linewidth: 2}), groups.measure);
+
+      const mid = new THREE.Vector3(measureB.x, measureB.y, measureA.z);
+      line([measureA, mid], new THREE.LineDashedMaterial({color: 0x66aacc, dashSize: 0.08, gapSize: 0.04}), groups.measure);
+      line([mid, measureB], new THREE.LineDashedMaterial({color: 0xff8866, dashSize: 0.08, gapSize: 0.04}), groups.measure);
+
+      const dx = measureB.x - measureA.x, dy = measureB.y - measureA.y, dz = measureB.z - measureA.z;
+      const d3d = Math.hypot(dx, dy, dz), d2d = Math.hypot(dx, dy);
+      const slope = d2d > 1e-4 ? (Math.atan2(Math.abs(dz), d2d) * 180 / Math.PI) : 90.0;
+      const sign = dz >= 0 ? '+' : '';
+      $('measure-result').innerHTML = `<b>空间直线:</b> ${d3d.toFixed(3)} m · <b>水平距离:</b> ${d2d.toFixed(3)} m · <b>垂直高差:</b> ${sign}${dz.toFixed(3)} m · <b>坡度角:</b> ${slope.toFixed(1)}°`;
+      measureA = null;
+    }
+    return;
+  }
+
   let cell=null;
   if(surfaceMesh&&groups.surface.visible){
     const hit=ray.intersectObject(surfaceMesh)[0];
@@ -387,3 +601,35 @@ $('navigate').onclick=async()=>{
 $('cancel-navigation').onclick=async()=>{try{await api('/api/navigation/cancel',{token:navigationToken});await navigationState();}catch(e){message(e.message,true);}};
 setInterval(async()=>{if(!navigationToken||heartbeatBusy)return;heartbeatBusy=true;try{const result=await api('/api/navigation/heartbeat',{token:navigationToken});if(result.active===false)navigationToken='';}catch(e){message(`导航连接失效：${e.message}`,true);navigationToken='';}finally{heartbeatBusy=false;}},750);
 setInterval(navigationState,1500);navigationState();
+
+window.__workbench = {
+  setMeasure: (p1, p2) => {
+    clear(groups.measure);
+    const sphereA = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 12), new THREE.MeshBasicMaterial({color: 0x00d2ff}));
+    sphereA.position.set(p1.x, p1.y, p1.z);
+    groups.measure.add(sphereA);
+    const sphereB = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 12), new THREE.MeshBasicMaterial({color: 0xff5533}));
+    sphereB.position.set(p2.x, p2.y, p2.z);
+    groups.measure.add(sphereB);
+
+    line([new THREE.Vector3(p1.x, p1.y, p1.z), new THREE.Vector3(p2.x, p2.y, p2.z)], new THREE.LineBasicMaterial({color: 0xffd700, linewidth: 2}), groups.measure);
+    const mid = new THREE.Vector3(p2.x, p2.y, p1.z);
+    line([new THREE.Vector3(p1.x, p1.y, p1.z), mid], new THREE.LineDashedMaterial({color: 0x66aacc, dashSize: 0.08, gapSize: 0.04}), groups.measure);
+    line([mid, new THREE.Vector3(p2.x, p2.y, p2.z)], new THREE.LineDashedMaterial({color: 0xff8866, dashSize: 0.08, gapSize: 0.04}), groups.measure);
+
+    const dx = p2.x - p1.x, dy = p2.y - p1.y, dz = p2.z - p1.z;
+    const d3d = Math.hypot(dx, dy, dz), d2d = Math.hypot(dx, dy);
+    const slope = d2d > 1e-4 ? (Math.atan2(Math.abs(dz), d2d) * 180 / Math.PI) : 90.0;
+    const sign = dz >= 0 ? '+' : '';
+    $('measure-bar').hidden = false;
+    $('measure-btn').classList.add('active');
+    $('measure-result').innerHTML = `<b>空间直线:</b> ${d3d.toFixed(3)} m · <b>水平距离:</b> ${d2d.toFixed(3)} m · <b>垂直高差:</b> ${sign}${dz.toFixed(3)} m · <b>坡度角:</b> ${slope.toFixed(1)}°`;
+  },
+  clearMeasure: (exit = true) => clearMeasure(exit),
+  camera,
+  controls,
+  scene,
+  groups,
+  getLatestPose: () => latestRobotPose
+};
+
