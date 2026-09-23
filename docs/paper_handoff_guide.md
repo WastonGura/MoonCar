@@ -1,15 +1,15 @@
-# MoonCar 自主巡视建图与多策略规划 —— 论文组交付与素材分析指南
+# 月球车自主巡视建图与多策略规划 —— 论文组交付与素材分析指南
 
-> 文档定位：本文件专为论文撰写组同学准备，旨在提供论文各章节（Methodology、System Formulation、Experiments、Results and Discussion）所需的理论支撑、策略机制推导、全景实验数据以及图表深度分析素材。请各负责同学根据本指南直接提炼并组织论文内容。  
+> 文档定位：本文件专为论文撰写组同学准备，旨在提供论文各章节（Methodology、System Formulation、Experiments、Results and Discussion）所需的完整数学模型理论推导、主动规划策略机制剖析、全景实验数据以及图表深度分析素材。请各负责同学根据本指南直接提炼并组织论文内容。  
 > 适用论文结构：建议投递 IEEE Transactions / T-RO / T-ASE / ICRA / IROS 或 AIAA 期刊会议。  
 > 算法与实验版本：v3.0 算法重构验证版 (2026-09-24)  
-> 关联源码与成果：主仓库 `MoonCar/benchmark_results/`、`MoonCar/docs/` 与 `MoonCar-mapping/`
+> 关联源码与成果：主仓库 `benchmark_results/`、`docs/` 与仿真工作台环境
 
 ---
 
 ## 1. 论文核心创新点与学术贡献提炼 (Key Contributions)
 
-建议在论文 Introduction 与 Conclusion 章节提炼为以下 4 至 5 项核心学术贡献：
+建议在论文 Introduction 与 Conclusion 章节提炼为以下 5 项核心学术贡献：
 
 1. **机构与视向解耦的双自由度观测云台及底盘物理互锁架构**：
    - 针对月表松散风化月壤（Regolith）低承载、易沉陷特性，提出底盘行驶与传感器视向完全解耦的正交观测机构（Pan $\pm 135^\circ$ / Tilt $-35^\circ \sim +15^\circ$）；
@@ -28,70 +28,131 @@
 
 ---
 
-## 2. 六大主动探索策略工作原理与机制剖析 (Strategy Principles)
+## 2. 系统核心数学模型体系与理论推导 (System Mathematical Formulation)
 
-论文方法论章节需要详细阐述六种策略的设计机理，可分为 v2（底盘长跑型基线）与 v3（立体云台型重构版）两大体系：
+论文 Methodology / System Formulation 章节可直接按以下 8 项严密数学模型进行组织：
 
-### 2.1 候选动作评估的统一效用函数
+### 2.1 四轮滑移转向底盘运动学模型 (4-Wheel Skid-Steer Kinematics)
 
-所有主动探索策略在每个决策周期均对候选动作集 $\mathcal{A}$ 进行效用评估：
+月球车底盘线速度 $v_x$ 与偏航角速度 $\omega_z$ 与四轮轮速 $(\omega_{FL}, \omega_{FR}, \omega_{RL}, \omega_{RR})^T$ 的运动学关系矩阵为：
+
+$$\begin{bmatrix} v_x \\ \omega_z \end{bmatrix} = \begin{bmatrix} \frac{R}{4} & \frac{R}{4} & \frac{R}{4} & \frac{R}{4} \\ -\frac{R}{2B} & \frac{R}{2B} & -\frac{R}{2B} & \frac{R}{2B} \end{bmatrix} \begin{bmatrix} \omega_{FL} \\ \omega_{FR} \\ \omega_{RL} \\ \omega_{RR} \end{bmatrix}$$
+
+其中 $R = 0.16\,\text{m}$ 为车轮半径，$B = 0.59\,\text{m}$ 为有效运动学轮距。
+
+### 2.2 双自由度正交观测云台正运动学模型 (2-DOF Pan-Tilt Forward Kinematics)
+
+深度相机光学中心在月球车车体基座坐标系 `base_link` 下的空间齐次变换方程为：
+
+$$^{base}T_{cam} = \,^{base}T_{mount} \cdot \text{Rot}_Z(\psi_{pan}) \cdot \text{Rot}_{-Y}(\theta_{tilt}) \cdot \,^{tilt}T_{cam}$$
+
+- **水平偏航轴（Pan Joint）**：旋转角 $\psi_{pan} \in [-135^\circ, +135^\circ]$（$\pm 2.356\text{ rad}$）；
+- **垂直俯仰轴（Tilt Joint）**：倾角 $\theta_{tilt} \in [-35^\circ, +15^\circ]$（$-0.611 \sim +0.262\text{ rad}$），巡航标准俯角设为 $-15^\circ$（$-0.2618\text{ rad}$）；
+- **底盘-云台物理安全互锁函数**：
+  $$\text{Permit}_{\text{motion}} = \begin{cases} \text{False}, & \text{if } |\dot{\psi}_{pan}| > 0 \lor |\dot{\theta}_{tilt}| > 0 \text{ (云台旋转扫视期间)} \\ \text{True}, & \text{otherwise (云台静止锁定)} \end{cases}$$
+
+### 2.3 2.5D 高精地形连续可通行性代价模型 (Traversability Costmap)
+
+局部水平分辨率为 $\Delta g = 0.05\,\text{m}$ 的地形网格 $(x, y)$ 基于点云协方差拟合局部微切平面单位法向量 $\vec{n} = (n_x, n_y, n_z)^T$，定义宏观坡度 $S$ 与微观粗糙度残差 $R$：
+
+$$S = \arccos\left(\frac{|n_z|}{\|\vec{n}\|}\right), \quad R = \sqrt{\frac{1}{N}\sum_{i=1}^N (z_i - \hat{z}_i)^2}$$
+
+归一化风险因子为：
+
+$$\tilde{S} = \text{clamp}\left(\frac{S - S_{mild}}{S_{max} - S_{mild}}, 0, 1\right), \quad \tilde{R} = \text{clamp}\left(\frac{R - R_{mild}}{R_{max} - R_{mild}}, 0, 1\right)$$
+
+非线性综合风险代价函数：
+
+$$\text{Risk}(x, y) = w_s \cdot (\tilde{S})^{1.5} + w_r \cdot \tilde{R} \quad (w_s = 0.75, w_r = 0.25)$$
+
+其中基准阈值设为 $S_{mild} = 5^\circ$，$S_{max} = 18^\circ$，$R_{mild} = 0.015\,\text{m}$，$R_{max} = 0.040\,\text{m}$。
+
+注入 Nav2 Costmap 2D 的三级连续通行代价映射分段函数：
+
+$$\text{Cost}(x, y) = \begin{cases} 0, & \text{if } S \le 5^\circ \land R \le 0.015\,\text{m (平原安全区)} \\ \text{round}(10 + 85 \cdot \text{Risk}), & \text{if } 5^\circ < S < 18^\circ \land R < 0.04\,\text{m (可通行缓坡区)} \\ 100 \text{ (致命危险/禁行)}, & \text{if } S \ge 18^\circ \lor R \ge 0.04\,\text{m} \lor \Delta z_{\text{step}} > 0.08\,\text{m} \end{cases}$$
+
+### 2.4 3D LOS 光线投射与动态地平线追踪模型 (Horizon Tracking)
+
+设相机光学中心坐标为 $C = (C_x, C_y, C_z)$。在方位角 $\phi$ 射线上，距光心水平距离为 $r$ 处的地形高程为 $z(r)$。该地形点相对相机的仰角斜率定义为：
+
+$$\alpha(r) = \frac{z(r) - C_z}{r}$$
+
+在光线由近及远步进计算过程中，动态维护该方位角射线上已遭遇地形的最大仰角 $\alpha_{max}$（即动态地平线门限）：
+
+$$\text{Visibility}(r) = \begin{cases} \text{Occluded (山脊遮挡)}, & \text{if } \alpha(r) < \alpha_{max} \\ \text{Visible (有效可见)}, & \text{if } \alpha(r) \ge \alpha_{max} \land \alpha(r) \le \tan(\theta_{tilt} + \theta_{\text{FOV\_half}}) \\ \text{Truncated (超垂直视界上限)}, & \text{if } \alpha(r) > \tan(\theta_{tilt} + \theta_{\text{FOV\_half}}) \end{cases}$$
+
+若判定为 Visible，则更新地平线门限：$\alpha_{max} \leftarrow \alpha(r)$。
+
+**地表法向掠射角门禁（Grazing Angle Gating）**：
+当网格坡度梯度 $\|\nabla z\| \ge 0.20$（$>11^\circ$）时，光线水平向量 $\vec{v}_{ray}$ 与坡面法向投影 $\vec{g} = (g_x, g_y)$ 夹角满足：
+
+$$\cos(\gamma) = \frac{\vec{v}_{ray} \cdot \vec{g}}{\|\vec{v}_{ray}\| \|\vec{g}\|} < 0.25$$
+
+判定为大角度侧向掠射，直接剔除该区域可见性预估，迫使规划器选择正对坡面视点。
+
+### 2.5 统一候选动作综合效用打分函数与时间代价模型
+
+所有主动探索策略在每个决策周期对候选动作集合 $\mathcal{A}$ 评估打分：
 
 $$U(a) = \frac{\Delta S_{\text{new}}(a) + \lambda_{\text{resample}} \cdot \Delta S_{\text{defect}}(a)}{T_{\text{cost}}(a) + \epsilon}$$
 
-其中分母为该动作的预估执行时间代价：
+其中分母为该动作的预估执行时间代价模型：
 
 $$T_{\text{cost}}(a) = \begin{cases} \frac{|\Delta \psi_{pan}|}{\omega_{gimbal}} + t_{\text{settle}}, & a \in \mathcal{A}_{gimbal} \\ \frac{D_{\text{dijkstra}}(a)}{v_{\text{chassis}}} + \frac{|\Delta \theta_{\text{base}}|}{\omega_{\text{chassis}}} + t_{\text{nav\_overhead}}, & a \in \mathcal{A}_{move} \end{cases}$$
 
-### 2.2 各策略具体工作逻辑
+### 2.6 两级前沿跃迁机制数学触发条件 (Frontier Leap)
 
-1. **就近观察 v2 (`nearest_view_v2`)**：
-   - **逻辑**：仅提取当前 2D/2.5D 前沿边界点，按 Dijkstra 路径距离从近到远排序，直接选择距离底盘最近的可达前沿点作为导航目标；
-   - **特点**：底盘机动频繁，小步快跑（每步约 $1.5\,\text{m}$），完全依赖车体旋转调整视角，无云台自由度。
-2. **覆盖优先 v2 (`coverage_view_v2`)**：
-   - **逻辑**：全局搜索能带来最大潜在观测投影面积 $\Delta S_{\text{new}}$ 的前沿视点，采用贪心准则直接调度底盘远距离跨越行驶；
-   - **特点**：长距离大范围奔跑，底盘里程极高；在遇到狭窄复杂弯道时，容易在转角死角处触碰障碍膨胀层导致 Nav2 规划熔断退赛。
-3. **地表补采 v2 (`surface_view_v2`)**：
-   - **逻辑**：优先识别已建图区域中点云密度不足、拟合残差过大或法向退化的“欠采样地表网格”，调度底盘驶近缺陷区域进行补采；
-   - **特点**：建图表面质量高，但由于依赖底盘频繁掉头和贴近缺陷点，在复杂地形中底盘里程消耗大。
-4. **就近观察 v3 (`nearest_view_v3` —— 引入两级前沿跃迁 Frontier Leap)**：
-   - **逻辑**：优先调度 2-DOF 云台在底盘静止时进行就近扇面扫描；一旦检测到上一次动作已完成云台扫视，或云台预期新增增益 $<1.5\,\text{m}^2$ 时，**强制将候选动作空间锁定为底盘直线机动**（$\mathcal{A}_{\text{valid}} \leftarrow \mathcal{A}_{move}$）；
-   - **突破**：彻底消除了旧版因云台局部原地贪心导致的底盘 $0\,\text{m}$ 瘫痪，在复杂地形中里程平稳释放至 $22\,\text{m}$，面积反超 v2 且保持 100% 动作成功率。
-5. **覆盖优先 v3 (`coverage_view_v3`)**：
-   - **逻辑**：引入 3D LOS 光线投射与地平线追踪模型，剔除视线穿透山体的虚假增益，以全局单位时间真实面积增益为目标，优先调用云台高速偏转扫视，仅在必要时调度底盘小幅移动调姿；
-   - **突破**：探索能效极高，底盘机动大幅压缩。
-6. **地表补采 v3 (`surface_view_v3` —— 引入安全防撞补采视距 Safe Standoff)**：
-   - **逻辑**：针对地表缺陷格群质心 $p_d$ 与表面法向投影 $\vec{n}_{xy}$，将候选站台严格约束在反向安全距离内：
-     $$p_{\text{standoff}} = p_d - d_{\text{standoff}} \cdot \frac{\vec{n}_{xy}}{\|\vec{n}_{xy}\|}, \quad d_{\text{standoff}} \in [2.0, 2.8]\,\text{m}, \quad \text{Cost}(p_{\text{standoff}}) \le 50$$
-   - **突破**：既保证了云台具有俯视观测缺陷的最佳成像视距，又避开了 Nav2 障碍物膨胀死角，在弯道场景斩获全场综合第一，缺陷恢复率达 $99.1\%$。
+为破除局部原地云台贪心导致的底盘停滞瘫痪，当满足以下任一触发条件时：
+
+$$\text{LastAction} \in \{\text{gimbal, in\_place\_scan}\} \lor \max_{a \in \mathcal{A}_{gimbal}} \Delta S_{\text{new}}(a) < 1.5\,\text{m}^2$$
+
+强制更新候选动作有效空间：
+
+$$\mathcal{A}_{\text{valid}} \leftarrow \mathcal{A}_{move}$$
+
+强制锁定底盘直线机动，激活小步快跑（步长约束为 $1.5\,\text{m}$ 节拍）。
+
+### 2.7 安全防撞补采视距几何约束模型 (Safe Standoff)
+
+针对地表缺陷格群质心 $p_d = (x_d, y_d)$ 与表面平均法向投影 $\vec{n}_{xy}$，候选补采站台位置严格约束为：
+
+$$p_{\text{standoff}} = p_d - d_{\text{standoff}} \cdot \frac{\vec{n}_{xy}}{\|\vec{n}_{xy}\|}$$
+
+同时满足几何与环境代价双重约束：
+
+$$d_{\text{standoff}} \in [2.0, 2.8]\,\text{m}, \quad \text{Cost}(p_{\text{standoff}}) \le 50$$
+
+确保站台点脱离 Nav2 障碍物膨胀层（膨胀代价 $>50$ 区域），从几何机理上消除连续贴障规划取消。
+
+### 2.8 核心评测指标度量模型 (Evaluation Metrics)
+
+- **动态单位位移探测能效（Displacement Efficiency）**：
+  $$\eta(t) = \frac{S(t)}{L(t)} \quad (\text{m}^2/\text{m})$$
+- **地表欠采样/缺陷网格恢复率（Resampling Recovery Rate）**：
+  $$\text{RR} = \frac{N_{\text{recovered}}}{N_{\text{defect\_eligible}}} \times 100\%$$
+- **动作执行成功率（Action Success Rate）**：
+  $$\text{SR} = \frac{N_{\text{success}}}{N_{\text{total\_actions}}} \times 100\%$$
 
 ---
 
-## 3. 策略横向对比与机制消融分析 (Strategy Comparisons & Trade-offs)
+## 3. 六大主动探索策略工作原理与机制剖析 (Strategy Principles)
 
-论文撰写组可直接使用下表对 6 种策略进行系统化机理对比：
-
-| 维度 | 就近 v2 | 覆盖 v2 | 补采 v2 | 就近 v3 | 覆盖 v3 | 补采 v3 |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **视向机构支持** | 无 (纯底盘) | 无 (纯底盘) | 无 (纯底盘) | 2-DOF 云台 | 2-DOF 云台 | 2-DOF 云台 |
-| **底盘运动风格** | 局部小步快跑 | 全局长跑冲刺 | 靶向往返穿梭 | 云台扫视+前沿跃迁 | 云台主导+辅助机动 | 安全视距驻车扫视 |
-| **地形适应性** | 陡坡易侧翻 | 狭窄弯道易熔断 | 坡道行驶能耗过高 | 全地形稳定完赛 | 开阔月表高能效 | 复杂险阻环境夺冠 |
-| **底盘磨损/打滑风险** | 中等偏高 | 极高 (跑动>25m) | 极高 (跑动>28m) | 适中 ($18\sim 23\text{m}$) | 低 ($2\sim 16\text{m}$) | 低 ($9\sim 15\text{m}$) |
-| **单位位移探索能效 $\eta$** | 中等 | 低 ($\approx 7.2\text{m}^2/\text{m}$) | 低 ($\approx 6.5\text{m}^2/\text{m}$) | 稳定中等 | 极高 ($11\sim 40\text{m}^2/\text{m}$) | **极高 ($11\sim 15.5\text{m}^2/\text{m}$)** |
-| **缺陷地表恢复能力** | 一般 | 一般 | 优秀 ($>95\%$) | 针对性恢复 | 综合覆盖 | **极致恢复 ($99.1\%$)** |
-
-### 核心论点 1：“以静制动”的探索能效革命
-传统自主探索策略（v2）为了获取更多视野，必须驱动整个车体在月面反复奔跑和原地转向。但在松散月壤和起伏长坡中，底盘奔跑不仅消耗大量电池能量，更会剧烈增加车轮打滑沉陷和车体侧翻的致命风险。v3 策略族依靠 2-DOF 云台的原位半球扫描，以极小的电机能耗代替了笨重车体的长距离移动。
-
-### 核心论点 2：两级前沿跃迁对局部极值的突破
-单纯引入云台会导致传统打分函数陷入“原地旋转耗时短、收益大”的贪心陷阱，造成底盘里程被永久锁死在 $0\,\text{m}$。引入前沿跃迁机制后，系统在完成原位信息摄取后强制激活底盘机动，实现了“原位充分扫视”与“大范围拓扑前沿机动”的完美平衡。
+| 策略体系 | 策略代号 | 核心决策机制 | 底盘与云台分工 |
+| :--- | :--- | :--- | :--- |
+| **v2 策略族** | **就近观察 v2** (`nearest_view_v2`) | 基于 Dijkstra 距离优先选择最近前沿点 | 纯底盘机动前进，无云台支持 |
+| | **覆盖优先 v2** (`coverage_view_v2`) | 全局视野面积增益贪心最大化 | 纯底盘机动大范围奔跑，无云台支持 |
+| | **地表补采 v2** (`surface_view_v2`) | 靶向锁定未拟合或法向退化地表网格 | 纯底盘机动驶近补采，无云台支持 |
+| **v3 策略族** | **就近观察 v3** (`nearest_view_v3`) | **两级前沿跃迁机制**（Frontier Leap） | 云台半球扫视 + 强制锁定底盘直线跃迁 |
+| | **覆盖优先 v3** (`coverage_view_v3`) | 3D LOS 光线投射与动态能效最大化 | 云台高速扫视主导，底盘辅助小步调姿 |
+| | **地表补采 v3** (`surface_view_v3`) | **安全防撞补采视距**（Safe Standoff） | 保持 $2.0 \sim 2.8\,\text{m}$ 安全站台靶向补采 |
 
 ---
 
 ## 4. 全景评测数据总表与全套图表深度解析 (Data & Figures Analysis)
 
-### 4.1 三大场景 300s 长期巡视实验全量数据总表
+### 4.1 三大场景 300s 长期巡视实验全量数据总表（最新最终轮运行输出）
 
-全流程实验在起伏坡道（`01_visible_ramp_v1`）、复杂弯道（`02_visible_curve_v1`）与标准月表巡视（`03_survey`）三大场景中严格运行 300 秒，记录的完整对比数据如下：
+本表所列数据均为**最新最后一轮 300s 全流程压测完赛的真实最终记录**：
 
 | 场景 | 策略名称 | 完赛状态 | 里程 $L$ (m) | 观测面积 $S$ ($\text{m}^2$) | 有效面 $S_{val}$ ($\text{m}^2$) | 位移收益 $\eta$ ($\text{m}^2/\text{m}$) | 缺陷恢复率 | 动作成功率 |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -163,17 +224,17 @@ $$T_{\text{cost}}(a) = \begin{cases} \frac{|\Delta \psi_{pan}|}{\omega_{gimbal}}
   - 各策略缺陷恢复率均超过 $96\%$，证明在大范围开放场景下，系统具有良好的收敛性。
 
 #### 图 6. 系统仿真环境与感知规划管线可视化
-![图 6. MoonCar 仿真原型车三维模型与起伏月表地形环境](notion://fig_rover_env)
+![图 6. 月球车仿真原型车三维模型与起伏月表地形环境](notion://fig_rover_env)
 ![图 7. ROS 2 Nav2 导航管线、点云感知与局部代价图在线生成实况](notion://fig_pipeline_rviz)
 ![图 8. 2.5D 地表点云拟合、法向量估计与表面质量热力图](notion://fig_terrain_quality)
 - **图表说明**：
-  - 图 6 展示 Gazebo 中基于月壤高程网格创建的起伏地形与装配 2-DOF 云台的原型小车模型；
+  - 图 6 展示 Gazebo 中基于月壤高程网格创建的起伏地形与装配 2-DOF 云台的原型车模型；
   - 图 7 展示 RViz 中的系统运行实况：激光雷达局部扫描、点云法向量提取、2.5D 代价图及全局/局部规划路径；
   - 图 8 展示地表连续点云拟合后的微平面残差与表面粗糙度热力图，可用于 Methodology 章节直观解释代价图构建原理。
 
 ---
 
-## 5. 仿真平台搭建与参数规范（供论文实验章节直接使用）
+## 5. 仿真平台搭建与参数规范（供论文 Experiments 章节直接规范使用）
 
 为确保论文描述严谨，**请勿在论文中将仿真直接写成真实商业硬件（如不要宣称仿真中使用了思岚 S3 实体雷达或 STM32 实物单片机）**。建议采用以下学术规范描述实验平台与传感器模型：
 
