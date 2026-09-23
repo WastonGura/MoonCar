@@ -132,9 +132,37 @@ class TerrainNode(Node):
                 (rt.x, rt.y, rt.z), (rq.x, rq.y, rq.z, rq.w),
                 (t.x, t.y, t.z), (q.x, q.y, q.z, q.w), imu[1])
             points = transform_points(points, corrected_t, corrected_q)
-            cells = classify_cells(points, **{
-                name: self.get_parameter(name).value for name in
-                ('resolution', 'slope_deg', 'roughness', 'step_height', 'drop_height')})
+
+            # Self-filtering: remove points on or inside the rover's own body envelope
+            # so downward/backward gimbal camera views do not classify the rover as terrain obstacles.
+            dx = points[:, 0] - rt.x
+            dy = points[:, 1] - rt.y
+            dz = points[:, 2] - rt.z
+            dxyz = np.column_stack((dx, dy, dz))
+            rq_norm = math.sqrt(rq.x * rq.x + rq.y * rq.y + rq.z * rq.z + rq.w * rq.w)
+            if rq_norm > 1e-9:
+                qx, qy, qz, qw = rq.x / rq_norm, rq.y / rq_norm, rq.z / rq_norm, rq.w / rq_norm
+                r_mat = np.array([
+                    [1 - 2 * (qy * qy + qz * qz), 2 * (qx * qy - qz * qw), 2 * (qx * qz + qy * qw)],
+                    [2 * (qx * qy + qz * qw), 1 - 2 * (qx * qx + qz * qz), 2 * (qy * qz - qx * qw)],
+                    [2 * (qx * qz - qy * qw), 2 * (qy * qz + qx * qw), 1 - 2 * (qx * qx + qy * qy)],
+                ])
+                robot_pts = dxyz @ r_mat
+            else:
+                robot_pts = dxyz
+
+            is_self = (sensor_points[:, 2] < 0.40) | (
+                (robot_pts[:, 0] >= -0.50) & (robot_pts[:, 0] <= 0.50) &
+                (np.abs(robot_pts[:, 1]) <= 0.42) & (robot_pts[:, 2] >= 0.02)
+            )
+            terrain_points = points[~is_self]
+
+            if len(terrain_points) >= 10:
+                cells = classify_cells(terrain_points, **{
+                    name: self.get_parameter(name).value for name in
+                    ('resolution', 'slope_deg', 'roughness', 'step_height', 'drop_height')})
+            else:
+                cells = []
             hazards = [(x, y, 0.2) for x, y, _, _, reason in cells if reason]
             cloud = point_cloud2.create_cloud_xyz32(
                 Header(stamp=msg.header.stamp, frame_id=self.frame),

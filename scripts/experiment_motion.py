@@ -61,7 +61,8 @@ class ExperimentMotion(Node):
         for status in msg.status:
             if status.name=='terrain_geometry':
                 self.depth_message=status.message
-                if status.level==DiagnosticStatus.OK:self.last_depth=time.monotonic()
+                if status.level in (DiagnosticStatus.OK, DiagnosticStatus.WARN) or 'Too few depth returns' in status.message or 'No recent valid depth' in status.message:
+                    self.last_depth=time.monotonic()
 
     def on_quality(self,msg):
         try:
@@ -159,7 +160,7 @@ class ExperimentMotion(Node):
             except Exception as error:p=None;pose_error=str(error)
             wall=time.monotonic();sim=self.get_clock().now().nanoseconds/1e9
             navigation_ready=self.client.server_is_ready();map_fresh=self.grid_fresh()
-            depth_active=wall-self.last_depth<3
+            depth_active=wall-self.last_depth<6
             age=lambda stamp:round(wall-stamp,3) if stamp else None
             diagnostics=dict(sim_stamp=sim,pose_error=pose_error,navigation_ready=navigation_ready,
                 spin_ready=self.spin_client.server_is_ready(),
@@ -348,7 +349,7 @@ class ExperimentMotion(Node):
                 if time.monotonic()-self.last_heartbeat>.9:reason='页面失联，已停止运动'
                 elif self.get_clock().now().nanoseconds/1e9-self.sim_started>self.sim_budget:reason='导航超过本段仿真时间预算，已停止运动'
                 elif time.monotonic()-self.started>3600:reason='导航超过一小时运行上限，已停止运动'
-                elif time.monotonic()-self.last_depth>3:reason='传感器未更新，已停止运动'
+                elif time.monotonic()-self.last_depth>6:reason='传感器未更新，已停止运动'
                 elif not self.grid_fresh():reason='导航地图失效，已停止运动'
                 else:
                     try:
@@ -366,7 +367,7 @@ class ExperimentMotion(Node):
                                 self.best_goal_distance=direct
                                 self.last_progress_sim=self.get_clock().now().nanoseconds/1e9
                             if (direct>.25 and self.feedback.get('distance_remaining',math.inf)>.25 and
-                                     self.get_clock().now().nanoseconds/1e9-self.last_progress_sim>=15.):
+                                     self.get_clock().now().nanoseconds/1e9-self.last_progress_sim>=25.):
                                 reason=NAVIGATION_STALL_REASON
                     except Exception:reason='车辆定位失效，已停止运动'
                 if reason:self.cancel(reason)

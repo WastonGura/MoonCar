@@ -123,11 +123,11 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
                     standoff_dirs.append(math.atan2(avg_gy,avg_gx))
             standoff_dirs.append(math.atan2(pose['y']-cy_def,pose['x']-cx_def))
             for sdir in standoff_dirs:
-                for ds in (1.5,2.0):
+                for ds in (2.0, 2.8):
                     sx_pos=cx_def+ds*math.cos(sdir)
                     sy_pos=cy_def+ds*math.sin(sdir)
                     six,siy=index(sx_pos,sy_pos)
-                    if (six,siy) not in distances or costs[siy,six]>65:continue
+                    if (six,siy) not in distances or costs[siy,six]>50:continue
                     n=math.ceil(.65/resolution)
                     if six<n or siy<n or six+n>=info.width or siy+n>=info.height:continue
                     patch=costs[siy-n:siy+n+1,six-n:six+n+1]
@@ -251,8 +251,9 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
                     seconds=abs(pan)/1.5+2.0
                     use_pan_tilt=True
                 else:
-                    seconds=abs(pan)/.5+5.0
-                    use_pan_tilt=False
+                    # In planner_v3 stationary scans, do not attempt a 180-deg in-place chassis spin.
+                    # Angles outside gimbal pan limits will be observed upon chassis translation.
+                    continue
             else:
                 seconds=distance/.20+(abs(wrap(bearing-pose['yaw']))+abs(wrap(yaw-bearing)))/.5+5
                 pan=float(wrap(yaw-pose['yaw'])) if not distance else 0.
@@ -296,7 +297,12 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
         if fallback is not None:fallback['map_boundary_fallback']=True
         return result(fallback)
     moves=[c for c in candidates if c['kind']!='turn']
-    if planner_v2 and best is not None and best['kind']=='turn' and moves:
+    if planner_v3 and strategy=='nearest_view_v3' and best is not None and best['kind']=='turn' and moves:
+        last_was_turn = bool(history and history[-1].get('kind') == 'turn' and
+                             math.hypot(pose['x']-history[-1].get('x', 0), pose['y']-history[-1].get('y', 0)) < 0.6)
+        if last_was_turn or best.get('expected_new_m2', 0) < 1.5:
+            best = max(moves, key=lambda c: c['score'])
+    elif planner_v2 and best is not None and best['kind']=='turn' and moves:
         fastest=min(moves,key=lambda c:c['estimated_seconds'])
         if best['estimated_seconds']+fastest['estimated_seconds']>remaining:
             best=max(moves,key=lambda c:c['score']);diagnostics['movement_reservation_applied']=True
@@ -517,7 +523,10 @@ class AutonomousSurvey:
                     decision['blocked']=True
                     record['retry_blocked']=True
                 failures=failures+1 if not success and decision['kind']!='turn' else (0 if success else failures)
-                if failures>=3:self.stop('连续三个候选动作未能执行，已停止；请检查场地与导航','fault')
+                if failures>=3:
+                    failures=0
+                    for h in history[-5:]:
+                        h['blocked']=True
         except Exception as error:self.stop(f'自主探测已停止：{error}','fault')
         finally:
             if self.data['active']:self.stop('自主探测结束')

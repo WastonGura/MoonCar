@@ -128,6 +128,29 @@ class PlannerV3FeaturesTests(unittest.TestCase):
         self.assertGreater(choice_v3['expected_improvement_m2'], 0)
         self.assertGreater(choice_v3['score'], choice_v2['score'])
 
+    def test_nearest_view_v3_leaps_after_turn(self):
+        # Create unobserved space beyond (x=1.5, y=0)
+        quality = dict(
+            resolution=self.resolution,
+            cells=[dict(ix=x, iy=y, quality=0.8) for x in range(-16, 16) for y in range(-16, 16)
+                   if x < 4]  # Unobserved in +X direction (x >= 1.0m)
+        )
+        pose = dict(x=0.0, y=0.0, yaw=0.0)
+
+        # 1. With empty history, nearest_view_v3 does a local gimbal turn
+        choice_first = choose_view(self.grid, quality, pose, [0, 0], 8, [], 60, 'nearest_view_v3')
+        self.assertIsNotNone(choice_first)
+        self.assertEqual(choice_first['kind'], 'turn')
+        self.assertTrue(choice_first['use_pan_tilt'])
+
+        # 2. After performing a turn at (0, 0), nearest_view_v3 must leap forward (move chassis)
+        history = [dict(choice_first, success=True)]
+        choice_second = choose_view(self.grid, quality, pose, [0, 0], 8, history, 60, 'nearest_view_v3')
+        self.assertIsNotNone(choice_second)
+        self.assertIn(choice_second['kind'], ('advance', 'resample'))
+        self.assertGreater(math.hypot(choice_second['x'], choice_second['y']), 0.5)
+
 
 if __name__ == '__main__':
     unittest.main()
+
