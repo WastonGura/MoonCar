@@ -1,0 +1,100 @@
+{
+  "scene": "ramp",
+  "world": "mooncar_ramp_v2.sdf",
+  "size_m": 16.0,
+  "grid_step_m": 0.25,
+  "spawn_ground_z_m": 0.0,
+  "height_min_m": -0.0188,
+  "height_max_m": 0.4337,
+  "cell_count_by_class": {
+    "regolith_passable": 3426,
+    "sand_soft": 180,
+    "rubble_gravel": 266,
+    "rock_boulder": 224
+  },
+  "class_parameters": {
+    "regolith_passable": {
+      "id": 0,
+      "mu": 0.8,
+      "mu2": 0.72
+    },
+    "sand_soft": {
+      "id": 1,
+      "mu": 0.52,
+      "mu2": 0.48
+    },
+    "rubble_gravel": {
+      "id": 2,
+      "mu": 0.9,
+      "mu2": 0.82
+    },
+    "rock_boulder": {
+      "id": 3,
+      "mu": 1.0,
+      "mu2": 0.92
+    },
+    "crater_floor": {
+      "id": 4,
+      "mu": 0.64,
+      "mu2": 0.58
+    }
+  },
+  "boulders": [
+    {
+      "name": "boulder_01",
+      "position_m": [
+        -2.8,
+        3.8,
+        0.1941
+      ],
+      "radii_m": [
+        0.48,
+        0.4,
+        0.3
+      ],
+      "class_id": 3
+    },
+    {
+      "name": "boulder_02",
+      "position_m": [
+        4.3,
+        -4.0,
+        0.3985
+      ],
+      "radii_m": [
+        0.62,
+        0.49,
+        0.38
+      ],
+      "class_id": 3
+    }
+  ],
+  "boulder_projected_area_fraction": 0.0060844,
+  "measured_patch": null,
+  "labels": "class_mask.png is row-major from north to south; x increases east, y increases north",
+  "world_sha256": "f919b081532356d448e21492c5dac0a74d05e67f9f8fc29bd821b0a1d9c830ad",
+  "mesh_sha256": {
+    "regolith_passable.obj": "da566a15a9f374e9885774ccc9cef1cfc31053ef8fce55ab47602576b41993c2",
+    "rock_boulder.obj": "a36a2f550b1d76df32307102277002050477ca911c7f598e2bdd02b9df1bc80f",
+    "rubble_gravel.obj": "ff92f88b41cd1186dac92317415af63835ab1e5d9f758c50ff50343a93d5454a",
+    "sand_soft.obj": "8fda341e06a810931fecfce7c39b6e92fea1c16145a5eaa52531526c3d8b3c85"
+  },
+  "boulder_mesh_sha256": "625ae79ea0c407737832a37fe323d99fdb4d3d02e89af737b3961146042f1d87",
+  "texture_sha256": {
+    "crater_floor_albedo.png": "81575d01c310124d19c69739cba16ca305286423bf2065d68934d278974aacc8",
+    "crater_floor_normal.png": "4587a329eb18a0271842b555d31f29a24c7bddd4460ceb201521263de8e7efc0",
+    "crater_floor_roughness.png": "db0a44e93cb352582e8857580b012899c5f8ac397548c9358d6a099e75bd0ab2",
+    "regolith_passable_albedo.png": "bbe08a6272aa35f248f2184c6920c8a8de20f9ee75e00ea67d0a7cdbd915492e",
+    "regolith_passable_normal.png": "da05c2f695378abe881aaf399a9345964d7915d2aecfaf043947aaf28620c7b7",
+    "regolith_passable_roughness.png": "3367a72ae117a561810ccd6ddbf3263283aff3c7cfa0351a17c48f0e65ab95fd",
+    "rock_boulder_albedo.png": "db15ab884aeabaae82cd50e01d3de41524e4fdee2a4d01192af8b8c1b1e25448",
+    "rock_boulder_normal.png": "957a33506489f4ce4109775011b3193fcb7e377684fa851c6c47a405e7b276be",
+    "rock_boulder_roughness.png": "ae7ce3b68fae65e437a7ed99d47f1a0f9ef877426933afdaa8b49551bb670e06",
+    "rubble_gravel_albedo.png": "0d237e4e57315d01445df662feb08784c5961e9d38532209e9db03b2e7a8c85a",
+    "rubble_gravel_normal.png": "db16bdc9ecfa8358008cb0f7b55d252572a68527c9895be56078dcb82c06d174",
+    "rubble_gravel_roughness.png": "fc240dff2256ae5c87a047c65f5ca7c980abfe9593df26724161ee96a4350a98",
+    "sand_soft_albedo.png": "24476b6e18dbd915a8f193f1f165e4be2a97e760aea473a412639129317d8e32",
+    "sand_soft_normal.png": "4e33ab177174d195637fdd53cb81325fc7cf21936dbad086d7aa2a10f0792404",
+    "sand_soft_roughness.png": "83fb1ca1c113d42e8f5e5012847b6773eb107a499d45bae4f0129e07896bb0f8"
+  }
+}

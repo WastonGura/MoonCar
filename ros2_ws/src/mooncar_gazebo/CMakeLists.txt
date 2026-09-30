@@ -7,6 +7,7 @@ install(
   DIRECTORY
     config
     launch
+    materials
     models
     worlds
   DESTINATION share/${PROJECT_NAME}
