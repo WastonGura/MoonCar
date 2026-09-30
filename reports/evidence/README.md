@@ -3,6 +3,7 @@
 ## Terrain v2 scene development
 
 - [20260930T170028+0900](terrain-v2/20260930T170028+0900/DEVLOG.md): dated figures, research index, checksums, development log and validation boundary. The executable Gazebo assets remain in the ROS package's `worlds/`, `models/` and `materials/` directories.
+- [20260930T172626+0900](terrain-v2/20260930T172626+0900/DEVLOG.md): frozen R5 wheel-ground friction sensitivity contrast, raw headless Gazebo samples, server logs, scripts and summary. Diagnostic only; no fitted lunar-soil coefficient.
 
 ## Delivery Runtime: de10bfa
 
