@@ -1,0 +1,19 @@
+{
+  "inserted_particles": 180,
+  "expected_particles": 180,
+  "mass_conserved": true,
+  "translation_settled_and_discharged": true,
+  "particles_in_heap": 180,
+  "particles_above_outlet": 0,
+  "release_time_s": 0.56,
+  "total_kinetic_stable": false,
+  "all_sector_profiles_available": false,
+  "wall_seconds": 28.211932494000393,
+  "sim_seconds": 1.6800000000000004,
+  "angles": [],
+  "final_translation_J": 5.851095882945011e-32,
+  "final_rotation_J": 1.2636024505674651e-06,
+  "mean_angle_deg": null,
+  "minimum_profile_r_squared": null,
+  "formal_calibration_pass": false
+}

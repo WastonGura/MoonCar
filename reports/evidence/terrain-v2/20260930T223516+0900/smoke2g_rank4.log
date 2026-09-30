@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/evidence/pile.py", line 368, in <module>
+Traceback (most recent call last):
+  File "/evidence/pile.py", line 368, in <module>
+Traceback (most recent call last):
+  File "/evidence/pile.py", line 368, in <module>
+    run(args)
+  File "/evidence/pile.py", line 198, in run
+    run(args)
+  File "/evidence/pile.py", line 198, in run
+    out.mkdir(parents=True, exist_ok=False)
+  File "/usr/lib/python3.12/pathlib.py", line 1313, in mkdir
+    out.mkdir(parents=True, exist_ok=False)
+  File "/usr/lib/python3.12/pathlib.py", line 1313, in mkdir
+    os.mkdir(self, mode)
+    os.mkdir(self, mode)
+    run(args)
+FileExistsError: [Errno 17] File exists: 'smoke2g_rank4'
+FileExistsError: [Errno 17] File exists: 'smoke2g_rank4'
+  File "/evidence/pile.py", line 198, in run
+    out.mkdir(parents=True, exist_ok=False)
+  File "/usr/lib/python3.12/pathlib.py", line 1313, in mkdir
+    os.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: 'smoke2g_rank4'
+{"inserted_particles": 180, "expected_particles": 180, "mass_conserved": true, "translation_settled_and_discharged": true, "particles_in_heap": 180, "particles_above_outlet": 0, "release_time_s": 0.56, "total_kinetic_stable": false, "all_sector_profiles_available": false, "wall_seconds": 28.211932494000393, "sim_seconds": 1.6800000000000004, "final_translation_J": 5.851095882945011e-32, "final_rotation_J": 1.2636024505674651e-06, "mean_angle_deg": null, "minimum_profile_r_squared": null, "formal_calibration_pass": false}

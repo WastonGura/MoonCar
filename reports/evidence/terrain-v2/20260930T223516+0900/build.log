@@ -1,0 +1,38 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 225B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/mooncar-dem:lammps-2025.7.22.4
+#2 DONE 0.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/mooncar-dem:lammps-2025.7.22.4@sha256:91241f6e0239ff14bda48b8c056c02f55226a41b9b28b5950d7d8d9c61117a6c
+#4 resolve docker.io/library/mooncar-dem:lammps-2025.7.22.4@sha256:91241f6e0239ff14bda48b8c056c02f55226a41b9b28b5950d7d8d9c61117a6c 0.0s done
+#4 CACHED
+
+#5 [2/2] RUN /opt/mooncar-dem/bin/pip install --no-cache-dir mpi4py==4.1.1
+#5 1.949 Collecting mpi4py==4.1.1
+#5 2.551   Downloading mpi4py-4.1.1-cp312-cp312-manylinux1_x86_64.manylinux_2_5_x86_64.whl.metadata (16 kB)
+#5 3.186 Downloading mpi4py-4.1.1-cp312-cp312-manylinux1_x86_64.manylinux_2_5_x86_64.whl (1.4 MB)
+#5 6.842    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 410.9 kB/s eta 0:00:00
+#5 7.152 Installing collected packages: mpi4py
+#5 7.226 Successfully installed mpi4py-4.1.1
+#5 DONE 7.3s
+
+#6 exporting to image
+#6 exporting layers
+#6 exporting layers 0.2s done
+#6 exporting manifest sha256:9f8c6ebbd4d527b66db180cfd94640b11e885db257dac757554de8b9970fa24e 0.0s done
+#6 exporting config sha256:fbcab46e0fad322b73ab9a8d6219d73dc4e3cbd9ec790ed414b500152887bb10 0.0s done
+#6 exporting attestation manifest sha256:c333e695f6a4254c3d070d3136d2c6eea4f2ec1467747441fd80958841122bd4 0.0s done
+#6 exporting manifest list sha256:33c2e5d609ad07c99f1da3babee2bf4ffb2f5c46486f921088f9d12d423f24b7 0.0s done
+#6 naming to docker.io/library/mooncar-dem:mpi-2025.7.22.4 done
+#6 unpacking to docker.io/library/mooncar-dem:mpi-2025.7.22.4 0.1s done
+#6 DONE 0.4s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/v11n5npqui1avmui0vf7sph8h

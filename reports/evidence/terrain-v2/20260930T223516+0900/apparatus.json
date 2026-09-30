@@ -1,0 +1,60 @@
+{
+  "role": "engineering fixed-funnel apparatus verification, not paper reproduction or parameter fitting",
+  "paper": "Hurrell et al. 2025, DOI 10.1007/s11214-025-01164-8",
+  "source_pdf": "../20260930T185818+0900/references/Hurrell_2025_Rashid1.pdf",
+  "paper_known": {
+    "material": "Toyoura sand",
+    "physical_particle_range_mm": [0.15, 0.3],
+    "particle_density_kg_m3": 2650,
+    "pour_mass_g": 200,
+    "base_material": "aluminium",
+    "reported_repose_deg": 34.3,
+    "reported_error_deg": 0.8,
+    "numerical_particle_diameter_mm": 2,
+    "numerical_normal_model": "JKR, Hertz-Mindlin at zero cohesion",
+    "numerical_rolling_model": "EDEM Type-C"
+  },
+  "engineering_geometry": {
+    "funnel": "smooth truncated cone; LAMMPS native wall/gran/region, both caps open",
+    "outlet_radius_m": 0.008,
+    "rim_radius_m": 0.06,
+    "cone_height_m": 0.08,
+    "baseline_outlet_height_m": 0.10,
+    "gate": "temporary horizontal contact plane, removed after loading stability check",
+    "feed_radius_m": 0.04,
+    "feed_z_above_rim_m": [0.005, 0.025],
+    "feed_volume_fraction": 0.25,
+    "base": "infinite smooth plane; geometric proxy for aluminium, interface not calibrated",
+    "capacity_frustum_volume_m3": 0.0003471669321726961,
+    "capacity_note": "geometrical volume only, not measured packing capacity"
+  },
+  "unverified": [
+    "Paper funnel dimensions, outlet height, gate/loading method and feed rate",
+    "Paper exact image-outline extraction procedure",
+    "Sand-aluminium and sand-funnel contact coefficients",
+    "Equivalence of EDEM Type-C and LAMMPS SDS rolling laws",
+    "Effect of persistent sphere spin without a twisting resistance model"
+  ],
+  "engineering_contact_baseline": {
+    "particle_static_mu": 0.65,
+    "particle_rolling_mu": 0.15,
+    "wall_static_mu": 0.65,
+    "wall_rolling_mu": 0.15,
+    "wall_basis": "engineering starting values copied from particle baseline, not measured aluminium",
+    "rolling_stiffness": 1000,
+    "rolling_damping": 0,
+    "cohesion": 0,
+    "parameter_fit_performed": false
+  },
+  "measurement": {
+    "mass": "N * rho * pi * d^3 / 6, rounded particle count",
+    "translation_KE": "sum(m*v^2/2)",
+    "rotation_KE": "sum(I*omega^2/2), I=2*m*(d/2)^2/5",
+    "gate_release": "after all particles inserted, >=0.24 s dwell, and three consecutive translation KE/(Mgd)<1e-5 samples",
+    "geometry_stop": "all particles below outlet with three consecutive translation KE/(Mgd)<1e-5 samples",
+    "sample_period_s": 0.08,
+    "profile_bin_m": 0.002,
+    "angle": "eight 45-degree radial sectors, least-squares upper outline slope; spatial SD is not repeated-trial SD",
+    "paper_target_used_for_fit": false
+  }
+}
