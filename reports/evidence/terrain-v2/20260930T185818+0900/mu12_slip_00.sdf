@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<sdf version="1.10"><world name="wheel_bench">
+  <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics">
+    <engine><filename>gz-physics-bullet-featherstone-plugin</filename></engine>
+  </plugin>
+  <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+  <plugin filename="gz-sim-forcetorque-system" name="gz::sim::systems::ForceTorque"/>
+  <plugin filename="gz-sim-contact-system" name="gz::sim::systems::Contact"/>
+  <physics name="wheel_bench_physics" type="ode"><max_step_size>0.001</max_step_size><real_time_factor>0</real_time_factor></physics>
+  <gravity>0 0 -9.81</gravity>
+  <model name="ground"><static>true</static><link name="surface">
+    <collision name="ground_collision"><pose>0 0 -0.05 0 0 0</pose>
+      <geometry><box><size>4 2 0.1</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface></collision>
+    <sensor name="ground_contact" type="contact"><always_on>true</always_on><update_rate>100</update_rate>
+      <contact><collision>ground_collision</collision></contact></sensor>
+  </link></model>
+  <model name="rig">
+    <link name="rail"><inertial><mass>1</mass><inertia><ixx>1</ixx><iyy>1</iyy><izz>1</izz></inertia></inertial></link>
+    <link name="x_carriage"><pose>0 0 0.13 0 0 0</pose>
+      <inertial><mass>0.1</mass><inertia><ixx>0.001</ixx><iyy>0.001</iyy><izz>0.001</izz></inertia></inertial></link>
+    <link name="z_carriage"><pose>0 0 0.13 0 0 0</pose>
+      <inertial><mass>1.3174515800</mass><inertia><ixx>0.01</ixx><iyy>0.01</iyy><izz>0.01</izz></inertia></inertial></link>
+    <link name="wheel"><pose>0 0 0.13 0 0 0</pose>
+      <inertial><mass>1.18</mass><inertia><ixx>0.003</ixx><iyy>0.006</iyy><izz>0.003</izz></inertia></inertial>
+      <collision name="wheel_core"><pose>0 0 0 1.5707963268 0 0</pose>
+        <geometry><cylinder><radius>0.1</radius><length>0.080</length></cylinder></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface></collision>
+      <collision name="grouser_0">
+      <pose>0.00000000 0 -0.11000000 0 0.00000000 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_1">
+      <pose>0.04772721 0 -0.09910658 0 0.44879895 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_2">
+      <pose>0.08600146 0 -0.06858388 0 0.89759790 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_3">
+      <pose>0.10724207 0 -0.02447730 0 1.34639685 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_4">
+      <pose>0.10724207 0 0.02447730 0 1.79519580 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_5">
+      <pose>0.08600146 0 0.06858388 0 2.24399475 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_6">
+      <pose>0.04772721 0 0.09910658 0 2.69279370 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_7">
+      <pose>0.00000000 0 0.11000000 0 3.14159265 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_8">
+      <pose>-0.04772721 0 0.09910658 0 3.59039160 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_9">
+      <pose>-0.08600146 0 0.06858388 0 4.03919055 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_10">
+      <pose>-0.10724207 0 0.02447730 0 4.48798951 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_11">
+      <pose>-0.10724207 0 -0.02447730 0 4.93678846 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_12">
+      <pose>-0.08600146 0 -0.06858388 0 5.38558741 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision><collision name="grouser_13">
+      <pose>-0.04772721 0 -0.09910658 0 5.83438636 0</pose>
+      <geometry><box><size>0.020 0.080 0.020</size></box></geometry><surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+      <bullet><friction>1.2</friction><friction2>1.2</friction2></bullet></friction></surface>
+    </collision>
+    </link>
+    <joint name="rail_fixed" type="fixed"><parent>world</parent><child>rail</child></joint>
+    <joint name="translate_x" type="prismatic"><parent>rail</parent><child>x_carriage</child>
+      <axis><xyz>1 0 0</xyz></axis>
+      <sensor name="x_force" type="force_torque"><always_on>true</always_on><update_rate>100</update_rate></sensor>
+    </joint>
+    <joint name="float_z" type="prismatic"><parent>x_carriage</parent><child>z_carriage</child>
+      <axis><xyz>0 0 1</xyz></axis>
+      <sensor name="z_force" type="force_torque"><always_on>true</always_on><update_rate>100</update_rate></sensor>
+    </joint>
+    <joint name="rotate_wheel" type="revolute"><parent>z_carriage</parent><child>wheel</child>
+      <axis><xyz>0 1 0</xyz></axis>
+    </joint>
+    <plugin filename="gz-sim-joint-controller-system" name="gz::sim::systems::JointController">
+      <joint_name>translate_x</joint_name><initial_velocity>0.02000000</initial_velocity>
+    </plugin>
+    <plugin filename="gz-sim-joint-controller-system" name="gz::sim::systems::JointController">
+      <joint_name>rotate_wheel</joint_name><initial_velocity>0.2</initial_velocity>
+    </plugin>
+    <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher"/>
+  </model>
+</world></sdf>
