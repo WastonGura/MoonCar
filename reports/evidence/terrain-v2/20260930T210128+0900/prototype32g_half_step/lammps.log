@@ -1,0 +1,236 @@
+LAMMPS (22 Jul 2025 - Update 4)
+  using 1 OpenMP thread(s) per MPI task
+units si
+atom_style sphere
+boundary m m f
+newton off
+region domain block -0.15 0.15 -0.15 0.15 -0.005 0.25 units box
+create_box 1 domain
+Created orthogonal box = (-0.15 -0.15 -0.005) to (0.15 0.15 0.25)
+  1 by 1 by 1 MPI processor grid
+comm_modify vel yes
+neighbor 0.0005 bin
+neigh_modify delay 0 every 1 check yes
+pair_style granular
+pair_coeff * * hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution
+fix floor all wall/gran granular hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution zplane 0 NULL
+fix integrator all nve/sphere
+fix gravity all gravity 9.81 vector 0 0 -1
+region outlet cylinder z 0 0 0.008 0.10 0.13 units box
+fix feed all pour 2883 1 123457 region outlet diam one 0.002 dens 2650.0 2650.0 vol 0.25 100
+timestep 4e-06
+compute kinetic all ke
+thermo 20000
+thermo_style custom step time atoms c_kinetic
+thermo_modify lost error
+dump trajectory all custom 20000 prototype32g_half_step/particles.dump id type x y z vx vy vz radius
+dump_modify trajectory sort id
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Particle insertion: 359 every 19552 steps, 2883 by step 156417
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 0.0025
+  ghost atom cutoff = 0.0025
+  binsize = 0.00125, bins = 240 240 204
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair granular, perpetual
+      attributes: half, newton off, size, history
+      pair build: half/size/bin/atomonly/newtoff
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 60.07 | 60.07 | 60.07 Mbytes
+   Step          Time         Atoms      c_kinetic   
+         0   0                      0   0            
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+     20000   0.08                 333   0.0016114315 
+Loop time of 2.44999 on 1 procs for 20000 steps with 333 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 66.31 | 66.31 | 66.31 Mbytes
+   Step          Time         Atoms      c_kinetic   
+     20000   0.08                 333   0.0016114315 
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+     40000   0.16                 609   0.0017268485 
+Loop time of 3.31691 on 1 procs for 20000 steps with 609 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 66.36 | 66.36 | 66.36 Mbytes
+   Step          Time         Atoms      c_kinetic   
+     40000   0.16                 609   0.0017268485 
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+     60000   0.24                 836   0.002496461  
+Loop time of 3.80345 on 1 procs for 20000 steps with 836 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 66.4 | 66.4 | 66.4 Mbytes
+   Step          Time         Atoms      c_kinetic   
+     60000   0.24                 836   0.002496461  
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+     80000   0.32                1015   0.0020985269 
+Loop time of 4.24856 on 1 procs for 20000 steps with 1015 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 66.43 | 66.43 | 66.43 Mbytes
+   Step          Time         Atoms      c_kinetic   
+     80000   0.32                1015   0.0020985269 
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+    100000   0.4                 1275   0.0019639731 
+Loop time of 5.3139 on 1 procs for 20000 steps with 1275 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.28 | 68.28 | 68.28 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    100000   0.4                 1275   0.0019639731 
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+    120000   0.48                1519   0.0022890063 
+Loop time of 7.33793 on 1 procs for 20000 steps with 1519 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 73.53 | 73.53 | 73.53 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    120000   0.48                1519   0.0022890063 
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+    140000   0.56                1742   0.0021669341 
+Loop time of 8.84808 on 1 procs for 20000 steps with 1742 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 77.58 | 77.58 | 77.58 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    140000   0.56                1742   0.0021669341 
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+    160000   0.64                1965   0.0019606674 
+Loop time of 10.2128 on 1 procs for 20000 steps with 1965 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 80.43 | 80.43 | 80.43 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    160000   0.64                1965   0.0019606674 
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+    180000   0.72                2178   0.0021754936 
+Loop time of 11.7915 on 1 procs for 20000 steps with 2178 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 83.59 | 83.59 | 83.59 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    180000   0.72                2178   0.0021754936 
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+    200000   0.8                 2367   0.0018093514 
+Loop time of 12.9097 on 1 procs for 20000 steps with 2367 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 84.91 | 84.91 | 84.91 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    200000   0.8                 2367   0.0018093514 
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+    220000   0.88                2541   0.0016812752 
+Loop time of 14.2194 on 1 procs for 20000 steps with 2541 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 84.94 | 84.94 | 84.94 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    220000   0.88                2541   0.0016812752 
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+    240000   0.96                2762   0.0012924659 
+Loop time of 15.892 on 1 procs for 20000 steps with 2762 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 84.98 | 84.98 | 84.98 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    240000   0.96                2762   0.0012924659 
+WARNING: Fewer insertions than requested (src/src/GRANULAR/fix_pour.cpp:691)
+    260000   1.04                2883   0.0019005196 
+Loop time of 17.5368 on 1 procs for 20000 steps with 2883 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 85 | 85 | 85 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    260000   1.04                2883   0.0019005196 
+    280000   1.12                2883   0.00075871554
+Loop time of 17.529 on 1 procs for 20000 steps with 2883 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 85 | 85 | 85 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    280000   1.12                2883   0.00075871554
+    300000   1.2                 2883   1.2704157e-05
+Loop time of 19.0553 on 1 procs for 20000 steps with 2883 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 85 | 85 | 85 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    300000   1.2                 2883   1.2704157e-05
+    320000   1.28                2883   1.8725312e-06
+Loop time of 18.807 on 1 procs for 20000 steps with 2883 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 85 | 85 | 85 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    320000   1.28                2883   1.8725312e-06
+    340000   1.36                2883   2.9117431e-07
+Loop time of 17.7995 on 1 procs for 20000 steps with 2883 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 85 | 85 | 85 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    340000   1.36                2883   2.9117431e-07
+    360000   1.44                2883   1.9421534e-08
+Loop time of 17.3202 on 1 procs for 20000 steps with 2883 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 85 | 85 | 85 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    360000   1.44                2883   1.9421534e-08
+    380000   1.52                2883   1.6138104e-15
+Loop time of 16.679 on 1 procs for 20000 steps with 2883 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 85 | 85 | 85 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    380000   1.52                2883   1.6138104e-15
+    400000   1.6                 2883   6.107644e-15 
+Loop time of 15.5121 on 1 procs for 20000 steps with 2883 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 85 | 85 | 85 Mbytes
+   Step          Time         Atoms      c_kinetic   
+    400000   1.6                 2883   6.107644e-15 
+    420000   1.68                2883   5.5261086e-15
+Loop time of 15.1132 on 1 procs for 20000 steps with 2883 atoms
+
+undump trajectory
+Total wall time: 0:04:16

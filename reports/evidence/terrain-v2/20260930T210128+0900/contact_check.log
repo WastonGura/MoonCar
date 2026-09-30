@@ -1,0 +1,8 @@
+{
+  "hertz_analytic_force_N": 0.02514157444218836,
+  "hertz_force_N": 0.025141574442188456,
+  "lammps_version": 20250722,
+  "separated_force_N": 0.0,
+  "jkr_force_N": -0.00020911762452949857,
+  "outline_cone_check": true
+}

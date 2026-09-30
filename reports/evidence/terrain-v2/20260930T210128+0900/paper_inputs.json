@@ -1,0 +1,63 @@
+{
+  "paper": {
+    "title": "Traction Performance Evaluation for a Rashid-1 Rover Wheel",
+    "doi": "10.1007/s11214-025-01164-8",
+    "source_pdf": "../20260930T185818+0900/references/Hurrell_2025_Rashid1.pdf",
+    "table_2_pdf_page": 6,
+    "table_3_pdf_page": 8,
+    "methods_pdf_pages": [6, 8, 9]
+  },
+  "soil_experiments": {
+    "Toyoura": {
+      "particle_size_range_mm": [0.15, 0.3],
+      "particle_density_kg_m3": 2650,
+      "bulk_density_min_max_kg_m3": [1369, 1658],
+      "wheel_bed_bulk_density_kg_m3": [1410, 1440],
+      "pour_mass_g": 200,
+      "repose_run_values_deg": [33.5, 33.7, 35.0, 34.5, 34.7, 34.1],
+      "repose_reported_mean_deg": 34.3,
+      "repose_reported_error_deg": 0.8,
+      "experimental_cohesion_Pa_prior_Ozaki_2023": 900
+    },
+    "FJS1": {
+      "particle_size_range_mm": [0.01, 1],
+      "particle_density_kg_m3": 2860,
+      "bulk_density_min_max_kg_m3": [1623, 2100],
+      "wheel_bed_bulk_density_kg_m3": [1730, 1800],
+      "pour_mass_g": 216,
+      "repose_run_values_deg": [38.1, 37.2, 37.4, 38.1, 38.3, 38.9, 37.9],
+      "repose_reported_mean_deg": 38.0,
+      "repose_reported_error_deg": 1.5,
+      "experimental_cohesion_Pa_prior_Ozaki_2023": 2400
+    }
+  },
+  "paper_DEM": {
+    "software": "Altair EDEM with HyperStudy",
+    "normal_model": "JKR; Hertz-Mindlin at zero cohesion",
+    "rolling_model": "Type-C",
+    "diameter_m": 0.002,
+    "particle_count_wheel_bed": 1382000,
+    "time_step_s": 0.000008,
+    "young_modulus_Pa": 50000000,
+    "poisson_ratio": 0.25,
+    "restitution": 0.3,
+    "static_friction": 0.65,
+    "rolling_friction": 0.15,
+    "Toyoura": {"density_kg_m3": 2650, "average_bulk_density_kg_m3": 1414, "simulated_cohesion_Pa": 0},
+    "FJS1": {"density_kg_m3": 3230, "average_bulk_density_kg_m3": 1740, "simulated_cohesion_Pa": 80},
+    "calibration_order": ["parameter screening", "repose response surface optimization", "five independent repose validation runs", "single-wheel traction and sinkage validation"],
+    "wheel_bed_m": [0.65, 0.14, 0.12],
+    "earth_g_m_s2": 9.81,
+    "wheel_load_N": 24.5,
+    "angular_speed_rad_s": 0.2,
+    "reported_compute": {"GPU": "NVIDIA RTX 4090", "sim_seconds": 30, "approx_wall_hours": 7}
+  },
+  "transfer_limits": [
+    "The reported AoR uncertainty uses left/right slopes, not just the SD of listed run averages.",
+    "LAMMPS rolling SDS is not established as equivalent to EDEM Type-C.",
+    "LAMMPS JKR gamma is J/m^2; neither 80 Pa simulation cohesion nor 2400 Pa experimental cohesion can be copied into gamma.",
+    "Particle density 3230 is an EDEM numerical adjustment, not the measured FJS-1 grain density 2860.",
+    "Physical fixed-funnel dimensions and the paper's repose extraction procedure are not yet verified.",
+    "One repose target cannot uniquely identify static friction, rolling friction and cohesion without additional constraints or measurements."
+  ]
+}

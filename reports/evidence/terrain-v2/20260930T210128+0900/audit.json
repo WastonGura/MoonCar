@@ -1,0 +1,43 @@
+{
+  "completed_trials": [
+    {
+      "trial": "prototype32g_open_boundary",
+      "dt_s": 8e-06,
+      "particles": 2883,
+      "mass_kg": 0.032002147725057786,
+      "sim_seconds": 1.6800000000000004,
+      "wall_seconds": 149.74116459401557,
+      "mean_angle_deg": 21.62311864315747,
+      "spatial_sector_sd_deg": 1.8560418599879807,
+      "min_profile_r_squared": 0.8725635890734165,
+      "translation_settled": true,
+      "rotation_checked": false,
+      "raw_dump_sha256": "b934485ce352954ab585c054486dedcb51388058bbec0472de13353e84b1e27b",
+      "formal_calibration_pass": false
+    },
+    {
+      "trial": "prototype32g_half_step",
+      "dt_s": 4e-06,
+      "particles": 2883,
+      "mass_kg": 0.032002147725057786,
+      "sim_seconds": 1.6800000000000004,
+      "wall_seconds": 256.4373252270161,
+      "mean_angle_deg": 21.76440472319935,
+      "spatial_sector_sd_deg": 1.8862251304531255,
+      "min_profile_r_squared": 0.9076565432473611,
+      "translation_settled": true,
+      "rotation_checked": false,
+      "raw_dump_sha256": "fd899606466a24629f0e7de095e8fe7d872412ce038e94b713ff340c4a43f3cb",
+      "formal_calibration_pass": false
+    }
+  ],
+  "half_step_angle_difference_deg": 0.1412860800418798,
+  "failed_trial": {
+    "trial": "prototype32g",
+    "reason": "one grain crossed fixed horizontal boundary",
+    "raw_dump_sha256": "178b84d3b1080667b818ea7ad46b3904c0ebaaca28ecab025e07236ba0b9fd33"
+  },
+  "paper_geometry_matched": false,
+  "parameter_fit_performed": false,
+  "scope": "functional prototype; spatial sector SD is not repeated-run uncertainty"
+}

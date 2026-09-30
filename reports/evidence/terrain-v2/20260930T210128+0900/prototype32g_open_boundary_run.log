@@ -1,0 +1,1 @@
+{"inserted_particles": 2883, "expected_particles": 2883, "mass_conserved": true, "settled_by_kinetic_check": true, "wall_seconds": 149.74116459401557, "sim_seconds": 1.6800000000000004, "mean_angle_deg": 21.62311864315747, "minimum_profile_r_squared": 0.8725635890734165, "formal_calibration_pass": false}
