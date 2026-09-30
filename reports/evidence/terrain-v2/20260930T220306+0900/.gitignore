@@ -1,0 +1,4 @@
+# Large particle trajectories are archived losslessly after each trial.
+*.dump
+*.pdf
+references/page_*.png

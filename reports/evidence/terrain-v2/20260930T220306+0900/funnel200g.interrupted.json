@@ -1,0 +1,22 @@
+{
+  "reason": "Stop incomplete slow serial trial after genuine MPI checks and global capture passed; restart unchanged physical protocol in separate MPI batch",
+  "requested_at": "2026-09-30T23:00:41.054286+09:00",
+  "progress_at_request": {
+    "wall_seconds": 2882.165588541,
+    "time_s": 3.0400000000000014,
+    "particles": 18018,
+    "kinetic_J": 0.0018526237830480178,
+    "kinetic_to_mgd": 0.4721143120045174,
+    "rotation_J": 2.860013157172531e-05,
+    "total_kinetic_to_mgd": 0.4794026408944817,
+    "max_omega_rad_s": 495.2729428642901,
+    "particles_above_outlet": 7893,
+    "gate_open": true,
+    "max_speed_m_s": 1.2680164974111336
+  },
+  "replacement_batch": "20260930T223516+0900",
+  "signal": "SIGINT",
+  "container": "mooncar-dem-funnel200g",
+  "verified_python_pid": 7,
+  "formal_result": false
+}

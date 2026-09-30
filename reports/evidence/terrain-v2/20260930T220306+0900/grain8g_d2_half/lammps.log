@@ -1,0 +1,208 @@
+LAMMPS (22 Jul 2025 - Update 4)
+  using 1 OpenMP thread(s) per MPI task
+units si
+atom_style sphere
+boundary m m f
+newton off
+region domain block -0.15 0.15 -0.15 0.15 -0.005 0.25 units box
+create_box 1 domain
+Created orthogonal box = (-0.15 -0.15 -0.005) to (0.15 0.15 0.25)
+  1 by 1 by 1 MPI processor grid
+comm_modify vel yes
+neighbor 0.0005 bin
+neigh_modify delay 0 every 1 check yes
+pair_style granular
+pair_coeff * * hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution
+fix floor all wall/gran granular hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution zplane 0 NULL
+region funnel cone z 0 0 0.008 0.06 0.1 0.18 open 1 open 2 units box
+fix funnel_wall all wall/gran/region granular hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution region funnel
+fix gate all wall/gran granular hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution zplane 0.1 NULL
+fix integrator all nve/sphere
+fix gravity all gravity 9.81 vector 0 0 -1
+region feed_zone cylinder z 0 0 0.04 0.185 0.205 units box
+fix feed all pour 721 1 123457 region feed_zone diam one 0.002 dens 2650.0 2650.0 vol 0.25 100
+timestep 4e-06
+compute kinetic all ke
+compute rotation all erotate/sphere
+thermo 20000
+thermo_style custom step time atoms c_kinetic c_rotation
+thermo_modify lost error
+dump trajectory all custom 20000 grain8g_d2_half/particles.dump id type x y z vx vy vz omegax omegay omegaz radius
+dump_modify trajectory sort id
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Particle insertion: 5999 every 15964 steps, 721 by step 1
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 0.0025
+  ghost atom cutoff = 0.0025
+  binsize = 0.00125, bins = 240 240 204
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair granular, perpetual
+      attributes: half, newton off, size, history
+      pair build: half/size/bin/atomonly/newtoff
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 60.07 | 60.07 | 60.07 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+         0   0                      0   0              0            
+     20000   0.08                 721   0.0035777171   0.00019970037
+Loop time of 3.22771 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.85 | 68.85 | 68.85 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+     20000   0.08                 721   0.0035777171   0.00019970037
+     40000   0.16                 721   7.5334168e-05  1.9291997e-05
+Loop time of 4.95001 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.85 | 68.85 | 68.85 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+     40000   0.16                 721   7.5334168e-05  1.9291997e-05
+     60000   0.24                 721   2.6862083e-07  1.8046178e-07
+Loop time of 6.32852 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.85 | 68.85 | 68.85 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+     60000   0.24                 721   2.6862083e-07  1.8046178e-07
+     80000   0.32                 721   6.2860443e-09  6.6647979e-09
+Loop time of 6.11211 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.85 | 68.85 | 68.85 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+     80000   0.32                 721   6.2860443e-09  6.6647979e-09
+    100000   0.4                  721   2.6184991e-15  1.2149359e-09
+Loop time of 5.80734 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.85 | 68.85 | 68.85 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    100000   0.4                  721   2.6184991e-15  1.2149359e-09
+    120000   0.48                 721   5.91009e-16    1.214969e-09 
+Loop time of 4.86427 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.85 | 68.85 | 68.85 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    120000   0.48                 721   5.91009e-16    1.214969e-09 
+    140000   0.56                 721   1.1650502e-15  1.2150886e-09
+Loop time of 4.68601 on 1 procs for 20000 steps with 721 atoms
+
+unfix gate
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.1 | 68.1 | 68.1 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    140000   0.56                 721   1.1650502e-15  1.2150886e-09
+    160000   0.64                 721   0.00055481281  3.5332118e-06
+Loop time of 4.68684 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.1 | 68.1 | 68.1 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    160000   0.64                 721   0.00055481281  3.5332118e-06
+    180000   0.72                 721   0.0021546108   2.6181313e-05
+Loop time of 4.20111 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.1 | 68.1 | 68.1 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    180000   0.72                 721   0.0021546108   2.6181313e-05
+    200000   0.8                  721   0.0017344945   5.0588855e-05
+Loop time of 3.79867 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.1 | 68.1 | 68.1 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    200000   0.8                  721   0.0017344945   5.0588855e-05
+    220000   0.88                 721   0.000299992    3.4365574e-05
+Loop time of 4.29044 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.1 | 68.1 | 68.1 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    220000   0.88                 721   0.000299992    3.4365574e-05
+    240000   0.96                 721   1.4660484e-05  8.101963e-06 
+Loop time of 3.43303 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.1 | 68.1 | 68.1 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    240000   0.96                 721   1.4660484e-05  8.101963e-06 
+    260000   1.04                 721   5.0219537e-06  4.2165273e-06
+Loop time of 3.26551 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 68.1 | 68.1 | 68.1 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    260000   1.04                 721   5.0219537e-06  4.2165273e-06
+    280000   1.12                 721   1.9354016e-06  2.9750245e-06
+Loop time of 3.87188 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 72.81 | 72.81 | 72.81 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    280000   1.12                 721   1.9354016e-06  2.9750245e-06
+    300000   1.2                  721   5.7925272e-07  2.43082e-06  
+Loop time of 3.49987 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 76.22 | 76.22 | 76.22 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    300000   1.2                  721   5.7925272e-07  2.43082e-06  
+    320000   1.28                 721   1.4869645e-07  2.2575085e-06
+Loop time of 3.51301 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 80.39 | 80.39 | 80.39 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    320000   1.28                 721   1.4869645e-07  2.2575085e-06
+    340000   1.36                 721   2.4696713e-08  2.2073559e-06
+Loop time of 2.86789 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 82.16 | 82.16 | 82.16 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    340000   1.36                 721   2.4696713e-08  2.2073559e-06
+    360000   1.44                 721   1.1916743e-21  2.1971602e-06
+Loop time of 2.39086 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 82.38 | 82.38 | 82.38 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    360000   1.44                 721   1.1916743e-21  2.1971602e-06
+    380000   1.52                 721   3.0060732e-29  2.1969589e-06
+Loop time of 2.43492 on 1 procs for 20000 steps with 721 atoms
+
+run 20000 pre yes post no
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 82.38 | 82.38 | 82.38 Mbytes
+   Step          Time         Atoms      c_kinetic      c_rotation  
+    380000   1.52                 721   3.0060732e-29  2.1969589e-06
+    400000   1.6                  721   7.6756157e-30  2.196856e-06 
+Loop time of 2.43333 on 1 procs for 20000 steps with 721 atoms
+
+undump trajectory
+Total wall time: 0:01:21
