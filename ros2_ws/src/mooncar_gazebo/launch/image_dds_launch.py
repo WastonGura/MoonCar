@@ -11,8 +11,10 @@ from launch_ros.substitutions import FindPackageShare
 def launch_bridge(context):
     spec=importlib.util.spec_from_file_location('image_dds_guard',Path(__file__).with_name('image_dds_guard.py'))
     guard=importlib.util.module_from_spec(spec);spec.loader.exec_module(guard)
-    choice=guard.select(LaunchConfiguration('model_file',default='mooncar.urdf.xacro').perform(context),LaunchConfiguration('world').perform(context),os.environ)
-    config=Path(FindPackageShare('mooncar_gazebo').perform(context))/'config'/LaunchConfiguration('bridge_config_file',default='ros_gz_bridge.yaml').perform(context)
+    package=Path(FindPackageShare('mooncar_gazebo').perform(context))
+    default=guard.default_profile(package/'config/image_dds_defaults.json')
+    choice=guard.select(LaunchConfiguration('model_file',default='mooncar.urdf.xacro').perform(context),LaunchConfiguration('world').perform(context),os.environ,default)
+    config=package/'config'/LaunchConfiguration('bridge_config_file',default='ros_gz_bridge.yaml').perform(context)
     if choice['selected']=='legacy':
         return [LogInfo(msg='MoonCar image DDS: '+json.dumps(choice)),IncludeLaunchDescription(
             PythonLaunchDescriptionSource(PathJoinSubstitution([FindPackageShare('ros_gz_bridge'),'launch','ros_gz_bridge.launch.py'])),

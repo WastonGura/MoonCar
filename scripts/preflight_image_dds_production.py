@@ -11,22 +11,24 @@ def main():
     manifest=guard.verify(a.runtime)
     from r5_dds_shm import project_runtime
     project=project_runtime()
+    from image_dds_validation import installed_files,model_preflight
+    installed=installed_files()
+    models=model_preflight(folder/'models')
     log=(folder/'bridge.log').open('x')
     child=subprocess.Popen([sys.executable,str(path),'--root',a.runtime,'--receipt-directory',str(folder/'bridge'),
         '--binary','/opt/ros/jazzy/lib/ros_gz_bridge/bridge_node','--ros-args','-p',
-        'config_file:=/source/ros2_ws/src/mooncar_gazebo/config/ros_gz_bridge_r5.yaml'],stdout=log,stderr=subprocess.STDOUT)
+        'config_file:=/work/install/share/mooncar_gazebo/config/ros_gz_bridge_r5.yaml'],stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
     try:
         until=time.monotonic()+12
         while not (folder/'bridge/ready.json').exists():
             if child.poll() is not None or time.monotonic()>until:raise RuntimeError('Actual bridge preflight failed')
             time.sleep(.05)
         proof=json.loads((folder/'bridge/ready.json').read_text())
-        result=dict(passed=True,project_runtime=project,manifest_sha256=guard.sha(Path(a.runtime)/'manifest.json'),actual_bridge=proof)
+        result=dict(passed=True,project_runtime=project,installed=installed,models=models,manifest_sha256=guard.sha(Path(a.runtime)/'manifest.json'),actual_bridge=proof)
         (folder/'result.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
     finally:
-        child.send_signal(signal.SIGINT)
-        try:child.wait(8)
-        except subprocess.TimeoutExpired:child.kill();child.wait()
+        from image_dds_validation import stop_process
+        stop_process(child)
         log.close()
 
 if __name__=='__main__':main()

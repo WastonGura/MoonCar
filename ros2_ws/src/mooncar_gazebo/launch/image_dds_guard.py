@@ -7,6 +7,16 @@ WORLDS=('mooncar_ramp_v2','mooncar_curve_v2','mooncar_survey_v2')
 VERSIONS={'fastdds':'2.14.6','rmw_fastrtps_shared_cpp':'8.4.4','rmw_fastrtps_cpp':'8.4.4'}
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
+def default_profile(path):
+    value=json.loads(Path(path).read_text())
+    if set(value)!={'profile'} or value['profile'] not in ('auto','legacy'):
+        raise RuntimeError('Invalid installed image DDS default configuration')
+    return value['profile']
+
+def complete_receipt(path):
+    try:return json.loads(Path(path).read_text())
+    except (FileNotFoundError,json.JSONDecodeError):return None
+
 def select(model,world,env,default='legacy'):
     requested=env.get('MOONCAR_IMAGE_DDS_PROFILE',default)
     if requested not in ('auto','legacy','shm_tx8m'):raise RuntimeError('Invalid MOONCAR_IMAGE_DDS_PROFILE')
@@ -68,7 +78,7 @@ def supervise(binary,argv,root,folder,timeout=10):
     try:
         child=subprocess.Popen([binary]+argv,env=bridge_env(os.environ,root,receipt))
         end=time.monotonic()+timeout
-        while not receipt.exists():
+        while complete_receipt(receipt) is None:
             if child.poll() is not None:raise RuntimeError('Bridge exited before DDS receipt')
             if time.monotonic()>end:raise TimeoutError('Bridge DDS receipt timeout')
             time.sleep(.02)

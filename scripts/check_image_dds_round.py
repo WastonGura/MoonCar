@@ -13,6 +13,36 @@ def main():
     folder=Path(a.output)/a.name
     guard='/source/ros2_ws/src/mooncar_gazebo/launch/image_dds_guard.py'
     original=subprocess.Popen
+    from image_dds_validation import receiver_snapshot,image_files,participants
+    import r5_runtime_witness
+    original_close=r5_runtime_witness.Witness.close
+    def close(node):
+        # Capture all actual receiver mappings while their ROS participants are still alive.
+        snapshots={'main':receiver_snapshot()}
+        processes=json.loads((folder/'dds-processes.json').read_text())
+        # Child receivers may already have exited in the original runner's finally block;
+        # their live snapshots are taken below at command scheduling boundaries.
+        (folder/'receiver-before-close.json').write_text(json.dumps(snapshots,indent=2)+'\n')
+        return original_close(node)
+    r5_runtime_witness.Witness.close=close
+    import r5_step_schedule
+    original_health=r5_step_schedule.PausedSteps.healthy
+    live_receivers={}
+    def healthy(schedule):
+        result=original_health(schedule)
+        process_path=folder/'dds-processes.json'
+        if process_path.is_file():
+            for label,pid in json.loads(process_path.read_text()).items():
+                if label=='bridge' or label in live_receivers:continue
+                try:snapshot=receiver_snapshot(pid)
+                except FileNotFoundError:continue
+                if snapshot['verified']:live_receivers[label]=snapshot
+            receipt=folder/'production-bridge/ready.json'
+            if receipt.is_file() and 'all_participants' not in live_receivers:
+                peers=participants(json.loads(receipt.read_text())['pid'])
+                if len(peers)>=6 and all(p['verified'] for p in peers.values()):live_receivers['all_participants']=peers
+        return result
+    r5_step_schedule.PausedSteps.healthy=healthy
     def start(argv,*pos,**kw):
         if argv[:4]==['ros2','run','ros_gz_bridge','bridge_node']:
             argv=[sys.executable,guard,'--root',os.environ['MOONCAR_IMAGE_DDS_RUNTIME'],
@@ -28,16 +58,19 @@ def main():
     error=None
     try:runtime.run(args)
     except Exception as e:error=repr(e)
-    finally:subprocess.Popen=original
+    finally:
+        subprocess.Popen=original;r5_runtime_witness.Witness.close=original_close
+        r5_step_schedule.PausedSteps.healthy=original_health
     result=json.loads((folder/'result.json').read_text()) if (folder/'result.json').exists() else {'passed':False}
     proof=folder/'production-bridge/ready.json'
-    receiver_maps=Path('/proc/self/maps').read_text()
-    receiver_shm={n:Path(n).stat().st_size for n in {line.split()[-1] for line in receiver_maps.splitlines() if '/dev/shm/' in line} if Path(n).is_file()}
     result['production_runtime']=json.loads(proof.read_text()) if proof.is_file() else None
-    result['stock_receiver_libraries']=list(sorted({line.split()[-1] for line in receiver_maps.splitlines() if any(n in line for n in ('librmw_fastrtps','libfastrtps'))}))
-    result['receiver_segments']=receiver_shm
-    # rclpy shutdown unmaps its segment; the low-rate probe captures it while live in formal launch tests.
-    result['passed']=bool(result.get('passed') and proof.is_file() and not error and 'image-dds' not in receiver_maps)
+    result['live_receivers']=live_receivers
+    before=folder/'receiver-before-close.json'
+    result['receiver_before_close']=json.loads(before.read_text()) if before.is_file() else {}
+    result['receiver_verified']=bool({'main','capture-probe','all_participants'}<=live_receivers.keys() and result['receiver_before_close'].get('main',{}).get('verified'))
+    observations=folder/'observations.jsonl'
+    result['image_content']=image_files(folder,[json.loads(r) for r in observations.read_text().splitlines()]) if observations.is_file() else {'passed':False}
+    result['passed']=bool(result.get('passed') and proof.is_file() and not error and result['receiver_verified'] and result['image_content']['passed'])
     if error:result['production_error']=error
     (folder/'result.json').write_text(json.dumps(result,indent=2)+'\n')
     return 0 if result['passed'] else 1
