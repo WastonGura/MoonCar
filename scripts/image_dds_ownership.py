@@ -4,7 +4,7 @@ A remote mapping and an inherited descriptor do not confer ownership. The PID
 reported by Linux for the FLOCK must match a live process with the same lock
 inode open. No DDS state, lock or file is modified by this module.
 """
-import os, re
+import copy, json, os, queue, re, threading, time
 from pathlib import Path
 
 PAYLOADS = {549408: 524288, 8782368: 8388608}
@@ -26,6 +26,16 @@ def lock_owners(locks, processes, device, inode):
         if process and any((d['device'],d['inode'])==(dev,ino) for d in process['descriptors']):
             owners.append(dict(pid=pid,start_ticks=process['start_ticks']))
     return owners
+
+def mapped_files(text):
+    rows={}
+    for line in text.splitlines():
+        fields=line.split(maxsplit=5)
+        if len(fields)!=6 or not fields[5].startswith('/'):continue
+        major,minor=fields[3].split(':');path=fields[5].removesuffix(' (deleted)')
+        rows[path]=dict(path=path,device=os.makedev(int(major,16),int(minor,16)),inode=int(fields[4]),
+                        deleted=fields[5].endswith(' (deleted)'))
+    return rows
 
 def inventory(proc=Path('/proc'), shm=Path('/dev/shm')):
     """Collect fdinfo locks too: /proc/locks may omit locks in PID namespaces."""
@@ -65,22 +75,27 @@ def inventory(proc=Path('/proc'), shm=Path('/dev/shm')):
             segments.append(dict(path=str(path),ownership_resolved=False,error='Missing segment or exclusive lock'))
     return dict(segments=segments,processes=processes,errors=errors)
 
-def classify(pid, role, data, proc=Path('/proc'), expected_payload=524288, require_participant=True):
+def classify(pid, role, data, proc=Path('/proc'), expected_payload=524288, require_participant=True, history=None):
     errors=[]; before=identity(pid,proc); directory=proc/str(pid)
     maps=(directory/'maps').read_text()
-    paths={line.split(maxsplit=5)[-1].removesuffix(' (deleted)') for line in maps.splitlines() if '/' in line}
+    mappings=mapped_files(maps);paths=set(mappings)
     libraries=sorted(p for p in paths if any(n in p for n in ('librmw_fastrtps','libfastrtps')))
     environment=(directory/'environ').read_bytes().split(b'\0')
     leaked=any(v.startswith((b'MOONCAR_IMAGE_DDS_TX_BYTES=',b'MOONCAR_IMAGE_DDS_RECEIPT=')) for v in environment)
-    owned=[]; remote=[]; unresolved=[]
+    owned=[]; remote=[]; unresolved=[];retired=[]
     for segment in data['segments']:
         if segment['path'] not in paths: continue
-        if not segment['ownership_resolved']: unresolved.append(segment); continue
+        mapping=mappings[segment['path']]
+        if not segment['ownership_resolved'] or (mapping['device'],mapping['inode'])!=(segment.get('device',mapping['device']),segment.get('inode',mapping['inode'])):
+            unresolved.append(segment); continue
         (owned if segment['owners'][0]==before else remote).append(segment)
     known={s['path'] for s in data['segments']}
     for path in paths:
         if path.startswith('/dev/shm/fastrtps_') and not Path(path).name.startswith('fastrtps_port') and not path.endswith(('_el','_sl')) and path not in known:
-            unresolved.append(dict(path=path,error='Mapped segment missing from live inventory'))
+            mapping=mappings[path]
+            proof=history.retired(mapping,proc) if history else None
+            if proof:retired.append(proof)
+            else:unresolved.append(dict(**mapping,error='Mapped segment missing from live inventory'))
     if unresolved: errors.append('Mapped segment ownership unresolved')
     if require_participant and not owned: errors.append('Required participant has no owned segment')
     if require_participant and not any(p.endswith('librmw_fastrtps_cpp.so') for p in libraries): errors.append('Required ROS RMW absent')
@@ -94,14 +109,15 @@ def classify(pid, role, data, proc=Path('/proc'), expected_payload=524288, requi
     if before!=identity(pid,proc): errors.append('PID changed during snapshot')
     return dict(**before,role=role,commandline=(directory/'cmdline').read_bytes().decode(errors='replace').split('\0'),
         libraries=libraries,owned_segments=owned,remote_mappings=remote,
+        retired_remote_mappings=retired,
         unresolved_segments=unresolved,participant=bool(owned),capacity_environment_leaked=leaked,
         verified=not errors,errors=errors)
 
-def snapshot(pid=None, role='ros-node', data=None, expected_payload=524288, require_participant=True):
+def snapshot(pid=None, role='ros-node', data=None, expected_payload=524288, require_participant=True, history=None):
     return classify(pid or os.getpid(),role,data or inventory(),expected_payload=expected_payload,
-                    require_participant=require_participant)
+                    require_participant=require_participant,history=history)
 
-def registry(bridge_pid=None, registered=None):
+def registry(bridge_pid=None, registered=None, history=None):
     """Discover actual lock owners, with explicit roles for known processes.
 
 Library-only processes are retained as nonparticipants. Success never depends
@@ -121,8 +137,81 @@ on the number of processes or on the size of their remote mappings.
     for pid,role in registered.items():
         try:
             rows[str(pid)]=snapshot(pid,role,data,8388608 if role=='bridge' else 524288,
-                role not in ('archive-worker','transient','observer-native'))
+                role not in ('archive-worker','transient','observer-native'),history)
         except (FileNotFoundError,ProcessLookupError) as error:
             rows[str(pid)]=dict(pid=pid,role=role,verified=False,error='Registered process exited: '+repr(error))
     return dict(passed=bool(rows and not data['errors'] and all(r['verified'] for r in rows.values())),
                 processes=rows,inventory=data)
+
+class Lifecycle:
+    """Observe creator locks before transient participants exit; never infer them.
+
+Only an exact kernel mapping inode previously seen with one exclusive owner
+may be labelled retired, and only after both unlink and that owner PID's exit
+have been independently confirmed. Unknown mappings remain failures.
+"""
+    def __init__(self,path,period=.02):
+        self.path=Path(path);self.period=period;self.history={};self.lock=threading.Lock()
+        self.queue=queue.Queue(8192);self.stop=threading.Event();self.errors=[];self.scans=0;self.maximum_scan_s=0.
+        self.writer=threading.Thread(target=self.write,name='dds-lifecycle-writer',daemon=True)
+        self.reader=threading.Thread(target=self.observe,name='dds-lifecycle-observer',daemon=True)
+        self.writer.start();self.reader.start()
+    def remember(self,data,wall):
+        for segment in data['segments']:
+            if not segment.get('ownership_resolved'):continue
+            key=(segment['device'],segment['inode'])
+            with self.lock:
+                existing=self.history.get(key)
+                if existing:
+                    if existing['segment']['owners']!=segment['owners'] or existing['segment']['path']!=segment['path']:
+                        self.errors.append('Conflicting ownership for kernel segment identity')
+                    continue
+                owner=segment['owners'][0]
+                try:command=(Path('/proc')/str(owner['pid'])/'cmdline').read_bytes().decode(errors='replace').split('\0')
+                except FileNotFoundError:command=None
+                row=dict(event='created_owner',first_seen_wall=wall,segment=copy.deepcopy(segment),owner_commandline=command,
+                         owner_lock_descriptors=copy.deepcopy(data['processes'].get(owner['pid'],{}).get('descriptors',[])))
+                self.history[key]=row
+            self.emit(row)
+    def emit(self,row):
+        try:self.queue.put_nowait(row)
+        except queue.Full:self.errors.append('Lifecycle observation queue overflow');self.stop.set()
+    def observe(self):
+        try:
+            while not self.stop.is_set():
+                start=time.monotonic();data=inventory();self.remember(data,start);self.scans+=1
+                if data['errors']:self.errors.extend(data['errors']);self.stop.set()
+                elapsed=time.monotonic()-start;self.maximum_scan_s=max(self.maximum_scan_s,elapsed)
+                self.stop.wait(max(.001,self.period-elapsed))
+        except BaseException as error:self.errors.append('Lifecycle observer failed: '+repr(error));self.stop.set()
+    def retired(self,mapping,proc=Path('/proc')):
+        if not mapping['deleted'] or Path(mapping['path']).exists():return None
+        with self.lock:row=copy.deepcopy(self.history.get((mapping['device'],mapping['inode'])))
+        if not row or row['segment']['path']!=mapping['path']:return None
+        owner=row['segment']['owners'][0]
+        try:
+            if identity(owner['pid'],proc)==owner:return None
+        except (FileNotFoundError,ProcessLookupError):pass
+        proof=dict(row,event='retired_remote_mapping',mapping=mapping,owner_exit_confirmed_wall=time.monotonic(),
+                   participant_active=False)
+        self.emit(proof);return proof
+    def write(self):
+        try:
+            with self.path.open('x') as stream:
+                while True:
+                    row=self.queue.get()
+                    if row is None:break
+                    stream.write(json.dumps(row)+'\n')
+                stream.flush()
+        except BaseException as error:self.errors.append('Lifecycle writer failed: '+repr(error));self.stop.set()
+    def quiesce(self):
+        self.stop.set();self.reader.join(5)
+        if self.reader.is_alive():self.errors.append('Lifecycle reader did not stop')
+    def close(self):
+        self.quiesce()
+        try:self.queue.put(None,timeout=5)
+        except queue.Full:self.errors.append('Lifecycle queue did not drain')
+        self.writer.join(5)
+        if self.writer.is_alive():self.errors.append('Lifecycle writer did not drain')
+        return dict(passed=not self.errors,errors=self.errors,scans=self.scans,maximum_scan_s=self.maximum_scan_s,
+                    known_segments=len(self.history),drained=not self.writer.is_alive())

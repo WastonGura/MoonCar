@@ -9,20 +9,30 @@ def main():
     p.add_argument('--model',required=True);p.add_argument('--step',type=float,required=True)
     a=p.parse_args()
     import check_r5_runtime as runtime
+    import r5_d0_analysis
+    from image_dds_motion import physical_command_window
+    original_window=r5_d0_analysis.command_window
+    r5_d0_analysis.command_window=lambda data,result,linear=0.,angular=0.:physical_command_window(data,result,linear,angular,original_window)
     from argparse import Namespace
     folder=Path(a.output)/a.name
     guard='/source/ros2_ws/src/mooncar_gazebo/launch/image_dds_guard.py'
     original=subprocess.Popen
-    from image_dds_validation import receiver_snapshot,image_files,participants,reception_tail,pause_flush
+    from image_dds_ownership import Lifecycle
+    # The underlying fixture creates its directory; keep lifecycle evidence in
+    # its existing output parent until the fixture is ready.
+    history=Lifecycle(Path(a.output)/(a.name+'-dds-lifecycle.jsonl'))
+    from image_dds_validation import receiver_snapshot,image_files,participants,reception_tail,pause_flush,active_receiver_gate
     import r5_runtime_witness
     original_close=r5_runtime_witness.Witness.close
     def close(node):
-        # Capture all actual receiver mappings while their ROS participants are still alive.
-        snapshots={'main':receiver_snapshot()}
+        # The original runner has already stopped peer ROS processes here.
+        # Preserve these maps as teardown diagnostics; do not require an exited
+        # bridge to still hold a creator lock. Active proof is captured below.
+        snapshots={'main':receiver_snapshot(history=history)}
         processes=json.loads((folder/'dds-processes.json').read_text())
         # Child receivers may already have exited in the original runner's finally block;
         # their live snapshots are taken below at command scheduling boundaries.
-        (folder/'receiver-before-close.json').write_text(json.dumps(snapshots,indent=2)+'\n')
+        (folder/'receiver-after-peer-shutdown.json').write_text(json.dumps(snapshots,indent=2)+'\n')
         return original_close(node)
     r5_runtime_witness.Witness.close=close
     import r5_step_schedule
@@ -30,17 +40,19 @@ def main():
     live_receivers={}
     def healthy(schedule):
         result=original_health(schedule)
+        if history.errors:raise RuntimeError('Lifecycle observation failed: '+repr(history.errors))
         process_path=folder/'dds-processes.json'
         if process_path.is_file():
             for label,pid in json.loads(process_path.read_text()).items():
                 if label=='bridge' or label in live_receivers:continue
-                try:snapshot=receiver_snapshot(pid)
+                try:snapshot=receiver_snapshot(pid,history)
                 except FileNotFoundError:continue
                 if snapshot['verified']:live_receivers[label]=snapshot
             receipt=folder/'production-bridge/ready.json'
             if receipt.is_file() and 'all_participants' not in live_receivers:
-                peers=participants(json.loads(receipt.read_text())['pid'])
-                if peers['passed']:live_receivers['all_participants']=peers
+                peers=participants(json.loads(receipt.read_text())['pid'],history=history)
+                if peers['passed']:
+                    live_receivers['all_participants']=peers;history.quiesce()
         return result
     r5_step_schedule.PausedSteps.healthy=healthy
     original_run=r5_step_schedule.PausedSteps.run
@@ -58,9 +70,9 @@ def main():
         else:raise RuntimeError('Final paused CSV/flush/reception tail incomplete')
         receipt=folder/'production-bridge/ready.json'
         roles={schedule.node.image_writer.process.pid:'archive-worker'} if schedule.node.image_writer else {}
-        proof=participants(json.loads(receipt.read_text())['pid'],roles)
+        proof=participants(json.loads(receipt.read_text())['pid'],roles,history)
         if not proof['passed']:raise RuntimeError('Actual participant ownership failed')
-        live_receivers['all_participants']=proof
+        (folder/'receiver-before-peer-shutdown.json').write_text(json.dumps(proof,indent=2)+'\n')
         result.update(reception_tail=tail,csv_flush=flush,ownership=proof)
         completed[0]=True
         return result
@@ -90,16 +102,21 @@ def main():
         subprocess.Popen=original;r5_runtime_witness.Witness.close=original_close
         r5_step_schedule.PausedSteps.healthy=original_health
         r5_step_schedule.PausedSteps.run=original_run;runtime.command=original_command
+        r5_d0_analysis.command_window=original_window
+        lifecycle_capture=history.close()
     result=json.loads((folder/'result.json').read_text()) if (folder/'result.json').exists() else {'passed':False}
     proof=folder/'production-bridge/ready.json'
     result['production_runtime']=json.loads(proof.read_text()) if proof.is_file() else None
     result['live_receivers']=live_receivers
-    before=folder/'receiver-before-close.json'
+    result['lifecycle_capture']=lifecycle_capture
+    before=folder/'receiver-before-peer-shutdown.json'
     result['receiver_before_close']=json.loads(before.read_text()) if before.is_file() else {}
-    result['receiver_verified']=bool({'main','capture-probe','all_participants'}<=live_receivers.keys() and result['receiver_before_close'].get('main',{}).get('verified'))
+    result['receiver_verified']=active_receiver_gate(live_receivers,result['receiver_before_close'])
+    post=folder/'receiver-after-peer-shutdown.json'
+    result['receiver_after_peer_shutdown']=json.loads(post.read_text()) if post.is_file() else {}
     observations=folder/'observations.jsonl'
     result['image_content']=image_files(folder,[json.loads(r) for r in observations.read_text().splitlines()]) if observations.is_file() else {'passed':False}
-    result['passed']=bool(result.get('passed') and proof.is_file() and not error and result['receiver_verified'] and result['image_content']['passed'])
+    result['passed']=bool(result.get('passed') and proof.is_file() and not error and result['receiver_verified'] and result['image_content']['passed'] and lifecycle_capture['passed'])
     if error:result['production_error']=error
     (folder/'result.json').write_text(json.dumps(result,indent=2)+'\n')
     return 0 if result['passed'] else 1

@@ -1,5 +1,15 @@
 # 隔离 ROS 验证环境
 
+## 正式 R5/v2 图片修复（2026-10-09，十轮通过，auto 已发布）
+
+默认配置现在为 `auto`：仅 R5、三个 v2 世界、LOCALHOST 启用桥接发送端共享内存 8 MiB；旧模型、v1、其他发现方式使用原配置。`MOONCAR_IMAGE_DDS_PROFILE=legacy` 可显式恢复旧行为。库缺失、版本/哈希不符、初始化或容量未生效时启动失败，禁止回退；只给桥接子进程加载最小运行库，接收端仍为 512 KiB。
+
+正式启动两轮、四轮新采集校准、三个场景及旧模型兼容共 10/10 通过，完整软件 354 项、前端和固件通过后，仓库只发布已实际测试的同一份默认文件。旧模型没有 RGB，兼容检查按实际模型/桥接记录为未配置；R5 仍要求 RGB 和深度。发布配置与实际测试 overlay 的 SHA256 均为 `f3c4413e4c7ac87afe0b0a44d17a5fad0abcebacb8d846dcc5d7f4b1e8dab97f`。
+
+继续使用独立镜像 `mooncar-terrain:r5-image-dds-20261008`（`sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3`）及现有最小 RMW 路径；从当前源码重建 overlay 以安装新默认文件。镜像库构建方法和显式覆盖入口见下方运行组件记录，不覆盖旧镜像或重建原工作台。
+
+[完成报告](../reports/evidence/terrain-v2/r5-dds-compatible-20261009/README.md) 包含旧失败、资源/库/安装哈希、原始图片和逐步数据、性能及兼容证据。本轮未启用新的云台控制默认值，不构成转向或整车验收。以下 2026-10-08 条目是保留的失败历史，当前发布状态以本条目为准。
+
 ## 正式图片修复重新验证（2026-10-08，首轮收尾失败）
 
 默认值现由 `ros2_ws/src/mooncar_gazebo/config/image_dds_defaults.json` 管理，仓库仍为 `legacy`；环境变量继续可以覆盖。隔离测试 overlay 使用 `containers/image_dds/auto-defaults.json` 的候选内容，正式启动不设置 profile 环境变量。只在完整新矩阵通过后才允许把同一份候选内容发布到仓库。

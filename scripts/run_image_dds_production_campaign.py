@@ -11,7 +11,7 @@ def signature(candidate=None):
     files=list((root/'scripts').glob('*.py'))+list((root/'ros2_ws/src/mooncar_gazebo/launch').glob('*.py'))+list((root/'containers/image_dds').glob('*.py'))
     files+=list((root/'ros2_ws/src/mooncar_description/urdf').rglob('*.xacro'))+list((root/'ros2_ws/src/mooncar_gazebo/config').glob('*'))+list((root/'ros2_ws/src/mooncar_control/scripts').glob('*.py'))
     return dict(sources={str(p.relative_to(root)):sha(p) for p in files if p.is_file()},installed=installed_files(),
-        boundary_preflight=sha('/evidence/boundary-preflight-final/result.json'),image=sha('/evidence/image.json'),candidate_default=sha(root/'containers/image_dds/auto-defaults.json'),
+        model_preflight=sha('/evidence/derived-preflight/result.json'),teardown_preflight=sha('/evidence/teardown-preflight/result.json'),lifecycle_preflight=sha('/evidence/lifecycle-preflight/result.json'),boundary_preflight=sha('/evidence/boundary-preflight-final/result.json'),image=sha('/evidence/image.json'),candidate_default=sha(root/'containers/image_dds/auto-defaults.json'),
         candidate_model={str(p):sha(p) for p in (candidate,candidate.with_suffix('.urdf'))} if candidate else {},
         resources={n:sha(next(p for p in (root/n,root/'ros2_ws/src/mooncar_gazebo'/n) if p.is_file())) for n in resources},
         runtime_manifest=sha(Path(os.environ['MOONCAR_IMAGE_DDS_RUNTIME'])/'manifest.json'),
@@ -32,6 +32,9 @@ def run(output):
     preflight=json.loads(Path('/evidence/derived-preflight/result.json').read_text())
     if not preflight.get('passed') or frozen['runtime_manifest']!=preflight['manifest_sha256'] or frozen['installed']!=preflight['installed']:raise RuntimeError('Derived image preflight missing or installed files changed')
     if not json.loads(Path('/evidence/boundary-preflight-final/result.json').read_text()).get('passed'):raise RuntimeError('ROS ownership/delayed-query preflight failed')
+    lifecycle=json.loads(Path('/evidence/lifecycle-preflight/result.json').read_text())
+    if not lifecycle.get('passed') or not lifecycle.get('stale_mapping_reproduced'):raise RuntimeError('Real transient participant lifecycle gate not verified')
+    if not json.loads(Path('/evidence/teardown-preflight/result.json').read_text()).get('passed'):raise RuntimeError('Real DDS teardown timing not verified')
     (root/'freeze.json').write_text(json.dumps(frozen,indent=2)+'\n')
     snapshot=root/'source';snapshot.mkdir()
     for name in frozen['sources']:
@@ -71,8 +74,10 @@ def run(output):
     try:
         execute('formal-start');execute('formal-start')
         rounds=[execute('calibration',step=s,scene='flat') for s in (.001,.0005,.001,.0005)]
-        from run_r5_capture_campaign import qualify_input_pairs
-        summary['input_pairs']=qualify_input_pairs([dict(signature=frozen,result=r) for r in rounds])
+        from r5_d0_analysis import compare_pair
+        summary['input_pairs']=[dict(repeat=i+1,**compare_pair(rounds[i*2],rounds[i*2+1])) for i in range(2)]
+        save() # Persist every comparison even when qualification fails.
+        if not all(p['valid'] for p in summary['input_pairs']):raise RuntimeError('Input budget/timing pairing invalid; see recorded input_pairs')
         for scene in ('ramp','curve','survey'):execute('scene',scene=scene)
         execute('compatibility',legacy=True)
         summary.update(passed=True,status='passed',reason='All ten fresh attempts and calibration input pairs passed')

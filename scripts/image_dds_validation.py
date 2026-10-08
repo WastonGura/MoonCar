@@ -16,11 +16,40 @@ def paused_state(raw,wall):
         raise RuntimeError('Invalid actual pause state')
     return state
 
-def reception_tail(records,end,clock):
+def collection_profile(sdf,bridge,legacy=False):
+    """Derive image requirements from actual expanded model and installed bridge.
+
+    R5 always requires both image streams. Compatibility validates the original
+    model's declared streams, and records unsupported RGB as absent, not passed.
+    """
+    import yaml
+    sensors=[dict(name=e.get('name'),type=e.get('type'),topic=e.findtext('topic'))
+             for e in ET.parse(sdf).iter('sensor')]
+    endpoints=yaml.safe_load(Path(bridge).read_text())
+    expected={'depth'} if legacy else {'rgb','depth'}
+    declared=set()
+    for kind,sensor_type,topic in (('rgb','camera','/mooncar/rgb'),('depth','depth','/mooncar/depth')):
+        model=any(e['type']==sensor_type and e['topic']==topic for e in sensors)
+        routes=[e for e in endpoints if e.get('ros_topic_name')==f'/mooncar/{kind}/image'
+                and e.get('ros_type_name')=='sensor_msgs/msg/Image'
+                and e.get('gz_type_name')=='gz.msgs.Image' and e.get('direction')=='GZ_TO_ROS']
+        routed=len(routes)==1 and routes[0].get('gz_topic_name')==topic
+        if model!=routed or len(routes)>1:raise RuntimeError('Model/bridge image mismatch: '+kind)
+        if model:declared.add(kind)
+    if declared!=expected:raise RuntimeError('Unexpected model image capabilities: '+repr(declared))
+    return dict(images=sorted(declared),sensors=sensors,model_sdf_sha256=sha(sdf),bridge_sha256=sha(bridge),
+        absent_images={k:'Not declared in original expanded model or bridge' for k in {'rgb','depth'}-declared},
+        readiness=sorted(declared)+['scan','imu'],legacy=legacy)
+
+def stream_bounds(images=('rgb','depth')):
+    if not images or not set(images)<={'rgb','depth'}:raise ValueError('Invalid image stream requirements')
+    return {**{k:1.5 for k in images},'scan':.75,'imu':.100001,'joints':.100001,
+            'truth':.100001,'safe_command':.100001,'gz_command':.100001}
+
+def reception_tail(records,end,clock,images=('rgb','depth')):
     """Check each stream's original time convention before closing its receiver."""
     streams={}
-    for kind,bound in (('rgb',1.5),('depth',1.5),('scan',.75),('imu',.100001),
-                       ('joints',.100001),('truth',.100001),('safe_command',.100001),('gz_command',.100001)):
+    for kind,bound in stream_bounds(images).items():
         times=[r.get('stamp',r['sim']) for r in records if r['kind']==kind]
         latest=max((t for t in times if math.isfinite(t) and t<=end+1e-8),default=None)
         streams[kind]=dict(latest=latest,tail_gap_s=end-latest if latest is not None else None,
@@ -75,7 +104,8 @@ def model_preflight(folder):
         for i,format in enumerate(('urdf','sdf')):
             if semantic(strip_observers(converted['observed'][i]))!=semantic(converted['original'][i]):
                 raise RuntimeError('Observation changed model '+format+': '+name)
-        result[name]=dict(source_sha256=sha(source),observed_sha256=sha(output),urdf_equal=True,sdf_equal=True)
+        result[name]=dict(source_sha256=sha(source),observed_sha256=sha(output),urdf_equal=True,sdf_equal=True,
+            collection=collection_profile(folder/(name+'.original.sdf'),Path('/work/install/share/mooncar_gazebo/config')/('ros_gz_bridge_r5.yaml' if 'r5' in name else 'ros_gz_bridge.yaml'),'r5' not in name))
         if 'r5' in name:
             for i,format in enumerate(('urdf','sdf')):
                 if semantic(converted['original'][i])!=semantic(ET.parse('/evidence/r5-before.'+format).getroot()):
@@ -100,17 +130,30 @@ def installed_files(source='/source',prefix='/work/install'):
     if errors:raise RuntimeError('Installed files differ: '+repr(errors))
     return files
 
-def receiver_snapshot(pid=None):
+def receiver_snapshot(pid=None,history=None):
     from image_dds_ownership import snapshot
-    return snapshot(pid)
+    return snapshot(pid,history=history)
 
 
-def participants(bridge_pid=None, registered=None):
+def participants(bridge_pid=None, registered=None,history=None):
     from image_dds_ownership import registry
-    return registry(bridge_pid,registered)
+    return registry(bridge_pid,registered,history)
+
+def active_receiver_gate(initial,final):
+    """Verify receivers while peers are alive, before any ROS/DDS teardown.
+
+Post-peer-shutdown maps are diagnostics, not proof of active participants.
+An unknown mapping during either active snapshot still rejects the round.
+"""
+    if not {'main','capture-probe','all_participants'}<=initial.keys():return False
+    if not initial['all_participants'].get('passed') or not final.get('passed'):return False
+    for label in ('main','capture-probe'):
+        start=initial[label];end=final.get('processes',{}).get(str(start['pid']),{})
+        if not start.get('verified') or not end.get('verified') or start['start_ticks']!=end.get('start_ticks'):return False
+    return True
 
 
-def image_files(folder,records):
+def image_files(folder,records,images=('rgb','depth')):
     import numpy as np
     from PIL import Image
     selected=[r for r in records if r['kind'] in ('rgb','depth')];errors=[];content=[]
@@ -127,7 +170,7 @@ def image_files(folder,records):
                 content.append(dict(file=row['file'],finite_positive=int((np.isfinite(array)&(array>0)).sum()),valid=valid))
             if not valid:raise RuntimeError('No inspectable content')
         except Exception as error:errors.append(dict(file=row.get('file'),reason=repr(error)))
-    return dict(passed=bool(selected and not errors and {r['kind'] for r in selected}=={'rgb','depth'}),errors=errors,content=content)
+    return dict(passed=bool(selected and not errors and {r['kind'] for r in selected}==set(images)),required_images=list(images),errors=errors,content=content)
 
 def stop_process(process,timeout=8):
     if process is None:return

@@ -20,8 +20,9 @@ def run(a):
     from r5_capture_analysis import coverage
     from check_r5_physics import last_message
     from image_dds_pause import QueryWorker,wait_query,actual_pause
+    from image_dds_ownership import Lifecycle
     folder=Path(a.output)/a.name;folder.mkdir();started_wall=time.monotonic();deadline=started_wall+580
-    from image_dds_validation import observed_model,receiver_snapshot,image_files,stop_process,participants,paused_state,reception_tail,pause_flush
+    from image_dds_validation import observed_model,receiver_snapshot,image_files,stop_process,participants,paused_state,reception_tail,pause_flush,collection_profile,stream_bounds
     if 'MOONCAR_IMAGE_DDS_PROFILE' in os.environ:raise RuntimeError('Formal default test must not override profile')
     env=dict(os.environ,GZ_PARTITION='mooncar_dds_launch_'+uuid.uuid4().hex,
         MOONCAR_IMAGE_DDS_RECEIPT_ROOT=str(folder/'bridge-receipts'))
@@ -29,6 +30,9 @@ def run(a):
     package=Path('/work/install/share/mooncar_gazebo');description=Path('/work/install/share/mooncar_description')
     model_name='mooncar.urdf.xacro' if a.legacy else 'mooncar_r5.urdf.xacro'
     installed=description/'urdf'/model_name;source=Path('/source/ros2_ws/src/mooncar_description/urdf')/model_name
+    profile=collection_profile(Path('/evidence/derived-preflight/models')/(model_name+'.original.sdf'),
+        package/'config'/('ros_gz_bridge.yaml' if a.legacy else 'ros_gz_bridge_r5.yaml'),a.legacy)
+    (folder/'collection-profile.json').write_text(json.dumps(profile,indent=2)+'\n')
     # These two plugins observe the spawned model; control/physical XML is unchanged.
     observer=folder/'physics-steps.csv'
     observed_model(source,installed,None if a.legacy else observer)
@@ -36,11 +40,12 @@ def run(a):
     name=ET.parse(world).find('world').get('name')
     (folder/'config.json').write_text(json.dumps(dict(scene=a.scene,legacy=a.legacy,world_sha256=sha(world),model_source_sha256=sha(source),
         model_instrumented_sha256=sha(installed),gimbal_default_changed=False,environment=env,observer_only=True),indent=2))
+    history=Lifecycle(folder/'dds-lifecycle.jsonl')
     log=(folder/'launch.log').open('x');process=subprocess.Popen(['ros2','launch','mooncar_gazebo','simulation.launch.py',
         'model_file:='+model_name,'world:='+str(world),'world_name:='+name,'spawn_z:=0.03',
         'gz_args:=-r -s -v 3 --headless-rendering --render-engine ogre2','software_rendering:=true'],env=env,
         stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
-    node=None;executor=None;initialized=False;begin=None;result={'passed':False};live=None
+    node=None;executor=None;initialized=False;begin=None;result={'passed':False,'collection_profile':profile};live=None
     worker=QueryWorker();next_heartbeat=0.
     def pump():
         nonlocal next_heartbeat
@@ -50,6 +55,7 @@ def run(a):
             node.publisher.publish(Twist());node.record('source_command',values=[0.]*6)
             next_heartbeat=now+.02
         if process.poll() is not None or node.errors:raise RuntimeError('Runtime failed during continued reception')
+        if history.errors:raise RuntimeError('Lifecycle observation failed: '+repr(history.errors))
     try:
         rclpy.init();initialized=True
         node=Witness(a.scene,folder,env,sample_resources=True,capture_profile='async',deadline=deadline,image_trace='headers')
@@ -62,10 +68,11 @@ def run(a):
             if node.errors:raise RuntimeError('Archive worker failed: '+repr(node.errors))
             if node.truth and max(abs(node.truth[-1]['roll']),abs(node.truth[-1]['pitch']))>.8:
                 raise RuntimeError('Unexpected physical instability during acquisition check')
-            if begin is None and node.truth and all(node.counts.get(k,0)>2 for k in ('rgb','depth','scan','imu')):
+            if begin is None and node.truth and all(node.counts.get(k,0)>2 for k in profile['readiness']):
                 begin=node.now();result['sim_started']=begin;node.record('phase',phase='observing_zero',started=begin)
                 # Snapshot live participants rather than inferring segment sizes after shutdown.
-                live=wait_query(worker,receiver_snapshot,pump,min(deadline,time.monotonic()+5))
+                live=wait_query(worker,receiver_snapshot,pump,min(deadline,time.monotonic()+5),None,history)
+                wait_query(worker,history.quiesce,pump,min(deadline,time.monotonic()+5))
                 qos={}
                 for topic in ('/mooncar/rgb/image','/mooncar/depth/image'):
                     qos[topic]=[dict(node=e.node_name,gid=list(e.endpoint_gid),reliability=str(e.qos_profile.reliability),durability=str(e.qos_profile.durability),
@@ -82,7 +89,7 @@ def run(a):
         while time.monotonic()<until:
             pump()
             if process.poll() is not None or node.errors:raise RuntimeError('Runtime failed while confirming paused reception tail')
-            with node.lock:tail=reception_tail(list(node.rows),end,node.now())
+            with node.lock:tail=reception_tail(list(node.rows),end,node.now(),profile['images'])
             result['reception_tail']=tail
             result['csv_flush']=dict(passed=True,legacy_no_step_observer=True) if a.legacy else pause_flush(observer,state)
             flushed=result['csv_flush']['passed']
@@ -97,27 +104,29 @@ def run(a):
         # Physics has paused and the observer has flushed before draining archive workers.
         try:
             if executor and node:
-                result['receiver_before_close']=wait_query(worker,receiver_snapshot,pump,min(deadline,time.monotonic()+5))
+                result['receiver_before_close']=wait_query(worker,receiver_snapshot,pump,min(deadline,time.monotonic()+5),None,history)
             ready=list((folder/'bridge-receipts').glob('*/ready.json'))
             proof=json.loads(ready[0].read_text()) if len(ready)==1 else {}
             roles={node.image_writer.process.pid:'archive-worker'} if node and node.image_writer else {}
-            result['live_participants']=wait_query(worker,participants,pump,min(deadline,time.monotonic()+5),proof.get('pid'),roles) if executor and node else {'passed':False}
+            result['live_participants']=wait_query(worker,participants,pump,min(deadline,time.monotonic()+5),proof.get('pid'),roles,history) if executor and node else {'passed':False}
         except Exception as error:result.update(passed=False,cleanup_error=repr(error))
         # Ownership/query failure must not bypass archive drain or lose evidence.
         try:result['capture']=node.close() if node else {'drained':False,'reason':'Recorder never initialized'}
         except Exception as error:result.update(passed=False,archive_cleanup_error=repr(error),capture={'drained':False})
         result['query_timeline']=worker.timeline;worker.close()
+        result['lifecycle_capture']=history.close()
+        if not result['lifecycle_capture']['passed']:result['passed']=False
         try:
             if executor:executor.shutdown()
-            if initialized:rclpy.shutdown()
+            if initialized and rclpy.ok():rclpy.shutdown()
         finally:
             stop_process(process);log.close();shutil.copy2(source,installed)
     try:
         observations=rows(folder/'observations.jsonl');begin=result['sim_started'];end=result['sim_ended']
         sensors={k:coverage([r.get('stamp',r['sim']) for r in observations if r['kind']==k],begin,end,bound)
-            for k,bound in (('rgb',1.5),('depth',1.5),('scan',.75),('imu',.100001),('joints',.100001),('truth',.100001),('safe_command',.100001))}
+            for k,bound in stream_bounds(profile['images']).items() if k!='gz_command'}
         selected=[r for r in observations if r['kind'] in ('rgb','depth')]
-        content=image_files(folder,observations);images=content['passed'];result['image_content']=content
+        content=image_files(folder,observations,profile['images']);images=content['passed'];result['image_content']=content
         ids={r['event_id'] for r in observations};receipts=rows(folder/'writer-receipts.jsonl')
         drained=bool(result['capture']['drained'] and ids=={r['event_id'] for r in receipts} and len(ids)==len(observations)==len(receipts))
         safe=[r for r in observations if r['kind'] in ('safe_command','gz_command') and begin<=r['sim']<=end]
