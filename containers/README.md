@@ -1,5 +1,24 @@
 # 隔离 ROS 验证环境
 
+## 正式图片采集运行组件（2026-10-08，默认尚未发布）
+
+独立运行库和启动门禁已实现；无 Gazebo 的实际桥接核验通过，但新验收首轮因测试观察模型 xacro 前缀错误失败，按冻结停止规则结束。修正后的工具只完成软件回归，尚未重跑仿真。正式默认仍为 `legacy`，不要把本轮当作正式接入验收通过。
+
+`MOONCAR_IMAGE_DDS_PROFILE=auto|legacy|shm_tx8m` 仅控制桥接进程。显式 `auto` 对 R5、三个 v2 世界、LOCALHOST 组合选用 8 MiB；其他组合记录旧配置。显式修复配置不受支持、库或版本不符、容量未生效、初始化超时均失败，禁止回退。其他 ROS 进程不加载新库。
+
+基于上一轮已归档的固定 RMW 8.4.4 发行源码，在新隔离容器中执行：
+
+```bash
+source /opt/ros/jazzy/setup.bash
+python3 /source/containers/image_dds/build_runtime.py --output /evidence/new-build --prefix /work/image-dds
+```
+
+仅构建 RMW，继续链接原 Fast DDS 2.14.6，不覆盖 `/opt/ros`。构建器限时 45 分钟，输出补丁、来源、依赖和库哈希 manifest。将两个 RMW `.so` 与 manifest 放入 `containers/runtime/image-dds/`（不入 Git），用 `containers/image-dds.Dockerfile` 构建新派生镜像，保留旧镜像。`MOONCAR_IMAGE_DDS_RUNTIME` 指向 `/opt/mooncar/image-dds/rmw-8.4.4`。
+
+新验收入口为 `scripts/run_image_dds_production_campaign.py`，先通过 `scripts/preflight_image_dds_production.py`，使用全新输出目录；最多 10 次、每次 10 分钟、冻结后遇错停止，不恢复旧目录。测试所需原 D=0 模型及只读观察工具沿用已归档版本，传感器、QoS、安全中继和调度不变。
+
+报告：[正式接入停止记录](../reports/evidence/terrain-v2/r5-dds-production-20261008/README.md)。
+
 2026-09-10：镜像构建、8 个 ROS 包、35 项 Python 与 C11 核心检查通过，实际 Gazebo 采集、Nav2 执行及 M6 回归已运行。
 证据与已知限制见 `docs/terrain_workbench.md` 和 `reports/evidence/terrain-workbench/`。
 镜像为 `mooncar-terrain:jazzy`，本次 image config SHA256 为 `07465b330e3ff467eefcb4d1102e32f9efcbcba91be8b2ac33e26997e249db43`。

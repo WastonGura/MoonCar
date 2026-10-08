@@ -1,13 +1,21 @@
 from pathlib import Path
+import importlib.util
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, SetEnvironmentVariable, TimerAction
+from launch.actions import OpaqueFunction, DeclareLaunchArgument, IncludeLaunchDescription, SetEnvironmentVariable, TimerAction
 from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
+
+
+def checked_image_bridge(context):
+    spec = importlib.util.spec_from_file_location('mooncar_image_dds_launch', Path(__file__).with_name('image_dds_launch.py'))
+    adapter = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(adapter)
+    return adapter.launch_bridge(context)
 
 
 def generate_launch_description():
@@ -106,13 +114,7 @@ def generate_launch_description():
                     "on_exit_shutdown": "true",
                 }.items(),
             ),
-            IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(bridge_launch),
-                launch_arguments={
-                    "bridge_name": "mooncar_gz_bridge",
-                    "config_file": bridge_config,
-                }.items(),
-            ),
+            OpaqueFunction(function=checked_image_bridge),
             Node(
                 package="topic_tools",
                 executable="throttle",
