@@ -21,7 +21,7 @@ def run(a):
     from check_r5_physics import command,last_message,timestamp
     from r5_step_schedule import pause_marker
     folder=Path(a.output)/a.name;folder.mkdir();started_wall=time.monotonic();deadline=started_wall+580
-    from image_dds_validation import observed_model,receiver_snapshot,image_files,stop_process,participants
+    from image_dds_validation import observed_model,receiver_snapshot,image_files,stop_process,participants,paused_state,reception_tail
     if 'MOONCAR_IMAGE_DDS_PROFILE' in os.environ:raise RuntimeError('Formal default test must not override profile')
     env=dict(os.environ,GZ_PARTITION='mooncar_dds_launch_'+uuid.uuid4().hex,
         MOONCAR_IMAGE_DDS_RECEIPT_ROOT=str(folder/'bridge-receipts'))
@@ -54,7 +54,7 @@ def run(a):
             if node.truth and max(abs(node.truth[-1]['roll']),abs(node.truth[-1]['pitch']))>.8:
                 raise RuntimeError('Unexpected physical instability during acquisition check')
             if begin is None and node.truth and all(node.counts.get(k,0)>2 for k in ('rgb','depth','scan','imu')):
-                begin=node.now();node.record('phase',phase='observing_zero',started=begin)
+                begin=node.now();result['sim_started']=begin;node.record('phase',phase='observing_zero',started=begin)
                 # Snapshot live participants rather than inferring segment sizes after shutdown.
                 live=receiver_snapshot()
                 qos={}
@@ -67,21 +67,30 @@ def run(a):
         else:raise TimeoutError('Formal launch collection timeout')
         service='/world/'+name+'/control'
         answer=command('gz','service','-s',service,'--reqtype','gz.msgs.WorldControl','--reptype','gz.msgs.Boolean','--timeout','5000','--req','pause: true')
+        result['pause_request']=dict(response=answer,received_wall=time.monotonic())
         if 'data: true' not in answer:raise RuntimeError('Pause request rejected')
         stats=None;until=min(deadline,time.monotonic()+5)
         while time.monotonic()<until:
             executor.spin_once(timeout_sec=.02)
             stats=last_message(command('gz','topic','-n','1','-e','--json-output','-t','/world/'+name+'/stats',timeout=3))
+            result['actual_pause']=stats
             if stats.get('paused'):break
         else:raise RuntimeError('Actual pause not confirmed')
-        stamp=stats.get('simTime',stats.get('sim_time'));end=stamp.get('sec',0)+stamp.get('nsec',0)/1e9
-        result.update(sim_started=begin,sim_ended=end,actual_pause=stats)
+        state=paused_state(stats,time.monotonic());end=state['sim']
+        result.update(sim_ended=end,paused_state=state)
         until=min(deadline,time.monotonic()+5)
         while time.monotonic()<until:
             executor.spin_once(timeout_sec=.02)
-            if (a.legacy or pause_marker(str(observer)+'.paused',int(stats['iterations']),end)) and node.truth and node.truth[-1]['stamp']>=end-.1:break
+            node.publisher.publish(Twist())
+            if process.poll() is not None or node.errors:raise RuntimeError('Runtime failed while confirming paused reception tail')
+            with node.lock:tail=reception_tail(list(node.rows),end,node.now())
+            result['reception_tail']=tail
+            flushed=a.legacy or pause_marker(str(observer)+'.paused',state['iteration'],end)
+            if flushed and tail['passed']:break
         else:raise RuntimeError('Pause flush/tail confirmation missing')
-        result['observer_flush_confirmed']=a.legacy or pause_marker(str(observer)+'.paused',int(stats['iterations']),end)
+        result['observer_flush_confirmed']=flushed
+        result['reception_confirmed_wall']=time.monotonic()
+        node.record('pause_confirmed',state=state,tail=tail,observer_flush=flushed)
         result['passed']=True
     except BaseException as e:result['error']=repr(e)
     finally:

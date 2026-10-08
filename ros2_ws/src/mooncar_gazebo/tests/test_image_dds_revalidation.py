@@ -56,4 +56,49 @@ class RevalidationTests(unittest.TestCase):
         (self.root/'existing').mkdir()
         with self.assertRaises(FileExistsError):module.run(self.root/'existing')
 
+    def test_real_protobuf_json_pause_type(self):
+        raw=json.loads('{"simTime":{"sec":"29","nsec":736000000},"paused":true,"iterations":"29736"}')
+        state=checks.paused_state(raw,10.)
+        self.assertEqual(state['iteration'],29736);self.assertAlmostEqual(state['sim'],29.736)
+        self.assertTrue(state['paused'])
+    def test_numeric_and_snake_case_pause_time(self):
+        state=checks.paused_state(dict(paused=True,iterations=123,sim_time=dict(sec=1,nsec=23000000)),10.)
+        self.assertAlmostEqual(state['sim'],1.023)
+    def test_missing_or_unpaused_state_fails(self):
+        for raw in (dict(paused=False,iterations=1,simTime={}),dict(paused=True,simTime={}),dict(paused=True,iterations=1)):
+            with self.assertRaises((RuntimeError,ValueError)):checks.paused_state(raw,1.)
+    def test_invalid_pause_time_fails(self):
+        for sec in ('NaN','-1'):
+            with self.assertRaises(RuntimeError):checks.paused_state(dict(paused=True,iterations=1,simTime={'sec':sec}),1.)
+    def tail_rows(self,end=10.):
+        return [dict(kind=kind,sim=end,**({} if kind.endswith('command') else dict(stamp=end)))
+                for kind in ('rgb','depth','scan','imu','joints','truth','safe_command','gz_command')]
+    def test_tail_requires_every_receiver_not_only_truth(self):
+        data=self.tail_rows();data=[r for r in data if r['kind']!='imu']
+        self.assertFalse(checks.reception_tail(data,10.,10.)['passed'])
+        data.append(dict(kind='imu',sim=10.,stamp=9.8))
+        self.assertFalse(checks.reception_tail(data,10.,10.)['passed'])
+        data.append(dict(kind='imu',sim=10.,stamp=9.95))
+        self.assertTrue(checks.reception_tail(data,10.,10.)['passed'])
+    def test_headerless_command_uses_receipt_clock(self):
+        data=self.tail_rows()
+        for row in data:
+            if row['kind']=='safe_command':row['sim']=9.8
+        result=checks.reception_tail(data,10.,10.)
+        self.assertFalse(result['passed']);self.assertIn('headerless',result['streams']['safe_command']['time_basis'])
+    def test_future_stamp_does_not_fill_missing_tail(self):
+        data=[r for r in self.tail_rows() if r['kind']!='joints']
+        data.append(dict(kind='joints',sim=10.,stamp=11.))
+        self.assertFalse(checks.reception_tail(data,10.,10.)['passed'])
+    def test_stale_ros_clock_cannot_confirm_tail(self):
+        self.assertFalse(checks.reception_tail(self.tail_rows(),10.,9.8)['passed'])
+    def test_original_failed_tail_is_not_relaxed(self):
+        data=self.tail_rows(end=29.736)
+        gaps={'imu':.186,'joints':.214,'safe_command':.194}
+        for row in data:
+            if row['kind'] in gaps:row['stamp' if 'stamp' in row else 'sim']-=gaps[row['kind']]
+        result=checks.reception_tail(data,29.736,29.736)
+        self.assertFalse(result['passed'])
+        self.assertTrue(all(not result['streams'][k]['passed'] for k in gaps))
+
 if __name__=='__main__':unittest.main()

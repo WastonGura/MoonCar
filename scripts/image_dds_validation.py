@@ -1,11 +1,33 @@
 """Read-only acceptance helpers; model instrumentation is confined to the test overlay."""
-import hashlib, json, os, signal, subprocess
+import hashlib, json, math, os, signal, subprocess
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
 ET.register_namespace('xacro','http://www.ros.org/wiki/xacro')
 OBSERVERS={'gz::sim::systems::PosePublisher','mooncar::StepObserver'}
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+def paused_state(raw,wall):
+    from r5_step_schedule import stats_state
+    if raw.get('paused') is not True or 'iterations' not in raw:
+        raise RuntimeError('Missing actual paused iteration')
+    state=stats_state(raw,wall)
+    if state['iteration']<0 or not math.isfinite(state['sim']) or state['sim']<0:
+        raise RuntimeError('Invalid actual pause state')
+    return state
+
+def reception_tail(records,end,clock):
+    """Check each stream's original time convention before closing its receiver."""
+    streams={}
+    for kind,bound in (('rgb',1.5),('depth',1.5),('scan',.75),('imu',.100001),
+                       ('joints',.100001),('truth',.100001),('safe_command',.100001),('gz_command',.100001)):
+        times=[r.get('stamp',r['sim']) for r in records if r['kind']==kind]
+        latest=max((t for t in times if math.isfinite(t) and t<=end+1e-8),default=None)
+        streams[kind]=dict(latest=latest,tail_gap_s=end-latest if latest is not None else None,
+            bound_s=bound,passed=latest is not None and end-latest<=bound,
+            time_basis='callback ROS simulation clock; headerless' if kind.endswith('command') else 'source simulation timestamp')
+    return dict(passed=bool(clock>=end-.100001 and all(r['passed'] for r in streams.values())),streams=streams,
+        ros_clock=clock,paused_sim=end)
 
 def observed_model(source,output,steps=None):
     tree=ET.parse(source);gz=ET.SubElement(tree.getroot(),'gazebo')
