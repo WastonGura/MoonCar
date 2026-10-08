@@ -11,7 +11,7 @@ def signature(candidate=None):
     files=list((root/'scripts').glob('*.py'))+list((root/'ros2_ws/src/mooncar_gazebo/launch').glob('*.py'))+list((root/'containers/image_dds').glob('*.py'))
     files+=list((root/'ros2_ws/src/mooncar_description/urdf').rglob('*.xacro'))+list((root/'ros2_ws/src/mooncar_gazebo/config').glob('*'))+list((root/'ros2_ws/src/mooncar_control/scripts').glob('*.py'))
     return dict(sources={str(p.relative_to(root)):sha(p) for p in files if p.is_file()},installed=installed_files(),
-        image=sha('/evidence/image.json'),candidate_default=sha(root/'containers/image_dds/auto-defaults.json'),
+        boundary_preflight=sha('/evidence/boundary-preflight-final/result.json'),image=sha('/evidence/image.json'),candidate_default=sha(root/'containers/image_dds/auto-defaults.json'),
         candidate_model={str(p):sha(p) for p in (candidate,candidate.with_suffix('.urdf'))} if candidate else {},
         resources={n:sha(next(p for p in (root/n,root/'ros2_ws/src/mooncar_gazebo'/n) if p.is_file())) for n in resources},
         runtime_manifest=sha(Path(os.environ['MOONCAR_IMAGE_DDS_RUNTIME'])/'manifest.json'),
@@ -31,6 +31,7 @@ def run(output):
     if frozen['resources']!=json.loads(Path('/evidence/baseline/resources.json').read_text()):raise RuntimeError('Resources changed')
     preflight=json.loads(Path('/evidence/derived-preflight/result.json').read_text())
     if not preflight.get('passed') or frozen['runtime_manifest']!=preflight['manifest_sha256'] or frozen['installed']!=preflight['installed']:raise RuntimeError('Derived image preflight missing or installed files changed')
+    if not json.loads(Path('/evidence/boundary-preflight-final/result.json').read_text()).get('passed'):raise RuntimeError('ROS ownership/delayed-query preflight failed')
     (root/'freeze.json').write_text(json.dumps(frozen,indent=2)+'\n')
     snapshot=root/'source';snapshot.mkdir()
     for name in frozen['sources']:

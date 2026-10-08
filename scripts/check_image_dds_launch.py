@@ -18,10 +18,10 @@ def run(a):
     from geometry_msgs.msg import Twist
     from r5_runtime_witness import Witness
     from r5_capture_analysis import coverage
-    from check_r5_physics import command,last_message,timestamp
-    from r5_step_schedule import pause_marker
+    from check_r5_physics import last_message
+    from image_dds_pause import QueryWorker,wait_query,actual_pause
     folder=Path(a.output)/a.name;folder.mkdir();started_wall=time.monotonic();deadline=started_wall+580
-    from image_dds_validation import observed_model,receiver_snapshot,image_files,stop_process,participants,paused_state,reception_tail
+    from image_dds_validation import observed_model,receiver_snapshot,image_files,stop_process,participants,paused_state,reception_tail,pause_flush
     if 'MOONCAR_IMAGE_DDS_PROFILE' in os.environ:raise RuntimeError('Formal default test must not override profile')
     env=dict(os.environ,GZ_PARTITION='mooncar_dds_launch_'+uuid.uuid4().hex,
         MOONCAR_IMAGE_DDS_RECEIPT_ROOT=str(folder/'bridge-receipts'))
@@ -41,6 +41,15 @@ def run(a):
         'gz_args:=-r -s -v 3 --headless-rendering --render-engine ogre2','software_rendering:=true'],env=env,
         stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
     node=None;executor=None;initialized=False;begin=None;result={'passed':False};live=None
+    worker=QueryWorker();next_heartbeat=0.
+    def pump():
+        nonlocal next_heartbeat
+        executor.spin_once(timeout_sec=.005)
+        now=time.monotonic()
+        if now>=next_heartbeat:
+            node.publisher.publish(Twist());node.record('source_command',values=[0.]*6)
+            next_heartbeat=now+.02
+        if process.poll() is not None or node.errors:raise RuntimeError('Runtime failed during continued reception')
     try:
         rclpy.init();initialized=True
         node=Witness(a.scene,folder,env,sample_resources=True,capture_profile='async',deadline=deadline,image_trace='headers')
@@ -48,7 +57,7 @@ def run(a):
             names=list(m.name),positions=list(m.position),velocities=list(m.velocity)),qos_profile_sensor_data)
         executor=SingleThreadedExecutor();executor.add_node(node)
         while time.monotonic()<deadline:
-            executor.spin_once(timeout_sec=.01);node.publisher.publish(Twist())
+            pump()
             if process.poll() is not None:raise RuntimeError('Formal launch exited')
             if node.errors:raise RuntimeError('Archive worker failed: '+repr(node.errors))
             if node.truth and max(abs(node.truth[-1]['roll']),abs(node.truth[-1]['pitch']))>.8:
@@ -56,7 +65,7 @@ def run(a):
             if begin is None and node.truth and all(node.counts.get(k,0)>2 for k in ('rgb','depth','scan','imu')):
                 begin=node.now();result['sim_started']=begin;node.record('phase',phase='observing_zero',started=begin)
                 # Snapshot live participants rather than inferring segment sizes after shutdown.
-                live=receiver_snapshot()
+                live=wait_query(worker,receiver_snapshot,pump,min(deadline,time.monotonic()+5))
                 qos={}
                 for topic in ('/mooncar/rgb/image','/mooncar/depth/image'):
                     qos[topic]=[dict(node=e.node_name,gid=list(e.endpoint_gid),reliability=str(e.qos_profile.reliability),durability=str(e.qos_profile.durability),
@@ -65,27 +74,18 @@ def run(a):
                 live['qos']=qos;(folder/'live-receiver.json').write_text(json.dumps(live,indent=2)+'\n')
             if begin is not None and node.now()-begin>=28:break
         else:raise TimeoutError('Formal launch collection timeout')
-        service='/world/'+name+'/control'
-        answer=command('gz','service','-s',service,'--reqtype','gz.msgs.WorldControl','--reptype','gz.msgs.Boolean','--timeout','5000','--req','pause: true')
-        result['pause_request']=dict(response=answer,received_wall=time.monotonic())
-        if 'data: true' not in answer:raise RuntimeError('Pause request rejected')
-        stats=None;until=min(deadline,time.monotonic()+5)
-        while time.monotonic()<until:
-            executor.spin_once(timeout_sec=.02)
-            stats=last_message(command('gz','topic','-n','1','-e','--json-output','-t','/world/'+name+'/stats',timeout=3))
-            result['actual_pause']=stats
-            if stats.get('paused'):break
-        else:raise RuntimeError('Actual pause not confirmed')
-        state=paused_state(stats,time.monotonic());end=state['sim']
+        pause=actual_pause(worker,name,pump,min(deadline,time.monotonic()+5),paused_state,last_message,node.now())
+        result['pause_request']=pause
+        result['actual_pause']=pause['raw'];state=pause['state'];end=state['sim']
         result.update(sim_ended=end,paused_state=state)
         until=min(deadline,time.monotonic()+5)
         while time.monotonic()<until:
-            executor.spin_once(timeout_sec=.02)
-            node.publisher.publish(Twist())
+            pump()
             if process.poll() is not None or node.errors:raise RuntimeError('Runtime failed while confirming paused reception tail')
             with node.lock:tail=reception_tail(list(node.rows),end,node.now())
             result['reception_tail']=tail
-            flushed=a.legacy or pause_marker(str(observer)+'.paused',state['iteration'],end)
+            result['csv_flush']=dict(passed=True,legacy_no_step_observer=True) if a.legacy else pause_flush(observer,state)
+            flushed=result['csv_flush']['passed']
             if flushed and tail['passed']:break
         else:raise RuntimeError('Pause flush/tail confirmation missing')
         result['observer_flush_confirmed']=flushed
@@ -94,17 +94,19 @@ def run(a):
         result['passed']=True
     except BaseException as e:result['error']=repr(e)
     finally:
-        try:
-            subprocess.run(['gz','service','-s','/world/'+name+'/control','--reqtype','gz.msgs.WorldControl','--reptype','gz.msgs.Boolean','--timeout','1000','--req','pause: true'],env=env,capture_output=True,timeout=2)
-        except subprocess.SubprocessError:pass
         # Physics has paused and the observer has flushed before draining archive workers.
         try:
-            result['receiver_before_close']=receiver_snapshot()
+            if executor and node:
+                result['receiver_before_close']=wait_query(worker,receiver_snapshot,pump,min(deadline,time.monotonic()+5))
             ready=list((folder/'bridge-receipts').glob('*/ready.json'))
             proof=json.loads(ready[0].read_text()) if len(ready)==1 else {}
-            result['live_participants']=participants(proof.get('pid'))
-            result['capture']=node.close() if node else {'drained':False,'reason':'Recorder never initialized'}
-        except Exception as error:result.update(passed=False,cleanup_error=repr(error),capture={'drained':False})
+            roles={node.image_writer.process.pid:'archive-worker'} if node and node.image_writer else {}
+            result['live_participants']=wait_query(worker,participants,pump,min(deadline,time.monotonic()+5),proof.get('pid'),roles) if executor and node else {'passed':False}
+        except Exception as error:result.update(passed=False,cleanup_error=repr(error))
+        # Ownership/query failure must not bypass archive drain or lose evidence.
+        try:result['capture']=node.close() if node else {'drained':False,'reason':'Recorder never initialized'}
+        except Exception as error:result.update(passed=False,archive_cleanup_error=repr(error),capture={'drained':False})
+        result['query_timeline']=worker.timeline;worker.close()
         try:
             if executor:executor.shutdown()
             if initialized:rclpy.shutdown()
@@ -122,7 +124,7 @@ def run(a):
         zero=bool(safe and all(max(map(abs,r['values']))==0 for r in safe))
         ready=list((folder/'bridge-receipts').glob('*/ready.json'))
         bridge=json.loads(ready[0].read_text()) if len(ready)==1 else None
-        stock_receivers=bool(live['verified'] and result['receiver_before_close']['verified'] and result['live_participants'] and all(p['verified'] for p in result['live_participants'].values()))
+        stock_receivers=bool(live['verified'] and result['receiver_before_close']['verified'] and result['live_participants']['passed'])
         result.update(sensors=sensors,images_complete=images,event_receipts_complete=drained,commands_zero=zero,stock_receiver_verified=stock_receivers,
             production_bridge=bridge,legacy_no_custom_library=a.legacy and bridge is None,wall_seconds=time.monotonic()-started_wall)
         result['passed']=bool(result['passed'] and all(c['passed'] for c in sensors.values()) and images and drained and zero and stock_receivers and (bridge is not None if not a.legacy else bridge is None))

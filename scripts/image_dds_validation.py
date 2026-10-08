@@ -29,6 +29,15 @@ def reception_tail(records,end,clock):
     return dict(passed=bool(clock>=end-.100001 and all(r['passed'] for r in streams.values())),streams=streams,
         ros_clock=clock,paused_sim=end)
 
+def pause_flush(path,state):
+    from r5_step_schedule import pause_marker,last_step
+    try:
+        last=last_step(path)
+        passed=bool(pause_marker(str(path)+'.paused',state['iteration'],state['sim']) and
+                    last.get('iteration')==state['iteration'] and abs(last.get('t',-1)-state['sim'])<=1e-8)
+        return dict(passed=passed,last_step=last)
+    except (OSError,ValueError,IndexError) as error:return dict(passed=False,error=repr(error))
+
 def observed_model(source,output,steps=None):
     tree=ET.parse(source);gz=ET.SubElement(tree.getroot(),'gazebo')
     pose=ET.SubElement(gz,'plugin',filename='gz-sim-pose-publisher-system',name='gz::sim::systems::PosePublisher')
@@ -92,30 +101,14 @@ def installed_files(source='/source',prefix='/work/install'):
     return files
 
 def receiver_snapshot(pid=None):
-    pid=pid or os.getpid();maps=Path(f'/proc/{pid}/maps').read_text()
-    paths={line.split()[-1] for line in maps.splitlines() if '/' in line}
-    libraries=sorted(p for p in paths if any(n in p for n in ('librmw_fastrtps','libfastrtps')))
-    segments=[dict(path=p,bytes=Path(p).stat().st_size) for p in paths if p.startswith('/dev/shm/') and Path(p).is_file()]
-    return dict(pid=pid,libraries=libraries,segments=segments,verified=bool(
-        any(s['bytes']==549408 for s in segments) and
-        not any(s['bytes']==8782368 for s in segments) and
-        any('librmw_fastrtps_cpp.so' in p for p in libraries) and
-        all(p.startswith('/opt/ros/jazzy/lib/') for p in libraries)))
+    from image_dds_ownership import snapshot
+    return snapshot(pid)
 
-def participants(bridge_pid=None):
-    result={}
-    for path in Path('/proc').iterdir():
-        if not path.name.isdigit() or int(path.name)==bridge_pid:continue
-        try:
-            maps=(path/'maps').read_text()
-            if 'librmw_fastrtps_cpp.so' not in maps:continue
-            row=receiver_snapshot(int(path.name))
-            environment=(path/'environ').read_bytes().split(b'\0')
-            row['capacity_environment_leaked']=any(v.startswith((b'MOONCAR_IMAGE_DDS_TX_BYTES=',b'MOONCAR_IMAGE_DDS_RECEIPT=')) for v in environment)
-            row['verified']=row['verified'] and not row['capacity_environment_leaked']
-            result[path.name]=row
-        except (FileNotFoundError,ProcessLookupError):continue
-    return result
+
+def participants(bridge_pid=None, registered=None):
+    from image_dds_ownership import registry
+    return registry(bridge_pid,registered)
+
 
 def image_files(folder,records):
     import numpy as np
