@@ -1,0 +1,20 @@
+{
+  "attempts": 8,
+  "budget": 22,
+  "qualified_baselines": 8,
+  "observed_mechanism": true,
+  "cause_confirmed": false,
+  "repair_verified": false,
+  "candidate_attempts": 0,
+  "restore_attempts": 0,
+  "turn_performance_accepted": false,
+  "production_changed": false,
+  "images": 460,
+  "software_tests_covered": 370,
+  "software_skipped": 5,
+  "frontend_passed": 3,
+  "firmware_ubsan_passed": true,
+  "python_syntax": 82,
+  "shell_syntax": 4,
+  "stop_reason": "stopped_no_evidence_qualified_software_candidate"
+}
