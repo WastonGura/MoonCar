@@ -1,0 +1,13 @@
+test_actual_before_after_and_observer_match_both_modes (test_turn_slip_control.TurnSlipTests.test_actual_before_after_and_observer_match_both_modes) ... ok
+test_duplicate_grid_rejected (test_turn_slip_control.TurnSlipTests.test_duplicate_grid_rejected) ... ok
+test_entry_matrix_and_corresponding_pairs (test_turn_slip_control.TurnSlipTests.test_entry_matrix_and_corresponding_pairs) ... ok
+test_forged_contact_echo_does_not_replace_actual_observer (test_turn_slip_control.TurnSlipTests.test_forged_contact_echo_does_not_replace_actual_observer) ... ok
+test_native_formula_unknown_and_longitudinal_change_rejected (test_turn_slip_control.TurnSlipTests.test_native_formula_unknown_and_longitudinal_change_rejected) ... ok
+test_pure_turn_predicate_for_zero_straight_reverse_mixed_and_both_turns (test_turn_slip_control.TurnSlipTests.test_pure_turn_predicate_for_zero_straight_reverse_mixed_and_both_turns) ... ok
+test_single_mode_model_change_and_restore_hash (test_turn_slip_control.TurnSlipTests.test_single_mode_model_change_and_restore_hash) ... ok
+test_wrong_mode_or_wheel_target_rejected (test_turn_slip_control.TurnSlipTests.test_wrong_mode_or_wheel_target_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.119s
+
+OK

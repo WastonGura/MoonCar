@@ -1,0 +1,22 @@
+{
+  "name": "11-pure_turn-flat-500us-zero",
+  "ledger_error": "ValueError('Slip controller grid missing or duplicated')",
+  "primary_runtime_error": "RuntimeError('Runtime process exited')",
+  "sim_ended": 0.0,
+  "schedule_phases": [],
+  "initialization": {
+    "pid": 5791,
+    "segment_bytes": 8388608,
+    "port_queue_capacity": 512,
+    "max_message_size": 65500,
+    "user_transports": 2,
+    "builtin_transports": false,
+    "participant_created": true
+  },
+  "readiness_receipt_present": false,
+  "bridge_log": "[INFO] [1791652312.598858843] [rclcpp]: signal_handler(SIGINT/SIGTERM)\nterminate called after throwing an instance of 'rclcpp::exceptions::RCLError'\n  what():  failed to initialize rcl node: the given context is not valid, either rcl_init() was not called or rcl_shutdown() was called., at ./src/rcl/guard_condition.c:67\nMoonCar image DDS startup failed: OSError(61, 'No data available')\n",
+  "causal_location_confirmed": false,
+  "interpretation": "Runtime startup validation exited before physical stepping; exact ENODATA operation untraced",
+  "previous_successes_retained": true,
+  "not_a_physical_instability_conclusion": true
+}

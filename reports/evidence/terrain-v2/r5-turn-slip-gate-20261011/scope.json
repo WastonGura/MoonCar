@@ -1,0 +1,11 @@
+{
+  "goal": "Resolve 31cm pure-turn displacement without new ramp straight drift",
+  "scope": "Test copies only, no formal models/defaults/vehicle acceptance",
+  "simulation_limit": 24,
+  "wall_seconds_per_attempt": 600,
+  "prepare_build_limit_seconds": 2700,
+  "no_reruns_after_freeze": true,
+  "no_parameter_search": true,
+  "allowed_difference": "Fixed native WheelSlip10/0 lateral command kept for pure turns, set zero for other targets; old derived axle allocation unchanged",
+  "truth_not_used_for_control": true
+}

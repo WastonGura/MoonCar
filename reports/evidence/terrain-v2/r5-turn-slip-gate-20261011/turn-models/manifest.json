@@ -1,0 +1,9 @@
+{
+  "models": {
+    "always": "a568d32bf1eddaba3bbb6419dcb0b41e1d119cafbc3e4cd3dd7d8ed78ee6e058",
+    "pure_turn": "5c19449015582b0c7fd9045f6e1da7d4268fa0e600548dca969707b2483deb0d",
+    "restore": "a568d32bf1eddaba3bbb6419dcb0b41e1d119cafbc3e4cd3dd7d8ed78ee6e058"
+  },
+  "single_difference": "Slip controller always -> pure_turn; native fixed WheelSlip10/0 and axle ratios unchanged",
+  "production_changed": false
+}

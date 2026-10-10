@@ -1,0 +1,31 @@
+{
+  "status": "stopped",
+  "attempts": 11,
+  "qualified": 10,
+  "failed": 1,
+  "remaining_matrix_not_run": 13,
+  "stop_reason": "RuntimeError('Critical qualification failed; no rerun: 11-pure_turn-flat-500us-zero')",
+  "frozen_execution_unchanged": true,
+  "gated_side_effect_removed": false,
+  "completed_pairs_passed": true,
+  "final_restore_prediction_verified": false,
+  "step_comparisons": null,
+  "input_pairs": null,
+  "production_model_and_defaults_changed": false,
+  "whole_vehicle_accepted": false,
+  "hardware_calibrated": false,
+  "regressions_passed": true,
+  "own_container": {
+    "id": "c88e6f19489afb93ef74cbf540a4edaa1e08483c24f1d3b7de4c25ab8261c8ca",
+    "status": "exited",
+    "running": false,
+    "oom_killed": false,
+    "exit_code": 137
+  },
+  "original_workbench": {
+    "id": "3186e022e013a682ebebb7e1089bfb1e0a842387ceaa65e9169a16d4133abd94",
+    "id_unchanged": true,
+    "state_unchanged": true,
+    "config_unchanged": true
+  }
+}
