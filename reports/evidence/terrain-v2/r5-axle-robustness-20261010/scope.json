@@ -1,0 +1,10 @@
+{
+  "human_drive_permission": "\u4fdd\u7559\u7269\u7406\u53c2\u6570\uff0c\u5148\u4fee\u9a71\u52a8\u63a7\u5236\uff08\u63a8\u8350\uff09",
+  "human_contact_permission": "\u5141\u8bb8\u6d4b\u8bd5\u4fa7\u5411\u6ed1\u79fb\u6a21\u578b\uff0c\u4ec5\u9650\u6d4b\u8bd5\u526f\u672c",
+  "previous_turn": "progress: fixed driver candidate verified at flat 1 ms",
+  "fixed_candidate": "WheelSlip 10/0 plus frozen axle allocation",
+  "production_change_allowed": false,
+  "new_simulation_limit": 25,
+  "per_round_wall_seconds": 600,
+  "preparation_wall_seconds": 2700
+}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": {
+    "resources": true,
+    "libraries": true,
+    "allocator_models": true,
+    "fixed_contact_models": true,
+    "allocator_source": true,
+    "slip_observer_source": true,
+    "allocator_library": true,
+    "model": true
+  }
+}

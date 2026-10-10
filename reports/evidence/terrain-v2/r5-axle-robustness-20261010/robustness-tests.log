@@ -1,0 +1,11 @@
+test_actual_half_ms_qualified_without_rewriting_observations (test_axle_robustness.RobustnessTests.test_actual_half_ms_qualified_without_rewriting_observations) ... ok
+test_matrix_budget_and_order (test_axle_robustness.RobustnessTests.test_matrix_budget_and_order) ... ok
+test_missing_frames_contacts_odom_or_steps_still_fail (test_axle_robustness.RobustnessTests.test_missing_frames_contacts_odom_or_steps_still_fail) ... ok
+test_one_ms_old_behavior_preserved (test_axle_robustness.RobustnessTests.test_one_ms_old_behavior_preserved) ... ok
+test_unsupported_scene_step_rejected (test_axle_robustness.RobustnessTests.test_unsupported_scene_step_rejected) ... ok
+test_wrong_step_count_and_elapsed_or_schedule_rejected (test_axle_robustness.RobustnessTests.test_wrong_step_count_and_elapsed_or_schedule_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.007s
+
+OK

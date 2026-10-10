@@ -1,0 +1,114 @@
+{
+  "original_verdict_passed": false,
+  "original_verdict_unchanged": true,
+  "motion_start_s": 5.2,
+  "motion_end_s": 25.2,
+  "endpoint_xy_displacement_m": [
+    1.9888663612356816,
+    -0.15888608166320442
+  ],
+  "allocation_applied_steps": 0,
+  "native_allocated_max_difference_rad_s": 0.0,
+  "contact_gaps_above_100ms": {
+    "front_left": [
+      {
+        "before_ns": 23966000000,
+        "after_ns": 25275000000,
+        "duration_s": 1.309
+      }
+    ],
+    "front_right": [
+      {
+        "before_ns": 11231000000,
+        "after_ns": 22250000000,
+        "duration_s": 11.019
+      },
+      {
+        "before_ns": 22256000000,
+        "after_ns": 23966000000,
+        "duration_s": 1.71
+      }
+    ],
+    "rear_left": [
+      {
+        "before_ns": 12851000000,
+        "after_ns": 13138000000,
+        "duration_s": 0.287
+      },
+      {
+        "before_ns": 13419000000,
+        "after_ns": 13753000000,
+        "duration_s": 0.334
+      },
+      {
+        "before_ns": 14087000000,
+        "after_ns": 14376000000,
+        "duration_s": 0.289
+      },
+      {
+        "before_ns": 15189000000,
+        "after_ns": 15348000000,
+        "duration_s": 0.159
+      },
+      {
+        "before_ns": 17629000000,
+        "after_ns": 18531000000,
+        "duration_s": 0.902
+      },
+      {
+        "before_ns": 18535000000,
+        "after_ns": 18741000000,
+        "duration_s": 0.206
+      },
+      {
+        "before_ns": 18743000000,
+        "after_ns": 18889000000,
+        "duration_s": 0.146
+      },
+      {
+        "before_ns": 18892000000,
+        "after_ns": 19004000000,
+        "duration_s": 0.112
+      },
+      {
+        "before_ns": 19945000000,
+        "after_ns": 20829000000,
+        "duration_s": 0.884
+      },
+      {
+        "before_ns": 20837000000,
+        "after_ns": 21146000000,
+        "duration_s": 0.309
+      },
+      {
+        "before_ns": 21150000000,
+        "after_ns": 21408000000,
+        "duration_s": 0.258
+      },
+      {
+        "before_ns": 21415000000,
+        "after_ns": 21595000000,
+        "duration_s": 0.18
+      },
+      {
+        "before_ns": 22024000000,
+        "after_ns": 22403000000,
+        "duration_s": 0.379
+      },
+      {
+        "before_ns": 22416000000,
+        "after_ns": 22643000000,
+        "duration_s": 0.227
+      }
+    ],
+    "rear_right": [
+      {
+        "before_ns": 25202000000,
+        "after_ns": 25465000000,
+        "duration_s": 0.263
+      }
+    ]
+  },
+  "interpretation": "Contact topic is event-sparse; current data cannot distinguish no-contact from missing reception. Do not impute zero force.",
+  "causality": "No matched no-WheelSlip ramp round in this phase. Lateral displacement cannot be causally attributed to WheelSlip here."
+}

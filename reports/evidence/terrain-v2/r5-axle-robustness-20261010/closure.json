@@ -1,0 +1,27 @@
+{
+  "status": "stopped",
+  "attempts": 15,
+  "qualified": 14,
+  "failed": 1,
+  "remaining_matrix_not_run": 10,
+  "stop_reason": "RuntimeError('Critical qualification failed; no rerun: 15-ramp-1000us-straight')",
+  "frozen_execution_unchanged": true,
+  "step_comparison_passed": true,
+  "production_model_and_defaults_changed": false,
+  "whole_vehicle_accepted": false,
+  "v2_robustness_verified": false,
+  "regressions_passed": true,
+  "own_container": {
+    "id": "281d5037514cccaddbac79eb219348475d6b87692a8f0d00ee108e1d3e6d03dc",
+    "status": "exited",
+    "running": false,
+    "oom_killed": false,
+    "exit_code": 137
+  },
+  "original_workbench": {
+    "id": "3186e022e013a682ebebb7e1089bfb1e0a842387ceaa65e9169a16d4133abd94",
+    "id_unchanged": true,
+    "state_unchanged": true,
+    "config_unchanged": true
+  }
+}
