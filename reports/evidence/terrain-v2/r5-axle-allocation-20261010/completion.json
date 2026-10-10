@@ -1,0 +1,31 @@
+{
+  "phase_complete": true,
+  "simulation_attempts": 12,
+  "qualified_attempts": 12,
+  "cause_confirmed": true,
+  "test_driver_candidate_verified": true,
+  "remaining_maximum_displacement_m": 0.00017255626882982898,
+  "whole_vehicle_accepted": false,
+  "production_changed": false,
+  "goal_achieved": false,
+  "software_unique_tests": 446,
+  "software_passed": true,
+  "software_unresolved_skips": 0,
+  "frontend_tests": 3,
+  "frontend_syntax_files": 5,
+  "python_syntax_files": 202,
+  "firmware_strict_c11_ubsan_passed": true,
+  "original_files_preserved": 428,
+  "workbench_unchanged": true,
+  "archive_verified": true,
+  "archive_entries": 1767,
+  "archive_bytes": 2856640479,
+  "archive_scope": "Checkpoint before completion and workbench-preservation summaries",
+  "container_id": "19088602f18402aa90211a0e17d8769688a14a0c0d95c3eee098e0a89eaf4956",
+  "container_stopped": true,
+  "remaining_issues": [
+    "v2 and timestep validation pending",
+    "yaw tracking and wheel odometry discrepancy",
+    "engineering slip model and mass distribution not hardware calibrated"
+  ]
+}

@@ -1,0 +1,25 @@
+test_bad_or_excessive_estimates_rejected (test_axle_allocation.AxleAllocationTests.test_bad_or_excessive_estimates_rejected) ... ok
+test_derived_factors_preserve_budget_and_equal_compliance (test_axle_allocation.AxleAllocationTests.test_derived_factors_preserve_budget_and_equal_compliance) ... ok
+test_forged_observer_targets_fail (test_axle_allocation.AxleAllocationTests.test_forged_observer_targets_fail) ... ok
+test_independent_logged_targets_match_actual_and_preserve_means (test_axle_allocation.AxleAllocationTests.test_independent_logged_targets_match_actual_and_preserve_means) ... ok
+test_model_only_enable_flag_changes_and_restore_exact (test_axle_allocation.AxleAllocationTests.test_model_only_enable_flag_changes_and_restore_exact) ... ERROR
+test_only_pure_turn_changes_actual_targets (test_axle_allocation.AxleAllocationTests.test_only_pure_turn_changes_actual_targets) ... ok
+test_source_timestamp_mismatch_fails (test_axle_allocation.AxleAllocationTests.test_source_timestamp_mismatch_fails) ... ok
+test_unknown_native_order_nonfinite_fail (test_axle_allocation.AxleAllocationTests.test_unknown_native_order_nonfinite_fail) ... ok
+test_wrong_flags_and_lost_step_fail (test_axle_allocation.AxleAllocationTests.test_wrong_flags_and_lost_step_fail) ... ok
+
+======================================================================
+ERROR: test_model_only_enable_flag_changes_and_restore_exact (test_axle_allocation.AxleAllocationTests.test_model_only_enable_flag_changes_and_restore_exact)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Documents\Projects\Repositories\MoonCar-mapping\ros2_ws\src\mooncar_gazebo\tests\test_axle_allocation.py", line 40, in test_model_only_enable_flag_changes_and_restore_exact
+    original=ET.parse(d/'slip/candidate.sdf');manifest=generate(d/'slip/candidate.sdf',d/'control')
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Documents\Projects\Repositories\MoonCar-mapping\scripts\r5_axle_allocation.py", line 37, in generate
+    raise ValueError('Previously verified fixed contact model changed')
+ValueError: Previously verified fixed contact model changed
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.082s
+
+FAILED (errors=1)

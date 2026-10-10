@@ -1,0 +1,17 @@
+{
+  "pid": 2683,
+  "wall": 1791637526.9169655,
+  "libraries": {
+    "/evidence/allocator/libmooncar-axle-allocation.so": "8ebba20c5a5c13b2b9878ed55ea595fffcf887024a37adc7b0fdb3f98b13dbc6",
+    "/opt/ros/jazzy/opt/gz_sim_vendor/lib/libgz-sim8.so.8.15.0": "a348e4d28376de4e59ba58402142d0ce9e2abd7852ab76e721a34bafa569ef19",
+    "/opt/mooncar/physics/dart-7.8.0/libmooncar-physics7-dartsim.so": "cfe9b7c6bf72c204645df81f1be7bc646ffbd342acea52c0684a1ad24848274c",
+    "/opt/ros/jazzy/opt/gz_dartsim_vendor/lib/libdart-external-odelcpsolver.so.6.13.2": "7c7698c181c18a30c491cb1945cd4a9d4f4e03fa4c0c6b767ad2358b3e382816",
+    "/opt/ros/jazzy/opt/gz_dartsim_vendor/lib/libdart.so.6.13.2": "cb4f008188d1ea13cba9b43470c9d46cf819e8df0e4fdc818fa1e4f81b396426",
+    "/evidence/observer/libmooncar-origin-observer.so": "1337a2b62ee7f7de93dd94122b585b2566511380d75920062189c2bc37e5b724",
+    "/opt/ros/jazzy/opt/gz_dartsim_vendor/lib/libdart-collision-bullet.so.6.13.2": "0ca5fa82b2d37e86e6aa4fcd38ba43d4b51f82b4cae2dff4c53b569b86e51a33",
+    "/opt/ros/jazzy/opt/gz_dartsim_vendor/lib/libdart-collision-ode.so.6.13.2": "b50d9d8174333d857ec04bdca0699db7921101bccef05ce2c5010bd265b9deb6",
+    "/opt/ros/jazzy/opt/gz_sim_vendor/lib/gz-sim-8/plugins/libgz-sim8-wheel-slip-system.so.8.15.0": "a2bb9fd4d7aa1eaae8d0ca684f9936ccd0cc479d83e3a692ab05842d733e07bd"
+  },
+  "axle_loaded": true,
+  "slip_loaded": true
+}

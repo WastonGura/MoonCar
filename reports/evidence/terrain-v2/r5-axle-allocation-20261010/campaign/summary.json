@@ -1,0 +1,82 @@
+{
+  "status": "diagnostic_complete",
+  "attempts": 12,
+  "limit": 12,
+  "production_changed": false,
+  "physical_parameters_changed": false,
+  "goal_achieved": false,
+  "input_pairs": [
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  ],
+  "comparisons": [
+    {
+      "passed": true,
+      "maximum_displacement_m": 0.00017255626882982898,
+      "yaw_loss_rad": -0.13738070599215524,
+      "icr_body_x_m": -3.010573434029079e-11,
+      "whole_vehicle_accepted": false
+    },
+    {
+      "passed": true,
+      "maximum_displacement_m": 0.00017255626882982898,
+      "yaw_loss_rad": -0.13738070599215524,
+      "icr_body_x_m": -3.010573434029079e-11,
+      "whole_vehicle_accepted": false
+    },
+    {
+      "passed": true,
+      "maximum_displacement_m": 0.0001725562515996823,
+      "yaw_loss_rad": -0.13738070598598062,
+      "icr_body_x_m": -3.007716615203829e-11,
+      "whole_vehicle_accepted": false
+    },
+    {
+      "passed": true,
+      "maximum_displacement_m": 0.0001725562515996823,
+      "yaw_loss_rad": -0.13738070598598062,
+      "icr_body_x_m": -3.007716615203829e-11,
+      "whole_vehicle_accepted": false
+    }
+  ],
+  "restore_input_pairs": [
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  ],
+  "cause_confirmed": true,
+  "one_cm_turn_screen_passed": true,
+  "whole_vehicle_accepted": false,
+  "freeze_unchanged": true
+}

@@ -1,0 +1,11 @@
+{
+  "previous_goal_turn": "progress: 12 qualified WheelSlip trials, 96% reduction, residual 1.25 cm",
+  "human_drive_permission": "保留物理参数，先修驱动控制（推荐）",
+  "human_contact_permission": "允许测试侧向滑移模型，仅限测试副本",
+  "physical_candidate": "fixed previous WheelSlip 10/0 and static normal estimates",
+  "single_new_candidate": "derived front/rear actuator speed allocation; no parameter search",
+  "production_change_allowed": false,
+  "new_simulation_limit": 12,
+  "per_round_wall_seconds": 600,
+  "preparation_wall_seconds": 2700
+}
