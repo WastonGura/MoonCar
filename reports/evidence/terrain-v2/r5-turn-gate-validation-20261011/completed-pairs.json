@@ -1,0 +1,154 @@
+{
+  "status": "stopped",
+  "completed": 14,
+  "qualified": 13,
+  "matrix_passed": false,
+  "step_comparisons": [
+    {
+      "indices": [
+        2,
+        6
+      ],
+      "result": {
+        "passed": true,
+        "valid": true,
+        "position_difference_m": 3.1029522117012926e-07,
+        "yaw_difference_rad": 4.344034264303076e-05,
+        "duration_difference_s": 0.0,
+        "wheel_budget_difference": {
+          "linear_difference_m": 0.0,
+          "angular_difference_rad": 0.0
+        }
+      }
+    },
+    {
+      "indices": [
+        3,
+        7
+      ],
+      "result": {
+        "passed": true,
+        "valid": true,
+        "position_difference_m": 3.1035695463712177e-07,
+        "yaw_difference_rad": 4.344034165981725e-05,
+        "duration_difference_s": 0.0,
+        "wheel_budget_difference": {
+          "linear_difference_m": 0.0,
+          "angular_difference_rad": 0.0
+        }
+      }
+    },
+    {
+      "indices": [
+        4,
+        8
+      ],
+      "result": {
+        "passed": true,
+        "valid": true,
+        "position_difference_m": 3.1029522117012926e-07,
+        "yaw_difference_rad": 4.344034264303076e-05,
+        "duration_difference_s": 0.0,
+        "wheel_budget_difference": {
+          "linear_difference_m": 0.0,
+          "angular_difference_rad": 0.0
+        }
+      }
+    },
+    {
+      "indices": [
+        5,
+        9
+      ],
+      "result": {
+        "passed": true,
+        "valid": true,
+        "position_difference_m": 3.1035695463712177e-07,
+        "yaw_difference_rad": 4.344034165981725e-05,
+        "duration_difference_s": 0.0,
+        "wheel_budget_difference": {
+          "linear_difference_m": 0.0,
+          "angular_difference_rad": 0.0
+        }
+      }
+    }
+  ],
+  "input_pairs": [
+    {
+      "indices": [
+        2,
+        4
+      ],
+      "result": {
+        "passed": true,
+        "distance_difference_m": 0.0,
+        "turn_difference_rad": 0.0,
+        "duration_difference_s": 0.0
+      }
+    },
+    {
+      "indices": [
+        3,
+        5
+      ],
+      "result": {
+        "passed": true,
+        "distance_difference_m": 0.0,
+        "turn_difference_rad": 0.0,
+        "duration_difference_s": 0.0
+      }
+    },
+    {
+      "indices": [
+        6,
+        8
+      ],
+      "result": {
+        "passed": true,
+        "distance_difference_m": 0.0,
+        "turn_difference_rad": 0.0,
+        "duration_difference_s": 0.0
+      }
+    },
+    {
+      "indices": [
+        7,
+        9
+      ],
+      "result": {
+        "passed": true,
+        "distance_difference_m": 0.0,
+        "turn_difference_rad": 0.0,
+        "duration_difference_s": 0.0
+      }
+    },
+    {
+      "indices": [
+        0,
+        1
+      ],
+      "result": {
+        "passed": true,
+        "distance_difference_m": 0.0,
+        "turn_difference_rad": 0.0,
+        "duration_difference_s": 0.0
+      }
+    },
+    {
+      "indices": [
+        0,
+        12
+      ],
+      "result": {
+        "passed": true,
+        "distance_difference_m": 0.0,
+        "turn_difference_rad": 0.0,
+        "duration_difference_s": 0.0
+      }
+    }
+  ],
+  "all_completed_pairs_passed": true,
+  "historical_results_used": false,
+  "production_changed": false,
+  "whole_vehicle_accepted": false
+}

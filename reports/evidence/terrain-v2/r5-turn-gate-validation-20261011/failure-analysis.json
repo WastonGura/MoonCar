@@ -1,0 +1,210 @@
+{
+  "name": "14-pure_turn-ramp-1000us-left",
+  "round_passed": false,
+  "primary_error": "ValueError('Existing 1 cm turn screen failed')",
+  "maximum_center_displacement_m": 0.010285963351157402,
+  "frozen_limit_m": 0.01,
+  "excess_m": 0.00028596335115740196,
+  "actual_turn_rad": 3.7436878220962075,
+  "input_and_capture_passed": true,
+  "data_complete": true,
+  "sensors": {
+    "rgb": {
+      "passed": true,
+      "samples": 29,
+      "max_gap_s": 1.0,
+      "files_present": true
+    },
+    "depth": {
+      "passed": true,
+      "samples": 29,
+      "max_gap_s": 1.0,
+      "files_present": true
+    },
+    "scan": {
+      "passed": true,
+      "samples": 56,
+      "max_gap_s": 0.6000000000000005,
+      "files_present": true
+    },
+    "imu": {
+      "passed": true,
+      "samples": 2821,
+      "max_gap_s": 0.010000000000001563,
+      "files_present": true
+    },
+    "joints": {
+      "passed": true,
+      "samples": 508,
+      "max_gap_s": 0.06800000000000139,
+      "files_present": true
+    },
+    "truth": {
+      "passed": true,
+      "samples": 2820,
+      "max_gap_s": 0.010000000000001563,
+      "files_present": true
+    }
+  },
+  "safe_gap_s": 0.052999999999999936,
+  "motion_seconds": 20.0,
+  "budget": {
+    "passed": true,
+    "driver_allocation_verified": true,
+    "mean_side_targets_preserved": true,
+    "native_target_budget": {
+      "passed": true,
+      "continuous": true,
+      "direction_and_acceleration_valid": true,
+      "front_rear_targets_match": true,
+      "zero_tail": true,
+      "linear_integral_m": 0.0,
+      "angular_integral_rad": 4.000000000000002,
+      "active_start_s": 5.202,
+      "active_end_s": 25.401
+    },
+    "front_rear_targets_match": false,
+    "direction_and_acceleration_valid": true,
+    "continuous": true,
+    "zero_tail": true,
+    "linear_integral_m": 0.0,
+    "angular_integral_rad": 4.000000000000002,
+    "enabled": true,
+    "applied_steps": 20199,
+    "allocation_path": "/work/14-pure_turn-ramp-1000us-left-axle-commands.csv",
+    "raw_targets_preserved": true
+  },
+  "gate": {
+    "passed": true,
+    "mode": "pure_turn",
+    "pure_turn_steps": 20199,
+    "other_steps": 7802,
+    "maximum_errors": {
+      "front_left": 0.0,
+      "front_right": 0.0,
+      "rear_left": 0.0,
+      "rear_right": 0.0
+    },
+    "wheel_targets_unchanged": true,
+    "longitudinal_zero_preserved": true,
+    "actual_observer_commands_match": true
+  },
+  "contact_source": {
+    "proof": {
+      "passed": true,
+      "rows": 263337,
+      "steps_per_wheel": 28000,
+      "wheels": {
+        "front_left": {
+          "positive_steps": 27793,
+          "empty_steps": 207
+        },
+        "front_right": {
+          "positive_steps": 27757,
+          "empty_steps": 243
+        },
+        "rear_left": {
+          "positive_steps": 27998,
+          "empty_steps": 2
+        },
+        "rear_right": {
+          "positive_steps": 27996,
+          "empty_steps": 4
+        }
+      },
+      "missing_is_unknown": true,
+      "empty_is_explicit": true,
+      "flush_confirmed": true
+    },
+    "topic_relation": {
+      "front_left": {
+        "source_positive_steps": 27801,
+        "positive_steps_without_topic": 0,
+        "source_empty_steps": 399,
+        "long_source_empty_intervals": [
+          {
+            "first_ns": 1000000,
+            "last_ns": 192000000,
+            "duration_s": 0.191
+          },
+          {
+            "first_ns": 17736000000,
+            "last_ns": 17853000000,
+            "duration_s": 0.117
+          }
+        ],
+        "received_unknown_source_stamps": 0,
+        "received_at_empty_source_stamps": 0
+      },
+      "front_right": {
+        "source_positive_steps": 27765,
+        "positive_steps_without_topic": 0,
+        "source_empty_steps": 435,
+        "long_source_empty_intervals": [
+          {
+            "first_ns": 1000000,
+            "last_ns": 192000000,
+            "duration_s": 0.191
+          },
+          {
+            "first_ns": 17022000000,
+            "last_ns": 17262000000,
+            "duration_s": 0.24
+          }
+        ],
+        "received_unknown_source_stamps": 0,
+        "received_at_empty_source_stamps": 0
+      },
+      "rear_left": {
+        "source_positive_steps": 28006,
+        "positive_steps_without_topic": 0,
+        "source_empty_steps": 194,
+        "long_source_empty_intervals": [
+          {
+            "first_ns": 1000000,
+            "last_ns": 192000000,
+            "duration_s": 0.191
+          }
+        ],
+        "received_unknown_source_stamps": 0,
+        "received_at_empty_source_stamps": 0
+      },
+      "rear_right": {
+        "source_positive_steps": 28004,
+        "positive_steps_without_topic": 0,
+        "source_empty_steps": 196,
+        "long_source_empty_intervals": [
+          {
+            "first_ns": 1000000,
+            "last_ns": 192000000,
+            "duration_s": 0.191
+          }
+        ],
+        "received_unknown_source_stamps": 0,
+        "received_at_empty_source_stamps": 0
+      }
+    }
+  },
+  "stop_last_second_displacement_m": 0.0,
+  "stop_command_zero": true,
+  "maximum_tilt_rad": 7.569057863282921e-06,
+  "first_front_empty_motion_step": {
+    "iteration": 8142,
+    "sim_ns": 8142000000,
+    "center_displacement_m": 0.0001827487668430449
+  },
+  "empty_steps_in_motion_by_wheel": [
+    207,
+    243,
+    2,
+    4
+  ],
+  "motion_path_by_source_state": {
+    "front_empty_m": 0.001995001228816776,
+    "front_present_m": 0.012505872650442087
+  },
+  "source_empty_semantics": "Explicit source state, not a missing sample; no force value imputed",
+  "causal_conclusion": "Residual drift mechanism not confirmed; association only, one ramp turn, no restore completed",
+  "no_retest": true,
+  "no_parameter_or_threshold_change": true
+}

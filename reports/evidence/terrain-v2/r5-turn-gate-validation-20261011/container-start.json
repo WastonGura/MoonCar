@@ -1,0 +1,237 @@
+[
+    {
+        "Id": "26333f7347b7f126db00824a7f9752702de349177818b96b86c8722beb5d10f5",
+        "Created": "2026-10-10T17:43:38.844868386Z",
+        "Path": "/bin/bash",
+        "Args": [
+            "-lc",
+            "sleep infinity"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 32313,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-10T17:43:38.914903992Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+        "ResolvConfPath": "/var/lib/docker/containers/26333f7347b7f126db00824a7f9752702de349177818b96b86c8722beb5d10f5/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/26333f7347b7f126db00824a7f9752702de349177818b96b86c8722beb5d10f5/hostname",
+        "HostsPath": "/var/lib/docker/containers/26333f7347b7f126db00824a7f9752702de349177818b96b86c8722beb5d10f5/hosts",
+        "LogPath": "/var/lib/docker/containers/26333f7347b7f126db00824a7f9752702de349177818b96b86c8722beb5d10f5/26333f7347b7f126db00824a7f9752702de349177818b96b86c8722beb5d10f5-json.log",
+        "Name": "/mooncar-r5-turn-gate-validation-20261011",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 536870912,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 6442450944,
+            "NanoCpus": 4000000000,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 12884901888,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "Mounts": [
+                {
+                    "Type": "bind",
+                    "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+                    "Target": "/source",
+                    "ReadOnly": true
+                },
+                {
+                    "Type": "bind",
+                    "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011",
+                    "Target": "/evidence"
+                }
+            ],
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011",
+                "Destination": "/evidence",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+                "Destination": "/source",
+                "Mode": "",
+                "RW": false,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "26333f7347b7",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "ROS_DOMAIN_ID=95",
+                "ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST",
+                "LIBGL_ALWAYS_SOFTWARE=1",
+                "MOONCAR_IMAGE_DDS_RUNTIME=/opt/mooncar/image-dds/rmw-8.4.4",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=C.UTF-8",
+                "LC_ALL=C.UTF-8",
+                "ROS_DISTRO=jazzy",
+                "RMW_IMPLEMENTATION=rmw_fastrtps_cpp",
+                "MOONCAR_DART_PLUGIN_ROOT=/opt/mooncar/physics/dart-7.8.0"
+            ],
+            "Cmd": [
+                "-lc",
+                "sleep infinity"
+            ],
+            "Image": "mooncar-terrain:r5-image-dds-20261008",
+            "Volumes": null,
+            "WorkingDir": "/work",
+            "Entrypoint": [
+                "/bin/bash"
+            ],
+            "Labels": {
+                "org.opencontainers.image.version": "24.04"
+            }
+        },
+        "NetworkSettings": {
+            "SandboxID": "dfe544ccc2bb87499f7fbd106b763a75df59be15f49d13c0b3a4625aee827917",
+            "SandboxKey": "/var/run/docker/netns/dfe544ccc2bb",
+            "Ports": {},
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "30806aecec5f14a51d49dd79da944ff2db7b49731cbba484d1b0efaf945cc275",
+                    "EndpointID": "1ec299c1508da50bd2d641e552a0847435e02952c9e5c795694052db1f9be2dc",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.2",
+                    "MacAddress": "9a:7c:dd:b8:dc:e0",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:ba479374193d2132dfb7f2797b06df2c48573e1efe80aadafc20f944471ba5c2",
+            "size": 3530,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]

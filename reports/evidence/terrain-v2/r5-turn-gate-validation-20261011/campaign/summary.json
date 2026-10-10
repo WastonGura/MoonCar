@@ -1,0 +1,81 @@
+{
+  "status": "stopped",
+  "attempts": 14,
+  "limit": 24,
+  "production_changed": false,
+  "goal_achieved": false,
+  "step_comparisons": [
+    {
+      "passed": true,
+      "valid": true,
+      "position_difference_m": 3.1029522117012926e-07,
+      "yaw_difference_rad": 4.344034264303076e-05,
+      "duration_difference_s": 0.0,
+      "wheel_budget_difference": {
+        "linear_difference_m": 0.0,
+        "angular_difference_rad": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "valid": true,
+      "position_difference_m": 3.1035695463712177e-07,
+      "yaw_difference_rad": 4.344034165981725e-05,
+      "duration_difference_s": 0.0,
+      "wheel_budget_difference": {
+        "linear_difference_m": 0.0,
+        "angular_difference_rad": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "valid": true,
+      "position_difference_m": 3.1029522117012926e-07,
+      "yaw_difference_rad": 4.344034264303076e-05,
+      "duration_difference_s": 0.0,
+      "wheel_budget_difference": {
+        "linear_difference_m": 0.0,
+        "angular_difference_rad": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "valid": true,
+      "position_difference_m": 3.1035695463712177e-07,
+      "yaw_difference_rad": 4.344034165981725e-05,
+      "duration_difference_s": 0.0,
+      "wheel_budget_difference": {
+        "linear_difference_m": 0.0,
+        "angular_difference_rad": 0.0
+      }
+    }
+  ],
+  "repeat_pairs": [
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  ],
+  "reason": "RuntimeError('Critical qualification failed; no rerun: 14-pure_turn-ramp-1000us-left')",
+  "freeze_unchanged": true
+}

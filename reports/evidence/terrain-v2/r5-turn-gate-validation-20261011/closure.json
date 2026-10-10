@@ -1,0 +1,77 @@
+{
+  "status": "stopped",
+  "attempts": 14,
+  "qualified": 13,
+  "failed": 1,
+  "remaining_matrix_not_run": 10,
+  "stop_reason": "RuntimeError('Critical qualification failed; no rerun: 14-pure_turn-ramp-1000us-left')",
+  "frozen_execution_unchanged": true,
+  "gated_side_effect_removed": false,
+  "completed_pairs_passed": true,
+  "final_restore_prediction_verified": false,
+  "test_candidate_verified": false,
+  "step_comparisons": [
+    {
+      "passed": true,
+      "valid": true,
+      "position_difference_m": 3.1029522117012926e-07,
+      "yaw_difference_rad": 4.344034264303076e-05,
+      "duration_difference_s": 0.0,
+      "wheel_budget_difference": {
+        "linear_difference_m": 0.0,
+        "angular_difference_rad": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "valid": true,
+      "position_difference_m": 3.1035695463712177e-07,
+      "yaw_difference_rad": 4.344034165981725e-05,
+      "duration_difference_s": 0.0,
+      "wheel_budget_difference": {
+        "linear_difference_m": 0.0,
+        "angular_difference_rad": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "valid": true,
+      "position_difference_m": 3.1029522117012926e-07,
+      "yaw_difference_rad": 4.344034264303076e-05,
+      "duration_difference_s": 0.0,
+      "wheel_budget_difference": {
+        "linear_difference_m": 0.0,
+        "angular_difference_rad": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "valid": true,
+      "position_difference_m": 3.1035695463712177e-07,
+      "yaw_difference_rad": 4.344034165981725e-05,
+      "duration_difference_s": 0.0,
+      "wheel_budget_difference": {
+        "linear_difference_m": 0.0,
+        "angular_difference_rad": 0.0
+      }
+    }
+  ],
+  "input_pairs": null,
+  "production_model_and_defaults_changed": false,
+  "whole_vehicle_accepted": false,
+  "hardware_calibrated": false,
+  "regressions_passed": true,
+  "own_container": {
+    "id": "26333f7347b7f126db00824a7f9752702de349177818b96b86c8722beb5d10f5",
+    "status": "exited",
+    "running": false,
+    "oom_killed": false,
+    "exit_code": 137
+  },
+  "original_workbench": {
+    "id": "3186e022e013a682ebebb7e1089bfb1e0a842387ceaa65e9169a16d4133abd94",
+    "id_unchanged": true,
+    "state_unchanged": true,
+    "config_unchanged": true
+  }
+}

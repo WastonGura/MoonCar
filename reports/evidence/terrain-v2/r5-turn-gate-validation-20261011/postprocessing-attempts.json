@@ -1,0 +1,8 @@
+{
+  "first_postprocess_exit": 1,
+  "first_postprocess_error": "/opt/ros/jazzy/setup.bash: line 8: AMENT_TRACE_SETUP_FILES: unbound variable",
+  "error_before_any_post_analysis_or_regression": true,
+  "fix": "Enable nounset only after the unchanged ROS setup scripts are sourced",
+  "simulation_execution_changed": false,
+  "new_simulation_attempts": 0
+}
