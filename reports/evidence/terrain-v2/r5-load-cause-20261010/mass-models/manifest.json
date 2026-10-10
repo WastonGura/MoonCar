@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "original": {
+    "total_mass_kg": 9.186,
+    "center_of_mass_m": [
+      -0.006237889179185711,
+      0.0,
+      0.1279833170041367
+    ],
+    "inertia_about_total_com_kg_m2": [
+      [
+        0.09624401045999759,
+        0.0,
+        0.0046113984565167125
+      ],
+      [
+        0.0,
+        0.12038050294600211,
+        0.0
+      ],
+      [
+        0.0046113984565167125,
+        0.0,
+        0.16624531895267117
+      ]
+    ]
+  },
+  "mirror_x": {
+    "total_mass_kg": 9.186,
+    "center_of_mass_m": [
+      0.006237889179185711,
+      0.0,
+      0.1279833170041367
+    ],
+    "inertia_about_total_com_kg_m2": [
+      [
+        0.0962440104599976,
+        0.0,
+        0.003447644855015281
+      ],
+      [
+        0.0,
+        0.11959028590980682,
+        0.0
+      ],
+      [
+        0.003447644855015281,
+        0.0,
+        0.1654551019164759
+      ]
+    ]
+  },
+  "base_mass_kg": 7.425,
+  "base_inertial_x_delta_m": 0.015434680134680119,
+  "single_change": "base_footprint/inertial/pose X",
+  "preserved": "Masses, centroidal link tensors/orientations, all other model definitions",
+  "interpretation": "Engineering hypothetical inertia distribution; not hardware relocation or repair",
+  "models": {
+    "original": "7190fec8a878724a4b5096b6cae0d5492d5e968c485948d8d93241375c4e5aca",
+    "mirror_x": "e636b7872ad7781d3e3d282e90b2c4217d8cacbf203561973e1860c351e9c67a",
+    "restore": "7190fec8a878724a4b5096b6cae0d5492d5e968c485948d8d93241375c4e5aca"
+  },
+  "tf_urdf": {
+    "original": "044b2c1e2847129300b230d877c458f9134ba9a540d2710bcee9b61b4ecf4b73",
+    "mirror_x": "044b2c1e2847129300b230d877c458f9134ba9a540d2710bcee9b61b4ecf4b73",
+    "restore": "044b2c1e2847129300b230d877c458f9134ba9a540d2710bcee9b61b4ecf4b73"
+  }
+}
