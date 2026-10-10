@@ -1,0 +1,31 @@
+{
+  "status": "experimental_unverified",
+  "scope": "Drive commands only; no truth feedback or physics changes",
+  "hypothesis": "Fore/aft acceleration reverses axle load and intermittently swaps the anchor, reducing accumulated lateral displacement",
+  "profile": "load_dither",
+  "parameters": {
+    "amplitude_m_s": 0.025,
+    "acceleration_m_s2": 0.25,
+    "period_sim_s": 0.4,
+    "angular_rad_s": 0.2,
+    "motion_sim_s": 20,
+    "step_s": 0.001
+  },
+  "comparison": {
+    "fresh_baseline_directions": [
+      0.2,
+      -0.2
+    ],
+    "candidate_directions": [
+      0.2,
+      -0.2
+    ]
+  },
+  "engineering_effectiveness_gate": {
+    "maximum_center_excursion_m": 0.01,
+    "absolute_actual_yaw_loss_vs_same_direction_baseline_rad": 0.05
+  },
+  "stopping_rule": "Stop on input/capture failure or ineffective candidate; no physics changes or parameter sweep",
+  "production_change": false,
+  "no_hardware_calibration": true
+}

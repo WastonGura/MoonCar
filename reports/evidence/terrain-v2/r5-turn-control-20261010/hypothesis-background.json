@@ -1,0 +1,33 @@
+{
+  "status": "analytical_hypothesis_not_simulation_result",
+  "static_rear_minus_front_N": 0.5912599787233335,
+  "predicted_load_reversal_acceleration_m_s2": 0.07895839884929087,
+  "candidate_acceleration_m_s2": 0.25,
+  "predicted_dynamic_load_delta_N": 1.8720617038216563,
+  "limitations": [
+    "Quasistatic load-transfer equation; contact and lateral transients may invalidate expected anchor exchange",
+    "Old run used only for background, not new candidate qualification"
+  ],
+  "old_contact_evidence": {
+    "front_left": {
+      "mean_lateral_force_N": -0.714296621642734,
+      "mean_load_N": 3.5808140851955987,
+      "force_to_normal_ratio_abs": 0.199478834881682
+    },
+    "front_right": {
+      "mean_lateral_force_N": -0.7146169082480203,
+      "mean_load_N": 3.5808146245336157,
+      "force_to_normal_ratio_abs": 0.19956825001548237
+    },
+    "rear_left": {
+      "mean_lateral_force_N": 0.7146455458537339,
+      "mean_load_N": 3.8598453869772493,
+      "force_to_normal_ratio_abs": 0.18514874929054928
+    },
+    "rear_right": {
+      "mean_lateral_force_N": 0.714279033613421,
+      "mean_load_N": 3.859845903293541,
+      "force_to_normal_ratio_abs": 0.18505376937559578
+    }
+  }
+}
