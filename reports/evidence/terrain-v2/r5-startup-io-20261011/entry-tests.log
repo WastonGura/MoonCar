@@ -1,0 +1,9 @@
+test_fixed24_matrix_and_pairing_unchanged (test_turn_gate_validation.EntryTests.test_fixed24_matrix_and_pairing_unchanged) ... ok
+test_only_the_private_bridge_guard_is_redirected (test_turn_gate_validation.EntryTests.test_only_the_private_bridge_guard_is_redirected) ... ok
+test_signature_mismatch_fails (test_turn_gate_validation.EntryTests.test_signature_mismatch_fails) ... ok
+test_startup_root_error_is_retained (test_turn_gate_validation.EntryTests.test_startup_root_error_is_retained) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.051s
+
+OK
