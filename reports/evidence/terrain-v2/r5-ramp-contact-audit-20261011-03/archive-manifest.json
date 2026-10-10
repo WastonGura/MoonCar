@@ -1,0 +1,181 @@
+{
+  "files": {
+    "03-pure_turn-flat-1000us-left-1-steps.csv": {
+      "sha256": "7a6951e3ce7812b4af47306e07e230c01e63fdec25e268b98f6ce7a2030fd70b",
+      "bytes": 1452429
+    },
+    "14-pure_turn-ramp-1000us-left-steps.csv": {
+      "sha256": "96e02a5a148e9fd213bc256f9398a292aba8aea853fc4c6e30b1f89f04fc892e",
+      "bytes": 1599905
+    },
+    "analysis.json": {
+      "sha256": "73c4a18987a72b1ce7a42394b03f5cf9a7cd1941879d5e224884c2855cb9d1e3",
+      "bytes": 5687
+    },
+    "archive_offline.py": {
+      "sha256": "3b49e2c48f7b8bc52966b2f71cd9f219007a739904da95f7cf29528ca3aa6aec",
+      "bytes": 3169
+    },
+    "attempts.json": {
+      "sha256": "ad3685ba3232f4372c357b62dcb7f1c96e9f54b3b52c31dda66056a5e1bb8208",
+      "bytes": 495
+    },
+    "contact-normal-map.png": {
+      "sha256": "b05f3fc4fabaed1830427ead00856c4cff3fcff237100b208756756f65f62d4f",
+      "bytes": 157097
+    },
+    "contact-timeline.png": {
+      "sha256": "2aaf6533dec2fcfb94d39a20a2e88334cf9974860fa097ca6167796cc6f37a44",
+      "bytes": 138175
+    },
+    "fixtures\\coplanar_mesh-check.log": {
+      "sha256": "8141052518b294c934d9ba8c61796df085ff7725c21287f6db34a18f89c8bda3",
+      "bytes": 2571
+    },
+    "fixtures\\coplanar_mesh.obj": {
+      "sha256": "2052738c94932c010ec75c631c2c83b3dd6b90fdbda5ad7cc470db4bee0072a4",
+      "bytes": 4544437
+    },
+    "fixtures\\coplanar_mesh.sdf": {
+      "sha256": "e8ae206b49c8b252f84fd5697ea4145b1dbf5be7c503b1748fdf060197cc6a3a",
+      "bytes": 62277
+    },
+    "fixtures\\manifest.json": {
+      "sha256": "95488d6ae252ff887cb50b7c351b689f3538c09989b55b7ccd7f6aa1bf4e8aef",
+      "bytes": 1781
+    },
+    "fixtures\\mirrored_mesh-check.log": {
+      "sha256": "7d00c3effbcafdff3daf42b73ff4451d060b43034ceaae5bf8ef5436c1eb3556",
+      "bytes": 2571
+    },
+    "fixtures\\mirrored_mesh.obj": {
+      "sha256": "f191740be9c0a21fcac7db1ed49f07b4f2160e683ec62679846c8121754dabfa",
+      "bytes": 4544442
+    },
+    "fixtures\\mirrored_mesh.sdf": {
+      "sha256": "f16483c21354c5de5ecb47c94afe13d038015647378c0ec8d47bcddebb0e1f8c",
+      "bytes": 62277
+    },
+    "fixtures\\plate-check.log": {
+      "sha256": "78f35abc793502f8e44038b2ff9cb82f67f322844609130fd8d725120e6e1a2f",
+      "bytes": 2507
+    },
+    "fixtures\\plate.sdf": {
+      "sha256": "ca1ff264c89d0191e10797ac2f9e2bec534b9549da410bda9b27d03204d28024",
+      "bytes": 60798
+    },
+    "fixtures-prepare.log": {
+      "sha256": "95488d6ae252ff887cb50b7c351b689f3538c09989b55b7ccd7f6aa1bf4e8aef",
+      "bytes": 1781
+    },
+    "frontend-regression-complete.log": {
+      "sha256": "7acc3a06d72a8a9c0e710a00eb26bc708fdce2e992ed75b7c71e67fedd41b49f",
+      "bytes": 432
+    },
+    "frontend-regression.log": {
+      "sha256": "5a0f1bfae11d4e5126c29b8c1cc4a18ac5f6388d84cc506ee100740d7996c8bd",
+      "bytes": 245
+    },
+    "NEXT_DIAGNOSIS.md": {
+      "sha256": "7e4b838604d6832d7242003d774659132c58a8c7c4bf839f49d57147337ac0a4",
+      "bytes": 3853
+    },
+    "offline-overlay.log": {
+      "sha256": "520883ece6ef04a40b38696d12325f5d91dfd248645689444e9488601baa9457",
+      "bytes": 101
+    },
+    "offline_checks.sh": {
+      "sha256": "64f5146e6b4e73672a23a2315d032070058a890a9a419874a46ec92fac5c573a",
+      "bytes": 423
+    },
+    "offline_retry.sh": {
+      "sha256": "1d4d8cb17a0d7d86858ee3ae61e02cf1cf3c9601aaa80da6fade53b277976261",
+      "bytes": 557
+    },
+    "plot_offline.py": {
+      "sha256": "e1b411142ae489f271b4e4679412380e7f9366b28825f57f4da94da4fd94e818",
+      "bytes": 3157
+    },
+    "provenance\\dart-config.hpp": {
+      "sha256": "859af8bb60e81f95bd12061b3c4dc38fcd331eaf62ace9ff207a5459966be20b",
+      "bytes": 2748
+    },
+    "provenance\\EntityManagementFeatures.cc": {
+      "sha256": "db63fd480ae913992cfcf69677fdb478f3d6f403add08c5a1bd841aab2f589bf",
+      "bytes": 31213
+    },
+    "provenance\\OdeCollisionDetector.cpp": {
+      "sha256": "b1c1eb748a255424ce3774b0def266ad73b6694b48a561765e40ebc2b7b489dd",
+      "bytes": 10648
+    },
+    "provenance\\SdfEntityCreator.cc": {
+      "sha256": "fbb39c0527bb33d511dc7816e859f5c616d2d4d4f5064607d34ea7e6b4e672b3",
+      "bytes": 41344
+    },
+    "provenance\\source-manifest.json": {
+      "sha256": "87a9fb9cbc4fcb09a6ca5e0c2b73fbab43fc286849325cac96fa3b63059351ef",
+      "bytes": 848
+    },
+    "README.md": {
+      "sha256": "b8b4ae25ef2ec0d13c4f3559cad49f71f17efb66f95cf908e484f51b9c117fe9",
+      "bytes": 5569
+    },
+    "software-regression-retry.log": {
+      "sha256": "bedf29f7bc3bbcc15f71903c99387baf828f076fa173b8271ac1aefbea4e53d7",
+      "bytes": 73176
+    },
+    "software-regression.log": {
+      "sha256": "667539ebe957f5c8e5612377c09879542e7ae715e7fb2d429dd49b7c1afee0ad",
+      "bytes": 75398
+    },
+    "source-snapshot\\ros2_ws\\src\\mooncar_gazebo\\tests\\test_ramp_contact_audit.py": {
+      "sha256": "0814a93e6cbba78fcee9f8d2b5cd5d9b4f0c80ff8fc3030008d9f982b7d69e5c",
+      "bytes": 5630
+    },
+    "source-snapshot\\scripts\\audit_r5_ramp_contact.py": {
+      "sha256": "509db356e5158ac259a621cb8af4172557fa8fe52f2d63a80f449e3e78835475",
+      "bytes": 16456
+    },
+    "source-snapshot\\scripts\\prepare_r5_contact_geometry.py": {
+      "sha256": "dbdad865b8783a196ecc8b814b1cc43e522583f98ed25e17a9363bed5892667b",
+      "bytes": 5133
+    },
+    "unit-tests.log": {
+      "sha256": "a55283c6807582f201daf9aa2e69ae452cd7d1e01cd7c9f6c619d63f4012a23f",
+      "bytes": 2947
+    },
+    "verification-complete.json": {
+      "sha256": "fb7ee739adbe35396a12c0ed6c1c91fda731e7b87f840440a3c5424a452e4458",
+      "bytes": 2563
+    },
+    "verification-complete.log": {
+      "sha256": "04eda8b628824a4107550feecf329ecd513e4937a1474dff16ac880f40128e81",
+      "bytes": 436
+    },
+    "verification-retry.log": {
+      "sha256": "04eda8b628824a4107550feecf329ecd513e4937a1474dff16ac880f40128e81",
+      "bytes": 436
+    },
+    "verification.json": {
+      "sha256": "d4cd345cac706f1a9565094d26504cc32a27aaf0a708791d1d5a1d73bc7f36ef",
+      "bytes": 2457
+    },
+    "verification.log": {
+      "sha256": "970edbe2260faada4047a2348d6a22239ca8d14ceac2b901006cbb0620d0e971",
+      "bytes": 846
+    },
+    "verify_offline.py": {
+      "sha256": "e29e1d1904c3a19349f9aff1907a93c5a622154b56be98067eb820c19e7c20e3",
+      "bytes": 4544
+    }
+  },
+  "file_count": 42,
+  "bytes": 12933559,
+  "new_simulations": 0,
+  "excluded": [
+    "offline-work: disposable symlink install/build products; logs retained separately"
+  ],
+  "old_campaign_reverified": true,
+  "mechanism_confirmed": false,
+  "production_changed": false
+}

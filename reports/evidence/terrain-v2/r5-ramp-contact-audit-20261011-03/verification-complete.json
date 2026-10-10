@@ -1,0 +1,60 @@
+{
+  "input_hashes_after": {
+    "ros2_ws\\src\\mooncar_gazebo\\models\\terrain_v2\\ramp\\regolith_passable.obj": true,
+    "scripts\\r5_origin_analysis.py": true,
+    "reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\03-pure_turn-flat-1000us-left-1\\result.json": true,
+    "reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\03-pure_turn-flat-1000us-left-1\\world.sdf": true,
+    "reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\03-pure_turn-flat-1000us-left-1\\physics-steps.csv": true,
+    "reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\03-pure_turn-flat-1000us-left-1\\03-pure_turn-flat-1000us-left-1-contact-steps.csv": true,
+    "reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\14-pure_turn-ramp-1000us-left\\result.json": true,
+    "reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\14-pure_turn-ramp-1000us-left\\world.sdf": true,
+    "reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\14-pure_turn-ramp-1000us-left\\physics-steps.csv": true,
+    "reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\14-pure_turn-ramp-1000us-left\\14-pure_turn-ramp-1000us-left-contact-steps.csv": true
+  },
+  "original_files_count": 465,
+  "original_file_failures": [],
+  "previous_archive_files": 2183,
+  "previous_archive_failures": [],
+  "containers": {
+    "mooncar-terrain-validation": {
+      "id": "3186e022e013a682ebebb7e1089bfb1e0a842387ceaa65e9169a16d4133abd94",
+      "running": false,
+      "status": "exited",
+      "oom": false
+    },
+    "mooncar-r5-turn-gate-validation-20261011": {
+      "id": "26333f7347b7f126db00824a7f9752702de349177818b96b86c8722beb5d10f5",
+      "running": false,
+      "status": "exited",
+      "oom": false
+    }
+  },
+  "workbench_same_identity": true,
+  "workbench_state_same": true,
+  "workbench_config_same": true,
+  "offline_containers_remaining": [],
+  "new_simulations": 0,
+  "checks": {
+    "software_counts": [
+      7,
+      10,
+      129,
+      351
+    ],
+    "software_total": 497,
+    "software_passed": true,
+    "python_files": 222,
+    "python_failures": [],
+    "frontend_syntax_files": 5,
+    "frontend_syntax_failures": [],
+    "frontend_tests_passed": true,
+    "firmware_strict_c11_ubsan": true,
+    "sdf_checks": {
+      "plate": true,
+      "coplanar_mesh": true,
+      "mirrored_mesh": true
+    },
+    "passed": true
+  },
+  "passed": true
+}

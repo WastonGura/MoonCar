@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "D:\Documents\Projects\Repositories\MoonCar-mapping\scripts\audit_r5_ramp_contact.py", line 242, in <module>
+    a = p.parse_args(); run(a.root, a.evidence, a.output)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Documents\Projects\Repositories\MoonCar-mapping\scripts\audit_r5_ramp_contact.py", line 188, in run
+    raise ValueError('Transformed plate link/collision unsupported')
+ValueError: Transformed plate link/collision unsupported

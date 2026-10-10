@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\Documents\Projects\Repositories\MoonCar-mapping\reports\evidence\terrain-v2\r5-ramp-contact-audit-20261011-03\archive_offline.py", line 29, in <module>
+    if not path.is_file() or 'offline-work' in path.relative_to(p).parts or path.name=='archive-manifest.json':continue
+           ^^^^^^^^^^^^^^
+  File "C:\Users\jiker\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 892, in is_file
+    return S_ISREG(self.stat().st_mode)
+                   ^^^^^^^^^^^
+  File "C:\Users\jiker\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 840, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [WinError 1920] The file cannot be accessed by the system: 'D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-ramp-contact-audit-20261011-03\\offline-work\\install\\mooncar_gazebo\\share\\ament_index\\resource_index\\package_run_dependencies\\mooncar_gazebo'
