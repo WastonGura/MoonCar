@@ -1,0 +1,8 @@
+test_real_ros_preflight (test_image_dds_boundary.BoundaryTests.test_real_ros_preflight) ... ok
+test_real_expanded_models_declare_the_expected_streams (test_image_dds_capabilities.CapabilityTests.test_real_expanded_models_declare_the_expected_streams) ... ok
+test_actual_models_preflight_evidence (test_image_dds_revalidation.RevalidationTests.test_actual_models_preflight_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.016s
+
+OK

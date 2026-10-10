@@ -1,0 +1,8 @@
+{
+  "prior_turn_classification": "progress",
+  "prior_evidence": "r5-turn-control-20261010: four qualified Gazebo runs rejected load dither",
+  "current_scope": "Read-only source/force/controllability audit; proposal only; no new Gazebo or physical change",
+  "goal_achieved": false,
+  "simulation_attempts": 0,
+  "physical_changes_authorized": false
+}

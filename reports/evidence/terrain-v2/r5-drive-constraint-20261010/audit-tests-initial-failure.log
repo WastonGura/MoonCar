@@ -1,0 +1,32 @@
+test_actual_frozen_model_is_read_only (test_drive_constraint_audit.DriveConstraintAuditTests.test_actual_frozen_model_is_read_only) ... ERROR
+test_constant_longitudinal_control_does_not_remove_anchor_radius (test_drive_constraint_audit.DriveConstraintAuditTests.test_constant_longitudinal_control_does_not_remove_anchor_radius) ... ok
+test_existing_slip_plugin_not_silently_overwritten (test_drive_constraint_audit.DriveConstraintAuditTests.test_existing_slip_plugin_not_silently_overwritten) ... ok
+test_invalid_force_and_geometry_fail (test_drive_constraint_audit.DriveConstraintAuditTests.test_invalid_force_and_geometry_fail) ... ok
+test_mass_shift_loads_and_weight_conservation (test_drive_constraint_audit.DriveConstraintAuditTests.test_mass_shift_loads_and_weight_conservation) ... ok
+test_proposal_does_not_mutate_model_or_drop_existing_plugins (test_drive_constraint_audit.DriveConstraintAuditTests.test_proposal_does_not_mutate_model_or_drop_existing_plugins) ... FAIL
+test_speed_dependent_proposal_restores_static_compliance (test_drive_constraint_audit.DriveConstraintAuditTests.test_speed_dependent_proposal_restores_static_compliance) ... ok
+
+======================================================================
+ERROR: test_actual_frozen_model_is_read_only (test_drive_constraint_audit.DriveConstraintAuditTests.test_actual_frozen_model_is_read_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Documents\Projects\Repositories\MoonCar-mapping\ros2_ws\src\mooncar_gazebo\tests\test_drive_constraint_audit.py", line 52, in test_actual_frozen_model_is_read_only
+    before=model.read_bytes();audit,_=model_audit(model)
+                                      ^^^^^^^^^^^^^^^^^^
+  File "D:\Documents\Projects\Repositories\MoonCar-mapping\scripts\audit_r5_drive_constraints.py", line 80, in model_audit
+    mass_parts, _ = read_sdf(root); combined = aggregate(mass_parts)
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+
+======================================================================
+FAIL: test_proposal_does_not_mutate_model_or_drop_existing_plugins (test_drive_constraint_audit.DriveConstraintAuditTests.test_proposal_does_not_mutate_model_or_drop_existing_plugins)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Documents\Projects\Repositories\MoonCar-mapping\ros2_ws\src\mooncar_gazebo\tests\test_drive_constraint_audit.py", line 43, in test_proposal_does_not_mutate_model_or_drop_existing_plugins
+    self.assertFalse(any(line.startswith('-') and 'gain' in line for line in patch.splitlines()))
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.025s
+
+FAILED (failures=1, errors=1)

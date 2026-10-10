@@ -1,0 +1,218 @@
+{
+  "model_sha256": "7190fec8a878724a4b5096b6cae0d5492d5e968c485948d8d93241375c4e5aca",
+  "combined": {
+    "total_mass_kg": 9.186,
+    "com_m": [
+      -0.006237889179185711,
+      0.0,
+      0.1279833170041367
+    ],
+    "inertia_kg_m2": [
+      [
+        0.09624401045999759,
+        0.0,
+        0.0046113984565167125
+      ],
+      [
+        0.0,
+        0.12038050294600211,
+        0.0
+      ],
+      [
+        0.0046113984565167125,
+        0.0,
+        0.16624531895267117
+      ]
+    ]
+  },
+  "wheels": {
+    "front_left": {
+      "mu": 0.2,
+      "mu2": 0.85,
+      "slip1": 0.0,
+      "slip2": 0.0,
+      "explicit_slip1": false,
+      "first_friction_axis": "collision Z = body -Y, parallel to spin axis"
+    },
+    "front_right": {
+      "mu": 0.2,
+      "mu2": 0.85,
+      "slip1": 0.0,
+      "slip2": 0.0,
+      "explicit_slip1": false,
+      "first_friction_axis": "collision Z = body -Y, parallel to spin axis"
+    },
+    "rear_left": {
+      "mu": 0.2,
+      "mu2": 0.85,
+      "slip1": 0.0,
+      "slip2": 0.0,
+      "explicit_slip1": false,
+      "first_friction_axis": "collision Z = body -Y, parallel to spin axis"
+    },
+    "rear_right": {
+      "mu": 0.2,
+      "mu2": 0.85,
+      "slip1": 0.0,
+      "slip2": 0.0,
+      "explicit_slip1": false,
+      "first_friction_axis": "collision Z = body -Y, parallel to spin axis"
+    }
+  },
+  "wheel_positions_m": {
+    "front_left": [
+      0.157,
+      0.16555,
+      0.076
+    ],
+    "front_right": [
+      0.157,
+      -0.16555,
+      0.076
+    ],
+    "rear_left": [
+      -0.157,
+      0.16555,
+      0.076
+    ],
+    "rear_right": [
+      -0.157,
+      -0.16555,
+      0.076
+    ]
+  },
+  "wheel_radius_m": 0.076,
+  "track_m": 0.3311,
+  "axle_half_spacing_m": 0.157,
+  "static_loads_N": {
+    "front": 7.145029347133758,
+    "rear": 7.736290652866242
+  },
+  "constant_zero_vx_rear_anchored_half_turn_displacement_m": 0.314,
+  "proposal": {
+    "status": "proposal_only_not_applied",
+    "physics_change_requires_approval": true,
+    "mechanism": "Speed-dependent lateral force-dependent slip; zero rolling speed restores zero compliance",
+    "parameters": {
+      "front_left": {
+        "slip_compliance_lateral": 10.0,
+        "slip_compliance_longitudinal": 0.0,
+        "wheel_normal_force": 3.572514673566879,
+        "wheel_radius": 0.076
+      },
+      "front_right": {
+        "slip_compliance_lateral": 10.0,
+        "slip_compliance_longitudinal": 0.0,
+        "wheel_normal_force": 3.572514673566879,
+        "wheel_radius": 0.076
+      },
+      "rear_left": {
+        "slip_compliance_lateral": 10.0,
+        "slip_compliance_longitudinal": 0.0,
+        "wheel_normal_force": 3.868145326433121,
+        "wheel_radius": 0.076
+      },
+      "rear_right": {
+        "slip_compliance_lateral": 10.0,
+        "slip_compliance_longitudinal": 0.0,
+        "wheel_normal_force": 3.868145326433121,
+        "wheel_radius": 0.076
+      }
+    },
+    "engineering_assumption": true,
+    "hardware_calibrated": false,
+    "changed_vehicle_fields": 0,
+    "added_systems": 1
+  },
+  "proposal_prediction": {
+    "status": "conditional_analytic_prediction_not_a_Gazebo_result",
+    "assumptions": "Flat symmetric wheel geometry; unsaturated linear slip; equal absolute wheel speeds; negligible other lateral forces",
+    "icr_body_x_m": -0.006237889179185711,
+    "maximum_center_offset_for_half_turn_m": 0.012475778358371423,
+    "nominal_force_ratio": 0.09483539716097855,
+    "saturation_limit": 0.2,
+    "caution": "Predicted residual is nonzero; transient motion, slopes and step consistency still require actual validation"
+  },
+  "rounds": [
+    {
+      "round": "reports\\evidence\\terrain-v2\\r5-turn-control-20261010\\campaign\\01-baseline-left",
+      "physical_csv_sha256": "380838f8505459b841ab636dd4a2d9498a840397dbff70d91abb64600da0f9a8",
+      "forces": {
+        "front_left": {
+          "force_series_sha256": "82d43a3d4d6139532c9d566e53fd67fed8e3d99310aa086369a8d557ca9763fd",
+          "mean_lateral_force_N": -0.714296621642734,
+          "mean_normal_load_N": 3.5808140851955987,
+          "absolute_force_normal_ratio": 0.199478834881682,
+          "lateral_slip_rms_m_s": 0.05456573542423277
+        },
+        "front_right": {
+          "force_series_sha256": "5a45db3997c90e140f3ab9b3edadc81b9e0913968ae95693e45ddb2e23a6709c",
+          "mean_lateral_force_N": -0.7146169082480203,
+          "mean_normal_load_N": 3.5808146245336157,
+          "absolute_force_normal_ratio": 0.19956825001548237,
+          "lateral_slip_rms_m_s": 0.05455573863882049
+        },
+        "rear_left": {
+          "force_series_sha256": "06bd2949eeceea46c68aa05892016ad769bac77e018e3d769b37bdca94e797cc",
+          "mean_lateral_force_N": 0.7146455458537339,
+          "mean_normal_load_N": 3.8598453869772493,
+          "absolute_force_normal_ratio": 0.18514874929054928,
+          "lateral_slip_rms_m_s": 4.996131401573139e-06
+        },
+        "rear_right": {
+          "force_series_sha256": "7e9c9cb4fb2b8ff09f283f9d8ee4409ae557c9c60a16de3f38d080eed974ff1a",
+          "mean_lateral_force_N": 0.714279033613421,
+          "mean_normal_load_N": 3.859845903293541,
+          "absolute_force_normal_ratio": 0.18505376937559578,
+          "lateral_slip_rms_m_s": 5.0006540105770785e-06
+        }
+      },
+      "raw_motion": 3.4577434742897903,
+      "reported_maximum_displacement_m": 0.3131430755668963,
+      "maximum_wheel_tracking_error_rad_s": 8.92088625192855e-11,
+      "qualification_result_sha256": "0d75b8050887985e44d6e8f66458679b6b6143f9cb39663a3d533b850f4f67ae"
+    },
+    {
+      "round": "reports\\evidence\\terrain-v2\\r5-turn-control-20261010\\campaign\\02-baseline-right",
+      "physical_csv_sha256": "3202e589b9e140a0813de72765c9fb7d9fee4722eaa9bf97e500734e54ee42e0",
+      "forces": {
+        "front_left": {
+          "force_series_sha256": "50ba2159a41b4d13d62fdabf0e8d4b55a4096406c5ddf659208010ff74d03840",
+          "mean_lateral_force_N": 0.7146170824118474,
+          "mean_normal_load_N": 3.580815495017576,
+          "absolute_force_normal_ratio": 0.19956825013915994,
+          "lateral_slip_rms_m_s": 0.054555738638868395
+        },
+        "front_right": {
+          "force_series_sha256": "7d2f27b274af66ae57cb95ea3abf80edfbf7900bc86ab2352158a025a9975101",
+          "mean_lateral_force_N": 0.7142964474456923,
+          "mean_normal_load_N": 3.5808132147087077,
+          "absolute_force_normal_ratio": 0.19947883472715539,
+          "lateral_slip_rms_m_s": 0.054565735424280636
+        },
+        "rear_left": {
+          "force_series_sha256": "34cf6e98c0d35125b87fb204af50e326ed26456a94eba139f407d116585b5ce9",
+          "mean_lateral_force_N": -0.7142784932525467,
+          "mean_normal_load_N": 3.8598468973792945,
+          "absolute_force_normal_ratio": 0.18505358172043498,
+          "lateral_slip_rms_m_s": 5.000654007892341e-06
+        },
+        "rear_right": {
+          "force_series_sha256": "e4a17713cd0778189fa739d3588077fbc54afd9ff0d0297870d21e7dca30c5e0",
+          "mean_lateral_force_N": -0.7146460861816061,
+          "mean_normal_load_N": 3.8598443928944253,
+          "absolute_force_normal_ratio": 0.18514893696160284,
+          "lateral_slip_rms_m_s": 4.9961314043337e-06
+        }
+      },
+      "raw_motion": -3.457743474295003,
+      "reported_maximum_displacement_m": 0.3131430755202439,
+      "maximum_wheel_tracking_error_rad_s": 8.920825189662196e-11,
+      "qualification_result_sha256": "4f29e907697ddaf41efe25c1c361dbdef7089e81cfb6e607e9d5c05435461211"
+    }
+  ],
+  "simulation_attempts": 0,
+  "model_changed": false,
+  "goal_achieved": false,
+  "all_control_only_methods_ruled_out": false
+}

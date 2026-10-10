@@ -1,0 +1,1954 @@
+[
+  {
+    "name": "01-baseline-zero",
+    "qualified": true,
+    "profile": "baseline",
+    "linear": 0.0,
+    "angular": 0.0,
+    "trajectory": {
+      "endpoint_displacement_m": 1.9925926832545446e-14,
+      "maximum_displacement_m": 1.9925926832545446e-14,
+      "path_length_m": 1.9925926832545446e-14,
+      "unwrapped_turn_rad": 2.3524362575181506e-18,
+      "circle_fit": null,
+      "instantaneous_center_samples": 0,
+      "instantaneous_center_median_world_m": null,
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": null,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 8.43797545988538e-15,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 8.437975459885388e-15,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 8.437975459885342e-15,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 8.43797545988535e-15,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "front_right": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_right": {
+          "passed": true,
+          "component_absent": true
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 141.2340350151062,
+    "performance": {
+      "realtime_factor": 0.5859564582664294,
+      "cpu_core_mean": 3.6574832033519984,
+      "cpu_core_max": 4.068397032664813,
+      "memory_peak_bytes": 2022895616
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279791796988e-14,
+      "yaw_change_rad": 6.1725337802671845e-21,
+      "max_tilt_rad": 5.929101754818144e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829758936693e-14,
+          -2.2292475084548473e-20,
+          -1.4318643101722555e-05
+        ],
+        "rpy": [
+          5.835735538296228e-16,
+          -4.913731648795233e-11,
+          2.9609561321074783e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2045003286029308e-15,
+          -2.352687543552149e-20,
+          -8.595923225038078e-07
+        ],
+        "rpy": [
+          8.122393874345804e-15,
+          -3.459716545743697e-11,
+          3.4369247235413e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 502,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.0519999999999996,
+    "error": null
+  },
+  {
+    "name": "02-baseline-straight",
+    "qualified": true,
+    "profile": "baseline",
+    "linear": 0.1,
+    "angular": 0.0,
+    "trajectory": {
+      "endpoint_displacement_m": 1.9899499938251801,
+      "maximum_displacement_m": 1.9899499938251801,
+      "path_length_m": 1.9899499938251801,
+      "unwrapped_turn_rad": -7.472817469352371e-15,
+      "circle_fit": null,
+      "instantaneous_center_samples": 0,
+      "instantaneous_center_median_world_m": null,
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": null,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 1.9309393125102893e-14,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 1.890913255816583e-14,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 1.8416645290014075e-14,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 1.8313189461409117e-14,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "front_right": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_right": {
+          "passed": true,
+          "component_absent": true
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 147.18766379356384,
+    "performance": {
+      "realtime_factor": 0.5788354282786297,
+      "cpu_core_mean": 3.6728131092416527,
+      "cpu_core_max": 4.028304535329383,
+      "memory_peak_bytes": 2124902400
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279791796988e-14,
+      "yaw_change_rad": 6.1725337802671845e-21,
+      "max_tilt_rad": 5.929101754818144e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829758936693e-14,
+          -2.2292475084548473e-20,
+          -1.4318643101722555e-05
+        ],
+        "rpy": [
+          5.835735538296228e-16,
+          -4.913731648795233e-11,
+          2.9609561321074783e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2045003286029308e-15,
+          -2.352687543552149e-20,
+          -8.595923225038078e-07
+        ],
+        "rpy": [
+          8.122393874345804e-15,
+          -3.459716545743697e-11,
+          3.4369247235413e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 502,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.053000000000000824,
+    "error": null
+  },
+  {
+    "name": "03-baseline-left",
+    "qualified": true,
+    "profile": "baseline",
+    "linear": 0.0,
+    "angular": 0.2,
+    "trajectory": {
+      "endpoint_displacement_m": 0.31209996351986474,
+      "maximum_displacement_m": 0.3131430755668963,
+      "path_length_m": 0.5188652828677199,
+      "unwrapped_turn_rad": 3.4577434742897903,
+      "circle_fit": {
+        "center_world_m": [
+          -0.1544091898411382,
+          -0.02362048949028958
+        ],
+        "radius_m": 0.15687909307678524,
+        "radial_residual_rms_m": 0.00011907612221475832
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.15432446308340628,
+        -0.023761803345750385
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -0.15699998856797684,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.05456573542423277,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.054555738638820496,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 4.996131401573138e-06,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 5.0006540105770785e-06,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "front_right": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_right": {
+          "passed": true,
+          "component_absent": true
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 155.26644349098206,
+    "performance": {
+      "realtime_factor": 0.4923224325581821,
+      "cpu_core_mean": 3.714816133663458,
+      "cpu_core_max": 4.050457667343338,
+      "memory_peak_bytes": 2196176896
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279791796988e-14,
+      "yaw_change_rad": 6.1725337802671845e-21,
+      "max_tilt_rad": 5.929101754818144e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829758936693e-14,
+          -2.2292475084548473e-20,
+          -1.4318643101722555e-05
+        ],
+        "rpy": [
+          5.835735538296228e-16,
+          -4.913731648795233e-11,
+          2.9609561321074783e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2045003286029308e-15,
+          -2.352687543552149e-20,
+          -8.595923225038078e-07
+        ],
+        "rpy": [
+          8.122393874345804e-15,
+          -3.459716545743697e-11,
+          3.4369247235413e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 513,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.05300000000000038,
+    "error": null
+  },
+  {
+    "name": "04-baseline-right",
+    "qualified": true,
+    "profile": "baseline",
+    "linear": 0.0,
+    "angular": -0.2,
+    "trajectory": {
+      "endpoint_displacement_m": 0.31209996348222024,
+      "maximum_displacement_m": 0.3131430755202439,
+      "path_length_m": 0.5188652828717464,
+      "unwrapped_turn_rad": -3.457743474295003,
+      "circle_fit": {
+        "center_world_m": [
+          -0.1544091898567532,
+          0.023620489395159826
+        ],
+        "radius_m": 0.15687909302438885,
+        "radial_residual_rms_m": 0.00011907611002090024
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.15432446313170345,
+        0.02376180327129046
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -0.15699998856802336,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.054555738638868395,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.05456573542428063,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 5.000654007892341e-06,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 4.9961314043337e-06,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "front_right": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_right": {
+          "passed": true,
+          "component_absent": true
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 149.24397683143616,
+    "performance": {
+      "realtime_factor": 0.5374235971997354,
+      "cpu_core_mean": 3.6976414354953735,
+      "cpu_core_max": 4.061241202562571,
+      "memory_peak_bytes": 2270990336
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279791796988e-14,
+      "yaw_change_rad": 6.1725337802671845e-21,
+      "max_tilt_rad": 5.929101754818144e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829758936693e-14,
+          -2.2292475084548473e-20,
+          -1.4318643101722555e-05
+        ],
+        "rpy": [
+          5.835735538296228e-16,
+          -4.913731648795233e-11,
+          2.9609561321074783e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2045003286029308e-15,
+          -2.352687543552149e-20,
+          -8.595923225038078e-07
+        ],
+        "rpy": [
+          8.122393874345804e-15,
+          -3.459716545743697e-11,
+          3.4369247235413e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 516,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.05200000000000049,
+    "error": null
+  },
+  {
+    "name": "05-candidate-zero",
+    "qualified": true,
+    "profile": "candidate",
+    "linear": 0.0,
+    "angular": 0.0,
+    "trajectory": {
+      "endpoint_displacement_m": 1.9925941388820196e-14,
+      "maximum_displacement_m": 1.9925941388820196e-14,
+      "path_length_m": 1.9925941388820196e-14,
+      "unwrapped_turn_rad": 2.334697826400027e-18,
+      "circle_fit": null,
+      "instantaneous_center_samples": 0,
+      "instantaneous_center_median_world_m": null,
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": null,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 8.43797545988538e-15,
+          "force_compliance_residual_rms_m_s": 8.437975459885353e-15,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 8.437975459885388e-15,
+          "force_compliance_residual_rms_m_s": 8.437975459885352e-15,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 8.437975459885342e-15,
+          "force_compliance_residual_rms_m_s": 8.437975459885342e-15,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 8.43797545988535e-15,
+          "force_compliance_residual_rms_m_s": 8.43797545988535e-15,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 0
+        },
+        "front_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 0
+        },
+        "rear_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 0
+        },
+        "rear_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 0
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 149.80800771713257,
+    "performance": {
+      "realtime_factor": 0.5368843978913964,
+      "cpu_core_mean": 3.6879648116101893,
+      "cpu_core_max": 4.079803407445074,
+      "memory_peak_bytes": 2349461504
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 508,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.05100000000000193,
+    "error": null
+  },
+  {
+    "name": "06-candidate-straight",
+    "qualified": true,
+    "profile": "candidate",
+    "linear": 0.1,
+    "angular": 0.0,
+    "trajectory": {
+      "endpoint_displacement_m": 1.9899499938251801,
+      "maximum_displacement_m": 1.9899499938251801,
+      "path_length_m": 1.9899499938251801,
+      "unwrapped_turn_rad": -8.906053252546349e-14,
+      "circle_fit": null,
+      "instantaneous_center_samples": 0,
+      "instantaneous_center_median_world_m": null,
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": null,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 2.749736684039233e-14,
+          "force_compliance_residual_rms_m_s": 2.517061997720364e-14,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 2.7487207686071546e-14,
+          "force_compliance_residual_rms_m_s": 2.518399224303459e-14,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 3.000567182801447e-14,
+          "force_compliance_residual_rms_m_s": 2.5254249198776238e-14,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 3.008306059117931e-14,
+          "force_compliance_residual_rms_m_s": 2.534127325870621e-14,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "front_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "rear_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "rear_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 150.2309286594391,
+    "performance": {
+      "realtime_factor": 0.5435208572068079,
+      "cpu_core_mean": 3.703077374486873,
+      "cpu_core_max": 4.0871017311277145,
+      "memory_peak_bytes": 2436657152
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 509,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.052000000000000046,
+    "error": null
+  },
+  {
+    "name": "07-candidate-left-1",
+    "qualified": true,
+    "profile": "candidate",
+    "linear": 0.0,
+    "angular": 0.2,
+    "trajectory": {
+      "endpoint_displacement_m": 0.012320179365589778,
+      "maximum_displacement_m": 0.012475743704121245,
+      "path_length_m": 0.021569066145955267,
+      "unwrapped_turn_rad": 3.4577453784083594,
+      "circle_fit": {
+        "center_world_m": [
+          -0.0062378737987225765,
+          6.424980644329286e-07
+        ],
+        "radius_m": 0.006237869919200312,
+        "radial_residual_rms_m": 2.597424158740757e-10
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.00623787391602168,
+        6.426917232883744e-07
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -0.006237869717895932,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028369277684890417,
+          "force_compliance_residual_rms_m_s": 1.4430063333100416e-05,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.02835928088859675,
+          "force_compliance_residual_rms_m_s": 1.442879553549394e-05,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.026191491302152262,
+          "force_compliance_residual_rms_m_s": 1.570202318411174e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.026201488098445816,
+          "force_compliance_residual_rms_m_s": 1.5703382647665925e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "front_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "rear_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "rear_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 150.70900344848633,
+    "performance": {
+      "realtime_factor": 0.5313113379163683,
+      "cpu_core_mean": 3.678827392627416,
+      "cpu_core_max": 4.070742594833489,
+      "memory_peak_bytes": 2507227136
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 501,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.04999999999999999,
+    "error": null
+  },
+  {
+    "name": "08-candidate-right-1",
+    "qualified": true,
+    "profile": "candidate",
+    "linear": 0.0,
+    "angular": -0.2,
+    "trajectory": {
+      "endpoint_displacement_m": 0.012320179329163704,
+      "maximum_displacement_m": 0.012475743655439478,
+      "path_length_m": 0.021569066144905853,
+      "unwrapped_turn_rad": -3.457745378408388,
+      "circle_fit": {
+        "center_world_m": [
+          -0.006237873811188012,
+          -6.425841287816978e-07
+        ],
+        "radius_m": 0.006237869870016695,
+        "radial_residual_rms_m": 2.6640398298202724e-10
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.0062378738907830685,
+        -6.427489376002217e-07
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -0.006237869717099778,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028359280888546026,
+          "force_compliance_residual_rms_m_s": 1.4428801727689992e-05,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.02836927768483975,
+          "force_compliance_residual_rms_m_s": 1.4430072666439195e-05,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.026201488098495276,
+          "force_compliance_residual_rms_m_s": 1.57033770263878e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.026191491302201633,
+          "force_compliance_residual_rms_m_s": 1.5702014466118502e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "front_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "rear_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "rear_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 150.77340960502625,
+    "performance": {
+      "realtime_factor": 0.535494453185798,
+      "cpu_core_mean": 3.6935554810522264,
+      "cpu_core_max": 4.060614123960179,
+      "memory_peak_bytes": 2595131392
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 520,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.052000000000000046,
+    "error": null
+  },
+  {
+    "name": "09-candidate-left-2",
+    "qualified": true,
+    "profile": "candidate",
+    "linear": 0.0,
+    "angular": 0.2,
+    "trajectory": {
+      "endpoint_displacement_m": 0.012320179365589778,
+      "maximum_displacement_m": 0.012475743704121245,
+      "path_length_m": 0.021569066145955267,
+      "unwrapped_turn_rad": 3.4577453784083594,
+      "circle_fit": {
+        "center_world_m": [
+          -0.0062378737987225765,
+          6.424980644329286e-07
+        ],
+        "radius_m": 0.006237869919200312,
+        "radial_residual_rms_m": 2.597424158740757e-10
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.00623787391602168,
+        6.426917232883744e-07
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -0.006237869717895932,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028369277684890417,
+          "force_compliance_residual_rms_m_s": 1.4430063333100416e-05,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.02835928088859675,
+          "force_compliance_residual_rms_m_s": 1.442879553549394e-05,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.026191491302152262,
+          "force_compliance_residual_rms_m_s": 1.570202318411174e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.026201488098445816,
+          "force_compliance_residual_rms_m_s": 1.5703382647665925e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "front_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "rear_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "rear_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 150.28272366523743,
+    "performance": {
+      "realtime_factor": 0.5336599652720068,
+      "cpu_core_mean": 3.70313140303322,
+      "cpu_core_max": 4.066525876490558,
+      "memory_peak_bytes": 2669203456
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 515,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.052999999999999936,
+    "error": null
+  },
+  {
+    "name": "10-candidate-right-2",
+    "qualified": true,
+    "profile": "candidate",
+    "linear": 0.0,
+    "angular": -0.2,
+    "trajectory": {
+      "endpoint_displacement_m": 0.012320179329163704,
+      "maximum_displacement_m": 0.012475743655439478,
+      "path_length_m": 0.021569066144905853,
+      "unwrapped_turn_rad": -3.457745378408388,
+      "circle_fit": {
+        "center_world_m": [
+          -0.006237873811188012,
+          -6.425841287816978e-07
+        ],
+        "radius_m": 0.006237869870016695,
+        "radial_residual_rms_m": 2.6640398298202724e-10
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.0062378738907830685,
+        -6.427489376002217e-07
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -0.006237869717099778,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028359280888546026,
+          "force_compliance_residual_rms_m_s": 1.4428801727689992e-05,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.02836927768483975,
+          "force_compliance_residual_rms_m_s": 1.4430072666439195e-05,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.026201488098495276,
+          "force_compliance_residual_rms_m_s": 1.57033770263878e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.026191491302201633,
+          "force_compliance_residual_rms_m_s": 1.5702014466118502e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "front_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "rear_left": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        },
+        "rear_right": {
+          "passed": true,
+          "maximum_formula_error": 0.0,
+          "nonzero_steps": 20199
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 133.19054412841797,
+    "performance": {
+      "realtime_factor": 0.62518638063357,
+      "cpu_core_mean": 3.6754305610381497,
+      "cpu_core_max": 4.04302605241399,
+      "memory_peak_bytes": 2762833920
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 507,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.053000000000000824,
+    "error": null
+  },
+  {
+    "name": "11-restore-left",
+    "qualified": true,
+    "profile": "restore",
+    "linear": 0.0,
+    "angular": 0.2,
+    "trajectory": {
+      "endpoint_displacement_m": 0.31209996351986474,
+      "maximum_displacement_m": 0.3131430755668963,
+      "path_length_m": 0.5188652828677199,
+      "unwrapped_turn_rad": 3.4577434742897903,
+      "circle_fit": {
+        "center_world_m": [
+          -0.1544091898411382,
+          -0.02362048949028958
+        ],
+        "radius_m": 0.15687909307678524,
+        "radial_residual_rms_m": 0.00011907612221475832
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.15432446308340628,
+        -0.023761803345750385
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -0.15699998856797684,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.05456573542423277,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.054555738638820496,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 4.996131401573138e-06,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 5.0006540105770785e-06,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "front_right": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_right": {
+          "passed": true,
+          "component_absent": true
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 130.20826768875122,
+    "performance": {
+      "realtime_factor": 0.6570360901693795,
+      "cpu_core_mean": 3.6244821130523217,
+      "cpu_core_max": 4.047392022501659,
+      "memory_peak_bytes": 2832052224
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279791796988e-14,
+      "yaw_change_rad": 6.1725337802671845e-21,
+      "max_tilt_rad": 5.929101754818144e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829758936693e-14,
+          -2.2292475084548473e-20,
+          -1.4318643101722555e-05
+        ],
+        "rpy": [
+          5.835735538296228e-16,
+          -4.913731648795233e-11,
+          2.9609561321074783e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2045003286029308e-15,
+          -2.352687543552149e-20,
+          -8.595923225038078e-07
+        ],
+        "rpy": [
+          8.122393874345804e-15,
+          -3.459716545743697e-11,
+          3.4369247235413e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 512,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.053000000000000824,
+    "error": null
+  },
+  {
+    "name": "12-restore-right",
+    "qualified": true,
+    "profile": "restore",
+    "linear": 0.0,
+    "angular": -0.2,
+    "trajectory": {
+      "endpoint_displacement_m": 0.31209996348222024,
+      "maximum_displacement_m": 0.3131430755202439,
+      "path_length_m": 0.5188652828717464,
+      "unwrapped_turn_rad": -3.457743474295003,
+      "circle_fit": {
+        "center_world_m": [
+          -0.1544091898567532,
+          0.023620489395159826
+        ],
+        "radius_m": 0.15687909302438885,
+        "radial_residual_rms_m": 0.00011907611002090024
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.15432446313170345,
+        0.02376180327129046
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -0.15699998856802336,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.054555738638868395,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.05456573542428063,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 5.000654007892341e-06,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 4.9961314043337e-06,
+          "force_compliance_residual_rms_m_s": null,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "slip_commands": {
+      "passed": true,
+      "wheels": {
+        "front_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "front_right": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_left": {
+          "passed": true,
+          "component_absent": true
+        },
+        "rear_right": {
+          "passed": true,
+          "component_absent": true
+        }
+      },
+      "meaning": "Read-only command observation; backend effect requires independent contact relation"
+    },
+    "wall_seconds": 131.6543242931366,
+    "performance": {
+      "realtime_factor": 0.6589348591539782,
+      "cpu_core_mean": 3.6134629261613354,
+      "cpu_core_max": 4.038570613488591,
+      "memory_peak_bytes": 2907947008
+    },
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279791796988e-14,
+      "yaw_change_rad": 6.1725337802671845e-21,
+      "max_tilt_rad": 5.929101754818144e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829758936693e-14,
+          -2.2292475084548473e-20,
+          -1.4318643101722555e-05
+        ],
+        "rpy": [
+          5.835735538296228e-16,
+          -4.913731648795233e-11,
+          2.9609561321074783e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2045003286029308e-15,
+          -2.352687543552149e-20,
+          -8.595923225038078e-07
+        ],
+        "rpy": [
+          8.122393874345804e-15,
+          -3.459716545743697e-11,
+          3.4369247235413e-20
+        ]
+      }
+    },
+    "stop_drift_last_second_m": 0.0,
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 513,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.05300000000000016,
+    "error": null
+  }
+]

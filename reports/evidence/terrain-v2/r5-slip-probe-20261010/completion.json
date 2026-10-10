@@ -1,0 +1,42 @@
+{
+  "phase_complete": true,
+  "goal_achieved": false,
+  "large_turn_displacement_reduced": true,
+  "remaining_displacement_m": 0.012475743704121245,
+  "mechanism_confirmed": true,
+  "previous_one_cm_screen_passed": false,
+  "whole_vehicle_accepted": false,
+  "production_changed": false,
+  "simulation_attempts": 12,
+  "qualified_attempts": 12,
+  "software_unique_tests": 437,
+  "software_deferred_tests": 3,
+  "software_deferred_passed": 3,
+  "software_unresolved_skips": 0,
+  "software_passed": true,
+  "frontend_tests": 3,
+  "frontend_syntax_files": 5,
+  "frontend_passed": true,
+  "firmware_strict_c11_ubsan_passed": true,
+  "python_syntax": {
+    "python_files": 198,
+    "passed": true
+  },
+  "container_id": "61b8bde6566c28a8c3d66171c3a02061358246810a94992ba4f00ff7d0569716",
+  "container_stopped": true,
+  "container_exit_code": 137,
+  "original_workbench_unchanged": true,
+  "preservation": {
+    "checked_original_files": 419,
+    "changed_original_files": [],
+    "source_snapshot_files": 120,
+    "passed": true
+  },
+  "evidence_files": 1717,
+  "evidence_bytes_before_manifest": 2801656111,
+  "limits": [
+    "Flat world and 1 ms only",
+    "Engineering lateral compliance 10 is not hardware calibrated",
+    "No production release or complete vehicle acceptance"
+  ]
+}
