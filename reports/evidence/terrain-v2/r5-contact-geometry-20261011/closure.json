@@ -1,0 +1,24 @@
+{
+  "status": "stopped",
+  "attempts": 1,
+  "qualified": 0,
+  "failed": 1,
+  "not_run": 7,
+  "own_container_running": false,
+  "original_workbench_preserved": {
+    "Id": true,
+    "State": true,
+    "Config": true
+  },
+  "original_files_count": 465,
+  "original_file_changes": [],
+  "old_archive_files": 2183,
+  "old_archive_failures": [],
+  "frozen_source_files": 139,
+  "frozen_snapshot_failures": [],
+  "poststop_software_repair": true,
+  "new_simulations_after_repair": 0,
+  "regressions_passed": true,
+  "goal_achieved": false,
+  "passed": true
+}

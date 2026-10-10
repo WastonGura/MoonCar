@@ -1,0 +1,9 @@
+{
+  "status": "stopped",
+  "attempts": 1,
+  "limit": 8,
+  "production_changed": false,
+  "goal_achieved": false,
+  "reason": "RuntimeError('Diagnostic evidence/input failure; no rerun: 01-plate-left')",
+  "freeze_unchanged": true
+}

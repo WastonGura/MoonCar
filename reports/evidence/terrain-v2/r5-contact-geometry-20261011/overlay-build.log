@@ -1,0 +1,18 @@
+Starting >>> mooncar_control
+Starting >>> mooncar_description
+Starting >>> mooncar_terrain
+Starting >>> mooncar_msgs
+Finished <<< mooncar_msgs [1.49s]
+Finished <<< mooncar_control [1.66s]
+Starting >>> mooncar_bringup
+Finished <<< mooncar_terrain [1.76s]
+Finished <<< mooncar_description [1.85s]
+Starting >>> mooncar_gazebo
+Finished <<< mooncar_bringup [1.44s]
+Finished <<< mooncar_gazebo [2.83s]
+Starting >>> mooncar_slam
+Finished <<< mooncar_slam [1.30s]
+Starting >>> mooncar_navigation
+Finished <<< mooncar_navigation [1.45s]
+
+Summary: 8 packages finished [7.92s]

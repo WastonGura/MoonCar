@@ -1,0 +1,8 @@
+[ 50%] Building CXX object CMakeFiles/mooncar-contact-metadata.dir/ContactMetadata.cc.o
+/source/containers/r5_contact_metadata/ContactMetadata.cc:11:10: fatal error: gz/sim/components/PhysicsCollisionDetector.hh: No such file or directory
+   11 | #include <gz/sim/components/PhysicsCollisionDetector.hh>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/mooncar-contact-metadata.dir/build.make:76: CMakeFiles/mooncar-contact-metadata.dir/ContactMetadata.cc.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:83: CMakeFiles/mooncar-contact-metadata.dir/all] Error 2
+gmake: *** [Makefile:91: all] Error 2

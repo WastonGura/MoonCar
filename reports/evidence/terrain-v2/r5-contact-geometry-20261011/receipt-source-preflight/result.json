@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "first_incomplete": true,
+  "first_origin_observer_present": false,
+  "second_complete": true,
+  "second_origin_observer_present": true,
+  "simulated_startup_delay_wall_s": 0.7,
+  "new_gazebo_simulations": 0,
+  "no_ros_init": true,
+  "no_world": true
+}

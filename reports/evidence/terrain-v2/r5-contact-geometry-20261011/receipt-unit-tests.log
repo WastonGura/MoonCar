@@ -1,0 +1,9 @@
+test_bad_or_missing_pass_is_not_ready (test_readiness.ReceiptTests.test_bad_or_missing_pass_is_not_ready) ... ok
+test_incomplete_then_complete_preserves_both (test_readiness.ReceiptTests.test_incomplete_then_complete_preserves_both) ... ok
+test_missing_stays_missing (test_readiness.ReceiptTests.test_missing_stays_missing) ... ok
+test_overflow_and_changed_pid_fail (test_readiness.ReceiptTests.test_overflow_and_changed_pid_fail) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.008s
+
+OK

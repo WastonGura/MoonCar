@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "checks": {
+    "unchanged_resources": true,
+    "unchanged_libraries": true,
+    "unchanged_model": true,
+    "unchanged_runtime": true,
+    "unchanged_allocator_models": true,
+    "unchanged_allocator_library": true,
+    "unchanged_turn_models": true,
+    "unchanged_turn_library": true,
+    "unchanged_contact_library": true,
+    "qualification_replay_03-pure_turn-flat-1000us-left-1": true,
+    "qualification_replay_14-pure_turn-ramp-1000us-left": true,
+    "old_failure_not_relabelled": true,
+    "original_plate_top": true,
+    "identical_vehicle_coplanar_mesh": true,
+    "coplanar_height_coplanar_mesh": true,
+    "identical_vehicle_mirrored_mesh": true,
+    "coplanar_height_mirrored_mesh": true,
+    "startup_guard_hash": true,
+    "no_production_change": true
+  },
+  "new_simulations": 0,
+  "production_changed": false
+}

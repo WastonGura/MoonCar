@@ -1,0 +1,49 @@
+{
+  "template_sha256": "ca1ff264c89d0191e10797ac2f9e2bec534b9549da410bda9b27d03204d28024",
+  "profiles": {
+    "coplanar_mesh": {
+      "dimensions": {
+        "vertices": 102400,
+        "faces": 51200,
+        "extent_m": 40.0,
+        "cell_m": 0.25,
+        "local_height_m": 0.05
+      },
+      "mesh_sha256": "4c1d1949944c26e289754142ca666d4bd95a4cd2f5802e2ec634b29664b79162",
+      "world_sha256": "93b13081b1ca57894219a84ac54f08ccb3cb8eca6702dd0db610e6f885d45c91",
+      "upper_surface_world_z_m": 0.0
+    },
+    "mirrored_mesh": {
+      "dimensions": {
+        "vertices": 102400,
+        "faces": 51200,
+        "extent_m": 40.0,
+        "cell_m": 0.25,
+        "local_height_m": 0.05
+      },
+      "mesh_sha256": "0015e1dea2c3cfc3f513ee4bc61616a5eaf25ed5e66446a539d7f5bc8c3864fb",
+      "world_sha256": "8c6b4527bf97557363b5c0b9a348e8f7822203a4799826a539c2f4bd529058b1",
+      "upper_surface_world_z_m": 0.0
+    }
+  },
+  "plate_sha256": "ca1ff264c89d0191e10797ac2f9e2bec534b9549da410bda9b27d03204d28024",
+  "vehicle_xml_sha256": "ddf541b3c9530c8f9bcbb249e895bedb7f5721995872cfe1512626e56a5a5637",
+  "declared_differences": [
+    "Ground box volume versus open coplanar triangle mesh, same upper support surface",
+    "Diagonal orientation within the same quarter-metre grid"
+  ],
+  "unchanged": [
+    "vehicle",
+    "controls",
+    "sensors",
+    "friction",
+    "physics step",
+    "gravity",
+    "visual surface"
+  ],
+  "mirrored_is_not_parameter_search": true,
+  "executed": false,
+  "new_simulations": 0,
+  "scope": "Unrun test fixtures only; not a fix or accepted terrain resource",
+  "runtime_mount_requirement": "/evidence is the archived validated runtime read-only; /probe is a new independent run directory"
+}

@@ -1,0 +1,8 @@
+{
+  "answer": "允许这8次测试诊断",
+  "budget": 8,
+  "ground_collision_representation_only": true,
+  "geometric_screen_failure_is_recorded_and_not_alone_stop": true,
+  "no_rerun": true,
+  "production_changed": false
+}

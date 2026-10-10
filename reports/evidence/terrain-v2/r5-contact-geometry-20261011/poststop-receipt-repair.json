@@ -1,0 +1,8 @@
+{
+  "original_sha256": "19b2fe28d9b66054d73855f315a3eeb2946ecff86788a1fb5d85444a68face46",
+  "future_entry_sha256": "cce3ce40de1bbee4e9ac2792fed36c48266d4356712599535e27075923cc658a",
+  "applied_only_after_campaign_stopped": true,
+  "old_round_reclassified": false,
+  "new_simulations_after_repair": 0,
+  "requires_new_signature": true
+}

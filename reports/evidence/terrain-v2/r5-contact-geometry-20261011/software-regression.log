@@ -1,0 +1,587 @@
+test_clamping (test_pan_tilt_controller.PanTiltControllerTests.test_clamping) ... [INFO] [1791673071.698985200] [mooncar_pan_tilt_controller]: MoonCar Pan-Tilt Controller initialized.
+ok
+test_joint_state_tracking (test_pan_tilt_controller.PanTiltControllerTests.test_joint_state_tracking) ... [INFO] [1791673071.724529045] [mooncar_pan_tilt_controller]: MoonCar Pan-Tilt Controller initialized.
+ok
+test_smooth_interpolation (test_pan_tilt_controller.PanTiltControllerTests.test_smooth_interpolation) ... [INFO] [1791673071.750167722] [mooncar_pan_tilt_controller]: MoonCar Pan-Tilt Controller initialized.
+ok
+test_terrain_gate_and_invalid_command (test_safety_relay.RelayTests.test_terrain_gate_and_invalid_command) ... [INFO] [1791673071.791073261] [mooncar_cmd_vel_safety_relay]: Relaying /cmd_vel to /mooncar/cmd_vel_safe with timeout 0.50s
+ok
+test_real_c_core_over_virtual_uart (test_serial_protocol.ProtocolTests.test_real_c_core_over_virtual_uart) ... ok
+test_ros_bridge_arm_timeout_and_encoder_wrap (test_serial_protocol.ProtocolTests.test_ros_bridge_arm_timeout_and_encoder_wrap) ... ok
+test_stream_corruption_and_fragmentation (test_serial_protocol.ProtocolTests.test_stream_corruption_and_fragmentation) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 4.042s
+
+OK
+test_joint_rate_uses_message_time_and_resets (test_navigation_timeout.NavigationTimeoutTest.test_joint_rate_uses_message_time_and_resets) ... ok
+test_lifecycle_queries_are_limited_to_one_per_second (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_queries_are_limited_to_one_per_second) ... ok
+test_lifecycle_readiness_has_wall_deadline (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_readiness_has_wall_deadline) ... ok
+test_lifecycle_readiness_without_cli_polling (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_readiness_without_cli_polling) ... ok
+test_localization_quality_and_ground_truth (test_navigation_timeout.NavigationTimeoutTest.test_localization_quality_and_ground_truth) ... ok
+test_ros_timeout_cancels (test_navigation_timeout.NavigationTimeoutTest.test_ros_timeout_cancels) ... ok
+test_scan_self_filter_matches_navigation_footprint (test_navigation_timeout.NavigationTimeoutTest.test_scan_self_filter_matches_navigation_footprint) ... ok
+test_slow_simulation_can_finish_after_180_wall_seconds (test_navigation_timeout.NavigationTimeoutTest.test_slow_simulation_can_finish_after_180_wall_seconds) ... ok
+test_stopped_clock_cancels (test_navigation_timeout.NavigationTimeoutTest.test_stopped_clock_cancels) ... ok
+test_wall_limit_cancels_slow_clock (test_navigation_timeout.NavigationTimeoutTest.test_wall_limit_cancels_slow_clock) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.123s
+
+OK
+test_boundary_fallback_uses_known_free_goal_to_extend_online_map (test_autonomous_survey.SurveyTests.test_boundary_fallback_uses_known_free_goal_to_extend_online_map) ... ok
+test_budget_stop_and_sensor_fault_revoke_motion (test_autonomous_survey.SurveyTests.test_budget_stop_and_sensor_fault_revoke_motion) ... ok
+test_candidate_clearance_rejects_inscribed_cost (test_autonomous_survey.SurveyTests.test_candidate_clearance_rejects_inscribed_cost) ... ok
+test_candidate_is_rechecked_after_record_write (test_autonomous_survey.SurveyTests.test_candidate_is_rechecked_after_record_write) ... ok
+test_candidate_is_rechecked_against_budget_after_planning (test_autonomous_survey.SurveyTests.test_candidate_is_rechecked_against_budget_after_planning) ... ok
+test_candidate_visibility_budget_and_repeat_avoidance (test_autonomous_survey.SurveyTests.test_candidate_visibility_budget_and_repeat_avoidance) ... ok
+test_interrupted_action_is_retained_and_motion_revoked (test_autonomous_survey.SurveyTests.test_interrupted_action_is_retained_and_motion_revoked) ... ok
+test_mismatched_start_cannot_create_autonomous_mission (test_autonomous_survey.SurveyTests.test_mismatched_start_cannot_create_autonomous_mission) ... ok
+test_quality_saturates_and_archive_replays_it (test_autonomous_survey.SurveyTests.test_quality_saturates_and_archive_replays_it) ... ok
+test_slow_recording_initialization_does_not_block_start_or_issue_motion (test_autonomous_survey.SurveyTests.test_slow_recording_initialization_does_not_block_start_or_issue_motion) ... ok
+test_stalled_navigation_can_replan_but_other_cancellation_faults (test_autonomous_survey.SurveyTests.test_stalled_navigation_can_replan_but_other_cancellation_faults) ... ok
+test_strategy_objectives_and_surface_recovery_gate (test_autonomous_survey.SurveyTests.test_strategy_objectives_and_surface_recovery_gate) ... ok
+test_time_filtered_candidates_are_reported_as_budget_reached (test_autonomous_survey.SurveyTests.test_time_filtered_candidates_are_reported_as_budget_reached) ... ok
+test_transient_stale_pose_only_waits_when_motion_is_inactive (test_autonomous_survey.SurveyTests.test_transient_stale_pose_only_waits_when_motion_is_inactive) ... ok
+test_nearest_visible_faces_caps_rotation_and_misses (test_depth_projection_evaluation.RayTests.test_nearest_visible_faces_caps_rotation_and_misses) ... ok
+test_raw_roundtrip_and_absolute_hypotheses_after_producer_correction (test_depth_projection_evaluation.RayTests.test_raw_roundtrip_and_absolute_hypotheses_after_producer_correction) ... ok
+test_expired_browser_lease_withholds_motion_even_with_valid_pose (test_execution_safety.ExecutionSafetyTests.test_expired_browser_lease_withholds_motion_even_with_valid_pose) ... ok
+test_primitives_preserve_turns_and_reject_curves (test_execution_safety.ExecutionSafetyTests.test_primitives_preserve_turns_and_reject_curves) ... ok
+test_replan_confirms_cancellation_before_new_route (test_execution_safety.ExecutionSafetyTests.test_replan_confirms_cancellation_before_new_route) ... ok
+test_costmap_freshness_uses_simulation_time_with_wall_disconnect_guard (test_experiment_motion.MotionTests.test_costmap_freshness_uses_simulation_time_with_wall_disconnect_guard) ... ok
+test_diagnostics_retain_first_cancel_and_do_not_weaken_stop (test_experiment_motion.MotionTests.test_diagnostics_retain_first_cancel_and_do_not_weaken_stop) ... ok
+test_first_action_requires_planned_start (test_experiment_motion.MotionTests.test_first_action_requires_planned_start) ... ok
+test_gimbal_feedback_and_timeout (test_experiment_motion.MotionTests.test_gimbal_feedback_and_timeout) ... ok
+test_goal_id_is_recorded_and_late_failure_does_not_stop_new_goal (test_experiment_motion.MotionTests.test_goal_id_is_recorded_and_late_failure_does_not_stop_new_goal) ... ok
+test_goal_limits_feedback_and_simulation_timeout (test_experiment_motion.MotionTests.test_goal_limits_feedback_and_simulation_timeout) ... ok
+test_health_and_motion_stops (test_experiment_motion.MotionTests.test_health_and_motion_stops) ... ok
+test_no_progress_cancels_navigation_without_waiting_for_recoveries (test_experiment_motion.MotionTests.test_no_progress_cancels_navigation_without_waiting_for_recoveries) ... ok
+test_pan_tilt_validation_and_lifecycle (test_experiment_motion.MotionTests.test_pan_tilt_validation_and_lifecycle) ... ok
+test_path_updates_ignore_previous_goal_and_stopped_task (test_experiment_motion.MotionTests.test_path_updates_ignore_previous_goal_and_stopped_task) ... ok
+test_pose_accepts_configured_tf_future_tolerance_but_rejects_larger_skew (test_experiment_motion.MotionTests.test_pose_accepts_configured_tf_future_tolerance_but_rejects_larger_skew) ... ok
+test_refresh_tf_listener_replays_latched_static_transform (test_experiment_motion.MotionTests.test_refresh_tf_listener_replays_latched_static_transform) ... ok
+test_reset_replaces_static_tf_cache_and_action_clients (test_experiment_motion.MotionTests.test_reset_replaces_static_tf_cache_and_action_clients) ... ok
+test_simulation_clock_reset_clears_previous_experiment_transforms (test_experiment_motion.MotionTests.test_simulation_clock_reset_clears_previous_experiment_transforms) ... [WARN] [1791673101.771375635] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+ok
+test_turn_rejects_invalid_yaw_before_action (test_experiment_motion.MotionTests.test_turn_rejects_invalid_yaw_before_action) ... ok
+test_unanswered_goal_fails_before_exhausting_mission_budget (test_experiment_motion.MotionTests.test_unanswered_goal_fails_before_exhausting_mission_budget) ... ok
+test_v2_feedback_gap_resets_settling_window (test_experiment_motion.MotionTests.test_v2_feedback_gap_resets_settling_window) ... ok
+test_v2_invalid_position_breaks_pending_settle (test_experiment_motion.MotionTests.test_v2_invalid_position_breaks_pending_settle) ... ok
+test_v2_rejects_missing_fast_or_nonfinite_velocity (test_experiment_motion.MotionTests.test_v2_rejects_missing_fast_or_nonfinite_velocity) ... ok
+test_v2_requires_continuous_low_velocity_feedback (test_experiment_motion.MotionTests.test_v2_requires_continuous_low_velocity_feedback) ... ok
+test_v2_stale_feedback_cannot_complete_and_times_out (test_experiment_motion.MotionTests.test_v2_stale_feedback_cannot_complete_and_times_out) ... ok
+test_depth_padding_endian_units_and_invalid_input (test_geometry.GeometryTest.test_depth_padding_endian_units_and_invalid_input) ... ok
+test_depth_waits_for_synchronized_imu (test_geometry.GeometryTest.test_depth_waits_for_synchronized_imu) ... ok
+test_explicit_gazebo_pixel_centers_preserve_default_camera_convention (test_geometry.GeometryTest.test_explicit_gazebo_pixel_centers_preserve_default_camera_convention) ... ok
+test_flat_slope_roughness_step_and_pit (test_geometry.GeometryTest.test_flat_slope_roughness_step_and_pit) ... ok
+test_imu_attitude_corrects_planar_camera_about_robot (test_geometry.GeometryTest.test_imu_attitude_corrects_planar_camera_about_robot) ... ok
+test_imu_tilt_is_yaw_invariant_and_rejects_bad_orientation (test_geometry.GeometryTest.test_imu_tilt_is_yaw_invariant_and_rejects_bad_orientation) ... ok
+test_keepout_does_not_clear_unknown_and_respects_map_rotation (test_geometry.GeometryTest.test_keepout_does_not_clear_unknown_and_respects_map_rotation) ... ok
+test_keepout_extends_past_slam_map_boundary (test_geometry.GeometryTest.test_keepout_extends_past_slam_map_boundary) ... ok
+test_optical_transform (test_geometry.GeometryTest.test_optical_transform) ... ok
+test_scanline_is_unknown_not_a_vertical_obstacle (test_geometry.GeometryTest.test_scanline_is_unknown_not_a_vertical_obstacle) ... ok
+test_only_timestamp_matched_level_scans_reach_slam (test_level_scan_filter.LevelScanFilterTest.test_only_timestamp_matched_level_scans_reach_slam) ... ok
+test_known_maps_and_evidence (test_mapping_acceptance.AcceptanceTest.test_known_maps_and_evidence) ... ok
+test_real_input_adapter_guards (test_mapping_acceptance.AcceptanceTest.test_real_input_adapter_guards) ... ok
+test_runner_domain_is_checked_before_start (test_mapping_acceptance.AcceptanceTest.test_runner_domain_is_checked_before_start) ... ok
+test_strategy_runner_requests_required_acceptance_evidence (test_mapping_acceptance.AcceptanceTest.test_strategy_runner_requests_required_acceptance_evidence) ... ok
+test_combined_pan_tilt_with_terrain_imu_attitude (test_pan_tilt_transform.PanTiltTransformTest.test_combined_pan_tilt_with_terrain_imu_attitude)
+Under terrain tilt, correct_camera_pose preserves Euclidean distances and adds chassis tilt. ... ok
+test_gimbal_joint_limits (test_pan_tilt_transform.PanTiltTransformTest.test_gimbal_joint_limits)
+Full range of motion (+-135 deg pan, -35 to +15 deg tilt) remains valid without singular flips. ... ok
+test_pan_rotation_horizontal_projection (test_pan_tilt_transform.PanTiltTransformTest.test_pan_rotation_horizontal_projection)
+Rotating pan joint swings the optical forward projection horizontally. ... ok
+test_tilt_rotation_elevation_projection (test_pan_tilt_transform.PanTiltTransformTest.test_tilt_rotation_elevation_projection)
+Tilting camera downward angles the optical ray towards the ground. ... ok
+test_action_result_and_missing_costmap_failure (test_planner_action.PlannerActionTests.test_action_result_and_missing_costmap_failure) ... ok
+test_dijkstra_2_5d_terrain_cost_penalization (test_planner_v3_features.PlannerV3FeaturesTests.test_dijkstra_2_5d_terrain_cost_penalization) ... ok
+test_grazing_angle_filter_rejects_side_view_slopes (test_planner_v3_features.PlannerV3FeaturesTests.test_grazing_angle_filter_rejects_side_view_slopes) ... ok
+test_nearest_view_v3_leaps_after_turn (test_planner_v3_features.PlannerV3FeaturesTests.test_nearest_view_v3_leaps_after_turn) ... ok
+test_targeted_defect_viewpoints_in_surface_view_v3 (test_planner_v3_features.PlannerV3FeaturesTests.test_targeted_defect_viewpoints_in_surface_view_v3) ... ok
+test_convex_brow_occludes_steep_descent (test_raycasting_visibility.RaycastingVisibilityTests.test_convex_brow_occludes_steep_descent)
+Robot on elevated plateau cannot see bottom of steep drop right behind the brow. ... ok
+test_flat_ground_matches_planar_visibility (test_raycasting_visibility.RaycastingVisibilityTests.test_flat_ground_matches_planar_visibility)
+On flat ground with uniform z=0, 3D LOS visible cells should match planar visibility. ... ok
+test_graceful_fallback_without_elevations (test_raycasting_visibility.RaycastingVisibilityTests.test_graceful_fallback_without_elevations)
+When quality['cells'] lacks z field, choose_view runs smoothly without exception. ... ok
+test_higher_peak_peeks_over_lower_ridge (test_raycasting_visibility.RaycastingVisibilityTests.test_higher_peak_peeks_over_lower_ridge)
+A distant tall mountain should be visible over an intervening lower ridge. ... ok
+test_hill_crest_occludes_backside_cells (test_raycasting_visibility.RaycastingVisibilityTests.test_hill_crest_occludes_backside_cells)
+A hill crest at x=2.0 should occlude flat ground behind it at x>=2.75 in 3D LOS. ... ok
+test_legacy_strategy_preserves_planar_behavior (test_raycasting_visibility.RaycastingVisibilityTests.test_legacy_strategy_preserves_planar_behavior)
+v1 and v2 strategies must remain 100% planar even when elevation data exists. ... ok
+test_steep_obstacle_above_vfov_terminates_ray (test_raycasting_visibility.RaycastingVisibilityTests.test_steep_obstacle_above_vfov_terminates_ray)
+A tall vertical barrier exceeding camera upper FOV terminates the ray. ... ok
+test_initial_support_then_translation_or_rotation (test_recording_keyframes.KeyframeTests.test_initial_support_then_translation_or_rotation) ... ok
+test_chassis_motion_extra_goal_and_old_frames_are_rejected (test_recovery_runtime_acceptance.RuntimeAcceptanceTests.test_chassis_motion_extra_goal_and_old_frames_are_rejected) ... ok
+test_domain_default_override_and_invalid_values (test_recovery_runtime_acceptance.RuntimeAcceptanceTests.test_domain_default_override_and_invalid_values) ... ok
+test_early_timer_success_is_rejected (test_recovery_runtime_acceptance.RuntimeAcceptanceTests.test_early_timer_success_is_rejected) ... ok
+test_measured_fault_stop_passes (test_recovery_runtime_acceptance.RuntimeAcceptanceTests.test_measured_fault_stop_passes) ... ok
+test_missing_measurement_stream_cannot_pass (test_recovery_runtime_acceptance.RuntimeAcceptanceTests.test_missing_measurement_stream_cannot_pass) ... ok
+test_natural_window_preserves_early_budget_guard_and_rejects_fault (test_recovery_runtime_acceptance.RuntimeAcceptanceTests.test_natural_window_preserves_early_budget_guard_and_rejects_fault) ... ok
+test_speed_claim_requires_raw_finite_components (test_recovery_runtime_acceptance.RuntimeAcceptanceTests.test_speed_claim_requires_raw_finite_components) ... ok
+test_missing_sensor_archive_and_exited_launch_report_failure (test_simulation_experiment.ExperimentTests.test_missing_sensor_archive_and_exited_launch_report_failure) ... ok
+test_observation_turn_is_scoped_to_current_inactive_autonomy (test_simulation_experiment.ExperimentTests.test_observation_turn_is_scoped_to_current_inactive_autonomy) ... ok
+test_readiness_waits_for_current_trial_start (test_simulation_experiment.ExperimentTests.test_readiness_waits_for_current_trial_start) ... ok
+test_reset_waits_for_previous_publishers_to_exit (test_simulation_experiment.ExperimentTests.test_reset_waits_for_previous_publishers_to_exit) ... ok
+test_startup_refreshes_missing_tf_once (test_simulation_experiment.ExperimentTests.test_startup_refreshes_missing_tf_once) ... ok
+test_stopped_state_allows_next_experiment (test_simulation_experiment.ExperimentTests.test_stopped_state_allows_next_experiment) ... ok
+test_task_validation_and_nested_archive_api (test_simulation_experiment.ExperimentTests.test_task_validation_and_nested_archive_api) ... 127.0.0.1 - - [10/Oct/2026 22:58:38] "POST /api/simulation/apply HTTP/1.1" 403 -
+127.0.0.1 - - [10/Oct/2026 22:58:38] "GET /api/info?session=../survey.npz HTTP/1.1" 400 -
+127.0.0.1 - - [10/Oct/2026 22:58:38] "GET /api/info?session=experiment-test/../survey.npz HTTP/1.1" 400 -
+127.0.0.1 - - [10/Oct/2026 22:58:38] "GET /api/info?session=%2Fetc%2Ftest.npz HTTP/1.1" 400 -
+127.0.0.1 - - [10/Oct/2026 22:58:38] "GET /api/info?session=experiment-test%5Csurvey.npz HTTP/1.1" 400 -
+ok
+test_windows_proxy_keeps_browser_requests_same_origin (test_simulation_experiment.ExperimentTests.test_windows_proxy_keeps_browser_requests_same_origin) ... 127.0.0.1 - - [10/Oct/2026 22:58:38] "POST /api/simulation/move HTTP/1.1" 403 -
+ok
+test_full_q_can_be_invalid_or_biased_and_denominators_survive (test_surface_quality_evaluation.SurfaceQualityTests.test_full_q_can_be_invalid_or_biased_and_denominators_survive) ... ok
+test_independent_faces_and_rotated_slope (test_surface_quality_evaluation.SurfaceQualityTests.test_independent_faces_and_rotated_slope) ... ok
+test_reference_requires_alignment_and_reports_no_overlap (test_survey_evaluation.EvaluationTests.test_reference_requires_alignment_and_reports_no_overlap) ... ok
+test_report_preserves_failed_actions_raw_and_figures (test_survey_evaluation.EvaluationTests.test_report_preserves_failed_actions_raw_and_figures) ... ok
+test_scope_and_gain (test_survey_evaluation.EvaluationTests.test_scope_and_gain) ... ok
+test_actual_scan_dispatch_uses_gimbal_and_internal_heartbeat (test_survey_recovery.SurveyRecoveryTests.test_actual_scan_dispatch_uses_gimbal_and_internal_heartbeat) ... ok
+test_failed_scan_stops_without_another_navigation_attempt (test_survey_recovery.SurveyRecoveryTests.test_failed_scan_stops_without_another_navigation_attempt) ... ok
+test_missing_gimbal_stops_without_chassis_spin (test_survey_recovery.SurveyRecoveryTests.test_missing_gimbal_stops_without_chassis_spin) ... ok
+test_recovery_requires_new_observation_frames (test_survey_recovery.SurveyRecoveryTests.test_recovery_requires_new_observation_frames) ... ok
+test_repeated_unreachable_goals_get_one_scan_then_fault (test_survey_recovery.SurveyRecoveryTests.test_repeated_unreachable_goals_get_one_scan_then_fault) ... ok
+test_sensor_fault_before_scan_prevents_dispatch (test_survey_recovery.SurveyRecoveryTests.test_sensor_fault_before_scan_prevents_dispatch) ... ok
+test_small_remaining_budget_does_not_dispatch_scan (test_survey_recovery.SurveyRecoveryTests.test_small_remaining_budget_does_not_dispatch_scan) ... ok
+test_successful_navigation_after_scan_resumes_planning (test_survey_recovery.SurveyRecoveryTests.test_successful_navigation_after_scan_resumes_planning) ... ok
+test_successful_turns_do_not_erase_navigation_failures (test_survey_recovery.SurveyRecoveryTests.test_successful_turns_do_not_erase_navigation_failures) ... ok
+test_v2_stops_after_three_failures_without_gimbal_recovery (test_survey_recovery.SurveyRecoveryTests.test_v2_stops_after_three_failures_without_gimbal_recovery) ... ok
+test_export_dem_empty_map (test_terrain_export.TerrainExportTests.test_export_dem_empty_map) ... ok
+test_export_dem_with_inclined_plane (test_terrain_export.TerrainExportTests.test_export_dem_with_inclined_plane) ... ok
+test_export_mesh_empty_map (test_terrain_export.TerrainExportTests.test_export_mesh_empty_map) ... ok
+test_export_mesh_topology (test_terrain_export.TerrainExportTests.test_export_mesh_topology) ... ok
+test_atomic_replacement_during_fusion_keeps_one_snapshot (test_terrain_map.TerrainMapTests.test_atomic_replacement_during_fusion_keeps_one_snapshot) ... ok
+test_cached_surface_matches_fresh_fit_after_new_observations (test_terrain_map.TerrainMapTests.test_cached_surface_matches_fresh_fit_after_new_observations) ... ok
+test_robot_pose_is_distinct_from_camera_and_survives_reload (test_terrain_map.TerrainMapTests.test_robot_pose_is_distinct_from_camera_and_survives_reload) ... ok
+test_rotation_negative_cells_and_empty_archive (test_terrain_map.TerrainMapTests.test_rotation_negative_cells_and_empty_archive) ... ok
+test_transform_fusion_archive_replay_and_export (test_terrain_map.TerrainMapTests.test_transform_fusion_archive_replay_and_export) ... ok
+test_unknown_degenerate_multilevel_and_rejected_input (test_terrain_map.TerrainMapTests.test_unknown_degenerate_multilevel_and_rejected_input) ... ok
+test_voxel_centroid_does_not_cross_observed_cell_boundary (test_terrain_map.TerrainMapTests.test_voxel_centroid_does_not_cross_observed_cell_boundary) ... ok
+test_directional_slope_and_unknown_footprint (test_terrain_planner.PlannerTests.test_directional_slope_and_unknown_footprint) ... ok
+test_exact_endpoints_and_explicit_checked_turns (test_terrain_planner.PlannerTests.test_exact_endpoints_and_explicit_checked_turns) ... ok
+test_reachable_goal_near_observed_boundary (test_terrain_planner.PlannerTests.test_reachable_goal_near_observed_boundary) ... ok
+test_routes_and_support_ablation (test_terrain_planner.PlannerTests.test_routes_and_support_ablation) ... ok
+test_wall_step_failure_and_budget (test_terrain_planner.PlannerTests.test_wall_step_failure_and_budget) ... ok
+test_geometry_and_denominators (test_terrain_reference.ReferenceTests.test_geometry_and_denominators) ... ok
+test_bracket_rotation_and_optical_height (test_trajectory_evaluation.TrajectoryTests.test_bracket_rotation_and_optical_height) ... ok
+test_classify_cells_elevation_option (test_traversability_costmap.TraversabilityCostmapTest.test_classify_cells_elevation_option)
+classify_cells supports return_elevation while maintaining default 5-element compatibility. ... ok
+test_compute_traversability_cost_flat_and_mild (test_traversability_costmap.TraversabilityCostmapTest.test_compute_traversability_cost_flat_and_mild)
+Flat ground and micro-roughness below mild thresholds produce zero cost. ... ok
+test_compute_traversability_cost_lethal_thresholds (test_traversability_costmap.TraversabilityCostmapTest.test_compute_traversability_cost_lethal_thresholds)
+Any safety violation (slope, roughness, step, drop) must trigger lethal cost (100). ... ok
+test_compute_traversability_cost_monotonic_slopes (test_traversability_costmap.TraversabilityCostmapTest.test_compute_traversability_cost_monotonic_slopes)
+Cost increases monotonically with slope angle, staying strictly < 99 for passable terrain. ... ok
+test_occupancy_grid_generation_and_eviction (test_traversability_costmap.TraversabilityCostmapTest.test_occupancy_grid_generation_and_eviction)
+TerrainNode generates snapped OccupancyGrid, sets unknown to -1, and evicts stale cells. ... ok
+test_roughness_penalty (test_traversability_costmap.TraversabilityCostmapTest.test_roughness_penalty)
+Rough surfaces add proportional traversal cost on top of slope. ... ok
+test_archive_replay_bad_input_and_origin (test_workbench_api.WorkbenchApiTests.test_archive_replay_bad_input_and_origin) ... 127.0.0.1 - - [10/Oct/2026 22:58:45] "GET /api/map?session=../test.npz HTTP/1.1" 400 -
+127.0.0.1 - - [10/Oct/2026 22:58:45] "GET /api/map?session=broken.npz HTTP/1.1" 400 -
+127.0.0.1 - - [10/Oct/2026 22:58:45] "GET /api/map?session=test.npz&frame=9 HTTP/1.1" 400 -
+127.0.0.1 - - [10/Oct/2026 22:58:45] "GET /vendor/../../docs/requirements.md HTTP/1.1" 400 -
+127.0.0.1 - - [10/Oct/2026 22:58:45] "POST /api/plan HTTP/1.1" 403 -
+ok
+test_mesh_and_dem_endpoints (test_workbench_api.WorkbenchApiTests.test_mesh_and_dem_endpoints) ... ok
+test_replay_reuses_fusion_without_future_points_or_stale_archives (test_workbench_api.WorkbenchApiTests.test_replay_reuses_fusion_without_future_points_or_stale_archives) ... ok
+
+----------------------------------------------------------------------
+Ran 129 tests in 48.270s
+
+OK
+1 runs -> /tmp/tmpoqxoyi6l/summary
+test_bad_or_excessive_estimates_rejected (test_axle_allocation.AxleAllocationTests.test_bad_or_excessive_estimates_rejected) ... ok
+test_derived_factors_preserve_budget_and_equal_compliance (test_axle_allocation.AxleAllocationTests.test_derived_factors_preserve_budget_and_equal_compliance) ... ok
+test_forged_observer_targets_fail (test_axle_allocation.AxleAllocationTests.test_forged_observer_targets_fail) ... ok
+test_independent_logged_targets_match_actual_and_preserve_means (test_axle_allocation.AxleAllocationTests.test_independent_logged_targets_match_actual_and_preserve_means) ... ok
+test_model_only_enable_flag_changes_and_restore_exact (test_axle_allocation.AxleAllocationTests.test_model_only_enable_flag_changes_and_restore_exact) ... ok
+test_only_pure_turn_changes_actual_targets (test_axle_allocation.AxleAllocationTests.test_only_pure_turn_changes_actual_targets) ... ok
+test_source_timestamp_mismatch_fails (test_axle_allocation.AxleAllocationTests.test_source_timestamp_mismatch_fails) ... ok
+test_unknown_native_order_nonfinite_fail (test_axle_allocation.AxleAllocationTests.test_unknown_native_order_nonfinite_fail) ... ok
+test_wrong_flags_and_lost_step_fail (test_axle_allocation.AxleAllocationTests.test_wrong_flags_and_lost_step_fail) ... ok
+test_actual_half_ms_qualified_without_rewriting_observations (test_axle_robustness.RobustnessTests.test_actual_half_ms_qualified_without_rewriting_observations) ... ok
+test_campaign_entry_import_and_matrix (test_axle_robustness.RobustnessTests.test_campaign_entry_import_and_matrix) ... ok
+test_matrix_budget_and_order (test_axle_robustness.RobustnessTests.test_matrix_budget_and_order) ... ok
+test_missing_frames_contacts_odom_or_steps_still_fail (test_axle_robustness.RobustnessTests.test_missing_frames_contacts_odom_or_steps_still_fail) ... ok
+test_one_ms_old_behavior_preserved (test_axle_robustness.RobustnessTests.test_one_ms_old_behavior_preserved) ... ok
+test_unsupported_scene_step_rejected (test_axle_robustness.RobustnessTests.test_unsupported_scene_step_rejected) ... ok
+test_wrong_step_count_and_elapsed_or_schedule_rejected (test_axle_robustness.RobustnessTests.test_wrong_step_count_and_elapsed_or_schedule_rejected) ... ok
+test_capture_signature_cannot_mix_profiles (test_capture_io.CaptureTests.test_capture_signature_cannot_mix_profiles) ... ok
+test_coverage_checks_both_tail_and_internal_gap (test_capture_io.CaptureTests.test_coverage_checks_both_tail_and_internal_gap) ... ok
+test_drain_deadline_cannot_be_reported_as_success (test_capture_io.CaptureTests.test_drain_deadline_cannot_be_reported_as_success) ... ok
+test_encoding_error_marks_archive_incomplete (test_capture_io.CaptureTests.test_encoding_error_marks_archive_incomplete) ... ok
+test_event_overflow_is_explicit (test_capture_io.CaptureTests.test_event_overflow_is_explicit) ... ok
+test_image_byte_overflow_is_explicit (test_capture_io.CaptureTests.test_image_byte_overflow_is_explicit) ... ok
+test_image_item_overflow_is_explicit (test_capture_io.CaptureTests.test_image_item_overflow_is_explicit) ... ok
+test_input_calibration_does_not_claim_vehicle_geometry_acceptance (test_capture_io.CaptureTests.test_input_calibration_does_not_claim_vehicle_geometry_acceptance) ... ok
+test_invalid_json_write_is_reported_as_failure (test_capture_io.CaptureTests.test_invalid_json_write_is_reported_as_failure) ... ok
+test_jazzy_dict_metadata_and_object_metadata_are_supported (test_capture_io.CaptureTests.test_jazzy_dict_metadata_and_object_metadata_are_supported) ... ok
+test_missing_or_empty_image_is_failure (test_capture_io.CaptureTests.test_missing_or_empty_image_is_failure) ... ok
+test_slow_encoder_does_not_block_ingress_and_preserves_receipt_time (test_capture_io.CaptureTests.test_slow_encoder_does_not_block_ingress_and_preserves_receipt_time) ... ok
+test_slow_json_writer_drains_all_events_without_mutating_rows (test_capture_io.CaptureTests.test_slow_json_writer_drains_all_events_without_mutating_rows) ... ok
+test_worker_exit_is_not_success (test_capture_io.CaptureTests.test_worker_exit_is_not_success) ... ok
+test_bad_exit_nan_or_tilt_fail (test_contact_geometry.GeometryTests.test_bad_exit_nan_or_tilt_fail) ... ok
+test_complete_round (test_contact_geometry.GeometryTests.test_complete_round) ... ok
+test_exact_matrix (test_contact_geometry.GeometryTests.test_exact_matrix) ... ok
+test_false_or_missing_gates_fail (test_contact_geometry.GeometryTests.test_false_or_missing_gates_fail) ... ok
+test_metadata_missing_identity_is_not_zero (test_contact_geometry.GeometryTests.test_metadata_missing_identity_is_not_zero) ... ok
+test_only_declared_screen_can_fail (test_contact_geometry.GeometryTests.test_only_declared_screen_can_fail) ... ok
+test_complete_force_association_and_paused_writer (test_contact_source.ContactSourceTests.test_complete_force_association_and_paused_writer) ... ok
+test_explicit_empty_accepted_without_fabricated_zero_force (test_contact_source.ContactSourceTests.test_explicit_empty_accepted_without_fabricated_zero_force) ... ok
+test_force_and_collision_identity_fail (test_contact_source.ContactSourceTests.test_force_and_collision_identity_fail) ... ok
+test_frozen_matrix_and_entry_import (test_contact_source.ContactSourceTests.test_frozen_matrix_and_entry_import) ... ok
+test_missing_extra_data_or_fabricated_empty_fails (test_contact_source.ContactSourceTests.test_missing_extra_data_or_fabricated_empty_fails) ... ok
+test_missing_wheel_step_and_duplicate_point_fail (test_contact_source.ContactSourceTests.test_missing_wheel_step_and_duplicate_point_fail) ... ok
+test_no_backend_contact_support_fails (test_contact_source.ContactSourceTests.test_no_backend_contact_support_fails) ... ok
+test_source_no_contact_and_actual_topic_loss_are_separate (test_contact_source.ContactSourceTests.test_source_no_contact_and_actual_topic_loss_are_separate) ... ok
+test_unknown_component_is_not_no_contact (test_contact_source.ContactSourceTests.test_unknown_component_is_not_no_contact) ... ok
+test_wrong_simulation_time_and_pause_receipt_fail (test_contact_source.ContactSourceTests.test_wrong_simulation_time_and_pause_receipt_fail) ... ok
+test_failed_approved_profiles_never_select_d0 (test_control_selection.SelectionTests.test_failed_approved_profiles_never_select_d0) ... ok
+test_fixed_ranking_and_tie_order (test_control_selection.SelectionTests.test_fixed_ranking_and_tie_order) ... ok
+test_missing_comparison_cannot_select_or_claim_all_failed (test_control_selection.SelectionTests.test_missing_comparison_cannot_select_or_claim_all_failed) ... ok
+test_archived_sensor_files_are_required (test_d0_acceptance.D0Tests.test_archived_sensor_files_are_required) ... /source/scripts/r5_d0_analysis.py:83: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpwir43yvc/observations.jsonl' mode='r' encoding='UTF-8'>
+  rows=[json.loads(line) for line in (folder/'observations.jsonl').open()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/source/scripts/r5_d0_analysis.py:107: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpwir43yvc/resources.jsonl' mode='r' encoding='UTF-8'>
+  resources=[json.loads(line) for line in (folder/'resources.jsonl').open()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_formal_budget_separate_from_old_diagnostics (test_d0_acceptance.D0Tests.test_formal_budget_separate_from_old_diagnostics) ... ok
+test_missing_servo_commands_fail (test_d0_acceptance.D0Tests.test_missing_servo_commands_fail) ... ok
+test_native_window_requires_expected_motion_and_stop (test_d0_acceptance.D0Tests.test_native_window_requires_expected_motion_and_stop) ... ok
+test_pair_limits_and_unmatched_command_duration (test_d0_acceptance.D0Tests.test_pair_limits_and_unmatched_command_duration) ... ok
+test_regular_joint_capture_gap_fails (test_d0_acceptance.D0Tests.test_regular_joint_capture_gap_fails) ... /source/scripts/r5_d0_analysis.py:83: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp8e5lvc2r/observations.jsonl' mode='r' encoding='UTF-8'>
+  rows=[json.loads(line) for line in (folder/'observations.jsonl').open()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/source/scripts/r5_d0_analysis.py:107: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp8e5lvc2r/resources.jsonl' mode='r' encoding='UTF-8'>
+  resources=[json.loads(line) for line in (folder/'resources.jsonl').open()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_safe_command_capture_gap_fails (test_d0_acceptance.D0Tests.test_safe_command_capture_gap_fails) ... /source/scripts/r5_d0_analysis.py:83: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp2xvzp1j5/observations.jsonl' mode='r' encoding='UTF-8'>
+  rows=[json.loads(line) for line in (folder/'observations.jsonl').open()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/source/scripts/r5_d0_analysis.py:107: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp2xvzp1j5/resources.jsonl' mode='r' encoding='UTF-8'>
+  resources=[json.loads(line) for line in (folder/'resources.jsonl').open()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_stale_or_wrong_axis_commands_fail (test_d0_acceptance.D0Tests.test_stale_or_wrong_axis_commands_fail) ... ok
+test_step_choice_never_recommends_reference_step (test_d0_acceptance.D0Tests.test_step_choice_never_recommends_reference_step) ... ok
+test_wrapped_yaw_and_failed_round (test_d0_acceptance.D0Tests.test_wrapped_yaw_and_failed_round) ... ok
+test_actual_disk_write_failure_is_registered (test_dds_shm.BoundedWriterTests.test_actual_disk_write_failure_is_registered) ... ok
+test_archive_worker_without_dds_has_complete_empty_log (test_dds_shm.BoundedWriterTests.test_archive_worker_without_dds_has_complete_empty_log) ... ok
+test_library_loaded_before_directory_creation_drains (test_dds_shm.BoundedWriterTests.test_library_loaded_before_directory_creation_drains) ... ok
+test_preallocated_queue_overflow_fails_without_silent_drop (test_dds_shm.BoundedWriterTests.test_preallocated_queue_overflow_fails_without_silent_drop) ... ok
+test_unavailable_output_directory_never_reports_success (test_dds_shm.BoundedWriterTests.test_unavailable_output_directory_never_reports_success) ... ok
+test_both_observed_rounds_required (test_dds_shm.ShmTests.test_both_observed_rounds_required) ... ok
+test_control_executables_must_match_current_source (test_dds_shm.ShmTests.test_control_executables_must_match_current_source) ... ok
+test_default_and_flag_propagation (test_dds_shm.ShmTests.test_default_and_flag_propagation) ... ok
+test_diagnostic_image_gap_does_not_mask_observer_or_input_failure (test_dds_shm.ShmTests.test_diagnostic_image_gap_does_not_mask_observer_or_input_failure) ... ok
+test_equal_rgb_depth_timestamps_keep_writer_stream_identity (test_dds_shm.ShmTests.test_equal_rgb_depth_timestamps_keep_writer_stream_identity) ... ok
+test_exact_tuple_and_sequence_link (test_dds_shm.ShmTests.test_exact_tuple_and_sequence_link) ... ok
+test_failed_output_and_unflushed_writer_are_distinct (test_dds_shm.ShmTests.test_failed_output_and_unflushed_writer_are_distinct) ... ok
+test_failed_recovery_not_causal (test_dds_shm.ShmTests.test_failed_recovery_not_causal) ... ok
+test_fragment_missing_duplicate_and_out_of_order (test_dds_shm.ShmTests.test_fragment_missing_duplicate_and_out_of_order) ... ok
+test_fragment_sequences_never_merge (test_dds_shm.ShmTests.test_fragment_sequences_never_merge) ... ok
+test_missing_fragment_identity_stays_null (test_dds_shm.ShmTests.test_missing_fragment_identity_stays_null) ... ok
+test_missing_library_manifest_fails_closed (test_dds_shm.ShmTests.test_missing_library_manifest_fails_closed) ... ok
+test_missing_ros_overlay_fails_before_any_physics_start (test_dds_shm.ShmTests.test_missing_ros_overlay_fails_before_any_physics_start) ... ok
+test_missing_sequence_stamp_not_fabricated (test_dds_shm.ShmTests.test_missing_sequence_stamp_not_fabricated) ... ok
+test_no_waiting_references_not_causal (test_dds_shm.ShmTests.test_no_waiting_references_not_causal) ... ok
+test_normal_release_is_not_forced_recovery (test_dds_shm.ShmTests.test_normal_release_is_not_forced_recovery) ... ok
+test_observer_interference_stops (test_dds_shm.ShmTests.test_observer_interference_stops) ... ok
+test_offset_and_segment_must_match (test_dds_shm.ShmTests.test_offset_and_segment_must_match) ... ok
+test_old_validity_does_not_match_new_buffer (test_dds_shm.ShmTests.test_old_validity_does_not_match_new_buffer) ... ok
+test_only_bridge_segment_changes (test_dds_shm.ShmTests.test_only_bridge_segment_changes) ... ok
+test_port_drop_does_not_qualify_size_fix (test_dds_shm.ShmTests.test_port_drop_does_not_qualify_size_fix) ... ok
+test_received_frame_not_classified_as_loss (test_dds_shm.ShmTests.test_received_frame_not_classified_as_loss) ... ok
+test_size_candidate_requires_matching_complete_evidence (test_dds_shm.ShmTests.test_size_candidate_requires_matching_complete_evidence) ... ok
+test_stock_cannot_claim_trace_or_capacity_fix (test_dds_shm.ShmTests.test_stock_cannot_claim_trace_or_capacity_fix) ... ok
+test_stop_preserves_actual_stage_results (test_dds_shm.ShmTests.test_stop_preserves_actual_stage_results) ... ok
+test_unreproduced_stops_without_calibration (test_dds_shm.ShmTests.test_unreproduced_stops_without_calibration) ... ok
+test_wrong_version_or_library_hash_cannot_fall_back (test_dds_shm.ShmTests.test_wrong_version_or_library_hash_cannot_fall_back) ... ok
+test_actual_frozen_model_is_read_only (test_drive_constraint_audit.DriveConstraintAuditTests.test_actual_frozen_model_is_read_only) ... ok
+test_constant_longitudinal_control_does_not_remove_anchor_radius (test_drive_constraint_audit.DriveConstraintAuditTests.test_constant_longitudinal_control_does_not_remove_anchor_radius) ... ok
+test_existing_slip_plugin_not_silently_overwritten (test_drive_constraint_audit.DriveConstraintAuditTests.test_existing_slip_plugin_not_silently_overwritten) ... ok
+test_invalid_force_and_geometry_fail (test_drive_constraint_audit.DriveConstraintAuditTests.test_invalid_force_and_geometry_fail) ... ok
+test_mass_shift_loads_and_weight_conservation (test_drive_constraint_audit.DriveConstraintAuditTests.test_mass_shift_loads_and_weight_conservation) ... ok
+test_proposal_does_not_mutate_model_or_drop_existing_plugins (test_drive_constraint_audit.DriveConstraintAuditTests.test_proposal_does_not_mutate_model_or_drop_existing_plugins) ... ok
+test_speed_dependent_proposal_restores_static_compliance (test_drive_constraint_audit.DriveConstraintAuditTests.test_speed_dependent_proposal_restores_static_compliance) ... ok
+test_archive_library_without_participant (test_image_dds_boundary.BoundaryTests.test_archive_library_without_participant) ... ok
+test_archive_unexpected_participant_fails (test_image_dds_boundary.BoundaryTests.test_archive_unexpected_participant_fails) ... ok
+test_flush_requires_csv_and_marker_same_last_step (test_image_dds_boundary.BoundaryTests.test_flush_requires_csv_and_marker_same_last_step) ... ok
+test_inherited_descriptor_is_not_ownership (test_image_dds_boundary.BoundaryTests.test_inherited_descriptor_is_not_ownership) ... ok
+test_inherited_fd_does_not_replace_holder (test_image_dds_boundary.BoundaryTests.test_inherited_fd_does_not_replace_holder) ... ok
+test_lock_inode_and_owner_must_both_match (test_image_dds_boundary.BoundaryTests.test_lock_inode_and_owner_must_both_match) ... ok
+test_lock_parser_retains_holder_pid_and_inode (test_image_dds_boundary.BoundaryTests.test_lock_parser_retains_holder_pid_and_inode) ... ok
+test_missing_csv_fails (test_image_dds_boundary.BoundaryTests.test_missing_csv_fails) ... ok
+test_missing_lock_owner_fails (test_image_dds_boundary.BoundaryTests.test_missing_lock_owner_fails) ... ok
+test_only_one_query (test_image_dds_boundary.BoundaryTests.test_only_one_query) ... ok
+test_pid_exit_not_zero_capacity (test_image_dds_boundary.BoundaryTests.test_pid_exit_not_zero_capacity) ... ok
+test_pid_reuse_fails (test_image_dds_boundary.BoundaryTests.test_pid_reuse_fails) ... ok
+test_query_continues_pump (test_image_dds_boundary.BoundaryTests.test_query_continues_pump) ... ok
+test_query_exit_propagates (test_image_dds_boundary.BoundaryTests.test_query_exit_propagates) ... ok
+test_real_ros_preflight (test_image_dds_boundary.BoundaryTests.test_real_ros_preflight) ... ok
+test_remote_8m_does_not_change_own_capacity (test_image_dds_boundary.BoundaryTests.test_remote_8m_does_not_change_own_capacity) ... ok
+test_removed_mapping_is_not_ignored (test_image_dds_boundary.BoundaryTests.test_removed_mapping_is_not_ignored) ... ok
+test_stale_pause_rejected_without_second_request (test_image_dds_boundary.BoundaryTests.test_stale_pause_rejected_without_second_request) ... ok
+test_timeout_cancels_child (test_image_dds_boundary.BoundaryTests.test_timeout_cancels_child) ... ok
+test_wrong_own_capacity_fails (test_image_dds_boundary.BoundaryTests.test_wrong_own_capacity_fails) ... ok
+test_both_r5_files_are_checked (test_image_dds_capabilities.CapabilityTests.test_both_r5_files_are_checked) ... ok
+test_bridge_missing_declared_image_fails (test_image_dds_capabilities.CapabilityTests.test_bridge_missing_declared_image_fails) ... ok
+test_depth_only_files_pass_only_declared_legacy_profile (test_image_dds_capabilities.CapabilityTests.test_depth_only_files_pass_only_declared_legacy_profile) ... ok
+test_legacy_depth_and_other_stream_gaps_still_fail (test_image_dds_capabilities.CapabilityTests.test_legacy_depth_and_other_stream_gaps_still_fail) ... ok
+test_legacy_invalid_depth_and_missing_receipt_fail (test_image_dds_capabilities.CapabilityTests.test_legacy_invalid_depth_and_missing_receipt_fail) ... ok
+test_legacy_tail_does_not_require_undeclared_rgb (test_image_dds_capabilities.CapabilityTests.test_legacy_tail_does_not_require_undeclared_rgb) ... ok
+test_original_depth_only_model_is_explicitly_supported (test_image_dds_capabilities.CapabilityTests.test_original_depth_only_model_is_explicitly_supported) ... ok
+test_r5_missing_rgb_is_not_accepted (test_image_dds_capabilities.CapabilityTests.test_r5_missing_rgb_is_not_accepted) ... ok
+test_r5_requires_both_declared_streams (test_image_dds_capabilities.CapabilityTests.test_r5_requires_both_declared_streams) ... ok
+test_real_expanded_models_declare_the_expected_streams (test_image_dds_capabilities.CapabilityTests.test_real_expanded_models_declare_the_expected_streams) ... ok
+test_wrong_bridge_direction_and_duplicate_route_fail (test_image_dds_capabilities.CapabilityTests.test_wrong_bridge_direction_and_duplicate_route_fail) ... ok
+test_active_gate_requires_both_actual_snapshots (test_image_dds_lifecycle.LifecycleTests.test_active_gate_requires_both_actual_snapshots) ... ok
+test_active_receiver_pid_reuse_rejects (test_image_dds_lifecycle.LifecycleTests.test_active_receiver_pid_reuse_rejects) ... ok
+test_bad_initial_mapping_still_rejects (test_image_dds_lifecycle.LifecycleTests.test_bad_initial_mapping_still_rejects) ... ok
+test_creator_still_alive_cannot_be_retired (test_image_dds_lifecycle.LifecycleTests.test_creator_still_alive_cannot_be_retired) ... ok
+test_different_name_same_inode_is_failure (test_image_dds_lifecycle.LifecycleTests.test_different_name_same_inode_is_failure) ... ok
+test_exact_deleted_mapping_and_owner_exit (test_image_dds_lifecycle.LifecycleTests.test_exact_deleted_mapping_and_owner_exit) ... ok
+test_live_mapping_cannot_use_retirement (test_image_dds_lifecycle.LifecycleTests.test_live_mapping_cannot_use_retirement) ... ok
+test_map_parser_keeps_inode_and_deleted_status (test_image_dds_lifecycle.LifecycleTests.test_map_parser_keeps_inode_and_deleted_status) ... ok
+test_metadata_queue_overflow_fails (test_image_dds_lifecycle.LifecycleTests.test_metadata_queue_overflow_fails) ... ok
+test_missing_receiver_before_shutdown_rejects (test_image_dds_lifecycle.LifecycleTests.test_missing_receiver_before_shutdown_rejects) ... ok
+test_real_teardown_proof_is_taken_while_peers_alive (test_image_dds_lifecycle.LifecycleTests.test_real_teardown_proof_is_taken_while_peers_alive) ... ok
+test_real_transient_participant_reproduction (test_image_dds_lifecycle.LifecycleTests.test_real_transient_participant_reproduction) ... ok
+test_recreated_path_cannot_use_old_history (test_image_dds_lifecycle.LifecycleTests.test_recreated_path_cannot_use_old_history) ... ok
+test_reused_pid_does_not_become_original_creator (test_image_dds_lifecycle.LifecycleTests.test_reused_pid_does_not_become_original_creator) ... ok
+test_same_name_different_device_is_failure (test_image_dds_lifecycle.LifecycleTests.test_same_name_different_device_is_failure) ... ok
+test_unknown_inode_is_failure (test_image_dds_lifecycle.LifecycleTests.test_unknown_inode_is_failure) ... ok
+test_unknown_mapping_without_history_still_fails (test_image_dds_lifecycle.LifecycleTests.test_unknown_mapping_without_history_still_fails) ... ok
+test_writer_failure_fails (test_image_dds_lifecycle.LifecycleTests.test_writer_failure_fails) ... ok
+test_actual_extra_steps_are_not_ignored (test_image_dds_motion.PhysicalInputTests.test_actual_extra_steps_are_not_ignored) ... ok
+test_changed_wheel_profile_still_rejects (test_image_dds_motion.PhysicalInputTests.test_changed_wheel_profile_still_rejects) ... ok
+test_duplicate_physical_step_rejects (test_image_dds_motion.PhysicalInputTests.test_duplicate_physical_step_rejects) ... ok
+test_failed_raw_pair_reproduces_offline_without_rewriting_results (test_image_dds_motion.PhysicalInputTests.test_failed_raw_pair_reproduces_offline_without_rewriting_results) ... ok
+test_forged_future_observation_still_rejects (test_image_dds_motion.PhysicalInputTests.test_forged_future_observation_still_rejects) ... ok
+test_heartbeat_observation_offsets_do_not_change_physical_duration (test_image_dds_motion.PhysicalInputTests.test_heartbeat_observation_offsets_do_not_change_physical_duration) ... ok
+test_missing_physical_step_rejects (test_image_dds_motion.PhysicalInputTests.test_missing_physical_step_rejects) ... ok
+test_motion_phase_duration_still_required (test_image_dds_motion.PhysicalInputTests.test_motion_phase_duration_still_required) ... ok
+test_wrong_native_command_rejects (test_image_dds_motion.PhysicalInputTests.test_wrong_native_command_rejects) ... ok
+test_zero_dropout_rejects (test_image_dds_motion.PhysicalInputTests.test_zero_dropout_rejects) ... ok
+test_all_three_worlds (test_image_dds_production.ImageDdsProductionTests.test_all_three_worlds) ... ok
+test_bridge_environment_isolated (test_image_dds_production.ImageDdsProductionTests.test_bridge_environment_isolated) ... ok
+test_bridge_exit_before_receipt (test_image_dds_production.ImageDdsProductionTests.test_bridge_exit_before_receipt) ... ok
+test_diagnostic_environment_rejected (test_image_dds_production.ImageDdsProductionTests.test_diagnostic_environment_rejected) ... ok
+test_eligible_auto (test_image_dds_production.ImageDdsProductionTests.test_eligible_auto) ... ok
+test_explicit_old (test_image_dds_production.ImageDdsProductionTests.test_explicit_old) ... ok
+test_explicit_unsupported (test_image_dds_production.ImageDdsProductionTests.test_explicit_unsupported) ... ok
+test_invalid_profile (test_image_dds_production.ImageDdsProductionTests.test_invalid_profile) ... ok
+test_missing_receipt_timeout (test_image_dds_production.ImageDdsProductionTests.test_missing_receipt_timeout) ... ok
+test_missing_runtime (test_image_dds_production.ImageDdsProductionTests.test_missing_runtime) ... ok
+test_ns0_reproduces_startup_failure (test_image_dds_production.ImageDdsProductionTests.test_ns0_reproduces_startup_failure) ... ok
+test_observed_model_keeps_xacro_prefix (test_image_dds_production.ImageDdsProductionTests.test_observed_model_keeps_xacro_prefix) ... ok
+test_old_launch_without_r5_arguments_uses_legacy_bridge (test_image_dds_production.ImageDdsProductionTests.test_old_launch_without_r5_arguments_uses_legacy_bridge) ... ok
+test_old_model_untouched (test_image_dds_production.ImageDdsProductionTests.test_old_model_untouched) ... ok
+test_other_discovery_untouched (test_image_dds_production.ImageDdsProductionTests.test_other_discovery_untouched) ... ok
+test_v1_untouched (test_image_dds_production.ImageDdsProductionTests.test_v1_untouched) ... ok
+test_wrong_capacity_receipt (test_image_dds_production.ImageDdsProductionTests.test_wrong_capacity_receipt) ... ok
+test_wrong_process_receipt (test_image_dds_production.ImageDdsProductionTests.test_wrong_process_receipt) ... ok
+test_wrong_runtime_version (test_image_dds_production.ImageDdsProductionTests.test_wrong_runtime_version) ... ok
+test_actual_models_preflight_evidence (test_image_dds_revalidation.RevalidationTests.test_actual_models_preflight_evidence) ... ok
+test_bad_default_fails (test_image_dds_revalidation.RevalidationTests.test_bad_default_fails) ... ok
+test_cleanup_of_already_exited_child (test_image_dds_revalidation.RevalidationTests.test_cleanup_of_already_exited_child) ... ok
+test_config_default_without_env_and_explicit_override (test_image_dds_revalidation.RevalidationTests.test_config_default_without_env_and_explicit_override) ... ok
+test_frozen_campaign_stops_after_first_failure (test_image_dds_revalidation.RevalidationTests.test_frozen_campaign_stops_after_first_failure) ... ok
+test_future_stamp_does_not_fill_missing_tail (test_image_dds_revalidation.RevalidationTests.test_future_stamp_does_not_fill_missing_tail) ... ok
+test_headerless_command_uses_receipt_clock (test_image_dds_revalidation.RevalidationTests.test_headerless_command_uses_receipt_clock) ... ok
+test_images_missing_receipt_or_file_fail (test_image_dds_revalidation.RevalidationTests.test_images_missing_receipt_or_file_fail) ... ok
+test_incomplete_receipt_is_not_ready (test_image_dds_revalidation.RevalidationTests.test_incomplete_receipt_is_not_ready) ... ok
+test_installed_mismatch_fails (test_image_dds_revalidation.RevalidationTests.test_installed_mismatch_fails) ... ok
+test_instrumentation_keeps_xacro_prefix_and_unchanged_physics (test_image_dds_revalidation.RevalidationTests.test_instrumentation_keeps_xacro_prefix_and_unchanged_physics) ... ok
+test_invalid_pause_time_fails (test_image_dds_revalidation.RevalidationTests.test_invalid_pause_time_fails) ... ok
+test_missing_or_unpaused_state_fails (test_image_dds_revalidation.RevalidationTests.test_missing_or_unpaused_state_fails) ... ok
+test_numeric_and_snake_case_pause_time (test_image_dds_revalidation.RevalidationTests.test_numeric_and_snake_case_pause_time) ... ok
+test_original_failed_tail_is_not_relaxed (test_image_dds_revalidation.RevalidationTests.test_original_failed_tail_is_not_relaxed) ... ok
+test_real_protobuf_json_pause_type (test_image_dds_revalidation.RevalidationTests.test_real_protobuf_json_pause_type) ... ok
+test_stale_ros_clock_cannot_confirm_tail (test_image_dds_revalidation.RevalidationTests.test_stale_ros_clock_cannot_confirm_tail) ... ok
+test_tail_requires_every_receiver_not_only_truth (test_image_dds_revalidation.RevalidationTests.test_tail_requires_every_receiver_not_only_truth) ... ok
+test_valid_wrong_receipt_is_not_retried_as_partial (test_image_dds_revalidation.RevalidationTests.test_valid_wrong_receipt_is_not_retried_as_partial) ... ok
+test_bridge_stage_missing_duplicate_or_exception_fails (test_image_delivery.DeliveryTests.test_bridge_stage_missing_duplicate_or_exception_fails) ... ok
+test_default_compatibility (test_image_delivery.DeliveryTests.test_default_compatibility) ... ok
+test_missing_observation_or_completion_file_fails (test_image_delivery.DeliveryTests.test_missing_observation_or_completion_file_fails) ... ok
+test_missing_sequence_is_null (test_image_delivery.DeliveryTests.test_missing_sequence_is_null) ... ok
+test_no_calibration_with_incomplete_baselines (test_image_delivery.DeliveryTests.test_no_calibration_with_incomplete_baselines) ... ok
+test_process_isolation_requires_backlog_correlation (test_image_delivery.DeliveryTests.test_process_isolation_requires_backlog_correlation) ... ok
+test_profiles_transmitted_and_signed (test_image_delivery.DeliveryTests.test_profiles_transmitted_and_signed) ... ok
+test_rtps_discovery_does_not_identify_image_guid (test_image_delivery.DeliveryTests.test_rtps_discovery_does_not_identify_image_guid) ... ok
+test_stock_unavailable_bridge_count_is_not_zero (test_image_delivery.DeliveryTests.test_stock_unavailable_bridge_count_is_not_zero) ... ok
+test_udp_needs_payload_and_overflow (test_image_delivery.DeliveryTests.test_udp_needs_payload_and_overflow) ... ok
+test_unreproduced_baselines_allowed_only_without_repair (test_image_delivery.DeliveryTests.test_unreproduced_baselines_allowed_only_without_repair) ... ok
+test_unverified_xml_or_isolation_cannot_silently_enable_repair (test_image_delivery.DeliveryTests.test_unverified_xml_or_isolation_cannot_silently_enable_repair) ... ok
+test_writer_overflow_exit_and_drain_incomplete_fail (test_image_delivery.DeliveryTests.test_writer_overflow_exit_and_drain_incomplete_fail) ... ok
+test_complete_layers_preserve_source_gap_as_evidence (test_image_trace.ImageTraceTests.test_complete_layers_preserve_source_gap_as_evidence) ... ok
+test_diagnostic_calibration_and_total_limits (test_image_trace.ImageTraceTests.test_diagnostic_calibration_and_total_limits) ... ok
+test_exact_nanosecond_boundary (test_image_trace.ImageTraceTests.test_exact_nanosecond_boundary) ... ok
+test_float_boundary_reproduces_without_new_sampling_strategy (test_image_trace.ImageTraceTests.test_float_boundary_reproduces_without_new_sampling_strategy) ... ok
+test_header_writer_is_bounded_and_drains_with_receipts (test_image_trace.ImageTraceTests.test_header_writer_is_bounded_and_drains_with_receipts) ... ok
+test_initial_duplicate_and_out_of_order (test_image_trace.ImageTraceTests.test_initial_duplicate_and_out_of_order) ... ok
+test_missing_probe_main_and_archive_fail (test_image_trace.ImageTraceTests.test_missing_probe_main_and_archive_fail) ... ok
+test_profiles_and_observer_hash_cannot_mix (test_image_trace.ImageTraceTests.test_profiles_and_observer_hash_cannot_mix) ... ok
+test_stopped_campaign_cannot_resume_or_start_calibration (test_image_trace.ImageTraceTests.test_stopped_campaign_cannot_resume_or_start_calibration) ... ok
+test_wrong_decision_and_native_observer_failure_fail (test_image_trace.ImageTraceTests.test_wrong_decision_and_native_observer_failure_fail) ... ok
+test_bad_or_missing_pass_is_not_ready (test_library_readiness.ReceiptTests.test_bad_or_missing_pass_is_not_ready) ... ok
+test_incomplete_then_complete_preserves_both (test_library_readiness.ReceiptTests.test_incomplete_then_complete_preserves_both) ... ok
+test_missing_stays_missing (test_library_readiness.ReceiptTests.test_missing_stays_missing) ... ok
+test_overflow_and_changed_pid_fail (test_library_readiness.ReceiptTests.test_overflow_and_changed_pid_fail) ... ok
+test_absent_contact_rejected (test_load_diagnostic.LoadDiagnosticTests.test_absent_contact_rejected) ... ok
+test_body_two_ownership_selects_opposite_force (test_load_diagnostic.LoadDiagnosticTests.test_body_two_ownership_selects_opposite_force) ... ok
+test_combined_inertia_change_is_recorded (test_load_diagnostic.LoadDiagnosticTests.test_combined_inertia_change_is_recorded) ... ok
+test_companion_urdf_preserves_kinematic_source (test_load_diagnostic.LoadDiagnosticTests.test_companion_urdf_preserves_kinematic_source) ... ok
+test_complete_exchange_does_not_claim_repair (test_load_diagnostic.LoadDiagnosticTests.test_complete_exchange_does_not_claim_repair) ... ok
+test_explicit_zero_force_is_valid (test_load_diagnostic.LoadDiagnosticTests.test_explicit_zero_force_is_valid) ... ok
+test_failure_or_missing_restore_cannot_confirm (test_load_diagnostic.LoadDiagnosticTests.test_failure_or_missing_restore_cannot_confirm) ... ok
+test_fixed_twelve_attempt_matrix (test_load_diagnostic.LoadDiagnosticTests.test_fixed_twelve_attempt_matrix) ... ok
+test_force_direction_mismatch_rejected (test_load_diagnostic.LoadDiagnosticTests.test_force_direction_mismatch_rejected) ... ok
+test_frame_cycle_rejected (test_load_diagnostic.LoadDiagnosticTests.test_frame_cycle_rejected) ... ok
+test_generation_mirrors_whole_com_not_base_alone (test_load_diagnostic.LoadDiagnosticTests.test_generation_mirrors_whole_com_not_base_alone) ... ok
+test_inertial_rotation_change_rejected (test_load_diagnostic.LoadDiagnosticTests.test_inertial_rotation_change_rejected) ... ok
+test_missing_depth_rejected (test_load_diagnostic.LoadDiagnosticTests.test_missing_depth_rejected) ... ok
+test_missing_force_rejected (test_load_diagnostic.LoadDiagnosticTests.test_missing_force_rejected) ... ok
+test_nonphysical_inertia_rejected (test_load_diagnostic.LoadDiagnosticTests.test_nonphysical_inertia_rejected) ... ok
+test_timestamp_uses_integer_nanoseconds (test_load_diagnostic.LoadDiagnosticTests.test_timestamp_uses_integer_nanoseconds) ... ok
+test_unknown_collision_rejected (test_load_diagnostic.LoadDiagnosticTests.test_unknown_collision_rejected) ... ok
+test_unrelated_model_change_rejected (test_load_diagnostic.LoadDiagnosticTests.test_unrelated_model_change_rejected) ... ok
+test_whole_com_resolves_joint_frames (test_load_diagnostic.LoadDiagnosticTests.test_whole_com_resolves_joint_frames) ... ok
+test_assumptions_block_real_hardware_confirmation (test_mass_audit.MassAuditTests.test_assumptions_block_real_hardware_confirmation) ... ok
+test_compare_each_tolerance (test_mass_audit.MassAuditTests.test_compare_each_tolerance) ... ok
+test_differential_sensitivity (test_mass_audit.MassAuditTests.test_differential_sensitivity) ... ok
+test_disconnected_and_cycle_rejected (test_mass_audit.MassAuditTests.test_disconnected_and_cycle_rejected) ... ok
+test_duplicate_link_rejected (test_mass_audit.MassAuditTests.test_duplicate_link_rejected) ... ok
+test_duplicate_mass_record_rejected (test_mass_audit.MassAuditTests.test_duplicate_mass_record_rejected) ... ok
+test_duplicate_sdf_frame_rejected (test_mass_audit.MassAuditTests.test_duplicate_sdf_frame_rejected) ... ok
+test_geometry_without_mass_rejected (test_mass_audit.MassAuditTests.test_geometry_without_mass_rejected) ... ok
+test_inertial_local_origin (test_mass_audit.MassAuditTests.test_inertial_local_origin) ... ok
+test_invalid_mass_rejected (test_mass_audit.MassAuditTests.test_invalid_mass_rejected) ... ok
+test_missing_inertia_rejected (test_mass_audit.MassAuditTests.test_missing_inertia_rejected) ... ok
+test_missing_provenance_or_source_rejected (test_mass_audit.MassAuditTests.test_missing_provenance_or_source_rejected) ... ok
+test_multiple_parent_rejected (test_mass_audit.MassAuditTests.test_multiple_parent_rejected) ... ok
+test_non_root_reference_frame (test_mass_audit.MassAuditTests.test_non_root_reference_frame) ... ok
+test_nonphysical_inertia_rejected (test_mass_audit.MassAuditTests.test_nonphysical_inertia_rejected) ... ok
+test_output_cannot_enclose_input (test_mass_audit.MassAuditTests.test_output_cannot_enclose_input) ... ok
+test_output_refuses_overwrite (test_mass_audit.MassAuditTests.test_output_refuses_overwrite) ... ok
+test_parallel_axis_and_fixed_merge (test_mass_audit.MassAuditTests.test_parallel_axis_and_fixed_merge) ... ok
+test_procurement_coverage_and_status (test_mass_audit.MassAuditTests.test_procurement_coverage_and_status) ... ok
+test_procurement_parser_ignores_price_annotations (test_mass_audit.MassAuditTests.test_procurement_parser_ignores_price_annotations) ... ok
+test_rotation_translation_chain (test_mass_audit.MassAuditTests.test_rotation_translation_chain) ... ok
+test_sdf_auto_inertial_and_format_reject (test_mass_audit.MassAuditTests.test_sdf_auto_inertial_and_format_reject) ... ok
+test_sdf_cycle_and_unknown_rejected (test_mass_audit.MassAuditTests.test_sdf_cycle_and_unknown_rejected) ... ok
+test_sdf_joint_child_default (test_mass_audit.MassAuditTests.test_sdf_joint_child_default) ... ok
+test_sdf_reference_rotation (test_mass_audit.MassAuditTests.test_sdf_reference_rotation) ... ok
+test_source_hash_failure_preserves_failure_receipt (test_mass_audit.MassAuditTests.test_source_hash_failure_preserves_failure_receipt) ... ok
+test_weighted_mass_center (test_mass_audit.MassAuditTests.test_weighted_mass_center) ... ok
+test_baseline_is_fixed_eight_attempts (test_origin_diagnostic.OriginDiagnosticTests.test_baseline_is_fixed_eight_attempts) ... ok
+test_contact_asymmetry_alone_does_not_authorize_patch (test_origin_diagnostic.OriginDiagnosticTests.test_contact_asymmetry_alone_does_not_authorize_patch) ... ok
+test_contact_source_gap_fails_coverage (test_origin_diagnostic.OriginDiagnosticTests.test_contact_source_gap_fails_coverage) ... ok
+test_duplicate_time_fails (test_origin_diagnostic.OriginDiagnosticTests.test_duplicate_time_fails) ... ok
+test_explicit_zero_force_preserves_source_meaning (test_origin_diagnostic.OriginDiagnosticTests.test_explicit_zero_force_preserves_source_meaning) ... ok
+test_failed_attempt_cannot_qualify_pair (test_origin_diagnostic.OriginDiagnosticTests.test_failed_attempt_cannot_qualify_pair) ... ok
+test_input_budget_mismatch_fails (test_origin_diagnostic.OriginDiagnosticTests.test_input_budget_mismatch_fails) ... ok
+test_invalid_quaternion_fails (test_origin_diagnostic.OriginDiagnosticTests.test_invalid_quaternion_fails) ... ok
+test_inverse_frame_returns_body_coordinates (test_origin_diagnostic.OriginDiagnosticTests.test_inverse_frame_returns_body_coordinates) ... ok
+test_missing_force_is_not_zero_force (test_origin_diagnostic.OriginDiagnosticTests.test_missing_force_is_not_zero_force) ... ok
+test_native_integer_nanoseconds_avoid_float_search_overshoot (test_origin_diagnostic.OriginDiagnosticTests.test_native_integer_nanoseconds_avoid_float_search_overshoot) ... ok
+test_rotating_offset_is_not_center_translation (test_origin_diagnostic.OriginDiagnosticTests.test_rotating_offset_is_not_center_translation) ... ok
+test_specific_frozen_prediction_required (test_origin_diagnostic.OriginDiagnosticTests.test_specific_frozen_prediction_required) ... ok
+test_unwrap_pi_crossing (test_origin_diagnostic.OriginDiagnosticTests.test_unwrap_pi_crossing) ... ok
+test_world_transform_rotates_body_offset (test_origin_diagnostic.OriginDiagnosticTests.test_world_transform_rotates_body_offset) ... ok
+test_zero_turn_has_no_fabricated_center (test_origin_diagnostic.OriginDiagnosticTests.test_zero_turn_has_no_fabricated_center) ... ok
+test_actual_gazebo_json_time_is_not_silently_zeroed (test_paused_steps.PausedTests.test_actual_gazebo_json_time_is_not_silently_zeroed) ... ok
+test_calibration_cannot_reuse_another_signature_or_exceed_budget (test_paused_steps.PausedTests.test_calibration_cannot_reuse_another_signature_or_exceed_budget) ... ok
+test_command_ack_timeout_does_not_advance_physics (test_paused_steps.PausedTests.test_command_ack_timeout_does_not_advance_physics) ... ok
+test_integer_steps_do_not_round_a_partial_step (test_paused_steps.PausedTests.test_integer_steps_do_not_round_a_partial_step) ... ok
+test_native_input_and_original_acceleration_profile (test_paused_steps.PausedTests.test_native_input_and_original_acceleration_profile) ... ok
+test_pair_requires_step_timing_and_matching_control_budget (test_paused_steps.PausedTests.test_pair_requires_step_timing_and_matching_control_budget) ... ok
+test_service_delivery_is_not_paused_step_completion (test_paused_steps.PausedTests.test_service_delivery_is_not_paused_step_completion) ... ok
+test_stale_flush_confirmation_fails (test_paused_steps.PausedTests.test_stale_flush_confirmation_fails) ... ok
+test_two_recent_consecutive_confirmations_require_all_axes (test_paused_steps.PausedTests.test_two_recent_consecutive_confirmations_require_all_axes) ... ok
+test_unavailable_wheel_force_is_null_without_rewriting_raw_csv (test_paused_steps.PausedTests.test_unavailable_wheel_force_is_null_without_rewriting_raw_csv) ... ok
+test_wrong_wheel_direction_or_target_dropout_fails (test_paused_steps.PausedTests.test_wrong_wheel_direction_or_target_dropout_fails) ... ok
+test_auto_control_profile_requires_r5_and_v2_dart (test_physics_guard.GuardTests.test_auto_control_profile_requires_r5_and_v2_dart) ... ok
+test_checked_in_worlds_match_generator_defaults (test_physics_guard.GuardTests.test_checked_in_worlds_match_generator_defaults) ... ok
+test_cli_queued_stats_messages_use_latest (test_physics_guard.GuardTests.test_cli_queued_stats_messages_use_latest) ... ok
+test_generator_backend_choice_changes_only_runtime_configuration (test_physics_guard.GuardTests.test_generator_backend_choice_changes_only_runtime_configuration) ... ok
+test_legacy_world_needs_no_optional_runtime (test_physics_guard.GuardTests.test_legacy_world_needs_no_optional_runtime) ... ok
+test_missing_collision_resource_is_rejected (test_physics_guard.GuardTests.test_missing_collision_resource_is_rejected) ... ok
+test_missing_library_or_configuration_never_falls_back (test_physics_guard.GuardTests.test_missing_library_or_configuration_never_falls_back) ... ok
+test_missing_or_gapped_truth_cannot_pass (test_physics_guard.GuardTests.test_missing_or_gapped_truth_cannot_pass) ... ok
+test_pose_vector_uses_actual_per_pose_stamp (test_physics_guard.GuardTests.test_pose_vector_uses_actual_per_pose_stamp) ... ok
+test_resolved_copy_preserves_geometry_and_friction (test_physics_guard.GuardTests.test_resolved_copy_preserves_geometry_and_friction) ... ok
+test_runtime_version_and_library_integrity_are_enforced (test_physics_guard.GuardTests.test_runtime_version_and_library_integrity_are_enforced) ... ok
+test_capacity_hash_or_version_failure_is_not_suppressed (test_r5_startup_guard.GuardTests.test_capacity_hash_or_version_failure_is_not_suppressed) ... ok
+test_child_exit_rejects_ready (test_r5_startup_guard.GuardTests.test_child_exit_rejects_ready) ... ok
+test_generation_rejects_changed_base_and_overwrite (test_r5_startup_guard.GuardTests.test_generation_rejects_changed_base_and_overwrite) ... ok
+test_nonretryable_io_is_not_suppressed (test_r5_startup_guard.GuardTests.test_nonretryable_io_is_not_suppressed) ... ok
+test_partial_receipt_remains_pending (test_r5_startup_guard.GuardTests.test_partial_receipt_remains_pending) ... ok
+test_permanent_enodata_times_out_and_closes (test_r5_startup_guard.GuardTests.test_permanent_enodata_times_out_and_closes) ... ok
+test_receipt_enodata_retries_and_traces (test_r5_startup_guard.GuardTests.test_receipt_enodata_retries_and_traces) ... ok
+test_runtime_proof_enodata_never_reports_premature_ready (test_r5_startup_guard.GuardTests.test_runtime_proof_enodata_never_reports_premature_ready) ... ok
+test_both_mesh_diagonals_have_identical_horizontal_support (test_ramp_contact_audit.RampContactAuditTests.test_both_mesh_diagonals_have_identical_horizontal_support) ... /source/scripts/audit_r5_ramp_contact.py:27: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpa90o7wnt/False' mode='r' encoding='UTF-8'>
+  for line in Path(path).open():
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/source/scripts/audit_r5_ramp_contact.py:27: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpa90o7wnt/True' mode='r' encoding='UTF-8'>
+  for line in Path(path).open():
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_both_triangles_and_shared_edge_project_to_plane (test_ramp_contact_audit.RampContactAuditTests.test_both_triangles_and_shared_edge_project_to_plane) ... ok
+test_coordinate_adjacency_ignores_obj_vertex_duplication (test_ramp_contact_audit.RampContactAuditTests.test_coordinate_adjacency_ignores_obj_vertex_duplication) ... ok
+test_degenerate_or_reversed_face_fails (test_ramp_contact_audit.RampContactAuditTests.test_degenerate_or_reversed_face_fails) ... ok
+test_fixture_replacement_preserves_vehicle_and_friction (test_ramp_contact_audit.RampContactAuditTests.test_fixture_replacement_preserves_vehicle_and_friction) ... ok
+test_non_coplanar_edge_is_not_reported_as_internal_flat_seam (test_ramp_contact_audit.RampContactAuditTests.test_non_coplanar_edge_is_not_reported_as_internal_flat_seam) ... ok
+test_normal_angle_known_and_unknown (test_ramp_contact_audit.RampContactAuditTests.test_normal_angle_known_and_unknown) ... ok
+test_outside_and_nonfinite_points_fail (test_ramp_contact_audit.RampContactAuditTests.test_outside_and_nonfinite_points_fail) ... ok
+test_overlapping_surfaces_are_not_silently_selected (test_ramp_contact_audit.RampContactAuditTests.test_overlapping_surfaces_are_not_silently_selected) ... ok
+test_plate_link_and_collision_offsets_are_composed (test_ramp_contact_audit.RampContactAuditTests.test_plate_link_and_collision_offsets_are_composed) ... ok
+test_shared_and_coincident_disconnected_edges_are_distinguished (test_ramp_contact_audit.RampContactAuditTests.test_shared_and_coincident_disconnected_edges_are_distinguished) ... ok
+test_sloped_face_does_not_become_horizontal (test_ramp_contact_audit.RampContactAuditTests.test_sloped_face_does_not_become_horizontal) ... ok
+test_tilted_or_named_frame_plate_fails (test_ramp_contact_audit.RampContactAuditTests.test_tilted_or_named_frame_plate_fails) ... ok
+test_world_transform_is_not_ignored (test_ramp_contact_audit.RampContactAuditTests.test_world_transform_is_not_ignored) ... ok
+test_atlas_bakes_neutral_channels_and_repeatable_maps (test_scene_detail.SceneDetailTests.test_atlas_bakes_neutral_channels_and_repeatable_maps) ... ok
+test_footprint_clearance_and_measured_exclusion (test_scene_detail.SceneDetailTests.test_footprint_clearance_and_measured_exclusion) ... ok
+test_height_matches_triangle_diagonal_instead_of_bilinear (test_scene_detail.SceneDetailTests.test_height_matches_triangle_diagonal_instead_of_bilinear) ... ok
+test_rock_bank_is_reproducible_convex_and_varied (test_scene_detail.SceneDetailTests.test_rock_bank_is_reproducible_convex_and_varied) ... ok
+test_actual_speed_formula_and_zero_speed (test_slip_probe.SlipProbeTests.test_actual_speed_formula_and_zero_speed) ... ok
+test_authorization_required (test_slip_probe.SlipProbeTests.test_authorization_required) ... ok
+test_baseline_absence_is_explicit_not_fabricated_zero (test_slip_probe.SlipProbeTests.test_baseline_absence_is_explicit_not_fabricated_zero) ... ok
+test_exact_single_intervention_and_restore (test_slip_probe.SlipProbeTests.test_exact_single_intervention_and_restore) ... ok
+test_missing_component_and_nonfinite_do_not_pass (test_slip_probe.SlipProbeTests.test_missing_component_and_nonfinite_do_not_pass) ... ok
+test_reduced_angle_and_missing_backend_cannot_fake_success (test_slip_probe.SlipProbeTests.test_reduced_angle_and_missing_backend_cannot_fake_success) ... ok
+test_wrong_formula_or_longitudinal_change_fails (test_slip_probe.SlipProbeTests.test_wrong_formula_or_longitudinal_change_fails) ... ok
+test_complete_native_hold_passes (test_step_observation.StepObservationTests.test_complete_native_hold_passes) ... ok
+test_missing_step_tail_or_torque_fails (test_step_observation.StepObservationTests.test_missing_step_tail_or_torque_fails) ... ok
+test_small_position_with_large_velocity_fails (test_step_observation.StepObservationTests.test_small_position_with_large_velocity_fails) ... ok
+test_clock_rejected (test_turn_control_probe.ProbeTests.test_clock_rejected) ... ok
+test_continuous_zero_mean_bounded_profile (test_turn_control_probe.ProbeTests.test_continuous_zero_mean_bounded_profile) ... ok
+test_intentional_dynamic_input_is_qualified (test_turn_control_probe.ProbeTests.test_intentional_dynamic_input_is_qualified) ... ok
+test_invalid_request_not_mislabeled_as_zero_command (test_turn_control_probe.ProbeTests.test_invalid_request_not_mislabeled_as_zero_command) ... ok
+test_original_acceleration_and_axle_matching_required (test_turn_control_probe.ProbeTests.test_original_acceleration_and_axle_matching_required) ... ok
+test_stop_and_nonturn_do_not_dither (test_turn_control_probe.ProbeTests.test_stop_and_nonturn_do_not_dither) ... ok
+test_yaw_dropout_and_stale_input_fail (test_turn_control_probe.ProbeTests.test_yaw_dropout_and_stale_input_fail) ... ok
+test_fixed24_matrix_and_pairing_unchanged (test_turn_gate_validation.EntryTests.test_fixed24_matrix_and_pairing_unchanged) ... ok
+test_only_the_private_bridge_guard_is_redirected (test_turn_gate_validation.EntryTests.test_only_the_private_bridge_guard_is_redirected) ... ok
+test_signature_mismatch_fails (test_turn_gate_validation.EntryTests.test_signature_mismatch_fails) ... ok
+test_startup_root_error_is_retained (test_turn_gate_validation.EntryTests.test_startup_root_error_is_retained) ... ok
+test_actual_before_after_and_observer_match_both_modes (test_turn_slip_control.TurnSlipTests.test_actual_before_after_and_observer_match_both_modes) ... ok
+test_duplicate_grid_rejected (test_turn_slip_control.TurnSlipTests.test_duplicate_grid_rejected) ... ok
+test_entry_matrix_and_corresponding_pairs (test_turn_slip_control.TurnSlipTests.test_entry_matrix_and_corresponding_pairs) ... ok
+test_forged_contact_echo_does_not_replace_actual_observer (test_turn_slip_control.TurnSlipTests.test_forged_contact_echo_does_not_replace_actual_observer) ... ok
+test_native_formula_unknown_and_longitudinal_change_rejected (test_turn_slip_control.TurnSlipTests.test_native_formula_unknown_and_longitudinal_change_rejected) ... ok
+test_pure_turn_predicate_for_zero_straight_reverse_mixed_and_both_turns (test_turn_slip_control.TurnSlipTests.test_pure_turn_predicate_for_zero_straight_reverse_mixed_and_both_turns) ... ok
+test_single_mode_model_change_and_restore_hash (test_turn_slip_control.TurnSlipTests.test_single_mode_model_change_and_restore_hash) ... ok
+test_wrong_mode_or_wheel_target_rejected (test_turn_slip_control.TurnSlipTests.test_wrong_mode_or_wheel_target_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 361 tests in 21.478s
+
+OK
+firmware core: CRC, framing, sequence, watchdog, estop, rollover, NaN passed
+Software regression checks passed.
