@@ -1,0 +1,45 @@
+{
+  "status": "diagnostic_complete",
+  "attempts": 6,
+  "limit": 6,
+  "production_changed": false,
+  "goal_achieved": false,
+  "input_pairs": [
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  ],
+  "original_lateral_m": [
+    0.00015556697036069007,
+    0.00015556697036069007,
+    0.00015556697036069007
+  ],
+  "slip_lateral_m": [
+    0.15888608166320442,
+    0.15888608166320442
+  ],
+  "causal_prediction_supported": true,
+  "whole_vehicle_accepted": false,
+  "freeze_unchanged": true
+}

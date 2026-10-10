@@ -1,0 +1,10 @@
+    PID STAT COMMAND
+      1 Ss   sleep infinity
+   1636 Z    [python3] <defunct>
+   1994 Z    [python3] <defunct>
+   2394 Z    [python3] <defunct>
+   2759 Z    [python3] <defunct>
+   3139 Z    [python3] <defunct>
+   3527 Z    [python3] <defunct>
+   4015 Z    [python3] <defunct>
+   4086 Rs   ps -eo pid,stat,args

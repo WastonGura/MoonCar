@@ -1,0 +1,15 @@
+test_complete_force_association_and_paused_writer (test_contact_source.ContactSourceTests.test_complete_force_association_and_paused_writer) ... ok
+test_explicit_empty_accepted_without_fabricated_zero_force (test_contact_source.ContactSourceTests.test_explicit_empty_accepted_without_fabricated_zero_force) ... ok
+test_force_and_collision_identity_fail (test_contact_source.ContactSourceTests.test_force_and_collision_identity_fail) ... ok
+test_frozen_matrix_and_entry_import (test_contact_source.ContactSourceTests.test_frozen_matrix_and_entry_import) ... ok
+test_missing_extra_data_or_fabricated_empty_fails (test_contact_source.ContactSourceTests.test_missing_extra_data_or_fabricated_empty_fails) ... ok
+test_missing_wheel_step_and_duplicate_point_fail (test_contact_source.ContactSourceTests.test_missing_wheel_step_and_duplicate_point_fail) ... ok
+test_no_backend_contact_support_fails (test_contact_source.ContactSourceTests.test_no_backend_contact_support_fails) ... ok
+test_source_no_contact_and_actual_topic_loss_are_separate (test_contact_source.ContactSourceTests.test_source_no_contact_and_actual_topic_loss_are_separate) ... ok
+test_unknown_component_is_not_no_contact (test_contact_source.ContactSourceTests.test_unknown_component_is_not_no_contact) ... ok
+test_wrong_simulation_time_and_pause_receipt_fail (test_contact_source.ContactSourceTests.test_wrong_simulation_time_and_pause_receipt_fail) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.107s
+
+OK

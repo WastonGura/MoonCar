@@ -1,0 +1,12 @@
+{
+  "goal": "Resolve actual R5 turn center displacement without sacrificing v2 straight behavior",
+  "phase": "Contact-source and ramp lateral displacement diagnosis",
+  "production_changed": false,
+  "simulation_limit": 6,
+  "wall_seconds_per_attempt": 600,
+  "prepare_build_limit_seconds": 2700,
+  "stop_on_critical_data_or_input_failure": true,
+  "no_reruns": true,
+  "no_parameter_search": true,
+  "physical_difference": "Only previously authorized native WheelSlip10/0 on/off in isolated copies; masses, inertia, friction and geometry identical"
+}

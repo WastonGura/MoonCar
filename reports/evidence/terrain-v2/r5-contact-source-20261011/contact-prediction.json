@@ -1,0 +1,21 @@
+{
+  "fixed_before_simulation": true,
+  "world": "ramp_v2",
+  "step_s": 0.001,
+  "schedule": "paused_steps_5_20_3",
+  "command": {"straight_m_s": 0.1, "angular_rad_s": 0.0},
+  "matrix": ["original_zero", "original_straight_1", "original_straight_2", "slip_straight_1", "slip_straight_2", "restore_original_straight"],
+  "single_contrast": "Native WheelSlip10/0 present or absent; identical axle module inactive on all commands in this matrix",
+  "lateral_effect_prediction": {
+    "original_and_restore_endpoint_abs_y_m_max": 0.01,
+    "slip_endpoint_abs_y_m_min": 0.10,
+    "same_profile_repeat_range_m_max": 0.005,
+    "meaning": "Diagnostic contrast only; not a vehicle performance threshold"
+  },
+  "contact_source_prediction": "Long empty topic windows may coincide with explicitly empty per-step ECS contact states; source-positive steps without reception remain separate transport evidence",
+  "source_eligibility": "Four wheel collision snapshots at every physical step, missing is unknown and fails, present-empty is explicit, all positive points have identity/normal/depth/force; exact final pause and bounded writer drain",
+  "image_and_input_thresholds_unchanged": true,
+  "no_imputed_force_or_image": true,
+  "production_default_changed": false,
+  "next_repair_not_preselected": true
+}

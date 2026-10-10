@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-10",
+  "human_reply": "允许测试侧向滑移模型，仅限测试副本",
+  "production_change_allowed": false,
+  "lateral_compliance": 10,
+  "longitudinal_compliance": 0,
+  "other_physical_fields_changed": false
+}

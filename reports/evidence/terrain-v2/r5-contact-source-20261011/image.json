@@ -1,0 +1,83 @@
+[
+    {
+        "Id": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+        "RepoTags": [
+            "mooncar-terrain:r5-image-dds-20261008"
+        ],
+        "RepoDigests": [
+            "mooncar-terrain@sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-10-08T08:26:04.431420076Z",
+        "Config": {
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=C.UTF-8",
+                "LC_ALL=C.UTF-8",
+                "ROS_DISTRO=jazzy",
+                "LIBGL_ALWAYS_SOFTWARE=1",
+                "RMW_IMPLEMENTATION=rmw_fastrtps_cpp",
+                "ROS_DOMAIN_ID=76",
+                "MOONCAR_DART_PLUGIN_ROOT=/opt/mooncar/physics/dart-7.8.0",
+                "MOONCAR_IMAGE_DDS_RUNTIME=/opt/mooncar/image-dds/rmw-8.4.4"
+            ],
+            "Entrypoint": [
+                "/ros_entrypoint.sh"
+            ],
+            "Cmd": [
+                "sleep",
+                "infinity"
+            ],
+            "WorkingDir": "/work",
+            "Labels": {
+                "org.opencontainers.image.version": "24.04"
+            },
+            "ArgsEscaped": true,
+            "Shell": [
+                "/bin/bash",
+                "-c"
+            ]
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 5755900215,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:d81fb2a7c6ee3be05fdefaa7fd223be219c1ab172083ec1b994c3ecda33ac0a8",
+                "sha256:ee1adf8ff799b5ee5ffe226bcf30b12adb49997e5eed39938f6d19c7d7fd3038",
+                "sha256:652e62d86369541c8139e1d06af67d76b0c34655c10cb1a12ce2f5e3ffbbfb8c",
+                "sha256:29fa225c9b246ed8f1e592722c31407ab5764f18222711d6409d8dc97a4af3a7",
+                "sha256:1b91eb4ad77361dcda239007ce1cc4763afbd61c404524557ab793765f17c0df",
+                "sha256:1498974ead45f5c90029934cbfb456ab9133d5eaad1fb62d11d7a264dfc47c68",
+                "sha256:63374bfdc99ca6d3c78b262e557e0cb860d15bfb99a0e70e75d32323b83754b2",
+                "sha256:03195f294facf050c604ce00e8a5e49c37c0b91225eeb2e785a0000fd7f9c374",
+                "sha256:95622f076f0dda79f2f67d5d87ede8c61f0c43744df278aef1e40f8df5673e02",
+                "sha256:967aa5be1a038d49d89a05d14ee5dbb2fd425ed23d87625af42260bf3c1b6561",
+                "sha256:dc62d722daf847f40373e73b8cbcd5236875fd12c8093dda45568c070f036d8b",
+                "sha256:0a676a8063c212b58b5da79df027e4aca735e759ec09e098b42bdcb5d5a21b9c",
+                "sha256:14301dcaa2c748495a9beb7d431f921baffe1c67c5024df0185f5533ebef6435",
+                "sha256:2394553e332543247a848d29be2b181738c8499d138eb80c8f8b996c049338e3",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:ada5ed788a812514c6348a6401f48999a9428c26176bd7e1d30d927f68ee63d3",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-10-08T08:26:04.613066516Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.index.v1+json",
+            "digest": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+            "size": 856
+        },
+        "Identity": {
+            "Build": [
+                {
+                    "Ref": "xlu471xplsr714ii643350gd8",
+                    "CreatedAt": "2026-10-08T08:26:04.680520627Z"
+                }
+            ]
+        }
+    }
+]

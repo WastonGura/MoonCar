@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(mooncar_contact_observer LANGUAGES CXX)
+find_package(gz-sim8 REQUIRED)
+find_package(Threads REQUIRED)
+add_library(mooncar-contact-observer SHARED ContactObserver.cc)
+target_link_libraries(mooncar-contact-observer PRIVATE gz-sim8::gz-sim8 Threads::Threads)
+target_compile_features(mooncar-contact-observer PRIVATE cxx_std_17)
+target_compile_options(mooncar-contact-observer PRIVATE -Wall -Wextra -Werror)
