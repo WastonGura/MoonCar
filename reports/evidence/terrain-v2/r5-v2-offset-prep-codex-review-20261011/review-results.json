@@ -1,0 +1,1131 @@
+{
+  "scope": "Offline only. Synthetic fixtures are not physics evidence or acceptance rounds.",
+  "gemini_manifest_verified": true,
+  "baseline_evaluator_output": {
+    "run_dir": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\14-pure_turn-ramp-1000us-left",
+    "qualified": true,
+    "qualification_error": null,
+    "final_displacement_mm": 10.285963351168842,
+    "max_displacement_mm": 10.285963351168842,
+    "target_seam_overlap_windows": [
+      {
+        "first_iteration": 8992,
+        "last_iteration": 10724,
+        "duration_steps": 1733,
+        "first_motion_s": 3.791,
+        "last_motion_s": 5.523
+      },
+      {
+        "first_iteration": 17019,
+        "last_iteration": 17224,
+        "duration_steps": 206,
+        "first_motion_s": 11.818,
+        "last_motion_s": 12.023
+      }
+    ],
+    "target_seam_overlap_windows_all_wheels": {
+      "front_left": [
+        {
+          "first_iteration": 8992,
+          "last_iteration": 10724,
+          "duration_steps": 1733,
+          "first_motion_s": 3.791,
+          "last_motion_s": 5.523
+        },
+        {
+          "first_iteration": 17019,
+          "last_iteration": 17224,
+          "duration_steps": 206,
+          "first_motion_s": 11.818,
+          "last_motion_s": 12.023
+        }
+      ],
+      "front_right": [
+        {
+          "first_iteration": 18360,
+          "last_iteration": 18605,
+          "duration_steps": 246,
+          "first_motion_s": 13.159,
+          "last_motion_s": 13.404
+        },
+        {
+          "first_iteration": 24684,
+          "last_iteration": 25200,
+          "duration_steps": 517,
+          "first_motion_s": 19.483,
+          "last_motion_s": 19.999
+        }
+      ],
+      "rear_left": [
+        {
+          "first_iteration": 8148,
+          "last_iteration": 9893,
+          "duration_steps": 1746,
+          "first_motion_s": 2.947,
+          "last_motion_s": 4.692
+        }
+      ],
+      "rear_right": []
+    },
+    "fl_contact_ge3_steps_count": 4211,
+    "fr_zero_contact_steps_count": 243,
+    "fl_load_spikes_count": 382,
+    "net_horizontal_force_rms_N": 0.236674181671256,
+    "explicit_empty_runs_per_wheel": {
+      "front_left": [
+        {
+          "first_iteration": 8142,
+          "last_iteration": 8142,
+          "duration_steps": 1,
+          "first_motion_s": 2.9410000000000003,
+          "last_motion_s": 2.9410000000000003
+        },
+        {
+          "first_iteration": 17020,
+          "last_iteration": 17020,
+          "duration_steps": 1,
+          "first_motion_s": 11.819,
+          "last_motion_s": 11.819
+        },
+        {
+          "first_iteration": 17262,
+          "last_iteration": 17262,
+          "duration_steps": 1,
+          "first_motion_s": 12.061,
+          "last_motion_s": 12.061
+        },
+        {
+          "first_iteration": 17721,
+          "last_iteration": 17722,
+          "duration_steps": 2,
+          "first_motion_s": 12.52,
+          "last_motion_s": 12.521
+        },
+        {
+          "first_iteration": 17736,
+          "last_iteration": 17853,
+          "duration_steps": 118,
+          "first_motion_s": 12.535,
+          "last_motion_s": 12.652000000000001
+        },
+        {
+          "first_iteration": 18363,
+          "last_iteration": 18367,
+          "duration_steps": 5,
+          "first_motion_s": 13.162,
+          "last_motion_s": 13.166
+        },
+        {
+          "first_iteration": 18403,
+          "last_iteration": 18481,
+          "duration_steps": 79,
+          "first_motion_s": 13.202,
+          "last_motion_s": 13.280000000000001
+        }
+      ],
+      "front_right": [
+        {
+          "first_iteration": 8142,
+          "last_iteration": 8142,
+          "duration_steps": 1,
+          "first_motion_s": 2.9410000000000003,
+          "last_motion_s": 2.9410000000000003
+        },
+        {
+          "first_iteration": 17022,
+          "last_iteration": 17262,
+          "duration_steps": 241,
+          "first_motion_s": 11.821,
+          "last_motion_s": 12.061
+        },
+        {
+          "first_iteration": 18361,
+          "last_iteration": 18361,
+          "duration_steps": 1,
+          "first_motion_s": 13.16,
+          "last_motion_s": 13.16
+        }
+      ],
+      "rear_left": [
+        {
+          "first_iteration": 17020,
+          "last_iteration": 17020,
+          "duration_steps": 1,
+          "first_motion_s": 11.819,
+          "last_motion_s": 11.819
+        },
+        {
+          "first_iteration": 17529,
+          "last_iteration": 17529,
+          "duration_steps": 1,
+          "first_motion_s": 12.328,
+          "last_motion_s": 12.328
+        }
+      ],
+      "rear_right": [
+        {
+          "first_iteration": 17529,
+          "last_iteration": 17529,
+          "duration_steps": 1,
+          "first_motion_s": 12.328,
+          "last_motion_s": 12.328
+        },
+        {
+          "first_iteration": 17723,
+          "last_iteration": 17724,
+          "duration_steps": 2,
+          "first_motion_s": 12.522,
+          "last_motion_s": 12.523
+        },
+        {
+          "first_iteration": 18361,
+          "last_iteration": 18361,
+          "duration_steps": 1,
+          "first_motion_s": 13.16,
+          "last_motion_s": 13.16
+        }
+      ]
+    },
+    "net_horizontal_impulse_Ns": [
+      -0.024632988924006435,
+      -0.002384243299627313
+    ],
+    "actual_com_dv_mm_s": [
+      -2.681467335425604,
+      -0.2627821940489437
+    ],
+    "actual_body_dv_mm_s": [
+      -1.9995822446135583,
+      -1.2520044391332863
+    ],
+    "critical_events_count": 4244,
+    "sample_critical_events": [
+      {
+        "iteration": 5201,
+        "motion_s": 0.0,
+        "contact_counts": [
+          3,
+          2,
+          2,
+          3
+        ],
+        "wheel_fz_N": [
+          4.338394592651352,
+          2.8066331153984274,
+          3.099297177416861,
+          4.636990475836889
+        ],
+        "fl_contacts": [
+          {
+            "xyz": [
+              0.1570000000013147,
+              0.1405499999996283,
+              -1.2054509113124185e-09
+            ],
+            "normal": [
+              -5.1486370722094624e-11,
+              5.1486370722094624e-11,
+              1.0
+            ],
+            "depth_um": 0.001206297867151207,
+            "f1z_N": 1.6190985707370769
+          },
+          {
+            "xyz": [
+              0.1570000000013147,
+              0.15704000000131468,
+              -1.2062999215657126e-09
+            ],
+            "normal": [
+              -5.1486370722094624e-11,
+              5.1486370722094624e-11,
+              1.0
+            ],
+            "depth_um": 0.001206297867151207,
+            "f1z_N": 1.4822789665462726
+          },
+          {
+            "xyz": [
+              0.15699999999740175,
+              0.1905499999996283,
+              -1.2080252298485232e-09
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "depth_um": 0.0012080252353996457,
+            "f1z_N": 1.2370170553680027
+          }
+        ],
+        "net_horizontal_force_N": [
+          5.2433576314557144e-11,
+          -7.088220900555939e-10
+        ]
+      },
+      {
+        "iteration": 5202,
+        "motion_s": 0.001,
+        "contact_counts": [
+          3,
+          2,
+          2,
+          3
+        ],
+        "wheel_fz_N": [
+          4.322287478824307,
+          2.8227360967855484,
+          3.082042067951545,
+          4.6542543595490224
+        ],
+        "fl_contacts": [
+          {
+            "xyz": [
+              0.1570000000013313,
+              0.1405499999996283,
+              -8.96503826730573e-10
+            ],
+            "normal": [
+              -5.1485038454468816e-11,
+              5.1485038454468816e-11,
+              1.0
+            ],
+            "depth_um": 0.0008973507492626709,
+            "f1z_N": 1.6140165270998224
+          },
+          {
+            "xyz": [
+              0.1570000000013313,
+              0.15704000000133128,
+              -8.973528150147749e-10
+            ],
+            "normal": [
+              -5.1485038454468816e-11,
+              5.1485038454468816e-11,
+              1.0
+            ],
+            "depth_um": 0.0008973507492626709,
+            "f1z_N": 1.4769174186254383
+          },
+          {
+            "xyz": [
+              0.15699999999741843,
+              0.1905499999996283,
+              -8.990780786532965e-10
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "depth_um": 0.0008990780758777461,
+            "f1z_N": 1.2313535330990462
+          }
+        ],
+        "net_horizontal_force_N": [
+          1.4062892641941716e-05,
+          0.1182522696454294
+        ]
+      },
+      {
+        "iteration": 5203,
+        "motion_s": 0.002,
+        "contact_counts": [
+          3,
+          2,
+          2,
+          3
+        ],
+        "wheel_fz_N": [
+          4.357632585460394,
+          2.787396868953535,
+          3.1199238368956603,
+          4.616366701738203
+        ],
+        "fl_contacts": [
+          {
+            "xyz": [
+              0.15699987303338322,
+              0.14055016033777173,
+              -8.964756553999514e-10
+            ],
+            "normal": [
+              -5.122462173503089e-11,
+              5.122462173503089e-11,
+              1.0
+            ],
+            "depth_um": 0.0008973183029947762,
+            "f1z_N": 1.625159744660749
+          },
+          {
+            "xyz": [
+              0.15699985813699824,
+              0.15703985813699822,
+              -8.973203346953035e-10
+            ],
+            "normal": [
+              -5.122462173503089e-11,
+              5.122462173503089e-11,
+              1.0
+            ],
+            "depth_um": 0.0008973183029947762,
+            "f1z_N": 1.4886844201087432
+          },
+          {
+            "xyz": [
+              0.1569998278607273,
+              0.19055016033775135,
+              -8.990368888004547e-10
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "depth_um": 0.0008990368866035325,
+            "f1z_N": 1.243788420690901
+          }
+        ],
+        "net_horizontal_force_N": [
+          -1.7687505793340108e-07,
+          -0.06984222900230552
+        ]
+      },
+      {
+        "iteration": 5204,
+        "motion_s": 0.003,
+        "contact_counts": [
+          3,
+          2,
+          2,
+          3
+        ],
+        "wheel_fz_N": [
+          4.356438771557596,
+          2.7885905396950683,
+          3.1186306030399225,
+          4.617660086167964
+        ],
+        "fl_contacts": [
+          {
+            "xyz": [
+              0.15699961909418175,
+              0.14055046053905845,
+              -8.965095905262177e-10
+            ],
+            "normal": [
+              -5.1538008936651864e-11,
+              5.1538008936651864e-11,
+              1.0
+            ],
+            "depth_um": 0.0008973573412118796,
+            "f1z_N": 1.6247867514627485
+          },
+          {
+            "xyz": [
+              0.15699957440644122,
+              0.15703957440644123,
+              -8.973594089271895e-10
+            ],
+            "normal": [
+              -5.1538008936651864e-11,
+              5.1538008936651864e-11,
+              1.0
+            ],
+            "depth_um": 0.0008973573412118796,
+            "f1z_N": 1.488286241907813
+          },
+          {
+            "xyz": [
+              0.15699948358346658,
+              0.19055046053887487,
+              -8.990864979567914e-10
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "depth_um": 0.0008990864996949455,
+            "f1z_N": 1.2433657781870349
+          }
+        ],
+        "net_horizontal_force_N": [
+          8.798122763664651e-08,
+          -0.06344910504719181
+        ]
+      },
+      {
+        "iteration": 5205,
+        "motion_s": 0.004,
+        "contact_counts": [
+          3,
+          2,
+          2,
+          3
+        ],
+        "wheel_fz_N": [
+          4.353398427801602,
+          2.7916307660585273,
+          3.115356996830321,
+          4.6209338101407225
+        ],
+        "fl_contacts": [
+          {
+            "xyz": [
+              0.15699923818407457,
+              0.14055090129748743,
+              -8.965410951345504e-10
+            ],
+            "normal": [
+              -5.182922002727342e-11,
+              5.182922002727342e-11,
+              1.0
+            ],
+            "depth_um": 0.0008973936038714214,
+            "f1z_N": 1.6238300358590827
+          },
+          {
+            "xyz": [
+              0.1569991488132579,
+              0.15703914881325792,
+              -8.973956727749292e-10
+            ],
+            "normal": [
+              -5.182922002727342e-11,
+              5.182922002727342e-11,
+              1.0
+            ],
+            "depth_um": 0.0008973936038714214,
+            "f1z_N": 1.4872752234317117
+          },
+          {
+            "xyz": [
+              0.15699896716644365,
+              0.19055090129675292,
+              -8.991325701823043e-10
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "depth_um": 0.0008991325739504674,
+            "f1z_N": 1.2422931685108074
+          }
+        ],
+        "net_horizontal_force_N": [
+          3.076631929221918e-07,
+          -0.04722816465512908
+        ]
+      },
+      {
+        "iteration": 5206,
+        "motion_s": 0.005,
+        "contact_counts": [
+          3,
+          2,
+          2,
+          3
+        ],
+        "wheel_fz_N": [
+          4.3517911502638285,
+          2.793237888494354,
+          3.113619059255294,
+          4.622671902535554
+        ],
+        "fl_contacts": [
+          {
+            "xyz": [
+              0.15699873030656145,
+              0.1405514843724368,
+              -8.965669523166035e-10
+            ],
+            "normal": [
+              -5.206816911321226e-11,
+              5.206816911321226e-11,
+              1.0
+            ],
+            "depth_um": 0.0008974233300929058,
+            "f1z_N": 1.623323554624675
+          },
+          {
+            "xyz": [
+              0.15699858136615608,
+              0.15703858136615606,
+              -8.974254130261126e-10
+            ],
+            "normal": [
+              -5.206816911321226e-11,
+              5.206816911321226e-11,
+              1.0
+            ],
+            "depth_um": 0.0008974233300929058,
+            "f1z_N": 1.486743167299604
+          },
+          {
+            "xyz": [
+              0.15699827861482257,
+              0.19055148437039654,
+              -8.991703842907136e-10
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "depth_um": 0.0008991703909222437,
+            "f1z_N": 1.241724428339549
+          }
+        ],
+        "net_horizontal_force_N": [
+          5.796153221826472e-07,
+          -0.03863301920298745
+        ]
+      },
+      {
+        "iteration": 5207,
+        "motion_s": 0.006,
+        "contact_counts": [
+          3,
+          2,
+          2,
+          3
+        ],
+        "wheel_fz_N": [
+          4.350988993905363,
+          2.794039845112126,
+          3.112742937012431,
+          4.623548224372733
+        ],
+        "fl_contacts": [
+          {
+            "xyz": [
+              0.1569980954617305,
+              0.14055221069628962,
+              -8.965897098186522e-10
+            ],
+            "normal": [
+              -5.2278401146296934e-11,
+              5.2278401146296934e-11,
+              1.0
+            ],
+            "depth_um": 0.0008974494758451357,
+            "f1z_N": 1.62306969078697
+          },
+          {
+            "xyz": [
+              0.15699787207162838,
+              0.15703787207162836,
+              -8.974515655156715e-10
+            ],
+            "normal": [
+              -5.2278401146296934e-11,
+              5.2278401146296934e-11,
+              1.0
+            ],
+            "depth_um": 0.0008974494758451357,
+            "f1z_N": 1.4864808629985133
+          },
+          {
+            "xyz": [
+              0.15699741792927668,
+              0.19055221069169911,
+              -8.992036652958328e-10
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "depth_um": 0.0008992036698574069,
+            "f1z_N": 1.2414384401198801
+          }
+        ],
+        "net_horizontal_force_N": [
+          9.23464203994584e-07,
+          -0.03431998004520319
+        ]
+      },
+      {
+        "iteration": 5208,
+        "motion_s": 0.007,
+        "contact_counts": [
+          3,
+          2,
+          2,
+          3
+        ],
+        "wheel_fz_N": [
+          4.350533380002907,
+          2.7944952151398725,
+          3.1122368193045045,
+          4.624054585904936
+        ],
+        "fl_contacts": [
+          {
+            "xyz": [
+              0.1569973336483218,
+              0.1405530807360403,
+              -8.966108132545698e-10
+            ],
+            "normal": [
+              -5.247370051551276e-11,
+              5.247370051551276e-11,
+              1.0
+            ],
+            "depth_um": 0.0008974737064626481,
+            "f1z_N": 1.62292402942245
+          },
+          {
+            "xyz": [
+              0.1569970209362588,
+              0.1570370209362588,
+              -8.974758030051109e-10
+            ],
+            "normal": [
+              -5.247370051551276e-11,
+              5.247370051551276e-11,
+              1.0
+            ],
+            "depth_um": 0.0008974737064626481,
+            "f1z_N": 1.486335544406788
+          },
+          {
+            "xyz": [
+              0.15699638510879216,
+              0.19055308072704302,
+              -8.992345480530433e-10
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "depth_um": 0.0008992345479352792,
+            "f1z_N": 1.241273806173669
+          }
+        ],
+        "net_horizontal_force_N": [
+          1.3384995876108974e-06,
+          -0.03184779109664661
+        ]
+      },
+      {
+        "iteration": 5209,
+        "motion_s": 0.008,
+        "contact_counts": [
+          3,
+          2,
+          2,
+          3
+        ],
+        "wheel_fz_N": [
+          4.350251963654015,
+          2.794776344268638,
+          3.111915699027152,
+          4.624375993387518
+        ],
+        "fl_contacts": [
+          {
+            "xyz": [
+              0.15699644486433542,
+              0.14055409475834646,
+              -8.966308919966644e-10
+            ],
+            "normal": [
+              -5.265942304071719e-11,
+              5.265942304071719e-11,
+              1.0
+            ],
+            "depth_um": 0.0008974967435904091,
+            "f1z_N": 1.622832325075658
+          },
+          {
+            "xyz": [
+              0.1569960279674022,
+              0.1570360279674022,
+              -8.974988430436008e-10
+            ],
+            "normal": [
+              -5.265942304071719e-11,
+              5.265942304071719e-11,
+              1.0
+            ],
+            "depth_um": 0.0008974967435904091,
+            "f1z_N": 1.4862498024327668
+          },
+          {
+            "xyz": [
+              0.15699518015149194,
+              0.19055409474235147,
+              -8.992639297466958e-10
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "depth_um": 0.0008992639272120684,
+            "f1z_N": 1.2411698361455907
+          }
+        ],
+        "net_horizontal_force_N": [
+          1.8236414884853502e-06,
+          -0.030298509396211676
+        ]
+      },
+      {
+        "iteration": 5210,
+        "motion_s": 0.009000000000000001,
+        "contact_counts": [
+          3,
+          2,
+          2,
+          3
+        ],
+        "wheel_fz_N": [
+          4.350067915729836,
+          2.79496006190646,
+          3.1116972000892362,
+          4.624594822615012
+        ],
+        "fl_contacts": [
+          {
+            "xyz": [
+              0.15699542910723027,
+              0.14055525292922583,
+              -8.966502338164168e-10
+            ],
+            "normal": [
+              -5.2838490346352493e-11,
+              5.2838490346352493e-11,
+              1.0
+            ],
+            "depth_um": 0.0008975189064175382,
+            "f1z_N": 1.6227703816450576
+          },
+          {
+            "xyz": [
+              0.1569948931734068,
+              0.15703489317340683,
+              -8.975210214463045e-10
+            ],
+            "normal": [
+              -5.2838490346352493e-11,
+              5.2838490346352493e-11,
+              1.0
+            ],
+            "depth_um": 0.0008975189064175382,
+            "f1z_N": 1.4861980313074363
+          },
+          {
+            "xyz": [
+              0.1569938030549053,
+              0.19055525290278535,
+              -8.992922442502753e-10
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "depth_um": 0.0008992922378991963,
+            "f1z_N": 1.241099502777342
+          }
+        ],
+        "net_horizontal_force_N": [
+          2.3784988314456967e-06,
+          -0.029263182160544993
+        ]
+      }
+    ]
+  },
+  "output_keys": [
+    "run_dir",
+    "qualified",
+    "qualification_error",
+    "final_displacement_mm",
+    "max_displacement_mm",
+    "target_seam_overlap_windows",
+    "target_seam_overlap_windows_all_wheels",
+    "fl_contact_ge3_steps_count",
+    "fr_zero_contact_steps_count",
+    "fl_load_spikes_count",
+    "net_horizontal_force_rms_N",
+    "explicit_empty_runs_per_wheel",
+    "net_horizontal_impulse_Ns",
+    "actual_com_dv_mm_s",
+    "actual_body_dv_mm_s",
+    "critical_events_count",
+    "sample_critical_events"
+  ],
+  "missing_contact_probes": {
+    "complete": {
+      "run_dir": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-prep-codex-review-20261011\\synthetic-complete",
+      "qualified": true,
+      "qualification_error": null,
+      "final_displacement_mm": 0.0,
+      "max_displacement_mm": 0.0,
+      "target_seam_overlap_windows": [],
+      "target_seam_overlap_windows_all_wheels": {
+        "front_left": [],
+        "front_right": [],
+        "rear_left": [],
+        "rear_right": []
+      },
+      "fl_contact_ge3_steps_count": 0,
+      "fr_zero_contact_steps_count": 0,
+      "fl_load_spikes_count": 0,
+      "net_horizontal_force_rms_N": 0.0,
+      "explicit_empty_runs_per_wheel": {
+        "front_left": [],
+        "front_right": [],
+        "rear_left": [],
+        "rear_right": []
+      },
+      "net_horizontal_impulse_Ns": [
+        0.0,
+        0.0
+      ],
+      "actual_com_dv_mm_s": [
+        0.0,
+        0.0
+      ],
+      "actual_body_dv_mm_s": [
+        0.0,
+        0.0
+      ],
+      "critical_events_count": 0,
+      "sample_critical_events": []
+    },
+    "missing": {
+      "run_dir": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-prep-codex-review-20261011\\synthetic-missing",
+      "qualified": false,
+      "qualification_error": "Missing contact source row for step 5201, wheel front_right",
+      "final_displacement_mm": null,
+      "max_displacement_mm": null,
+      "target_seam_overlap_windows": [],
+      "fl_contact_ge3_steps_count": 0,
+      "fr_zero_contact_steps_count": null,
+      "fl_load_spikes_count": 0,
+      "net_horizontal_force_rms_N": 0.0
+    },
+    "explicit_empty": {
+      "run_dir": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-prep-codex-review-20261011\\synthetic-explicit_empty",
+      "qualified": true,
+      "qualification_error": null,
+      "final_displacement_mm": 0.0,
+      "max_displacement_mm": 0.0,
+      "target_seam_overlap_windows": [],
+      "target_seam_overlap_windows_all_wheels": {
+        "front_left": [],
+        "front_right": [],
+        "rear_left": [],
+        "rear_right": []
+      },
+      "fl_contact_ge3_steps_count": 0,
+      "fr_zero_contact_steps_count": 3,
+      "fl_load_spikes_count": 0,
+      "net_horizontal_force_rms_N": 0.0,
+      "explicit_empty_runs_per_wheel": {
+        "front_left": [],
+        "front_right": [
+          {
+            "first_iteration": 5201,
+            "last_iteration": 5203,
+            "duration_steps": 3,
+            "first_motion_s": 0.0,
+            "last_motion_s": 0.002
+          }
+        ],
+        "rear_left": [],
+        "rear_right": []
+      },
+      "net_horizontal_impulse_Ns": [
+        0.0,
+        0.0
+      ],
+      "actual_com_dv_mm_s": [
+        0.0,
+        0.0
+      ],
+      "actual_body_dv_mm_s": [
+        0.0,
+        0.0
+      ],
+      "critical_events_count": 3,
+      "sample_critical_events": [
+        {
+          "iteration": 5201,
+          "motion_s": 0.0,
+          "contact_counts": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "wheel_fz_N": [
+            3.7,
+            0.0,
+            3.7,
+            3.7
+          ],
+          "fl_contacts": [
+            {
+              "xyz": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "normal": [
+                0.0,
+                0.0,
+                1.0
+              ],
+              "depth_um": 0.0,
+              "f1z_N": 3.7
+            }
+          ],
+          "net_horizontal_force_N": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "iteration": 5202,
+          "motion_s": 0.001,
+          "contact_counts": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "wheel_fz_N": [
+            3.7,
+            0.0,
+            3.7,
+            3.7
+          ],
+          "fl_contacts": [
+            {
+              "xyz": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "normal": [
+                0.0,
+                0.0,
+                1.0
+              ],
+              "depth_um": 0.0,
+              "f1z_N": 3.7
+            }
+          ],
+          "net_horizontal_force_N": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "iteration": 5203,
+          "motion_s": 0.002,
+          "contact_counts": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "wheel_fz_N": [
+            3.7,
+            0.0,
+            3.7,
+            3.7
+          ],
+          "fl_contacts": [
+            {
+              "xyz": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "normal": [
+                0.0,
+                0.0,
+                1.0
+              ],
+              "depth_um": 0.0,
+              "f1z_N": 3.7
+            }
+          ],
+          "net_horizontal_force_N": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "unknown": {
+      "run_dir": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-prep-codex-review-20261011\\synthetic-unknown",
+      "qualified": false,
+      "qualification_error": "Unknown contact state -1.0 found in contact records",
+      "final_displacement_mm": null,
+      "max_displacement_mm": null,
+      "target_seam_overlap_windows": [],
+      "fl_contact_ge3_steps_count": 0,
+      "fr_zero_contact_steps_count": null,
+      "fl_load_spikes_count": 0,
+      "net_horizontal_force_rms_N": 0.0
+    }
+  },
+  "collinear_overlapping_segments": {
+    "expected_overlap": true,
+    "reported_overlap": true
+  },
+  "original_schedule": {
+    "parked_before": {
+      "iteration": 200,
+      "paused": true,
+      "sim": 0.2,
+      "wall": 23879.800045624
+    },
+    "motion_before": {
+      "iteration": 5200,
+      "paused": true,
+      "sim": 5.2,
+      "wall": 23890.07802185
+    },
+    "motion_after": {
+      "iteration": 25200,
+      "paused": true,
+      "sim": 25.2,
+      "wall": 23930.563878826
+    },
+    "stop_after": {
+      "iteration": 28200,
+      "paused": true,
+      "sim": 28.2,
+      "wall": 23937.023425856
+    }
+  },
+  "declared_new_schedule": {
+    "mode": "paused_steps",
+    "warmup_steps": 200,
+    "parked_steps": 5000,
+    "motion_steps": 20000,
+    "stop_steps": 3000,
+    "total_sim_steps": 28200,
+    "total_sim_time_s": 28.2
+  },
+  "prep_files": [
+    "campaign_plan.json",
+    "DIAGNOSIS_PLAN.md",
+    "evaluate_diagnosis_run.py",
+    "manifest.json",
+    "README.md",
+    "run_diagnosis_campaign.py"
+  ],
+  "evaluator_sha256": "e390ecd1592d6bddc476999bfa0fbae33971f3446687d0b4b0c7070aaa2f3c5a"
+}

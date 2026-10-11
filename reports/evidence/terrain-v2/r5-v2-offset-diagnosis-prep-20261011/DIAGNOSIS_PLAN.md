@@ -1,128 +1,137 @@
-# 原 v2 约 1 厘米转向偏移：两轮诊断方案与测试准备报告 (DIAGNOSIS_PLAN)
+# 原 v2 约 1 厘米转向偏移：两轮诊断执行工具与方案报告 (DIAGNOSIS_PLAN)
 
-- **任务依据**：`reports/evidence/terrain-v2/r5-v2-offset-refinement-codex-review-20261011/GEMINI_NEXT_TASK.md`
-- **Codex 几何核对输入**：`reports/evidence/terrain-v2/r5-v2-offset-refinement-codex-review-20261011/geometry-results.json`
-- **诊断准备交付目录**：`reports/evidence/terrain-v2/r5-v2-offset-diagnosis-prep-20261011`
-- **执行承诺**：严格遵循授权边界——**本任务仅完成方案准备、测试配置副本与评估工具构建，绝不启动新仿真，不修改任何正式库或模型文件**。
-
----
-
-## 一、方案设计目标与原则
-
-本方案旨在针对原 v2 约 10.286 mm 转向偏移的接触成因，准备一组**高信噪比、严格单变量、具备机制区分度**的两轮诊断测试副本：
-1. **单变量相位扰动**：仅改变出生位置 X 坐标（平移 5 厘米），改变轮胎接触母线与有限接缝的相交几何；
-2. **确定性基线恢复**：恢复原出生位置 X 坐标，检验原 17019～17024 突变集群的复现性；
-3. **摒弃僵化判定规则**：不预设“异常必须在固定秒数原样发生”，也不因“同秒出现异常”草率推断控制出错；而是按**轮胎最低母线与有限接缝及相邻网格边的实际动态相交**定位全部物理事件；
-4. **保持全局严格冻结**：除声明的出生 X 坐标差异外，模型、DART 物理引擎库、驱动候选、轮地摩擦、1ms 步长、5/20/3 秒时序流程和观测器插件 100% 沿用原轮次。
+- **任务依据**：`reports/evidence/terrain-v2/r5-v2-offset-prep-codex-review-20261011/GEMINI_IMPLEMENTATION_TASK.md`
+- **Codex 审查基线**：`reports/evidence/terrain-v2/r5-v2-offset-prep-codex-review-20261011/README.md` 与 `review-results.json`
+- **交付目录**：`reports/evidence/terrain-v2/r5-v2-offset-diagnosis-prep-20261011`
+- **执行承诺**：**本阶段仅交付源码、世界副本、离线验证与检查输出，绝不运行 Gazebo，不消耗仿真次数，静待授权。**
 
 ---
 
-## 二、两轮诊断配置与独立测试副本
+## 一、两轮独立世界副本与可执行入口
 
-### 1. 独立运行配置明细
+### 1. 独立世界副本生成与精确差异
+不再引用原 `/evidence` 路径，而在本交付目录下实际生成两个完全独立、结构完整的 SDF 世界文件：
+- `worlds/world_shift_x05.sdf` (SHA-256: `8b549b1bd531cf67a076dab6a7e9bcd068d59edabb067a850904f128d51c3c0f`)
+- `worlds/world_restore_x00.sdf` (SHA-256: `e71ea47b0a77507a96db84301a4dd1951115cbebf05b550032062e028abea3c7`)
 
-| 配置字段 | 轮次 1：单变量相位测试 (`test_shift_x_plus_5cm`) | 轮次 2：基线恢复测试 (`restore_x_0`) | 原轮次 (`14-pure_turn-ramp`) |
-| :--- | :--- | :--- | :--- |
-| **测试目的** | 检验接触几何相位改变对突变事件的影响 | 检验原始突变特征的确定性可重复重现 | 原始发散轮次基准参考 |
-| **出生位姿 (World Pose)** | `<pose>0.05 0 .03 0 0 0</pose>` | `<pose>0 0 .03 0 0 0</pose>` | `<pose>0 0 .03 0 0 0</pose>` |
-| **出生坐标 $X_0$** | **$+0.05\text{ m}$ (平移 5 cm)** | **$0.00\text{ m}$ (严格恢复)** | $0.00\text{ m}$ |
-| **出生坐标 $Y_0$** | $0.00\text{ m}$ | $0.00\text{ m}$ | $0.00\text{ m}$ |
-| **出生坐标 $Z_0$** | **$0.03\text{ m}$ (准确保留原世界出生设置)** | **$0.03\text{ m}$ (准确保留原世界出生设置)** | $0.03\text{ m}$ |
-| **出生姿态 (R/P/Y)** | $0.0^\circ, 0.0^\circ, 0.0^\circ$ | $0.0^\circ, 0.0^\circ, 0.0^\circ$ | $0.0^\circ, 0.0^\circ, 0.0^\circ$ |
-| **模型文件** | `/evidence/turn-models/pure_turn.sdf` | `/evidence/turn-models/pure_turn.sdf` | `/evidence/turn-models/pure_turn.sdf` |
-| **地形网格** | `models/terrain_v2/ramp/regolith_passable.obj` | `models/terrain_v2/ramp/regolith_passable.obj` | `models/terrain_v2/ramp/regolith_passable.obj` |
-| **物理步长** | $0.001\text{ s}$ (1000us / 1ms) | $0.001\text{ s}$ (1000us / 1ms) | $0.001\text{ s}$ (1000us / 1ms) |
-| **控制指令** | $v_x = 0.0\text{ m/s}, \omega_z = 0.2\text{ rad/s}$ | $v_x = 0.0\text{ m/s}, \omega_z = 0.2\text{ rad/s}$ | $v_x = 0.0\text{ m/s}, \omega_z = 0.2\text{ rad/s}$ |
-| **时序调度模式** | `paused_steps` (5s parked + 20s motion + 3s stop) | `paused_steps` (5s parked + 20s motion + 3s stop) | `paused_steps` (5s parked + 20s motion + 3s stop) |
-| **总步数与仿真时长** | 28,000 步 ($28.0\text{ s}$) | 28,000 步 ($28.0\text{ s}$) | 28,000 步 ($28.0\text{ s}$) |
-| **物理插件** | `libmooncar-physics7-dartsim.so` | `libmooncar-physics7-dartsim.so` | `libmooncar-physics7-dartsim.so` |
-| **观测器插件** | `libmooncar-origin-observer.so` + `contact-observer` | `libmooncar-origin-observer.so` + `contact-observer` | `libmooncar-origin-observer.so` + `contact-observer` |
+与原轮次 `14-pure_turn-ramp-1000us-left/world.sdf` 的统一差异对比如下：
+1. **恢复世界 (`world_restore_x00.sdf`)**：
+   - 出生位姿严格保留 `<pose>0 0 .03 0 0 0</pose>`（**0 差异**）；
+   - 仅将观测器与控制器输出路径重定向至 `/work/restore_x_0-*.csv`。
+2. **平移世界 (`world_shift_x05.sdf`)**：
+   - 仅多一个 X 差异：`<pose>0.05 0 .03 0 0 0</pose>`（严格保留原 $Z = 0.03\text{ m}$，绝不误用轮心名义离地高 $0.076\text{ m}$）；
+   - 输出路径重定向至 `/work/test_shift_x_plus_5cm-*.csv`。
+3. **其他所有要素 100% 相同**：
+   - 地形 `models/terrain_v2/ramp/regolith_passable.obj` 及全部材质纹理完全一致；
+   - 物理插件 `libmooncar-physics7-dartsim.so`、1ms 步长、接触观测器与调度逻辑完全一致。
 
-> **关键注意事项遵守**：
-> 严格采纳 Codex 的明确提醒，模型出生 $Z$ 坐标严格使用原世界出生设置 **`Z = 0.03 m`**，绝不误用轮心名义离地高度 `0.076 m`。
-
----
-
-## 三、轮胎最低母线接触模型与实际事件定位方法
-
-### 1. 实际轮胎最低母线与有限接缝相交几何
-在实际运动中，车轮具有 finite 半径（$R = 0.076\text{ m}$）与宽度（$W = 0.05\text{ m}$，半宽 $0.025\text{ m}$）。车轮与地面的接触并不是单个几何点，而是沿最低母线分布的接触线段。
-- **最低母线端点动态计算**：
-  给定每步车轮世界中心 $\vec{r}_{\text{wheel}}$ 与轮轴单位方向向量 $\hat{a}$，世界铅垂单位向量 $\hat{z} = (0, 0, 1)^T$：
-  $$\vec{v}_{\text{vert}} = \hat{z} - (\hat{z}\cdot\hat{a})\hat{a}, \quad \hat{v} = \frac{\vec{v}_{\text{vert}}}{\|\vec{v}_{\text{vert}}\|}$$
-  $$\vec{r}_{\text{bottom}} = \vec{r}_{\text{wheel}} - R \hat{v}$$
-  母线两端点坐标为：
-  $$\vec{e}_1 = \vec{r}_{\text{bottom}} - 0.025\hat{a}, \quad \vec{e}_2 = \vec{r}_{\text{bottom}} + 0.025\hat{a}$$
-- **目标有限接缝几何**：
-  网格中发生异常的目标对角线是连接 $v_1 = (-0.25, 0.0, 0.0)$ 与 $v_2 = (0.0, 0.25, 0.0)$ 的有限线段（长度约 $0.3536\text{ m}$）。
-  其两侧三角面（Face 3712 与 Face 3713）全部顶点 $Z = 0$，法向严格为 $(0, 0, 1)$，不存在任何几何台阶或坡度。
-
-### 2. 动态判定准则与关键事件检测
-新仿真运行时，由于接触力、微幅侧滑和底盘姿态的变化，实际轨迹不会严格复刻旧轨迹平移。因此，**不得按固定秒数寻找证据，而必须基于实际世界位置和航向动态定位事件**：
-
-```
-[步骤 1: 几何相交判定]
-每步计算四轮最低母线 [e1, e2] 与有限接缝 (-0.25, 0)-(0, 0.25) 及相邻网格边 (x=0, y=0 等) 的二维线段求交
-       │
-       ▼
-[步骤 2: 接触状态跃变检测]
-监控四轮逐步接触点数：
-- 检测 FL 接触点突增 (N >= 3)
-- 检测 FL 瞬时失触 (N = 0)
-- 检测 FR 离地腾空序列 (N = 0 持续步数)
-       │
-       ▼
-[步骤 3: 载荷重分配与法向力冲击]
-监控单轮垂直力 Fz：
-- 检测 FL 垂直力激增 (> 6.0 N 或接近整车重力)
-- 检查对角轮 RR 载荷是否同步跃升
-       │
-       ▼
-[步骤 4: 水平冲量与质心加速度]
-对地面水平切向合力积分得到 J(t)，检验水平合力 RMS 及质心速度突增方向
-       │
-       ▼
-[步骤 5: 时空因果闭合评估]
-将接触异常与冲量突变的实际发生时刻，与轮胎母线实际跨越接缝的几何时刻进行时空关联
-```
+### 2. 真实执行入口与离线预检命令
+交付了消费上述独立配置的调度入口脚本 [`run_diagnosis_campaign.py`](run_diagnosis_campaign.py)：
+- **离线预检命令（无需 Gazebo，安全检查）**：
+  ```bash
+  python run_diagnosis_campaign.py --dry-run
+  ```
+  该命令执行世界副本存在性校验、SDF 内部位姿校验、输出重定向校验及计划回执校验，并打印出待执行的精确容器内命令。
+- **待执行物理仿真命令（待授权）**：
+  ```bash
+  python run_diagnosis_campaign.py --run-round test_shift_x_plus_5cm --authorized
+  python run_diagnosis_campaign.py --run-round restore_x_0 --authorized
+  ```
+  脚本内嵌 `--authorized` 安全锁，未获显式授权时拒绝启动。
 
 ---
 
-## 四、四项审慎判定准则与解释边界
+## 二、接触源完整性与资格检查升级
 
-根据 Codex 的重要提醒，在后续分析与结果评估中必须严格遵守以下四项解释边界：
+针对 Codex 在复核中指出的人工探针测试缺陷，全面升级了 [`evaluate_diagnosis_run.py`](evaluate_diagnosis_run.py) 的资格检查逻辑：
 
-1. **“接触几何相位的支持度”先行判定**：
-   出生位置平移 5 厘米是一项全局位置变化，同时改变了全部四只车轮的旋转圆在网格中的绝对位置，也改变了它们与中央十字轴线（$x=0, y=0$）及多条网格对角线的相交时刻与几何切角。
-   因此，测试结果首先判定为：**“轮地接触几何相位对转向偏移的影响是否得到数据支持”**。若无法严格隔离到这条特定有限接缝，绝不轻率宣称已经证明该接缝的内部底层代码存在错误。
-2. **扰动强度的非对称性理解**：
-   在平移测试中，如果车轮跨越有限接缝时产生的扰动强度低于原轮次的 8.47 N / 12.94 N，**不直接否定接缝的作用**。因为轮轴相对接缝的夹角、切向滑移分量以及母线覆盖面积已经改变，数值敏感度与动力学响应强度必然存在差异。
-3. **同秒出现异常的审慎归因**：
-   如果在原秒数（如 $t \approx 11.82\text{ s}$）附近依然出现位移或扰动，必须首先根据实际轮胎姿态核实车轮当时处于什么世界坐标、接触了哪条网格边，**绝不盲目宣称“证明控制器有错”**。
-4. **宏观位移指标的辅助定位**：
-   最终 20 秒末端平移位移的增减仅作为宏观工程指标与辅助参考。**核心判定依据是微观接触点几何、接触状态跳变、载荷重分配与水平合力冲量的时空因果对应关系**。
+### 1. 严格四轮源记录检查（拒绝缺失与未知）
+1. **缺失检查（Missing Record Check）**：
+   在评估区间内的每一个物理步，四只车轮必须均有至少一条接触记录。若某轮在某步完全无数据（如 `synthetic-missing`），评估器立即判定为**资格不合格**（`qualified = False`，抛出具体轮与步），并将空接触计数置为 `None`，**绝不静默补零或算作失触**。
+2. **未知状态检查（Unknown State Check）**：
+   记录的 `state` 字段必须严格落在 $\{0, 1\}$ 内。若出现 `state == -1`（如 `synthetic-unknown`），立即判定为**资格不合格**（`qualified = False`），**绝不当作空快照处理**。
+3. **有效性检查（Finite Field Check）**：
+   当 `state == 1`（接触激活）时，严格校验 `depth`, `nx`, `ny`, `nz`, `f1x`, `f1y`, `f1z` 必须全部为有限浮点数（`np.isfinite`）。
+4. **显式空快照（Explicit Empty Snapshot）**：
+   只有当源数据完整存在且记录明确声明 `state == 0` 时，才归类为真实显式空快照。
+5. **区分显式空快照与几何离地**：
+   评估器同时输出每步车轮最低母线中心高度 $z_{\text{bottom}}$，结合地面高程分别记录“显式传感器空快照”与“几何离地步”，避免二者混淆。
+
+### 2. 单元测试探针验证结果（通过 Codex 人工夹具）
+使用 Codex 构造的人工测试夹具（`synthetic-*`）实测验证通过：
+- `synthetic-complete`: `qualified = True`, `fr_zero_contact_steps_count = 0`；
+- `synthetic-missing`: `qualified = False`, `qualification_error = 'Missing contact source row for step 5201, wheel front_right'`, `fr_zero_contact_steps_count = null`；
+- `synthetic-unknown`: `qualified = False`, `qualification_error = 'Unknown contact state -1.0 found in contact records'`, `fr_zero_contact_steps_count = null`；
+- `synthetic-explicit_empty`: `qualified = True`, `fr_zero_contact_steps_count = 3`, 提取出连续 3 步空快照区间 `[5201, 5203]`。
 
 ---
 
-## 五、待执行内容与准备状态承诺
+## 三、承诺的因果证据与全面动态事件提取
 
-### 1. 待执行内容概要（待授权）
-- **测试轮次 1 (`test_shift_x_plus_5cm`)**：执行出生位置平移 5 cm 测试（世界位姿 `0.05 0 .03 0 0 0`），记录完整的 `physics-steps.csv`、`contact-steps.csv` 及控制器日志；
-- **测试轮次 2 (`restore_x_0`)**：执行出生位置恢复测试（世界位姿 `0 0 .03 0 0 0`），检验 17019～17024 突变集群的复现性；
-- **离线后处理**：运行 `evaluate_diagnosis_run.py`，输出轮胎最低母线实际相交窗口、接触跳变点、冲量积分及动量闭合数据。
+升级后的评估器彻底摆脱了此前仅汇总单一指标的局限，输出完整的物理因果证据链：
 
-### 2. 状态承诺
-> **本交付包已全面完成全部测试配置副本、运行计划及后处理评估工具的离线准备。当前处于严格“已就绪、待授权”状态，未启动 Gazebo、未启动 Docker 容器、未执行物理仿真，静待用户和 Codex 独立审批与授权。**
+1. **四轮与目标有限接缝及相邻网格边求交**：
+   - 计算全车四轮（FL, FR, RL, RR）最低母线线段：
+     $$\vec{r}_{\text{bottom}} = \vec{r}_{\text{wheel}} - 0.076\hat{v}, \quad \text{Ends} = [\vec{r}_{\text{bottom}} - 0.025\hat{a}, \vec{r}_{\text{bottom}} + 0.025\hat{a}]$$
+   - 提取四轮分别跨越目标有限接缝 `(-0.25, 0)-(0, 0.25)` 的全部相交窗口；
+   - 提取四轮跨越场地中央十字轴线（$x=0, y=0$）及相邻对角线的相交窗口。
+2. **共线重叠相交边界修复**：
+   修复了平行共线时的叉积退化问题。当母线与接缝共线且存在区间重叠时，`check_segment_intersection` 正确返回 `(True, pt)`（经 Codex 人工样本测试验证，`reported_overlap = True`）。
+3. **关键扰动事件明细序列**：
+   动态提取所有接触异常步的物理档案：
+   - 迭代步（Iteration）与运动时间戳（Motion Seconds）；
+   - 四轮接触点数数组（如 `[3, 0, 1, 1]`）与四轮垂直力数组；
+   - 涉及车轮的实际接触点空间坐标 $(x, y, z)$、法向 $(n_x, n_y, n_z)$、穿透深度与切向/法向受力；
+   - 当步全车净水平合力向量。
+4. **动力学动量闭合**：
+   对地面水平外力时间积分得到总冲量 $J(t)$，并与整车质心世界速度差分变化量 $\Delta v_{\text{com}}$ 逐段比对。
+5. **支持命令行独立输入输出**：
+   支持真实命令行接口：
+   ```bash
+   python evaluate_diagnosis_run.py --run-dir <RUN_PATH> --output <OUTPUT_JSON>
+   ```
+   独立输出结构化评估报告，拒绝覆盖原始数据。
+
+---
+
+## 四、保留真实调度准备与时间边界对齐
+
+在 [`campaign_plan.json`](campaign_plan.json) 及评估器中准确保留原真实调度过程：
+1. **各阶段时间节点完全对齐**：
+   - 准备段（Warmup Prep）：0 到 200 步（$0.0\text{ s}$ 到 $0.2\text{ s}$，共 200 步 / 0.2s）；
+   - 静置段（`parked`）：200 到 5200 步（$0.2\text{ s}$ 到 $5.2\text{ s}$，共 5000 步 / 5.0s）；
+   - 运动段（`motion`）：5200 到 25200 步（$5.2\text{ s}$ 到 $25.2\text{ s}$，共 20000 步 / 20.0s）；
+   - 停车段（`stop`）：25200 到 28200 步（$25.2\text{ s}$ 到 $28.2\text{ s}$，共 3000 步 / 3.0s）；
+   - 全程总步数严格为 **28,200 步**，物理仿真总时间为 **28.2 秒**。
+2. **动态边界适配**：
+   评估器在分析时优先读取运行目录中的 `result.json` 回执，按实际回执的 `motion['before']['iteration']`（5200）与 `motion['after']['iteration']`（25200）界定运动区间，同时核验准备段（200步）与停机段（3000步），彻底消除写死带来的边界不一致。
+
+---
+
+## 五、就绪状态评估与结论
+
+针对用户与 Codex 关于“是否已具备执行两轮的条件”的明确询问：
+
+### 结论：**已完全具备执行两轮诊断的工程与工具条件。**
+1. **世界文件与配置**：`world_shift_x05.sdf` 与 `world_restore_x00.sdf` 已在独立目录就绪，除声明的 X 坐标与输出路径外，与原世界严格一致；
+2. **执行入口**：`run_diagnosis_campaign.py` 已提供完整的预检与启动接口；
+3. **评估与判定工具**：`evaluate_diagnosis_run.py` 已完成修复并通过 Codex 人工缺失探针与共线样本测试，支持四轮网格求交与详细因果证据输出；
+4. **调度边界**：原轮次 28.2 秒全流程调度回执已在计划与代码中准确对齐。
+
+> **当前状态承诺**：全部文件处于静态离线就绪状态。**未启动 Gazebo、未启动 Docker 容器、未执行任何物理试验**。随时等待授权指令！
 
 ---
 
 ## 交付文件核验清单
 
-交付目录绝对路径：
+交付目录：
 `D:\Documents\Projects\Repositories\MoonCar-mapping\reports\evidence\terrain-v2\r5-v2-offset-diagnosis-prep-20261011`
 
-1. `DIAGNOSIS_PLAN.md`：本诊断方案与准备报告。
-2. `campaign_plan.json`：包含两轮测试精确出生位姿、时序流程、插件与参数的机器可读配置文件。
-3. `evaluate_diagnosis_run.py`：基于最低母线求交的自动化后处理与判定分析脚本。
-4. `README.md`：交付包说明文档。
-5. `manifest.json`：全目录文件 SHA-256 校验清单。
+1. `DIAGNOSIS_PLAN.md`：本诊断执行工具与方案报告。
+2. `campaign_plan.json`：精确机器可读配置（含 28.2s 全流程调度、独立世界路径、精确出生姿态）。
+3. `worlds/world_shift_x05.sdf`：独立平移世界副本（$X=0.05\text{ m}, Z=0.03\text{ m}$）。
+4. `worlds/world_restore_x00.sdf`：独立恢复世界副本（$X=0.00\text{ m}, Z=0.03\text{ m}$）。
+5. `run_diagnosis_campaign.py`：支持 `--dry-run` 离线校验与真实执行的调度入口脚本。
+6. `evaluate_diagnosis_run.py`：支持数据资格检查、四轮求交、因果事件输出与命令行调用的评估工具。
+7. `README.md`：交付包说明与操作指引。
+8. `manifest.json`：全目录文件 SHA-256 校验清单。

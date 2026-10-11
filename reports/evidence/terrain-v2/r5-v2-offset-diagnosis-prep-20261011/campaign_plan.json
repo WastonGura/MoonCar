@@ -2,6 +2,19 @@
   "name": "r5-v2-offset-two-round-diagnosis-plan",
   "scope": "offline preparation only; no simulation executed; no production files modified",
   "baseline_reference_round": "14-pure_turn-ramp-1000us-left",
+  "schedule_timing": {
+    "warmup_prep_steps": 200,
+    "warmup_prep_s": 0.2,
+    "parked_steps": 5000,
+    "parked_duration_s": 5.0,
+    "motion_steps": 20000,
+    "motion_duration_s": 20.0,
+    "stop_steps": 3000,
+    "stop_duration_s": 3.0,
+    "total_sim_steps": 28200,
+    "total_sim_time_s": 28.2,
+    "time_window_5_20_3_s": "5.0s parked + 20.0s motion + 3.0s stop (28.0s operational window on top of 0.2s warmup)"
+  },
   "runs": [
     {
       "round_id": "test_shift_x_plus_5cm",
@@ -15,7 +28,8 @@
         "yaw_rad": 0.0
       },
       "spawn_pose_string": "0.05 0 .03 0 0 0",
-      "model_sdf": "/evidence/turn-models/pure_turn.sdf",
+      "world_sdf": "worlds/world_shift_x05.sdf",
+      "model_name": "mooncar_r5",
       "scene": "ramp",
       "terrain_mesh": "models/terrain_v2/ramp/regolith_passable.obj",
       "step_size_s": 0.001,
@@ -25,17 +39,18 @@
       },
       "schedule": {
         "mode": "paused_steps",
+        "warmup_steps": 200,
         "parked_steps": 5000,
         "motion_steps": 20000,
         "stop_steps": 3000,
-        "total_sim_time_s": 28.0
+        "total_sim_steps": 28200,
+        "total_sim_time_s": 28.2
       },
-      "plugins": {
-        "physics": "/opt/mooncar/physics/dart-7.8.0/libmooncar-physics7-dartsim.so",
-        "step_observer": "/evidence/observer/libmooncar-origin-observer.so",
-        "contact_observer": "/evidence/contact-observer/libmooncar-contact-observer.so",
-        "turn_slip_control": "/evidence/turn-slip/libmooncar-turn-slip-control.so",
-        "axle_allocation": "/evidence/allocator/libmooncar-axle-allocation.so"
+      "outputs": {
+        "physics_steps": "/work/test_shift_x_plus_5cm-physics-steps.csv",
+        "contact_steps": "/work/test_shift_x_plus_5cm-contact-steps.csv",
+        "slip_control": "/work/test_shift_x_plus_5cm-slip-control.csv",
+        "axle_commands": "/work/test_shift_x_plus_5cm-axle-commands.csv"
       }
     },
     {
@@ -50,7 +65,8 @@
         "yaw_rad": 0.0
       },
       "spawn_pose_string": "0 0 .03 0 0 0",
-      "model_sdf": "/evidence/turn-models/pure_turn.sdf",
+      "world_sdf": "worlds/world_restore_x00.sdf",
+      "model_name": "mooncar_r5",
       "scene": "ramp",
       "terrain_mesh": "models/terrain_v2/ramp/regolith_passable.obj",
       "step_size_s": 0.001,
@@ -60,17 +76,18 @@
       },
       "schedule": {
         "mode": "paused_steps",
+        "warmup_steps": 200,
         "parked_steps": 5000,
         "motion_steps": 20000,
         "stop_steps": 3000,
-        "total_sim_time_s": 28.0
+        "total_sim_steps": 28200,
+        "total_sim_time_s": 28.2
       },
-      "plugins": {
-        "physics": "/opt/mooncar/physics/dart-7.8.0/libmooncar-physics7-dartsim.so",
-        "step_observer": "/evidence/observer/libmooncar-origin-observer.so",
-        "contact_observer": "/evidence/contact-observer/libmooncar-contact-observer.so",
-        "turn_slip_control": "/evidence/turn-slip/libmooncar-turn-slip-control.so",
-        "axle_allocation": "/evidence/allocator/libmooncar-axle-allocation.so"
+      "outputs": {
+        "physics_steps": "/work/restore_x_0-physics-steps.csv",
+        "contact_steps": "/work/restore_x_0-contact-steps.csv",
+        "slip_control": "/work/restore_x_0-slip-control.csv",
+        "axle_commands": "/work/restore_x_0-axle-commands.csv"
       }
     }
   ],
