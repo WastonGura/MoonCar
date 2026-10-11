@@ -1,0 +1,285 @@
+{
+  "task_1_onset_facts": {
+    "iteration_17019": {
+      "fl_contact_count": 3,
+      "fl_third_point_pos": [
+        -0.2062722692,
+        0.0437677308
+      ],
+      "y_minus_x_m": 0.25004,
+      "depth_m": 0.0,
+      "f1z_N": 8.468951,
+      "f1z_other_two_points_N": [
+        0.0,
+        0.0
+      ],
+      "wheel_loads_N": [
+        8.468951,
+        0.788815,
+        0.0,
+        5.630014
+      ],
+      "net_horizontal_force_N": [
+        2.737229,
+        -4.41044
+      ],
+      "net_horizontal_force_mag_N": 5.190799899056118
+    },
+    "iteration_17020": {
+      "fl_contact_count": 0,
+      "rl_contact_count": 0,
+      "fr_contact_count": 2,
+      "rr_contact_count": 2,
+      "wheel_loads_N": [
+        0.0,
+        0.935009,
+        0.0,
+        4.162619
+      ]
+    },
+    "iteration_17021": {
+      "fl_contact_count": 3,
+      "fl_max_depth_um": 2.507152,
+      "fl_f1z_total_N": 12.941123,
+      "wheel_loads_N": [
+        12.941123,
+        0.0,
+        2.025389,
+        9.794509
+      ]
+    },
+    "fr_zero_contact_window": {
+      "start_iteration": 17022,
+      "end_iteration": 17262,
+      "duration_steps": 241,
+      "duration_s": 0.241,
+      "wheel_relation": "FR is co-axial front axle partner with FL, NOT diagonal (diagonal partner is RR)"
+    }
+  },
+  "task_2_momentum_and_directions": {
+    "alignment_17020_to_17519": {
+      "impulse_Ns": [
+        -0.04708606641479351,
+        -0.09442555533530957
+      ],
+      "impulse_direction_deg": -116.50350922507651,
+      "pred_dv_mm_s": [
+        -5.12585090515932,
+        -10.279289716449984
+      ],
+      "act_com_dv_mm_s": [
+        -4.9240132929535525,
+        -10.45685137383975
+      ],
+      "com_dv_direction_deg": -115.21521681832219,
+      "com_vector_relative_error_pct": 2.3258357929917794,
+      "act_body_dv_mm_s": [
+        -5.216906842855527,
+        -10.836452587769225
+      ],
+      "body_dv_direction_deg": -115.7071877665868,
+      "body_vector_relative_error_pct": 4.694121609782117
+    },
+    "alignment_17021_to_17520": {
+      "impulse_Ns": [
+        -0.0447301341838052,
+        -0.09729136789319971
+      ],
+      "impulse_direction_deg": -114.69081474029554,
+      "pred_dv_mm_s": [
+        -4.869381034596691,
+        -10.591265827694285
+      ],
+      "com_vector_relative_error_pct": 1.2553253410255134
+    },
+    "final_displacement_direction_deg": -125.033734,
+    "direction_clarification": "Impulse (-116.50 deg) and CoM acceleration (-115.22 deg) match closely in the surge window; final 20s displacement direction (-125.03 deg) is the time-integrated path of all phases.",
+    "flat_plate_horizontal_forces": {
+      "window_rms_N": 0.0018702861749493062,
+      "window_max_N": 0.0018702861971920035,
+      "motion_max_N": 0.11825226935641235,
+      "r14_window_rms_N": 0.9140213209307427,
+      "r14_window_max_N": 9.905542725008996
+    },
+    "pre_17020_displacement_history": {
+      "peak_pre_onset_displacement_mm": 0.60681,
+      "peak_iteration": 9984,
+      "iter_17020_displacement_mm": 0.345233,
+      "conclusion": "17020 was not the first motion from zero, but the irreversible divergence onset from bounded cyclic oscillation."
+    }
+  },
+  "task_3_single_factor_proposal": {
+    "selected_factor": "Initial spawn x0 shifted by +0.05m (x0 = +0.05m, y0 = 0.0m, psi0 = 0.0deg)",
+    "baseline_crossings": {
+      "FL": [
+        {
+          "yaw_deg": 49.2686235716745,
+          "t_motion_s": 4.620455785348426,
+          "sim_iteration": 9820,
+          "wheel_world_x": -0.023005386171621775,
+          "wheel_world_y": 0.2269946138283782,
+          "in_finite_segment": true
+        },
+        {
+          "yaw_deg": 127.69454973094794,
+          "t_motion_s": 11.975309604570063,
+          "sim_iteration": 17175,
+          "wheel_world_x": -0.22699461382837818,
+          "wheel_world_y": 0.023005386171621917,
+          "in_finite_segment": true
+        }
+      ],
+      "FR": [
+        {
+          "yaw_deg": 142.30545026905205,
+          "t_motion_s": 13.34553298461281,
+          "sim_iteration": 18545,
+          "wheel_world_x": -0.023005386171621824,
+          "wheel_world_y": 0.2269946138283782,
+          "in_finite_segment": true
+        },
+        {
+          "yaw_deg": 220.73137642832552,
+          "t_motion_s": 20.700386803834448,
+          "sim_iteration": 25900,
+          "wheel_world_x": -0.2269946138283782,
+          "wheel_world_y": 0.023005386171621716,
+          "in_finite_segment": true
+        }
+      ],
+      "RL": [
+        {
+          "yaw_deg": 40.73137642832548,
+          "t_motion_s": 3.8198250777125304,
+          "sim_iteration": 9019,
+          "wheel_world_x": -0.2269946138283782,
+          "wheel_world_y": 0.023005386171621817,
+          "in_finite_segment": true
+        },
+        {
+          "yaw_deg": 322.3054502690521,
+          "t_motion_s": 30.226094710734724,
+          "sim_iteration": 35426,
+          "wheel_world_x": -0.023005386171621824,
+          "wheel_world_y": 0.2269946138283782,
+          "in_finite_segment": true
+        }
+      ],
+      "RR": [
+        {
+          "yaw_deg": 229.26862357167454,
+          "t_motion_s": 21.501017511470344,
+          "sim_iteration": 26701,
+          "wheel_world_x": -0.023005386171621876,
+          "wheel_world_y": 0.2269946138283782,
+          "in_finite_segment": true
+        },
+        {
+          "yaw_deg": 307.6945497309479,
+          "t_motion_s": 28.85587133069198,
+          "sim_iteration": 34055,
+          "wheel_world_x": -0.22699461382837818,
+          "wheel_world_y": 0.023005386171621917,
+          "in_finite_segment": true
+        }
+      ]
+    },
+    "candidate_crossings": {
+      "FL": [
+        {
+          "yaw_deg": 66.87929602238992,
+          "t_motion_s": 6.272000470586295,
+          "sim_iteration": 11472,
+          "wheel_world_x": -0.04060386165751166,
+          "wheel_world_y": 0.20939613834248827,
+          "in_finite_segment": true
+        },
+        {
+          "yaw_deg": 110.08387728023254,
+          "t_motion_s": 10.323764919332197,
+          "sim_iteration": 15523,
+          "wheel_world_x": -0.15939613834248828,
+          "wheel_world_y": 0.0906038616575117,
+          "in_finite_segment": true
+        }
+      ],
+      "FR": [
+        {
+          "yaw_deg": 159.9161227197675,
+          "t_motion_s": 14.997077669850679,
+          "sim_iteration": 20197,
+          "wheel_world_x": -0.04060386165751172,
+          "wheel_world_y": 0.20939613834248824,
+          "in_finite_segment": true
+        },
+        {
+          "yaw_deg": 203.12070397761008,
+          "t_motion_s": 19.04884211859658,
+          "sim_iteration": 24248,
+          "wheel_world_x": -0.15939613834248828,
+          "wheel_world_y": 0.09060386165751161,
+          "in_finite_segment": true
+        }
+      ],
+      "RL": [
+        {
+          "yaw_deg": 23.120703977610063,
+          "t_motion_s": 2.168280392474662,
+          "sim_iteration": 7368,
+          "wheel_world_x": -0.15939613834248828,
+          "wheel_world_y": 0.0906038616575117,
+          "in_finite_segment": true
+        },
+        {
+          "yaw_deg": 339.9161227197675,
+          "t_motion_s": 31.877639395972594,
+          "sim_iteration": 37077,
+          "wheel_world_x": -0.04060386165751152,
+          "wheel_world_y": 0.20939613834248832,
+          "in_finite_segment": true
+        }
+      ],
+      "RR": [
+        {
+          "yaw_deg": 246.87929602238995,
+          "t_motion_s": 23.152562196708214,
+          "sim_iteration": 28352,
+          "wheel_world_x": -0.04060386165751176,
+          "wheel_world_y": 0.20939613834248824,
+          "in_finite_segment": true
+        },
+        {
+          "yaw_deg": 290.0838772802325,
+          "t_motion_s": 27.20432664545411,
+          "sim_iteration": 32404,
+          "wheel_world_x": -0.15939613834248822,
+          "wheel_world_y": 0.0906038616575118,
+          "in_finite_segment": true
+        }
+      ]
+    },
+    "fl_crossing_shift": {
+      "baseline_crossing_2": {
+        "yaw_deg": 127.69,
+        "t_motion_s": 11.98,
+        "sim_iter": 17175,
+        "pos": [
+          -0.227,
+          0.023
+        ]
+      },
+      "candidate_crossing_2": {
+        "yaw_deg": 110.08,
+        "t_motion_s": 10.32,
+        "sim_iter": 15523,
+        "pos": [
+          -0.159,
+          0.091
+        ]
+      },
+      "time_shift_s": -1.65,
+      "distance_at_t_11_82_m": 0.0446
+    },
+    "recovery_plan": "Restore x0 = 0.0m, run identical pure turn test to confirm exact reproduction of baseline."
+  }
+}
