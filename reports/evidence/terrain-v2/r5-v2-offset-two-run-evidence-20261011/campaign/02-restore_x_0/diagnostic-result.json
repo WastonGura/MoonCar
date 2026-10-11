@@ -1,0 +1,31 @@
+{
+  "round_id": "02-restore_x_0",
+  "eligible": true,
+  "checks": {
+    "data_complete": true,
+    "ground_contact_gate": true,
+    "stop_zero": true,
+    "observer_flush_confirmed": true,
+    "receiver_verified": true,
+    "raw_fixture_passed": true,
+    "capture_drained": true,
+    "image_content": true,
+    "origin_qualification": true,
+    "gate": true,
+    "allocation": true,
+    "contact_source": true,
+    "no_critical_errors": true,
+    "finite_geometry": true,
+    "valid_exit": true
+  },
+  "geometric_screen_passed": false,
+  "diagnostic_screen_exceeded": true,
+  "maximum_displacement_m": 0.010285963351157402,
+  "final_displacement_xy_m": [
+    -0.005904746014633648,
+    -0.008422292832953582
+  ],
+  "vehicle_accepted": false,
+  "world_consumed": "/evidence/worlds/world_restore_x00.sdf",
+  "turn_slip_error": "ValueError('Existing 1 cm turn screen failed')"
+}

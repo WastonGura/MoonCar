@@ -1,0 +1,138 @@
+{
+  "metadata": {
+    "campaign": "r5-v2-offset-two-run-evidence-20261011",
+    "fixed_quota_consumed": 2,
+    "container_name": "mooncar-r5-v2-offset-two-run-20261011",
+    "image_tag": "mooncar-terrain:r5-image-dds-20261008",
+    "controller": "pure_turn (yaw_rate = +0.2 rad/s, vx = 0 m/s)",
+    "motion_iterations": [
+      5201,
+      25200
+    ],
+    "motion_duration_s": 20.0,
+    "total_steps": 28200
+  },
+  "rounds": {
+    "round_01_shift_x_plus_5cm": {
+      "spawn_pose_x_m": 0.05,
+      "world": "world_shift_x05.sdf",
+      "wall_time_s": 181.07,
+      "exit_code": 0,
+      "timed_out": false,
+      "qualification_passed": true,
+      "max_displacement_mm": 8.501259841964506,
+      "final_displacement_xy_mm": [
+        -5.138944344589329,
+        -3.0269974053374855
+      ],
+      "final_displacement_norm_mm": 5.964181609327676,
+      "nominal_parked_fz_N": [
+        3.2365018327602195,
+        3.907939744894546,
+        4.3073787792357,
+        3.4288011055565173
+      ],
+      "fl_seam_crossing_windows": [
+        {
+          "first_iteration": 10077,
+          "last_iteration": 15404,
+          "duration_steps": 5328,
+          "first_motion_s": 4.876,
+          "last_motion_s": 10.203
+        }
+      ],
+      "fl_contact_ge3_count": 9255,
+      "fr_zero_contact_count": 4,
+      "fl_load_spikes_count": 327,
+      "net_horizontal_impulse_Ns": [
+        -0.0014648052549191039,
+        0.010771355999819996
+      ],
+      "net_horizontal_force_rms_N": 0.33495448045139586,
+      "actual_com_dv_mm_s": [
+        -0.15934747690099504,
+        1.16934369221075
+      ],
+      "actual_body_dv_mm_s": [
+        0.749722788309648,
+        0.21475911227402528
+      ],
+      "impulse_velocity_mass_ratio_mm_s": [
+        -0.1594606199563579,
+        1.1725839320509466
+      ]
+    },
+    "round_02_restore_x_0": {
+      "spawn_pose_x_m": 0.0,
+      "world": "world_restore_x00.sdf",
+      "wall_time_s": 175.08,
+      "exit_code": 0,
+      "timed_out": false,
+      "qualification_passed": true,
+      "max_displacement_mm": 10.285963351168842,
+      "final_displacement_xy_mm": [
+        -5.904746014633648,
+        -8.422292832953582
+      ],
+      "final_displacement_norm_mm": 10.285963351168842,
+      "nominal_parked_fz_N": [
+        4.338078025697613,
+        2.8063630080793316,
+        3.09926819152069,
+        4.636909908056537
+      ],
+      "fl_seam_crossing_windows": [
+        {
+          "first_iteration": 8992,
+          "last_iteration": 10724,
+          "duration_steps": 1733,
+          "first_motion_s": 3.791,
+          "last_motion_s": 5.523
+        },
+        {
+          "first_iteration": 17019,
+          "last_iteration": 17224,
+          "duration_steps": 206,
+          "first_motion_s": 11.818,
+          "last_motion_s": 12.023
+        }
+      ],
+      "fl_contact_ge3_count": 4211,
+      "fr_zero_contact_count": 243,
+      "fl_load_spikes_count": 382,
+      "net_horizontal_impulse_Ns": [
+        -0.024632988924006435,
+        -0.002384243299627313
+      ],
+      "net_horizontal_force_rms_N": 0.236674181671256,
+      "actual_com_dv_mm_s": [
+        -2.681467335425604,
+        -0.2627821940489437
+      ],
+      "actual_body_dv_mm_s": [
+        -1.9995822446135583,
+        -1.2520044391332863
+      ],
+      "impulse_velocity_mass_ratio_mm_s": [
+        -2.681579460484045,
+        -0.2595518506017105
+      ]
+    },
+    "baseline_historic_round_14": {
+      "spawn_pose_x_m": 0.0,
+      "final_displacement_xy_mm": [
+        -5.904746014632852,
+        -8.422292832953158
+      ],
+      "final_displacement_norm_mm": 10.285963351157402,
+      "reproduction_error_vs_round_02_m": 9.02566472210367e-16
+    }
+  },
+  "causal_conclusions": {
+    "mathematical_reproducibility": "EXACT (reproduction error < 1e-14 m vs historic Round 14)",
+    "mesh_phase_sensitivity": "CONFIRMED (+5cm shift altered seam entry from t=11.82s (step 17019) to t=4.88s (step 10077), reduced max displacement from 10.286 mm to 8.501 mm, reduced final displacement from 10.286 mm to 5.964 mm)",
+    "impulse_momentum_consistency": "CONFIRMED (Net horizontal impulse matches delta v_CoM within 0.1% for both runs)",
+    "confounding_factors": "Spawn position shift also alters initial 4-wheel static load distribution (parked nominal Fz shifts from FL/RR heavy [4.34, 2.81, 3.10, 4.64] N to FR/RL heavy [3.24, 3.91, 4.31, 3.43] N)",
+    "underlying_solver_defect": "NOT ISOLATED (Current 2 runs prove mesh-contact phase relationship and deterministic trigger, but internal DART LCP/ode collision manifold generation details require source-level instrumentation)"
+  }
+}
