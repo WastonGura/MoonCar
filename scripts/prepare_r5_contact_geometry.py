@@ -21,11 +21,14 @@ def make_mesh(path, mirrored=False, extent=40., cell=.25, local_top=.05):
                 x, y = -extent / 2 + i * cell, -extent / 2 + j * cell
                 for a, b in ((x, y), (x+cell, y), (x+cell, y+cell), (x, y+cell)):
                     stream.write(f'v {a:.17g} {b:.17g} {local_top:.17g}\n')
+        # gz-physics CustomMeshShape requires one normal per loaded vertex.
+        # Explicit face references let the OBJ loader expand this flat normal.
+        stream.write('vn 0 0 1\n')
         for k in range(n*n):
             a, b, c, d = [4*k+i for i in (1, 2, 3, 4)]
             faces = ((a, b, d), (b, c, d)) if mirrored else ((a, b, c), (a, c, d))
             for face in faces:
-                stream.write('f '+' '.join(str(v) for v in face)+'\n')
+                stream.write('f '+' '.join(str(v)+'//1' for v in face)+'\n')
     return dict(vertices=4*n*n, faces=2*n*n, extent_m=extent, cell_m=cell, local_height_m=local_top)
 
 

@@ -9,6 +9,16 @@ PROFILES=('plate','coplanar_mesh','mirrored_mesh','restore_plate')
 MATRIX=tuple((p,case,angular) for p in PROFILES for case,angular in (('left',.2),('right',-.2)))
 SCREEN_ERROR="ValueError('Existing 1 cm turn screen failed')"
 
+def mesh_receipt(proof):
+    """Bind native loader evidence to both actual fixture paths."""
+    if proof.get('passed') is not True or proof.get('new_simulations')!=0:return False
+    rows=proof.get('meshes',[])
+    expected={'/probe/fixtures/coplanar_mesh.obj','/probe/fixtures/mirrored_mesh.obj'}
+    if len(rows)!=2 or {r.get('path') for r in rows}!=expected:return False
+    return all(r.get('passed') is True and isinstance(r.get('vertices'),int) and r['vertices']>0
+        and r.get('normals')==r['vertices'] and isinstance(r.get('indices'),int) and r['indices']>0
+        and r['indices']%3==0 for r in rows)
+
 def qualify(result,code):
     """Only the declared geometry output may fail; original result is preserved."""
     p=result.get('turn_slip_probe',{})

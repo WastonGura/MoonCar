@@ -1,0 +1,9 @@
+{
+  "status": "stopped",
+  "attempts": 3,
+  "limit": 8,
+  "production_changed": false,
+  "goal_achieved": false,
+  "reason": "RuntimeError('Diagnostic evidence/input failure; no rerun: 03-coplanar_mesh-left')",
+  "freeze_unchanged": true
+}

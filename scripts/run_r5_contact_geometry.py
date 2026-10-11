@@ -3,7 +3,7 @@ import json,os,signal,subprocess,sys,time
 from pathlib import Path
 from run_r5_turn_slip import signature as old_signature,receipt
 from run_r5_origin_campaign import sha
-from r5_contact_geometry import MATRIX,inputs
+from r5_contact_geometry import MATRIX,inputs,mesh_receipt
 from r5_library_readiness import Readiness
 
 def signature():
@@ -12,6 +12,11 @@ def signature():
     f['geometry_fixtures']={p.name:sha(p) for p in Path('/probe/fixtures').iterdir() if p.is_file()}
     f['metadata_library']=sha('/probe/metadata/libmooncar-contact-metadata.so')
     f['metadata_source']={p.name:sha(p) for p in Path('/source/containers/r5_contact_metadata').iterdir() if p.is_file()}
+    f['geometry_preparation']=sha('/source/scripts/prepare_r5_contact_geometry.sh')
+    f['mesh_preflight_source']={p.name:sha(p) for p in Path('/source/containers/r5_contact_geometry').iterdir() if p.is_file()}
+    f['mesh_preflight']={p.name:sha(p) for p in Path('/probe/mesh-preflight').iterdir() if p.is_file()}
+    proof=json.loads(Path('/probe/mesh-preflight/result.json').read_text())
+    if not mesh_receipt(proof):raise ValueError('Native mesh loading gate failed')
     f['authorization']=sha('/probe/authorization.json')
     f['test_startup']={p.name:sha(p) for p in Path('/evidence/test-startup').iterdir() if p.is_file()}
     return f

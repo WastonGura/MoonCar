@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+project(mooncar_contact_mesh_preflight LANGUAGES CXX)
+find_package(gz-common5 REQUIRED COMPONENTS graphics)
+add_executable(mooncar-contact-mesh-preflight MeshPreflight.cc)
+target_compile_features(mooncar-contact-mesh-preflight PRIVATE cxx_std_17)
+target_compile_options(mooncar-contact-mesh-preflight PRIVATE -Wall -Wextra -Werror)
+target_link_libraries(mooncar-contact-mesh-preflight PRIVATE gz-common5::graphics)

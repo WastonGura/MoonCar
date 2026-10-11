@@ -1,0 +1,41 @@
+{
+  "status": "stopped",
+  "attempts": 3,
+  "qualified": 2,
+  "failed": 1,
+  "not_run": 5,
+  "freeze_unchanged": true,
+  "own_container_running": false,
+  "original_workbench_preserved": {
+    "Id": true,
+    "State": true,
+    "Config": true
+  },
+  "original_files_count": 492,
+  "authorized_tool_changes": [
+    "scripts\\prepare_r5_contact_geometry.py",
+    "scripts\\prepare_r5_contact_geometry.sh",
+    "scripts\\r5_contact_geometry.py",
+    "scripts\\run_r5_contact_geometry.py",
+    "ros2_ws\\src\\mooncar_gazebo\\tests\\test_contact_geometry.py"
+  ],
+  "unexpected_file_changes": [],
+  "old_archives": [
+    {
+      "name": "r5-turn-gate-validation-20261011",
+      "files": 2183,
+      "failures": []
+    },
+    {
+      "name": "r5-contact-geometry-20261011",
+      "files": 339,
+      "failures": []
+    }
+  ],
+  "frozen_snapshot_files": 140,
+  "snapshot_failures": [],
+  "regressions_passed": true,
+  "production_changed": false,
+  "whole_vehicle_accepted": false,
+  "passed": true
+}

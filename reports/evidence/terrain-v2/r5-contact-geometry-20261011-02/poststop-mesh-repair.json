@@ -1,0 +1,37 @@
+{
+  "stopped_attempts": 3,
+  "qualified": 2,
+  "failed": 1,
+  "not_run": 5,
+  "execution_unchanged_at_stop": true,
+  "repair_after_stop": true,
+  "new_simulations_after_repair": 0,
+  "changed_execution_sources": {
+    "scripts/prepare_r5_contact_geometry.py": {
+      "frozen": "dbdad865b8783a196ecc8b814b1cc43e522583f98ed25e17a9363bed5892667b",
+      "future": "c17bbf8e9ddc8fecd274419abcf663072a6feafa8570e38224df2d3b3274bed2",
+      "snapshot": "dbdad865b8783a196ecc8b814b1cc43e522583f98ed25e17a9363bed5892667b"
+    },
+    "scripts/r5_contact_geometry.py": {
+      "frozen": "d7ecf21f0964ce0120921f01b1f89e6d58ae8f14f06ce22f54841235d92babc8",
+      "future": "aad9b73dd747c3ef8d5bf4f498f673295d65d946969efcbdf5307dc0d2d45fc5",
+      "snapshot": "d7ecf21f0964ce0120921f01b1f89e6d58ae8f14f06ce22f54841235d92babc8"
+    },
+    "scripts/run_r5_contact_geometry.py": {
+      "frozen": "cce3ce40de1bbee4e9ac2792fed36c48266d4356712599535e27075923cc658a",
+      "future": "10e84c74ba120dac4630a3c0bdaae48950d7f3e09779c35db95a3cf902f7f5a6",
+      "snapshot": "cce3ce40de1bbee4e9ac2792fed36c48266d4356712599535e27075923cc658a"
+    }
+  },
+  "added_native_gate_sources": {
+    "containers\\r5_contact_geometry\\CMakeLists.txt": "62d441483d255e2a6a631008ed29caf6e98546d557564a1c64ccf1cae963eb3d",
+    "containers\\r5_contact_geometry\\MeshPreflight.cc": "b4dd19ad22c1d16ab4e1da6bfe91eeff14b3263e30c793df6983d85b1e4a0a71"
+  },
+  "preparation_shell": {
+    "future": "52ca952e71025c5f049a7e8d48da40ade34273eb31244053d58be53b87522f38"
+  },
+  "native_gate_binary": "b3213b89050b271c923a58684d65a0eba15114e320f9e43ab7b1ddb9468c75c8",
+  "generator_fix_verified_by_native_loader": true,
+  "physical_turning_cause_confirmed": false,
+  "production_changed": false
+}

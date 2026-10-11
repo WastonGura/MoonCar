@@ -2,7 +2,10 @@
 import copy,json,sys,tempfile,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[4]/'scripts'))
-from r5_contact_geometry import MATRIX,SCREEN_ERROR,qualify,metadata
+from r5_contact_geometry import MATRIX,SCREEN_ERROR,qualify,metadata,mesh_receipt
+from prepare_r5_contact_geometry import make_mesh
+from audit_r5_ramp_contact import read_obj
+import numpy as np
 
 class GeometryTests(unittest.TestCase):
     def fixture(self):
@@ -36,5 +39,23 @@ class GeometryTests(unittest.TestCase):
             p=Path(d)/'meta.csv';p.write_text('iteration,t_ns,kind,entity,value\n1,1000,collision_detector,1,MISSING\n1,1000,collision,7,plate::surface::plate\n')
             r=metadata(p,[7]);self.assertIsNone(r['collision_detector'])
             with self.assertRaises(ValueError):metadata(p,[8])
+    def test_generated_normals_referenced_without_geometry_change(self):
+        with tempfile.TemporaryDirectory() as d:
+            faces=[]
+            for mirror in (False,True):
+                p=Path(d)/str(mirror);make_mesh(p,mirror,extent=.5,cell=.25)
+                lines=p.read_text().splitlines()
+                self.assertEqual([x for x in lines if x.startswith('vn ')],['vn 0 0 1'])
+                self.assertTrue(all(x.endswith('//1') for line in lines if line.startswith('f ') for x in line.split()[1:]))
+                vertices,indices=read_obj(p);self.assertEqual(len(indices),8);self.assertTrue(np.all(vertices[:,2]==.05))
+                normals=np.cross(vertices[indices[:,1]]-vertices[indices[:,0]],vertices[indices[:,2]]-vertices[indices[:,0]])
+                self.assertTrue(np.all(normals[:,2]>0));self.assertTrue(np.all(normals[:,:2]==0));faces.append(indices)
+            self.assertFalse(np.array_equal(faces[0],faces[1]))
+    def test_native_receipt_requires_both_actual_fixtures(self):
+        r=dict(passed=True,new_simulations=0,meshes=[dict(path='/probe/fixtures/'+n+'.obj',passed=True,vertices=6,normals=6,indices=6) for n in ('coplanar_mesh','mirrored_mesh')])
+        self.assertTrue(mesh_receipt(r))
+        for key,value in (('normals',0),('vertices',0),('path','/probe/future-fixtures/copied.obj'),('indices',5),('passed',False)):
+            broken=copy.deepcopy(r);broken['meshes'][0][key]=value;self.assertFalse(mesh_receipt(broken))
+        r['meshes'].pop();self.assertFalse(mesh_receipt(r))
 
 if __name__=='__main__':unittest.main()
