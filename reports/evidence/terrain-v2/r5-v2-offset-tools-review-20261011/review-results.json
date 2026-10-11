@@ -1,0 +1,248 @@
+{
+  "scope": "offline review only; no new simulation or container",
+  "synthetic_contact_probes": {
+    "complete": {
+      "qualified": true,
+      "qualification_error": null,
+      "fr_zero_contact_steps_count": 0
+    },
+    "missing": {
+      "qualified": false,
+      "qualification_error": "Missing contact source row for step 5201, wheel front_right",
+      "fr_zero_contact_steps_count": null
+    },
+    "explicit_empty": {
+      "qualified": true,
+      "qualification_error": null,
+      "fr_zero_contact_steps_count": 3
+    },
+    "unknown": {
+      "qualified": false,
+      "qualification_error": "Unknown contact state -1.0 found in contact records",
+      "fr_zero_contact_steps_count": null
+    }
+  },
+  "runner_dry_run": {
+    "status": "ready_for_execution",
+    "authorization_required": true,
+    "docker_environment": {
+      "container_name": "mooncar-r5-v2-offset-diagnosis-20261011",
+      "image": "mooncar-terrain:r5-image-dds-20261008",
+      "resources": {
+        "cpus": 4,
+        "memory": "6g",
+        "shm_size": "512m"
+      },
+      "environment_variables": {
+        "ROS_DISTRO": "jazzy",
+        "ROS_DOMAIN_ID": "95",
+        "MOONCAR_IMAGE_DDS_RUNTIME": "/opt/mooncar/image-dds/rmw-8.4.4",
+        "MOONCAR_DART_PLUGIN_ROOT": "/opt/mooncar/physics/dart-7.8.0"
+      },
+      "docker_run_command": "docker run -d --name mooncar-r5-v2-offset-diagnosis-20261011 --cpus 4 --memory 6g --shm-size 512m -v D:/Documents/Projects/Repositories/MoonCar-mapping:/source:ro -v D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/terrain-v2/r5-v2-offset-diagnosis-prep-20261011:/evidence -e ROS_DOMAIN_ID=95 -e ROS_DISTRO=jazzy mooncar-terrain:r5-image-dds-20261008 sleep infinity"
+    },
+    "verified_runs": [
+      {
+        "round_id": "test_shift_x_plus_5cm",
+        "purpose": "Phase shift diagnosis: single parameter change in X spawn position",
+        "world_verification": {
+          "valid": true,
+          "path": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011\\worlds\\world_shift_x05.sdf",
+          "size_bytes": 72547,
+          "sha256": "8b549b1bd531cf67a076dab6a7e9bcd068d59edabb067a850904f128d51c3c0f",
+          "verified_pose": "<pose>0.05 0 .03 0 0 0</pose>",
+          "verified_outputs": [
+            "/work/test_shift_x_plus_5cm-axle-commands.csv",
+            "/work/test_shift_x_plus_5cm-slip-control.csv",
+            "/work/test_shift_x_plus_5cm-contact-steps.csv",
+            "/work/test_shift_x_plus_5cm-physics-steps.csv"
+          ]
+        },
+        "container_world_path": "/evidence/worlds/world_shift_x05.sdf",
+        "executable_command": "docker exec -i mooncar-r5-v2-offset-diagnosis-20261011 /bin/bash -lc \"source /opt/ros/jazzy/setup.bash && source /work/install/setup.bash && export PYTHONPATH=/source/scripts:\\$PYTHONPATH && python3 /evidence/run_diagnosis_campaign.py --run-round test_shift_x_plus_5cm --authorized\"",
+        "schedule": {
+          "mode": "paused_steps",
+          "warmup_steps": 200,
+          "parked_steps": 5000,
+          "motion_steps": 20000,
+          "stop_steps": 3000,
+          "total_sim_steps": 28200,
+          "total_sim_time_s": 28.2
+        }
+      },
+      {
+        "round_id": "restore_x_0",
+        "purpose": "Reproducibility check: restore original spawn position to confirm exact baseline characteristics",
+        "world_verification": {
+          "valid": true,
+          "path": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011\\worlds\\world_restore_x00.sdf",
+          "size_bytes": 72504,
+          "sha256": "e71ea47b0a77507a96db84301a4dd1951115cbebf05b550032062e028abea3c7",
+          "verified_pose": "<pose>0 0 .03 0 0 0</pose>",
+          "verified_outputs": [
+            "/work/restore_x_0-axle-commands.csv",
+            "/work/restore_x_0-slip-control.csv",
+            "/work/restore_x_0-contact-steps.csv",
+            "/work/restore_x_0-physics-steps.csv"
+          ]
+        },
+        "container_world_path": "/evidence/worlds/world_restore_x00.sdf",
+        "executable_command": "docker exec -i mooncar-r5-v2-offset-diagnosis-20261011 /bin/bash -lc \"source /opt/ros/jazzy/setup.bash && source /work/install/setup.bash && export PYTHONPATH=/source/scripts:\\$PYTHONPATH && python3 /evidence/run_diagnosis_campaign.py --run-round restore_x_0 --authorized\"",
+        "schedule": {
+          "mode": "paused_steps",
+          "warmup_steps": 200,
+          "parked_steps": 5000,
+          "motion_steps": 20000,
+          "stop_steps": 3000,
+          "total_sim_steps": 28200,
+          "total_sim_time_s": 28.2
+        }
+      }
+    ]
+  },
+  "runner_ast_function_calls": [
+    "(round_folder / 'physics-steps.csv').exists",
+    "(round_folder / 'result.json').exists",
+    "(round_folder / 'result.json').read_text",
+    "PLAN_PATH.read_text",
+    "Path",
+    "Path(__file__).resolve",
+    "RuntimeError",
+    "ValueError",
+    "all",
+    "argparse.ArgumentParser",
+    "child.kill",
+    "child.poll",
+    "child.terminate",
+    "child.wait",
+    "diag_path.exists",
+    "diag_path.read_text",
+    "dry_run_check",
+    "eval_out.write_text",
+    "evaluate_diagnosis_run.evaluate_run",
+    "execute_round",
+    "hashlib.sha256",
+    "hashlib.sha256(world_path.read_bytes()).hexdigest",
+    "json.dumps",
+    "json.loads",
+    "len",
+    "log_path.open",
+    "main",
+    "next",
+    "parser.add_argument",
+    "parser.parse_args",
+    "print",
+    "r.get",
+    "res.get",
+    "results['verified_runs'].append",
+    "round_folder.exists",
+    "run_campaign",
+    "runs_dir.mkdir",
+    "str",
+    "stub_executor",
+    "subprocess.Popen",
+    "summary['rounds'].append",
+    "sys.exit",
+    "time.sleep",
+    "time.time",
+    "verify_world_file",
+    "world_path.exists",
+    "world_path.read_bytes",
+    "world_path.read_text",
+    "world_path.stat"
+  ],
+  "world_diff_checks": {
+    "world_shift_x05.sdf": {
+      "only_declared_changes": true,
+      "sha256": "8b549b1bd531cf67a076dab6a7e9bcd068d59edabb067a850904f128d51c3c0f"
+    },
+    "world_restore_x00.sdf": {
+      "only_declared_changes": true,
+      "sha256": "e71ea47b0a77507a96db84301a4dd1951115cbebf05b550032062e028abea3c7"
+    }
+  },
+  "manifest_verified": true,
+  "cli_overwrite_probe": {
+    "exit_code": 1,
+    "existing_marker_overwritten": false,
+    "stdout": "",
+    "stderr": "Refusing to overwrite existing file: D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-tools-review-20261011\\overwrite-probe.json\n"
+  },
+  "baseline_evaluator": {
+    "qualified": true,
+    "final_displacement_mm": 10.285963351168842,
+    "critical_events_count": 4449,
+    "net_horizontal_impulse_Ns": [
+      -0.024632988924006435,
+      -0.002384243299627313
+    ],
+    "actual_com_dv_mm_s": [
+      -2.681467335425604,
+      -0.2627821940489437
+    ]
+  },
+  "baseline_saved_event_iterations": [
+    5201,
+    5202,
+    5203,
+    5204,
+    5205,
+    5206,
+    5207,
+    5208,
+    5209,
+    5210,
+    5571,
+    8142,
+    8944,
+    8992,
+    9008,
+    9151,
+    9157,
+    9721,
+    9745,
+    9879,
+    9893,
+    9950,
+    9961,
+    17019,
+    17020,
+    17021,
+    17022,
+    17023,
+    17024,
+    17025,
+    17032,
+    17215,
+    17224,
+    17261,
+    17262,
+    17290,
+    17409,
+    17528,
+    17529,
+    17721,
+    17722,
+    17723,
+    17724,
+    17736,
+    17853,
+    18361,
+    18363,
+    18367,
+    18403,
+    18481,
+    21525,
+    22165,
+    24684,
+    24870,
+    25200
+  ],
+  "baseline_target_17019_saved": true,
+  "baseline_has_grid_edge_windows": true,
+  "executed_files_sha256": {
+    "run_diagnosis_campaign.py": "78fa2c5bbc459fb22e31a72013c835097b55e84ff48904df77cfcbf131916ff4",
+    "evaluate_diagnosis_run.py": "1d86d98a4ac9f3aeb929f47286ab7a076f38ae7707303a1e5994dd5dafc84e48",
+    "campaign_plan.json": "c81e8591aac8b107ff122560cd074a43b9b457f76b29b15cb3b53bc338c834a6"
+  }
+}

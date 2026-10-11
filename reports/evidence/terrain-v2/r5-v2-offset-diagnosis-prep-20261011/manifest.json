@@ -3,21 +3,29 @@
     "size_bytes": 3554,
     "sha256": "c81e8591aac8b107ff122560cd074a43b9b457f76b29b15cb3b53bc338c834a6"
   },
+  "check_r5_v2_offset_round.py": {
+    "size_bytes": 4300,
+    "sha256": "d4304dd40ae9dcfe1c08ee4bfc62f16c39d51b3e7dbb6aa260857ccb0a9ba7b6"
+  },
   "DIAGNOSIS_PLAN.md": {
-    "size_bytes": 9616,
-    "sha256": "c7c75806327ea3517620a382b1b09a4c0fba5dd438681732f828d80bccd3a483"
+    "size_bytes": 6527,
+    "sha256": "69fc081661204ae4dfe7039fbea010fb2118147ccd1ff5b9a3a7cd078ff63451"
   },
   "evaluate_diagnosis_run.py": {
-    "size_bytes": 14823,
-    "sha256": "e390ecd1592d6bddc476999bfa0fbae33971f3446687d0b4b0c7070aaa2f3c5a"
+    "size_bytes": 17912,
+    "sha256": "1d86d98a4ac9f3aeb929f47286ab7a076f38ae7707303a1e5994dd5dafc84e48"
   },
   "README.md": {
-    "size_bytes": 1964,
-    "sha256": "dea4973ac292ee1a804e670e137843696310ea9f37e804ae22610435ee97f49b"
+    "size_bytes": 2600,
+    "sha256": "5d3177f4b58fafa8c8fa22e08a136744d1d4e6aaa27483c69db26206c235f6a9"
   },
   "run_diagnosis_campaign.py": {
-    "size_bytes": 3914,
-    "sha256": "72cb1439b7c9a21251923257bca3c418e9e34d42c36ab78cd89ff733789dd10a"
+    "size_bytes": 10710,
+    "sha256": "78fa2c5bbc459fb22e31a72013c835097b55e84ff48904df77cfcbf131916ff4"
+  },
+  "test_execution_mock.py": {
+    "size_bytes": 6158,
+    "sha256": "f623d33aa45a7267da40c2fa14352a6287e143d7e24672294e045e50ae0bf6b1"
   },
   "worlds/world_restore_x00.sdf": {
     "size_bytes": 72504,

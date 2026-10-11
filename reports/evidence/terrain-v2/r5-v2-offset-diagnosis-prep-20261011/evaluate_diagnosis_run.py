@@ -14,6 +14,7 @@ Features:
 import argparse
 import csv
 import json
+import sys
 from pathlib import Path
 from typing import Dict, List, Tuple, Any, Optional
 
@@ -199,7 +200,7 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
 
     # --- GEOMETRIC CONTACT ANALYSIS (LOWEST GENERATOR) ---
     v_z = np.array([0.0, 0.0, 1.0])
-    overlap_windows_per_wheel = {}
+    w_ends_per_wheel = {}
     generator_heights_per_wheel = {}
 
     for w_idx, w_name in enumerate(WHEELS):
@@ -214,32 +215,42 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
 
         w_end0 = w_bottom - 0.025 * w_axis
         w_end1 = w_bottom + 0.025 * w_axis
-
-        # Record lowest generator height
+        w_ends_per_wheel[w_name] = (w_end0, w_end1)
         generator_heights_per_wheel[w_name] = w_bottom[:, 2].tolist()
 
-        # Check intersection with target finite seam
-        overlaps = []
-        for i in range(n_steps):
-            is_intersect, _ = check_segment_intersection(
-                w_end0[i, :2], w_end1[i, :2],
-                TARGET_SEAM['p0'], TARGET_SEAM['p1']
-            )
-            if is_intersect:
-                overlaps.append(int(iterations[i]))
+    # Calculate crossing windows for all 4 wheels against all neighbor grid edges
+    grid_edge_overlap_windows_all_wheels = {}
+    seam_boundary_iterations = set()
+    for edge in GRID_EDGES:
+        e_name = edge['name']
+        grid_edge_overlap_windows_all_wheels[e_name] = {}
+        for w_idx, w_name in enumerate(WHEELS):
+            w_end0, w_end1 = w_ends_per_wheel[w_name]
+            overlaps = []
+            for i in range(n_steps):
+                is_intersect, _ = check_segment_intersection(
+                    w_end0[i, :2], w_end1[i, :2],
+                    edge['p0'], edge['p1']
+                )
+                if is_intersect:
+                    overlaps.append(int(iterations[i]))
 
-        windows = []
-        if overlaps:
-            groups = np.split(overlaps, np.flatnonzero(np.diff(overlaps) != 1) + 1)
-            for g in groups:
-                windows.append({
-                    'first_iteration': int(g[0]),
-                    'last_iteration': int(g[-1]),
-                    'duration_steps': len(g),
-                    'first_motion_s': float((g[0] - iterations[0]) * 0.001),
-                    'last_motion_s': float((g[-1] - iterations[0]) * 0.001)
-                })
-        overlap_windows_per_wheel[w_name] = windows
+            windows = []
+            if overlaps:
+                groups = np.split(overlaps, np.flatnonzero(np.diff(overlaps) != 1) + 1)
+                for g in groups:
+                    windows.append({
+                        'first_iteration': int(g[0]),
+                        'last_iteration': int(g[-1]),
+                        'duration_steps': len(g),
+                        'first_motion_s': float((g[0] - iterations[0]) * 0.001),
+                        'last_motion_s': float((g[-1] - iterations[0]) * 0.001)
+                    })
+                    seam_boundary_iterations.add(int(g[0]))
+                    seam_boundary_iterations.add(int(g[-1]))
+            grid_edge_overlap_windows_all_wheels[e_name][w_name] = windows
+
+    overlap_windows_per_wheel = grid_edge_overlap_windows_all_wheels['target_diagonal_seam']
 
     # --- CONTACT FORCES & STATES ACCUMULATION ---
     active = c_motion['state'] == 1
@@ -256,6 +267,7 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
 
     # Explicit empty snapshots per wheel (counts == 0)
     explicit_empty_runs_per_wheel = {}
+    liftoff_boundary_iterations = set()
     for w_idx, w_name in enumerate(WHEELS):
         empty_mask = counts[:, w_idx] == 0
         empty_indices = np.flatnonzero(empty_mask)
@@ -270,6 +282,8 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
                     'first_motion_s': float((iterations[g[0]] - iterations[0]) * 0.001),
                     'last_motion_s': float((iterations[g[-1]] - iterations[0]) * 0.001)
                 })
+                liftoff_boundary_iterations.add(int(iterations[g[0]]))
+                liftoff_boundary_iterations.add(int(iterations[g[-1]]))
         explicit_empty_runs_per_wheel[w_name] = runs
 
     # Displacements & Velocities
@@ -284,12 +298,13 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
     fr_zero_runs = iterations[counts[:, 1] == 0].tolist()
     fl_load_spikes = iterations[fz[:, 0] > 6.0].tolist()
 
-    # Critical event list
+    # Critical event list and detailed per-event recording
+    nominal_fz = np.array([4.34, 2.80, 3.10, 4.64])
     critical_events = []
     for i in range(n_steps):
         it = int(iterations[i])
-        # Log steps with anomalous contact counts or load spikes
-        if counts[i, 0] >= 3 or fz[i, 0] > 8.0 or counts[i, 1] == 0:
+        # Log steps with anomalous contact counts, load spikes, wheel liftoff, or key seam events
+        if counts[i, 0] >= 3 or fz[i, 0] > 8.0 or counts[i, 1] == 0 or it == 17019 or np.any(counts[i] == 0):
             c_step = c_motion[(c_motion['iteration'] == it) & (c_motion['state'] == 1)]
             fl_pts = []
             for r in c_step[c_step['wheel'] == 0]:
@@ -304,12 +319,44 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
                 'motion_s': float((it - iterations[0]) * 0.001),
                 'contact_counts': counts[i].tolist(),
                 'wheel_fz_N': fz[i].tolist(),
+                'load_redistribution_N': (fz[i] - nominal_fz).tolist(),
                 'fl_contacts': fl_pts,
-                'net_horizontal_force_N': f_net[i, :2].tolist()
+                'net_horizontal_force_N': f_net[i, :2].tolist(),
+                'local_horizontal_impulse_Ns': (f_net[i, :2] * 0.001).tolist(),
+                'local_com_dv_mm_s': ((vc[i] - vc[max(0, i-1)]) * 1000).tolist() if len(vc) > 1 else [0.0, 0.0]
             })
 
     # Integrated horizontal impulse
     net_impulse = f_net[:, :2].sum(axis=0) * 0.001
+
+    # Save all critical events to an independent JSON Lines file
+    events_dir = Path(__file__).resolve().parent / 'events'
+    events_dir.mkdir(parents=True, exist_ok=True)
+    events_file = events_dir / f"{run_dir.name}-critical-events.jsonl"
+    with events_file.open('w', encoding='utf-8') as ef:
+        for ev in critical_events:
+            ef.write(json.dumps(ev) + '\n')
+
+    # Curate sample_critical_events ensuring:
+    # 1. Initial motion start (5201-5210)
+    # 2. Critical disturbance and mutation event at 17019 (and surrounding steps 17019-17025)
+    # 3. Liftoff and seam entry/exit boundaries
+    key_target_iterations = set(range(5201, 5211)) | {17019, 17020, 17021, 17022, 17023, 17024, 17025}
+    key_target_iterations |= liftoff_boundary_iterations
+    key_target_iterations |= seam_boundary_iterations
+    if len(iterations):
+        key_target_iterations.add(int(iterations[-1]))
+
+    sample_events = [ev for ev in critical_events if ev['iteration'] in key_target_iterations]
+    # Ensure iteration 17019 is included if present in critical events
+    ev_17019 = next((ev for ev in critical_events if ev['iteration'] == 17019), None)
+    if ev_17019 and not any(ev['iteration'] == 17019 for ev in sample_events):
+        sample_events.append(ev_17019)
+    sample_events.sort(key=lambda ev: ev['iteration'])
+
+    # If critical events is small (e.g. synthetic fixtures with <= 10 steps), use all
+    if len(critical_events) <= 10:
+        sample_events = critical_events
 
     return {
         'run_dir': str(run_dir),
@@ -319,6 +366,7 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
         'max_displacement_mm': float(disp.max()),
         'target_seam_overlap_windows': overlap_windows_per_wheel['front_left'], # FL for backward compat
         'target_seam_overlap_windows_all_wheels': overlap_windows_per_wheel,
+        'grid_edge_overlap_windows_all_wheels': grid_edge_overlap_windows_all_wheels,
         'fl_contact_ge3_steps_count': len(fl_3_or_more),
         'fr_zero_contact_steps_count': len(fr_zero_runs),
         'fl_load_spikes_count': len(fl_load_spikes),
@@ -328,13 +376,15 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
         'actual_com_dv_mm_s': ((vc[-1] - vc[0]) * 1000).tolist() if len(vc) > 1 else [0.0, 0.0],
         'actual_body_dv_mm_s': ((vb[-1] - vb[0]) * 1000).tolist() if len(vb) > 1 else [0.0, 0.0],
         'critical_events_count': len(critical_events),
-        'sample_critical_events': critical_events[:10] if len(critical_events) > 10 else critical_events
+        'sample_critical_events': sample_events,
+        'critical_events_file': str(events_file)
     }
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate MoonCar R5 steering offset diagnostic run.")
     parser.add_argument("--run-dir", type=str, required=True, help="Path to simulation run output directory")
     parser.add_argument("--output", type=str, default=None, help="Output JSON path for evaluation results")
+    parser.add_argument("--overwrite", action="store_true", help="Allow overwriting existing output file")
     args = parser.parse_args()
 
     run_path = Path(args.run_dir)
@@ -343,6 +393,9 @@ def main():
     out_json = json.dumps(res, indent=2)
     if args.output:
         out_path = Path(args.output)
+        if out_path.exists() and not args.overwrite:
+            sys.stderr.write(f"Refusing to overwrite existing file: {out_path}\n")
+            sys.exit(1)
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(out_json, encoding='utf-8')
         print(f"Evaluation report written to {out_path}")
