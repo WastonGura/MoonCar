@@ -1,0 +1,67 @@
+{
+  "target_round": "14-pure_turn-ramp-1000us-left",
+  "baseline_round": "03-pure_turn-flat-1000us-left-1",
+  "step_1_onset_identification": {
+    "onset_time_s": 11.82,
+    "onset_iteration": 17020,
+    "pre_onset_displacement_mm": 0.34523299547347736,
+    "final_displacement_mm": 10.285963351168842,
+    "translation_direction_degrees": -125.03373400038649,
+    "translation_endpoint_mm": [
+      -5.904746014653548,
+      -8.422292832953602
+    ],
+    "description": "Vehicle center remained stably bounded (<= 0.35 mm) for the first 11.8 seconds. Catastrophic translation initiated strictly at t = 11.820s (Iter 17020) and surged southwestward towards (-5.90 mm, -8.42 mm)."
+  },
+  "step_2_four_wheel_causal_mechanism": {
+    "critical_window_s": [
+      11.82,
+      12.32
+    ],
+    "fl_front_left": {
+      "event": "Crossed Quad 2 internal diagonal seam (y - x = 0.25). Penetration depth surged from 1.1 nm to 2.5 um with normal tilted up to 0.136 deg.",
+      "load_surge_N": 0.0,
+      "mean_load_window_N": 6.247131920026448,
+      "impulse_Jx_Ns": 0.16487864190772306,
+      "impulse_Jy_Ns": -0.06290490557316115
+    },
+    "fr_front_right": {
+      "event": "Diagonally unweighted and lifted off the ground (0 contacts for 241 steps during this phase). Driving force collapsed to 0.",
+      "zero_contact_steps_in_window": 241,
+      "mean_load_window_N": 0.933550729537854
+    },
+    "rl_rear_left": {
+      "event": "Severely unweighted (mean load 1.20 N vs nominal 3.87 N).",
+      "mean_load_window_N": 1.18886408827695
+    },
+    "rr_rear_right": {
+      "event": "Overloaded on the diagonal support axis (mean load 6.51 N vs nominal 3.87 N).",
+      "mean_load_window_N": 6.511762153921743,
+      "impulse_Jx_Ns": -0.40494444296999244,
+      "impulse_Jy_Ns": 0.2332334819515969
+    },
+    "dynamics_closure": {
+      "net_impulse_Jx_Ns": -0.04708606641479352,
+      "net_impulse_Jy_Ns": -0.09442555533530951,
+      "predicted_delta_vx_mm_s": -5.1258509051593215,
+      "predicted_delta_vy_mm_s": -10.27928971644998,
+      "actual_delta_vx_mm_s": -5.2169068428554874,
+      "actual_delta_vy_mm_s": -10.83645258776922,
+      "agreement_error_pct": 5.141561473245331
+    }
+  },
+  "step_3_flat_plate_contrast": {
+    "displacement_flat_mm": 0.172556,
+    "contacts_per_wheel_flat": 2,
+    "total_contacts_flat": 8,
+    "normal_angle_tilt_flat_deg": 0.0,
+    "zero_contact_steps_flat": 0,
+    "net_horizontal_force_flat_N": 0.0,
+    "key_contrast_explanation": "On the flat plate box primitive, there are no internal diagonal seams or triangular facets. All four wheels maintain strictly 2 contacts per wheel at 1.1 nm compliance depth. The 4 wheels remain strictly coplanar and symmetrical; left and right wheel horizontal forces cancel to 0.000 N, preventing chassis diagonal pitch/roll rocking and keeping center displacement bounded at 0.17 mm."
+  },
+  "step_4_single_factor_proposal": {
+    "selected_factor": "Initial Spawn Position Shift (\u521d\u59cb\u751f\u6210\u4f4d\u7f6e\u5e73\u79fb\u9694\u79bb\u63a5\u7f1d)",
+    "rationale": "By shifting the vehicle spawn position by (+0.05m, +0.05m), the turning circle of Wheel FL avoids crossing the Quad 2 diagonal seam at t = 11.82s. If the causal chain is correct, the catastrophic FL penetration and FR airborne state at 11.82s will NOT trigger at that time, and the translation trajectory will dramatically change or shrink.",
+    "budget": "1 round of pure turn test (left turn, 1ms, 20s) with +5cm spawn offset, followed by restore round (total budget: 2 runs)."
+  }
+}
