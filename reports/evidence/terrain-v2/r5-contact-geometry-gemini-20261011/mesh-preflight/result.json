@@ -1,0 +1,1 @@
+{"new_simulations":0,"meshes":[{"path":"/probe/fixtures/coplanar_mesh.obj","vertices":153600,"normals":153600,"indices":153600,"passed":true},{"path":"/probe/fixtures/mirrored_mesh.obj","vertices":153600,"normals":153600,"indices":153600,"passed":true}],"passed":true}

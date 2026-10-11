@@ -1,0 +1,17 @@
+{
+  "software_tests": [
+    7,
+    10,
+    129,
+    363
+  ],
+  "total": 509,
+  "software_passed": true,
+  "firmware_passed": true,
+  "frontend_passed": true,
+  "python_files": 229,
+  "python_errors": [],
+  "js_files": 5,
+  "js_errors": [],
+  "passed": true
+}
