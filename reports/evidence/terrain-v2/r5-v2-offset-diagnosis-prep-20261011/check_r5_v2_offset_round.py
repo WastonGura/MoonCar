@@ -22,6 +22,8 @@ def main():
     args = parser.parse_args()
 
     folder = Path(args.output) / args.name
+    if folder.exists():
+        raise FileExistsError(f"Refusing to overwrite existing output directory: {folder}")
     world_src = Path(args.world)
     if not world_src.exists():
         raise FileNotFoundError(f"World file not found: {world_src}")
@@ -31,8 +33,41 @@ def main():
 
     def prepare(run_args, out):
         # Execute original prepare for validation and folder setup, then inject our replica
+        import shutil
+        import xml.etree.ElementTree as ET
+        from pathlib import Path
+
         path = original_prepare(run_args, out)
         shutil.copy2(world_src, path)
+
+        # Inspect declared pose from replica
+        src_tree = ET.parse(world_src)
+        src_model = src_tree.find("world/model[@name='mooncar']")
+        target_pose = src_model.findtext('pose') if src_model is not None else None
+
+        # Hook ET write to prevent downstream origin override from reverting pose
+        # and prevent duplicate ContactObserver / StepObserver plugins
+        orig_write = getattr(ET.ElementTree, '_unwrapped_write', None)
+        if orig_write is None:
+            orig_write = ET.ElementTree.write
+            ET.ElementTree._unwrapped_write = orig_write
+
+        def deduplicating_write(self, target, *w_args, **w_kwargs):
+            root = self.getroot()
+            model = root.find("model[@name='mooncar']") if root.tag == 'world' else root.find("world/model[@name='mooncar']")
+            if model is not None:
+                if target_pose:
+                    pose_el = model.find('pose')
+                    if pose_el is not None:
+                        pose_el.text = target_pose
+                for p_name in ('mooncar::ContactObserver', 'mooncar::StepObserver'):
+                    matches = model.findall(f"plugin[@name='{p_name}']")
+                    if len(matches) > 1:
+                        for m in matches[:-1]:
+                            model.remove(m)
+            return orig_write(self, target, *w_args, **w_kwargs)
+
+        ET.ElementTree.write = deduplicating_write
         return path
 
     runtime.prepare = prepare
@@ -77,6 +112,8 @@ def main():
         'receiver_verified': bool(r.get('receiver_verified')),
         'raw_fixture_passed': bool(r.get('raw_fixture_passed')),
         'capture_drained': bool(r.get('capture', {}).get('drained')),
+        'image_content': bool(r.get('image_content', {}).get('passed')),
+        'origin_qualification': bool(r.get('origin_qualification', {}).get('passed')),
         'gate': bool(probe.get('gate', {}).get('passed')),
         'allocation': bool(probe.get('allocation', {}).get('passed')),
         'contact_source': bool(probe.get('source', {}).get('proof', {}).get('passed')),

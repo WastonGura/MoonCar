@@ -82,7 +82,7 @@ def check_segment_intersection(a0, a1, b0, b1) -> Tuple[bool, Optional[np.ndarra
         return True, pt
     return False, None
 
-def evaluate_run(run_dir: Path) -> Dict[str, Any]:
+def evaluate_run(run_dir: Path, events_file: Optional[Path] = None, output_dir: Optional[Path] = None) -> Dict[str, Any]:
     run_dir = Path(run_dir)
     p_path = run_dir / 'physics-steps.csv'
     if not p_path.exists():
@@ -299,7 +299,18 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
     fl_load_spikes = iterations[fz[:, 0] > 6.0].tolist()
 
     # Critical event list and detailed per-event recording
-    nominal_fz = np.array([4.34, 2.80, 3.10, 4.64])
+    # Compute dynamic nominal wheel load baseline from pre-motion stable window (parked phase)
+    nominal_fz = np.zeros(4)
+    parked_lo = schedule_bounds.get('parked_before', 200) if schedule_bounds else 200
+    parked_hi = lo
+    if parked_hi is not None and parked_lo is not None and parked_hi > parked_lo:
+        c_parked = c[(c['iteration'] >= parked_lo) & (c['iteration'] <= parked_hi) & (c['state'] == 1)]
+        parked_n_steps = max(1, parked_hi - parked_lo + 1)
+        for w_idx in range(4):
+            w_fz = c_parked[c_parked['wheel'] == w_idx]['f1z']
+            if len(w_fz) > 0:
+                nominal_fz[w_idx] = float(np.sum(w_fz) / parked_n_steps)
+
     critical_events = []
     for i in range(n_steps):
         it = int(iterations[i])
@@ -330,9 +341,14 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
     net_impulse = f_net[:, :2].sum(axis=0) * 0.001
 
     # Save all critical events to an independent JSON Lines file
-    events_dir = Path(__file__).resolve().parent / 'events'
-    events_dir.mkdir(parents=True, exist_ok=True)
-    events_file = events_dir / f"{run_dir.name}-critical-events.jsonl"
+    if events_file is None:
+        target_dir = output_dir or (run_dir / 'analysis')
+        target_dir.mkdir(parents=True, exist_ok=True)
+        events_file = target_dir / f"{run_dir.name}-critical-events.jsonl"
+    else:
+        events_file = Path(events_file)
+        events_file.parent.mkdir(parents=True, exist_ok=True)
+
     with events_file.open('w', encoding='utf-8') as ef:
         for ev in critical_events:
             ef.write(json.dumps(ev) + '\n')
@@ -377,6 +393,7 @@ def evaluate_run(run_dir: Path) -> Dict[str, Any]:
         'actual_body_dv_mm_s': ((vb[-1] - vb[0]) * 1000).tolist() if len(vb) > 1 else [0.0, 0.0],
         'critical_events_count': len(critical_events),
         'sample_critical_events': sample_events,
+        'nominal_fz_baseline_N': nominal_fz.tolist(),
         'critical_events_file': str(events_file)
     }
 
@@ -384,18 +401,26 @@ def main():
     parser = argparse.ArgumentParser(description="Evaluate MoonCar R5 steering offset diagnostic run.")
     parser.add_argument("--run-dir", type=str, required=True, help="Path to simulation run output directory")
     parser.add_argument("--output", type=str, default=None, help="Output JSON path for evaluation results")
+    parser.add_argument("--events-file", type=str, default=None, help="Output JSONL path for critical events")
     parser.add_argument("--overwrite", action="store_true", help="Allow overwriting existing output file")
     args = parser.parse_args()
 
     run_path = Path(args.run_dir)
-    res = evaluate_run(run_path)
+    out_path = Path(args.output) if args.output else None
+    events_path = Path(args.events_file) if args.events_file else (out_path.parent / f"{run_path.name}-critical-events.jsonl" if out_path else None)
+
+    # Strictly reject overwrite upfront BEFORE executing evaluation or creating/opening files
+    if out_path and out_path.exists() and not args.overwrite:
+        sys.stderr.write(f"Refusing to overwrite existing output file: {out_path}\n")
+        sys.exit(1)
+    if events_path and events_path.exists() and not args.overwrite:
+        sys.stderr.write(f"Refusing to overwrite existing events file: {events_path}\n")
+        sys.exit(1)
+
+    res = evaluate_run(run_path, events_file=events_path, output_dir=out_path.parent if out_path else None)
 
     out_json = json.dumps(res, indent=2)
-    if args.output:
-        out_path = Path(args.output)
-        if out_path.exists() and not args.overwrite:
-            sys.stderr.write(f"Refusing to overwrite existing file: {out_path}\n")
-            sys.exit(1)
+    if out_path:
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(out_json, encoding='utf-8')
         print(f"Evaluation report written to {out_path}")

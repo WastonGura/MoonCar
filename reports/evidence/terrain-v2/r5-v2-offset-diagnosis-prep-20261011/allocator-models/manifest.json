@@ -1,0 +1,23 @@
+{
+  "ratios": {
+    "front": 0.960268221788626,
+    "rear": 1.039731778211374
+  },
+  "normal_estimates_N": {
+    "front_left": 3.572514673566879,
+    "front_right": 3.572514673566879,
+    "rear_left": 3.868145326433121,
+    "rear_right": 3.868145326433121
+  },
+  "physical_and_contact_parameters_unchanged": true,
+  "single_candidate_change": "Test actuator module enabled false -> true",
+  "production_changed": false,
+  "conditional_prediction": "Equal lateral compliances at equal side target; steady ICR X approaches zero, not a measured outcome",
+  "engineering_turn_screen_m": 0.01,
+  "yaw_loss_limit_rad": 0.05,
+  "models": {
+    "baseline": "1dc7b8eef03dfe76533248155ae36d2bebf056d26ecf366530ceb236f75d2b66",
+    "candidate": "d765ca1c9c93f9aa837ae128321b9fb14b43b9ecc9e58567121be391eec3d1c4",
+    "restore": "1dc7b8eef03dfe76533248155ae36d2bebf056d26ecf366530ceb236f75d2b66"
+  }
+}
