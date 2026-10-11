@@ -1,0 +1,18 @@
+{
+  "DIAGNOSIS_PLAN.md": {
+    "size_bytes": 9709,
+    "sha256": "01bf4427ecc6bd562ade9359ed21b2f018a873a2566abe3218db961ac4752e6c"
+  },
+  "README.md": {
+    "size_bytes": 1770,
+    "sha256": "e5c0fd9324ece31e7675c506db2aec2de8bfe9ccc9f6713ac5b7df97743a26b1"
+  },
+  "campaign_plan.json": {
+    "size_bytes": 3230,
+    "sha256": "1eb566c456736abbe749c56e343eef50153ea107e24add20b0e2af2016ee033b"
+  },
+  "evaluate_diagnosis_run.py": {
+    "size_bytes": 5297,
+    "sha256": "33c311115235b75227b92f4911b461ce40fc064a4f870921bba6184533893859"
+  }
+}

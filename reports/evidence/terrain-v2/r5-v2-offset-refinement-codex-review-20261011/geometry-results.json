@@ -1,0 +1,137 @@
+{
+  "scope": "offline only",
+  "input_sha256": {
+    "r5-turn-gate-validation-20261011\\campaign\\14-pure_turn-ramp-1000us-left\\physics-steps.csv": "8b23a536daf1dfc0a959faa76de05d398fc04524fde8c28faeb2a6488f1cf0fb",
+    "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\ros2_ws\\src\\mooncar_gazebo\\models\\terrain_v2\\ramp\\regolith_passable.obj": "ac49ea41d8f42388ea253bc5f6711934009691eccf3b001957736abf670a7f20"
+  },
+  "gemini_manifest_verified": true,
+  "actual_yaw_at_17019_deg": 126.06409673334211,
+  "baseline": {
+    "shift_x_m": 0.0,
+    "finite_seam_bottom_generator_overlap_windows": [
+      {
+        "first_iteration": 8992,
+        "last_iteration": 10724,
+        "first_motion_s": 3.7920000000000007,
+        "last_motion_s": 5.524
+      },
+      {
+        "first_iteration": 17019,
+        "last_iteration": 17224,
+        "first_motion_s": 11.818999999999999,
+        "last_motion_s": 12.024000000000001
+      }
+    ],
+    "at_iteration_17019": {
+      "wheel_center_xyz_m": [
+        -0.22634470976274823,
+        0.02912265755617298,
+        0.07600000021810374
+      ],
+      "bottom_generator_endpoints_xyz_m": [
+        [
+          -0.20613573665620674,
+          0.04383990565917698,
+          1.2432934820560958e-10
+        ],
+        [
+          -0.24655368333017422,
+          0.014405409117528396,
+          3.118781385924585e-10
+        ]
+      ],
+      "minimum_endpoint_perpendicular_distance_m": 1.722348396617693e-05,
+      "finite_segment_overlap": true
+    }
+  },
+  "shifted_replay": {
+    "shift_x_m": 0.05,
+    "finite_seam_bottom_generator_overlap_windows": [
+      {
+        "first_iteration": 10216,
+        "last_iteration": 15968,
+        "first_motion_s": 5.015999999999999,
+        "last_motion_s": 10.768
+      }
+    ],
+    "at_iteration_17019": {
+      "wheel_center_xyz_m": [
+        -0.17634470976274824,
+        0.02912265755617298,
+        0.07600000021810374
+      ],
+      "bottom_generator_endpoints_xyz_m": [
+        [
+          -0.15613573665620675,
+          0.04383990565917698,
+          1.2432934820560958e-10
+        ],
+        [
+          -0.19655368333017423,
+          0.014405409117528396,
+          3.118781385924585e-10
+        ]
+      ],
+      "minimum_endpoint_perpendicular_distance_m": 0.027606090473906577,
+      "finite_segment_overlap": false
+    }
+  },
+  "nominal_model_warning": "Replay translates baseline poses only. Earlier changes in contacts can alter yaw, position and subsequent contact forces in a new run.",
+  "target_seam_faces": [
+    {
+      "face_index_zero_based": 3712,
+      "vertices": [
+        [
+          -0.25,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.25,
+          0.0
+        ]
+      ]
+    },
+    {
+      "face_index_zero_based": 3713,
+      "vertices": [
+        [
+          -0.25,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.25,
+          0.0
+        ],
+        [
+          -0.25,
+          0.25,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "target_seam_face_normals": [
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "mesh_diagonal_edge_incidences": {
+    "positive_xy_slope": 6852
+  }
+}
