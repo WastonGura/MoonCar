@@ -1,5 +1,24 @@
 # Working Context
 
+## 2026-11-04（最新：全面测试完成，未修产品；坡面仍有实质问题）
+
+用户“算了吧”取消Issue恢复，转为要求最新配置全面测试找问题，后续“继续”是继续本轮。特别更正：此前删除38个已关闭Issue是错误扩大范围，用户不认可；不得再把先前“所有Issue”解释为今后可删除已关闭记录。备份和重建草稿仍在tmp/github-maintenance-20261104，用户未要求执行恢复；不再动Issue。
+
+工作树仍D:/Documents/Projects/Repositories/MoonCar-mapping，dev/terrain-mapping-workbench。实际测试commit1daf6a9e2769c303fbd573d2a29607e1fd6628e4；相对65f68bc仅增加6个验证工具，生产算法/配置/回访/物理参数未改。fetch开发远端无待拉。重建8包，654源SHA和120关键安装文件/R5库首末同验通过，源摘要29083a30854157805c8b4e687a3cf84f9e8e831ababdefa09d0017ac283f86ac。固定R5 independent_linear_v1/.25ms/rgbd_window/no revisit/no adaptive，6CPU6GiB定位0-1/GZ2-5。报告后的提交只改文档，不把HEAD新SHA冒充测试SHA。
+
+本轮6组Python合计1371项（control13/nav10/terrain390/slam270/root202通过；Gazebo486中2fail18error13skip），网页5和固件通过，所有组跑完不因Gazebo失败跳过尾部。20原始失败点分类：NumPy trapezoid1、/diagnosis夹具缺5、旧guard冻结SHA12、.25ms旧拒绝断言1、OFF discovery真实ROS witness1；最后一项隔离域92/LOCALHOST单独重跑通过，其他19未修，原日志保留。不是20个车辆运行故障。
+
+仅3个实际world：direct experiment-90035a8c1d8b（6/6基础动作成功、22.16sim/131.9wall、真值XY P95 .00685m、接收→发布P95 .1958s、RSSmax385.2MiB、fault0）；native自主experiment-d9b1265b8849（14/14成功，实际任务173.5sim/973.4wall、truth窗口176.36sim、真值路径12.03m、误差P95 .02237m、发布P95 .2084s、RSSmax408.7MiB、pause/fault0，正常budget_reached剩余时间不足，不是车辆失败；原driver只认completed误标failed，未改原文件）。活动半径14，ROI616m²观测198.3125m²=32.19%ROI/22.03%整场900m²，非全场覆盖；高度RMSE/坡度MAE无独立参考为null。
+
+坡面experiment-798b0abee7b3（实际shipped mooncar_ramp_v2固定10目标，生产scan/execute/health保护；未额外半速覆盖，保留最新默认）。已完成前3move+2turn共5动作，第6move[5.5,0]暂停。真值纯转38.8775–44.201净 .32172m/倾角max9.38°，46.20275–52.19125净 .30187m/8.87°；两段/cmd_vel和safe线速度全0，角速度max.3rad/s。第一turn后2s等待另移 .06195m，第二等待约.000053m。这次确实是R5，不许再说只是legacy混用；也未唯一归因摩擦/速度/力分配，不恢复旧1cm硬门。
+
+坡面最后接受曝光63.3sim；63.4–65.9连续26 plan no_features。frontend.py此码定义为tracked+new总可用点<24，不是一定完全没角点。最后成功帧25shared，失败无细分计数/原RGBDepth现场，不能确定视角/纹理/深度有效区/接续具体成因。已收RGB/Depth各650配对650，IMU6486全接受maxgap.01s，backend190/190完成无fault；不是已证实处理追不上或传感器断流。63.609sim observation_stale停车，fault1/pause1 awaiting；随后采集driver OSError61 ENODATA中断，未保存traceback，调用点未知（lifecycle snapshot未捕获IO读是线索不可说已确定）；恢复/下坡未验证，不说不可恢复/超时已复现。全truth跨度64.28sim/323.5wall、路径6.01m、max tilt10.08°、有输出误差P95 .04045m、发布P95 .1888s、RSSmax398MiB。
+
+三轮ready早于all-active见证约1.22/.95/.89wall秒（含.5s见证采样延迟），测试等待实际ACTIVE后派发，产品startup ready bug未修。条件sigma P95约.00491/.00553/.00513m，不能当全球误差；以包含名义二维95%椭圆的2.448*sigma_max圆，已输出样本经验覆盖100%/47.2%/29.4%，只是相关时序诊断非新项目硬指标。当前实测仍有漂移/协方差解释校准问题，不以乘常数修饰。
+
+原编排误将/stop后stopped当idle，等45s后退出；已保存orchestration-correction.json，换新backend继续剩余case，0额外world，未重跑basic。全部raw、score脚本、失败退出码和SHA在tmp/ros_acceptance/comprehensive-20261104；267文件约579MB，本地保留不批量进Git。报告reports/COMPREHENSIVE_VALIDATION_20261104.md/.json有完整问题/边界。三observer、lifecycle均退出0，三primary run_end complete，后端0；无live进程，container已停。后续先修ready/采集可靠性与失败现场，再限定处理坡面特征短缺和真实转向位移；本轮没修生产或追加试验。全场/小时级/恢复/地形独立误差仍未完成，不当成已验收。
+
+
 ## 2026-11-04（最新远端状态：已推送，Issue清理完成）
 
 用户已明确授权推送及移除远程仓库全部Issue。WastonGura/MoonCar的dev/terrain-mapping-workbench已推送并核对远端SHA；本节随后的文档提交也同步该分支。此前“未push”均为当时历史状态。当前本地分支跟踪origin/dev/terrain-mapping-workbench，不使用codex命名前缀。原有43个Issue（5开放、38已关闭）已通过GitHub deleteIssue实际删除，REST全量复查余0；Pull Request未改动。删除前完整备份正文与32条评论，结果和SHA索引在tmp/github-maintenance-20261104/，ZIP为issues-backup-20261104.zip；原始备份留本地，不重新上传为Issue或代码文件。产品代码与已测a8a5cc5保持相同，本次仅远端同步与仓库管理，不重跑仿真、不宣称修复测试失败。
