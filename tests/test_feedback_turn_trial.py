@@ -54,3 +54,11 @@ def test_unknown_and_boundary_block_before_motion():
     g=grid();g.data[40*80+40]=-1
     assert swept_clear(g,[-4.,-4.,4.,4.],pose(),0.,0.)[1]=='predicted_unknown_footprint'
     assert swept_clear(grid(),[-1.,-1.,1.,1.],pose(x=.5),.1,0.)[1]=='predicted_region_boundary'
+
+
+def test_resource_witness_distinguishes_server_from_gui():
+    from primary_runtime import is_gazebo_server
+    assert is_gazebo_server(['gz sim -r -s -v 2 --render-engine ogre2 /tmp/world.sdf'])
+    assert is_gazebo_server(['/usr/bin/gz','sim','--server-only','/tmp/world.sdf'])
+    assert not is_gazebo_server(['gz sim -g -v 3 --gui-config /tmp/gui.config'])
+    assert not is_gazebo_server(['gz','sim','--gui-only'])
