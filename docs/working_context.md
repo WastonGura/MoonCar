@@ -1,5 +1,10 @@
 # Working Context
 
+## 2026-11-04（分支命名更正，优先于下方历史记录）
+
+用户明确指出未授权使用codex命名分支。当前本地分支已从codex/terrain-mapping-workbench重命名为dev/terrain-mapping-workbench，并解除与旧名称远端分支的跟踪关系；未修改或删除远端分支，未push。以后不得自行使用codex分支前缀。工作目录不变，提交历史和产品代码不变；下方记录及既有实验清单中的旧分支名反映当时实际状态，保留用于追溯，不回写伪造。
+
+
 ## 2026-11-04（最新：版本已对齐并提交；重测未全部通过，勿再混车型）
 
 用户要求所有内容更新最新、重新测试并提供工作目录/Git记录。实际工作树D:/Documents/Projects/Repositories/MoonCar-mapping，分支codex/terrain-mapping-workbench，共用MoonCar/.git；main另树83a8bb2未动。fetch成功，远端开发7e2ff30无待拉代码。先8f8e6a4保存529文件，再7017c02加R5新UI默认/构建核验/版本显示/可复验V2脚本，a8a5cc5修9旧测试接口+每实验software.json。本报告后提交仅文档。测试产品摘要869a492bfdcf63836f1ad8bed3301629476ae25e69ddd63f1cffd8ef5099db7c；648源、120安装与R5库一致，8包重建。原十万级数据留本地SHA索引，历史跟踪数据未删，不修改认可PDF，未push。
