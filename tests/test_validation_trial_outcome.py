@@ -1,0 +1,29 @@
+import errno
+from pathlib import Path
+import sys
+import unittest
+from unittest.mock import patch
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'scripts/validation'))
+from trial_outcome import lifecycle_snapshot, mission_outcome
+
+
+class TrialOutcomeTests(unittest.TestCase):
+    def test_normal_budget_stop_is_distinct_from_failure(self):
+        self.assertEqual(mission_outcome('budget_reached'), 'budget_completed')
+        self.assertEqual(mission_outcome('completed'), 'passed')
+        for phase in ('fault', 'localization_paused', 'manual', None):
+            self.assertEqual(mission_outcome(phase), 'failed')
+
+    def test_transient_snapshot_error_is_recorded_and_cannot_open_readiness(self):
+        errors = []
+        with patch.object(Path, 'read_text', side_effect=OSError(errno.ENODATA, 'No data available')):
+            value = lifecycle_snapshot('/witness/latest.json', errors)
+        self.assertFalse(value['all_active'])
+        self.assertEqual(len(errors), 1)
+        self.assertIn('No data available', errors[0]['error'])
+        with patch.object(Path, 'read_text', return_value='{"all_active": true}'):
+            self.assertTrue(lifecycle_snapshot('/witness/latest.json', errors)['all_active'])
+
+
+if __name__ == '__main__': unittest.main()

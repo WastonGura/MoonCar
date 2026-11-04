@@ -10,8 +10,10 @@ import subprocess
 import sys
 import threading
 import time
+import traceback
 from urllib.error import HTTPError
 from urllib.request import Request, build_opener, ProxyHandler
+from trial_outcome import lifecycle_snapshot, mission_outcome
 
 
 def main():
@@ -47,7 +49,7 @@ def main():
     sim_budget = 300 if ramp else 180
     route = [('move', [1.2, 0.]), ('turn', math.pi/4), ('turn', 0.), ('move', [.5, 0.]),
              ('pan_tilt', [.4, -.2]), ('pan_tilt', [0., 0.])]
-    write('protocol.json', dict(case=args.case, task=task, software=software, wall_budget_s=wall_budget,
+    write('protocol.json', dict(case=args.case, heading_trial=os.environ.get('MOONCAR_RAMP_HEADING_CASE'), task=task, software=software, wall_budget_s=wall_budget,
         mission_sim_budget_s=sim_budget, planned_direct_actions=route if args.case == 'direct' else None,
         readiness='Record product ready independently; test dispatch waits for all four actual Nav2 lifecycle states ACTIVE',
         product_changes=False, automatic_retries=False, truth_used_for_control=False,
@@ -58,10 +60,10 @@ def main():
     resources = (args.output/'resources.jsonl').open('x')
     readiness = (args.output/'readiness.jsonl').open('x')
     last_resource = last_progress = 0.; premature = []; first_ready = first_active = None
+    snapshot_errors = []
 
     def lifecycle():
-        try: return json.loads((args.output/'lifecycle/latest.json').read_text())
-        except (FileNotFoundError, json.JSONDecodeError): return {}
+        return lifecycle_snapshot(args.output/'lifecycle/latest.json', snapshot_errors)
 
     def sample():
         nonlocal last_resource, last_progress, first_ready, first_active
@@ -174,12 +176,13 @@ def main():
                 if not autonomy.get('active'): break
                 time.sleep(.4)
             result['autonomy'] = autonomy
-            result['outcome'] = 'passed' if autonomy.get('phase') == 'completed' else 'failed'
+            result['outcome'] = mission_outcome(autonomy.get('phase'))
         write('terminal.json', sample()[0])
     except TimeoutError as error:
-        result.update(outcome='incomplete_collection_budget', error=repr(error))
+        result.update(outcome='incomplete_collection_budget' if 'Declared collection wall budget' in str(error) else 'failed',
+                      error=repr(error), traceback=traceback.format_exc())
     except Exception as error:
-        result['error'] = repr(error)
+        result.update(error=repr(error), traceback=traceback.format_exc())
     finally:
         if experiment:
             try:
@@ -200,11 +203,12 @@ def main():
         for handle in handles: handle.close()
         for stream in (state_log, resources, readiness): stream.close()
         result.update(elapsed_wall_s=time.monotonic()-begun, first_product_ready_wall=first_ready,
-            first_lifecycle_active_wall=first_active, premature_ready_samples=len(premature))
+            first_lifecycle_active_wall=first_active, premature_ready_samples=len(premature),
+            snapshot_read_errors=snapshot_errors)
         write('result.json', result)
     print(json.dumps({k: result.get(k) for k in ('case', 'experiment', 'outcome', 'error', 'elapsed_wall_s')},
                      ensure_ascii=False), flush=True)
-    return int(result['outcome'] != 'passed')
+    return int(result['outcome'] not in ('passed', 'budget_completed'))
 
 
 if __name__ == '__main__': raise SystemExit(main())

@@ -62,19 +62,27 @@ scenes.scene_bounds=experiment.scene_bounds=survey.scene_bounds=bounds
 experiment.survey_world=world;experiment.scene_metadata=metadata;experiment.validate_v2_spawn=spawn
 ROUTE=[('move',1.,0.),('move',2.5,0.),('move',4.,0.),('turn',math.pi/2),('turn',0.),
        ('move',5.5,0.),('turn',math.pi),('move',4.,0.),('move',2.5,0.),('move',1.,0.)]
+HEADING_CASE=os.environ.get('MOONCAR_RAMP_HEADING_CASE','full_route')
+if HEADING_CASE=='half_spin':
+    ROUTE=ROUTE[:5]
+elif HEADING_CASE=='gimbal_observe':
+    ROUTE=ROUTE[:3]+[('gimbal',math.pi/2,-.2618),('gimbal',0.,-.2618),('move',4.3,0.)]
+elif HEADING_CASE!='full_route':
+    raise ValueError('Unknown heading trial')
 def run(self):
-    self.wall_started=time.monotonic();self.data['validation_fixture']='Fixed shipped-V2 ramp ascent, midslope turns and descent; production scan/execute/health/permit; choose_view not evaluated'
+    self.wall_started=time.monotonic();self.data['validation_fixture']='Shipped-V2 ramp '+HEADING_CASE+'; production scan/execute/health/permit; choose_view not evaluated'
     self.data['validation_route']=[list(p) for p in ROUTE]
     try:
         if not self.initial_depth_observation():return
         for item in ROUTE:
             if not self.healthy():return
-            record=dict(kind='advance' if item[0]=='move' else 'turn',action=list(item),started_seconds=self.now()-self.data['started'],outcome='running',success=False)
+            record=dict(kind='advance' if item[0]=='move' else 'gimbal_observe' if item[0]=='gimbal' else 'turn',action=list(item),started_seconds=self.now()-self.data['started'],outcome='running',success=False)
             self.data['history'].append(record);self.save()
             decision=dict(estimated_seconds=30.)
             if item[0]=='move':decision.update(x=item[1],y=item[2])
+            elif item[0]=='gimbal':decision.update(use_pan_tilt=True,pan=item[1],tilt=item[2])
             else:decision['yaw']=item[1]
-            success=self.execute(decision,turn=item[0]=='turn')
+            success=self.execute(decision,turn=item[0]!='move')
             record["decision"]=dict(decision)
             record.update(success=bool(success),outcome='succeeded' if success else 'failed',end_sim=self.now());self.save()
             if not success:
@@ -82,7 +90,7 @@ def run(self):
                 return
             until=self.now()+2
             while self.healthy() and self.now()<until:time.sleep(.1)
-        self.stop('上坡、坡中转向和下坡固定任务完成','completed')
+        self.stop('限定坡面朝向试验完成' if HEADING_CASE!='full_route' else '上坡、坡中转向和下坡固定任务完成','completed')
     except Exception as error:self.stop('坡面验证异常：'+str(error),'fault')
     finally:
         if self.data['active']:self.stop('坡面验证结束','fault')
@@ -92,6 +100,7 @@ def run(self):
         self.data['validation_finished']=True;self.save()
 survey.AutonomousSurvey.run=run
 proof=dict(world=str(RAMP),world_name='mooncar_ramp_v2',world_sha256=sha(RAMP),assets={str(p.relative_to(PACKAGE)):sha(p) for p in sorted(assets)},
+    heading_case=HEADING_CASE,
     fixed_route=[list(p) for p in ROUTE],spawn=spawn(0.,0.,0.),bounds=list(bounds('survey_v2_native')),
     policy='Validation backend fixture only. Actual shipped geometry; no truth/known pose input to estimator, no direct velocity command, all normal motion checks retained.')
 (OUT/'ramp-fixture.json').write_text(json.dumps(proof,indent=2)+'\n')
