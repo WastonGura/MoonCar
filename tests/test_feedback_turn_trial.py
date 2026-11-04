@@ -62,3 +62,13 @@ def test_resource_witness_distinguishes_server_from_gui():
     assert is_gazebo_server(['/usr/bin/gz','sim','--server-only','/tmp/world.sdf'])
     assert not is_gazebo_server(['gz sim -g -v 3 --gui-config /tmp/gui.config'])
     assert not is_gazebo_server(['gz','sim','--gui-only'])
+
+
+def test_recording_follows_gui_display_and_its_authority(tmp_path):
+    from record_screen import gui_capture_environment
+    for pid,title,display,partition in [('1','gz sim -g -v 3',':101','mooncar-test'),
+            ('2','gz sim -s -r',':100','mooncar-test'),('3','gz sim -g',':99','mooncar-other')]:
+        p=tmp_path/pid;p.mkdir()
+        (p/'cmdline').write_bytes(title.encode()+b'\0')
+        (p/'environ').write_bytes(f'DISPLAY={display}\0GZ_PARTITION={partition}\0XAUTHORITY=/tmp/owned-cookie\0'.encode())
+    assert gui_capture_environment('test',tmp_path)==dict(DISPLAY=':101',XAUTHORITY='/tmp/owned-cookie')

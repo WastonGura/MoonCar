@@ -86,7 +86,7 @@ def main():
             if args.record_video:
                 video_log=(args.output/'screen-recorder.log').open('x')
                 video=subprocess.Popen([sys.executable,'-B',str(ROOT/'scripts/validation/record_screen.py'),
-                    '--output',str(args.output/'video')],env=env,stdout=video_log,stderr=subprocess.STDOUT)
+                    '--output',str(args.output/'video'),'--follow-workbench'],env=env,stdout=video_log,stderr=subprocess.STDOUT)
             with (args.output/'driver.log').open('x') as driver_log:
                 code = subprocess.run([sys.executable, '-B', str(ROOT/'scripts/validation/run_online_matrix_case.py'),
                     '--case', 'ramp', '--output', str(args.output/'case'), '--sessions', str(args.sessions)],
