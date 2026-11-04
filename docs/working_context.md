@@ -1,5 +1,10 @@
 # Working Context
 
+## 2026-11-04（最新远端状态：已推送，Issue清理完成）
+
+用户已明确授权推送及移除远程仓库全部Issue。WastonGura/MoonCar的dev/terrain-mapping-workbench已推送并核对远端SHA；本节随后的文档提交也同步该分支。此前“未push”均为当时历史状态。当前本地分支跟踪origin/dev/terrain-mapping-workbench，不使用codex命名前缀。原有43个Issue（5开放、38已关闭）已通过GitHub deleteIssue实际删除，REST全量复查余0；Pull Request未改动。删除前完整备份正文与32条评论，结果和SHA索引在tmp/github-maintenance-20261104/，ZIP为issues-backup-20261104.zip；原始备份留本地，不重新上传为Issue或代码文件。产品代码与已测a8a5cc5保持相同，本次仅远端同步与仓库管理，不重跑仿真、不宣称修复测试失败。
+
+
 ## 2026-11-04（分支命名更正，优先于下方历史记录）
 
 用户明确指出未授权使用codex命名分支。当前本地分支已从codex/terrain-mapping-workbench重命名为dev/terrain-mapping-workbench，并解除与旧名称远端分支的跟踪关系；未修改或删除远端分支，未push。以后不得自行使用codex分支前缀。工作目录不变，提交历史和产品代码不变；下方记录及既有实验清单中的旧分支名反映当时实际状态，保留用于追溯，不回写伪造。
