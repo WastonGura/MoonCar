@@ -1,5 +1,17 @@
 # Working Context
 
+## 2026-11-04（最新：固定视向与云台同任务对照完成，默认未切换）
+
+用户询问能否用已有旋转云台替代转向，并要求两方案完成同任务的差异。已各跑一个新world，无额外重试；实际测试commit7db785ca7bf0804702fac3bb7fc18c94cd143b15，656源摘要6f44eb9760f03c10f2af5c5705f2ce3c23e1fb55de44a3041fd127b18dcfdbe8，120安装首末同验，根204过。原R5/.25ms/rgbd_window/no revisit，CPU与实际库同。fixed_observe新增仅验证模式，用默认.3车体Spin；gimbal_observe现有云台pan90/0。相同6动作：move1/2.5/4、侧看/回正、move4.3，每段2s保持。共同initial_depth_observation本身用云台，故只是正式任务执行方式A/B，不是无云台/有云台硬件或自然v2/v3策略比较。
+
+固定experiment-87ae029097e0与云台experiment-68e87579e830均6/6完成、pause/fault0。正式任务54.65975/48.33575sim，近似wall239.94/230.25s；含启动清理288.20/278.56wall。观察+两保持15.28575/13.12775sim，最大真值XY漂移.673303m/5.66e-6m（云台保守<1mm，仅仿真）；固定两Spin净.317873/.300903m，safe线0角峰.3；云台safe v/w均0。正式路程5.496/4.120m，续行净.9567/.2860m，目标真值剩余.1987/.1915m，沿用正常容差。记录关键帧固定12+13、云台11+12，实际光轴侧向末84.7/86.2°。没有修复车体原地保持，云台只满足观察，真实行驶换向仍需车体或缓弯。
+
+固定ROI56m²：准备起点已观测22.9375/21.875m²；正式40s已观测29.5625/28.5625，增量6.625/6.6875相近，结束有效拟合27.5/25.1875m²。固定本次采样质量更高，不把视点位移与此相关直接当因果。正式已处理/输出/发布546/546/546、483/483/483，发布wallP95 .1726/.1913s，XY误差P95 .0400/.0530m；接近段已.0329/.0467m，不能把误差差异归因于云台动作，也未证明改善定位。只各一次，未越过旧x4.55特征失效点，不声称整坡/全场/小时级/实车验收。
+
+退出限制须保留：driver/backend/observer/lifecycle返回0不等于全部优雅退出。固定定位日志缺run_end，最后closing、SIGINT后-2，behavior_server最终SIGKILL；两组退出期临时YAML清理报错及若干子进程-2。云台定位run_end complete，但生命周期latest.json一次ENODATA已记录按未就绪处理，任务继续且未放开门。不在本轮扩展修复。真值两组15529=15460matched+69missing、14966=14896+70，capture_completed/errors空。最终container仅init/sleep，无残留车辆服务，收尾后停container。
+
+报告reports/CAMERA_MODE_COMPARISON_20261104.md/.json，预声明docs/camera_mode_comparison_plan_20261104.md，离线评分和原始SHA索引在reports/camera_mode_comparison_20261104/；raw tmp/ros_acceptance/camera-mode-comparison-20261104保留。生产默认/定位/回访/接触参数未改，不擅自部署云台自然策略。后续若接入，应将实际camera TF视锥、候选收益与历史一并对齐，不能只换执行指令。报告后提交只文档/离线评分；不当实际测过的新产品版本。
+
 ## 2026-11-04（最新：原地纯转半速未解决，云台替代观察原型通过）
 
 用户要求“先尝试能否原地转向，不能则设计别的方法满足需求”。已限定2个新world，无继续扫参，无生产控制/物理/定位/回访/default变更。测试commit69b77b07895780e20302dd2467b9eb8f06d511ea；新改只验证工具和其测试。656源及120默认安装文件/冻结R5库首末核验同，根目录204项过。修正test budget_reached正常分类；lifecycle snapshot OSError记录并按未就绪处理不放开门；异常补traceback，不说已唯一解决旧ENODATA根因。
