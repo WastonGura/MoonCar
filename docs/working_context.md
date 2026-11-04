@@ -1,5 +1,16 @@
 # Working Context
 
+## 2026-11-04（最新：版本已对齐并提交；重测未全部通过，勿再混车型）
+
+用户要求所有内容更新最新、重新测试并提供工作目录/Git记录。实际工作树D:/Documents/Projects/Repositories/MoonCar-mapping，分支codex/terrain-mapping-workbench，共用MoonCar/.git；main另树83a8bb2未动。fetch成功，远端开发7e2ff30无待拉代码。先8f8e6a4保存529文件，再7017c02加R5新UI默认/构建核验/版本显示/可复验V2脚本，a8a5cc5修9旧测试接口+每实验software.json。本报告后提交仅文档。测试产品摘要869a492bfdcf63836f1ad8bed3301629476ae25e69ddd63f1cffd8ef5099db7c；648源、120安装与R5库一致，8包重建。原十万级数据留本地SHA索引，历史跟踪数据未删，不修改认可PDF，未push。
+
+新UI默认r5_support_v1/independent_linear_v1/.25ms固定轴分配，V2native/rgbd_window无主动回访；历史缺profile仍legacy，旧草稿不覆盖新默认；自适应转向未批准仍未启用。两启动入口新后端先从committed源构建并核验；活动旧实验保留。不要将baseline目标配置等同所有导入历史任务实际配置，读task+software+support-runtime。
+
+重测：root202/control13/navigation10/terrain390/slam270/web5及固件通过；Gazebo研究suite486项中2fail18error13skip，完整清单在reports/VERSION_ALIGNMENT_20261104.json。原因：NumPy trapezoid1、/diagnosis夹具缺失5、旧guard冻结SHA12、.25ms旧拒绝断言1、ROS发现OFF与witness测试环境线索1。未通过仍记失败，不放宽或悄悄skip；后两个因果/契约尚未修正。原9terrain fixture不一致已更正并全390过，不是放松生产安全门。
+
+唯一V2新world experiment-daf08d0b8f4f：actual R5库/step收据正确，窗口定位healthy/fault0，28.508wall秒首move[1.2,0]被Nav2拒绝，日志252明确action server inactive，随后才Activating bt_navigator。当前ready存在动作server可见早于生命周期active的竞争；转向未执行，不算R1失败/通过证据，不评价运动精度。后XML错误在SIGINT之后不当首因。929truth=823matched+106missing，见证退出0；无第二world，所有本轮服务已停止。报告reports/VERSION_ALIGNMENT_20261104.md；raw tmp/ros_acceptance/version-alignment-20261104/，新JSON逐文件SHA；别改回访、定位或追加试验。R1和全场/长稳/坡面仍未完成。
+
+
 ## 2026-11-04（重要澄清：旧转向修复与当前legacy配置不同，先对齐已有支撑方案）
 
 用户问“之前转向位移不是修好了吗我记得，怎么又出现了？”已只读核R5_SUSPENSION_ACCEPTANCE_20261016完整12+17通过，R5_ENTRY_NAVIGATION_20261016可选入口已接入；过去R5悬架曲面位移由刚性167/182mm降87/84mm，平地约.179mm，但坡面未归零，侧滑台架核认为8–9cm在未标定模型假设下自洽。不要混淆已验收的r5_support_v1固定支撑候选与turn_release.approved=false（未批准自适应激光反馈转向）。Oct12早期失败不是后续最终状态。
