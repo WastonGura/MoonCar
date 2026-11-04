@@ -1,0 +1,20 @@
+[
+  {
+    "scope": "verification-records",
+    "path": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence",
+    "files": 118013,
+    "logical_bytes": 248502417817,
+    "unique_file_data_bytes_on_disk": 77329209932,
+    "hardlink_aliases": 2230,
+    "unreadable_linux_links_preserved": 133
+  },
+  {
+    "scope": "temporary-products",
+    "path": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\tmp",
+    "files": 67763,
+    "logical_bytes": 14957484694,
+    "unique_file_data_bytes_on_disk": 13892040929,
+    "hardlink_aliases": 0,
+    "unreadable_linux_links_preserved": 0
+  }
+]

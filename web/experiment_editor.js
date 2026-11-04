@@ -58,7 +58,7 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
     const yaw=degrees*Math.PI/180;
     overlay.add(new THREE.ArrowHelper(new THREE.Vector3(Math.cos(yaw),Math.sin(yaw),0),new THREE.Vector3(x,y,.12),.8,0x111111,.22,.16));
     overlay.traverse(o=>{o.renderOrder=20;if(o.material)o.material.depthTest=false;});
-    try{localStorage.setItem('mooncar-experiment-draft',JSON.stringify({version:1,region:[x0,y0,x1,y1],start:[x,y,yaw],scene:$('experiment-scene').value,simulation_profile:$('simulation-profile').value}));}catch{}
+    try{localStorage.setItem('mooncar-experiment-draft-r5-window-v1',JSON.stringify({version:1,region:[x0,y0,x1,y1],start:[x,y,yaw],scene:$('experiment-scene').value,simulation_profile:$('simulation-profile').value}));}catch{}
   }
   function fill(value){
     if(!value||value.version!==1||!Array.isArray(value.region)||value.region.length!==4||!Array.isArray(value.start)||value.start.length!==3||![...value.region,...value.start].every(v=>typeof v==='number'&&Number.isFinite(v)))throw new Error('任务文件格式无效。');
@@ -178,8 +178,10 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
       if(a.phase&&a.phase!=='idle'&&(a.active||surveyKey!==lastSurveyPhase))message(`${names[a.phase]||a.phase}：${a.reason}`,a.phase==='fault');
       lastSurveyPhase=surveyKey;
       const labels={idle:'尚未启动',restarting:'正在结束旧实验并初始化',starting:'仿真启动中，等待传感器档案',recording:'仿真运行，采集档案已建立',stopping:'正在结束实验',stopped:'已结束，档案已保留',failed:'启动或运行失败'};
-      const active=state.task?`实际任务：${sceneNames[state.task.scene||'survey']} · (${state.task.start[0].toFixed(2)}, ${state.task.start[1].toFixed(2)}) m · ${(state.task.start[2]*180/Math.PI).toFixed(1)}°。`:'';
-      $('experiment-state').textContent=state.enabled?`${labels[state.phase]||state.phase}。${active}${state.error||''}`:'当前服务只支持编辑和保存；启动服务时加 --simulation 才能应用到 Gazebo。';
+      const profile=state.task?.simulation_profile==='r5_support_v1'?'R5 独立悬架':'旧刚性配置';
+      const active=state.task?`实际任务：${sceneNames[state.task.scene||'survey']} · ${profile} · (${state.task.start[0].toFixed(2)}, ${state.task.start[1].toFixed(2)}) m · ${(state.task.start[2]*180/Math.PI).toFixed(1)}°。`:'';
+      const version=state.software?.verified?`代码版本 ${state.software.git_commit.slice(0,8)}。`:'代码版本未核验。';
+      $('experiment-state').textContent=state.enabled?`${labels[state.phase]||state.phase}。${version}${active}${state.error||''}`:'当前服务只支持编辑和保存；启动服务时加 --simulation 才能应用到 Gazebo。';
       if(state.session&&state.session!==followed&&state.phase==='recording'){await onSession(state.session);followed=state.session;}
     }catch(e){state={enabled:false};navigationOverlay.visible=false;$('experiment-state').textContent=`仿真服务未连接：${e.message}`;}
     finally{polling=false;buttons();}
@@ -187,7 +189,7 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
   $('experiment-form').onsubmit=async e=>{e.preventDefault();if(busy)return;try{const value=task();cancel();stopPlayback();busy=true;buttons();await api('/api/simulation/apply',value);state.phase='restarting';message('正在新建仿真与采集会话。区域仅保存为任务边界，尚未自动遍历。');}catch(error){message(error.message,true);}finally{busy=false;buttons();poll();}};
   $('stop-experiment').onclick=async()=>{if(busy)return;busy=true;buttons();try{await api('/api/simulation/stop',{});state.phase='stopping';}catch(e){message(e.message,true);}finally{busy=false;buttons();poll();}};
   updateSceneBounds();
-  try{const saved=localStorage.getItem('mooncar-experiment-draft');if(saved)fill(JSON.parse(saved));}catch{}
+  try{const saved=localStorage.getItem('mooncar-experiment-draft-r5-window-v1');if(saved)fill(JSON.parse(saved));}catch{}
   render();poll();setInterval(poll,600);
   return {cancel,telemetry:()=>state.motion,pick(event){
     if(!mode||event.button!==0)return false;

@@ -1,0 +1,21 @@
+{
+  "StartedAt": "2026-10-20T02:00:42.7626698+09:00",
+  "Disk": "C:\\Users\\jiker\\AppData\\Local\\Docker\\wsl\\disk\\docker_data.vhdx",
+  "Status": "verified-success",
+  "DockerRestarted": false,
+  "DiskBytesBefore": 220134899712,
+  "CFreeBytesBefore": 266229346304,
+  "DiskPartExitCode": 0,
+  "DiskBytesAfter": 18863882240,
+  "CFreeBytesAfter": 480637771776,
+  "DiskBytesReduced": 201271017472,
+  "CFreeBytesIncrease": 214408425472,
+  "FinishedAt": "2026-10-20T02:01:27.6078622+09:00",
+  "VhdxHeaderVerified": true,
+  "DockerWSLRemainsStopped": true,
+  "WSLStateAfter": "NAME              STATE           VERSION\r\n* Ubuntu            Stopped         2\r\n  docker-desktop    Stopped         2",
+  "VerifiedAt": "2026-10-20T02:01:59.209034+09:00",
+  "NoExplicitUbuntuTerminateOrGlobalWSLShutdownCommandIssued": true,
+  "UbuntuStateAfter": "Stopped",
+  "UbuntuStateNote": "Initially Running, finally Stopped. No explicit Ubuntu termination or global WSL shutdown was issued; cause of the observed state transition was not isolated."
+}

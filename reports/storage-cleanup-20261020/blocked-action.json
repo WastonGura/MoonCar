@@ -1,0 +1,8 @@
+{
+  "action": "Remove obsolete tmp/terrain-venv directory",
+  "executed": false,
+  "automatic_approval_review": "rejected",
+  "reason_returned": "blocked by policy",
+  "specific_reason_provided": false,
+  "response": "Directory retained; no alternate deletion method attempted."
+}

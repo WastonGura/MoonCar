@@ -32,7 +32,13 @@ if (-not $container.State.Running) {
     docker start mooncar-terrain-validation
     if ($LASTEXITCODE -ne 0) { throw 'Docker could not start the configured container.' }
 }
-docker exec -d mooncar-terrain-validation bash -lc 'source /work/ros2_ws/install/setup.bash; exec python3 /source/scripts/map_workbench.py --sessions /evidence/frontend-experiments --simulation --host 0.0.0.0 --port 8766 >> /evidence/frontend-experiments-server.log 2>&1'
+$pythonRuntime = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
+& $pythonRuntime (Join-Path $PSScriptRoot 'runtime_baseline.py') freeze --output (Join-Path $projectRoot 'tmp\ros_acceptance\runtime-source.json')
+if ($LASTEXITCODE -ne 0) { throw 'Commit product changes before starting a versioned workbench.' }
+Write-Output 'Rebuilding and verifying the committed runtime; log: tmp/ros_acceptance/runtime-build.log'
+docker exec mooncar-terrain-validation bash /source/containers/prepare_workbench.sh
+if ($LASTEXITCODE -ne 0) { throw 'Runtime build or source/install verification failed. Backend was not started.' }
+docker exec -d -e MOONCAR_RUNTIME_MANIFEST=/evidence/runtime-baseline.json mooncar-terrain-validation bash -lc 'source /work/ros2_ws/install/setup.bash; exec python3 /source/scripts/map_workbench.py --sessions /evidence/frontend-experiments --simulation --host 0.0.0.0 --port 8766 >> /evidence/frontend-experiments-server.log 2>&1'
 if ($LASTEXITCODE -ne 0) { throw 'Could not start the workbench service.' }
 foreach ($attempt in 1..10) {
     Start-Sleep -Milliseconds 500

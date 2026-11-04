@@ -1,0 +1,4974 @@
+{
+  "StartedAt": "2026-10-20T01:35:51.2515123+09:00",
+  "DriveBefore": [
+    {
+      "Name": "C",
+      "FreeBytes": 266743128064
+    },
+    {
+      "Name": "D",
+      "FreeBytes": 116639002624
+    }
+  ],
+  "Containers": [
+    {
+      "Id": "1a6595c603f00ad88daab1fb14306de768ba6c0ecd9f9cdd47e2d7ca73c497cb",
+      "Name": "/mooncar-laser-localization-20261020",
+      "SizeRw": 295878656,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\laser-localization-20261020",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "51188a59e7c5f0c9689623ab1e7efe92e700b1d7505903e7bea9362425f5c0d3",
+      "Name": "/mooncar-turn-localization-20261019",
+      "SizeRw": 92864512,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\live-gazebo-turn-localization-20261019",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "2327a62150a6769e37620be5f98cf73696e04ee73ee605d01f783862c92a1002",
+      "Name": "/mooncar-nav2-goal-20261019",
+      "SizeRw": 93069312,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\live-gazebo-nav2-first-goal-20261019",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "5fbc304ec4be0eed74008d385eca613d083966867a6bc7ae98087c7ef384e6a6",
+      "Name": "/mooncar-time-sync-20261019",
+      "SizeRw": 92774400,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\live-gazebo-time-sync-20261019",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "dfd024619131a7d4b8b3f2db413b1257d0b4e4ebec13c742326e9925b30dcf7c",
+      "Name": "/mooncar-live-e2e-20261019",
+      "SizeRw": 90845184,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\live-gazebo-e2e-20261019",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "d5f70028d08d934b3a1b505b32eae09a4c4b999a5249db29de1b06d1920651fa",
+      "Name": "/mooncar-r5-holdout-v2-20261018",
+      "SizeRw": 39499595776,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261016\\runtime",
+          "Destination": "/baseline",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-integral-contact-20261018",
+          "Destination": "/integral",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping/reports/evidence/terrain-v2/r5-nonlinear-contact-20261017",
+          "Destination": "/nonlinear",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017",
+          "Destination": "/previous",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-frozen-holdout-v2-20261018",
+          "Destination": "/research",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\frozen-install",
+          "Destination": "/work/install",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\suspension-observer",
+          "Destination": "/work/suspension-observer",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "439d952f1c2cd5aed3914b63e572b4765981c7dedc67d297fd1c2507ecb578ec",
+      "Name": "/mooncar-r5-holdout-20261018",
+      "SizeRw": 26470596608,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261016\\runtime",
+          "Destination": "/baseline",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-integral-contact-20261018",
+          "Destination": "/integral",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping/reports/evidence/terrain-v2/r5-nonlinear-contact-20261017",
+          "Destination": "/nonlinear",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017",
+          "Destination": "/previous",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-frozen-holdout-20261018",
+          "Destination": "/research",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\frozen-install",
+          "Destination": "/work/install",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\suspension-observer",
+          "Destination": "/work/suspension-observer",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "5c3cb14eee256ac22938fe616a2283027370aa2a92174394fb867c3777e71990",
+      "Name": "/mooncar-r5-integral-20261018",
+      "SizeRw": 30748073984,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261016\\runtime",
+          "Destination": "/baseline",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping/reports/evidence/terrain-v2/r5-nonlinear-contact-20261017",
+          "Destination": "/nonlinear",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017",
+          "Destination": "/previous",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-integral-contact-20261018",
+          "Destination": "/research",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\frozen-install",
+          "Destination": "/work/install",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\suspension-observer",
+          "Destination": "/work/suspension-observer",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "ca9c109032ab7c5c6020ee39d073985ae31097af867b2b22bef8d78131befaa7",
+      "Name": "/mooncar-r5-nonlinear-v4-20261017",
+      "SizeRw": 20871991296,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261016\\runtime",
+          "Destination": "/baseline",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017",
+          "Destination": "/previous",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-nonlinear-contact-20261017",
+          "Destination": "/research",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\frozen-install",
+          "Destination": "/work/install",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\suspension-observer",
+          "Destination": "/work/suspension-observer",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "d2b263593ff846408c532f1c4ed555b172dd1c27e471106940479ac6b63b4dd2",
+      "Name": "/mooncar-r5-nonlinear-v3-20261017",
+      "SizeRw": 11053498368,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261016\\runtime",
+          "Destination": "/baseline",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017",
+          "Destination": "/previous",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-nonlinear-contact-20261017",
+          "Destination": "/research",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\frozen-install",
+          "Destination": "/work/install",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\suspension-observer",
+          "Destination": "/work/suspension-observer",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "f8b3e12ef0aa8916ff8f3ae64718a45ca0a8995e37b35f1a7e7a324d80411bef",
+      "Name": "/mooncar-r5-nonlinear-v2-20261017",
+      "SizeRw": 2185973760,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261016\\runtime",
+          "Destination": "/baseline",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017",
+          "Destination": "/previous",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-nonlinear-contact-20261017",
+          "Destination": "/research",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\frozen-install",
+          "Destination": "/work/install",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\suspension-observer",
+          "Destination": "/work/suspension-observer",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "4c18a10afb27106387dfb878adbf1fe455308d9a1d5fe08604618ed7eaa427b6",
+      "Name": "/mooncar-r5-nonlinear-20261017",
+      "SizeRw": 2312507392,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261016\\runtime",
+          "Destination": "/baseline",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017",
+          "Destination": "/previous",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-nonlinear-contact-20261017",
+          "Destination": "/research",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\frozen-install",
+          "Destination": "/work/install",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\suspension-observer",
+          "Destination": "/work/suspension-observer",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "8f749317dd04bf0d6c17444ca41989fb09f008a5c5d576acbc74e21050eed7e1",
+      "Name": "/mooncar-r5-literature-v3-20261017",
+      "SizeRw": 11844841472,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261016\\runtime",
+          "Destination": "/baseline",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017",
+          "Destination": "/research",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\frozen-install",
+          "Destination": "/work/install",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\suspension-observer",
+          "Destination": "/work/suspension-observer",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "f26f6015b953f2329544e52a88cf71daf291ee87245cdd68cac8436bb828bbaa",
+      "Name": "/mooncar-r5-literature-v2-20261017",
+      "SizeRw": 4354940928,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261016\\runtime",
+          "Destination": "/baseline",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\runtime-v2",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017",
+          "Destination": "/research",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\frozen-install",
+          "Destination": "/work/install",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\suspension-observer",
+          "Destination": "/work/suspension-observer",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "59a860db853bea47206e33c6457f419f66cf81eb6dc4c121e5c0d123cce1b60b",
+      "Name": "/mooncar-r5-literature-20261017",
+      "SizeRw": 5623808,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261016\\runtime",
+          "Destination": "/baseline",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017",
+          "Destination": "/research",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\frozen-install",
+          "Destination": "/work/install",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-literature-contact-20261017\\suspension-observer",
+          "Destination": "/work/suspension-observer",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "a26e2977beb55104bd61574d4647c86f518fbeb056079fd775355d954e844541",
+      "Name": "/mooncar-r5-workbench",
+      "SizeRw": 84504576,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\tmp\\r5-workbench",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "09eb898c02fe8c17b858367d1e44c3392dd23e8d67c649c778dd1c2711459932",
+      "Name": "/mooncar-entry-nav-20261016",
+      "SizeRw": 467005440,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "cb07424abe9d70885c84dbef5809463408b8d771726dda6c8a87148a56ef5296",
+      "Name": "/mooncar-r5-slip-law-20261016",
+      "SizeRw": 28672,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-slip-law-validation-20261016",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "6c8c4717f4bb69bf69e79144cbd407ea8fe5ef8b7ed5432266a19f782e613132",
+      "Name": "/mooncar-r5-acceptance-20261016",
+      "SizeRw": 8667078656,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261016\\runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "310333924f84e1c3bf524ac0312a04c8d43e0a6a52ce25a0921b22c384504735",
+      "Name": "/mooncar-r5-dds-monitor-fix-20261015",
+      "SizeRw": 80015360,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-monitor-fix-20261015\\runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "a061154e2321a864f76cc7f918a04d42e612281b241128d8163310de4eb7bba0",
+      "Name": "/mooncar-r5-dds-permission-cause-20261015",
+      "SizeRw": 28672,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-permission-cause-20261015\\runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "17cae4e40850b07874bc9d95e8de2bc89e8a47761beeebf92de36bb643cc69d3",
+      "Name": "/mooncar-r5-acceptance-v3-20261015",
+      "SizeRw": 5139763200,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-v3-20261015\\runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "15be961b402cd6b3b2f81b8232feb90d29a13f071e0b4785600ef0f13a6ac7aa",
+      "Name": "/mooncar-r5-acceptance-v2-20261015",
+      "SizeRw": 8673230848,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-v2-20261015\\runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "37f40ea43cd84fdc4dd0afca114720aa2ead5f7bbd38b83f4396a5c06c175ef4",
+      "Name": "/mooncar-r5-acceptance-20261015",
+      "SizeRw": 542658560,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-acceptance-20261015\\runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "4aacdd3bf2a1f8778692c163f73927d007c36dd747144eebafa0f1ac03d13c77",
+      "Name": "/mooncar-r5-precision-postfix-20261014",
+      "SizeRw": 84451328,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-precision-20261014\\runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "f783e17ad698d973df9105946da7f400592e3a0612e3802fb8591b908f40b9d2",
+      "Name": "/mooncar-r5-precision-20261014",
+      "SizeRw": 319381504,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-precision-20261014\\runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "99a0842e35416d1e44c4c1526a521509230fe641bbbe9cf385cee241b9698fb0",
+      "Name": "/mooncar-r5-static-20261013",
+      "SizeRw": 202670080,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-revalidation-20261013/runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping/reports/evidence/terrain-v2/r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping/reports/evidence/terrain-v2/r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping/reports/evidence/terrain-v2/r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "f57b5f92acbee0d22c9c6642246a1c8c1a98660094081417446a1dba33634bba",
+      "Name": "/mooncar-r5-suspension-20261012",
+      "SizeRw": 2818957312,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-suspension-20261012\\runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012",
+          "Destination": "/oldcause",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "f4c10455e01a60fac8b824084d0e72a8afb81cf48c8c7de74d0afc5b898a8422",
+      "Name": "/mooncar-r5-curve-cause-20261012",
+      "SizeRw": 1275056128,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-curve-cause-20261012\\runtime",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "ec2690f21bf82707ca5e374949035f6c225218cd8710e71598b7e28ea8e691da",
+      "Name": "/mooncar-r5-adaptive-turn-20261012",
+      "SizeRw": 435351552,
+      "Image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/oldclosure",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "79e795221c67e3b516f8d21a44116e5ab31757f47e384a17fa332968a87aa87a",
+      "Name": "/mooncar-r5-turn-closure-20261012",
+      "SizeRw": 673341440,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-closure-20261012",
+          "Destination": "/closure",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "72843ec98d7a41dbde0159a026763fafe9a81f22cc91b50bf757e74740a4a3dc",
+      "Name": "/mooncar-r5-coplanar-fix-20261012",
+      "SizeRw": 1038286848,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-coplanar-fix-20261012",
+          "Destination": "/fix",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "1e9675fb6e820f6809fc274d9e0d3b6831a1658e58e8fe70efc0003bec2dc936",
+      "Name": "/mooncar-r5-contact-root-codex-20261012",
+      "SizeRw": 28672,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-contact-root-codex-20261012",
+          "Destination": "/diagnosis",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "88d6c728a9a709b3ba9e28da972968265ae6fc821eaebef9ec352cbaf79f6d51",
+      "Name": "/mooncar-r5-v2-offset-two-run-20261011",
+      "SizeRw": 396816384,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/terrain-v2/r5-v2-offset-two-run-evidence-20261011/campaign",
+          "Destination": "/campaign",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/terrain-v2/r5-v2-offset-diagnosis-prep-20261011",
+          "Destination": "/evidence",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "25662cfb07239ff7f56915f660de577529ab9056aada2290e1c21ad90ba50935",
+      "Name": "/mooncar-r5-contact-gemini-20261011",
+      "SizeRw": 1187495936,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/terrain-v2/r5-turn-gate-validation-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/terrain-v2/r5-contact-geometry-gemini-20261011",
+          "Destination": "/probe",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "c1750208bb93d30aa586ce929841f9add473420db758800d4a1f9002191aedd7",
+      "Name": "/mooncar-r5-contact-geometry-20261011-02",
+      "SizeRw": 300945408,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping/reports/evidence/terrain-v2/r5-turn-gate-validation-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-contact-geometry-20261011-02",
+          "Destination": "/probe",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "a659f7d9938d64f83450e1cbae6f2fc9f6464ccbf9b1255d55089fad3a92923e",
+      "Name": "/mooncar-r5-contact-geometry-20261011",
+      "SizeRw": 167010304,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-contact-geometry-20261011",
+          "Destination": "/probe",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "26333f7347b7f126db00824a7f9752702de349177818b96b86c8722beb5d10f5",
+      "Name": "/mooncar-r5-turn-gate-validation-20261011",
+      "SizeRw": 2829119488,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "1ca661838555f17271e7b64ccc3fd00978d1937a9a12eeb263ac93f13339019a",
+      "Name": "/mooncar-r5-startup-io-20261011",
+      "SizeRw": 2945024,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-startup-io-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "c88e6f19489afb93ef74cbf540a4edaa1e08483c24f1d3b7de4c25ab8261c8ca",
+      "Name": "/mooncar-r5-turn-slip-gate-20261011",
+      "SizeRw": 2134196224,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-slip-gate-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "56d7e41acf8e4d95cb07c226f3977e5e03088c13b7505bf8bfd7fc2dd952cf50",
+      "Name": "/mooncar-r5-contact-source-20261011",
+      "SizeRw": 934850560,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-contact-source-20261011",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "281d5037514cccaddbac79eb219348475d6b87692a8f0d00ee108e1d3e6d03dc",
+      "Name": "/mooncar-r5-axle-robustness-20261010",
+      "SizeRw": 1791623168,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-axle-robustness-20261010",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "19088602f18402aa90211a0e17d8769688a14a0c0d95c3eee098e0a89eaf4956",
+      "Name": "/mooncar-r5-axle-allocation-20261010",
+      "SizeRw": 1047687168,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-axle-allocation-20261010",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "61b8bde6566c28a8c3d66171c3a02061358246810a94992ba4f00ff7d0569716",
+      "Name": "/mooncar-r5-slip-probe-20261010",
+      "SizeRw": 988778496,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-slip-probe-20261010",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "68f08d537161afd3b6e4886641292db24f53a3fec2e3421441de980d8dbe8e63",
+      "Name": "/mooncar-r5-turn-control-20261010",
+      "SizeRw": 421748736,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-control-20261010",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "6573906a35e52d27d875b7d69f16d3c162b615818d48695ac1b4a32038e9c7fb",
+      "Name": "/mooncar-r5-mass-audit-20261010",
+      "SizeRw": 187916288,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-mass-audit-20261010",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar",
+          "Destination": "/hardware",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "c3916635ca8b4f793935a79d96ab2fdd885aa632e31ab3bafb5d22d76c84eb42",
+      "Name": "/mooncar-r5-load-cause-20261010",
+      "SizeRw": 935849984,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-load-cause-20261010",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "9b0d90161d1819bc64a4002fefc9435dbb7c10b54ab00ba702285c6fb658aad3",
+      "Name": "/mooncar-r5-origin-20261009",
+      "SizeRw": 855617536,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-origin-20261009",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "43b7aceb3ce27e54a8ef099022bed75d991c1118cf4510a138a35993d862e3e0",
+      "Name": "/mooncar-r5-dds-compatible-20261009",
+      "SizeRw": 295297024,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-compatible-20261009",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "59c32cb1acac67d3e96e8026c322443bbcf18ece6385628a3f55a548bb8d49c3",
+      "Name": "/mooncar-r5-dds-verified-20261009",
+      "SizeRw": 294776832,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-verified-20261009",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "2cab14892f8065e36eb4d59685925276845c613a6ca882ddd2c6ae6317f11765",
+      "Name": "/mooncar-r5-dds-release-20261009",
+      "SizeRw": 293851136,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-release-20261009",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "1a599057131c74b7cd0327d0063ce2d9d76e7163f8ed38281dce76c91461f4c2",
+      "Name": "/mooncar-r5-dds-lifecycle-20261009",
+      "SizeRw": 206974976,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-lifecycle-20261009",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "664cb9cb4b0add84f9d3d9e75baf3c04f3a9215bbc008dc1ba7ff47f77515182",
+      "Name": "/mooncar-r5-dds-boundary-20261009",
+      "SizeRw": 189472768,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-boundary-20261009",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "4333d0be34a46cf712dd0eb72d7366da24dda620dd69148add00cb159253beb6",
+      "Name": "/mooncar-r5-dds-pause-fix-20261008",
+      "SizeRw": 189403136,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-pause-fix-20261008",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "03b3fdec5934909f83fc851b4bf3ba5d56e3866b420520cb33761ba26539a4b3",
+      "Name": "/mooncar-r5-dds-revalidation-20261008",
+      "SizeRw": 189419520,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-revalidation-20261008",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "35b980a3125fea19e2f7c4d4cf45f16de27a4d64812276fb19fc93c3391e3edd",
+      "Name": "/mooncar-r5-dds-formal-20261008",
+      "SizeRw": 101482496,
+      "Image": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-production-20261008",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "8bf640ed9534643b37956b0999faa33b7470c9dce1c45b4fa02dc61f5b917df3",
+      "Name": "/mooncar-r5-dds-production-20261008",
+      "SizeRw": 73302016,
+      "Image": "sha256:b0097fb21186f20191b71505315e6041ee19ca966504a59f08437172bbe0db1f",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-production-20261008",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "92a3a5da1a334f0886c2c3d3b5b45b0f8ae92b71142af40391af380c0a1d0c00",
+      "Name": "/mooncar-r5-shm-capacity-20261008",
+      "SizeRw": 500101120,
+      "Image": "sha256:b0097fb21186f20191b71505315e6041ee19ca966504a59f08437172bbe0db1f",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-shm-capacity-20261008",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "b222ca30a9483358f10e9e52cdf2e3dc783ed99f6392a7411a75591d441d2bd2",
+      "Name": "/mooncar-r5-shm-repair-20261008",
+      "SizeRw": 464453632,
+      "Image": "sha256:b0097fb21186f20191b71505315e6041ee19ca966504a59f08437172bbe0db1f",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-shm-repair-20261008",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "325c0edf66f8c5bf02861edbaa487a191c535405da7e5b046669509127d745ff",
+      "Name": "/mooncar-r5-dds-shm-20261008",
+      "SizeRw": 690892800,
+      "Image": "sha256:b0097fb21186f20191b71505315e6041ee19ca966504a59f08437172bbe0db1f",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-dds-shm-20261008",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "a23384babd1830847659ed53ad7f3a9a15657fb4c662f4a6442a47320819e06b",
+      "Name": "/mooncar-r5-image-delivery-20261007",
+      "SizeRw": 567586816,
+      "Image": "sha256:b0097fb21186f20191b71505315e6041ee19ca966504a59f08437172bbe0db1f",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-image-delivery-20261007",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "97492affba3f85620bc4df6cd220f033ece95951e356b5e7e5d51296bc2a1325",
+      "Name": "/mooncar-r5-rgb-gap-20261007",
+      "SizeRw": 183783424,
+      "Image": "sha256:b0097fb21186f20191b71505315e6041ee19ca966504a59f08437172bbe0db1f",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-rgb-gap-20261007",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "0df837139f1dc5cd3095d52351658da8e9b73024d1b8352b76114cb9e7d7a3a1",
+      "Name": "/mooncar-r5-capture-repair-20261007",
+      "SizeRw": 473182208,
+      "Image": "sha256:b0097fb21186f20191b71505315e6041ee19ca966504a59f08437172bbe0db1f",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/terrain-v2/r5-capture-repair-20261007",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "b27503521558f79bbb55f08af7e101fea75d5c258717e8b2b93a3a9ed57d0a7a",
+      "Name": "/mooncar-r5-aligned-validation-20261007",
+      "SizeRw": 220389376,
+      "Image": "sha256:b0097fb21186f20191b71505315e6041ee19ca966504a59f08437172bbe0db1f",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-aligned-validation-20261007",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "0d0a5adf0932db3d2afd4927afd432cbbd968c9888c51bee7dfdab3bc5a82451",
+      "Name": "/mooncar-r5-d0-validation-20261007",
+      "SizeRw": 1107607552,
+      "Image": "sha256:b0097fb21186f20191b71505315e6041ee19ca966504a59f08437172bbe0db1f",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-d0-validation-20261007",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "8c840b712385a59769e01bc0c03e718a579c29c9533106ddbbc142f233c7b42f",
+      "Name": "/mooncar-r5-control-20261006",
+      "SizeRw": 479449088,
+      "Image": "sha256:b0097fb21186f20191b71505315e6041ee19ca966504a59f08437172bbe0db1f",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-control-20261006",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "fcbcea284f42e45b51f8ab564bba359e191527126c9372e7113e7ac905edded2",
+      "Name": "/mooncar-r5-stability-20261006",
+      "SizeRw": 95256576,
+      "Image": "sha256:ceab0ab15a7e031d2fba05cf4e7901b641979ac808a4fdef64b0404f92309fc9",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-stability-20261006",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "c4fe9a97cb6444b8977155a86176edbedf3336a17caf11b4ee910dbd25df517c",
+      "Name": "/mooncar-v2-inspection-20261006",
+      "SizeRw": 92278784,
+      "Image": "sha256:ceab0ab15a7e031d2fba05cf4e7901b641979ac808a4fdef64b0404f92309fc9",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "83c178dfc256d2d5c7e9c271e9117d3a9e8b6514a8d440b96d701cbf2313d944",
+      "Name": "/mooncar-recovery-validation",
+      "SizeRw": 61919232,
+      "Image": "sha256:ceab0ab15a7e031d2fba05cf4e7901b641979ac808a4fdef64b0404f92309fc9",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    },
+    {
+      "Id": "3186e022e013a682ebebb7e1089bfb1e0a842387ceaa65e9169a16d4133abd94",
+      "Name": "/mooncar-terrain-validation",
+      "SizeRw": 97951744,
+      "Image": "sha256:ceab0ab15a7e031d2fba05cf4e7901b641979ac808a4fdef64b0404f92309fc9",
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance",
+          "Destination": "/evidence",
+          "Mode": "",
+          "RW": true,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "D:/Documents/Projects/Repositories/MoonCar-mapping",
+          "Destination": "/source",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ]
+    }
+  ],
+  "OtherContainers": [
+    {
+      "Id": "083799edb967be06bbc4d0e5a318ad8a8f83da01aded6d2628da53bd1f04e4f4",
+      "Name": "/guranovel-v012-real-backend-1",
+      "Status": "running"
+    },
+    {
+      "Id": "d0b1bf9e69ef3b0c04f69f907743f60e2a2ffca5030f5cbce5f47d7122029ccd",
+      "Name": "/guranovel-frontend-1",
+      "Status": "exited"
+    },
+    {
+      "Id": "af9d767e66e4da4c4d04b48944091423bf6c7845dd2c353b4eef1adc77cbeb8e",
+      "Name": "/guranovel-backend-1",
+      "Status": "exited"
+    },
+    {
+      "Id": "74524588e6be9fa64dd5cce4deeae9e6bf1e33d9e34f077055a8756ddadb33c0",
+      "Name": "/guranovel-db-1",
+      "Status": "exited"
+    },
+    {
+      "Id": "236aa7f4f4a2a9686f4c47636c032eaa1a4e611b287b22496b87f527b14b34c8",
+      "Name": "/guranovel-v012-real-frontend-1",
+      "Status": "exited"
+    },
+    {
+      "Id": "e41b6e727d49084083dd42d92e7c26f21e404fafa9f67f9413baff65164ea523",
+      "Name": "/guranovel-v012-frontend-1",
+      "Status": "exited"
+    },
+    {
+      "Id": "2b338140fc2aa18932cac9cb8a3319d2fff528beb07cd144196f39920902234b",
+      "Name": "/guranovel-v012-backend-1",
+      "Status": "exited"
+    },
+    {
+      "Id": "40eceb0e10b8101e203e047c602893da5ebb6a11c6693d6920a642988f7a01f7",
+      "Name": "/guranovel-v012-db-1",
+      "Status": "exited"
+    },
+    {
+      "Id": "3a3b5bf2dd0a1b08851d40bfe7c651acfc2e21fbd6b35d7df2c6b2c8a4a66e6a",
+      "Name": "/guranovel-v012-real-db-1",
+      "Status": "running"
+    },
+    {
+      "Id": "eee5b04151cb38175fe1c5542c81ebf63ce47e999eab05814ce6f6c9d6520005",
+      "Name": "/guranovel-v012-test-db",
+      "Status": "exited"
+    },
+    {
+      "Id": "2d61e92da628048ea414ed03d965eb398354296ed167f160aca2fe4a4a4e0887",
+      "Name": "/guranovel-docker-test-20261013-frontend-1",
+      "Status": "exited"
+    },
+    {
+      "Id": "ee1780be5d099bced0a917d7080ea10c1cfa4529769a6c50dc9340422e493b91",
+      "Name": "/guranovel-docker-test-20261013-backend-1",
+      "Status": "exited"
+    },
+    {
+      "Id": "73a3c6e05ec0392506db917916bd76d65be05dfc73060ffd986d39f33f882d4d",
+      "Name": "/guranovel-docker-test-20261013-db-1",
+      "Status": "exited"
+    }
+  ],
+  "Images": [
+    "sha256:066420e07f60aa18262f2479981def87ebcfcec42eefb0c0c57c4a46098348ca",
+    "sha256:132eab99b6f42a77d6b8e9ee914d130d10a30189b2dccd290e369158600dce9a",
+    "sha256:284005df6bbc552b230422f293a48f9fb45c1dc93638e03a3f80372ad5fad2b4",
+    "sha256:2de98e380938dffb71e58dbe8ada2dc909e84d14c8a24a2dc2aaf8f6f1bb1aab",
+    "sha256:356798903ce989c27b0115ece273881b197a87ebd3ed7f2a2c88a3829e5ee2d4",
+    "sha256:54aa0d9b9b64da7ce645a37f7ee466986a3a7fb36f7cc456fdd437db7b2d153f",
+    "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+    "sha256:ab442a6543232323a30e5a2d3cfc221f34faca51e2b7458e71335a6eba90c38f",
+    "sha256:b0097fb21186f20191b71505315e6041ee19ca966504a59f08437172bbe0db1f",
+    "sha256:bf1d2361b6953c782c97c85cf61c32cc429a73adf7ca946c3ae7cc04c54a7bf0",
+    "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+    "sha256:ceab0ab15a7e031d2fba05cf4e7901b641979ac808a4fdef64b0404f92309fc9",
+    "sha256:dbf4e9bc8d0cf72ccb8846a213c1d49adfbc6456cbce9028792c13709cd58cbf",
+    "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3"
+  ],
+  "Volumes": [
+    "e747390828089e86a0fa18bbbd5db240e6aaba813a14cecc533a8ab023bd9180",
+    "guranovel_postgres_data",
+    "guranovel_workspaces_data",
+    "guranovel-docker-test-20261013_postgres_data",
+    "guranovel-docker-test-20261013_workspaces_data",
+    "guranovel-v012_postgres_data",
+    "guranovel-v012_workspaces_data",
+    "guranovel-v012-real_postgres_data",
+    "guranovel-v012-real_workspaces_data"
+  ],
+  "BuildCache": [
+    {
+      "CreatedAt": "2026-10-12 04:17:04.031199463 +0000 UTC",
+      "Description": "local source for context",
+      "ID": "6zscowqg02a4uv9ik1x628h3q",
+      "LastUsedAt": "7 days ago",
+      "Mutable": true,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "4.096kB",
+      "Type": "source.local",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-08 08:26:04.431420076 +0000 UTC",
+      "Description": "mount / from exec /bin/bash -c python3 -c \"import hashlib,json,pathlib; p=pathlib.Path('/opt/mooncar/image-dds/rmw-8.4.4'); m=json.loads((p/'manifest.json').read_text()); assert m['versions']['rmw_fastrtps_cpp']=='8.4.4'; assert m['diagnostic_instrumentation'] is False; assert all(hashlib.sha256((p/n).read_bytes()).hexdigest()==h for n,h in m['libraries'].items()); assert hashlib.sha256(pathlib.Path(m['stock_fastdds_path']).read_bytes()).hexdigest()==m['stock_fastdds_sha256']\"",
+      "ID": "h7fme97rmwip0si43kzyqozlo",
+      "LastUsedAt": "7 days ago",
+      "Mutable": false,
+      "Parents": [
+        "3tsmo8nw6oo1gbl7mgw7e0cvl"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "4.128kB",
+      "Type": "regular",
+      "UsageCount": 4
+    },
+    {
+      "CreatedAt": "2026-10-06 12:22:05.747630571 +0000 UTC",
+      "Description": "mount / from exec /bin/bash -c python3 -c \"import hashlib,json,pathlib; p=pathlib.Path('/opt/mooncar/physics/dart-7.8.0'); m=json.loads((p/'manifest.json').read_text()); assert m['gz_physics_version']=='7.8.0'; assert pathlib.Path('/opt/ros/jazzy/opt/gz_physics_vendor/lib/libgz-physics7.so.7.8.0').is_file(); assert hashlib.sha256((p/'libmooncar-physics7-dartsim.so').read_bytes()).hexdigest()==m['library_sha256']\"",
+      "ID": "xpbv9p9z7a74r2m94ep56hd3k",
+      "LastUsedAt": "11 days ago",
+      "Mutable": false,
+      "Parents": [
+        "83n6jfyx39sxm3by1pb64s2jo"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "4.128kB",
+      "Type": "regular",
+      "UsageCount": 2
+    },
+    {
+      "CreatedAt": "2026-10-12 04:17:03.772410246 +0000 UTC",
+      "Description": "local source for dockerfile",
+      "ID": "1wjkoflbigdqh5idjcmhvp3pw",
+      "LastUsedAt": "7 days ago",
+      "Mutable": true,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "8.192kB",
+      "Type": "source.local",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-12 04:09:31.14792135 +0000 UTC",
+      "Description": "local source for dockerfile",
+      "ID": "7pl7jz1zwzhi50hbbbj9x3ng4",
+      "LastUsedAt": "7 days ago",
+      "Mutable": true,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "8.192kB",
+      "Type": "source.local",
+      "UsageCount": 2
+    },
+    {
+      "CreatedAt": "2026-10-12 04:09:31.450782692 +0000 UTC",
+      "Description": "local source for context",
+      "ID": "n3kw1ta9v9yqboe1uy1lom6ge",
+      "LastUsedAt": "7 days ago",
+      "Mutable": true,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "8.192kB",
+      "Type": "source.local",
+      "UsageCount": 2
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.197055372 +0000 UTC",
+      "Description": "local source for context",
+      "ID": "nulc39qnr9cvjcypp48x06f0v",
+      "LastUsedAt": "3 hours ago",
+      "Mutable": true,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "8.192kB",
+      "Type": "source.local",
+      "UsageCount": 21
+    },
+    {
+      "CreatedAt": "2026-10-13 13:38:59.949453488 +0000 UTC",
+      "Description": "local source for context",
+      "ID": "p849iczcgeired0vt8i44jqq6",
+      "LastUsedAt": "3 days ago",
+      "Mutable": true,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "8.192kB",
+      "Type": "source.local",
+      "UsageCount": 16
+    },
+    {
+      "CreatedAt": "2026-10-13 13:38:55.448655261 +0000 UTC",
+      "Description": "local source for dockerfile",
+      "ID": "qgkb7pofy3vvll1h18fc2g8qi",
+      "LastUsedAt": "3 hours ago",
+      "Mutable": true,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "8.192kB",
+      "Type": "source.local",
+      "UsageCount": 21
+    },
+    {
+      "CreatedAt": "2026-10-13 13:40:08.683989597 +0000 UTC",
+      "Description": "[builder 2/6] WORKDIR /app",
+      "ID": "uo47ex330c9yb7jmfmedw1lut",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "65898kces041u4na99ytk3b5w"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "8.192kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:38:55.456207483 +0000 UTC",
+      "Description": "local source for dockerfile",
+      "ID": "vth4gptulpx4999lw7qrpckgj",
+      "LastUsedAt": "3 days ago",
+      "Mutable": true,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "8.192kB",
+      "Type": "source.local",
+      "UsageCount": 16
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:42.552116418 +0000 UTC",
+      "Description": "[2/7] WORKDIR /app",
+      "ID": "f6mxda5g0cm1vzolwc84zhtn2",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "k5vjz53wclgg3p7626axoat48"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "8.285kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 09:10:31.034369705 +0000 UTC",
+      "Description": "[stage-0 3/3] WORKDIR /work",
+      "ID": "p1q165hwwy4qtrmdwjko5bvq0",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "wl3p5hjzynm59gbvt41fdgco2"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "8.286kB",
+      "Type": "regular",
+      "UsageCount": 2
+    },
+    {
+      "CreatedAt": "2026-10-06 08:12:15.33208704 +0000 UTC",
+      "Description": "pulled from docker.io/library/ros:jazzy-ros-base@sha256:066420e07f60aa18262f2479981def87ebcfcec42eefb0c0c57c4a46098348ca",
+      "ID": "u15qdbfcca0zpswuwjbyhpsip",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "rr8haobp5ag9mvw31mk7jejqe"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "8.388kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:56.038130455 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:892bb2152464f0c5d8972593a5f5afaf8054552580b699d95f8ff4af08c2d33d",
+      "ID": "2tzyqb7pknrdxodet6pu70s23",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "bih44to2amnhwapdlolr6q5nt"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "8.821kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.102772315 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2",
+      "ID": "scns9vg1hx85oql92it9q1h0n",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "ljcdwbagzrjersf51zc2ojluo"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "8.821kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.223512087 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2",
+      "ID": "x31xti67cp9hrhgqgnglxpu1p",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "p6wkxxlsf9e5cbnavsvs4eicf"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "12.69kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:56.070126941 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:892bb2152464f0c5d8972593a5f5afaf8054552580b699d95f8ff4af08c2d33d",
+      "ID": "fh219dapdner135x537u4j9ri",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "gimvswgot0j2vwqy6w8p36q2y"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "12.69kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.129971854 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2",
+      "ID": "p6wkxxlsf9e5cbnavsvs4eicf",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "scns9vg1hx85oql92it9q1h0n"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "13.25kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:56.051899254 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:892bb2152464f0c5d8972593a5f5afaf8054552580b699d95f8ff4af08c2d33d",
+      "ID": "gimvswgot0j2vwqy6w8p36q2y",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "2tzyqb7pknrdxodet6pu70s23"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "13.25kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.286592331 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2",
+      "ID": "lfbe5io1kju7ez1m74uprb545",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "x31xti67cp9hrhgqgnglxpu1p"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "13.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:56.085851459 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:892bb2152464f0c5d8972593a5f5afaf8054552580b699d95f8ff4af08c2d33d",
+      "ID": "t0w5e9zkob6fbteuq184aofvn",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "fh219dapdner135x537u4j9ri"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "13.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:44:45.588782874 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "ui3h91fzkt4wvr8drgnh02j3p",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "qv8i6jnpiipuane2jb1fwu2fq"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 10:43:39.892282953 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "advos7vgchigen5jon21zkueu",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "o623t0kgmev34z1e03v5tuxxx"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:57:57.319902207 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "i77ztlrlq7qyzf71t0ziay190",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "to80cp5sdhhfb8m5ln012o89i"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:00:13.190832359 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "i9gli80b4yy52e7tckj1azi1d",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "847nt9pugjwdyy3ctlsgx10bp"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:40:22.564950824 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "s14m02s6kt6hqznoai1h3148m",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "rru2llj3uyz62k8utbw3bnl4j"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:34:32.046929119 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "vikg8ngscze1mb98gce5gd2uk",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "y3btvrs176a29733eeym7bvmm"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:39:50.525430623 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "xx9muulh2p4re2em9onpsiku9",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "qrlzgdaj5tzlk2cao2nfoj69u"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-19 13:31:13.298408666 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "66xang2w0pe6nrlv1zccix1iu",
+      "LastUsedAt": "3 hours ago",
+      "Mutable": false,
+      "Parents": [
+        "ir7j3pri1390wl3fmgzomhtcn"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:59.971103975 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "8qijoye3kwgjc37r0ahftdwra",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "l7yd4pp9d5f8ae62ko53kjy8z"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 2
+    },
+    {
+      "CreatedAt": "2026-10-14 11:31:25.680187337 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "oaj233g1qw10781ya5q7blh8d",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pemwzm2qs0ogq6u8ew4fjdle4"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 10:52:36.979070053 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "qgb1nw33i389zg0hcf07mo6vg",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "w0soawfk58f2fcrd5w25022w3"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:40:25.320651348 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "rrxqcyh73e8bpm02gjd7lh3s0",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "j5qz7c7dbzh326mxhofkxnxby"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 3
+    },
+    {
+      "CreatedAt": "2026-10-14 11:12:24.057000778 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "sbrfjjrg9felo2245op09ks0r",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "48f9vozng5zriwjdbnqy2h6jo"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 10:48:50.910175781 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "t5d6kb4vtms92qcnrn8uisjfz",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "t6skb9lxef14iy890u45cpli5"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-19 13:10:45.497036995 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "wgqk8taixebeffpgwjmcpybyf",
+      "LastUsedAt": "3 hours ago",
+      "Mutable": false,
+      "Parents": [
+        "tw2te3c97hgo1b8ky8yyinn1g"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 05:26:14.548723607 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "wya4y19s92p939l46frtkupp1",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "ou03tgsb5f2a0veztzf3hso5c"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 2
+    },
+    {
+      "CreatedAt": "2026-10-16 04:04:49.430976152 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c mkdir -p /data/workspaces",
+      "ID": "x0z9e7pv2c664ep8k0qqxb8k2",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "ngf8fj7hf6k0qillfah6uelee"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "16.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.497136265 +0000 UTC",
+      "Description": "pulled from ghcr.io/astral-sh/uv:python3.11-bookworm-slim@sha256:4f5d923c9dcea037f57bda425dd209f3ec643da2f0b74227f68d09dab0b3bb36",
+      "ID": "9j0kkagczanvrq0wmapt9r7jr",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "gex20e63wojunszxmp1d60avv"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "16.63kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:56.104541583 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:892bb2152464f0c5d8972593a5f5afaf8054552580b699d95f8ff4af08c2d33d",
+      "ID": "9i6egf2woongh1pf25uk0rns2",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "t0w5e9zkob6fbteuq184aofvn"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "17.78kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.308483853 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2",
+      "ID": "ucw0tpm8us9g85hirztc7xs2q",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "lfbe5io1kju7ez1m74uprb545"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "17.78kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.188756355 +0000 UTC",
+      "Description": "pulled from docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402",
+      "ID": "65898kces041u4na99ytk3b5w",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "6yzdx6yne3t0uo2u9bpk8xtu4"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "20.93kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 05:28:06.628229309 +0000 UTC",
+      "Description": "[stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf",
+      "ID": "sk7csyy5q8oroopdlutzolbsb",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "q14xssyo0bt2plmkuix0ymdq6"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.07kB",
+      "Type": "regular",
+      "UsageCount": 4
+    },
+    {
+      "CreatedAt": "2026-10-13 13:40:56.147174662 +0000 UTC",
+      "Description": "[stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf",
+      "ID": "6w060iwx6geymjgk96qndipsr",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "wvhge1czntl60j3xewmabywhb"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.08kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:00:20.906150245 +0000 UTC",
+      "Description": "[stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf",
+      "ID": "63o2mmauoxsgkrn7ffwfpemuo",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "m02bta805emtsehs3lfdl856v"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.08kB",
+      "Type": "regular",
+      "UsageCount": 2
+    },
+    {
+      "CreatedAt": "2026-10-16 04:29:19.03370349 +0000 UTC",
+      "Description": "[stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf",
+      "ID": "axplfrm7k6hmfqrp85swq1pkh",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "v4xqyqid8qq60tmxqh0105u8z"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.08kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:40:41.796658798 +0000 UTC",
+      "Description": "[stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf",
+      "ID": "ajptl6q8avxnzcnn4kd6zcr08",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "v8u7ubdqruxift63qp8gjjn39"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "29.08kB",
+      "Type": "regular",
+      "UsageCount": 4
+    },
+    {
+      "CreatedAt": "2026-10-13 14:52:16.700885663 +0000 UTC",
+      "Description": "[stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf",
+      "ID": "wxdd6o0ypsoy5t3daslzk4siu",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pemxallcpwneek93srtgy54kb"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.08kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 14:38:43.340164706 +0000 UTC",
+      "Description": "[stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf",
+      "ID": "00kzwf54sw8fdhcn0uiordz59",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "t5b8n262dvy2rvcyqcrygro3d"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "29.08kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 14:56:48.488965867 +0000 UTC",
+      "Description": "[stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf",
+      "ID": "fpec2edlzjw8s0ax5v48znkit",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "4g9hf4opntea4v3hdv5zicrni"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "29.08kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-12 04:17:04.845592453 +0000 UTC",
+      "Description": "mount / from exec /bin/bash -c test -f /opt/mooncar/turn/r5-v2/manifest.json && ln -s libode.so.8.0.2 /opt/mooncar/turn/r5-v2/libode.so.8",
+      "ID": "tb8kohovqca3tru77g2i3g4pd",
+      "LastUsedAt": "7 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pdqebe6nnw3ag2r7rkpp4kzbd"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "32.96kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-12 04:10:23.110322338 +0000 UTC",
+      "Description": "mount / from exec /bin/bash -c test -f /opt/mooncar/turn/r5-v2/manifest.json && ln -s libode.so.8.0.2 /opt/mooncar/turn/r5-v2/libode.so.8",
+      "ID": "1c61wbdry20daa0mhzjk1uyem",
+      "LastUsedAt": "7 days ago",
+      "Mutable": false,
+      "Parents": [
+        "i5qbxvfvpwp1ibrcl8hsxhiao"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "32.97kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 12:22:05.039982344 +0000 UTC",
+      "Description": "[3/4] COPY containers/runtime/dart-7.8.0/manifest.json /opt/mooncar/physics/dart-7.8.0/",
+      "ID": "83n6jfyx39sxm3by1pb64s2jo",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "jyjuwfqiypnrzuieow6xtgpxw"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "37.43kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 08:12:15.377492641 +0000 UTC",
+      "Description": "pulled from docker.io/library/ros:jazzy-ros-base@sha256:066420e07f60aa18262f2479981def87ebcfcec42eefb0c0c57c4a46098348ca",
+      "ID": "dznakgdyi4l8uswii8nrvxei3",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "suf3y10afwid8obytstv2y79s"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "162.4kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:56.251132052 +0000 UTC",
+      "Description": "[builder 3/6] COPY package.json package-lock.json ./",
+      "ID": "6d1ktpj0669bkf4oc1e1en5d1",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "uo47ex330c9yb7jmfmedw1lut"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "213kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:40:08.735350136 +0000 UTC",
+      "Description": "[builder 3/6] COPY package.json package-lock.json ./",
+      "ID": "9ek8q39kev1mjimtz98qf01dt",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "uo47ex330c9yb7jmfmedw1lut"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "213kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:40:23.308584288 +0000 UTC",
+      "Description": "[builder 3/6] COPY package.json package-lock.json ./",
+      "ID": "z74plwq2tf32sq8ye9pcp3nfa",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "uo47ex330c9yb7jmfmedw1lut"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "213kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:42.597846142 +0000 UTC",
+      "Description": "[3/7] COPY pyproject.toml uv.lock ./",
+      "ID": "m05syk2klrd1ocgmhx4ch6awi",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "f6mxda5g0cm1vzolwc84zhtn2"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "531.3kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:54.070014227 +0000 UTC",
+      "Description": "[3/7] COPY pyproject.toml uv.lock ./",
+      "ID": "4bjdun4oyj43phrmrjj0dj2cf",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "f6mxda5g0cm1vzolwc84zhtn2"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "531.3kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-19 13:10:03.729786235 +0000 UTC",
+      "Description": "[3/7] COPY pyproject.toml uv.lock ./",
+      "ID": "hygc0dbikw56bwzusqdspu4ik",
+      "LastUsedAt": "3 hours ago",
+      "Mutable": false,
+      "Parents": [
+        "f6mxda5g0cm1vzolwc84zhtn2"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "563.5kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 08:12:15.302038689 +0000 UTC",
+      "Description": "pulled from docker.io/library/ros:jazzy-ros-base@sha256:066420e07f60aa18262f2479981def87ebcfcec42eefb0c0c57c4a46098348ca",
+      "ID": "ry5xdkqvg4u9vn5k7lkoxsrcx",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "0kl0ztiu066pzua7phg4ez6ra"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "705.3kB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-08 08:26:03.94079492 +0000 UTC",
+      "Description": "[2/3] COPY containers/runtime/image-dds/ /opt/mooncar/image-dds/rmw-8.4.4/",
+      "ID": "3tsmo8nw6oo1gbl7mgw7e0cvl",
+      "LastUsedAt": "11 days ago",
+      "Mutable": false,
+      "Parents": [
+        "xpbv9p9z7a74r2m94ep56hd3k"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "1.725MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 08:12:15.362901496 +0000 UTC",
+      "Description": "pulled from docker.io/library/ros:jazzy-ros-base@sha256:066420e07f60aa18262f2479981def87ebcfcec42eefb0c0c57c4a46098348ca",
+      "ID": "suf3y10afwid8obytstv2y79s",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "vlqzllov0jytdlp6wlgwd7lph"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "2.003MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:40:16.29581748 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "xzwbzeadtsx5qsel5agqcf3dn",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "3.567MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:56.961341902 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "1ijxlz63r9bxjs4006jckivbl",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "ioihkqo3sa4oc470hetz7yn4y"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "3.629MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:40:22.694498853 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "08aidkvhhy89k8y5zmzvuowe6",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "ioihkqo3sa4oc470hetz7yn4y"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "3.664MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 05:26:10.77666901 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "vgcwcvg091euxxeg13v2wo1lj",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.733MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 10:43:35.328797379 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "463c1zo9r0juufb7d3n0viu8e",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.733MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 10:48:47.244059884 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "zg1y5byt4ljvshd2l23vo0n68",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.733MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 10:52:34.646945911 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "m86ng55omhhcb9vze7rf0xvhu",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.733MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:00:10.005516652 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "r6nk8r26jxywy5sdo69kieo4b",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.733MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:12:19.93843698 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "watexoa1bzg573nyzd2qr8wnv",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.734MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:31:13.468541109 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "ppkenkd2laevxmlqmaqcsvi24",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.742MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:34:28.719087291 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "6qi2f6kfytuz9zl8v080zej24",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.742MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:39:47.14646371 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "yy9tyv7pcunui22keq56ieyqp",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.743MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:44:42.013742199 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "rk8bri7x1ijmf3usoi0jpdam1",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.743MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:57:54.329107366 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "vhsc9g6zqursympu2suoaxk53",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.743MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:04:46.508919691 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "iy0c01e02fe54h0o5ermtl3lj",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pufi2e72ih2qi1fsnmyoo8uah"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "3.743MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 12:22:04.959534764 +0000 UTC",
+      "Description": "[2/4] COPY containers/runtime/dart-7.8.0/libmooncar-physics7-dartsim.so /opt/mooncar/physics/dart-7.8.0/",
+      "ID": "jyjuwfqiypnrzuieow6xtgpxw",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "p1q165hwwy4qtrmdwjko5bvq0"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "4.814MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 08:12:15.273898241 +0000 UTC",
+      "Description": "pulled from docker.io/library/ros:jazzy-ros-base@sha256:066420e07f60aa18262f2479981def87ebcfcec42eefb0c0c57c4a46098348ca",
+      "ID": "th3siahmvnot4jc1yxjdzp8am",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "tfm6czmckdzu2zvzpn57kl2hv"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "4.882MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.358550268 +0000 UTC",
+      "Description": "local source for context",
+      "ID": "k3a2guad38t96tcgmn9fsb7g6",
+      "LastUsedAt": "3 hours ago",
+      "Mutable": true,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "6.685MB",
+      "Type": "source.local",
+      "UsageCount": 21
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.084883617 +0000 UTC",
+      "Description": "pulled from docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402",
+      "ID": "6yzdx6yne3t0uo2u9bpk8xtu4",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "pxan1ahx9zh2al0zu7k2kvopl"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "6.742MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.067091586 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2",
+      "ID": "ljcdwbagzrjersf51zc2ojluo",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "vrnk0eyivoiwavdaachcckcl3"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "7.653MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-19 13:10:40.093664165 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "yeb8pbr84452rxkr3mp994uyb",
+      "LastUsedAt": "3 hours ago",
+      "Mutable": false,
+      "Parents": [
+        "s28e0gnwt9qm88q0dq0rxa4ep"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "8.154MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-19 13:31:04.960710329 +0000 UTC",
+      "Description": "[5/7] COPY . .",
+      "ID": "cbecd3fb5l4uf89cilxqmwmyh",
+      "LastUsedAt": "3 hours ago",
+      "Mutable": false,
+      "Parents": [
+        "s28e0gnwt9qm88q0dq0rxa4ep"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "8.17MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:39:50.234648658 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "qrlzgdaj5tzlk2cao2nfoj69u",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "yy9tyv7pcunui22keq56ieyqp"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 05:26:14.301349744 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "ou03tgsb5f2a0veztzf3hso5c",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "vgcwcvg091euxxeg13v2wo1lj"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:44:45.320484583 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "qv8i6jnpiipuane2jb1fwu2fq",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "rk8bri7x1ijmf3usoi0jpdam1"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:57:57.059432637 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "to80cp5sdhhfb8m5ln012o89i",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "vhsc9g6zqursympu2suoaxk53"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:59.67465194 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "l7yd4pp9d5f8ae62ko53kjy8z",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "1ijxlz63r9bxjs4006jckivbl"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:40:22.328856833 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "rru2llj3uyz62k8utbw3bnl4j",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "xzwbzeadtsx5qsel5agqcf3dn"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:31:25.379592594 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "pemwzm2qs0ogq6u8ew4fjdle4",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "ppkenkd2laevxmlqmaqcsvi24"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:00:12.901323606 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "847nt9pugjwdyy3ctlsgx10bp",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "r6nk8r26jxywy5sdo69kieo4b"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 10:48:50.634865654 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "t6skb9lxef14iy890u45cpli5",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "zg1y5byt4ljvshd2l23vo0n68"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:34:31.750880711 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "y3btvrs176a29733eeym7bvmm",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "6qi2f6kfytuz9zl8v080zej24"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:12:23.799010364 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "48f9vozng5zriwjdbnqy2h6jo",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "watexoa1bzg573nyzd2qr8wnv"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 10:43:39.602914687 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "o623t0kgmev34z1e03v5tuxxx",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "463c1zo9r0juufb7d3n0viu8e"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:04:49.171266766 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "ngf8fj7hf6k0qillfah6uelee",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "iy0c01e02fe54h0o5ermtl3lj"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 10:52:36.687511633 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "w0soawfk58f2fcrd5w25022w3",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "m86ng55omhhcb9vze7rf0xvhu"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.44MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:40:25.0542193 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "j5qz7c7dbzh326mxhofkxnxby",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "08aidkvhhy89k8y5zmzvuowe6"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "11.45MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-19 13:10:45.16230359 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "tw2te3c97hgo1b8ky8yyinn1g",
+      "LastUsedAt": "3 hours ago",
+      "Mutable": false,
+      "Parents": [
+        "yeb8pbr84452rxkr3mp994uyb"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "11.45MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-19 13:31:13.032070967 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev",
+      "ID": "ir7j3pri1390wl3fmgzomhtcn",
+      "LastUsedAt": "3 hours ago",
+      "Mutable": false,
+      "Parents": [
+        "cbecd3fb5l4uf89cilxqmwmyh"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "11.45MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-12 04:10:22.652429985 +0000 UTC",
+      "Description": "[2/3] COPY runtime/ /opt/mooncar/turn/r5-v2/",
+      "ID": "i5qbxvfvpwp1ibrcl8hsxhiao",
+      "LastUsedAt": "7 days ago",
+      "Mutable": false,
+      "Parents": [
+        "h7fme97rmwip0si43kzyqozlo"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "11.93MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-12 04:17:04.60480431 +0000 UTC",
+      "Description": "[2/3] COPY runtime/ /opt/mooncar/turn/r5-v2/",
+      "ID": "pdqebe6nnw3ag2r7rkpp4kzbd",
+      "LastUsedAt": "7 days ago",
+      "Mutable": false,
+      "Parents": [
+        "h7fme97rmwip0si43kzyqozlo"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "11.93MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.030438749 +0000 UTC",
+      "Description": "pulled from docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402",
+      "ID": "vrnk0eyivoiwavdaachcckcl3",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "12.93MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.387028659 +0000 UTC",
+      "Description": "pulled from ghcr.io/astral-sh/uv:python3.11-bookworm-slim@sha256:4f5d923c9dcea037f57bda425dd209f3ec643da2f0b74227f68d09dab0b3bb36",
+      "ID": "070sqz59ut9uz27pqyj95j5sb",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "5klf47cp0lq1b0a468ovgyxms"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "13.9MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:56.024334937 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:892bb2152464f0c5d8972593a5f5afaf8054552580b699d95f8ff4af08c2d33d",
+      "ID": "bih44to2amnhwapdlolr6q5nt",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "vrnk0eyivoiwavdaachcckcl3"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "16.27MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 14:38:32.258685919 +0000 UTC",
+      "Description": "[builder 5/6] COPY . .",
+      "ID": "8satk9t7j546evtcp30fw58uw",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "uutii004y6xi8qfnces7b4w9z"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "30.58MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 14:56:38.069449978 +0000 UTC",
+      "Description": "[builder 5/6] COPY . .",
+      "ID": "mm6gnaz1aehlpns24nlwivdzk",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "uutii004y6xi8qfnces7b4w9z"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "30.59MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 14:52:04.624626675 +0000 UTC",
+      "Description": "[builder 5/6] COPY . .",
+      "ID": "wthpcqa3tsl0fr21b695dyg0c",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "uutii004y6xi8qfnces7b4w9z"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "30.59MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:38:59.997701421 +0000 UTC",
+      "Description": "local source for context",
+      "ID": "uouqs1k0hqmktdp0bnwntt1b3",
+      "LastUsedAt": "3 days ago",
+      "Mutable": true,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "30.65MB",
+      "Type": "source.local",
+      "UsageCount": 16
+    },
+    {
+      "CreatedAt": "2026-10-14 10:43:35.949097492 +0000 UTC",
+      "Description": "[builder 5/6] COPY . .",
+      "ID": "knlfrtge99st9ljs5l1u4expv",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "uutii004y6xi8qfnces7b4w9z"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "30.65MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:00:10.49449239 +0000 UTC",
+      "Description": "[builder 5/6] COPY . .",
+      "ID": "r164ndtsh8obvy9jc6gx6tqdf",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "uutii004y6xi8qfnces7b4w9z"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "30.65MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 05:26:11.234422258 +0000 UTC",
+      "Description": "[builder 5/6] COPY . .",
+      "ID": "tyn7y21jmz2wmgqcrctrgo5vw",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "uutii004y6xi8qfnces7b4w9z"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "30.65MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:40:32.676143646 +0000 UTC",
+      "Description": "[builder 5/6] COPY . .",
+      "ID": "upx1ctq8iz3mjiva6m7hqt1ug",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "0k0bcwdfahjuzkkguutxx9au6"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "30.65MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 05:27:58.165539052 +0000 UTC",
+      "Description": "[builder 5/6] COPY . .",
+      "ID": "x00wwr3cgxgvq9k41w3u65uqn",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "uutii004y6xi8qfnces7b4w9z"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "30.65MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:29:09.063911465 +0000 UTC",
+      "Description": "[builder 5/6] COPY . .",
+      "ID": "y9wjc0rpdv3vabxb4xs6vdh2o",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "zqf8cidpfe4juf27ugkipopjj"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "30.65MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:40:46.372079392 +0000 UTC",
+      "Description": "[builder 5/6] COPY . .",
+      "ID": "hsbcx4csyd2q5xakysgv89bvr",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "uutii004y6xi8qfnces7b4w9z"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "30.89MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 14:52:04.648759325 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm run build",
+      "ID": "kr74aq730wp3u1ytfv5lfrk54",
+      "LastUsedAt": "6 days ago",
+      "Mutable": true,
+      "Parents": [
+        "wthpcqa3tsl0fr21b695dyg0c"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "32.26MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 14:38:32.288819921 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm run build",
+      "ID": "ug8k9nfr46yiwoxey5tf59ef8",
+      "LastUsedAt": "6 days ago",
+      "Mutable": true,
+      "Parents": [
+        "8satk9t7j546evtcp30fw58uw"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "32.26MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 14:56:38.093701934 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm run build",
+      "ID": "soa3kalewztaysbvymqb3fojf",
+      "LastUsedAt": "6 days ago",
+      "Mutable": true,
+      "Parents": [
+        "mm6gnaz1aehlpns24nlwivdzk"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "32.27MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:40:32.701586583 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm run build",
+      "ID": "mrbs4yyfukyuswyx2mfaa31wr",
+      "LastUsedAt": "3 days ago",
+      "Mutable": true,
+      "Parents": [
+        "upx1ctq8iz3mjiva6m7hqt1ug"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "32.28MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:29:09.087952989 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm run build",
+      "ID": "fut6iq80qkhegqb5j64sdwpn6",
+      "LastUsedAt": "3 days ago",
+      "Mutable": true,
+      "Parents": [
+        "y9wjc0rpdv3vabxb4xs6vdh2o"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "32.28MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 05:27:58.185771319 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm run build",
+      "ID": "lm3c1jhtv0sokclgzs0lvi04f",
+      "LastUsedAt": "5 days ago",
+      "Mutable": true,
+      "Parents": [
+        "x00wwr3cgxgvq9k41w3u65uqn"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "32.28MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 10:43:35.974536118 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm run build",
+      "ID": "unzf7769ykweboee79d7i6dil",
+      "LastUsedAt": "5 days ago",
+      "Mutable": true,
+      "Parents": [
+        "knlfrtge99st9ljs5l1u4expv"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "32.28MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:00:10.525963114 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm run build",
+      "ID": "xqnsum01xv4t61vc1ycowy372",
+      "LastUsedAt": "5 days ago",
+      "Mutable": true,
+      "Parents": [
+        "r164ndtsh8obvy9jc6gx6tqdf"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "32.28MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:40:46.397931902 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm run build",
+      "ID": "65f69mmrgb7lwoa1t9w9bmw0q",
+      "LastUsedAt": "6 days ago",
+      "Mutable": true,
+      "Parents": [
+        "hsbcx4csyd2q5xakysgv89bvr"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "32.35MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 08:12:15.287018093 +0000 UTC",
+      "Description": "pulled from docker.io/library/ros:jazzy-ros-base@sha256:066420e07f60aa18262f2479981def87ebcfcec42eefb0c0c57c4a46098348ca",
+      "ID": "0kl0ztiu066pzua7phg4ez6ra",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "th3siahmvnot4jc1yxjdzp8am"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "33.2MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 09:04:02.52145524 +0000 UTC",
+      "Description": "cached mount /var/lib/apt/lists from exec /bin/bash -c rm -f /etc/apt/apt.conf.d/docker-clean     && apt-get -o Acquire::Retries=3 update     && DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::Retries=3 install -y --no-install-recommends     gcc python3-numpy python3-scipy python3-matplotlib python3-pil python3-yaml     python3-serial python3-colcon-common-extensions xvfb xauth procps fonts-noto-cjk     libgl1-mesa-dri mesa-utils ros-jazzy-ros-gz ros-jazzy-slam-toolbox     ros-jazzy-navigation2 ros-jazzy-nav2-bringup ros-jazzy-robot-localization     ros-jazzy-xacro ros-jazzy-joint-state-publisher ros-jazzy-robot-state-publisher     ros-jazzy-laser-filters ros-jazzy-topic-tools ros-jazzy-diagnostic-msgs     ros-jazzy-sensor-msgs-py ros-jazzy-rviz2 with id \"//var/lib/apt/lists\"",
+      "ID": "bwkcwqerbtp6n3rmbz4hnw59h",
+      "LastUsedAt": "13 days ago",
+      "Mutable": true,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "57.38MB",
+      "Type": "exec.cachemount",
+      "UsageCount": 5
+    },
+    {
+      "CreatedAt": "2026-10-13 14:38:43.303742334 +0000 UTC",
+      "Description": "[stage-1 2/3] COPY --from=builder /app/dist /usr/share/nginx/html",
+      "ID": "t5b8n262dvy2rvcyqcrygro3d",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "002pn8bf50zqmfbj87bl4x1vu"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "58.8MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 14:52:16.661401657 +0000 UTC",
+      "Description": "[stage-1 2/3] COPY --from=builder /app/dist /usr/share/nginx/html",
+      "ID": "pemxallcpwneek93srtgy54kb",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "002pn8bf50zqmfbj87bl4x1vu"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "58.8MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 14:56:48.451796241 +0000 UTC",
+      "Description": "[stage-1 2/3] COPY --from=builder /app/dist /usr/share/nginx/html",
+      "ID": "4g9hf4opntea4v3hdv5zicrni",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "002pn8bf50zqmfbj87bl4x1vu"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "58.8MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 05:28:06.595861361 +0000 UTC",
+      "Description": "[stage-1 2/3] COPY --from=builder /app/dist /usr/share/nginx/html",
+      "ID": "q14xssyo0bt2plmkuix0ymdq6",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "002pn8bf50zqmfbj87bl4x1vu"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "58.82MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-14 11:00:20.863455035 +0000 UTC",
+      "Description": "[stage-1 2/3] COPY --from=builder /app/dist /usr/share/nginx/html",
+      "ID": "m02bta805emtsehs3lfdl856v",
+      "LastUsedAt": "5 days ago",
+      "Mutable": false,
+      "Parents": [
+        "002pn8bf50zqmfbj87bl4x1vu"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "58.82MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:29:18.999800503 +0000 UTC",
+      "Description": "[stage-1 2/3] COPY --from=builder /app/dist /usr/share/nginx/html",
+      "ID": "v4xqyqid8qq60tmxqh0105u8z",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "il2eztz6nreyigpo57qsz2r0b"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "58.82MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:40:41.763644293 +0000 UTC",
+      "Description": "[stage-1 2/3] COPY --from=builder /app/dist /usr/share/nginx/html",
+      "ID": "v8u7ubdqruxift63qp8gjjn39",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "il2eztz6nreyigpo57qsz2r0b"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "58.82MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:40:56.109140692 +0000 UTC",
+      "Description": "[stage-1 2/3] COPY --from=builder /app/dist /usr/share/nginx/html",
+      "ID": "wvhge1czntl60j3xewmabywhb",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "002pn8bf50zqmfbj87bl4x1vu"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "58.91MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.477274035 +0000 UTC",
+      "Description": "pulled from ghcr.io/astral-sh/uv:python3.11-bookworm-slim@sha256:4f5d923c9dcea037f57bda425dd209f3ec643da2f0b74227f68d09dab0b3bb36",
+      "ID": "gex20e63wojunszxmp1d60avv",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "070sqz59ut9uz27pqyj95j5sb"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "67.94MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.350181578 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2",
+      "ID": "002pn8bf50zqmfbj87bl4x1vu",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "ucw0tpm8us9g85hirztc7xs2q"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "72.88MB",
+      "Type": "regular",
+      "UsageCount": 4
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:56.129845 +0000 UTC",
+      "Description": "pulled from docker.io/library/nginx:alpine@sha256:892bb2152464f0c5d8972593a5f5afaf8054552580b699d95f8ff4af08c2d33d",
+      "ID": "il2eztz6nreyigpo57qsz2r0b",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "9i6egf2woongh1pf25uk0rns2"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "72.91MB",
+      "Type": "regular",
+      "UsageCount": 2
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.517532299 +0000 UTC",
+      "Description": "pulled from ghcr.io/astral-sh/uv:python3.11-bookworm-slim@sha256:4f5d923c9dcea037f57bda425dd209f3ec643da2f0b74227f68d09dab0b3bb36",
+      "ID": "k5vjz53wclgg3p7626axoat48",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "9j0kkagczanvrq0wmapt9r7jr"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "75.31MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.329476633 +0000 UTC",
+      "Description": "pulled from ghcr.io/astral-sh/uv:python3.11-bookworm-slim@sha256:4f5d923c9dcea037f57bda425dd209f3ec643da2f0b74227f68d09dab0b3bb36",
+      "ID": "5klf47cp0lq1b0a468ovgyxms",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "113.5MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 08:12:15.263152235 +0000 UTC",
+      "Description": "pulled from docker.io/library/ros:jazzy-ros-base@sha256:066420e07f60aa18262f2479981def87ebcfcec42eefb0c0c57c4a46098348ca",
+      "ID": "tfm6czmckdzu2zvzpn57kl2hv",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": null,
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "117.4MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 08:12:15.392710809 +0000 UTC",
+      "Description": "pulled from docker.io/library/ros:jazzy-ros-base@sha256:066420e07f60aa18262f2479981def87ebcfcec42eefb0c0c57c4a46098348ca",
+      "ID": "01l63to3j1vd086a4960o2ype",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "dznakgdyi4l8uswii8nrvxei3"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "125.4MB",
+      "Type": "regular",
+      "UsageCount": 5
+    },
+    {
+      "CreatedAt": "2026-10-13 13:39:00.050710493 +0000 UTC",
+      "Description": "pulled from docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402",
+      "ID": "pxan1ahx9zh2al0zu7k2kvopl",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "vrnk0eyivoiwavdaachcckcl3"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "217.8MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:40:16.16246462 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev --no-install-project",
+      "ID": "pufi2e72ih2qi1fsnmyoo8uah",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "m05syk2klrd1ocgmhx4ch6awi"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "253.8MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:28:56.753260027 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev --no-install-project",
+      "ID": "ioihkqo3sa4oc470hetz7yn4y",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "4bjdun4oyj43phrmrjj0dj2cf"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "253.8MB",
+      "Type": "regular",
+      "UsageCount": 2
+    },
+    {
+      "CreatedAt": "2026-10-16 04:40:32.45259388 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm ci",
+      "ID": "0k0bcwdfahjuzkkguutxx9au6",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "z74plwq2tf32sq8ye9pcp3nfa"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "292.9MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-16 04:29:08.766133614 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm ci",
+      "ID": "zqf8cidpfe4juf27ugkipopjj",
+      "LastUsedAt": "3 days ago",
+      "Mutable": false,
+      "Parents": [
+        "6d1ktpj0669bkf4oc1e1en5d1"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "302.5MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-13 13:40:46.173912195 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c npm ci",
+      "ID": "uutii004y6xi8qfnces7b4w9z",
+      "LastUsedAt": "6 days ago",
+      "Mutable": false,
+      "Parents": [
+        "9ek8q39kev1mjimtz98qf01dt"
+      ],
+      "Reclaimable": true,
+      "Shared": false,
+      "Size": "302.5MB",
+      "Type": "regular",
+      "UsageCount": 4
+    },
+    {
+      "CreatedAt": "2026-10-19 13:10:39.930553602 +0000 UTC",
+      "Description": "mount / from exec /bin/sh -c uv sync --frozen --no-dev --no-install-project",
+      "ID": "s28e0gnwt9qm88q0dq0rxa4ep",
+      "LastUsedAt": "3 hours ago",
+      "Mutable": false,
+      "Parents": [
+        "hygc0dbikw56bwzusqdspu4ik"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "309.8MB",
+      "Type": "regular",
+      "UsageCount": 2
+    },
+    {
+      "CreatedAt": "2026-10-06 08:12:15.34735365 +0000 UTC",
+      "Description": "pulled from docker.io/library/ros:jazzy-ros-base@sha256:066420e07f60aa18262f2479981def87ebcfcec42eefb0c0c57c4a46098348ca",
+      "ID": "vlqzllov0jytdlp6wlgwd7lph",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "u15qdbfcca0zpswuwjbyhpsip"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "428MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 08:12:15.315023631 +0000 UTC",
+      "Description": "pulled from docker.io/library/ros:jazzy-ros-base@sha256:066420e07f60aa18262f2479981def87ebcfcec42eefb0c0c57c4a46098348ca",
+      "ID": "rr8haobp5ag9mvw31mk7jejqe",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "ry5xdkqvg4u9vn5k7lkoxsrcx"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "587.8MB",
+      "Type": "regular",
+      "UsageCount": 1
+    },
+    {
+      "CreatedAt": "2026-10-06 09:10:30.411780799 +0000 UTC",
+      "Description": "mount / from exec /bin/bash -c rm -f /etc/apt/apt.conf.d/docker-clean     && sed -i \"s|http://archive.ubuntu.com/ubuntu|${UBUNTU_MIRROR}|g; s|http://security.ubuntu.com/ubuntu|${UBUNTU_SECURITY_MIRROR}|g\" /etc/apt/sources.list.d/ubuntu.sources     && sed -i \"s|http://packages.ros.org/ros2/ubuntu|${ROS_MIRROR}|g; s/^Types:.*/Types: deb/\" /etc/apt/sources.list.d/ros2.sources     && apt-get -o Acquire::Retries=3 update     && DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::Retries=3 install -y --no-install-recommends     gcc python3-numpy python3-scipy python3-matplotlib python3-pil python3-yaml     python3-serial python3-colcon-common-extensions xvfb xauth procps fonts-noto-cjk     libgl1-mesa-dri mesa-utils ros-jazzy-ros-gz ros-jazzy-slam-toolbox     ros-jazzy-navigation2 ros-jazzy-nav2-bringup ros-jazzy-robot-localization     ros-jazzy-xacro ros-jazzy-joint-state-publisher ros-jazzy-robot-state-publisher     ros-jazzy-laser-filters ros-jazzy-topic-tools ros-jazzy-diagnostic-msgs     ros-jazzy-sensor-msgs-py ros-jazzy-rviz2",
+      "ID": "wl3p5hjzynm59gbvt41fdgco2",
+      "LastUsedAt": "13 days ago",
+      "Mutable": false,
+      "Parents": [
+        "01l63to3j1vd086a4960o2ype"
+      ],
+      "Reclaimable": true,
+      "Shared": true,
+      "Size": "4.451GB",
+      "Type": "regular",
+      "UsageCount": 2
+    }
+  ],
+  "DockerDiskBefore": [
+    {
+      "FullName": "C:\\Users\\jiker\\AppData\\Local\\Docker\\wsl\\disk\\docker_data.vhdx",
+      "Length": 220145385472
+    }
+  ]
+}

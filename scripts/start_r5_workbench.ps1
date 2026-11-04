@@ -17,6 +17,13 @@ if ($null -ne (Get-R5State $frontendUrl)) {
 }
 $evidencePath = Join-Path $projectRoot 'tmp\r5-workbench'
 New-Item -ItemType Directory -Force -Path $evidencePath | Out-Null
+if ($null -ne (Get-R5State $backendUrl)) {
+    Write-Output "Backend already running; preserved: $backendUrl"
+    return
+}
+$pythonRuntime = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
+& $pythonRuntime (Join-Path $PSScriptRoot 'runtime_baseline.py') freeze --output (Join-Path $evidencePath 'runtime-source.json')
+if ($LASTEXITCODE -ne 0) { throw 'Commit product changes before starting a versioned workbench.' }
 $existing = & $docker inspect $containerName 2>$null
 if ($LASTEXITCODE -eq 0) {
     $entry = ($existing | ConvertFrom-Json)[0]
@@ -52,7 +59,7 @@ while ($null -eq (Get-R5State $backendUrl)) {
 if ($BackendOnly) { Write-Output "R5 backend ready: $backendUrl"; return }
 $pythonRuntime = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
 if (-not (Test-Path -LiteralPath $pythonRuntime)) { throw 'Existing Windows Python runtime is unavailable.' }
-Write-Output "Open $frontendUrl and select R5 支撑候选 under 仿真车辆. Ctrl+C stops this dedicated workbench."
+Write-Output "Open $frontendUrl . R5 support is selected for new tasks. Ctrl+C stops this dedicated workbench."
 try {
     & $pythonRuntime (Join-Path $PSScriptRoot 'map_workbench.py') --sessions (Join-Path $evidencePath 'sessions') --port 8775 --simulation-url $backendUrl
 } finally {

@@ -1,0 +1,9 @@
+﻿{
+    "StartedAt":  "2026-10-20T01:59:44.0580121+09:00",
+    "Disk":  "C:\\Users\\jiker\\AppData\\Local\\Docker\\wsl\\disk\\docker_data.vhdx",
+    "Status":  "failed",
+    "OtherDistributionsStopped":  false,
+    "DockerRestarted":  false,
+    "Error":  "Docker is running; refusing to compact its data disk.",
+    "FinishedAt":  "2026-10-20T01:59:44.0962326+09:00"
+}

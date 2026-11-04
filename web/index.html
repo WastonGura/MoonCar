@@ -47,7 +47,7 @@
           <label>实际起始朝向（°）<input id="spawn-yaw" type="number" min="-180" max="180" step="any" value="0" required></label>
           <label>地形场景<select id="experiment-scene"><option value="survey_v2_native">Terrain V2 · 30×30 米 · 原始地形</option><option value="survey_v2">Terrain V2 · 30×30 米 · 定位标柱</option><option value="survey">标准场景 · 50×50 米</option><option value="visible_ramp_v1">坡面测试场景</option><option value="visible_curve_v1">曲面测试场景</option></select></label>
           <p id="experiment-scene-note" class="note">标准场景包含分布式岩石与坡面。</p>
-          <label>仿真车辆<select id="simulation-profile"><option value="legacy">原配置</option><option value="r5_support_v1">R5 支撑候选 · 独立悬架 · 0.25 ms</option></select></label>
+          <label>仿真车辆<select id="simulation-profile"><option value="r5_support_v1">R5 支撑配置 · 独立悬架 · 0.25 ms</option><option value="legacy">旧刚性配置 · 历史对照</option></select></label>
           <p class="note">R5 候选使用已验收的仿真假设，参数尚未标定；坡面允许物理滑移。</p>
           <label class="check"><input id="show-experiment" type="checkbox">显示任务草稿</label>
           <div class="actions"><button type="button" id="fit-experiment">查看区域</button><button type="button" id="full-region">选择 50×50 米全场</button><button type="button" id="save-experiment">保存任务</button><button type="button" id="load-experiment">载入任务</button></div>

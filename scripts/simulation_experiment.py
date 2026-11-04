@@ -152,6 +152,8 @@ class SimulationExperiment:
         from ament_index_python.packages import get_package_share_directory
         verify_installed_scene_resources(get_package_share_directory('mooncar_gazebo'))
         self.directory = Path(directory).resolve()
+        from runtime_baseline import load_identity
+        self.software=load_identity(os.environ.get('MOONCAR_RUNTIME_MANIFEST'))
         self.lock = threading.Lock()
         self.process = self.log = None
         self.current = None
@@ -217,6 +219,7 @@ class SimulationExperiment:
                 try:write_json(self.directory/current['id']/'startup-failure.json',self.startup_failure)
                 except OSError as exc:self.startup_failure['write_error']=str(exc)
             return dict(enabled=True, phase=phase, error=error, task=current,
+                        software=getattr(self,'software',dict(verified=False)),
                         motion=motion,startup_failure=getattr(self,'startup_failure',None),
                         autonomy=self.autonomy.state() if hasattr(self,'autonomy') else {},
                         session=str(archives[-1].relative_to(self.directory)).replace('\\','/') if archives else None)

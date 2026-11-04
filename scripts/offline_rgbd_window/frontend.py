@@ -556,4 +556,3 @@ class TrackFrontend:
         features['submitted_ids'] = features['track_ids'][selected].copy()
         self.keyframes.append((features, features['track_ids'].copy()))
         self._remember_reference(features)
-
