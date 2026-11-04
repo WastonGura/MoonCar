@@ -28,6 +28,7 @@ LAUNCH=HERE/'terrain_navigation.launch.py'if(HERE/'terrain_navigation.launch.py'
 ASSETS=HERE/'config/behavior_trees'if(HERE/'config/behavior_trees').is_dir()else NAVIGATION/'config/behavior_trees'
 CMAKE=HERE/'CMakeLists.txt'if(HERE/'CMakeLists.txt').is_file()else NAVIGATION/'CMakeLists.txt'
 sys.path[:0]=[str(HERE),str(ROOT/'scripts'),str(ROOT/'ros2_ws/src/mooncar_terrain/tests')]
+from localization_quality import require_dispatch_ready
 import autonomous_survey
 import test_localization_revisit_displacement as displacement
 
@@ -52,7 +53,7 @@ class Goal:
 
 class PrecisionNavigationResourceTests(unittest.TestCase):
     def fixture(self):
-        namespace=dict(math=math,secrets=secrets,time=time,NavigateToPose=NS(Goal=Goal))
+        namespace=dict(math=math,secrets=secrets,time=time,NavigateToPose=NS(Goal=Goal),require_dispatch_ready=require_dispatch_ready)
         namespace['within_region']=compile_function(actual_function(MOTION,'within_region'),dict(math=math))
         start=compile_function(actual_function(MOTION,'start','ExperimentMotion'),namespace)
         motion=NS(lock=threading.RLock(),active=False,phase='idle',state=Mock(return_value=dict(ready=True)),

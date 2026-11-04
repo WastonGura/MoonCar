@@ -318,6 +318,10 @@ class SimulationExperiment:
                     ident = 'experiment-'+uuid.uuid4().hex[:12]
                     folder = self.directory/ident
                     folder.mkdir()
+                    write_json(folder/'software.json',dict(
+                        software=getattr(self,'software',dict(verified=False)),
+                        simulation_profile=task.get('simulation_profile','legacy'),
+                        localization_mode=self.laser_odometry_mode if self.laser_odometry else None))
                     (folder/'task.json').write_text(json.dumps(task, indent=2)+'\n', encoding='utf-8')
                     (folder/'scene-setup.json').write_text(json.dumps(setup, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
                     survey_world(scene).write(folder/'survey_yard.sdf',encoding='unicode',xml_declaration=True)

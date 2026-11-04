@@ -16,7 +16,7 @@ from unittest.mock import Mock
 
 ROOT=Path(__file__).resolve().parents[4]
 sys.path.insert(0,str(ROOT/'scripts'))
-from localization_quality import LaserQualitySource,LocalizationQuality,MAX_STATUS_WALL_AGE
+from localization_quality import LaserQualitySource,LocalizationQuality,MAX_STATUS_WALL_AGE,LocalizationDispatchRejected
 
 
 def extracted_motion():
@@ -29,7 +29,7 @@ def extracted_motion():
     if {node.name for node in methods}!=names:raise AssertionError('Required actual candidate methods missing')
     extracted=ast.ClassDef(name='CandidateMotion',bases=[],keywords=[],body=methods,decorator_list=[])
     module=ast.fix_missing_locations(ast.Module(body=[extracted],type_ignores=[]))
-    namespace=dict(json=json,time=time,LocalizationQuality=LocalizationQuality,
+    namespace=dict(json=json,time=time,LocalizationQuality=LocalizationQuality,LocalizationDispatchRejected=LocalizationDispatchRejected,
         MAX_STATUS_WALL_AGE=MAX_STATUS_WALL_AGE,String=SimpleNamespace,
         Buffer=Mock(side_effect=lambda **kw:Mock()),TransformListener=Mock(side_effect=lambda *a:Mock()),
         ActionClient=Mock(side_effect=lambda *a,**kw:Mock()),NavigateToPose=object(),Spin=object())

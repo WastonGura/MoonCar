@@ -260,7 +260,10 @@ class OfflineSurveyTests(unittest.TestCase):
                                 capture_output=True, encoding='utf-8')
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(json.loads(result.stdout)['execution_status'], 'completed')
-        self.assertNotIn('rclpy', sys.modules)
+        probe = subprocess.run([sys.executable, '-B', '-c',
+            "import sys;sys.path.insert(0,sys.argv[1]);import offline_survey;assert 'rclpy' not in sys.modules",
+            str(ROOT/'scripts')], capture_output=True, encoding='utf-8')
+        self.assertEqual(probe.returncode, 0, probe.stderr)
 
 
 if __name__ == '__main__':

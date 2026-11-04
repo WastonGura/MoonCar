@@ -210,7 +210,8 @@ class RevisitExactCaptureRetryTests(unittest.TestCase):
             survey.path=Path(folder)/'autonomy-test.json'
             record={}
             survey.persist_revisit_plan_snapshot(record,grid,pose,77.,[.1,-.2],receipt)
-            self.assertEqual(set(record),{'planning_evidence'})
+            self.assertEqual(set(record),{'planning_evidence','planning_evidence_history'})
+            self.assertEqual(record['planning_evidence_history'],[record['planning_evidence']])
             reference=record['planning_evidence']
             self.assertEqual(set(reference),{'path','sha256','observations','breadcrumbs','capture_attempts','candidate_counts'})
             destination=survey.path.parent/reference['path'];contents=destination.read_bytes()

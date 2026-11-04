@@ -33,7 +33,7 @@ class ExperimentLaunchTests(LaunchResolution, unittest.TestCase):
             context = checks.prepare(description, arguments)
             terrain_description, terrain_context = checks.descend(
                 checks.included(description.entities, context, 'terrain_navigation.launch.py'), context)
-            self.assert_choice(self.terrain(terrain_description, terrain_context), laser=True, direct=True)
+            self.assert_choice(self.terrain(terrain_description, terrain_context), backend='rgbd_window')
             actions = []
             for action in terrain_description.entities:
                 if isinstance(action, OpaqueFunction):
@@ -59,14 +59,14 @@ class ExperimentLaunchTests(LaunchResolution, unittest.TestCase):
             self.assertEqual(parameters['source'], source)
             self.assertIs(parameters['require_laser_localization'], True)
 
-    def test_v2_arguments_reach_actual_simulator_and_recorder_with_default_direct(self):
+    def test_v2_arguments_reach_actual_simulator_and_recorder_with_default_window(self):
         source = 'Gazebo Terrain V2 survey 30×30 米（追加四个定位标柱）；测试来源'
         self.check_launch(dict(world_name='mooncar_survey_v2', initial_z='-.00053',
                                render_engine='ogre2', source_description=source),
                           'mooncar_survey_v2', -.00053, 'ogre2', source)
 
     def test_old_container_launch_keeps_legacy_world_height_and_renderer(self):
-        source = 'Gazebo 50×50 米仿真；激光在线建图定位、深度观测采集；历史深度位姿未做回环修正'
+        source = 'Gazebo 仿真；定位方案以本次启动参数为准；深度观测采集；历史深度位姿未做回环修正'
         self.check_launch({}, 'lunar_yard', 0., 'ogre', source)
 
 
