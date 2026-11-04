@@ -42,7 +42,7 @@ def main():
     assert software.get('verified') and software.get('product_clean')
     assert software['baseline']['simulation_profile'] == 'r5_support_v1'
     ramp = args.case == 'ramp'
-    task = dict(version=1, scene='survey_v2_native', simulation_profile='r5_support_v1', gui=False,
+    task = dict(version=1, scene='survey_v2_native', simulation_profile='r5_support_v1', gui=os.environ.get('MOONCAR_VALIDATION_GUI')=='1',
         region=[-8., -8., 8., 8.] if ramp else [-15., -15., 15., 15.],
         start=[0., 0., 0.] if ramp else [.5, 0., 0.])
     wall_budget = 480 if args.case == 'direct' else 1200

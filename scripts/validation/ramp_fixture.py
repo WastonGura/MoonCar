@@ -65,17 +65,21 @@ ROUTE=[('move',1.,0.),('move',2.5,0.),('move',4.,0.),('turn',math.pi/2),('turn',
 HEADING_CASE=os.environ.get('MOONCAR_RAMP_HEADING_CASE','full_route')
 if HEADING_CASE=='half_spin':
     ROUTE=ROUTE[:5]
-elif HEADING_CASE=='fixed_observe':
+elif HEADING_CASE in ('fixed_observe','feedback_observe'):
     ROUTE=ROUTE[:5]+[('move',4.3,0.)]
 elif HEADING_CASE=='gimbal_observe':
     ROUTE=ROUTE[:3]+[('gimbal',math.pi/2,-.2618),('gimbal',0.,-.2618),('move',4.3,0.)]
 elif HEADING_CASE!='full_route':
     raise ValueError('Unknown heading trial')
+if HEADING_CASE=='feedback_observe':
+    from feedback_turn_adapter import install
+    install(OUT)
 def run(self):
     self.wall_started=time.monotonic();self.data['validation_fixture']='Shipped-V2 ramp '+HEADING_CASE+'; production scan/execute/health/permit; choose_view not evaluated'
     self.data['validation_route']=[list(p) for p in ROUTE]
     try:
         if not self.initial_depth_observation():return
+        if HEADING_CASE=='feedback_observe':self.motion.feedback_turn_enabled=True
         for item in ROUTE:
             if not self.healthy():return
             record=dict(kind='advance' if item[0]=='move' else 'gimbal_observe' if item[0]=='gimbal' else 'turn',action=list(item),started_seconds=self.now()-self.data['started'],outcome='running',success=False)
@@ -104,5 +108,6 @@ survey.AutonomousSurvey.run=run
 proof=dict(world=str(RAMP),world_name='mooncar_ramp_v2',world_sha256=sha(RAMP),assets={str(p.relative_to(PACKAGE)):sha(p) for p in sorted(assets)},
     heading_case=HEADING_CASE,
     fixed_route=[list(p) for p in ROUTE],spawn=spawn(0.,0.,0.),bounds=list(bounds('survey_v2_native')),
-    policy='Validation backend fixture only. Actual shipped geometry; no truth/known pose input to estimator, no direct velocity command, all normal motion checks retained.')
+    policy=('Validation-only pose feedback maneuver through the existing safety relay; no truth in control; leases, localization, fresh observed map, region and explicit swept-motion checks retained.'
+            if HEADING_CASE=='feedback_observe' else 'Validation backend fixture only. Actual shipped geometry; no truth/known pose input to estimator, no direct velocity command, all normal motion checks retained.'))
 (OUT/'ramp-fixture.json').write_text(json.dumps(proof,indent=2)+'\n')

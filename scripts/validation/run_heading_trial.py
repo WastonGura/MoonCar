@@ -19,10 +19,13 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--mode', choices=('half_spin', 'fixed_observe', 'gimbal_observe'), required=True)
+    parser.add_argument('--mode', choices=('half_spin', 'fixed_observe', 'gimbal_observe', 'feedback_observe'), required=True)
+    parser.add_argument('--record-video', action='store_true', help='Actual X11 Gazebo GUI frames with per-frame capture timestamps')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sessions', type=Path, required=True)
     args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=False)
+    if args.record_video and not os.environ.get('DISPLAY'):
+        raise RuntimeError('Video requires DISPLAY; start this runner through xvfb-run')
     opener = build_opener(ProxyHandler({}))
     def state():
         with opener.open('http://127.0.0.1:8766/api/simulation', timeout=3) as response:
@@ -35,13 +38,16 @@ def main():
         MOONCAR_RUNTIME_MANIFEST='/evidence/runtime-baseline.json',
         MOONCAR_VALIDATION_OUTPUT=str(args.output/'fixture'), MOONCAR_RAMP_HEADING_CASE=args.mode,
         OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1')
+    if args.record_video:
+        env.update(MOONCAR_VALIDATION_GUI='1',MOONCAR_VALIDATION_CAMERA_POSE='1.7 -3.2 2.6 0 0.55 1.016',LP_NUM_THREADS='1')
     for key in ('ROS_STATIC_PEERS', 'ROS_LOCALHOST_ONLY', 'MOONCAR_LASER_ODOMETRY_MODE'):
         env.pop(key, None)
     def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
     def write(name, value):
         (args.output/name).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n')
     protocol = dict(mode=args.mode, changes=[], production_defaults_changed=False,
-        maximum_new_worlds=1, control_truth_inputs=False, physical_parameters_changed=False)
+        maximum_new_worlds=1, control_truth_inputs=False, physical_parameters_changed=False,
+        actual_gui_video=args.record_video, video_timing_comparable_to_headless=False)
     if args.mode == 'half_spin':
         from ament_index_python.packages import get_package_share_directory
         source = Path(get_package_share_directory('mooncar_navigation'))
@@ -62,7 +68,7 @@ def main():
             actual_files={str(p.relative_to(target)): digest(p) for p in target.rglob('*')
                           if p.is_file() and '__pycache__' not in p.parts})
     write('protocol.json', protocol)
-    backend = None
+    backend = None; video = None; video_log = None
     try:
         with (args.output/'backend.log').open('x') as log:
             backend = subprocess.Popen([sys.executable, '-B', str(ROOT/'scripts/validation/launch_backend.py'),
@@ -77,12 +83,23 @@ def main():
                 if backend.poll() is not None: raise RuntimeError('Validation backend exited')
                 if time.monotonic() > deadline: raise TimeoutError('Backend startup timed out')
                 time.sleep(.5)
+            if args.record_video:
+                video_log=(args.output/'screen-recorder.log').open('x')
+                video=subprocess.Popen([sys.executable,'-B',str(ROOT/'scripts/validation/record_screen.py'),
+                    '--output',str(args.output/'video')],env=env,stdout=video_log,stderr=subprocess.STDOUT)
             with (args.output/'driver.log').open('x') as driver_log:
                 code = subprocess.run([sys.executable, '-B', str(ROOT/'scripts/validation/run_online_matrix_case.py'),
                     '--case', 'ramp', '--output', str(args.output/'case'), '--sessions', str(args.sessions)],
                     env=env, stdout=driver_log, stderr=subprocess.STDOUT, timeout=1350).returncode
             write('driver-exit.json', dict(exit_code=code))
     finally:
+        if video:
+            if video.poll() is None:video.send_signal(signal.SIGINT)
+            try:video_code=video.wait(timeout=30)
+            except subprocess.TimeoutExpired:
+                video.terminate();video_code=video.wait(timeout=10)
+            write('video-exit.json',dict(exit_code=video_code))
+        if video_log:video_log.close()
         if backend:
             if backend.poll() is None: backend.send_signal(signal.SIGINT)
             try: code_backend = backend.wait(timeout=30)
