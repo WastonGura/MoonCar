@@ -1,0 +1,117 @@
+{
+  "mode": "baseline",
+  "actual_gui_pixels": false,
+  "start_sim": 38.690999999999995,
+  "end_sim": 55.476749999999996,
+  "turn_start_sim": 39.891,
+  "turn_end_sim": 55.17675,
+  "maximum_drift_m": 0.6733031441916166,
+  "simulation_playback_speed": 0.5,
+  "fps": 20,
+  "frames": 712,
+  "video": "/evidence/feedback-turn-video-20261105/delivery/baseline-turn-replay.mp4",
+  "source_experiment": "experiment-87ae029097e0",
+  "tested_git_commit": "7db785ca7bf0804702fac3bb7fc18c94cd143b15",
+  "outcome": "passed",
+  "history": [
+    {
+      "kind": "advance",
+      "action": [
+        "move",
+        1.0,
+        0.0
+      ],
+      "started_seconds": 3.64025,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "x": 1.0,
+        "y": 0.0
+      },
+      "end_sim": 14.1975
+    },
+    {
+      "kind": "advance",
+      "action": [
+        "move",
+        2.5,
+        0.0
+      ],
+      "started_seconds": 10.820250000000001,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "x": 2.5,
+        "y": 0.0
+      },
+      "end_sim": 25.9815
+    },
+    {
+      "kind": "advance",
+      "action": [
+        "move",
+        4.0,
+        0.0
+      ],
+      "started_seconds": 22.61675,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "x": 4.0,
+        "y": 0.0
+      },
+      "end_sim": 37.86325
+    },
+    {
+      "kind": "turn",
+      "action": [
+        "turn",
+        1.5707963267948966
+      ],
+      "started_seconds": 34.5115,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "yaw": 1.5707963267948966
+      },
+      "end_sim": 45.189
+    },
+    {
+      "kind": "turn",
+      "action": [
+        "turn",
+        0.0
+      ],
+      "started_seconds": 41.83925,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "yaw": 0.0
+      },
+      "end_sim": 53.16275
+    },
+    {
+      "kind": "advance",
+      "action": [
+        "move",
+        4.3,
+        0.0
+      ],
+      "started_seconds": 49.79725,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "x": 4.3,
+        "y": 0.0
+      },
+      "end_sim": 61.70025
+    }
+  ],
+  "screen_alignment": "nearest capture matched using sampled workbench wall/sim clocks; qualitative, not exact contact-frame synchronization"
+}

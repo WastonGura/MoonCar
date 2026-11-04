@@ -1,0 +1,85 @@
+{
+  "mode": "candidate",
+  "actual_gui_pixels": true,
+  "start_sim": 38.7555,
+  "end_sim": 41.0825,
+  "turn_start_sim": 39.9555,
+  "turn_end_sim": 41.00825,
+  "maximum_drift_m": 0.031074158103202652,
+  "simulation_playback_speed": 0.25,
+  "fps": 20,
+  "frames": 227,
+  "video": "/evidence/feedback-turn-video-20261105/delivery/feedback-turn-diagnostic.mp4",
+  "source_experiment": "experiment-448a7594983c",
+  "tested_git_commit": "304ff3473124bb0bbad55a0f1bb7711369ed0f27",
+  "outcome": "failed",
+  "history": [
+    {
+      "kind": "advance",
+      "action": [
+        "move",
+        1.0,
+        0.0
+      ],
+      "started_seconds": 3.372,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "x": 1.0,
+        "y": 0.0
+      },
+      "end_sim": 14.262
+    },
+    {
+      "kind": "advance",
+      "action": [
+        "move",
+        2.5,
+        0.0
+      ],
+      "started_seconds": 10.623,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "x": 2.5,
+        "y": 0.0
+      },
+      "end_sim": 26.06775
+    },
+    {
+      "kind": "advance",
+      "action": [
+        "move",
+        4.0,
+        0.0
+      ],
+      "started_seconds": 22.411749999999998,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "x": 4.0,
+        "y": 0.0
+      },
+      "end_sim": 37.94625
+    },
+    {
+      "kind": "turn",
+      "action": [
+        "turn",
+        1.5707963267948966
+      ],
+      "started_seconds": 34.28925,
+      "outcome": "failed",
+      "success": false,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "yaw": 1.5707963267948966
+      },
+      "end_sim": 41.00825
+    }
+  ],
+  "screen_alignment": "nearest capture matched using sampled workbench wall/sim clocks; qualitative, not exact contact-frame synchronization"
+}

@@ -1,5 +1,15 @@
 # Working Context
 
+## 2026-11-05（最新：位置反馈转向有限尝试，视频已交付，未完成转向）
+
+用户批准尝试位置+朝向反馈，并要求实际视频分析。新增仅validation feedback_observe，不改默认/定位/回访/R5物理或前后轴分配。独立控制器v≤.12,w≤.3，纵向位置投影纠偏+最多一次弧线回位/最终转向，40sim秒/.6m有界；沿用许可/定位/地图/区域，并做2sim秒含进退曲线的足迹预测，未知/障碍拒绝。.12m及3/5°终止只是原型内部规则，不升级项目硬指标。
+
+首次world experiment-5fff2b3880a3在动作前被资源工具把GUI和server混认而中止，约31wall；非候选控制失败。修正primary_runtime选择真正-s进程并新增回归；只追加一个实际候选world experiment-448a7594983c（总2world），无继续调参。实跑commit304ff3473124bb0bbad55a0f1bb7711369ed0f27，659源摘要b3923d07df710111f9c3ccd927130a83360d2e3e012069ee8539335f9b444862。前三move成功；首次turn39.9555–41.00825sim仅1.05275秒，被predicted_obstacle_footprint守卫停止。至停止附近真实转12.71°，证据结束累计14.02°（末绝对yaw约13.5°），偏移3.11→3.48cm；未进入回位、未完成90°/回正/续行。不是撞障碍的证据，尚未区分代价分类/膨胀/保守足迹，不放宽安全或重跑。不能把3cm与旧完整往返67cm当成改善。
+
+视频：reports/feedback_turn_video_20261105/feedback-turn-diagnostic.mp4（11.35秒，真实Gazebo屏幕局部放大、0.25×sim慢放，右侧真值/定位俯视重建，速度及停止原因，末2秒标注停帧）；baseline-turn-replay.mp4（35.60秒，旧experiment-87ae029097e0完整两转及停留日志回放、0.5×，明确不是旧现场录像，轮形示意不重放悬架/轮角）。两份1280x800 H264 20fps，抽帧视觉检查及完整解码通过，约224KB/718KB，小成片及预览入Git，也有output/turn-video-20261105副本。GUI与指标按截图wall和工作台sim采样近邻对齐，非物理步级接触同步，无生成图像或重新仿真。
+
+初次录屏黑屏因SimulationExperiment另启嵌套Xvfb，外层显示与实际GUI不同；实际试验中独立helper按该实验GZ_PARTITION与GUI-g进程获取DISPLAY/XAUTHORITY，录到293真实截图，encoder0。外层黑片/一次无鉴权失败保留。收尾正式record_screen支持follow-workbench自动选择实际显示和鉴权，commit157b683a8a017e91ff959336437dac9c0bd7f57a；未再完整在线跑该入口，不冒充实跑版本。211根检查通过，120安装/R5库收尾核验；659源码与实跑差异只两录制文件，控制及物理未变。GUI/编码CPU5附加负载，不和旧headless比wall效率。driver1是任务未完成，backend0/实际recorder0。末尾只有init/sleep，收尾停container。报告reports/FEEDBACK_TURN_VIDEO_20261105.md；raw tmp/ros_acceptance/feedback-turn-video-20261105，SHA索引/视频渲染脚本及结果纳入Git。当前原型尚未验证有效，暂不接默认、不扩展修复。
+
 ## 2026-11-04（最新：固定视向与云台同任务对照完成，默认未切换）
 
 用户询问能否用已有旋转云台替代转向，并要求两方案完成同任务的差异。已各跑一个新world，无额外重试；实际测试commit7db785ca7bf0804702fac3bb7fc18c94cd143b15，656源摘要6f44eb9760f03c10f2af5c5705f2ce3c23e1fb55de44a3041fd127b18dcfdbe8，120安装首末同验，根204过。原R5/.25ms/rgbd_window/no revisit，CPU与实际库同。fixed_observe新增仅验证模式，用默认.3车体Spin；gimbal_observe现有云台pan90/0。相同6动作：move1/2.5/4、侧看/回正、move4.3，每段2s保持。共同initial_depth_observation本身用云台，故只是正式任务执行方式A/B，不是无云台/有云台硬件或自然v2/v3策略比较。
