@@ -65,6 +65,8 @@ ROUTE=[('move',1.,0.),('move',2.5,0.),('move',4.,0.),('turn',math.pi/2),('turn',
 HEADING_CASE=os.environ.get('MOONCAR_RAMP_HEADING_CASE','full_route')
 if HEADING_CASE=='half_spin':
     ROUTE=ROUTE[:5]
+elif HEADING_CASE=='fixed_observe':
+    ROUTE=ROUTE[:5]+[('move',4.3,0.)]
 elif HEADING_CASE=='gimbal_observe':
     ROUTE=ROUTE[:3]+[('gimbal',math.pi/2,-.2618),('gimbal',0.,-.2618),('move',4.3,0.)]
 elif HEADING_CASE!='full_route':

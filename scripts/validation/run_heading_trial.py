@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--mode', choices=('half_spin', 'gimbal_observe'), required=True)
+    parser.add_argument('--mode', choices=('half_spin', 'fixed_observe', 'gimbal_observe'), required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sessions', type=Path, required=True)
     args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=False)
