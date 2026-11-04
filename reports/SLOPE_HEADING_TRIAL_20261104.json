@@ -1,0 +1,1512 @@
+{
+  "schema_version": 1,
+  "test_commit": "69b77b07895780e20302dd2467b9eb8f06d511ea",
+  "branch": "dev/terrain-mapping-workbench",
+  "identity": {
+    "git_commit": "69b77b07895780e20302dd2467b9eb8f06d511ea",
+    "git_branch": "dev/terrain-mapping-workbench",
+    "source_root": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+    "product_clean": true,
+    "baseline": {
+      "version": "2026-11-04-r5-window",
+      "simulation_profile": "r5_support_v1",
+      "scene": "survey_v2_native",
+      "localization_mode": "rgbd_window",
+      "active_revisit": false,
+      "support_profile": "independent_linear_v1",
+      "physics_step_s": 0.00025,
+      "support_runtime": "/opt/mooncar/turn/r5-v2",
+      "hardware_calibrated": false,
+      "historical_tasks_without_profile": "legacy"
+    },
+    "source_digest": "3f493d9b5ab722356f9541ec412344049cc6602ee313a1284e1f34865166e075"
+  },
+  "source_files": 656,
+  "verified_installed_files": 120,
+  "container": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d 0-5 6000000000 6442450944 false",
+  "world_count": 2,
+  "production_algorithms_changed": false,
+  "default_configuration_changed": false,
+  "tools_regression": {
+    "root_tests": 204,
+    "passed": true
+  },
+  "stages": {
+    "half-spin": {
+      "experiment": "experiment-b1d31ab070cd",
+      "driver_outcome": "passed",
+      "successful_actions": 5,
+      "actions": 5,
+      "history": [
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            1.0,
+            0.0
+          ],
+          "started_seconds": 3.3369999999999997,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 1.0,
+            "y": 0.0
+          },
+          "end_sim": 14.285
+        },
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            2.5,
+            0.0
+          ],
+          "started_seconds": 10.595999999999998,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 2.5,
+            "y": 0.0
+          },
+          "end_sim": 26.08175
+        },
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            4.0,
+            0.0
+          ],
+          "started_seconds": 22.38225,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 4.0,
+            "y": 0.0
+          },
+          "end_sim": 37.99325
+        },
+        {
+          "kind": "turn",
+          "action": [
+            "turn",
+            1.5707963267948966
+          ],
+          "started_seconds": 34.284,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "yaw": 1.5707963267948966
+          },
+          "end_sim": 50.278
+        },
+        {
+          "kind": "turn",
+          "action": [
+            "turn",
+            0.0
+          ],
+          "started_seconds": 46.57,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "yaw": 0.0
+          },
+          "end_sim": 63.69825
+        }
+      ],
+      "elapsed_wall_s": 273.763881535,
+      "localization_pauses": [],
+      "snapshot_read_errors": [],
+      "observer_exit": 0,
+      "lifecycle_exit": 0,
+      "backend_exit": 0,
+      "primary_run_end": {
+        "type": "run_end",
+        "complete": true,
+        "sim_ns": 66547500000,
+        "finished_wall_ns": 906638075288,
+        "counts": {
+          "imu_samples": 6601,
+          "depth_messages": 661,
+          "rgb_messages": 661,
+          "paired_exposures": 661,
+          "queued": 661,
+          "readiness_timeouts": 1,
+          "rejected": 1,
+          "plan_failures": 2,
+          "processed": 660,
+          "plan_outputs": 658,
+          "published": 658
+        },
+        "fault": null,
+        "axes": "initial_body_yaw",
+        "gauge_stamp_ns": 700000000,
+        "initial_imu_yaw_rad": 0.0,
+        "imu_header_summary": {
+          "callbacks_received": 6601,
+          "callbacks_finished": 6601,
+          "accepted": 6601,
+          "rejected": 0,
+          "first_stamp_ns": 549000000,
+          "last_stamp_ns": 66540000000,
+          "maximum_gap_ns": 10000000,
+          "gaps_over_30ms": 0,
+          "gaps_over_60ms": 0
+        },
+        "remaining_unmatched": {
+          "rgb": 0,
+          "depth": 0
+        },
+        "worker_terminal": true,
+        "epoch": "7bf89dbc-ee43-4b5a-9f59-295c8470c237"
+      },
+      "protocol": {
+        "mode": "half_spin",
+        "changes": [
+          {
+            "parameter": "behavior_server.max_rotational_vel",
+            "before": 0.3,
+            "after": 0.15
+          }
+        ],
+        "production_defaults_changed": false,
+        "maximum_new_worlds": 1,
+        "control_truth_inputs": false,
+        "physical_parameters_changed": false,
+        "private_navigation_package": {
+          "path": "/evidence/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation",
+          "original_yaml_sha256": "8d4f2ca0f7df8bb9ae1d0c6d23ea787b52686cc2bfaff9d06116e279df499eaf",
+          "candidate_yaml_sha256": "bfd31af1b7f503937934f67e217a122d6eb2380997c938d2d601d30cdc4c2910",
+          "actual_files": {
+            "local_setup.bash": "41b30b6c107da94a2478e43953b8cbd0d920f5e8fc1ea847c61a213623d623b0",
+            "local_setup.dsv": "0358cd4a05162c7c70eb278c388d4012c9308c718d883bb824392f6e006a541a",
+            "local_setup.sh": "e5bcbe810c6e17624554496d45bf6b9ab077ec41c72278ef22ebdac75f23772c",
+            "local_setup.zsh": "56942873096201f4e7fe5e7b9bd87e56cc42ced33fadb53fbc25766fd9149c81",
+            "package.bash": "e5078dba8661a007966232d6bfe7f2139e8dda2ae57e82146b42384c9757d31e",
+            "package.dsv": "8c0623af784b236bcc410aa3539c342418c2a8e04c445e55aaab6d099a6134a7",
+            "package.ps1": "0e0df29aacf3e78776813c80ae32fa9f07e2f80715df1ce1c938ac6a1813ad60",
+            "package.sh": "64f1e41f9cbf1455f5335ea675cc06cc1cbaaac9743fa39d9e7e357dd0c6d6b5",
+            "package.xml": "33220fbdbbdf960b374dcda6baf6976257cb51868251d4ed4ba5bca97cc3a7fc",
+            "package.zsh": "9316d47240cc864e21d740646b3939763977c2e472c2971fa9391ab7e06875a1",
+            "cmake/mooncar_navigationConfig-version.cmake": "5df7fb3481e154840dd6ac6d1b6eb53c81ed9cadd5e7a00398962383332be7ea",
+            "cmake/mooncar_navigationConfig.cmake": "4d8e9c383aa6e579b113028fbff718d1f529fef763714a90304fc4c84623eca3",
+            "config/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "config/nav2_params.yaml": "bfd31af1b7f503937934f67e217a122d6eb2380997c938d2d601d30cdc4c2910",
+            "environment/ament_prefix_path.dsv": "c4797d0a0670c70b4d3bcb5b7d47563635c7950595603f3af66f70af546ad57e",
+            "environment/ament_prefix_path.sh": "6658f14efe913e291c0bf2c74059a9e14fb8abdb5a31628bef61d3b41e206679",
+            "environment/path.dsv": "3f2cdf6234ea2525c1670c140b6a03700d98a2408e7a232107791fa96c08b58b",
+            "environment/path.sh": "abe10a0452bc4b93f665fc343a7e6d32fe3f3a2b6beb90d338044a71d2583f18",
+            "hook/cmake_prefix_path.dsv": "7ab2eb0a25c282f9a5bf62596b4c098865cd3a8aa5740601a9efa8620acd69d3",
+            "hook/cmake_prefix_path.ps1": "0c7394c1d89765deec81cb10e59a36d0d98867690b4b8781d5bc9186fc67885a",
+            "hook/cmake_prefix_path.sh": "ee9849def404b669097010f38735aa521e0731366a319b6e1abe996c793494b2",
+            "launch/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "launch/navigation.launch.py": "45c23f2a6e66827a19252d033eb344c353f09193e99187afeeb18aa748652548",
+            "launch/terrain_navigation.launch.py": "44aa7b4c0cc3bf75dd64683b73f3d3d8e5c53e5f7f7b246b293bd464cef4ba79",
+            "maps/lunar_yard.pgm": "f4fcd7b76718923771858ea02c4bdddff4adaa0873ae674fd10c084dc9eed5f9",
+            "maps/lunar_yard.yaml": "42b968230efeab1e239e2006d566ce5a558afc5214cf3415afc1933bbc842b05",
+            "maps/README.md": "82af88f5c85f08266fa21202eeaf015f7c05af1df57cd9f0d09b17536317f99d",
+            "rviz/navigation.rviz": "f7a8c07ba639660c8e385ed349a56991923777888b2af41c8141548e418eed0d",
+            "config/behavior_trees/navigate_to_pose_revisit.xml": "d1dbdf5bf7873dccf76698e3d0c2ffb155fc6f443d48c28d0ff94bb765c7d364",
+            "config/behavior_trees/navigate_to_pose_workbench.xml": "47d12ac93fc28e89df318177a316e992a75db98938e202ae76a13a1e229c5d46"
+          }
+        }
+      },
+      "support_loaded": {
+        "pid": 505,
+        "libraries": {
+          "/opt/mooncar/turn/r5-v2/libode.so.8.0.2": "313dbad175a34e0fd0387792bc922766b5e7727c3883ede5b84322cd055140c7",
+          "/opt/mooncar/physics/dart-7.8.0/libmooncar-physics7-dartsim.so": "cfe9b7c6bf72c204645df81f1be7bc646ffbd342acea52c0684a1ad24848274c",
+          "/opt/mooncar/turn/r5-v2/libmooncar-axle-allocation.so": "d85a756cc12d950f92ba405c60bd45ba71c989ae4554c2bb05d14792905b069d",
+          "/opt/mooncar/turn/r5-v2/libmooncar-turn-slip-control.so": "b99d96651a8175e6b6eacfa10bd7b1d65eb88d61b56cbf802a036048d7dd726c"
+        },
+        "profile": "r5_support_v1",
+        "main_step_s": 0.00025,
+        "world_sha256": "97a960bc481b760d192c9e5e18266d21ba6a6d4ed97ef63bc69c2b0285d5418c"
+      },
+      "metrics": [
+        {
+          "action": [
+            "turn",
+            1.5707963267948966
+          ],
+          "start_sim": 39.9965,
+          "end_sim": 50.278,
+          "duration_sim_s": 10.281500000000001,
+          "net_xy_m": 0.3525608129923921,
+          "max_radius_m": 0.3525608129923921,
+          "max_abs_command_linear": 0.0,
+          "max_abs_command_angular": 0.15,
+          "hold_net_xy_m": 0.016436807641051005
+        },
+        {
+          "action": [
+            "turn",
+            0.0
+          ],
+          "start_sim": 52.2825,
+          "end_sim": 63.69825,
+          "duration_sim_s": 11.415750000000003,
+          "net_xy_m": 0.3003005719236572,
+          "max_radius_m": 0.3003005719236572,
+          "max_abs_command_linear": 0.0,
+          "max_abs_command_angular": 0.15,
+          "hold_net_xy_m": 3.256517294511304e-05
+        }
+      ],
+      "capture_summary": {
+        "version": "survey-metrics-v1",
+        "run_id": "autonomy-surface_view_v2-2ac4f2c0",
+        "strategy": "surface_view_v2",
+        "status": "completed",
+        "stop_diagnostics": null,
+        "last_motion_stop": null,
+        "reason": "限定坡面朝向试验完成",
+        "capture_status": "captured",
+        "budget_seconds": 300,
+        "source_sha256": "db1c7b6fb1ad580aad6afdd889937c46b02f5bd9773bdc6aaa5b870bd308f92a",
+        "scene_sha256": "527c0639c5fdc5e5417c176a730cdb47688d8eb4d846ac796fa093a5a951bccd",
+        "elapsed_seconds": 60.0,
+        "radius_m": 8,
+        "origin": [
+          1.4678054395501145e-05,
+          -2.760276778787156e-05
+        ],
+        "roi_area_m2": 201.75,
+        "initial_observed_area_m2": 18.6875,
+        "final_observed_area_m2": 46.1875,
+        "new_observed_area_m2": 27.5,
+        "initial_quality_area_m2": 5.1468750000000005,
+        "final_quality_area_m2": 27.083125,
+        "quality_gain_m2": 21.936249999999998,
+        "final_observed_fraction": 0.22893432465923172,
+        "sufficient_area_m2": 20.3125,
+        "path_m": 4.475424073243436,
+        "new_frames": 92,
+        "actions": 5,
+        "failed_actions": 0,
+        "height_rmse_m": null,
+        "slope_mae_deg": null,
+        "reference_status": "not_provided",
+        "limitations": [
+          "sampling quality is not accuracy or traversability",
+          "pose path length includes localization drift; sampled, not wheel odometry",
+          "ROI coverage is projected observed cells, including obstacles; not reachable-ground completion",
+          "scene images are asynchronous GUI captures, not timestamp-synchronized sensor frames"
+        ],
+        "quality_gain_m2_per_sim_second": 0.3656041666666666,
+        "initial_valid_surface_area_m2": 5.8125,
+        "valid_surface_gain_m2": 31.0,
+        "resampling_eligible_cells": 206,
+        "resampling_recovered_cells": 194,
+        "recovered_surface_m2": 12.125,
+        "resampling_success_fraction": 0.941747572815534,
+        "observation_lag_at_end_seconds": 2.1090000000000018,
+        "scene_images": 0,
+        "scene_distinct_images": 0,
+        "scene_warning": "No scene images",
+        "valid_surface_area_m2": 36.8125,
+        "raw_evaluated_frames": 95
+      }
+    },
+    "gimbal-observe": {
+      "experiment": "experiment-01f74efb9e64",
+      "driver_outcome": "passed",
+      "successful_actions": 6,
+      "actions": 6,
+      "history": [
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            1.0,
+            0.0
+          ],
+          "started_seconds": 3.4872500000000004,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 1.0,
+            "y": 0.0
+          },
+          "end_sim": 14.19775
+        },
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            2.5,
+            0.0
+          ],
+          "started_seconds": 10.684999999999999,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 2.5,
+            "y": 0.0
+          },
+          "end_sim": 26.00475
+        },
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            4.0,
+            0.0
+          ],
+          "started_seconds": 22.48525,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 4.0,
+            "y": 0.0
+          },
+          "end_sim": 37.88525
+        },
+        {
+          "kind": "gimbal_observe",
+          "action": [
+            "gimbal",
+            1.5707963267948966,
+            -0.2618
+          ],
+          "started_seconds": 34.37425,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "use_pan_tilt": true,
+            "pan": 1.5707963267948966,
+            "tilt": -0.2618
+          },
+          "end_sim": 44.444
+        },
+        {
+          "kind": "gimbal_observe",
+          "action": [
+            "gimbal",
+            0.0,
+            -0.2618
+          ],
+          "started_seconds": 40.95425,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "use_pan_tilt": true,
+            "pan": 0.0,
+            "tilt": -0.2618
+          },
+          "end_sim": 51.0505
+        },
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            4.3,
+            0.0
+          ],
+          "started_seconds": 47.5405,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 4.3,
+            "y": 0.0
+          },
+          "end_sim": 55.414
+        }
+      ],
+      "elapsed_wall_s": 243.05840250999995,
+      "localization_pauses": [],
+      "snapshot_read_errors": [],
+      "observer_exit": 0,
+      "lifecycle_exit": 0,
+      "backend_exit": 0,
+      "primary_run_end": {
+        "type": "run_end",
+        "complete": true,
+        "sim_ns": 58240500000,
+        "finished_wall_ns": 1210801164254,
+        "counts": {
+          "imu_samples": 5764,
+          "depth_messages": 577,
+          "rgb_messages": 577,
+          "paired_exposures": 577,
+          "queued": 577,
+          "readiness_timeouts": 1,
+          "rejected": 1,
+          "plan_failures": 4,
+          "processed": 576,
+          "plan_outputs": 573,
+          "published": 573
+        },
+        "fault": null,
+        "axes": "initial_body_yaw",
+        "gauge_stamp_ns": 800000000,
+        "initial_imu_yaw_rad": 0.0,
+        "imu_header_summary": {
+          "callbacks_received": 5764,
+          "callbacks_finished": 5764,
+          "accepted": 5764,
+          "rejected": 0,
+          "first_stamp_ns": 610000000,
+          "last_stamp_ns": 58240000000,
+          "maximum_gap_ns": 10000000,
+          "gaps_over_30ms": 0,
+          "gaps_over_60ms": 0
+        },
+        "remaining_unmatched": {
+          "rgb": 0,
+          "depth": 0
+        },
+        "worker_terminal": true,
+        "epoch": "dc786eec-de1b-4cea-9b78-e29f413a5e1b"
+      },
+      "protocol": {
+        "mode": "gimbal_observe",
+        "changes": [],
+        "production_defaults_changed": false,
+        "maximum_new_worlds": 1,
+        "control_truth_inputs": false,
+        "physical_parameters_changed": false
+      },
+      "support_loaded": {
+        "pid": 1798,
+        "libraries": {
+          "/opt/mooncar/turn/r5-v2/libode.so.8.0.2": "313dbad175a34e0fd0387792bc922766b5e7727c3883ede5b84322cd055140c7",
+          "/opt/mooncar/physics/dart-7.8.0/libmooncar-physics7-dartsim.so": "cfe9b7c6bf72c204645df81f1be7bc646ffbd342acea52c0684a1ad24848274c",
+          "/opt/mooncar/turn/r5-v2/libmooncar-axle-allocation.so": "d85a756cc12d950f92ba405c60bd45ba71c989ae4554c2bb05d14792905b069d",
+          "/opt/mooncar/turn/r5-v2/libmooncar-turn-slip-control.so": "b99d96651a8175e6b6eacfa10bd7b1d65eb88d61b56cbf802a036048d7dd726c"
+        },
+        "profile": "r5_support_v1",
+        "main_step_s": 0.00025,
+        "world_sha256": "97a960bc481b760d192c9e5e18266d21ba6a6d4ed97ef63bc69c2b0285d5418c"
+      },
+      "metrics": {
+        "outcome": "passed",
+        "experiment": "experiment-01f74efb9e64",
+        "gimbal_actions": [
+          {
+            "action": [
+              "gimbal",
+              1.5707963267948966,
+              -0.2618
+            ],
+            "start_sim": 39.902,
+            "end_sim": 44.444,
+            "hold_end_sim": 46.482,
+            "body_net_m": 2.5927966371775304e-06,
+            "body_max_radius_m": 2.5927966371775304e-06,
+            "hold_depth_frames": 0,
+            "hold_points": 0,
+            "camera_optical_azimuth_deg": [],
+            "command_linear_max": 0.0,
+            "command_angular_max": 0.0,
+            "during_action_depth_keyframes": 11,
+            "during_action_points": 80507,
+            "keyframe_stamps": [
+              40.3,
+              40.7,
+              41.1,
+              41.5,
+              41.9,
+              42.3,
+              42.7,
+              43.1,
+              43.5,
+              43.9,
+              44.3
+            ],
+            "camera_optical_azimuth_during_action_deg": [
+              6.47102697939523,
+              14.424718603137507,
+              22.21241767940679,
+              30.07056363393018,
+              37.95764078985646,
+              45.393082276036374,
+              53.33171177679632,
+              61.292784170165405,
+              69.27627325201874,
+              76.60914335782282,
+              84.82805000982417
+            ],
+            "last_recorded_optical_azimuth_deg": 84.82805000982417,
+            "stationary_hold_note": "No repeated keyframe required while stopped: archive deduplicates unchanged viewpoint; new view evidence is recorded during the scan.",
+            "last_keyframe_world_bearing_range_deg": [
+              -179.98363693914834,
+              179.99226639194396
+            ],
+            "nearest_measured_point_bearing_error_to_target_deg": 89.25506903785674
+          },
+          {
+            "action": [
+              "gimbal",
+              0.0,
+              -0.2618
+            ],
+            "start_sim": 46.482,
+            "end_sim": 51.0505,
+            "hold_end_sim": 53.06825,
+            "body_net_m": 3.526045504331087e-06,
+            "body_max_radius_m": 3.526045504331087e-06,
+            "hold_depth_frames": 0,
+            "hold_points": 0,
+            "camera_optical_azimuth_deg": [],
+            "command_linear_max": 0.0,
+            "command_angular_max": 0.0,
+            "during_action_depth_keyframes": 9,
+            "during_action_points": 65775,
+            "keyframe_stamps": [
+              46.9,
+              47.3,
+              47.7,
+              48.1,
+              48.5,
+              48.9,
+              49.3,
+              49.7,
+              50.9
+            ],
+            "camera_optical_azimuth_during_action_deg": [
+              79.60044361610358,
+              71.37389232597981,
+              63.862940421728275,
+              55.934184815503734,
+              48.085716312341646,
+              40.19124491550821,
+              32.3867889776112,
+              24.924830556320522,
+              1.7358032813454891
+            ],
+            "last_recorded_optical_azimuth_deg": 1.7358032813454891,
+            "stationary_hold_note": "No repeated keyframe required while stopped: archive deduplicates unchanged viewpoint; new view evidence is recorded during the scan.",
+            "last_keyframe_world_bearing_range_deg": [
+              -179.9806367184065,
+              179.93629485270768
+            ],
+            "nearest_measured_point_bearing_error_to_target_deg": 173.65373084017483
+          }
+        ],
+        "combined": {
+          "start_sim": 39.902,
+          "end_sim": 53.06825,
+          "body_max_radius_m": 5.9796786026456625e-06,
+          "body_net_m": 5.9796786026456625e-06,
+          "max_body_yaw_change_deg": 0.0007511509477990015
+        },
+        "continuation": {
+          "actual_distance_m": 0.3049088102522616,
+          "goal": [
+            "move",
+            4.3,
+            0.0
+          ],
+          "success": true
+        },
+        "pauses": [],
+        "snapshot_errors": [],
+        "archive_frames": 89
+      },
+      "capture_summary": {
+        "version": "survey-metrics-v1",
+        "run_id": "autonomy-surface_view_v2-0abd9ddd",
+        "strategy": "surface_view_v2",
+        "status": "completed",
+        "stop_diagnostics": null,
+        "last_motion_stop": null,
+        "reason": "限定坡面朝向试验完成",
+        "capture_status": "captured",
+        "budget_seconds": 300,
+        "source_sha256": "db1c7b6fb1ad580aad6afdd889937c46b02f5bd9773bdc6aaa5b870bd308f92a",
+        "scene_sha256": "527c0639c5fdc5e5417c176a730cdb47688d8eb4d846ac796fa093a5a951bccd",
+        "elapsed_seconds": 51.9,
+        "radius_m": 8,
+        "origin": [
+          1.0732941924655701e-05,
+          -1.7283925399201902e-05
+        ],
+        "roi_area_m2": 201.75,
+        "initial_observed_area_m2": 18.6875,
+        "final_observed_area_m2": 41.5,
+        "new_observed_area_m2": 22.8125,
+        "initial_quality_area_m2": 5.1468750000000005,
+        "final_quality_area_m2": 23.84625,
+        "quality_gain_m2": 18.699375,
+        "final_observed_fraction": 0.2057001239157373,
+        "sufficient_area_m2": 19.3125,
+        "path_m": 4.089957974354135,
+        "new_frames": 86,
+        "actions": 6,
+        "failed_actions": 0,
+        "height_rmse_m": null,
+        "slope_mae_deg": null,
+        "reference_status": "not_provided",
+        "limitations": [
+          "sampling quality is not accuracy or traversability",
+          "pose path length includes localization drift; sampled, not wheel odometry",
+          "ROI coverage is projected observed cells, including obstacles; not reachable-ground completion",
+          "scene images are asynchronous GUI captures, not timestamp-synchronized sensor frames"
+        ],
+        "quality_gain_m2_per_sim_second": 0.36029624277456646,
+        "initial_valid_surface_area_m2": 5.8125,
+        "valid_surface_gain_m2": 26.0,
+        "resampling_eligible_cells": 206,
+        "resampling_recovered_cells": 192,
+        "recovered_surface_m2": 12.0,
+        "resampling_success_fraction": 0.9320388349514563,
+        "observation_lag_at_end_seconds": 1.9222499999999982,
+        "scene_images": 0,
+        "scene_distinct_images": 0,
+        "scene_warning": "No scene images",
+        "valid_surface_area_m2": 31.8125,
+        "raw_evaluated_frames": 89
+      }
+    }
+  },
+  "assessment": {
+    "pure_spin": "Half-speed candidate did not achieve approximate centre holding; no claim that every possible controller is impossible",
+    "observation_alternative": "Existing gimbal completes side-view scan and return with measured new cloud frames and subsequent forward motion",
+    "travel_heading_alternative": "Design: reach verified gentle turn area or plan a swept-envelope-checked curved transfer; not implemented or validated here"
+  },
+  "limitations": [
+    "One new world per method; old .3rad/s result is historical background, not a same-batch statistical control",
+    "Only one side-looking pan90 and return at this ramp position tested",
+    "Short continuation ends before the previous feature-shortage region; no whole-ramp traversal claim",
+    "No real hardware calibration, no production default switch, and no global precision guarantee"
+  ],
+  "artifacts": {
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe-run.log": {
+      "sha256": "5b7cb1b72619ed14838a45439d20b33b279e17ec69d0c3a6378ab48dd9e4d64b",
+      "bytes": 64
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin-run.log": {
+      "sha256": "74a9a87655b6c069d04c171958f2c4969777113619f32ae42394e97221d7f040",
+      "bytes": 59
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/runtime-build.log": {
+      "sha256": "077653f223a2d60f8364f8110ba601b207b36e467a5366626b16fd4320620224",
+      "bytes": 566
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/runtime-source.json": {
+      "sha256": "ca806bd92c037f66c3a09ecefaf7d8a4d0cf524734e78cbd60f7db92ced5f222",
+      "bytes": 81388
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/tool-regression.log": {
+      "sha256": "c22c5631488000c57fd45585dafde868814dc76860365beaf98e283d88356c48",
+      "bytes": 39398
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/verified-after.json": {
+      "sha256": "e08cf41fd1b24d66acb407549dcd0a03184d6c82c15918edb823bb22831e7345",
+      "bytes": 34227
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/backend-exit.json": {
+      "sha256": "81868a6e94ffc0178bf833deb1c9013d9fab4ee95ddb876a5e8ec4f1d26376d2",
+      "bytes": 21
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/backend.log": {
+      "sha256": "8c293dc3e4ffae926da7e05f79a082816fb70c4e8d82ea872d1f49d399539684",
+      "bytes": 46
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/driver-exit.json": {
+      "sha256": "81868a6e94ffc0178bf833deb1c9013d9fab4ee95ddb876a5e8ec4f1d26376d2",
+      "bytes": 21
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/driver.log": {
+      "sha256": "3a67701d84cf952c8a6238bae9a7bea797df58ff883f7b2d6162a7ce2bf3e0d9",
+      "bytes": 1290
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/protocol.json": {
+      "sha256": "f5ff4605c02412b7aebd94076e8422e57394fa7bf8dea55598b6bf8ef1410e1d",
+      "bytes": 188
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/backend-exit.json": {
+      "sha256": "81868a6e94ffc0178bf833deb1c9013d9fab4ee95ddb876a5e8ec4f1d26376d2",
+      "bytes": 21
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/backend.log": {
+      "sha256": "8c293dc3e4ffae926da7e05f79a082816fb70c4e8d82ea872d1f49d399539684",
+      "bytes": 46
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/driver-exit.json": {
+      "sha256": "81868a6e94ffc0178bf833deb1c9013d9fab4ee95ddb876a5e8ec4f1d26376d2",
+      "bytes": 21
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/driver.log": {
+      "sha256": "9d76b2f74847af2752fbf90b00b8dc682d2013a0b57e6dbc9416866ce420410f",
+      "bytes": 1384
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/protocol.json": {
+      "sha256": "96421c6ae79ea6d7800562bcc2bc08ef16cc335f9eb102e0d0f69e9f0cb4e5de",
+      "bytes": 3663
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/apply.json": {
+      "sha256": "6afcf1c27c873fdced17b1aa75b6c626c595678420131e16c8c9851864c6c224",
+      "bytes": 23
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/explore-request.json": {
+      "sha256": "61bce6786b80545bf3246f5489b12bdc7a3c7393294bdd857bc712ef38237cbd",
+      "bytes": 119
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/explore-response.json": {
+      "sha256": "6afcf1c27c873fdced17b1aa75b6c626c595678420131e16c8c9851864c6c224",
+      "bytes": 23
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/gimbal-metrics.json": {
+      "sha256": "c8d847071e9169d9edc659725b3d0ba3fe1738614d585bce3eceb2e21c9f341c",
+      "bytes": 3530
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/lifecycle.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/observer.log": {
+      "sha256": "8829d7bd2de09e09efa56d03acd449ffdb97aa4458f8d633b953c78f1c38ea76",
+      "bytes": 121
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/protocol.json": {
+      "sha256": "319dcbf70d8cb2a7086ee7cc9bd8b5be3d7f5fecf2499b68a584f49d61a33c5a",
+      "bytes": 1507
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/readiness.jsonl": {
+      "sha256": "6a73ed1ec7652140b2d7649bdc5753f254a811d20e73d5b24e2620b0dc5b4398",
+      "bytes": 243964
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/ready.json": {
+      "sha256": "2a91725c7ca332741411b6aafa3fca48f5cbe2eb648db264ca5a8db05fd05e55",
+      "bytes": 57424
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/resources.jsonl": {
+      "sha256": "8e32569c1e6db1f9d690fff3b2335fcbfd573ddbe597cf833c21d04f54950244",
+      "bytes": 3148
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/result.json": {
+      "sha256": "5650cfa45f95beda2d42ff79349de3ba41b5789df9030dbc4332405262a86156",
+      "bytes": 71370
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/runtime-affinity.json": {
+      "sha256": "4638633a5d5c9f6fb796b8879144b1c0aae9dd3af287c4ce95b8c7563c5f867b",
+      "bytes": 11204
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/states.jsonl": {
+      "sha256": "930522eea150f61dbe7f6ec5ebe7d23a46f3afee9ad9c056a78354480aa64c8b",
+      "bytes": 3237146
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/support-loaded.json": {
+      "sha256": "374569eec00cc60cc014a4540a231e2f7b971f799bdfeed4271c8385083cb55a",
+      "bytes": 694
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/terminal.json": {
+      "sha256": "9b52c33e09ad32eda697b43b5c95e268115cbde02d3b4e7e8b96edd0508eb958",
+      "bytes": 64050
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/fixture/ramp-fixture.json": {
+      "sha256": "349199b5bc36e6e036b3f5ab20c4ccae32da313c1104abfbcc9195641682529b",
+      "bytes": 2767
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/lifecycle/latest.json": {
+      "sha256": "ca686aa620030acf50f416965205c89e678a251dabd88931306a99a64f6f7c02",
+      "bytes": 345
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/lifecycle/samples.jsonl": {
+      "sha256": "3444874013fe9e8aa93ae67f13491bb5e61a8cb247d96bc8b5493a7522981265",
+      "bytes": 154085
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/observer/alignment.jsonl": {
+      "sha256": "d3e4cc3e8d9c754a4af9ad19cf9b105c716f0293d39943cf4cd2f34cfdc7c91a",
+      "bytes": 10861479
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/observer/complete.json": {
+      "sha256": "37a7469e0bf95f6dae297be6950dd8f1d6a8df48c70f8358c659d135df63476d",
+      "bytes": 4951
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/observer/missing.jsonl": {
+      "sha256": "2c8f544ecb2c3bb7b35b68778d4ab15b7e087ca30cc22b0d8df139e28718944b",
+      "bytes": 22312
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/observer/observer-contract.json": {
+      "sha256": "e8efbb09149bfc96f31c238aa76293284247190eaec2c4f38723c804bda68d2e",
+      "bytes": 1848
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/observer/ready.json": {
+      "sha256": "1e71fb8b3d235771a853105d10d69e194062408cbe5f7795accab98d359b940e",
+      "bytes": 4038
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/observer/samples.jsonl": {
+      "sha256": "50a9db22e219a95e7ccf49daee4e64a818a5f5a073dcfd634c4dd280a762bc45",
+      "bytes": 27418661
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/observer/status.json": {
+      "sha256": "62918544b9418c6c514df8ba29689e96e1f600b6f5e60ebb14ed81d2119327e7",
+      "bytes": 4005
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/observer/tf.jsonl": {
+      "sha256": "14daee5cc641281ede3c1214512476ed88dff1de951c733513ea9fc9e48ece1e",
+      "bytes": 17240879
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/observer/truth-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/gimbal-observe/case/observer/truth.jsonl": {
+      "sha256": "4fbcfa32cf3745226a850f8e1dc1ada6c11b9be94954e5d1d3261ab10f90264e",
+      "bytes": 5084956
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/apply.json": {
+      "sha256": "6afcf1c27c873fdced17b1aa75b6c626c595678420131e16c8c9851864c6c224",
+      "bytes": 23
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/explore-request.json": {
+      "sha256": "7dac1a2811058a1690dd8cddb76162c18151ab4905df846e6ac0eebd64052939",
+      "bytes": 119
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/explore-response.json": {
+      "sha256": "6afcf1c27c873fdced17b1aa75b6c626c595678420131e16c8c9851864c6c224",
+      "bytes": 23
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/lifecycle.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/observer.log": {
+      "sha256": "b163b5a296a1d513c25c94a72c751a5477bdd7391594b7e18f4756e3dc7c8c4c",
+      "bytes": 121
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/protocol.json": {
+      "sha256": "af604581650d05d03125efc3d16b10273739ae7a3414e17e6c15b8d8fd9bd315",
+      "bytes": 1502
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/readiness.jsonl": {
+      "sha256": "e99210c312b221aed8790a222b8f8d2f0e5d112d56de6e6e22aeaf2dca5aa7dd",
+      "bytes": 274152
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/ready.json": {
+      "sha256": "d643d12668b60aee97e1c76f3c36782491a8d04e8be2b05e57ea050826c75b79",
+      "bytes": 57422
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/resources.jsonl": {
+      "sha256": "62a52fdc9dbf469b9dd1b813d5a55f53e31ad91fb5e3456186e19b8887ea6393",
+      "bytes": 3551
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/result.json": {
+      "sha256": "8b10689dcdf2e15e10b4ae6ebccdb9c056b5e3ce5054a5077db0d18ac46ffc66",
+      "bytes": 69684
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/runtime-affinity.json": {
+      "sha256": "a6b6d748136ff66ddbf0e13d8017ac9ae5aaf70542d94b6380ddd72abcfcf1c0",
+      "bytes": 11132
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/states.jsonl": {
+      "sha256": "e4f9331136249c03892134bdc3bece94a8c9fa433c8c335dc921e564ba7c8105",
+      "bytes": 3681677
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/support-loaded.json": {
+      "sha256": "6a88cf469b5a4d03f79bbbfb5b36a6443ff34564463f4aeac6cfb7898ea2e638",
+      "bytes": 693
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/terminal.json": {
+      "sha256": "a605bf6d6f8ecf742ad781f5fc357f0f28829b8573d58348f0021c5e70339f22",
+      "bytes": 63120
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/turn-metrics.json": {
+      "sha256": "38f44b7d3944794859ff720a6ac764920cc38ab5f2768e7e0471512522b1b622",
+      "bytes": 725
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/fixture/ramp-fixture.json": {
+      "sha256": "387c0dd28bf52ddd190e45a1335d68f2e9d3fd08345b8931b1fb7605efd6197b",
+      "bytes": 2680
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/lifecycle/latest.json": {
+      "sha256": "fc368657e18e21b024a42ec938ad6db2dfdc85f761ffa4a52a02a4fc7e62e267",
+      "bytes": 338
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/lifecycle/samples.jsonl": {
+      "sha256": "0f2f39ef8ebe66627e2823eeae4b4e3b9758dffe54e92dbba8162cdadccf10ad",
+      "bytes": 172683
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/observer/alignment.jsonl": {
+      "sha256": "20611b2f9e49df93f4d84c75de13ae33b7492c04405170b912fd41cdcb4f68b7",
+      "bytes": 12163752
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/observer/complete.json": {
+      "sha256": "76fb16548599c65e692fe4183e8be12d019a0ffcc8487cadf6de59d339f47d3e",
+      "bytes": 4991
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/observer/missing.jsonl": {
+      "sha256": "20b19b751fceab605a003ca9b857d5f95762fd025159778d0051cb458e60efa9",
+      "bytes": 20311
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/observer/observer-contract.json": {
+      "sha256": "e66e0d658b4f24ee6910382b7ab0c2683c846e181a86b947fab503f28e769038",
+      "bytes": 1848
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/observer/ready.json": {
+      "sha256": "70834592a6a9b409d86c6f13c1d2a882421d5e1870febdb4ceba51de51da7222",
+      "bytes": 3301
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/observer/samples.jsonl": {
+      "sha256": "293c0a5fa243589dbba27ca82242d1fad54833cdbd273f5a1a8f4fc578883c6e",
+      "bytes": 31948292
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/observer/status.json": {
+      "sha256": "1ecec492176c4f96b66eddcd9914f93368f521032b28d90100decb4476ba816e",
+      "bytes": 4044
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/observer/tf.jsonl": {
+      "sha256": "3f7c07776669f1167d68187c9ed379dee0d4172ee9ef05f92ae25910ebd40e1c",
+      "bytes": 19694572
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/observer/truth-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/case/observer/truth.jsonl": {
+      "sha256": "8835776756b769c784a3b5d58c461b9c99fe46ed3c150477b184c3cfd8d5ad61",
+      "bytes": 5671258
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/local_setup.bash": {
+      "sha256": "41b30b6c107da94a2478e43953b8cbd0d920f5e8fc1ea847c61a213623d623b0",
+      "bytes": 1594
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/local_setup.dsv": {
+      "sha256": "0358cd4a05162c7c70eb278c388d4012c9308c718d883bb824392f6e006a541a",
+      "bytes": 117
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/local_setup.sh": {
+      "sha256": "e5bcbe810c6e17624554496d45bf6b9ab077ec41c72278ef22ebdac75f23772c",
+      "bytes": 5026
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/local_setup.zsh": {
+      "sha256": "56942873096201f4e7fe5e7b9bd87e56cc42ced33fadb53fbc25766fd9149c81",
+      "bytes": 1957
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/package.bash": {
+      "sha256": "e5078dba8661a007966232d6bfe7f2139e8dda2ae57e82146b42384c9757d31e",
+      "bytes": 1386
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/package.dsv": {
+      "sha256": "8c0623af784b236bcc410aa3539c342418c2a8e04c445e55aaab6d099a6134a7",
+      "bytes": 416
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/package.ps1": {
+      "sha256": "0e0df29aacf3e78776813c80ae32fa9f07e2f80715df1ce1c938ac6a1813ad60",
+      "bytes": 3265
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/package.sh": {
+      "sha256": "64f1e41f9cbf1455f5335ea675cc06cc1cbaaac9743fa39d9e7e357dd0c6d6b5",
+      "bytes": 2872
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/package.xml": {
+      "sha256": "33220fbdbbdf960b374dcda6baf6976257cb51868251d4ed4ba5bca97cc3a7fc",
+      "bytes": 1999
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/package.zsh": {
+      "sha256": "9316d47240cc864e21d740646b3939763977c2e472c2971fa9391ab7e06875a1",
+      "bytes": 1670
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/ament_index/resource_index/packages/mooncar_navigation": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/cmake/mooncar_navigationConfig-version.cmake": {
+      "sha256": "5df7fb3481e154840dd6ac6d1b6eb53c81ed9cadd5e7a00398962383332be7ea",
+      "bytes": 432
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/cmake/mooncar_navigationConfig.cmake": {
+      "sha256": "4d8e9c383aa6e579b113028fbff718d1f529fef763714a90304fc4c84623eca3",
+      "bytes": 1356
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/config/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/config/nav2_params.yaml": {
+      "sha256": "bfd31af1b7f503937934f67e217a122d6eb2380997c938d2d601d30cdc4c2910",
+      "bytes": 7139
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/environment/ament_prefix_path.dsv": {
+      "sha256": "c4797d0a0670c70b4d3bcb5b7d47563635c7950595603f3af66f70af546ad57e",
+      "bytes": 41
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/environment/ament_prefix_path.sh": {
+      "sha256": "6658f14efe913e291c0bf2c74059a9e14fb8abdb5a31628bef61d3b41e206679",
+      "bytes": 160
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/environment/path.dsv": {
+      "sha256": "3f2cdf6234ea2525c1670c140b6a03700d98a2408e7a232107791fa96c08b58b",
+      "bytes": 41
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/environment/path.sh": {
+      "sha256": "abe10a0452bc4b93f665fc343a7e6d32fe3f3a2b6beb90d338044a71d2583f18",
+      "bytes": 185
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/hook/cmake_prefix_path.dsv": {
+      "sha256": "7ab2eb0a25c282f9a5bf62596b4c098865cd3a8aa5740601a9efa8620acd69d3",
+      "bytes": 41
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/hook/cmake_prefix_path.ps1": {
+      "sha256": "0c7394c1d89765deec81cb10e59a36d0d98867690b4b8781d5bc9186fc67885a",
+      "bytes": 152
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/hook/cmake_prefix_path.sh": {
+      "sha256": "ee9849def404b669097010f38735aa521e0731366a319b6e1abe996c793494b2",
+      "bytes": 142
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/launch/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/launch/navigation.launch.py": {
+      "sha256": "45c23f2a6e66827a19252d033eb344c353f09193e99187afeeb18aa748652548",
+      "bytes": 9603
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/launch/terrain_navigation.launch.py": {
+      "sha256": "44aa7b4c0cc3bf75dd64683b73f3d3d8e5c53e5f7f7b246b293bd464cef4ba79",
+      "bytes": 11922
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/maps/lunar_yard.pgm": {
+      "sha256": "f4fcd7b76718923771858ea02c4bdddff4adaa0873ae674fd10c084dc9eed5f9",
+      "bytes": 74747
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/maps/lunar_yard.yaml": {
+      "sha256": "42b968230efeab1e239e2006d566ce5a558afc5214cf3415afc1933bbc842b05",
+      "bytes": 141
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/maps/README.md": {
+      "sha256": "82af88f5c85f08266fa21202eeaf015f7c05af1df57cd9f0d09b17536317f99d",
+      "bytes": 1490
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/rviz/navigation.rviz": {
+      "sha256": "f7a8c07ba639660c8e385ed349a56991923777888b2af41c8141548e418eed0d",
+      "bytes": 2148
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/config/behavior_trees/navigate_to_pose_revisit.xml": {
+      "sha256": "d1dbdf5bf7873dccf76698e3d0c2ffb155fc6f443d48c28d0ff94bb765c7d364",
+      "bytes": 2768
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/config/behavior_trees/navigate_to_pose_workbench.xml": {
+      "sha256": "47d12ac93fc28e89df318177a316e992a75db98938e202ae76a13a1e229c5d46",
+      "bytes": 2764
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/launch/__pycache__/navigation.launch.cpython-312.pyc": {
+      "sha256": "8c6ffe4eb57dd6dd43e512de262589df8b0b982278a64e6c37befdb615153e06",
+      "bytes": 6621
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/launch/__pycache__/navigation.launch.cpython-314.pyc": {
+      "sha256": "fc2091eda3b5c9c7dcca3cc918cc90dcf4ac6b2a4b39a9a0fcd72f69afcf4e6b",
+      "bytes": 6075
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/launch/__pycache__/terrain_navigation.launch.cpython-312.pyc": {
+      "sha256": "90addb36570d0aae98bfdaba727e96a99fc8066c5e261793b70429467b35a5ec",
+      "bytes": 12027
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/half-spin/overlay/share/mooncar_navigation/launch/__pycache__/terrain_navigation.launch.cpython-314.pyc": {
+      "sha256": "4ca326980c15eb09a09e4fbc8e692aa519c0b247c9ba2653b6b3eac50dd4e07e",
+      "bytes": 8257
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/autonomy-surface_view_v2-0abd9ddd.json": {
+      "sha256": "2740d6b78bd404c79fb65526f7dde411c94e27170c690bc33074f943e2b60d53",
+      "bytes": 4890
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/gui.config": {
+      "sha256": "ab274183860e89f103b9e6e1eb4676dc023bf04b4a9017075cdf981e2c291d1e",
+      "bytes": 2707
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/scene-setup.json": {
+      "sha256": "8b65e49d1cf3fe511f3522e1c3e6e49680cfabccfcacdcc6f55f7ebb57a2e811",
+      "bytes": 922
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/simulation.log": {
+      "sha256": "02380a98a86ab33af41fb28aa4f83ecd000d17760499df92137a588cc49ca7fc",
+      "bytes": 118515
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/software.json": {
+      "sha256": "795eaf24bf243c14c19609fab7b83d776846c4574b9964707f700bb1ab1a4f37",
+      "bytes": 870
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/survey-20261104T114323678563Z.asc": {
+      "sha256": "84fb60d9b96df71c9a6a6080bc1d463b406bc95b7ac510f9aed2acb492fe40e3",
+      "bytes": 6624
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/survey-20261104T114323678563Z.json": {
+      "sha256": "1e889d8a2bed5360b1b808ecdac6e0b822f50de0d662770733323329c6386039",
+      "bytes": 231
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/survey-20261104T114323678563Z.npz": {
+      "sha256": "63449d0ae10dd6a51dd57ef9f8503de1e142469e7a044cfef9ac55885751d5c4",
+      "bytes": 7819939
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/survey-20261104T114323678563Z.obj": {
+      "sha256": "73813d1deff8d9e80bbaf1d97ca5ea5b695f604fa861f50b4bcacbb86095fcdf",
+      "bytes": 23730
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/survey-20261104T114323678563Z.ply": {
+      "sha256": "c8115137512fc85094fedb58aa0a7c499bd633e854a1008e5c4b621a0f2e4ca2",
+      "bytes": 314204
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/survey_yard.sdf": {
+      "sha256": "527c0639c5fdc5e5417c176a730cdb47688d8eb4d846ac796fa093a5a951bccd",
+      "bytes": 9584
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/task.json": {
+      "sha256": "1fa6ae5de3a43b8504fdaf0a83aa82e3ee319e96404df8135e5558f36fb619ca",
+      "bytes": 207
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/window-localization.jsonl": {
+      "sha256": "c8517f3b1f8b7accf629fb81ec27f860f0b2fec7393e646014326193f69052ab",
+      "bytes": 3369352
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/autonomy-surface_view_v2-2ac4f2c0.json": {
+      "sha256": "74d2506c80fdd9a25a78f525743f69d253a51945c38e46aff986a7244aa0b22e",
+      "bytes": 4301
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/gui.config": {
+      "sha256": "ab274183860e89f103b9e6e1eb4676dc023bf04b4a9017075cdf981e2c291d1e",
+      "bytes": 2707
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/scene-setup.json": {
+      "sha256": "8b65e49d1cf3fe511f3522e1c3e6e49680cfabccfcacdcc6f55f7ebb57a2e811",
+      "bytes": 922
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/simulation.log": {
+      "sha256": "81a76a000e3c55b6e98b15928cacefbecf6a120c41f36139b0cd7e0ed2492eba",
+      "bytes": 125302
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/software.json": {
+      "sha256": "795eaf24bf243c14c19609fab7b83d776846c4574b9964707f700bb1ab1a4f37",
+      "bytes": 870
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/survey-20261104T113750529749Z.asc": {
+      "sha256": "90c0cce3d25249f3eb59c8fb633794a72f47ac618abfb49472837b97229eee6b",
+      "bytes": 6766
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/survey-20261104T113750529749Z.json": {
+      "sha256": "ac18b38648dd237889c09ee8eddee0543f761a3f73f49f628bc7fd3bb52406ec",
+      "bytes": 231
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/survey-20261104T113750529749Z.npz": {
+      "sha256": "3460b7639ef20b0ad8134c3471dc571a67062b91a9dd39b40902d60376fa90ec",
+      "bytes": 8327427
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/survey-20261104T113750529749Z.obj": {
+      "sha256": "df7d9f72cc2992d2807a73756cbe4a42fdb5e550808db45bd6fbcee6b431a17d",
+      "bytes": 27892
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/survey-20261104T113750529749Z.ply": {
+      "sha256": "ddee3a8f6a1da07f5207a7b96fb819f7b3e30be472d11cf2952346f46a3225d5",
+      "bytes": 348927
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/survey_yard.sdf": {
+      "sha256": "527c0639c5fdc5e5417c176a730cdb47688d8eb4d846ac796fa093a5a951bccd",
+      "bytes": 9584
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/task.json": {
+      "sha256": "1fa6ae5de3a43b8504fdaf0a83aa82e3ee319e96404df8135e5558f36fb619ca",
+      "bytes": 207
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/window-localization.jsonl": {
+      "sha256": "e8554e407af614f5b7faff60056ab7918dd54bce4cb0b9b4d8307556964b2694",
+      "bytes": 3844940
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/research-summary/README.md": {
+      "sha256": "c68982b25ee119069dccd9a00367d4b0c618433f319eb49e72946f3dab3c9851",
+      "bytes": 203
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/research-summary/runs.csv": {
+      "sha256": "17fcfb0995051bee6135553e749c304277a126ca984381b45d9e24149f928917",
+      "bytes": 1992
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/research-summary/runs.json": {
+      "sha256": "5e3b5acdd9ab7bea1df55865378e213f173cf63584d25e28901b5f7587449ee2",
+      "bytes": 4410
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/support-runtime/loaded.json": {
+      "sha256": "374569eec00cc60cc014a4540a231e2f7b971f799bdfeed4271c8385083cb55a",
+      "bytes": 694
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/support-runtime/loaded.world.sdf": {
+      "sha256": "97a960bc481b760d192c9e5e18266d21ba6a6d4ed97ef63bc69c2b0285d5418c",
+      "bytes": 9753
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/actions.csv": {
+      "sha256": "ae8e9a05f508d0836e99e1a6e1d7ebe5e08085b1277d5aa6a8176b5324bb10c8",
+      "bytes": 927
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/archive-save.log": {
+      "sha256": "8ac85203d46e1c5f275aa72b69a4f2b19be9b0efbbb67bc00c787b64cc5727e5",
+      "bytes": 268
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/checkpoint-000033.1s.json": {
+      "sha256": "6912d83a5968ddbb0ca325a3894bc290a63fd48b921a903e183c74ce22003420",
+      "bytes": 2758
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/checkpoint-end.json": {
+      "sha256": "1ca03007ba959a470ccbfff95535c4ad5b9aff2face924754c4962463293d390",
+      "bytes": 2744
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/checkpoint-start.json": {
+      "sha256": "aee562fc756d72b4dca48a6f34f359126865f244d6bb4f3becff9df02a560cf1",
+      "bytes": 2339
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/collected-map.pdf": {
+      "sha256": "f6eed489cffd90741ef6c188a6840b37947c1e8ba86eb4b60ba8005547c05a4c",
+      "bytes": 186966
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/collected-map.png": {
+      "sha256": "73c80a7622d04317e4c2928f8641afc867850bf6eb3bef7057955233a10e9972",
+      "bytes": 122743
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/elevation.csv": {
+      "sha256": "447ae6596cdc4add44f746d049d6928baf5283d19b250c6e51607fe04bd7fafe",
+      "bytes": 82787
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/gui.config": {
+      "sha256": "ab274183860e89f103b9e6e1eb4676dc023bf04b4a9017075cdf981e2c291d1e",
+      "bytes": 2707
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/hashes.json": {
+      "sha256": "4a5983226c91d448b37e2905387a3779535a67ebaa123ea5a6ddad1f7a95592d",
+      "bytes": 2702
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/manifest.json": {
+      "sha256": "51e1ff5a75ac57ea53a4f255d9a103dfa508b83febc79ce8430be2c32e56bf4c",
+      "bytes": 2032
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/mission.json": {
+      "sha256": "c1c5a83ba81730c1fca2b6caca7f4baec340e6624abd81e292ec1e1231bc1929",
+      "bytes": 4859
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/navigation-000033.1s.json": {
+      "sha256": "4f6461640588c1d8a5c2baafe3797ac23827a9e61464affd47628a7576d8d9f2",
+      "bytes": 58801
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/navigation-end.json": {
+      "sha256": "4d878a463ffc8cbbe277d87ed645a934fdb9847efc42449086d9bf31bea7bccd",
+      "bytes": 57174
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/navigation-start.json": {
+      "sha256": "1d0773ffce0db913d60ade979d493bc458c67d1761c56459baaa3df077741995",
+      "bytes": 55862
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/observations.npz": {
+      "sha256": "63449d0ae10dd6a51dd57ef9f8503de1e142469e7a044cfef9ac55885751d5c4",
+      "bytes": 7819939
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/progress.pdf": {
+      "sha256": "a140cb6e7b5efdf404925aa90cb20f97fc3ddc847911c5a701314f0d28caaa65",
+      "bytes": 17762
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/progress.png": {
+      "sha256": "47b9d6f98a9ed083588cd04f0ded8984cdd8e7f9264d8b0fc32ec0296b2b2ada",
+      "bytes": 87078
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/quality-000033.1s.json": {
+      "sha256": "5af96cf6da76e1eb7afc44cdcebdaf48b82943d50dffaf38047a8c09bbc8ea05",
+      "bytes": 156973
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/quality-end.json": {
+      "sha256": "fa5fa10e0e021e2b05bcf509966296bfb4d53f370c3ef9a4cffa3315573a30ef",
+      "bytes": 249463
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/quality-start.json": {
+      "sha256": "427e6aa075f245e431ddb44aaed434244b6d4c0878dfcf24bce79a9d478c1878",
+      "bytes": 102672
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/README.md": {
+      "sha256": "d0a5af65dea8d8d68e4b7f9fe95854c6fb4164aa3b106ce176db2e5079d693fe",
+      "bytes": 1570
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/report.log": {
+      "sha256": "baeb87e531e6533451b5fe961c7af86d3fc2ae87d1d1ce57cbf77c865b2f4070",
+      "bytes": 160
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/report_source.py": {
+      "sha256": "004780a0d96f23b751ef8a5ef783730187dbdbc9847d2f84ca3fee30e8dd9f23",
+      "bytes": 27614
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/sampling-comparison.pdf": {
+      "sha256": "c69620dfc05cbf4eab3260188838d1696531d3d553aee4415fe7d6727cdc4904",
+      "bytes": 31028
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/sampling-comparison.png": {
+      "sha256": "5e4683218df1af8972f92e3856164a1c703d0c85ee55307e4de79899a60538a2",
+      "bytes": 112618
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/source.zip": {
+      "sha256": "db1c7b6fb1ad580aad6afdd889937c46b02f5bd9773bdc6aaa5b870bd308f92a",
+      "bytes": 1208128
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/summary.json": {
+      "sha256": "9622ad8d22a4cd421bf11e77f728dd138b3e57acb5a42f13f40fef6788ac510c",
+      "bytes": 1963
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/survey_yard.sdf": {
+      "sha256": "527c0639c5fdc5e5417c176a730cdb47688d8eb4d846ac796fa093a5a951bccd",
+      "bytes": 9584
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/task.json": {
+      "sha256": "1fa6ae5de3a43b8504fdaf0a83aa82e3ee319e96404df8135e5558f36fb619ca",
+      "bytes": 207
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/telemetry.csv": {
+      "sha256": "362fc9e231c6c191eabf7b47373abfae61a4e4df3d86e7e2e7ea020461fc8824",
+      "bytes": 97635
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/autonomy-surface_view_v2-0abd9ddd/telemetry.jsonl": {
+      "sha256": "2de22f3bf2d5dcddbb103e5b08d58291ba0463673588b802d6d2117328c39aaa",
+      "bytes": 114567
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-01f74efb9e64/research/reference-analysis/autonomy-surface_view_v2-0abd9ddd-21a38ff5.failure.json": {
+      "sha256": "1afd08267506a64b0e3aecf71d29aa8009c9e26061047e73feb38e5ffcad6b7c",
+      "bytes": 196
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/support-runtime/loaded.json": {
+      "sha256": "6a88cf469b5a4d03f79bbbfb5b36a6443ff34564463f4aeac6cfb7898ea2e638",
+      "bytes": 693
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/support-runtime/loaded.world.sdf": {
+      "sha256": "97a960bc481b760d192c9e5e18266d21ba6a6d4ed97ef63bc69c2b0285d5418c",
+      "bytes": 9753
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/actions.csv": {
+      "sha256": "29006aa2658462716cf2b1c2b8c7f8df1ba57d8764380bfdd8e030a1e23ca2c6",
+      "bytes": 675
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/archive-save.log": {
+      "sha256": "280e3de3e5c4c707b420ce1f761bc993d38c927ed42e9836b2bde9bd787ea4a5",
+      "bytes": 268
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/checkpoint-000032.2s.json": {
+      "sha256": "4015b3caea96eba2ad62ba7a0a261f2978b5d2aa3080eb48cef46924e99ba624",
+      "bytes": 2751
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/checkpoint-end.json": {
+      "sha256": "c6be420ddafc3efc4857f116d06b7bcbc7c225b0140634aa6ee7a3d74eb73255",
+      "bytes": 2739
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/checkpoint-start.json": {
+      "sha256": "2e3a001cb30b8a941ed7f95f4f90c097dc19e95bf5f062dbebf8eca19e04b65b",
+      "bytes": 2347
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/collected-map.pdf": {
+      "sha256": "3fe3aec76230a5e96ff1898675a2aa9f6dd8de8e7bf09df21a7ebda35d8c334c",
+      "bytes": 204853
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/collected-map.png": {
+      "sha256": "3a028ac2fa7603a2cebbc21d9dfed93c307c4723b257a3504e0f9e085c646190",
+      "bytes": 129115
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/elevation.csv": {
+      "sha256": "6a2e4ebe58102e415c64b6f8d084bfeee979c99268f383ea0afe3c385732c76f",
+      "bytes": 94616
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/gui.config": {
+      "sha256": "ab274183860e89f103b9e6e1eb4676dc023bf04b4a9017075cdf981e2c291d1e",
+      "bytes": 2707
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/hashes.json": {
+      "sha256": "47a71f94a95799c15ece73b823bdfc94954447d11b9d356ae025bd99f96db970",
+      "bytes": 2702
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/manifest.json": {
+      "sha256": "2f74c6035e974b962eb9d280a8a2b394c6086f93b889d12979bf6b5b827308e7",
+      "bytes": 2026
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/mission.json": {
+      "sha256": "047a4fa48a5df764025b77808b0263b8d3b66f5607f18c25cd341a80ed08b9ae",
+      "bytes": 4270
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/navigation-000032.2s.json": {
+      "sha256": "6efe7bc605f034b6578cfdd5583c97ea2d76ccf12e7d02db34fbae9c423f37f7",
+      "bytes": 58862
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/navigation-end.json": {
+      "sha256": "41879059844a6935dd1b4962955389e3004d96dff01b8fca70458cf711edd16c",
+      "bytes": 56928
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/navigation-start.json": {
+      "sha256": "279c0cd7b0e6022ca0367974aa9960d4739d7ef17c6840bac2b9727f3ef85304",
+      "bytes": 55858
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/observations.npz": {
+      "sha256": "3460b7639ef20b0ad8134c3471dc571a67062b91a9dd39b40902d60376fa90ec",
+      "bytes": 8327427
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/progress.pdf": {
+      "sha256": "eb034362f9c7a048abcddbe7703dfa48e870382f426e4e1ad287f7c85af7eaa6",
+      "bytes": 18330
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/progress.png": {
+      "sha256": "e0b4fb36ede7d0cb686fea5e4ddcdaebe6ebffb3c4ed0e5f5f85a19c9c79d3d0",
+      "bytes": 83572
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/quality-000032.2s.json": {
+      "sha256": "6e2f70f8f2e0abdd6ecaf62cfa164de4ba232e8d9a66aae5018fe2ba0f4250fe",
+      "bytes": 158188
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/quality-end.json": {
+      "sha256": "2677fb6885af10803303938748b69a45fae905918815563c796a2397a17eb14b",
+      "bytes": 282153
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/quality-start.json": {
+      "sha256": "124603eca765615c91ae4464817475d1d8efeb91da96df0e35dd417e97817163",
+      "bytes": 102686
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/README.md": {
+      "sha256": "437fbf7e0cbc4b55a38ca0688c26992fb12ae85a9e3e49cd724cc5b744d34ca2",
+      "bytes": 1570
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/report.log": {
+      "sha256": "a95e22ad97a871032569c9ae153314669bc50ee02763c358298f4094f605279d",
+      "bytes": 160
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/report_source.py": {
+      "sha256": "004780a0d96f23b751ef8a5ef783730187dbdbc9847d2f84ca3fee30e8dd9f23",
+      "bytes": 27614
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/sampling-comparison.pdf": {
+      "sha256": "b871e7bd4fa730da237642c2d69110f95f8c35190e4582496e64c2f084345599",
+      "bytes": 32275
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/sampling-comparison.png": {
+      "sha256": "6239b17f7a54ebd4b86a453eaca8884393ee04ee2b8edfcd5414b55025a7d4ab",
+      "bytes": 113364
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/source.zip": {
+      "sha256": "db1c7b6fb1ad580aad6afdd889937c46b02f5bd9773bdc6aaa5b870bd308f92a",
+      "bytes": 1208128
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/summary.json": {
+      "sha256": "8d6481af9b6f721235da959808255d55f37ded18d60fd15fed8967edc80522a0",
+      "bytes": 1973
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/survey_yard.sdf": {
+      "sha256": "527c0639c5fdc5e5417c176a730cdb47688d8eb4d846ac796fa093a5a951bccd",
+      "bytes": 9584
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/task.json": {
+      "sha256": "1fa6ae5de3a43b8504fdaf0a83aa82e3ee319e96404df8135e5558f36fb619ca",
+      "bytes": 207
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/telemetry.csv": {
+      "sha256": "18a1b1efabce15d38f77e83e9c98f886712e8a5fa779cdee6c93095ddf2b58e3",
+      "bytes": 117003
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/autonomy-surface_view_v2-2ac4f2c0/telemetry.jsonl": {
+      "sha256": "c982cc57d394b30d29526218c2e909d14ad629bbd1735eb691774f5e2b99ae91",
+      "bytes": 136687
+    },
+    "tmp/ros_acceptance/slope-heading-20261104/sessions/experiment-b1d31ab070cd/research/reference-analysis/autonomy-surface_view_v2-2ac4f2c0-d7da7af2.failure.json": {
+      "sha256": "cb5a368607403197c502aed25031f9999abf6e9278a96cba5b22796738288614",
+      "bytes": 196
+    }
+  }
+}
