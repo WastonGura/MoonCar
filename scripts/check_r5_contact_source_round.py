@@ -4,6 +4,7 @@ import argparse,json,shutil,sys
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import numpy as np
+from r5_csv import read_numeric_csv
 from r5_axle_allocation import qualify_budget
 from r5_axle_robustness import qualify_grid
 from r5_contact_source import contact_grid,topic_relation
@@ -27,7 +28,7 @@ def main():
     def run(args):args.scene='ramp';args.step=.001;return old_run(args)
     def qualify(out,result):
         previous=old_qualify(out,result)
-        physics=np.genfromtxt(Path(out)/'physics-steps.csv',delimiter=',',names=True)
+        physics=read_numeric_csv(Path(out)/'physics-steps.csv',delimiter=',',names=True)
         ids=[int(line.split(',')[1]) for line in Path(str(contact)+'.entities').read_text().splitlines()]
         proof,rows=contact_grid(contact,physics,result['schedule'],ids)
         relation=topic_relation(out,rows);source_proof.update(proof=proof,topic_relation=relation)
@@ -46,13 +47,13 @@ def main():
         runtime.prepare=old_prepare;runtime.run=old_run;r5_origin_analysis.qualify_round=old_qualify;r5_d0_analysis.wheel_budget=old_budget
     result=json.loads((folder/'result.json').read_text())
     try:
-        data=np.genfromtxt(folder/'physics-steps.csv',delimiter=',',names=True)
+        data=read_numeric_csv(folder/'physics-steps.csv',delimiter=',',names=True)
         cfg=json.loads((folder/'config.json').read_text());world=ET.parse(folder/'world.sdf')
         if cfg['scene']!='ramp' or cfg['step']!=.001 or float(world.findtext('world/physics/max_step_size'))!=.001:
             raise ValueError('Actual scene/step mismatch')
         params=json.loads(Path('/evidence/slip-models/manifest.json').read_text())['parameters']
         commands=slip_commands(data,result,'candidate' if a.profile=='slip' else 'baseline',params)
-        allocation=np.genfromtxt(controller,delimiter=',',names=True)
+        allocation=read_numeric_csv(controller,delimiter=',',names=True)
         differences=max(float(np.max(abs(allocation[w+'_native']-allocation[w+'_allocated']))) for w in params)
         marker=controller.with_suffix('.csv.paused').read_text().split(',');boundary=result['schedule']['stop']['after']
         if differences!=0 or np.any(allocation['applied']) or int(marker[0])!=boundary['iteration'] or abs(float(marker[1])-boundary['sim'])>1e-9:

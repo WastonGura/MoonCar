@@ -1,3 +1,7 @@
-# Reports
+# 实验记录与版本
 
-Innovation-project reports, defense drafts, and exported presentation materials will live here.
+产品源码、测试、模型、配置和本目录顶层报告纳入Git。新增的`reports/evidence/`原始数据、第三方源码、研究构建树，以及`tmp/`、`output/`生成物保留在本地，不批量加入代码历史。已有跟踪的历史证据继续保留，不重写或删除。
+
+实验报告必须说明代码提交、实际车型配置、定位方案、世界、安装产物和结果范围。大体积bag/CSV/图像按各实验完整性清单记录原路径与SHA256；失败和未验证候选也保留。工作区中的“最新文件”不能代替代码提交和实际加载核验。
+
+当前版本核对记录见`VERSION_ALIGNMENT_20261104.md`；该文件在本轮版本对齐及重测结束后给出最终状态。

@@ -8,6 +8,7 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 
 import numpy as np
+from r5_csv import read_numeric_csv
 
 from r5_origin_analysis import WHEELS, load_lines, rotation, trajectory, unwrap_yaw
 
@@ -185,7 +186,7 @@ def diagnose_round(folder, expected, profile, output=None):
     result = json.loads((folder/'result.json').read_text())
     output = Path(output) if output is not None else folder/'load-analysis'
     output.mkdir()
-    data = np.genfromtxt(folder/'physics-steps.csv', delimiter=',', names=True)
+    data = read_numeric_csv(folder/'physics-steps.csv', delimiter=',', names=True)
     t = data['t']; ns = np.rint(t*1e9).astype(np.int64)
     start = result['schedule']['parked']['after']['sim']
     end = result['schedule']['motion']['after']['sim']

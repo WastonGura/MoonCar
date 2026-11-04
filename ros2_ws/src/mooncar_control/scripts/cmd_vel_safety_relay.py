@@ -1,14 +1,23 @@
 #!/usr/bin/env python3
 import math
+import json
+from pathlib import Path
+import sys
 import time
 
 from diagnostic_msgs.msg import DiagnosticArray, DiagnosticStatus
 import rclpy
 from geometry_msgs.msg import Twist
-from std_msgs.msg import Bool
+from std_msgs.msg import Bool, String
 from rcl_interfaces.msg import ParameterDescriptor
 from rclpy.node import Node
 from rclpy.clock import Clock, ClockType
+
+try:
+    from localization_quality import LocalizationQuality
+except ImportError:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[4] / 'scripts'))
+    from localization_quality import LocalizationQuality
 
 
 class CmdVelSafetyRelay(Node):
@@ -22,6 +31,7 @@ class CmdVelSafetyRelay(Node):
         self.declare_parameter("max_angular_z", 0.8)
         self.declare_parameter("require_terrain", False)
         self.declare_parameter("require_workbench", False, ParameterDescriptor(read_only=True))
+        self.declare_parameter("require_laser_localization", False, ParameterDescriptor(read_only=True))
 
         input_topic = self.get_parameter("input_topic").value
         output_topic = self.get_parameter("output_topic").value
@@ -35,6 +45,10 @@ class CmdVelSafetyRelay(Node):
         self.last_cmd_wall = time.monotonic()
         self.require_terrain = self.get_parameter("require_terrain").value
         self.require_workbench = self.get_parameter("require_workbench").value
+        self.require_laser_localization = self.get_parameter("require_laser_localization").value
+        self.localization_quality = LocalizationQuality(required=self.require_laser_localization)
+        if self.require_laser_localization:
+            self.create_subscription(String, "/mooncar/laser_odometry/status", self.on_localization_quality, 10)
         self.workbench_permit = False
         self.workbench_time = 0.0
         self.create_subscription(Bool, "/mooncar/workbench/permit", self.on_workbench, 1)
@@ -49,20 +63,45 @@ class CmdVelSafetyRelay(Node):
         self.get_logger().info(f"Relaying {input_topic} to {output_topic} with timeout {self.timeout_s:.2f}s")
 
     def on_cmd_vel(self, msg):
+        if not self.localization_healthy():
+            self.last_cmd = Twist()
+            return
         self.last_cmd = self.clamp(msg)
         self.last_cmd_time = self.get_clock().now()
         self.last_cmd_wall = time.monotonic()
 
     def on_timer(self):
+        localization_ok = self.localization_healthy()
+        if not localization_ok:
+            # A recovered status must never replay a command from before the fault.
+            self.last_cmd = Twist()
         age = (self.get_clock().now() - self.last_cmd_time).nanoseconds * 1e-9
         terrain_stale = not self.terrain_ok or time.monotonic() - self.terrain_time > 5.0
         workbench_stale = not self.workbench_permit or time.monotonic() - self.workbench_time > 1.0
         if (age < 0 or age > self.timeout_s or time.monotonic() - self.last_cmd_wall > self.timeout_s
                 or (self.require_terrain and terrain_stale)
-                or (self.require_workbench and workbench_stale)):
+                or (self.require_workbench and workbench_stale)
+                or not localization_ok):
             self.publisher.publish(Twist())
         else:
             self.publisher.publish(self.last_cmd)
+
+    def localization_healthy(self):
+        return self.localization_quality.check(
+            self.get_clock().now().nanoseconds * 1e-9, time.monotonic())['healthy']
+
+    def on_localization_quality(self, msg):
+        try:
+            payload = json.loads(msg.data)
+        except (TypeError, ValueError):
+            payload = {}
+        if not isinstance(payload, dict):
+            payload = {}
+        self.localization_quality.observe(payload, time.monotonic())
+        if not self.localization_healthy():
+            self.last_cmd = Twist()
+            # Revoke output in this callback as well as the independent watchdog.
+            self.publisher.publish(Twist())
 
     def on_workbench(self, msg):
         self.workbench_permit = msg.data

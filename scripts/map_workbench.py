@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import sys
 import signal
+import secrets
 import threading
 import zipfile
 from urllib.parse import parse_qs, urlsplit
@@ -50,7 +51,10 @@ class SimulationProxy:
     def close(self):pass
 
 
-def create_server(directory, port=8765, host='127.0.0.1', navigator=None, simulation=None):
+def create_server(directory, port=8765, host='127.0.0.1', navigator=None, simulation=None,
+                  live_survey=None, live_token=None):
+    if live_survey is not None and not live_token:
+        raise ValueError('Live survey requires an explicit token')
     directory = Path(directory).resolve()
 
     def archive(name):
@@ -121,12 +125,27 @@ def create_server(directory, port=8765, host='127.0.0.1', navigator=None, simula
         def allowed_host(self):
             return self.headers.get('Host') in (f'127.0.0.1:{self.server.server_port}', f'localhost:{self.server.server_port}')
 
+        def uplink_authorized(self):
+            auth = self.headers.get('Authorization', '')
+            return bool(live_survey and live_token and not self.headers.get('Origin') and
+                        secrets.compare_digest(auth.encode(), ('Bearer '+live_token).encode()))
+
         def do_GET(self):
             if not self.allowed_host():
                 return self.send({'error': 'Loopback host required'}, 403)
             parts = urlsplit(self.path)
             query = parse_qs(parts.query)
             try:
+                if parts.path == '/api/survey':
+                    after = int(query['after'][0]) if 'after' in query else None
+                    return self.send(live_survey.snapshot(after) if live_survey else dict(enabled=False))
+                if parts.path == '/api/survey/handshake':
+                    if not self.uplink_authorized(): return self.send({'error': 'Uplink authorization required'}, 403)
+                    return self.send(live_survey.handshake())
+                if parts.path == '/api/survey/export':
+                    if live_survey is None: raise ValueError('Live survey receiver is not enabled')
+                    data, filename = live_survey.export_zip(query.get('session', [''])[0])
+                    return self.send(data, mime='application/zip', attachment=filename)
                 if parts.path == '/api/sessions':
                     sessions = []
                     for p in sorted(directory.rglob('*.npz')):
@@ -187,7 +206,8 @@ def create_server(directory, port=8765, host='127.0.0.1', navigator=None, simula
                     frame = int(query['frame'][0]) if 'frame' in query else None
                     return self.send(read(name, frame))
                 files = {'/': 'index.html', '/index.html': 'index.html', '/app.js': 'app.js',
-                         '/replay_cache.js': 'replay_cache.js', '/experiment_editor.js': 'experiment_editor.js', '/style.css': 'style.css'}
+                         '/replay_cache.js': 'replay_cache.js', '/experiment_editor.js': 'experiment_editor.js',
+                         '/live_survey.js': 'live_survey.js', '/style.css': 'style.css'}
                 if parts.path in files:
                     path = ROOT / 'web' / files[parts.path]
                 elif parts.path.startswith('/vendor/'):
@@ -203,6 +223,33 @@ def create_server(directory, port=8765, host='127.0.0.1', navigator=None, simula
                 return self.send({'error': str(error)}, 400)
 
         def do_POST(self):
+            if self.path == '/api/survey/frame':
+                if not self.allowed_host() or not self.uplink_authorized():
+                    # Consume a bounded request so Windows clients receive the rejection
+                    # instead of a TCP reset caused by closing with unread bytes.
+                    try:
+                        size = int(self.headers.get('Content-Length', '0'))
+                        if 0 < size <= 12_000_000:
+                            self.connection.settimeout(2.)
+                            self.rfile.read(size)
+                    except (ValueError, OSError):
+                        pass
+                    return self.send({'error': 'Uplink authorization required'}, 403)
+                try:
+                    size = int(self.headers.get('Content-Length', '0'))
+                    if not 0 < size <= 12_000_000 or self.headers.get('Content-Type') != 'application/json':
+                        raise ValueError('Expected bounded JSON observation frame')
+                    def invalid(value): raise ValueError('Non-finite JSON value')
+                    def unique(pairs):
+                        result = {}
+                        for key, value in pairs:
+                            if key in result: raise ValueError('Duplicate JSON key')
+                            result[key] = value
+                        return result
+                    body = json.loads(self.rfile.read(size), parse_constant=invalid, object_pairs_hook=unique)
+                    return self.send(live_survey.ingest(body))
+                except (ValueError, KeyError, OSError, TypeError, OverflowError) as error:
+                    return self.send({'error': str(error)}, 400)
             expected = f'http://{self.headers.get("Host")}'
             if not self.allowed_host() or self.headers.get('Origin') != expected:
                 return self.send({'error': 'Same-origin request required'}, 403)
@@ -215,7 +262,7 @@ def create_server(directory, port=8765, host='127.0.0.1', navigator=None, simula
                     if simulation is None:
                         raise ValueError('当前服务未启用仿真实验模式')
                     return self.send(simulation.apply(body) if self.path.endswith('/apply') else simulation.stop())
-                if self.path in ('/api/simulation/move','/api/simulation/turn','/api/simulation/heartbeat','/api/simulation/cancel','/api/simulation/explore','/api/simulation/explore_stop'):
+                if self.path in ('/api/simulation/move','/api/simulation/turn','/api/simulation/pan_tilt','/api/simulation/heartbeat','/api/simulation/cancel','/api/simulation/explore','/api/simulation/explore_stop'):
                     if simulation is None:raise ValueError('当前服务未启用仿真')
                     return self.send(simulation.command(self.path.rsplit('/',1)[1],body))
                 if self.path.startswith('/api/navigation/'):
@@ -253,8 +300,24 @@ if __name__ == '__main__':
     parser.add_argument('--ros-sim-time', action='store_true')
     parser.add_argument('--simulation', action='store_true', help='Own isolated Gazebo setup and opt-in leased Nav2 goals in a sourced Ubuntu ROS environment')
     parser.add_argument('--simulation-url', help='Windows frontend: forward simulation controls to this loopback origin')
+    parser.add_argument('--survey-task', type=Path, help='Opt in to ordered live survey ingestion for this survey task')
+    parser.add_argument('--live-output', type=Path, help='New or resumable live receiver directory, outside input data')
+    parser.add_argument('--live-token-file', type=Path, help='Local sender credential file; created if missing')
     args = parser.parse_args()
     args.sessions.mkdir(parents=True, exist_ok=True)
+    if any((args.survey_task, args.live_output, args.live_token_file)) and not all((args.survey_task, args.live_output, args.live_token_file)):
+        parser.error('Use survey-task, live-output and live-token-file together')
+    live_survey = live_token = None
+    if args.survey_task:
+        from live_survey import LiveSurvey
+        if not args.live_token_file.exists():
+            args.live_token_file.parent.mkdir(parents=True, exist_ok=True)
+            with args.live_token_file.open('x', encoding='utf-8') as handle: handle.write(secrets.token_urlsafe(32)+'\n')
+            args.live_token_file.chmod(0o600)
+        live_token = args.live_token_file.read_text(encoding='utf-8').strip()
+        if not 32 <= len(live_token) <= 256 or not live_token.isascii() or any(c.isspace() for c in live_token):
+            parser.error('Invalid live token file')
+        live_survey = LiveSurvey(args.survey_task, args.live_output)
     if sum(bool(v) for v in (args.simulation,args.ros_archive,args.simulation_url))>1:
         parser.error('Choose one simulation, simulation-url, or ros-archive mode')
     simulation = None
@@ -284,7 +347,7 @@ if __name__ == '__main__':
         executor.add_node(navigator)
         ros_thread = threading.Thread(target=executor.spin, daemon=True)
         ros_thread.start()
-    server = create_server(args.sessions, args.port, args.host, navigator, simulation)
+    server = create_server(args.sessions, args.port, args.host, navigator, simulation, live_survey, live_token)
     def interrupted(signum, frame):
         raise KeyboardInterrupt
     signal.signal(signal.SIGTERM, interrupted)

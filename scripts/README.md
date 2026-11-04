@@ -1,5 +1,13 @@
 # Scripts
 
+## Live terrain survey
+
+`map_workbench.py --survey-task ... --live-output ... --live-token-file ...` enables ordered live observation reception and the existing map UI. `send_survey_input.py` replays declared saved inputs over this path or drains a persistent uploader queue. The optional ROS recorder uplink sends accepted timestamped keyframes without changing its mapping or motion policies. See [live survey setup](../docs/live_survey.md).
+
+## Offline terrain survey
+
+`python scripts/offline_survey.py` validates a versioned survey task, processes existing observation archives or normalized point/depth folders, exports terrain products, and generates an offline quality/configuration report. It requires Python and NumPy, with no running ROS, Gazebo, or hardware. See [workflow and input formats](../docs/offline_survey.md). The existing vehicle, reconstruction, and scoring baselines are retained.
+
 ## M4 GUI acceptance
 
 Run the complete build, Gazebo/RViz launch, drive check, and mapping check from

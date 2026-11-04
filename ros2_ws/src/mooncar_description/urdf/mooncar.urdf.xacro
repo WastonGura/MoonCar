@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mooncar">
   <xacro:arg name="prefix" default=""/>
   <xacro:arg name="use_sim_time" default="true"/>
+  <xacro:arg name="camera_sensor_profile" default="legacy"/>
 
   <xacro:include filename="$(find mooncar_description)/urdf/common/materials.xacro"/>
   <xacro:include filename="$(find mooncar_description)/urdf/common/inertial_macros.xacro"/>
@@ -439,9 +440,11 @@
     <origin xyz="-0.16 0 ${chassis_height / 2.0 + nav_reference_size / 2.0}" rpy="0 0 0"/>
   </joint>
 
-  <xacro:mooncar_gazebo_sensors prefix="${prefix}"/>
+  <xacro:mooncar_gazebo_sensors prefix="${prefix}"
+    rgbd_camera="${dict(legacy=False, rgbd_v1=True)['$(arg camera_sensor_profile)']}"/>
   <xacro:mooncar_gazebo_drive
     prefix="${prefix}"
+    joint_state_update_rate="${100 if '$(arg camera_sensor_profile)' == 'rgbd_v1' else 30}"
     wheel_radius="${wheel_radius}"
     wheel_separation="${wheel_separation}"/>
 </robot>

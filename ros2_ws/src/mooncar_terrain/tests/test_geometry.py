@@ -48,10 +48,16 @@ class GeometryTest(unittest.TestCase):
     def test_flat_slope_roughness_step_and_pit(self):
         for surface, bit in [
                 (lambda x, y: x*0, 0), (lambda x, y: x*0.6, 1),
-                (lambda x, y: 0.09*np.sin(x*150), 2),
-                (lambda x, y: x*0+0.25, 4), (lambda x, y: x*0-0.25, 8)]:
+                (lambda x, y: 0.09*np.sin(x*150), 2)]:
             reason = classify_cells(self.surface(surface))[0][4]
             self.assertEqual(reason, 0) if bit == 0 else self.assertTrue(reason & bit)
+        # Height hazards require measured neighboring ground. An isolated
+        # translated plane does not establish a step relative to map zero.
+        for height, bit in ((.25, 4), (-.25, 8)):
+            ground = self.surface(lambda x, y: x*0)
+            raised = ground+[.3, 0., height]
+            cell = next(c for c in classify_cells(np.vstack((ground, raised))) if c[0]>.3)
+            self.assertTrue(cell[4] & bit)
         self.assertEqual(classify_cells([[0, 0, float('nan')]]), [])
 
     def test_scanline_is_unknown_not_a_vertical_obstacle(self):

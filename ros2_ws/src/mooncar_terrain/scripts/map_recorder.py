@@ -3,6 +3,7 @@
 from collections import deque
 from datetime import datetime, timezone
 from pathlib import Path
+import sys
 import time
 
 from diagnostic_msgs.msg import DiagnosticArray, DiagnosticStatus, KeyValue
@@ -20,6 +21,12 @@ from tf2_ros import Buffer, TransformException, TransformListener
 
 from terrain_map import TerrainMap
 from terrain_geometry import correct_camera_pose
+from survey_uplink import SurveyUplink
+try:
+    from localization_quality import LocalizationQuality
+except ModuleNotFoundError:
+    sys.path.insert(0,str(Path(__file__).resolve().parents[4]/'scripts'))
+    from localization_quality import LocalizationQuality
 
 
 def keyframe_needed(frames, translation, quaternion, distance, angle):
@@ -38,8 +45,11 @@ class MapRecorder(Node):
         for name, value in [('frame', 'map'), ('resolution', .25), ('voxel_size', .05),
                             ('output_directory', str(Path.home() / '.local/share/mooncar/maps')),
                             ('source', 'ROS depth observations; physical/simulation provenance unspecified'),
-                            ('save_interval', 5.), ('keyframe_distance', .05), ('keyframe_angle', 5.)]:
+                            ('save_interval', 5.), ('keyframe_distance', .05), ('keyframe_angle', 5.),
+                            ('require_laser_localization', False),
+                            ('uplink_url', ''), ('uplink_token_file', ''), ('uplink_task_file', '')]:
             self.declare_parameter(name, value)
+        self.localization_quality=LocalizationQuality(required=self.get_parameter('require_laser_localization').value)
         self.terrain = TerrainMap(self.get_parameter('resolution').value,
                                   self.get_parameter('voxel_size').value,
                                   self.get_parameter('frame').value,
@@ -51,6 +61,18 @@ class MapRecorder(Node):
         self.directory = Path(self.get_parameter('output_directory').value).expanduser()
         self.directory.mkdir(parents=True, exist_ok=True)
         self.path = self.directory / f'survey-{datetime.now(timezone.utc):%Y%m%dT%H%M%S%fZ}.npz'
+        self.uplink = None
+        uplink = [self.get_parameter(name).value for name in ('uplink_url', 'uplink_token_file', 'uplink_task_file')]
+        if any(uplink):
+            if not all(uplink): raise ValueError('All three uplink parameters are required')
+            task = json.loads(Path(uplink[2]).expanduser().read_text(encoding='utf-8'))
+            expected_clock = 'simulation' if self.get_parameter('use_sim_time').value else 'utc'
+            if (task['coordinates']['frame'] != self.terrain.frame or task['grid']['cell_m'] != self.terrain.resolution
+                    or task['grid']['voxel_m'] != self.terrain.voxel_size or task['time']['clock'] != expected_clock
+                    or task['source']['description'] != self.terrain.source):
+                raise ValueError('Uplink task must match recorder frame/grid/clock/source description')
+            self.uplink = SurveyUplink(uplink[0], Path(uplink[1]).expanduser(), task,
+                                       self.directory/(self.path.stem+'.uplink'))
         self.buffer = Buffer()
         self.listener = TransformListener(self.buffer, self)
         self.pending = None
@@ -62,6 +84,8 @@ class MapRecorder(Node):
         self.cloud_pub = self.create_publisher(PointCloud2, '/mooncar/map/points', 1)
         self.status_pub = self.create_publisher(DiagnosticArray, '/mooncar/map/status', 1)
         self.quality_pub = self.create_publisher(String, '/mooncar/map/quality', 1)
+        if self.get_parameter('require_laser_localization').value:
+            self.create_subscription(String, '/mooncar/laser_odometry/status', self.on_localization_quality, 1)
         self.create_timer(1.,lambda:self.quality_pub.publish(String(data=json.dumps(self.terrain.quality(with_surface=True)))))
         self.create_subscription(PointCloud2, '/mooncar/terrain/observations', self.on_cloud,
                                  qos_profile_sensor_data)
@@ -97,6 +121,15 @@ class MapRecorder(Node):
         if not self.reset_detected and self.pending is None:
             self.pending = (msg, time.monotonic())
 
+    def on_localization_quality(self, msg):
+        try:value=json.loads(msg.data)
+        except (ValueError,TypeError):value={}
+        self.localization_quality.observe(value,time.monotonic())
+        health=self.localization_quality.check(self.get_clock().now().nanoseconds/1e9,time.monotonic())
+        if not health['healthy']:
+            self.pending=None
+            self.status(DiagnosticStatus.WARN,'Laser localization unavailable; new map frames suspended: '+health['reason'])
+
     def on_imu(self, msg):
         if msg.header.frame_id != 'imu_link':
             return
@@ -109,6 +142,12 @@ class MapRecorder(Node):
             return
         msg, received = self.pending
         stamp = rclpy.time.Time.from_msg(msg.header.stamp)
+        health=self.localization_quality.check(self.get_clock().now().nanoseconds/1e9,time.monotonic(),
+                                               observation_stamp=stamp.nanoseconds/1e9)
+        if not health['healthy']:
+            self.pending=None
+            self.status(DiagnosticStatus.WARN,'Laser localization unavailable; depth frame omitted: '+health['reason'])
+            return
         imu = min(self.imu, key=lambda row: abs(row[0] - stamp.nanoseconds / 1e9), default=None)
         if imu is None or abs(imu[0] - stamp.nanoseconds / 1e9) > .03:
             if time.monotonic() - received > 3.:
@@ -139,6 +178,14 @@ class MapRecorder(Node):
             self.terrain.add_frame(points, stamp.nanoseconds / 1e9, corrected_t, corrected_q,
                                    (rt.x, rt.y, rt.z), (rq.x, rq.y, rq.z, rq.w))
             self.dirty = True
+            if self.uplink is not None:
+                try:
+                    fs, fp, ft, fq = self.terrain.frames[-1]
+                    rp = self.terrain.robot_poses[-1]
+                    self.uplink.enqueue(fp, fs, ft, fq, rp[:3] if rp is not None else None,
+                                        rp[3:] if rp is not None else None)
+                except (ValueError, OSError) as error:
+                    self.get_logger().error(f'Live uplink queue failed; local archive retained: {error}')
             self.last_observation = time.monotonic()
             self.status(DiagnosticStatus.OK, 'Depth frame recorded; historical pose errors are not corrected by loop closure')
         except (ValueError, TransformException) as error:
@@ -154,6 +201,8 @@ class MapRecorder(Node):
             self.status(DiagnosticStatus.ERROR, 'Clock reset; restart recorder with a new session')
         elif time.monotonic() - self.last_observation > 5.:
             self.status(DiagnosticStatus.STALE, 'No recent observations; saved map is historical')
+        elif self.uplink is not None and self.uplink.status()['error']:
+            self.status(DiagnosticStatus.WARN, 'Live uplink disconnected/rejected; queued frames retained locally')
 
     def save(self):
         self.terrain.save(self.path)
@@ -201,6 +250,7 @@ def main():
     except KeyboardInterrupt:
         pass
     finally:
+        if node.uplink is not None: node.uplink.close()
         if node.dirty:
             try:
                 node.terrain.save(node.path)

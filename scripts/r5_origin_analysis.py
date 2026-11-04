@@ -3,6 +3,7 @@ import json
 import math
 from pathlib import Path
 import numpy as np
+from r5_csv import read_numeric_csv
 
 WHEELS = ('front_left', 'front_right', 'rear_left', 'rear_right')
 
@@ -85,7 +86,7 @@ def contact_summary(folder,start,end):
 
 def qualify_round(folder,result):
     """No performance drift gate; qualify actual inputs and diagnostic evidence."""
-    folder=Path(folder);data=np.genfromtxt(folder/'physics-steps.csv',delimiter=',',names=True)
+    folder=Path(folder);data=read_numeric_csv(folder/'physics-steps.csv',delimiter=',',names=True)
     start,end=result['sim_started'],result['sim_ended']
     active=data[(data['t']>=start-1e-9)&(data['t']<=end+1e-9)]
     fields=[n for n in data.dtype.names if '_world_' in n or '_collision_' in n or '_axis_' in n or '_fdir1_' in n or n.startswith('com_') or n=='total_mass']
@@ -144,7 +145,7 @@ def odometry_metrics(folder,data,start,end):
 
 def analyze(folder, output=None):
     folder=Path(folder); result=json.loads((folder/'result.json').read_text())
-    data=np.genfromtxt(folder/'physics-steps.csv',delimiter=',',names=True)
+    data=read_numeric_csv(folder/'physics-steps.csv',delimiter=',',names=True)
     schedule=result['schedule'];start=schedule['parked']['after']['sim'];end=schedule['motion']['after']['sim']
     moving=data[(data['t']>=start-1e-9)&(data['t']<=end+1e-9)]
     t=moving['t'];xyz=np.column_stack([moving[k] for k in ('x','y','z')]);yaw=unwrap_yaw(moving)

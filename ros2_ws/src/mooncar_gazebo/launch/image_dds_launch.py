@@ -13,7 +13,8 @@ def launch_bridge(context):
     guard=importlib.util.module_from_spec(spec);spec.loader.exec_module(guard)
     package=Path(FindPackageShare('mooncar_gazebo').perform(context))
     default=guard.default_profile(package/'config/image_dds_defaults.json')
-    choice=guard.select(LaunchConfiguration('model_file',default='mooncar.urdf.xacro').perform(context),LaunchConfiguration('world').perform(context),os.environ,default)
+    support=LaunchConfiguration('simulation_profile',default='legacy').perform(context)=='r5_support_v1'
+    choice=guard.select(LaunchConfiguration('model_file',default='mooncar.urdf.xacro').perform(context),LaunchConfiguration('world').perform(context),os.environ,default,support_candidate=support)
     config=package/'config'/LaunchConfiguration('bridge_config_file',default='ros_gz_bridge.yaml').perform(context)
     if choice['selected']=='legacy':
         return [LogInfo(msg='MoonCar image DDS: '+json.dumps(choice)),IncludeLaunchDescription(

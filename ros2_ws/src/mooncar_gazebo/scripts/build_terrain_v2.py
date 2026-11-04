@@ -3,35 +3,56 @@
 
 Visual and collision meshes use the same vertices. Material classes split the
 surface into separate meshes so each class can also have a contact coefficient.
-The survey world includes one measured DTM patch; remaining geometry and all
-contact coefficients are simulation hypotheses.
+The survey world includes one measured DTM patch. Synthetic slopes and crater
+scales use cited observations; profiles, placement and contact remain hypotheses.
 """
 
 from __future__ import annotations
 
 import hashlib
+import argparse
 import json
 import math
 from pathlib import Path
 
 import numpy as np
 from PIL import Image
+from generate_terrain_materials import bake_scene
+from terrain_scene_detail import SEED, rock_variants, write_rocks, pebbles, sample_ground
 
 
-PACKAGE = Path(__file__).resolve().parents[1]
+SOURCE_PACKAGE = Path(__file__).resolve().parents[1]
+PACKAGE = SOURCE_PACKAGE
 SCENES = {"ramp": (16.0, 0.25), "curve": (16.0, 0.25), "survey": (30.0, 0.30)}
 CURVE_CRATERS = ((1.5, 4.0, 3.05), (5.5, -5.5, 5.6))
+# Ding et al. 2024, p.3: maximum slope on one Yutu-2 route, not a global lunar limit.
+RAMP_SLOPE_DEG = 8.86
+RAMP_LENGTH = 6.0  # Engineering layout, retained.
+# Guo et al. 2021, pp.3-4, region R3: D ~4.5 m, depth/diameter ~0.07.
+SURVEY_CRATER_RADIUS = 4.5 / 2
+SURVEY_CRATER_DEPTH_RATIO = 0.07
+# Ding et al. 2024, PDF p.7, target boulder at Longji: height approximately 0.41 m.
+# One reference obstacle, not a mean/maximum for every rock or a shape reconstruction.
+CURVE_REFERENCE_ROCK_HEIGHT = 0.41
 PATCH_CENTER = (4.8, 3.6)
 PATCH_SIZE = 4.8
 PATCH_STEP = 0.05
 PATCH_SOURCE = PACKAGE / "data/terrain_sources/ce4_fresh_crater_5cm.npz"
+# Guo 2021 / Zenodo 4971121, valid 6 m crop at original scale.
+BACKGROUND_CENTER = (6.0, -5.1)  # Coarse-cell alignment; engineered placement.
+BACKGROUND_SIZE = 6.0
+BACKGROUND_SOURCE = PACKAGE / "data/terrain_sources/ce4_background_5cm.npz"
+# TODO(terrain:ROCK-LAYOUT): XY sizes, shape, burial and positions are engineered.
+# Curve boulder_01's rz is derived from its cited exposed height when building.
 BOULDERS = {
     "ramp": [(-2.8, 3.8, 0.48, 0.40, 0.30), (4.3, -4.0, 0.62, 0.49, 0.38)],
-    "curve": [(-0.7, 6.0, 0.55, 0.42, 0.31), (7.0, -0.1, 0.60, 0.50, 0.36)],
+    "curve": [(-0.7, 6.0, 0.55, 0.42, None), (7.0, -0.1, 0.60, 0.50, 0.36)],
     "survey": [(-3.2, 4.5, 0.215, 0.215, 0.150), (1.7, 7.0, 0.170, 0.170, 0.120),
                (7.2, 3.0, 0.135, 0.135, 0.100), (-7.4, -1.5, 0.130, 0.130, 0.100),
                (4.0, -7.4, 0.120, 0.120, 0.090)],
 }
+# TODO(terrain:CONTACT): these rigid-contact coefficients are not lunar-soil
+# internal friction angles or DEM particle coefficients; direct matching is pending.
 CLASSES = {
     "regolith_passable": {"id": 0, "mu": 0.80, "mu2": 0.72},
     "sand_soft": {"id": 1, "mu": 0.52, "mu2": 0.48},
@@ -47,13 +68,32 @@ def smoothstep(value):
 
 
 def base_relief(x, y):
+    # TODO(terrain:BACKGROUND): amplitudes/wavelengths are engineering values.
+    # Guo's ~4 mm RMS uses 125 mm windows, unresolved on these 250/300 mm meshes.
     distance = np.hypot(x, y)
     fade = smoothstep((distance - 0.8) / 1.2)
     return fade * (0.013 * np.sin(0.8 * x + 0.3 * y) * np.sin(0.7 * y)
                    + 0.006 * np.sin(1.9 * x - 1.3 * y))
 
 
+def ramp_height():
+    """Convert the cited grade to height using the actual mesh's center route."""
+    size, step = SCENES["ramp"]
+    xs = np.linspace(-size / 2, size / 2, round(size / step) + 1)
+    ground_grade = np.diff(base_relief(xs, 0.0)) / np.diff(xs)
+    unit_grade = np.diff(smoothstep((xs - 1.0) / RAMP_LENGTH)) / np.diff(xs)
+    rising = unit_grade > 0
+    target = math.tan(math.radians(RAMP_SLOPE_DEG))
+    assert np.max(np.abs(ground_grade)) < target
+    return float(np.min((target - ground_grade[rising]) / unit_grade[rising]))
+
+
+RAMP_HEIGHT = ramp_height()
+
+
 def crater(x, y, cx, cy, radius, depth):
+    # TODO(terrain:CRATER-PROFILE): bowl/rim functions are synthetic; cited
+    # diameter/depth ratios do not establish these exact shape coefficients.
     r = np.hypot(x - cx, y - cy)
     bowl = -depth * np.exp(-((r / (0.62 * radius)) ** 4))
     rim = 0.45 * depth * np.exp(-(((r - radius) / (0.22 * radius)) ** 2))
@@ -63,9 +103,9 @@ def crater(x, y, cx, cy, radius, depth):
 def terrain(scene, x, y):
     z = base_relief(x, y)
     if scene == "ramp":
-        ramp = smoothstep((x - 1.0) / 6.0)
+        ramp = smoothstep((x - 1.0) / RAMP_LENGTH)
         side = smoothstep((7.5 - np.abs(y)) / 6.0)
-        return z + 0.42 * ramp * side
+        return z + RAMP_HEIGHT * ramp * side
     if scene == "curve":
         for cx, cy, radius in CURVE_CRATERS:
             # The 6.1 m and 11.2 m diameters are observed near Yutu-2's route;
@@ -73,7 +113,9 @@ def terrain(scene, x, y):
             z += crater(x, y, cx, cy, radius, 0.061 * (2 * radius) / 1.45)
         return z
     if scene == "survey":
-        z += crater(x, y, -6.0, 7.0, 2.6, 0.061 * 5.2 / 1.45)
+        z += crater(x, y, -6.0, 7.0, SURVEY_CRATER_RADIUS,
+                    SURVEY_CRATER_DEPTH_RATIO * (2 * SURVEY_CRATER_RADIUS) / 1.45)
+        # TODO(terrain:MOUNDS): amplitudes, widths and positions are engineered.
         z += 0.28 * np.exp(-(((x - 6.0) / 1.3) ** 2 + ((y + 5.0) / 0.9) ** 2))
         z += 0.20 * np.exp(-(((x + 5.0) / 1.5) ** 2 + ((y + 6.0) / 1.0) ** 2))
         return z
@@ -94,7 +136,7 @@ def material_ids(scene, x, y, z):
     elif scene == "survey":
         result[(((x + 5.0) / 2.6) ** 2 + ((y + 3.0) / 2.0) ** 2) < 1.0] = 1
         result[(((x - 3.0) / 2.4) ** 2 + ((y + 5.0) / 2.1) ** 2) < 1.0] = 2
-        for cx, cy, radius in ((-6.0, 7.0, 2.6),):
+        for cx, cy, radius in ((-6.0, 7.0, SURVEY_CRATER_RADIUS),):
             distance = np.hypot(x - cx, y - cy)
             result[(distance > 0.72 * radius) & (distance < 1.20 * radius)] = 2
             result[distance < 0.72 * radius] = 4
@@ -117,7 +159,8 @@ def write_obj(path, xs, ys, z, normals, labels, class_id):
             for j, i in corners:
                 stream.write(f"v {xs[i]:.6f} {ys[j]:.6f} {z[j, i]:.6f}\n")
             for j, i in corners:
-                stream.write(f"vt {xs[i] / 1.2:.6f} {ys[j] / 1.2:.6f}\n")
+                size = SCENES[path.parent.name][0]
+                stream.write(f"vt {(xs[i] + size/2) / size:.8f} {(ys[j] + size/2) / size:.8f}\n")
             for j, i in corners:
                 nx, ny, nz = normals[j, i]
                 stream.write(f"vn {nx:.6f} {ny:.6f} {nz:.6f}\n")
@@ -162,7 +205,7 @@ def write_boulder_obj(path):
 
 def model_xml(scene, name, config):
     uri = f"model://mooncar_gazebo/models/terrain_v2/{scene}/{name}.obj"
-    tex = f"model://mooncar_gazebo/materials/textures/{config.get('texture', name)}"
+    tex = f"model://mooncar_gazebo/materials/textures/{config.get('appearance', scene+'_surface')}"
     return f"""    <model name="{name}_ground">
       <static>true</static>
       <link name="surface">
@@ -189,8 +232,8 @@ def model_xml(scene, name, config):
     </model>"""
 
 
-def boulder_xml(index, x, y, z, rx, ry, rz):
-    uri = "model://mooncar_gazebo/models/terrain_v2/boulder.obj"
+def boulder_xml(index, x, y, z, rx, ry, rz, variant):
+    uri = f"model://mooncar_gazebo/models/terrain_v2/boulder_{variant:02d}.obj"
     tex = "model://mooncar_gazebo/materials/textures/rock_boulder"
     return f"""    <model name="boulder_{index:02d}">
       <static>true</static>
@@ -214,13 +257,21 @@ def boulder_xml(index, x, y, z, rx, ry, rz):
     </model>"""
 
 
+PHYSICS_BACKEND = 'dart'
+PHYSICS_STEP = .001
+PHYSICS_ENGINES = {
+    'bullet': 'gz-physics-bullet-featherstone-plugin',
+    'dart': 'libmooncar-physics7-dartsim.so',
+}
+
+
 def world_xml(scene, models):
     name = f"mooncar_{scene}_v2"
     return f"""<?xml version="1.0" encoding="utf-8"?>
 <sdf version="1.10">
   <world name="{name}">
     <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics">
-      <engine><filename>gz-physics-bullet-featherstone-plugin</filename></engine>
+      <engine><filename>{PHYSICS_ENGINES[PHYSICS_BACKEND]}</filename></engine>
     </plugin>
     <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
     <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
@@ -229,15 +280,16 @@ def world_xml(scene, models):
     </plugin>
     <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
     <physics name="mooncar_v2_physics" type="ode">
-      <max_step_size>0.002</max_step_size><real_time_factor>1</real_time_factor>
+      <max_step_size>{PHYSICS_STEP:g}</max_step_size><real_time_factor>1</real_time_factor>
     </physics>
     <gravity>0 0 -1.62</gravity>
-    <scene><ambient>0.42 0.43 0.46</ambient><background>0.11 0.12 0.15</background></scene>
+    <scene><ambient>0.22 0.22 0.24</ambient><background>0.11 0.12 0.15</background><shadows>true</shadows></scene>
     <light type="directional" name="sun">
       <pose>0 0 10 0 0 0</pose>
       <diffuse>0.95 0.92 0.86 1</diffuse>
       <specular>0.20 0.20 0.20 1</specular>
       <direction>-0.45 -0.30 -0.84</direction>
+      <cast_shadows>true</cast_shadows>
     </light>
 {chr(10).join(models)}
   </world>
@@ -285,7 +337,10 @@ def build(scene):
     # One runnable geometry check: every cell has a class and each scene has its intended obstacle.
     assert labels.shape == (count, count)
     if scene == "ramp":
-        assert 0.38 < terrain(scene, 7.0, 0.0) - spawn_z < 0.44
+        # Check the actual sampled center route, including background relief.
+        route = z[count // 2]
+        route_slope = np.degrees(np.arctan(np.abs(np.diff(route) / np.diff(xs))))
+        assert abs(float(route_slope.max()) - RAMP_SLOPE_DEG) < 0.2
     elif scene == "curve":
         assert terrain(scene, 1.5, 4.0) - spawn_z < -0.15
     else:
@@ -293,7 +348,11 @@ def build(scene):
 
     folder = PACKAGE / "models" / "terrain_v2" / scene
     folder.mkdir(parents=True, exist_ok=True)
-    write_boulder_obj(folder.parent / "boulder.obj")
+    variants = rock_variants()
+    for variant, geometry in enumerate(variants):
+        write_rocks(folder.parent / f'boulder_{variant:02d}.obj', [geometry])
+    # Compatibility alias for older resource readers; new worlds select variants.
+    write_rocks(folder.parent/'boulder.obj',[variants[0]])
     models = []
     counts = {}
     mesh_labels = labels.copy()
@@ -332,6 +391,68 @@ def build(scene):
             "edge_feather_m": 0.35,
             "transform": "north-up crop, Gaussian low-pass, 5 cm sampling, border-plane removal, edge feather; no horizontal or vertical scaling",
         }
+        # Replace the synthetic mound/background with measured geometry inside.
+        with np.load(BACKGROUND_SOURCE) as source:
+            local_x, local_y, measured = source["x"], source["y"], source["z"]
+            assert source["source_md5"].item() == "985ec0b225279df836cba87a5ecd306b"
+            source_datum = float(source["removed_height_datum_m"])
+        assert measured.shape == (121, 121) and np.all(np.isfinite(measured))
+        assert abs(local_x[1] - local_x[0] - PATCH_STEP) < 1e-9
+        background_x, background_y = BACKGROUND_CENTER[0] + local_x, BACKGROUND_CENTER[1] + local_y
+        bx_grid, by_grid = np.meshgrid(background_x, background_y)
+        lx, ly = np.meshgrid(local_x, local_y)
+        distance = np.minimum(BACKGROUND_SIZE / 2 - np.abs(lx), BACKGROUND_SIZE / 2 - np.abs(ly))
+        weight = smoothstep(distance / 0.35)
+        # Blend to the actual coarse mesh edges, not the continuous formula.
+        synthetic = np.array([np.interp(background_x, xs, row) for row in z])
+        synthetic = np.array([np.interp(background_y, ys, col) for col in synthetic.T]).T
+        background_z = (1 - weight) * synthetic + weight * measured
+        x0, x1, y0, y1 = background_x[0], background_x[-1], background_y[0], background_y[-1]
+        assert all(np.any(np.isclose(xs, v, atol=1e-9, rtol=0)) for v in (x0, x1))
+        assert all(np.any(np.isclose(ys, v, atol=1e-9, rtol=0)) for v in (y0, y1))
+        background_hole = (cx >= x0) & (cx < x1) & (cy >= y0) & (cy < y1)
+        assert background_hole.sum() == 20 * 20 and not np.any(hole & background_hole)
+        mesh_labels[background_hole] = 255
+        bg_dy, bg_dx = np.gradient(background_z, background_y, background_x)
+        bg_normals = np.stack((-bg_dx, -bg_dy, np.ones_like(background_z)), axis=-1)
+        bg_normals /= np.linalg.norm(bg_normals, axis=-1, keepdims=True)
+        bg_cx, bg_cy = np.meshgrid((background_x[:-1] + background_x[1:]) / 2,
+                                  (background_y[:-1] + background_y[1:]) / 2)
+        bg_cz = (background_z[:-1, :-1] + background_z[1:, 1:]) / 2
+        bg_labels = material_ids(scene, bg_cx, bg_cy, bg_cz)
+        background_counts = {}
+        for name, config in CLASSES.items():
+            bg_name = f"ce4_background_{name}"
+            bg_path = folder / f"{bg_name}.obj"
+            cells = write_obj(bg_path, background_x, background_y, background_z,
+                              bg_normals, bg_labels, config["id"])
+            if cells:
+                models.append(model_xml(scene, bg_name, {**config, "texture": name}))
+                background_counts[name] = cells
+            elif bg_path.exists():
+                bg_path.unlink()
+        assert sum(background_counts.values()) == 120 * 120
+        vertices = (x >= x0) & (x <= x1) & (y >= y0) & (y <= y1)
+        cols = np.rint((x[vertices] - x0) / PATCH_STEP).astype(int)
+        rows = np.rint((y[vertices] - y0) / PATCH_STEP).astype(int)
+        z[vertices] = background_z[rows, cols]
+        center_cols = np.rint((cx[background_hole] - x0) / PATCH_STEP).astype(int)
+        center_rows = np.rint((cy[background_hole] - y0) / PATCH_STEP).astype(int)
+        labels[background_hole] = material_ids(scene, cx[background_hole], cy[background_hole],
+                                              background_z[center_rows, center_cols])
+        background_info = {
+            "source_doi": "10.5281/zenodo.4971121", "source_paper_doi": "10.1029/2021GL094931",
+            "source_tif_md5": "985ec0b225279df836cba87a5ecd306b",
+            "processed_npz_sha256": file_hash(BACKGROUND_SOURCE),
+            "source_crop_row0_col0": [2575, 1261],
+            "center_m": BACKGROUND_CENTER, "size_m": BACKGROUND_SIZE,
+            "mesh_step_m": PATCH_STEP, "source_step_m": 0.005,
+            "coarse_cells_replaced": int(background_hole.sum()),
+            "patch_cells_by_class": background_counts,
+            "removed_height_datum_m": source_datum, "edge_feather_m": 0.35,
+            "transform": "north-up valid crop, Gaussian low-pass, 5 cm sampling, center-height translation, edge blend; no plane removal or scaling",
+            "scope": "measured interior; placement, boundary and labels engineered; not millimeter roughness validation",
+        }
     for name, config in CLASSES.items():
         path = folder / f"{name}.obj"
         cells = write_obj(path, xs, ys, z, normals, mesh_labels, config["id"])
@@ -340,14 +461,41 @@ def build(scene):
             counts[name] = cells
         elif path.exists():
             path.unlink()
-    assert sum(counts.values()) == count * count - (16 * 16 if scene == "survey" else 0)
+    assert sum(counts.values()) == count * count - (16 * 16 + 20 * 20 if scene == "survey" else 0)
 
     boulders = []
     for index, (bx, by, rx, ry, rz) in enumerate(BOULDERS[scene], 1):
-        bz = float(terrain(scene, bx, by) - spawn_z) + 0.65 * rz
-        models.append(boulder_xml(index, bx, by, bz, rx, ry, rz))
+        variant = (index-1+list(SCENES).index(scene)*2) % 6
+        ground_z = sample_ground(xs,ys,z,bx,by)
+        if scene == "survey" and background_x[0] <= bx <= background_x[-1] and background_y[0] <= by <= background_y[-1]:
+            # Current boulder center lies exactly on a fine-grid node.
+            col = int(round((bx - background_x[0]) / PATCH_STEP))
+            row = int(round((by - background_y[0]) / PATCH_STEP))
+            assert abs(background_x[col] - bx) < 1e-9 and abs(background_y[row] - by) < 1e-9
+            ground_z = float(background_z[row, col])
+        if scene == "curve" and index == 1:
+            # Use the written collision mesh, not an assumed sphere radius.
+            mesh_top = max(float(line.split()[3]) for line in
+                           (folder.parent / f"boulder_{variant:02d}.obj").read_text().splitlines()
+                           if line.startswith("v "))
+            rz = CURVE_REFERENCE_ROCK_HEIGHT / (0.65 + mesh_top)
+            # This reference center lies on a mesh row: use the actual linear
+            # collision surface there, not the unsampled analytic crater.
+            row = int(np.searchsorted(ys, by))
+            assert abs(ys[row] - by) < 1e-9
+            ground_z = float(np.interp(bx, xs, z[row]))
+        bz = ground_z + 0.65 * rz
+        models.append(boulder_xml(index, bx, by, bz, rx, ry, rz, variant))
         boulders.append({"name": f"boulder_{index:02d}", "position_m": [bx, by, round(bz, 4)],
-                         "radii_m": [rx, ry, rz], "class_id": CLASSES["rock_boulder"]["id"]})
+                         "radii_m": [rx, ry, rz], "variant":variant,
+                         "class_id": CLASSES["rock_boulder"]["id"]})
+
+    components, pebble_info = pebbles(scene,xs,ys,z,labels,variants,boulders)
+    if components:
+        write_rocks(folder / 'surface_pebbles.obj',components)
+        models.append(model_xml(scene,'surface_pebbles',
+                                {**CLASSES['rock_boulder'],'appearance':'rock_boulder'}))
+    atlas_info = bake_scene(scene,labels,size,PACKAGE / 'materials/textures')
 
     mask_path = folder / "class_mask.png"
     Image.fromarray(np.flipud(labels), mode="L").save(mask_path)
@@ -357,22 +505,64 @@ def build(scene):
     world_path.write_text(world_xml(scene, models), encoding="utf-8")
     height_min = min(float(z.min()), float(patch_z.min()) if patch_info else float(z.min()))
     height_max = max(float(z.max()), float(patch_z.max()) if patch_info else float(z.max()))
+    if scene == "survey":
+        height_min = min(height_min, float(background_z.min()))
+        height_max = max(height_max, float(background_z.max()))
     boulder_area_fraction = sum(math.pi * b[2] * b[3] for b in BOULDERS[scene]) / size**2
     manifest = {
+        "physics_config": {"backend": PHYSICS_BACKEND, "step_seconds": PHYSICS_STEP,
+                           "engine": PHYSICS_ENGINES[PHYSICS_BACKEND],
+                           "scope": "numerical runtime configuration, not measured soil properties"},
         "scene": scene, "world": world_path.name, "size_m": size, "grid_step_m": step,
         "spawn_ground_z_m": 0.0, "height_min_m": round(height_min, 4),
         "height_max_m": round(height_max, 4), "cell_count_by_class": counts,
         "class_parameters": {name: {"id": c["id"], "mu": c["mu"], "mu2": c["mu2"]}
                              for name, c in CLASSES.items()},
         "boulders": boulders,
+        "detail_version": "terrain-v2-detail-v1",
+        "detail_seed": SEED,
+        "surface_atlas": atlas_info,
+        "pebbles": pebble_info,
+        "rock_variant_sha256": {f'boulder_{i:02d}.obj':file_hash(folder.parent/f'boulder_{i:02d}.obj') for i in range(6)},
+        "detail_generator_sha256": file_hash(SOURCE_PACKAGE/'scripts/terrain_scene_detail.py'),
+        "material_generator_sha256": file_hash(SOURCE_PACKAGE/'scripts/generate_terrain_materials.py'),
         "boulder_projected_area_fraction": round(boulder_area_fraction, 7),
         "measured_patch": patch_info,
+        "generator_sha256": file_hash(Path(__file__)),
+        "contact_parameter_status": "engineering assumptions; not literature-calibrated mu/mu2",
         "labels": "class_mask.png is row-major from north to south; x increases east, y increases north",
         "world_sha256": file_hash(world_path),
         "mesh_sha256": {path.name: file_hash(path) for path in sorted(folder.glob("*.obj"))},
         "boulder_mesh_sha256": file_hash(folder.parent / "boulder.obj"),
-        "texture_sha256": {path.name: file_hash(path) for path in sorted((PACKAGE / "materials" / "textures").glob("*.png"))},
+        "texture_sha256": {path.name: file_hash(path) for path in sorted((PACKAGE / "materials" / "textures").glob("*.png"))
+                           if path.name.startswith(scene+'_surface_') or
+                           any(path.name.startswith(name+'_') for name in CLASSES)},
     }
+    if scene == "ramp":
+        manifest["geometry_reference"] = {
+            "doi": "10.1038/s41467-024-46233-8", "page": 3,
+            "route_reference_slope_deg": RAMP_SLOPE_DEG,
+            "derived_ramp_height_m": RAMP_HEIGHT,
+            "sampled_center_route_max_slope_deg": float(route_slope.max()),
+            "sampled_surface_max_gradient_deg": float(np.degrees(np.arctan(np.hypot(dzdx, dzdy))).max()),
+            "scope": "reference slope sets longitudinal ramp component; engineered shape and placement, not a route reconstruction or global slope cap",
+        }
+    elif scene == "survey":
+        manifest["measured_background_patch"] = background_info
+        manifest["geometry_reference"] = {
+            "doi": "10.1029/2021GL094931", "pages": [3, 4], "region": "R3",
+            "crater_diameter_m": 2 * SURVEY_CRATER_RADIUS,
+            "crater_depth_diameter_ratio": SURVEY_CRATER_DEPTH_RATIO,
+            "scope": "approximate observed degraded-crater scale; synthetic profile and placement, separate from measured fresh-crater patch",
+        }
+    if scene == "curve":
+        manifest["reference_rock"] = {
+            "name": "boulder_01", "doi": "10.1038/s41467-024-46233-8",
+            "page": 7, "exposed_height_m": CURVE_REFERENCE_ROCK_HEIGHT,
+            "datum": "top collision vertex relative to ground at rock center",
+            "derived_vertical_scale_m": boulders[0]["radii_m"][2],
+            "scope": "approximate observed height of one Longji target; XY shape, burial fraction and placement remain engineered",
+        }
     if scene == "survey":
         k, cutoff = 0.0021, 0.25
         model_fraction = k * math.exp(-(0.5648 + 0.01258 / k) * cutoff)
@@ -384,12 +574,25 @@ def build(scene):
             "diameter_cutoff_m": cutoff,
             "model_fraction_above_cutoff": round(model_fraction, 7),
             "explicit_boulder_proxy_fraction_above_cutoff": round(visible_fraction, 7),
-            "scope": "one engineered discrete sample; unresolved smaller rocks are not collision objects",
+            "scope": "large rocks are one engineered sample; new sub-0.10 m detail is not a measured abundance model",
         }
     (folder / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print(f"{scene}: {size:g} m, z [{height_min:.3f}, {height_max:.3f}] m, {counts}")
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--output-root',type=Path,default=SOURCE_PACKAGE,
+                        help='Gazebo package resource root; measured inputs always read from source package')
+    parser.add_argument('--physics-backend',choices=PHYSICS_ENGINES,default=PHYSICS_BACKEND)
+    parser.add_argument('--physics-step',type=float,choices=(.002,.001,.0005),default=PHYSICS_STEP)
+    args = parser.parse_args()
+    PHYSICS_BACKEND, PHYSICS_STEP = args.physics_backend, args.physics_step
+    PACKAGE = args.output_root.resolve()
+    required = [PACKAGE/'materials/textures'/f'{name}_{kind}.png'
+                for name in CLASSES for kind in ('albedo','normal','roughness')]
+    if not all(path.is_file() for path in required):
+        parser.error('Generate tile materials first with generate_terrain_materials.py --out <output-root>/materials')
+    (PACKAGE/'worlds').mkdir(parents=True,exist_ok=True)
     for scene_name in SCENES:
         build(scene_name)

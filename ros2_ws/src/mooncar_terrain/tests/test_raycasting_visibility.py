@@ -4,12 +4,13 @@ from pathlib import Path
 import sys
 from types import SimpleNamespace as NS
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / 'scripts'))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from autonomous_survey import choose_view
+from autonomous_survey import choose_view,known_chassis_clearance
 
 
 class RaycastingVisibilityTests(unittest.TestCase):
@@ -204,6 +205,121 @@ class RaycastingVisibilityTests(unittest.TestCase):
 
         self.assertEqual(choice_v2_with_z['visible_cells'], choice_v2_no_z['visible_cells'],
                          "v2 strategy must be unaffected by elevation data")
+
+
+
+
+class SupportedUnknownVisibilityTests(unittest.TestCase):
+    def fixture(self,points=4):
+        resolution=.25;width=80;origin=-10.
+        y,x=np.mgrid[:width,:width]
+        known=np.hypot(origin+(x+.5)*resolution,origin+(y+.5)*resolution)<=1.
+        costs=np.full((width,width),-1,dtype=int);costs[known]=0
+        grid=NS(info=NS(width=width,height=width,resolution=resolution,
+                       origin=NS(position=NS(x=origin,y=origin))),data=costs.ravel().tolist())
+        cells=[dict(ix=x,iy=y,quality=1.,points=points) for x in range(-12,12) for y in range(-12,12)]
+        quality=dict(resolution=resolution,cells=cells)
+        pose=dict(x=0.,y=0.,yaw=0.)
+        history=[dict(x=0.,y=0.,yaw=float(yaw)) for yaw in np.arange(-math.pi,math.pi,math.pi/4) if abs(yaw)>1e-9]
+        return grid,quality,pose,history
+
+    def test_supported_unknown_transmits_prediction_but_unobserved_frontier_stops(self):
+        grid,quality,pose,history=self.fixture()
+        arguments=(grid,quality,pose,[0.,0.],8.,history,100.,'coverage_view_v2')
+        baseline,old=choose_view(*arguments,return_diagnostics=True)
+        explicit_false=choose_view(*arguments,depth_observed_visibility=False)
+        self.assertIsNone(baseline);self.assertEqual(baseline,explicit_false)
+        chosen,diag=choose_view(*arguments,return_diagnostics=True,depth_observed_visibility=True)
+        self.assertIsNotNone(chosen)
+        self.assertEqual(chosen['kind'],'turn');self.assertEqual(chosen['yaw'],0.)
+        self.assertGreater(chosen['expected_new_m2'],.15)
+        visible={tuple(key) for key in chosen['visible_cells']}
+        self.assertTrue(any(key[0]==12 for key in visible))
+        self.assertFalse(any(key[0]>12 for key in visible))
+        # Optical support never converts an unknown cell into a route/target.
+        self.assertEqual(diag['reachable_move_positions'],0)
+        self.assertEqual(diag['feasible_moves'],0)
+        self.assertEqual(old['reachable_move_positions'],0)
+
+    def test_absent_zero_nonfinite_and_boolean_points_do_not_prove_depth_support(self):
+        for points in (None,0,-1,float('nan'),float('inf'),True):
+            with self.subTest(points=points):
+                grid,quality,pose,history=self.fixture(points)
+                self.assertIsNone(choose_view(grid,quality,pose,[0.,0.],8.,history,100.,
+                                             'coverage_view_v2',depth_observed_visibility=True))
+        grid,quality,pose,history=self.fixture()
+        for cell in quality['cells']:cell.pop('points')
+        self.assertIsNone(choose_view(grid,quality,pose,[0.,0.],8.,history,100.,
+                                     'coverage_view_v2',depth_observed_visibility=True))
+
+    def test_known_lethal_obstacle_still_blocks_supported_unknown_visibility(self):
+        grid,quality,pose,history=self.fixture()
+        costs=np.array(grid.data).reshape(80,80);costs[:,45]=100;grid.data=costs.ravel().tolist()
+        self.assertIsNone(choose_view(grid,quality,pose,[0.,0.],8.,history,100.,
+                                     'coverage_view_v2',depth_observed_visibility=True))
+
+    def test_recursive_boundary_fallback_preserves_explicit_visibility_policy(self):
+        width=20;resolution=.25
+        grid=NS(info=NS(width=width,height=width,resolution=resolution,
+                       origin=NS(position=NS(x=-2.5,y=-2.5))),data=[0]*(width*width))
+        quality=dict(resolution=resolution,cells=[dict(ix=x,iy=y,quality=1.,points=1)
+                                                for x in range(-10,10) for y in range(-10,10)])
+        with patch('autonomous_survey.choose_view',wraps=choose_view) as recursive:
+            chosen=choose_view(grid,quality,dict(x=0.,y=0.,yaw=0.),[0.,0.],8.,[],100.,
+                               'coverage_view_v2',depth_observed_visibility=True)
+        self.assertIsNotNone(chosen);self.assertTrue(chosen['map_boundary_fallback'])
+        self.assertTrue(recursive.called)
+        self.assertIs(recursive.call_args.kwargs['depth_observed_visibility'],True)
+
+
+class DepthFallbackTests(unittest.TestCase):
+    def patch(self):
+        r=.1;v,u=np.mgrid[:200,:200]
+        x,y=-10+(u+.5)*r,-10+(v+.5)*r
+        # A real known corridor leads to a circumscribed safe patch offset from
+        # the original eight radial candidate headings. Outside remains unknown.
+        projection=np.clip((1.5*x+.6*y)/(1.5**2+.6**2),0.,1.)
+        corridor=(x-1.5*projection)**2+(y-.6*projection)**2<=.22**2
+        bulb=(x-1.5)**2+(y-.6)**2<=.85**2
+        costs=np.full((200,200),-1,dtype=np.int16);costs[corridor|bulb]=0
+        grid=NS(data=costs.ravel(),info=NS(width=200,height=200,resolution=r,
+                origin=NS(position=NS(x=-10.,y=-10.))))
+        return grid,dict(resolution=.25,cells=[]),dict(x=0.,y=0.,yaw=0.),costs
+
+    def select(self,grid,quality,pose,*,depth=True,radius=22.):
+        return choose_view(grid,quality,pose,[0.,0.],radius,[],120.,'surface_view_v2',
+            return_diagnostics=True,_boundary_fallback=True,depth_observed_visibility=depth)
+
+    def test_observed_diagonal_safe_patch_can_be_used_inside_allocated_depth_grid(self):
+        grid,q,pose,costs=self.patch()
+        decision,diagnostics=self.select(grid,q,pose)
+        self.assertIsNotNone(decision)
+        self.assertGreater(diagnostics['feasible_moves'],0)
+        ix=int(math.floor((decision['x']+10.)/.1));iy=int(math.floor((decision['y']+10.)/.1))
+        self.assertGreater(min(ix,iy,199-ix,199-iy)*.1,3.)
+        self.assertLessEqual(costs[iy,ix],65)
+        self.assertTrue(known_chassis_clearance(costs,ix,iy,.1))
+        self.assertGreaterEqual(decision['expected_utility_m2'],.15)
+
+    def test_legacy_2d_keeps_allocated_edge_filter(self):
+        grid,q,pose,_=self.patch()
+        decision,diagnostics=self.select(grid,q,pose,depth=False)
+        self.assertIsNone(decision)
+        self.assertEqual(diagnostics['reachable_move_positions'],0)
+
+    def test_unknown_clearance_path_and_radius_still_block(self):
+        grid,q,pose,costs=self.patch()
+        costs[:]=-1;costs[100,100]=0
+        self.assertIsNone(self.select(grid,q,pose)[0])
+        grid,q,pose,costs=self.patch()
+        # Unknown slices break the only observed path; they are never traversed
+        # merely because measured depth can be optically transparent elsewhere.
+        costs[:,107:109]=-1
+        self.assertIsNone(self.select(grid,q,pose)[0])
+        grid,q,pose,costs=self.patch()
+        # The known bulb is outside radius-.75; allocated size grants no permit.
+        self.assertIsNone(self.select(grid,q,pose,radius=2.)[0])
+
 
 
 if __name__ == '__main__':

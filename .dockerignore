@@ -1,0 +1,11 @@
+# Keep generated survey records and temporary runs out of root build contexts.
+# Runtime libraries, sensor models, source and configuration remain available.
+.git
+reports/
+tmp/
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+web/node_modules/
+**/__pycache__/
+**/*.pyc

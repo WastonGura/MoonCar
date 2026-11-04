@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import numpy as np
+from r5_csv import read_numeric_csv
 from audit_r5_drive_constraints import model_audit, WHEELS
 from r5_load_diagnostic import semantic, diagnose_round
 
@@ -68,12 +69,12 @@ def contact_relation(folder, result, profile, parameters):
     folder=Path(folder)
     # Old load hypothesis fields are retained but never used as WheelSlip gates.
     diagnosis=diagnose_round(folder, {'center_of_mass_m':[-.006237889179185716,0,.12798331700413673]}, 'original')
-    data=np.genfromtxt(folder/'physics-steps.csv', delimiter=',', names=True)
+    data=read_numeric_csv(folder/'physics-steps.csv', delimiter=',', names=True)
     start=result['schedule']['motion']['before']['sim']+3
     end=result['schedule']['motion']['after']['sim']-1
     relations={}
     for w in WHEELS:
-        c=np.genfromtxt(folder/'load-analysis'/(w+'-contact-series.csv'),delimiter=',',names=True)
+        c=read_numeric_csv(folder/'load-analysis'/(w+'-contact-series.csv'),delimiter=',',names=True)
         c=c[(c['t']>=start)&(c['t']<=end)]
         if len(c)<2 or not np.isfinite(c['slip_body_y']).all() or not np.isfinite(c['force_body_y']).all():
             raise ValueError('Missing actual contact force/slip')

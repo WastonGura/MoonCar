@@ -164,6 +164,15 @@ class TerrainMap:
                 design = np.column_stack((sample[:, :2] - center, np.ones(len(sample))))
                 plane, _, rank, singular = np.linalg.lstsq(design, sample[:, 2], rcond=None)
                 if rank == 3 and singular[-1] / math.sqrt(len(sample)) >= self.resolution * .05:
+                    residuals = np.abs(design @ plane - sample[:, 2])
+                    if len(sample) >= 8 and float(np.max(residuals)) > 0.03:
+                        inliers = residuals < (1.5 * float(np.median(residuals)) + 0.02)
+                        if int(np.sum(inliers)) >= 6:
+                            p_sub, _, r_sub, s_sub = np.linalg.lstsq(design[inliers], sample[inliers, 2], rcond=None)
+                            if r_sub == 3 and s_sub[-1] / math.sqrt(int(np.sum(inliers))) >= self.resolution * .04:
+                                plane = p_sub
+                                sample = sample[inliers]
+                                design = design[inliers]
                     roughness = float(np.sqrt(np.mean((design @ plane - sample[:, 2]) ** 2)))
                     slope = math.degrees(math.atan(np.linalg.norm(plane[:2])))
                     cell.update(z=float(plane[2]), gx=float(plane[0]), gy=float(plane[1]),

@@ -3,6 +3,7 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {OBJLoader} from 'three/addons/loaders/OBJLoader.js';
 import {ReplayCache,bufferedRanges,replayDelay} from './replay_cache.js';
 import {experimentEditor} from './experiment_editor.js';
+import {liveSurveyPanel} from './live_survey.js';
 
 const $ = id => document.getElementById(id);
 const scene = new THREE.Scene(); scene.background = new THREE.Color('#f5f5f3');
@@ -23,6 +24,7 @@ let mapTask=null, pendingMap=null, seekTimer=null, playbackGeneration=0;
 let seekRAF=null, replayCache=null, cacheController=null;
 let liveBusy=false, lastArchiveVersion=null;
 let navigation={enabled:false}, navigationToken='', navigationBusy=false, heartbeatBusy=false;
+let liveSurvey=null;
 const ray = new THREE.Raycaster();
 const modes = {fixed:'固定地形代价',direction:'加入行驶方向',uncertainty:'加入观测支持度',full:'方向 + 观测支持度'};
 const statuses = {ok:'找到路线',invalid_start:'起点或车体覆盖区域不可通行',invalid_goal:'终点或车体覆盖区域不可通行',no_path:'没有可行路线',budget_exceeded:'超出计算预算'};
@@ -136,7 +138,7 @@ function renderMarkers() {
     mesh.rotation.x=Math.PI/2;mesh.position.set(point.x,point.y,point.z+.15);markers.add(mesh);
   }
   $('endpoints').textContent=`起点：${start?`${start.x.toFixed(2)}, ${start.y.toFixed(2)}`:'未选择'}；终点：${goal?`${goal.x.toFixed(2)}, ${goal.y.toFixed(2)}`:'未选择'}`;
-  $('plan').disabled=!(start&&goal) || loading;
+  $('plan').disabled=!(start&&goal) || loading || !!liveSurvey?.isActive();
   navigationControls();
 }
 function updateMeshColors(obj) {
@@ -224,6 +226,7 @@ async function loadMesh(sessionName) {
     const res = await fetch(`/api/mesh?session=${encodeURIComponent(sessionName)}`);
     if (!res.ok) return;
     const text = await res.text();
+    if(liveSurvey?.isActive() || $('session').value!==sessionName) return;
     if (!text || text.startsWith('# Empty mesh')) return;
     const object = objLoader.parse(text);
 
@@ -285,7 +288,7 @@ async function displayMap(request){
     const began=performance.now();
     const cache=!$('live').checked?replayCache:null;
     const data=cache?await cache.read(request.frame):await api(`/api/map?session=${encodeURIComponent(request.name)}&frame=${request.frame}`);
-    if(request.token!==generation)return;
+    if(request.token!==generation||liveSurvey?.isActive())return;
     const received=performance.now();
     draw(data,request.refit,$('live').checked&&!request.refit);lastArchiveVersion=data.archive_updated_ns;
     $('viewport').dataset.replayReadMs=(received-began).toFixed(1);$('viewport').dataset.replayDrawMs=(performance.now()-received).toFixed(1);
@@ -347,7 +350,10 @@ async function sessions(preferred=null){
       $('session').add(option);
     }
     if(typeof preferred==='string'&&data.sessions.some(s=>s.name===preferred)){$('session').value=preferred;await $('session').onchange();}
-    else if(data.sessions.some(s=>s.name===previous))$('session').value=previous;
+    else if(previous){
+      if(!data.sessions.some(s=>s.name===previous))$('session').add(new Option(sessionLabel(previous),previous));
+      $('session').value=previous;
+    }
     else if(data.sessions.length){
       let saved='';try{saved=localStorage.getItem('mooncar-last-session')||'';}catch{}
       $('session').value=data.sessions.some(s=>s.name===saved)?saved:data.sessions[0].name;
@@ -358,7 +364,16 @@ async function sessions(preferred=null){
     if(!data.sessions.length)message('暂无采集档案。请启动采集节点，或载入明确标注的算法测试档案。');
   }catch(e){message(e.message,true);$('connection').textContent='服务未连接';}
 }
+async function followSession(name){
+  if(!name||$('session').value===name)return;
+  if(!Array.from($('session').options).some(option=>option.value===name))
+    $('session').add(new Option(sessionLabel(name),name));
+  $('live').checked=true;
+  $('session').value=name;
+  await $('session').onchange();
+}
 $('session').onchange=async()=>{
+  liveSurvey?.leave(false);$('observed-update-mode').textContent='随采集档案更新';
   inspectedCell=null;
   stopPlayback();cancelSeek();pendingMap=null;cacheController?.abort();replayCache=null;const token=++generation;
   $('cache-status').textContent=$('session').value?'正在检查档案…':'选择档案后自动准备回放缓存。';
@@ -564,9 +579,35 @@ $('plan').onclick=async()=>{
 };
 $('capture').onclick=()=>{renderer.render(scene,camera);const a=document.createElement('a');a.href=renderer.domElement.toDataURL('image/png');a.download='mooncar-map-view.png';a.click();};
 new ResizeObserver(()=>{const r=$('viewport').getBoundingClientRect();renderer.setSize(r.width,r.height);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}).observe($('viewport'));
-const experiment=experimentEditor({scene,camera,controls,renderer,api,message,stopPlayback:()=>{stopPlayback();pickMode=null;},onSession:async name=>{$('live').checked=true;await sessions(name);}});
+const experiment=experimentEditor({scene,camera,controls,renderer,api,message,stopPlayback:()=>{stopPlayback();pickMode=null;},onSession:followSession});
+liveSurvey=liveSurveyPanel({api,onEnter:()=>{
+  stopPlayback();cancelSeek();cacheController?.abort();replayCache=null;++generation;pendingMap=null;loading=false;
+  $('live').checked=false;clear(groups.mesh);meshObj=null;
+  $('surface').checked=true;groups.surface.visible=true;
+  $('timeline').disabled=true;$('play').disabled=true;
+  $('observed-update-mode').textContent='逐帧实时接收';
+  $('cache-status').textContent='实时接收不使用档案回放缓存。';
+  for(const id of ['download','download-mesh','download-dem']){$(id).removeAttribute('href');$(id).setAttribute('aria-disabled','true');}
+  renderMarkers();
+},onMap:(data,refit=false)=>{
+  if(!liveSurvey?.isActive())return;
+  const first=!map||map.source!==data.source||(!map.points.length&&data.points.length>0);
+  draw(data,refit||first,false);
+  $('frame-label').textContent=`实时 · ${data.frames} 帧用于建图`;
+  $('connection').textContent='实时勘测 · 传感器观测';
+  message(data.frames?'地图来自已接收的任务内观测；右侧显示本任务质量。':'实时接收已就绪，等待任务内观测。');
+  $('live-status').textContent='正在查看逐帧接收的观测；连接状态见上方实时地形勘测。';
+},onLeave:()=>{
+  $('observed-update-mode').textContent='随采集档案更新';$('session').onchange();
+  $('live-status').textContent='档案回放；上方实时接收状态与右侧质量属于接收任务。';
+  if(!$('session').value){
+    loading=false;$('map-info').textContent='尚未选择档案';$('connection').textContent='档案回放 · 尚未选择';
+    $('source').textContent='请选择一份已保存的采集记录。';
+    message('已返回档案回放；实时接收任务继续保留，右侧仍显示该任务质量。');
+  }
+}});
 fit();renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});sessions();
-$('live').onchange=()=>{stopPlayback();cancelSeek();generation++;pendingMap=null;loading=false;renderMarkers();$('connection').textContent=$('live').checked?'采集档案 · 跟随更新':'本地档案 · 离线回放';$('live-status').textContent=$('live').checked?'每 2 秒检查采集档案；地形变化后需重新规划。':'离线回放。';if($('session').value&&lastArchiveVersion!==null)prepareReplay({frames:frameCount,archive_updated_ns:lastArchiveVersion});};
+$('live').onchange=()=>{if(liveSurvey?.isActive()){liveSurvey.leave();return;}stopPlayback();cancelSeek();generation++;pendingMap=null;loading=false;renderMarkers();$('connection').textContent=$('live').checked?'采集档案 · 跟随更新':'本地档案 · 离线回放';$('live-status').textContent=$('live').checked?'每 2 秒检查采集档案；地形变化后需重新规划。':'离线回放。';if($('session').value&&lastArchiveVersion!==null)prepareReplay({frames:frameCount,archive_updated_ns:lastArchiveVersion});};
 setInterval(async()=>{
   if(!$('live').checked||!$('session').value||liveBusy||loading)return;
   liveBusy=true;const name=$('session').value;
@@ -581,7 +622,7 @@ setInterval(async()=>{
 
 function navigationControls(){
   $('navigation-controls').hidden=!navigation.enabled;
-  $('navigate').disabled=!navigation.enabled||!navigation.servers_ready||navigation.active||navigation.fault||!goal||loading||$('session').value!==navigation.session||Number($('timeline').value)!==frameCount;
+  $('navigate').disabled=!!liveSurvey?.isActive()||!navigation.enabled||!navigation.servers_ready||navigation.active||navigation.fault||!goal||loading||$('session').value!==navigation.session||Number($('timeline').value)!==frameCount;
   $('cancel-navigation').disabled=!navigation.active||!navigationToken;
 }
 async function navigationState(){
@@ -640,4 +681,3 @@ window.__workbench = {
   groups,
   getLatestPose: () => latestRobotPose
 };
-

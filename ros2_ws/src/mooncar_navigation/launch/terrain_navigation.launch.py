@@ -1,4 +1,5 @@
 import os
+import copy
 import tempfile
 
 from ament_index_python.packages import get_package_share_directory
@@ -13,24 +14,66 @@ from launch_ros.actions import Node
 import yaml
 
 
+def configure_workbench_goal_checkers(params, navigation):
+    """Select goal-local accuracy without changing ordinary position goals."""
+    controller=params['controller_server']['ros__parameters']
+    controller['goal_checker'].update(plugin='nav2_controller::PositionGoalChecker',xy_goal_tolerance=.25)
+    controller['goal_checker_plugins']=['goal_checker','revisit_goal_checker']
+    controller['revisit_goal_checker']=dict(plugin='nav2_controller::PositionGoalChecker',
+        stateful=True,xy_goal_tolerance=.05)
+    params['bt_navigator']['ros__parameters']['default_nav_to_pose_bt_xml']=os.path.join(
+        navigation,'config','behavior_trees','navigate_to_pose_workbench.xml')
+
+
+def configure_revisit_controller(params):
+    """Keep ordinary tracking unchanged and use slower close-range pursuit."""
+    controller=params['controller_server']['ros__parameters']
+    revisit=copy.deepcopy(controller['FollowPath'])
+    revisit.update(desired_linear_vel=.06,lookahead_dist=.15,
+        min_lookahead_dist=.10,max_lookahead_dist=.20,
+        min_approach_linear_velocity=.02,regulated_linear_scaling_min_speed=.02,
+        rotate_to_heading_angular_vel=.35,rotate_to_heading_min_angle=.35)
+    controller['RevisitFollowPath']=revisit
+    plugins=list(controller['controller_plugins'])
+    if 'RevisitFollowPath' not in plugins:plugins.append('RevisitFollowPath')
+    controller['controller_plugins']=plugins
+
+
 def setup(context):
     navigation = get_package_share_directory('mooncar_navigation')
     terrain = get_package_share_directory('mooncar_terrain')
     with open(os.path.join(navigation, 'config', 'nav2_params.yaml')) as stream:
         params = yaml.safe_load(stream)
     online = LaunchConfiguration('online_mapping').perform(context).lower()=='true'
+    laser_setting = LaunchConfiguration('laser_odometry').perform(context).lower()
+    if laser_setting not in ('true','false'):
+        raise ValueError('laser_odometry must be true or false')
+    laser_candidate = laser_setting=='true'
+    laser_mode=LaunchConfiguration('laser_odometry_mode').perform(context).lower()
+    if laser_mode not in ('ekf','direct','terrain','rgbd','rgbd_window'):raise ValueError('Invalid laser_odometry_mode')
+    depth_localization=laser_candidate and laser_mode in ('terrain','rgbd','rgbd_window')
+    rgbd_localization=laser_candidate and laser_mode in ('rgbd','rgbd_window')
+    direct_laser=laser_candidate and laser_mode in ('direct','terrain','rgbd','rgbd_window')
+    if laser_candidate and not online:
+        raise ValueError('laser_odometry candidate requires online_mapping=true')
     if online:
         slam=get_package_share_directory('mooncar_slam')
         with open(os.path.join(slam,'config','mapper_params_online_async.yaml')) as stream:
             params.update(yaml.safe_load(stream))
         params['slam_toolbox']['ros__parameters'].update(
             odom_frame='survey_odom', resolution=.10, restamp_tf=True)
-        params['slam_toolbox']['ros__parameters']['scan_topic'] = '/mooncar/scan_level'
+        params['slam_toolbox']['ros__parameters']['scan_topic'] = '/mooncar/scan_localized' if direct_laser else '/mooncar/scan_level'
+        if direct_laser:
+            # The metric backend already localizes against measured geometry.
+            # A fresh mapper builds occupancy from those poses; a second coarse
+            # grid match must not move both the map and its TF away from them.
+            params['slam_toolbox']['ros__parameters'].update(
+                use_scan_matching=False, do_loop_closing=False)
         params['planner_server']['ros__parameters']['GridBased'].update(allow_unknown=False,tolerance=.05)
     if LaunchConfiguration('require_workbench').perform(context).lower()=='true':
         # The web UI requests a position, not a terminal heading.
-        params['controller_server']['ros__parameters']['goal_checker'].update(
-            plugin='nav2_controller::PositionGoalChecker',xy_goal_tolerance=.25)
+        configure_workbench_goal_checkers(params,navigation)
+        configure_revisit_controller(params)
     for name in ('local_costmap', 'global_costmap'):
         costmap = params[name][name]['ros__parameters']
         if online and name == 'global_costmap':
@@ -41,26 +84,22 @@ def setup(context):
         costmap['use_maximum'] = not (online and name == 'global_costmap')
         costmap['obstacle_layer']['scan']['expected_update_rate'] = 0.5
         if online:costmap['obstacle_layer']['scan']['inf_is_valid'] = True
+        if depth_localization:
+            # A tilted horizontal beam can hit the supported ground. Measured
+            # depth supplies the terrain obstacle layer and observed map here.
+            costmap['plugins'].remove('obstacle_layer')
         costmap['plugins'].insert(-1, 'terrain_obstacles')
         costmap['plugins'].insert(-1, 'terrain_zones')
         costmap['plugins'].insert(-1, 'terrain_traversability')
-        if online and name == 'global_costmap':
-            # In a rolling StaticLayer, unknown keepout cells overwrite free cells;
-            # ray clearing must run afterward. Max merging still retains keepout hits.
-            costmap['plugins'].remove('terrain_zones')
-            costmap['plugins'].insert(1, 'terrain_zones')
-            costmap['plugins'].remove('terrain_traversability')
-            costmap['plugins'].insert(2, 'terrain_traversability')
         costmap['terrain_zones'] = {
-            'plugin': 'nav2_costmap_2d::StaticLayer', 'map_topic': '/mooncar/terrain/keepout',
+            'plugin': 'mooncar_terrain::RiskOverlay', 'map_topic': '/mooncar/terrain/keepout',
             'map_subscribe_transient_local': True,
         }
         costmap['terrain_traversability'] = {
-            'plugin': 'nav2_costmap_2d::StaticLayer', 'map_topic': '/mooncar/terrain/traversability_map',
+            'plugin': 'mooncar_terrain::RiskOverlay', 'map_topic': '/mooncar/terrain/traversability_map',
             'map_subscribe_transient_local': True,
             'subscribe_to_updates': False,
             'trinary_costmap': False,
-            'use_maximum': True,
             'lethal_cost_threshold': 100,
         }
         costmap['terrain_obstacles'] = {
@@ -84,6 +123,9 @@ def setup(context):
         RegisterEventHandler(OnShutdown(on_shutdown=[OpaqueFunction(function=cleanup)])),
         Node(package='mooncar_terrain', executable='terrain_node.py',
              parameters=[{'use_sim_time': True, 'depth_pixel_offset': 0.5,
+                          'resolution': .20 if depth_localization else .30,
+                          'traversability_resolution': .20,
+                          'require_laser_localization': laser_candidate,
                           'frame': 'map' if online else 'odom'}], output='screen'),
         Node(package='mooncar_terrain', executable='keepout_node.py', parameters=[{
             'use_sim_time': True, 'zones_file': os.path.join(terrain, 'config', 'zones.yaml'),
@@ -92,32 +134,63 @@ def setup(context):
             os.path.join(navigation, 'launch', 'navigation.launch.py')), launch_arguments={
                 'map': LaunchConfiguration('map'), 'params_file': params_path,
                 'online_mapping': LaunchConfiguration('online_mapping'),
+                'simulation_profile': LaunchConfiguration('simulation_profile'),
                 'world': LaunchConfiguration('world'),
+                'world_name': LaunchConfiguration('world_name'),
                 'gz_args': LaunchConfiguration('gz_args'),
                 'use_rviz': LaunchConfiguration('use_rviz'), 'require_terrain': 'true',
                 'require_workbench': LaunchConfiguration('require_workbench'),
+                'require_laser_localization': 'true' if laser_candidate else 'false',
+                'use_ekf': 'false' if direct_laser else 'true',
+                'use_slam_mapper': 'false' if depth_localization else 'true',
+                'camera_sensor_profile': 'rgbd_v1' if rgbd_localization else 'legacy',
                 'initial_x': LaunchConfiguration('initial_x'),
                 'initial_y': LaunchConfiguration('initial_y'),
+                'initial_z': LaunchConfiguration('initial_z'),
                 'initial_yaw': LaunchConfiguration('initial_yaw'),
+                'ekf_params_file': os.path.join(get_package_share_directory('mooncar_slam'),'config',
+                    'ekf_laser_candidate.yaml' if laser_candidate else 'ekf.yaml'),
             }.items()),
     ]
     if online:
         nodes.insert(1, Node(package='mooncar_terrain', executable='level_scan_filter.py',
                              parameters=[{'use_sim_time': True}], output='screen'))
+    if depth_localization:
+        executable=('rgbd_window_odometry.py' if laser_mode=='rgbd_window' else
+                    'rgbd_odometry_node.py' if rgbd_localization else 'terrain_odometry_node.py')
+        nodes.insert(1, Node(package='mooncar_slam',executable=executable,
+            **({'name':'mooncar_rgbd_window_odometry'} if laser_mode=='rgbd_window' else {}),
+            parameters=[dict(use_sim_time=True,**({'rgbd_image_reliability':'reliable'} if rgbd_localization else {}))],output='screen',
+            additional_env={'OPENBLAS_NUM_THREADS':'1','OMP_NUM_THREADS':'1'} if rgbd_localization else {}))
+        nodes.insert(1, Node(package='mooncar_slam',executable='depth_localization_map.py',
+            parameters=[{'use_sim_time': True}],output='screen'))
+        nodes.insert(1, Node(package='tf2_ros',executable='static_transform_publisher',
+            arguments=['--frame-id','map','--child-frame-id','survey_odom'],output='screen'))
+    elif laser_candidate:
+        nodes.insert(1, Node(package='mooncar_slam',executable='laser_odometry_node.py',
+            parameters=[{'use_sim_time': True,'direct_mode':direct_laser,
+                         'imu_heading_reference':'startup' if direct_laser else 'world',
+                         'heading_origin':float(LaunchConfiguration('initial_yaw').perform(context))}],output='screen'))
     return nodes
 
 
 def generate_launch_description():
     navigation = get_package_share_directory('mooncar_navigation')
     return LaunchDescription([
+        DeclareLaunchArgument('laser_odometry_mode', default_value='rgbd_window'),
         DeclareLaunchArgument('map', default_value=os.path.join(navigation, 'maps', 'lunar_yard.yaml')),
         DeclareLaunchArgument('online_mapping', default_value='false'),
+        # Online surveys use measured local poses; offline AMCL keeps its EKF.
+        DeclareLaunchArgument('laser_odometry', default_value=LaunchConfiguration('online_mapping')),
+        DeclareLaunchArgument('simulation_profile',default_value='legacy'),
         DeclareLaunchArgument('world', default_value=os.path.join(get_package_share_directory('mooncar_gazebo'),'worlds','lunar_yard.sdf')),
+        DeclareLaunchArgument('world_name', default_value='lunar_yard'),
         DeclareLaunchArgument('gz_args', default_value='-r -v 2 --render-engine ogre'),
         DeclareLaunchArgument('use_rviz', default_value='true'),
         DeclareLaunchArgument('require_workbench', default_value='false'),
         DeclareLaunchArgument('initial_x', default_value='0.5'),
         DeclareLaunchArgument('initial_y', default_value='0.0'),
+        DeclareLaunchArgument('initial_z', default_value='0.0'),
         DeclareLaunchArgument('initial_yaw', default_value='0.0'),
         OpaqueFunction(function=setup),
     ])

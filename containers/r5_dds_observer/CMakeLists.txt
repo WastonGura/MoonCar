@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+project(mooncar_dds_observer LANGUAGES CXX)
+add_library(mooncar-dds-trace SHARED Trace.cc)
+target_compile_features(mooncar-dds-trace PRIVATE cxx_std_17)
+target_compile_options(mooncar-dds-trace PRIVATE -Wall -Wextra)
+target_link_libraries(mooncar-dds-trace PRIVATE pthread)
+install(TARGETS mooncar-dds-trace LIBRARY DESTINATION lib)

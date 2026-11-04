@@ -1,0 +1,5 @@
+{
+  "approved": false,
+  "reason": "Adaptive laser-feedback steering remains unaccepted. The separately selectable r5_support_v1 fixed-allocation support candidate passed its 17-round matrix; allowed slope slip is not an adaptive-release failure.",
+  "report": "reports/R5_SUSPENSION_ACCEPTANCE_20261016.md"
+}

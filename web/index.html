@@ -10,6 +10,13 @@
   <main>
     <aside class="controls">
       <h1>地形档案</h1>
+      <section id="live-survey-controls">
+        <h2>实时地形勘测</h2>
+        <p id="live-survey-status" class="note" role="status">正在检查实时接收服务…</p>
+        <button id="live-survey-open" class="primary" disabled>查看实时勘测</button>
+        <button id="live-survey-close" hidden>返回档案回放</button>
+        <p class="note">接收带时间戳、点云和位姿的观测，随新帧更新地图。此按钮只切换显示，不启动或控制车辆。</p>
+      </section>
       <section id="autonomy-controls">
         <h2>自主探测</h2>
         <label>探测策略<select id="survey-strategy"><option value="nearest_view_v2">就近观察</option><option value="coverage_view_v2">覆盖优先</option><option value="surface_view_v2" selected>地表补采</option></select></label>
@@ -38,11 +45,15 @@
             <label>起点 Y<input id="spawn-y" type="number" min="-25" max="25" step="any" value="0" required></label>
           </div>
           <label>实际起始朝向（°）<input id="spawn-yaw" type="number" min="-180" max="180" step="any" value="0" required></label>
+          <label>地形场景<select id="experiment-scene"><option value="survey_v2_native">Terrain V2 · 30×30 米 · 原始地形</option><option value="survey_v2">Terrain V2 · 30×30 米 · 定位标柱</option><option value="survey">标准场景 · 50×50 米</option><option value="visible_ramp_v1">坡面测试场景</option><option value="visible_curve_v1">曲面测试场景</option></select></label>
+          <p id="experiment-scene-note" class="note">标准场景包含分布式岩石与坡面。</p>
+          <label>仿真车辆<select id="simulation-profile"><option value="legacy">原配置</option><option value="r5_support_v1">R5 支撑候选 · 独立悬架 · 0.25 ms</option></select></label>
+          <p class="note">R5 候选使用已验收的仿真假设，参数尚未标定；坡面允许物理滑移。</p>
           <label class="check"><input id="show-experiment" type="checkbox">显示任务草稿</label>
           <div class="actions"><button type="button" id="fit-experiment">查看区域</button><button type="button" id="full-region">选择 50×50 米全场</button><button type="button" id="save-experiment">保存任务</button><button type="button" id="load-experiment">载入任务</button></div>
           <input id="experiment-file" type="file" accept=".json,application/json" hidden>
           <button id="apply-experiment" class="primary" type="submit" disabled>应用起点并采集</button>
-          <p class="note">启动 50×50 米场地与在线建图，车辆先保持静止；保留旧记录。随后可启动自主探测或手动导航。</p>
+          <p class="note">启动所选场地与在线建图，车辆先保持静止；保留旧记录。随后可启动自主探测或手动导航。</p>
           <button id="stop-experiment" type="button" disabled>结束当前实验</button>
           <p id="experiment-state" class="note" role="status">正在检查仿真服务…</p>
         </form>
@@ -106,7 +117,7 @@
           <div class="scene-image"><img id="gazebo-image" alt="实际 Gazebo 运行画面" hidden></div>
           <p class="note">现场画面仅供对照；下方 / 右侧地图来自车载传感器观测。</p>
         </section>
-        <div class="observed-scene"><div class="scene-heading"><b>传感器采集成果</b><span>随采集档案更新</span></div><div id="viewport"><div id="empty">等待车辆观测到地形</div></div></div>
+        <div class="observed-scene"><div class="scene-heading"><b>传感器采集成果</b><span id="observed-update-mode">随采集档案更新</span></div><div id="viewport"><div id="empty">等待车辆观测到地形</div></div></div>
       </div>
       <div id="message" role="status">左键旋转 · 右键平移 · 滚轮缩放 · 点击地表查看详情</div>
       <div id="measure-bar" hidden class="measure-bar"><span id="measure-result">点击地表选择测量第 1 个点</span><button id="measure-clear" type="button">清除标尺</button></div>
@@ -123,6 +134,17 @@
       </footer>
     </section>
     <aside class="details">
+      <section id="live-survey-results" hidden>
+        <h2>勘测任务与质量</h2>
+        <p id="live-survey-task" class="note"></p><p id="live-survey-targets" class="note"></p>
+        <p id="live-survey-quality" class="note"></p>
+        <canvas id="live-survey-grid" role="img" aria-label="等待勘测质量图"></canvas>
+        <p class="note">灰：未测 · 棕：拟合失败 · 蓝：精度未知 · 绿：相对参考达标 · 红：超限 · 紫：表示范围外 · 黄：证据不足。X向右，Y向上。</p>
+        <p id="live-survey-accuracy" class="note"></p><p id="live-survey-counts" class="note"></p>
+        <div class="actions"><a id="live-survey-download" aria-disabled="true">导出当前成果 (.zip)</a></div>
+        <details><summary>配置核对</summary><p id="live-survey-configuration" class="note"></p></details>
+        <p class="note">这是最新收到的数据快照；接收成功不代表任务完成或实车精度合格。</p>
+      </section>
       <h2>自主决策</h2><p id="survey-reason" class="note">启动后显示下一观察位置及选择原因。</p><p id="survey-result" class="note"></p><p class="note">虚线圆：活动距离限制；目标处箭头：下一观察朝向。</p>
       <h2>地形详情</h2><div id="cell-detail" class="note">点击地表，查看这一位置的观测结果。</div>
       <h2>实际导航</h2><button id="fit-navigation">查看导航全貌</button><p id="actual-navigation" class="note">等待导航路径。</p><p id="navigation-bounds" class="note">等待导航地图。</p>

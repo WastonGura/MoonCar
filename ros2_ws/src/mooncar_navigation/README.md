@@ -5,6 +5,20 @@ in the MoonCar Gazebo simulation.
 
 ## Runtime contract
 
+For the explicit R5 support candidate, pass
+`simulation_profile:=r5_support_v1` to `terrain_navigation.launch.py` or select
+it in the workbench. It forwards the bound support model and precision profile
+through the simulation launch. The existing conservative navigation footprint
+and safety thresholds remain in force.
+
+Sparse keepout and traversability maps use `mooncar_terrain::RiskOverlay`.
+Unknown or free overlay cells preserve other layers; positive risk overrides
+unknown master cells and merges with existing risk by maximum. The SLAM
+StaticLayer remains responsible for the base occupancy map. Each risk layer
+uses its own trinary/continuous interpretation, including in rolling windows
+and when map and odom differ. This prevents terrain updates from erasing
+keepout zones in the global map while the local map still blocks the vehicle.
+
 Nav2 will reuse the completed simulation and filtered-odometry pipeline. It
 must not start SLAM Toolbox while localizing against a saved map.
 

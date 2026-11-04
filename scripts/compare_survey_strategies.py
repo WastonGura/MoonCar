@@ -57,6 +57,28 @@ def capture_command(folder,world,ident,budget,robot_sdf):
              '--seconds',str(budget),'--raw-depth','--runtime-contract','--stop-file',str(stop_file),
              '--world-sdf',str(world),'--robot-sdf',str(robot_sdf)]
     env=dict(os.environ,ROS_DOMAIN_ID='89',GZ_PARTITION='mooncar-'+ident,OPENBLAS_NUM_THREADS='1')
+    if Path('/opt/ros/jazzy/setup.bash').exists():
+        env.setdefault('AMENT_PREFIX_PATH', '/opt/ros/jazzy')
+        env.setdefault('ROS_DISTRO', 'jazzy')
+        py_path = env.get('PYTHONPATH', '')
+        if '/opt/ros/jazzy/lib/python3.12/site-packages' not in py_path:
+            env['PYTHONPATH'] = f"/opt/ros/jazzy/lib/python3.12/site-packages:{py_path}".strip(':')
+    if Path('/work/ros2_ws/install/mooncar_navigation').exists():
+        ws_inst = '/work/ros2_ws/install'
+        pkgs = [
+            f'{ws_inst}/mooncar_navigation',
+            f'{ws_inst}/mooncar_terrain',
+            f'{ws_inst}/mooncar_slam',
+            f'{ws_inst}/mooncar_msgs',
+            f'{ws_inst}/mooncar_gazebo',
+            f'{ws_inst}/mooncar_description',
+            f'{ws_inst}/mooncar_bringup',
+            f'{ws_inst}/mooncar_control',
+        ]
+        curr_ament = env.get('AMENT_PREFIX_PATH', '')
+        missing = [p for p in pkgs if p not in curr_ament]
+        if missing:
+            env['AMENT_PREFIX_PATH'] = ':'.join(missing + ([curr_ament] if curr_ament else []))
     return command,env,stop_file
 
 
@@ -119,7 +141,7 @@ def run(output, budget=90, repeats=2, starts=None, strategies=STRATEGIES, scene=
             request('explore',dict(experiment=ident,budget_seconds=budget,radius=8,strategy=trial['strategy']))
             state=wait_for(lambda s: bool(s.get('autonomy',{}).get('archive')),20)
             archive=state['autonomy']['archive'];row['archive']=archive
-            state=wait_for(lambda s: s.get('autonomy',{}).get('archive')==archive and not s['autonomy']['active'],900)
+            state=wait_for(lambda s: s.get('autonomy',{}).get('archive')==archive and not s['autonomy']['active'],max(2700, int(budget * 9)))
             row['status']=state['autonomy']['phase'];row['reason']=state['autonomy']['reason']
             autonomy_started=state['autonomy']['started']
             stop_file.touch()
@@ -159,6 +181,8 @@ def run(output, budget=90, repeats=2, starts=None, strategies=STRATEGIES, scene=
         write_json(output/'trials.json',results)
         print(json.dumps({k:v for k,v in row.items() if k not in ('summary','acceptance')},ensure_ascii=False),flush=True)
     request('stop',{})
+    state=wait_for(lambda s:s.get('phase') in ('stopped','failed'),120)
+    if state['phase']=='failed':raise RuntimeError(f"Experiment stop failed: {state.get('error')}")
     write_csv(output/'comparison.csv',[{**{k:v for k,v in r.items() if k not in ('summary','acceptance')},
                    **r.get('summary',{}),**{'acceptance_'+k:v for k,v in r.get('acceptance',{}).items()},
                    'start':json.dumps(r['start'])} for r in results])

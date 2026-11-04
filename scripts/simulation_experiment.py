@@ -12,9 +12,20 @@ import uuid
 import xml.etree.ElementTree as ET
 import numpy as np
 from survey_evaluation import write_json
+from experiment_scenes import (SCENES, V2_SCENES, V2_WORLD, add_v2_localization_markers,
+                               scene_bounds, scene_metadata, validate_v2_spawn,
+                               v2_marker_metadata, v2_spawn_obstacles,
+                               verify_installed_scene_resources)
 
 ROOT = Path(__file__).resolve().parents[1]
 WORLD = ROOT / 'ros2_ws/src/mooncar_gazebo/worlds/lunar_yard.sdf'
+
+
+def experiment_domain():
+    value = os.environ.get('MOONCAR_EXPERIMENT_ROS_DOMAIN_ID', '89')
+    if not value.isdecimal() or not 0 <= int(value) <= 232:
+        raise ValueError('MOONCAR_EXPERIMENT_ROS_DOMAIN_ID must be an integer in 0..232')
+    return str(int(value))
 
 
 def transform(element):
@@ -31,9 +42,15 @@ def transform(element):
 
 
 def survey_world(scene='survey'):
-    """50 m square with distributed geometry; never used as an observation map."""
-    if scene not in ('survey','visible_ramp_v1','visible_curve_v1'):
+    """Selected physical world; never used as an observation map."""
+    if scene not in SCENES:
         raise ValueError('Unknown experiment scene')
+    if scene == 'survey_v2':
+        # Preserve all shipped V2 terrain/physics; the visible fixtures provide
+        # real laser returns above the unchanged legacy lidar's mounting height.
+        return add_v2_localization_markers(ET.parse(V2_WORLD))
+    if scene == 'survey_v2_native':
+        return ET.parse(V2_WORLD)
     tree=ET.parse(WORLD);world=tree.getroot().find('world')
     if scene!='survey':
         # Controlled visibility fixtures: retain the same physics, sensors and ground.
@@ -70,6 +87,8 @@ def survey_world(scene='survey'):
 
 def spawn_obstacles(scene='survey'):
     # Conservative bounds are setup-only world metadata, never sensor observations.
+    if scene in V2_SCENES:
+        return v2_spawn_obstacles(include_markers=scene == 'survey_v2')
     obstacles = []
     for model in survey_world(scene).findall('./world/model'):
         for link in model.findall('link'):
@@ -92,10 +111,12 @@ def spawn_obstacles(scene='survey'):
 
 
 def validate_task(body):
-    if not isinstance(body, dict) or set(body)-{'scene','gui'} != {'version', 'region', 'start'} or type(body['version']) is not int or body['version'] != 1:
+    if not isinstance(body, dict) or set(body)-{'scene','gui','simulation_profile'} != {'version', 'region', 'start'} or type(body['version']) is not int or body['version'] != 1:
         raise ValueError('任务格式无效，请重新保存任务')
     scene=body.get('scene','survey')
-    if not isinstance(scene,str) or scene not in ('survey','visible_ramp_v1','visible_curve_v1'):
+    profile=body.get('simulation_profile','legacy')
+    if profile not in ('legacy','r5_support_v1'):raise ValueError('不支持的仿真模型配置')
+    if not isinstance(scene,str) or scene not in SCENES:
         raise ValueError('不支持的实验场景')
     if type(body.get('gui',True)) is not bool:raise ValueError('GUI 配置必须为布尔值')
     region, start = body['region'], body['start']
@@ -105,15 +126,23 @@ def validate_task(body):
         raise ValueError('坐标和朝向必须为有限数值')
     x0, y0, x1, y1 = region
     x, y, yaw = start
-    if not all(-25 <= v <= 25 for v in region+start[:2]) or not (.5 <= x1-x0 <= 50 and .5 <= y1-y0 <= 50) or abs(yaw) > math.pi:
-        raise ValueError('坐标范围为 -25 至 25 米；区域每边至少 0.5 米；朝向为 -180 至 180 度')
+    low_x, low_y, high_x, high_y = scene_bounds(scene)
+    if (not (low_x <= x0 <= high_x and low_x <= x1 <= high_x and
+             low_y <= y0 <= high_y and low_y <= y1 <= high_y and
+             low_x <= x <= high_x and low_y <= y <= high_y)
+            or not (.5 <= x1-x0 <= high_x-low_x and .5 <= y1-y0 <= high_y-low_y)
+            or abs(yaw) > math.pi):
+        raise ValueError(f'坐标范围为 {low_x:g} 至 {high_x:g} 米；区域每边至少 0.5 米；朝向为 -180 至 180 度')
     hx = .43*abs(math.cos(yaw)) + .36*abs(math.sin(yaw)) + .1
     hy = .43*abs(math.sin(yaw)) + .36*abs(math.cos(yaw)) + .1
     for low, high in spawn_obstacles(scene):
         if x+hx >= low[0] and x-hx <= high[0] and y+hy >= low[1] and y-hy <= high[1]:
             raise ValueError('起点车体与场景障碍或坡面重叠，请选择周围平地')
+    if scene in V2_SCENES:
+        validate_v2_spawn(x, y, yaw, include_markers=scene == 'survey_v2')
     return dict(version=1, region=list(map(float, region)), start=list(map(float, start)),
-                **({'scene':scene} if 'scene' in body else {}),**({'gui':body['gui']} if 'gui' in body else {}))
+                **({'scene':scene} if 'scene' in body else {}),**({'gui':body['gui']} if 'gui' in body else {}),
+                **({'simulation_profile':profile} if 'simulation_profile' in body else {}))
 
 
 class SimulationExperiment:
@@ -121,9 +150,7 @@ class SimulationExperiment:
         if os.name != 'posix' or not os.environ.get('ROS_DISTRO'):
             raise ValueError('仿真模式需要已 source ROS 的独立 Ubuntu 环境')
         from ament_index_python.packages import get_package_share_directory
-        installed_world = Path(get_package_share_directory('mooncar_gazebo'))/'worlds/lunar_yard.sdf'
-        if installed_world.read_bytes() != WORLD.read_bytes():
-            raise ValueError('已构建的 Gazebo 场景与当前代码不一致，请先重新构建 ROS 工作区')
+        verify_installed_scene_resources(get_package_share_directory('mooncar_gazebo'))
         self.directory = Path(directory).resolve()
         self.lock = threading.Lock()
         self.process = self.log = None
@@ -137,12 +164,24 @@ class SimulationExperiment:
         from rclpy.executors import MultiThreadedExecutor
         from rclpy.signals import SignalHandlerOptions
         from experiment_motion import ExperimentMotion
-        os.environ['ROS_DOMAIN_ID']='89'
+        laser_setting=os.environ.get('MOONCAR_LASER_ODOMETRY','true').lower()
+        if laser_setting not in ('true','false'):
+            raise ValueError('MOONCAR_LASER_ODOMETRY must be true or false')
+        laser_mode=os.environ.get('MOONCAR_LASER_ODOMETRY_MODE','rgbd_window').lower()
+        if laser_mode not in ('ekf','direct','terrain','rgbd','rgbd_window'):
+            raise ValueError('MOONCAR_LASER_ODOMETRY_MODE must be ekf, direct, terrain, rgbd or rgbd_window')
+        self.laser_odometry=laser_setting=='true'
+        self.laser_odometry_mode=laser_mode
+        self.ros_domain = experiment_domain()
+        os.environ['ROS_DOMAIN_ID']=self.ros_domain
         rclpy.init(args=['--ros-args','-p','use_sim_time:=true'],signal_handler_options=SignalHandlerOptions.NO)
-        self.motion=ExperimentMotion()
+        self.motion=ExperimentMotion(require_laser_localization=self.laser_odometry,
+            gimbal_command_rate_rad_s=.35 if self.laser_odometry and self.laser_odometry_mode in ('rgbd','rgbd_window') else None)
         from autonomous_survey import AutonomousSurvey
-        self.autonomy=AutonomousSurvey(self.motion)
-        self.executor=MultiThreadedExecutor(num_threads=2);self.executor.add_node(self.motion)
+        self.autonomy=AutonomousSurvey(self.motion,
+            initial_depth_scan=self.laser_odometry and self.laser_odometry_mode in ('terrain','rgbd','rgbd_window'),
+            localization_revisit_enabled=self.laser_odometry_mode=='rgbd')
+        self.executor=MultiThreadedExecutor(num_threads=4);self.executor.add_node(self.motion)
         self.ros_thread=threading.Thread(target=self.executor.spin,daemon=True);self.ros_thread.start()
 
     def state(self):
@@ -199,6 +238,12 @@ class SimulationExperiment:
             if action=='heartbeat':return self.motion.heartbeat(body)
             if action=='explore' and self.phase=='starting' and self.current and self.process.poll() is None:
                 return self.autonomy.start(body,self.current,self.directory)
+            if action=='pan_tilt' and self.phase=='starting' and self.current and self.process.poll() is None:
+                if self.autonomy.state()['active']:raise ValueError('请先结束自主探测，再指定云台观察')
+                if (not isinstance(body,dict) or set(body)!={'experiment','pan','tilt'}
+                        or body['experiment']!=self.current['id']):
+                    raise ValueError('实验或云台观察请求无效')
+                return self.motion.pan_tilt(body['pan'],body['tilt'],self.current)
             if action=='turn' and self.phase=='starting' and self.current and self.process.poll() is None:
                 if self.autonomy.state()['active']:raise ValueError('请先结束自主探测，再指定观察朝向')
                 if not isinstance(body,dict) or set(body)!={'experiment','yaw'} or body['experiment']!=self.current['id']:
@@ -252,6 +297,12 @@ class SimulationExperiment:
 
     def apply(self, body):
         task = validate_task(body)  # Reject bad requests before stopping the current experiment.
+        scene = task.get('scene', 'survey')
+        setup = scene_metadata(scene, self.laser_odometry_mode if self.laser_odometry else None)
+        setup.update(validate_v2_spawn(*task['start'], include_markers=scene == 'survey_v2')
+                     if scene in V2_SCENES else dict(initial_z=0., setup_only=True))
+        setup['localization_markers'] = list(v2_marker_metadata()) if scene == 'survey_v2' else []
+        setup['render_engine'] = 'ogre2' if scene in V2_SCENES else 'ogre'
         with self.lock:
             if self.worker and self.worker.is_alive():
                 raise ValueError('正在切换实验，请等待完成')
@@ -265,19 +316,32 @@ class SimulationExperiment:
                     folder = self.directory/ident
                     folder.mkdir()
                     (folder/'task.json').write_text(json.dumps(task, indent=2)+'\n', encoding='utf-8')
-                    survey_world(task.get('scene','survey')).write(folder/'survey_yard.sdf',encoding='unicode',xml_declaration=True)
+                    (folder/'scene-setup.json').write_text(json.dumps(setup, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+                    survey_world(scene).write(folder/'survey_yard.sdf',encoding='unicode',xml_declaration=True)
                     x,y,yaw = task['start']
                     gui=ET.parse(WORLD).find('./world/gui')
-                    gui.find("plugin[@filename='MinimalScene']/camera_pose").text=f'{x-4} {y-5} 4.5 0 0.55 0.90'
+                    gui.find("plugin[@filename='MinimalScene']/engine").text=setup['render_engine']
+                    gui.find("plugin[@filename='MinimalScene']/camera_pose").text=f'{x-4} {y-5} {setup["initial_z"]+4.5} 0 0.55 0.90'
                     tree=gui.find("plugin[@filename='EntityTree']")
                     if tree is not None:gui.remove(tree)
                     config='<window><width>1100</width><height>740</height></window>\n'+''.join(ET.tostring(p,encoding='unicode') for p in gui)
                     (folder/'gui.config').write_text(config,encoding='utf-8')
-                    env = dict(os.environ, ROS_DOMAIN_ID='89', GZ_PARTITION='mooncar-'+ident)
+                    env = dict(os.environ, ROS_DOMAIN_ID=self.ros_domain, GZ_PARTITION='mooncar-'+ident)
+                    env['MOONCAR_WINDOW_OUTPUT']=str(folder/'window-localization.jsonl')
+                    if task.get('simulation_profile')=='r5_support_v1':
+                        env['MOONCAR_SUPPORT_RECEIPT_ROOT']=str(folder/'support-runtime')
                     self.log = (folder/'simulation.log').open('w')
                     command = ['xvfb-run','-a','-s','-screen 0 1120x760x24','ros2','launch',str(ROOT/'containers/experiment.launch.py'),
                                f'initial_x:={x}',f'initial_y:={y}',f'initial_yaw:={yaw}', f'output_directory:={folder}',
-                               f"capture_gui:={'true' if task.get('gui',True) else 'false'}"]
+                               f'initial_z:={setup["initial_z"]}', f'world_name:={setup["world_name"]}',
+                               f'render_engine:={setup["render_engine"]}',
+                               f'source_description:={setup["source_description"]}',
+                               f"capture_gui:={'true' if task.get('gui',True) else 'false'}",
+                               f"simulation_profile:={task.get('simulation_profile','legacy')}",
+                               # Keep the producer/recorder selection identical to
+                               # the workbench gate, even if the environment changes.
+                               f"laser_odometry:={str(self.laser_odometry).lower()}",
+                               f"laser_odometry_mode:={self.laser_odometry_mode}"]
                     process = subprocess.Popen(command, stdout=self.log, stderr=subprocess.STDOUT, env=env, start_new_session=True)
                     with self.lock:
                         self.process, self.current = process, dict(task, id=ident)
@@ -300,6 +364,7 @@ class SimulationExperiment:
                     self._stop()
                     with self.lock:
                         self.phase = 'stopped'
+                        self.worker = None
                 except Exception as exc:
                     with self.lock:
                         self.phase, self.error = 'failed', str(exc)

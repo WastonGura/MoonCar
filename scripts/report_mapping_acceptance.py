@@ -68,8 +68,15 @@ def write_chinese_outputs(rows,result,output):
         '未通过项':[issue_zh(x) for x in result['failed_gates']],
         '证据问题':[issue_zh(x) for x in result['problems']],
         '暂定阈值':{'高度容差（米）':result['profile']['height_tolerance_m'],'坡度容差（度）':result['profile']['slope_tolerance_deg'],
-            '最低有效覆盖率':result['profile']['minimum_coverage'],'最低几何达标率':result['profile']['minimum_precision']},
+            '最低几何达标率':result['profile']['minimum_precision']},
         '适用范围':'理想仿真的单层地表评价；不是完整三维地图、实物精度或安全认证。'}
+    if result.get('coverage_gate_enabled',True):
+        # Render archived v1/v1.1 results according to their original policy.
+        if 'minimum_coverage' in result['profile']:
+            human['暂定阈值']['最低有效覆盖率']=result['profile']['minimum_coverage']
+    else:
+        human['覆盖率说明']='仅作统计，不作为通过条件；未测区域精度未知。'
+        human['未测类别']=[CATEGORY_ZH[name] for name in result['unassessed_categories']]
     evidence=result['evidence']
     human['证据核验']={label:evidence.get(key) for key,label in {'sensor_lineage_verified':'原始深度来源核验通过',
         'coordinate_contract_verified':'坐标对应核验通过','cutoff_verified':'截止时间核验通过',
@@ -313,6 +320,7 @@ def evaluate(folder,plan,output):
 
 S = 100 × 几何达标采集面积 / 固定评价面积。高度和坡度必须同时满足冻结阈值；未观测和错误估计不从分母删除。
 高度容差 {reference['profile']['height_tolerance_m']} 米，坡度容差 {reference['profile']['slope_tolerance_deg']} 度，均为暂定仿真目标。
+当前评价版本 {VERSION}：覆盖率和S仅作统计，不作为通过条件；精度结论仅适用于已有有效估计的部分，未测类别保持未知。
 安全记录未在本评价器中认证，因此几何达标也不自动代表整体验收通过。
 
 ![参考、采集、逐格状态和误差](maps.png)

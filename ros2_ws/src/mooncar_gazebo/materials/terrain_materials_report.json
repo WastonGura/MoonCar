@@ -4,38 +4,38 @@
     "regolith_passable": {
       "mean_srgb": [
         122.4,
-        119.8,
+        119.9,
         114.7
       ],
       "luminance": 120.0,
-      "seam_ratio": 0.495
+      "seam_ratio": 0.494
     },
     "sand_soft": {
       "mean_srgb": [
-        130.1,
+        130.0,
         125.0,
         117.3
       ],
       "luminance": 125.5,
-      "seam_ratio": 0.524
+      "seam_ratio": 0.488
     },
     "rock_boulder": {
       "mean_srgb": [
-        99.5,
+        99.4,
         98.2,
         96.9
       ],
       "luminance": 98.4,
-      "seam_ratio": 0.483
+      "seam_ratio": 0.494
     },
     "rubble_gravel": {
       "mean_srgb": [
         114.8,
-        112.2,
+        112.3,
         109.6
       ],
       "luminance": 112.6,
-      "seam_ratio": 0.51
+      "seam_ratio": 0.512
     },
     "crater_floor": {
       "mean_srgb": [
@@ -44,42 +44,42 @@
         112.2
       ],
       "luminance": 117.5,
-      "seam_ratio": 0.537
+      "seam_ratio": 0.452
     }
   },
   "pairwise": {
     "regolith_passable|regolith_passable": 0.0,
     "regolith_passable|sand_soft": 9.54,
-    "regolith_passable|rock_boulder": 36.26,
-    "regolith_passable|rubble_gravel": 11.97,
+    "regolith_passable|rock_boulder": 36.27,
+    "regolith_passable|rubble_gravel": 11.86,
     "regolith_passable|crater_floor": 4.42,
     "sand_soft|regolith_passable": 9.54,
     "sand_soft|sand_soft": 0.0,
     "sand_soft|rock_boulder": 45.49,
-    "sand_soft|rubble_gravel": 21.34,
+    "sand_soft|rubble_gravel": 21.23,
     "sand_soft|crater_floor": 13.73,
-    "rock_boulder|regolith_passable": 36.26,
+    "rock_boulder|regolith_passable": 36.27,
     "rock_boulder|sand_soft": 45.49,
     "rock_boulder|rock_boulder": 0.0,
-    "rock_boulder|rubble_gravel": 24.35,
+    "rock_boulder|rubble_gravel": 24.45,
     "rock_boulder|crater_floor": 31.88,
-    "rubble_gravel|regolith_passable": 11.97,
-    "rubble_gravel|sand_soft": 21.34,
-    "rubble_gravel|rock_boulder": 24.35,
+    "rubble_gravel|regolith_passable": 11.86,
+    "rubble_gravel|sand_soft": 21.23,
+    "rubble_gravel|rock_boulder": 24.45,
     "rubble_gravel|rubble_gravel": 0.0,
-    "rubble_gravel|crater_floor": 7.65,
+    "rubble_gravel|crater_floor": 7.54,
     "crater_floor|regolith_passable": 4.42,
     "crater_floor|sand_soft": 13.73,
     "crater_floor|rock_boulder": 31.88,
-    "crater_floor|rubble_gravel": 7.65,
+    "crater_floor|rubble_gravel": 7.54,
     "crater_floor|crater_floor": 0.0
   },
   "seams": {
-    "regolith_passable": 0.495,
-    "sand_soft": 0.524,
-    "rock_boulder": 0.483,
-    "rubble_gravel": 0.51,
-    "crater_floor": 0.537
+    "regolith_passable": 0.494,
+    "sand_soft": 0.488,
+    "rock_boulder": 0.494,
+    "rubble_gravel": 0.512,
+    "crater_floor": 0.452
   },
   "closest_pair_distance": 4.42,
   "palette_status": "procedural, not spectrally calibrated"

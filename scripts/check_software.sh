@@ -5,7 +5,7 @@ source /opt/ros/jazzy/setup.bash
 # These checks call ROS objects directly; synthetic telemetry must stay isolated.
 export ROS_AUTOMATIC_DISCOVERY_RANGE=OFF
 unset ROS_STATIC_PEERS ROS_LOCALHOST_ONLY
-for package in mooncar_control mooncar_navigation mooncar_terrain; do
+for package in mooncar_control mooncar_navigation mooncar_terrain mooncar_gazebo mooncar_slam; do
   python3 -m unittest discover -s "$root/ros2_ws/src/$package/tests" -v
 done
 temp="$(mktemp -d)"

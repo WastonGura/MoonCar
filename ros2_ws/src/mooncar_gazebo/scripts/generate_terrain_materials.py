@@ -39,7 +39,7 @@ import numpy as np
 from PIL import Image
 
 DEFAULT_SIZE = 512
-SEED = 20260928
+SEED = 20261006
 
 # ---------------------------------------------------------------------------
 # Class definitions
@@ -79,7 +79,7 @@ CLASSES: dict[str, dict] = {
     "rock_boulder": dict(
         # angular rock, distinguished mostly by texture and silhouette
         base=(0.39, 0.385, 0.38),
-        contrast=0.170,
+        contrast=0.070,
         alpha=1.45,
         chroma=0.15,
         rough=(0.58, 0.14),
@@ -90,7 +90,7 @@ CLASSES: dict[str, dict] = {
     "rubble_gravel": dict(
         # mid grey, high variance, discretely pebbled
         base=(0.45, 0.44, 0.43),
-        contrast=0.260,
+        contrast=0.090,
         alpha=0.70,
         chroma=0.40,
         rough=(0.92, 0.08),
@@ -180,7 +180,7 @@ def build_class(name: str, cfg: dict, size: int, seed: int) -> dict[str, np.ndar
 
     base = np.array(cfg["base"], dtype=np.float64)
     contrast = cfg["contrast"]
-    chroma = cfg["chroma"]
+    chroma = 0.0  # Shared luminance structure, not independent coloured speckles.
 
     channels = []
     for _ in range(3):
@@ -197,7 +197,7 @@ def build_class(name: str, cfg: dict, size: int, seed: int) -> dict[str, np.ndar
     # normals come from a slightly finer height field than the albedo structure
     height = spectral_noise(size, rng, max(a * 0.65, 0.35), aniso_amt, aniso_ang)
     height = apply_blocky(height, cfg["blocky"] * 0.6)
-    normal_u8 = height_to_normal(height, cfg["normal"])
+    normal_u8 = height_to_normal(height, cfg["normal"] * 0.18)
 
     r_mean, r_var = cfg["rough"]
     r_noise = spectral_noise(size, rng, 1.1)
@@ -205,6 +205,52 @@ def build_class(name: str, cfg: dict, size: int, seed: int) -> dict[str, np.ndar
     rough_u8 = (rough * 255.0).round().astype(np.uint8)
 
     return {"albedo": albedo_u8, "normal": normal_u8, "roughness": rough_u8}
+
+
+def bake_scene(scene, labels, size_m, output, seed=SEED, pixels_per_m=128):
+    """North-up non-repeating atlas; smooth visual classes, preserve physical labels.
+
+    Height here is only a shading hypothesis, never the collision/DTM elevation.
+    World UV (0,0) is the southwest corner, image row zero is north.
+    """
+    from scipy.ndimage import gaussian_filter
+    count = round(size_m * pixels_per_m)
+    ids = np.asarray(Image.fromarray(np.flipud(labels)).resize((count, count), Image.Resampling.NEAREST))
+    rng = np.random.default_rng(seed + {'ramp': 0, 'curve': 100, 'survey': 200}[scene])
+    fine = rng.standard_normal((count, count), dtype=np.float32)
+    medium = gaussian_filter(fine, sigma=2, mode='reflect')
+    medium /= max(float(medium.std()), 1e-6)
+    # Low resolution variation interpolated across the entire scene, not tiled.
+    broad = rng.standard_normal((32, 32)).astype(np.float32)
+    broad = np.asarray(Image.fromarray(broad).resize((count, count), Image.Resampling.BICUBIC))
+    broad = gaussian_filter(broad, sigma=pixels_per_m * .12)
+    broad /= max(float(broad.std()), 1e-6)
+    value = np.zeros((count, count), dtype=np.float32)
+    rough = np.zeros_like(value)
+    height = np.zeros_like(value)
+    # Close neutral tones; distinguish by grain size and relief rather than colour.
+    palette = ((.47,.91,.013,.008),(.49,.96,.007,.004),(.455,.93,.027,.021),
+               (.40,.74,.020,.013),(.46,.94,.011,.007))
+    for class_id, (base, r, grain, relief) in enumerate(palette):
+        weight = gaussian_filter((ids == class_id).astype(np.float32), sigma=.15*pixels_per_m, mode='nearest')
+        value += weight * (base + .013*broad + grain*(.55*medium+.45*fine))
+        rough += weight * (r + .018*medium)
+        height += weight * relief * medium
+    # Strong luminance correlation across channels suppresses coloured noise.
+    rgb = np.stack((value*1.015, value, value*.975), axis=-1)
+    dy, dx = np.gradient(height)
+    # Array y runs north to south; texture v runs south to north.
+    vectors = np.stack((-dx, dy, np.ones_like(dx)), axis=-1)
+    vectors /= np.linalg.norm(vectors, axis=-1, keepdims=True)
+    maps = {'albedo':np.clip(rgb*255,0,255).round().astype(np.uint8),
+            'normal':np.clip((vectors*.5+.5)*255,0,255).round().astype(np.uint8),
+            'roughness':np.clip(rough*255,0,255).round().astype(np.uint8)}
+    output.mkdir(parents=True, exist_ok=True)
+    for kind, pixels in maps.items():
+        Image.fromarray(pixels).save(output / f'{scene}_surface_{kind}.png')
+    return dict(version='continuous-atlas-v1', seed=seed, pixels_per_m=pixels_per_m,
+                size_px=count, blend_sigma_m=.15, uv='southwest=(0,0), northeast=(1,1)',
+                status='procedural appearance; not measured lunar reflectance')
 
 
 # ---------------------------------------------------------------------------
@@ -246,6 +292,7 @@ def build_preview(maps: dict[str, dict[str, np.ndarray]], size: int) -> Image.Im
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--size", type=int, default=DEFAULT_SIZE)
+    ap.add_argument('--seed', type=int, default=SEED)
     ap.add_argument(
         "--out",
         type=Path,
@@ -273,7 +320,7 @@ def main() -> int:
             }
     else:
         for i, (name, cfg) in enumerate(CLASSES.items()):
-            maps[name] = build_class(name, cfg, args.size, SEED + 1000 * i)
+            maps[name] = build_class(name, cfg, args.size, args.seed + 1000 * i)
             for kind, arr in maps[name].items():
                 mode = "L" if kind == "roughness" else "RGB"
                 Image.fromarray(arr, mode).save(tex_dir / f"{name}_{kind}.png", optimize=True)

@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import numpy as np
+from r5_csv import read_numeric_csv
 from r5_load_diagnostic import semantic
 from r5_d0_analysis import wheel_budget as legacy_budget, WHEELS
 
@@ -61,7 +62,7 @@ def generate(source, output):
 
 def qualify_budget(active, path, linear, angular, enabled, ratios):
     """Both real pre-allocation and actual post-allocation targets stay in evidence."""
-    rows=np.genfromtxt(path,delimiter=',',names=True)
+    rows=read_numeric_csv(path,delimiter=',',names=True)
     fields=['iteration','t','dt','enabled','applied']+[w+s for s in ('_native','_allocated') for w in WHEELS]
     if len(rows)<2 or any(k not in rows.dtype.names or not np.isfinite(rows[k]).all() for k in fields):
         return dict(passed=False,reason='Missing/nonfinite allocation records')

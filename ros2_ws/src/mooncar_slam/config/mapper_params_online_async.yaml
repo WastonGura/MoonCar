@@ -15,6 +15,9 @@ slam_toolbox:
     map_update_interval: 2.0
     minimum_travel_distance: 0.1
     minimum_travel_heading: 0.1
+    # slam_toolbox 2.8.5 otherwise checks translation only and skips pure turns.
+    # Apply the existing distance OR heading thresholds; keep both values unchanged.
+    check_min_dist_and_heading_precisely: true
     transform_timeout: 0.2
     tf_buffer_duration: 30.0
     throttle_scans: 1

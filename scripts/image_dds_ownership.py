@@ -4,7 +4,7 @@ A remote mapping and an inherited descriptor do not confer ownership. The PID
 reported by Linux for the FLOCK must match a live process with the same lock
 inode open. No DDS state, lock or file is modified by this module.
 """
-import copy, json, os, queue, re, threading, time
+import copy, json, os, queue, re, threading, time, traceback
 from pathlib import Path
 
 PAYLOADS = {549408: 524288, 8782368: 8388608}
@@ -13,6 +13,25 @@ LOCK = re.compile(r'FLOCK\s+ADVISORY\s+WRITE\s+(\d+)\s+([0-9a-f]+):([0-9a-f]+):(
 def identity(pid, proc=Path('/proc')):
     stat = (proc / str(pid) / 'stat').read_text()
     return dict(pid=int(pid), start_ticks=int(stat[stat.rindex(')')+2:].split()[19]))
+
+def stat_context(pid, proc=Path('/proc')):
+    """One stat read, retaining state without changing identity semantics."""
+    text=(proc/str(pid)/'stat').read_text();fields=text[text.rindex(')')+2:].split()
+    return dict(identity=dict(pid=int(pid),start_ticks=int(fields[19])),
+                name=text[text.index('(')+1:text.rindex(')')],state=fields[0],ppid=int(fields[1]))
+
+def error_context(pid, proc=Path('/proc')):
+    """Best-effort evidence; an unreadable context never clears the error."""
+    directory=proc/str(pid);result={}
+    try:result.update(stat_context(pid,proc))
+    except (OSError,ValueError,IndexError) as error:result['stat_error']=repr(error)
+    try:
+        result['status']='\n'.join(row for row in (directory/'status').read_text().splitlines()
+            if row.split(':')[0] in ('State','PPid','Uid','Gid','CapPrm','CapEff','TracerPid','CoreDumping','NoNewPrivs'))
+    except OSError as error:result['status_error']=repr(error)
+    try:result['commandline']=(directory/'cmdline').read_bytes().replace(b'\0',b' ').decode(errors='replace')
+    except OSError as error:result['commandline_error']=repr(error)
+    return result
 
 def lock_rows(text):
     return [dict(pid=int(m[1]), device=os.makedev(int(m[2],16),int(m[3],16)), inode=int(m[4]))
@@ -43,23 +62,36 @@ def inventory(proc=Path('/proc'), shm=Path('/dev/shm')):
     for directory in proc.iterdir():
         if not directory.name.isdigit(): continue
         pid=int(directory.name)
+        before_context=None;operation='read_identity_before';path=directory/'stat'
         try:
-            before=identity(pid,proc); descriptors=[]
-            for fd in (directory/'fd').iterdir():
+            before_context=stat_context(pid,proc);before=before_context['identity'];descriptors=[]
+            operation='list_fds';path=directory/'fd'
+            entries=iter((directory/'fd').iterdir())
+            while True:
+                operation='list_fds';path=directory/'fd'
+                try:fd=next(entries)
+                except StopIteration:break
                 try:
+                    operation='readlink';path=fd
                     target=os.readlink(fd)
                     if not target.startswith(str(shm)+'/fastrtps_') or not target.endswith('_el'): continue
-                    stat=fd.stat(); info=(directory/'fdinfo'/fd.name).read_text()
+                    operation='stat_lock_fd';path=fd;stat=fd.stat()
+                    operation='read_fdinfo';path=directory/'fdinfo'/fd.name;info=path.read_text()
                     descriptors.append(dict(fd=int(fd.name), path=target, device=stat.st_dev, inode=stat.st_ino,
                                             locks=lock_rows(info)))
                     for row in lock_rows(info):
                         key=(row['pid'],row['device'],row['inode'])
                         locks[key]=row
                 except (FileNotFoundError,ProcessLookupError): continue
+            operation='read_identity_after';path=directory/'stat'
             if before!=identity(pid,proc): raise RuntimeError('PID changed during inventory')
             processes[pid]=dict(**before, descriptors=descriptors)
         except (FileNotFoundError,ProcessLookupError): continue
-        except (PermissionError,RuntimeError) as error: errors.append(dict(pid=pid,error=repr(error)))
+        except (PermissionError,RuntimeError) as error:
+            errors.append(dict(pid=pid,error=repr(error),operation=operation,path=str(path),
+                errno=getattr(error,'errno',None),filename=getattr(error,'filename',None),
+                before=before_context,after=error_context(pid,proc),wall=time.monotonic(),
+                traceback=traceback.format_exc()))
     segments=[]
     for path in sorted(shm.glob('fastrtps_*')):
         if path.name.endswith(('_el','_sl')) or path.name.startswith('fastrtps_port'): continue

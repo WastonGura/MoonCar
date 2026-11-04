@@ -17,12 +17,14 @@ def complete_receipt(path):
     try:return json.loads(Path(path).read_text())
     except (FileNotFoundError,json.JSONDecodeError):return None
 
-def select(model,world,env,default='legacy'):
+def select(model,world,env,default='legacy',support_candidate=False):
     requested=env.get('MOONCAR_IMAGE_DDS_PROFILE',default)
     if requested not in ('auto','legacy','shm_tx8m'):raise RuntimeError('Invalid MOONCAR_IMAGE_DDS_PROFILE')
     discovery=env.get('ROS_AUTOMATIC_DISCOVERY_RANGE','SUBNET').upper()
     # The legacy variable can override discovery; explicit conflicting inputs are unsupported.
-    compatible=(model=='mooncar_r5.urdf.xacro' and ET.parse(world).find('world').get('name') in WORLDS
+    scene=ET.parse(world).find('world')
+    candidate_world=(support_candidate and Path(scene.findtext("plugin[@name='gz::sim::systems::Physics']/engine/filename",'')).name=='libmooncar-physics7-dartsim.so')
+    compatible=(model=='mooncar_r5.urdf.xacro' and (scene.get('name') in WORLDS or candidate_world)
                 and discovery=='LOCALHOST' and env.get('ROS_LOCALHOST_ONLY','0') in ('0','1',''))
     if requested=='shm_tx8m' and not compatible:raise RuntimeError('shm_tx8m requires R5/v2 and LOCALHOST discovery')
     selected=('shm_tx8m' if compatible else 'legacy') if requested=='auto' else requested

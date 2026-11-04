@@ -93,14 +93,15 @@ def classify_cells(points, resolution=0.3, slope_deg=18.0, roughness=0.04,
 
     Bits: 1 slope, 2 roughness, 4 raised obstacle, 8 visible depression.
     Unobserved/undersampled cells are omitted, never classified as free.
-    Heights must be in a gravity-aligned frame with nominal ground z=0.
+    Heights must be gravity-aligned. Step/drop heights are discontinuities
+    between adjacent measured surface planes, not absolute map elevations.
     """
     points = np.asarray(points, dtype=float).reshape(-1, 3)
     points = points[np.isfinite(points).all(axis=1)]
     if resolution <= 0:
         raise ValueError('Resolution must be positive')
     groups = np.floor(points[:, :2] / resolution).astype(int)
-    cells = []
+    patches = {}
     for key in np.unique(groups, axis=0):
         sample = points[(groups == key).all(axis=1)]
         if len(sample) < min_points:
@@ -114,12 +115,35 @@ def classify_cells(points, resolution=0.3, slope_deg=18.0, roughness=0.04,
         slope = math.degrees(math.atan(np.linalg.norm(plane[:2])))
         residual = float(np.sqrt(np.mean((design @ plane - sample[:, 2])**2)))
         reason = ((1 if slope > slope_deg else 0) |
-                  (2 if residual > roughness else 0) |
-                  (4 if np.median(sample[:, 2]) > step_height else 0) |
-                  (8 if np.median(sample[:, 2]) < -drop_height else 0))
-        center = (key + 0.5) * resolution
+                  (2 if residual > roughness else 0))
+        patches[tuple(map(int, key))] = dict(plane=plane, mean_xy=sample[:, :2].mean(axis=0),
+            slope=slope, residual=residual, reason=reason)
+
+    # Compare both planes at their shared boundary (or corner for diagonal
+    # neighbors). This removes the rise along a continuous incline. Only
+    # measured, well-supported, otherwise traversable planes supply a height
+    # reference; steep/rough patches retain their own rejection above.
+    for key, patch in patches.items():
+        for dx, dy in ((1, 0), (0, 1), (1, 1), (1, -1)):
+            other_key = (key[0]+dx, key[1]+dy)
+            other = patches.get(other_key)
+            if other is None or any(p['slope'] >= slope_deg or p['residual'] >= roughness
+                                    for p in (patch, other)):
+                continue
+            boundary = (np.asarray(key)+np.asarray(other_key)+1.)*.5*resolution
+            height = lambda p: p['plane'][2]+p['plane'][:2] @ (boundary-p['mean_xy'])
+            jump = height(patch)-height(other)
+            if jump > step_height:patch['reason'] |= 4
+            if jump < -drop_height:patch['reason'] |= 8
+            if -jump > step_height:other['reason'] |= 4
+            if -jump < -drop_height:other['reason'] |= 8
+
+    cells = []
+    for key, patch in patches.items():
+        center = (np.asarray(key) + 0.5) * resolution
+        slope, residual, reason = patch['slope'], patch['residual'], patch['reason']
         if return_elevation:
-            cells.append((float(center[0]), float(center[1]), slope, residual, reason, float(plane[2])))
+            cells.append((float(center[0]), float(center[1]), slope, residual, reason, float(patch['plane'][2])))
         else:
             cells.append((float(center[0]), float(center[1]), slope, residual, reason))
     return cells

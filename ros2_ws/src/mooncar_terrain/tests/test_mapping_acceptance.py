@@ -9,7 +9,7 @@ from unittest.mock import patch
 import numpy as np
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[4]/'scripts'))
-from mapping_acceptance import build_reference, score
+from mapping_acceptance import PROFILE, build_reference, score
 from report_mapping_acceptance import prepare,rebuild,matrices,write_chinese_outputs,issue_zh
 from survey_evaluation import write_json
 from terrain_geometry import project_depth
@@ -30,6 +30,7 @@ class AcceptanceTest(unittest.TestCase):
             human=write_chinese_outputs(rows,s,Path(temp))
             self.assertEqual(human['指标']['达标地表覆盖分'],72)
             self.assertEqual(human['验收状态'],'几何指标达标，安全尚未认证')
+            self.assertNotIn('最低有效覆盖率',human['暂定阈值'])
             csv_text=(Path(temp)/'逐格评价.csv').read_text(encoding='utf-8-sig')
             self.assertIn('高度有符号误差（米）',csv_text)
             self.assertNotIn('qualified',csv_text);self.assertIn('误差超限',csv_text)
@@ -54,10 +55,16 @@ class AcceptanceTest(unittest.TestCase):
             self.assertTrue(all(r['height_error_m'] is None and r['qualified'] is None for r in rows))
         bad=copy.deepcopy(reference);bad['reference_audit']['passed']=False
         self.assertIsNone(score(bad,perfect,evidence=evidence)[1]['P'])
-        # Large ground region cannot hide failed non-flat terrain.
+        # An unmeasured category is disclosed, not rejected for missing coverage.
         strata=copy.deepcopy(reference);strata['cells'][-1]['category']='terrain'
         _,s=score(strata,perfect[:-1],evidence=evidence)
-        self.assertEqual(s['S'],99);self.assertFalse(s['geometry_pass'])
+        self.assertEqual(s['S'],99);self.assertTrue(s['geometry_pass'])
+        self.assertEqual(s['unassessed_categories'],['terrain'])
+        self.assertIsNone(s['by_category']['terrain']['P'])
+        # Actual bad terrain measurements must still fail even with 99% overall precision.
+        _,s=score(strata,perfect[:-1]+[dict(perfect[-1],z=.1)],evidence=evidence)
+        self.assertFalse(s['geometry_pass']);self.assertEqual(s['P'],.99)
+        self.assertEqual(s['failed_gates'],['terrain: precision below target or undefined'])
         excluded=copy.deepcopy(reference);excluded['cells'][-1]['category']='edge_or_complex'
         _,s=score(excluded,perfect,evidence=evidence)
         self.assertEqual((s['S'],s['representation_fraction'],s['excluded_area_m2']),(100,.99,.0625))
@@ -80,6 +87,30 @@ class AcceptanceTest(unittest.TestCase):
         shifted=[dict(ix=c['ix']+4,iy=0,z=c['z'],slope=c['slope'],valid=True) for c in ramp['cells']]
         _,s=score(ramp,shifted,evidence=evidence)
         self.assertEqual((s['C'],s['S']),(.96,0));self.assertAlmostEqual(s['height_rmse_m'],.4)
+
+    def test_coverage_is_descriptive_and_legacy_threshold_cannot_gate(self):
+        reference=dict(resolution=.25,reference_audit=dict(passed=True),cells=[
+            dict(ix=i,iy=0,x=(i+.5)*.25,y=.125,z=0.,slope=0.,category='ground') for i in range(100)])
+        estimates=[dict(ix=i,iy=0,z=0.,slope=0.,valid=True) for i in range(20)]
+        evidence=dict(coordinate_contract_verified=True,sensor_lineage_verified=True,cutoff_verified=True)
+        for threshold in (None,.1,.8,1.):
+            profile=dict(PROFILE)
+            if threshold is not None:profile['minimum_coverage']=threshold
+            rows,s=score(reference,estimates,evidence=evidence,profile=profile)
+            self.assertEqual((s['C_obs'],s['C'],s['P'],s['S']),(.2,.2,1.,20.))
+            self.assertEqual(s['status'],'geometry_pass_safety_unverified')
+            self.assertEqual(s['failed_gates'],[])
+            self.assertNotIn('minimum_coverage',s['profile'])
+            self.assertFalse(s['coverage_gate_enabled'])
+            self.assertEqual(sum(r['state']=='unobserved' for r in rows),80)
+        for cells in ([],[dict(ix=0,iy=0,z=None,slope=None,valid=False)]):
+            _,s=score(reference,cells,evidence=evidence)
+            self.assertFalse(s['geometry_pass']);self.assertIsNone(s['P'])
+            self.assertEqual(s['status'],'failed')
+            self.assertEqual(s['failed_gates'],['all: precision below target or undefined'])
+        for extra in (dict(runtime_fault=True),dict(safety_pass=False)):
+            _,s=score(reference,estimates,evidence=dict(evidence,**extra))
+            self.assertEqual(s['status'],'failed');self.assertTrue(s['geometry_pass'])
 
     def test_runner_domain_is_checked_before_start(self):
         from capture_slope_resampling import run

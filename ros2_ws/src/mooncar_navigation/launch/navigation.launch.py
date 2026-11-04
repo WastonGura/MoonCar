@@ -2,7 +2,7 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, TimerAction, GroupAction
 from launch.conditions import IfCondition, UnlessCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, AndSubstitution
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
@@ -12,6 +12,7 @@ def generate_launch_description():
     gz_args = LaunchConfiguration("gz_args")
     initial_x = LaunchConfiguration("initial_x")
     initial_y = LaunchConfiguration("initial_y")
+    initial_z = LaunchConfiguration("initial_z")
     initial_yaw = LaunchConfiguration("initial_yaw")
     map_yaml = LaunchConfiguration("map")
     params_file = LaunchConfiguration("params_file")
@@ -25,9 +26,10 @@ def generate_launch_description():
     default_params = PathJoinSubstitution(
         [FindPackageShare("mooncar_navigation"), "config", "nav2_params.yaml"]
     )
-    ekf_params = PathJoinSubstitution(
+    default_ekf_params = PathJoinSubstitution(
         [FindPackageShare("mooncar_slam"), "config", "ekf.yaml"]
     )
+    ekf_params = LaunchConfiguration('ekf_params_file')
     rviz_config = PathJoinSubstitution(
         [FindPackageShare("mooncar_navigation"), "rviz", "navigation.rviz"]
     )
@@ -149,31 +151,45 @@ def generate_launch_description():
             ),
             DeclareLaunchArgument("initial_x", default_value="0.5"),
             DeclareLaunchArgument("initial_y", default_value="0.0"),
+            DeclareLaunchArgument("initial_z", default_value="0.0"),
             DeclareLaunchArgument("initial_yaw", default_value="0.0"),
             DeclareLaunchArgument("use_rviz", default_value="true"),
             DeclareLaunchArgument("require_terrain", default_value="false"),
             DeclareLaunchArgument("require_workbench", default_value="false"),
+            DeclareLaunchArgument("require_laser_localization", default_value="false"),
             DeclareLaunchArgument("use_sim_time", default_value="true"),
+            DeclareLaunchArgument('ekf_params_file', default_value=default_ekf_params),
+            DeclareLaunchArgument('use_ekf', default_value='true'),
+            DeclareLaunchArgument('use_slam_mapper', default_value='true'),
+            DeclareLaunchArgument('camera_sensor_profile', default_value='legacy'),
             DeclareLaunchArgument('online_mapping', default_value='false'),
+            DeclareLaunchArgument('simulation_profile',default_value='legacy'),
             DeclareLaunchArgument('world', default_value=PathJoinSubstitution([FindPackageShare('mooncar_gazebo'),'worlds','lunar_yard.sdf'])),
+            DeclareLaunchArgument('world_name', default_value='lunar_yard'),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(simulation_launch),
                 launch_arguments={
                     "gz_args": gz_args,
+                    'simulation_profile': LaunchConfiguration('simulation_profile'),
                     "world": LaunchConfiguration('world'),
                     "publish_odom_tf": "false",
                     "spawn_x": initial_x,
                     "spawn_y": initial_y,
+                    "spawn_z": initial_z,
+                    "world_name": LaunchConfiguration('world_name'),
+                    "camera_sensor_profile": LaunchConfiguration('camera_sensor_profile'),
                     "spawn_yaw": initial_yaw,
                     "use_sim_time": use_sim_time,
                     "require_terrain": LaunchConfiguration("require_terrain"),
                     "require_workbench": LaunchConfiguration("require_workbench"),
+                    "require_laser_localization": LaunchConfiguration("require_laser_localization"),
                 }.items(),
             ),
             Node(
                 package="robot_localization",
                 executable="ekf_node",
                 name="mooncar_ekf",
+                condition=IfCondition(LaunchConfiguration('use_ekf')),
                 parameters=[ekf_params, {"use_sim_time": use_sim_time}],
                 output="screen",
             ),
@@ -184,13 +200,13 @@ def generate_launch_description():
                 ],
             ),
             Node(package='tf2_ros', executable='static_transform_publisher',
-                 arguments=['--x',initial_x,'--y',initial_y,'--yaw',initial_yaw,
+                 arguments=['--x',initial_x,'--y',initial_y,'--z',initial_z,'--yaw',initial_yaw,
                             '--frame-id','survey_odom','--child-frame-id','odom'],
                  condition=IfCondition(online)),
             IncludeLaunchDescription(PythonLaunchDescriptionSource(PathJoinSubstitution([
                 FindPackageShare('slam_toolbox'),'launch','online_async_launch.py'])),
                 launch_arguments={'use_sim_time':use_sim_time,'autostart':'true',
-                    'slam_params_file':params_file}.items(),condition=IfCondition(online)),
+                    'slam_params_file':params_file}.items(),condition=IfCondition(AndSubstitution(online,LaunchConfiguration('use_slam_mapper')))),
             TimerAction(period=30.0, actions=[Node(
                         package="rviz2",
                         executable="rviz2",

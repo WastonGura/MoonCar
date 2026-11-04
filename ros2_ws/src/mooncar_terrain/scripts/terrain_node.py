@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 from collections import deque
+import json
 import math
+from pathlib import Path
+import sys
 import time
 
 from diagnostic_msgs.msg import DiagnosticArray, DiagnosticStatus, KeyValue
@@ -11,8 +14,14 @@ from rclpy.node import Node
 from rclpy.qos import DurabilityPolicy, QoSProfile, qos_profile_sensor_data
 from sensor_msgs.msg import CameraInfo, Image, Imu, PointCloud2
 from sensor_msgs_py import point_cloud2
-from std_msgs.msg import Header
+from std_msgs.msg import Header, String
 from tf2_ros import Buffer, TransformException, TransformListener
+
+try:
+    from localization_quality import LocalizationQuality
+except ImportError:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[4] / 'scripts'))
+    from localization_quality import LocalizationQuality
 
 from terrain_geometry import (
     classify_cells,
@@ -32,7 +41,7 @@ class TerrainNode(Node):
                             ('depth_pixel_offset', 0.0), ('traversability_resolution', 0.20),
                             ('slope_mild', 5.0), ('roughness_mild', 0.015),
                             ('costmap_width', 24.0), ('costmap_height', 24.0),
-                            ('cell_persistence', 60.0)]:
+                            ('cell_persistence', 60.0), ('require_laser_localization', False)]:
             self.declare_parameter(name, value)
         self.frame = self.get_parameter('frame').value
         self.intrinsics = None
@@ -52,6 +61,11 @@ class TerrainNode(Node):
             OccupancyGrid, '/mooncar/terrain/traversability_map', grid_qos)
         self.traversability_cells = {}
         self.diag_pub = self.create_publisher(DiagnosticArray, '/mooncar/terrain/status', 10)
+        self.require_laser_localization = self.get_parameter('require_laser_localization').value
+        self.localization_quality = LocalizationQuality(required=self.require_laser_localization)
+        if self.require_laser_localization:
+            self.create_subscription(String, '/mooncar/laser_odometry/status',
+                                     self.on_localization_quality, 10)
         self.create_subscription(CameraInfo, '/mooncar/depth/camera_info', self.on_info,
                                  qos_profile_sensor_data)
         self.create_subscription(Image, '/mooncar/depth/image', self.on_depth,
@@ -65,6 +79,20 @@ class TerrainNode(Node):
         self.intrinsics = (msg.k[0], msg.k[4], msg.k[2], msg.k[5])
         self.camera_frame = msg.header.frame_id
         self.camera_size = (msg.width, msg.height)
+
+    def on_localization_quality(self, msg):
+        try:
+            payload = json.loads(msg.data)
+        except (TypeError, ValueError):
+            payload = {}
+        if not isinstance(payload, dict):
+            payload = {}
+        self.localization_quality.observe(payload, time.monotonic())
+        health = self.localization_quality.check(
+            self.get_clock().now().nanoseconds / 1e9, time.monotonic())
+        if not health['healthy']:
+            self.pending = None
+            self.status(DiagnosticStatus.WARN, f'Laser localization unavailable: {health["reason"]}; depth omitted')
 
     def status(self, level, message, values=()):
         status = DiagnosticStatus(level=level, name='terrain_geometry',
@@ -93,6 +121,15 @@ class TerrainNode(Node):
         if self.pending is None:
             return
         msg, received = self.pending
+        if getattr(self, 'require_laser_localization', False) is True:
+            stamp_seconds = msg.header.stamp.sec + msg.header.stamp.nanosec / 1e9
+            health = self.localization_quality.check(
+                self.get_clock().now().nanoseconds / 1e9, time.monotonic(),
+                observation_stamp=stamp_seconds)
+            if not health['healthy']:
+                self.pending = None
+                self.status(DiagnosticStatus.WARN, f'Laser localization unavailable: {health["reason"]}; depth omitted')
+                return
         if self.intrinsics is None or time.monotonic() - self.last_processed < 0.5:
             return
         # Wait for the timestamped EKF transform without blocking its subscription.

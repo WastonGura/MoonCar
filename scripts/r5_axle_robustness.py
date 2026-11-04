@@ -10,7 +10,7 @@ MATRIX=MATRIX[:6]+(("flat",.0005,"zero",0.,0.),)+MATRIX[6:]+tuple(
     for kind,linear,angular in (("zero",0.,0.),("straight",.1,0.),("left",0.,.2),("right",0.,-.2)))
 
 def validate(scene,step):
-    if scene not in ("flat","ramp","curve","survey") or not math.isfinite(step) or step not in (.001,.0005):
+    if scene not in ("flat","ramp","curve","survey") or not math.isfinite(step) or step not in (.001,.0005,.00025):
         raise ValueError('Outside frozen scene/step matrix')
 
 def qualify_grid(previous,schedule):

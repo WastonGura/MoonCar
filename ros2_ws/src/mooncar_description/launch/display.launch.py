@@ -10,14 +10,16 @@ from launch.substitutions import FindExecutable
 
 def generate_launch_description():
     prefix = LaunchConfiguration("prefix")
+    model_file = LaunchConfiguration("model_file")
+    rviz_config_file = LaunchConfiguration("rviz_config_file")
     use_rviz = LaunchConfiguration("use_rviz")
     use_sim_time = LaunchConfiguration("use_sim_time")
 
     model_path = PathJoinSubstitution(
-        [FindPackageShare("mooncar_description"), "urdf", "mooncar.urdf.xacro"]
+        [FindPackageShare("mooncar_description"), "urdf", model_file]
     )
     rviz_config_path = PathJoinSubstitution(
-        [FindPackageShare("mooncar_description"), "rviz", "mooncar_description.rviz"]
+        [FindPackageShare("mooncar_description"), "rviz", rviz_config_file]
     )
 
     robot_description = {
@@ -36,6 +38,16 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
+            DeclareLaunchArgument(
+                "model_file",
+                default_value="mooncar.urdf.xacro",
+                description="URDF Xacro filename inside mooncar_description/urdf.",
+            ),
+            DeclareLaunchArgument(
+                "rviz_config_file",
+                default_value="mooncar_description.rviz",
+                description="RViz configuration filename inside mooncar_description/rviz.",
+            ),
             DeclareLaunchArgument(
                 "prefix",
                 default_value="",

@@ -2,6 +2,14 @@ import * as THREE from 'three';
 
 export function experimentEditor({scene,camera,controls,renderer,api,message,stopPlayback,onSession}) {
   const $=id=>document.getElementById(id), fields=['region-x0','region-y0','region-x1','region-y1','spawn-x','spawn-y','spawn-yaw'];
+  const sceneNames={survey:'标准场景',survey_v2_native:'Terrain V2（原始地形）',survey_v2:'Terrain V2（定位标柱）',visible_ramp_v1:'坡面测试场景',visible_curve_v1:'曲面测试场景'};
+  const sceneLimit=scene=>['survey_v2','survey_v2_native'].includes(scene)?15:25;
+  function updateSceneBounds(){
+    const selected=$('experiment-scene').value,limit=sceneLimit(selected);
+    for(const id of fields.slice(0,6)){$(id).min=-limit;$(id).max=limit;}
+    $('full-region').textContent=`选择 ${limit*2}×${limit*2} 米全场`;
+    $('experiment-scene-note').textContent=selected==='survey_v2_native'?'原始 V2 月面地形，无额外定位标柱；定位方案以本次采集档案为准，请在受支承的缓坡或平地放置车辆。':selected==='survey_v2'?'V2 月面地形加入四个真实定位标柱，保留旧激光方案的对照场景。':'标准场景及测试场景使用原地形配置。';
+  }
   const overlay=new THREE.Group();scene.add(overlay);
   const navigationOverlay=new THREE.Group();scene.add(navigationOverlay);let navigationKey='',lastMotionPhase='',lastSurveyPhase='';
   function drawNavigation(){
@@ -38,7 +46,7 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
     if(!$('experiment-form').reportValidity())throw new Error('请填写有效的区域和起点。');
     const [x0,y0,x1,y1,x,y,degrees]=fields.map(id=>Number($(id).value));
     if(x1-x0<.5||y1-y0<.5)throw new Error('区域右上角应大于左下角，每边至少 0.5 米。');
-    return {version:1,region:[x0,y0,x1,y1],start:[x,y,degrees*Math.PI/180]};
+    return {version:1,region:[x0,y0,x1,y1],start:[x,y,degrees*Math.PI/180],scene:$('experiment-scene').value,simulation_profile:$('simulation-profile').value};
   }
   function render(){
     overlay.visible=$('show-experiment').checked;
@@ -50,12 +58,17 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
     const yaw=degrees*Math.PI/180;
     overlay.add(new THREE.ArrowHelper(new THREE.Vector3(Math.cos(yaw),Math.sin(yaw),0),new THREE.Vector3(x,y,.12),.8,0x111111,.22,.16));
     overlay.traverse(o=>{o.renderOrder=20;if(o.material)o.material.depthTest=false;});
-    try{localStorage.setItem('mooncar-experiment-draft',JSON.stringify({version:1,region:[x0,y0,x1,y1],start:[x,y,yaw]}));}catch{}
+    try{localStorage.setItem('mooncar-experiment-draft',JSON.stringify({version:1,region:[x0,y0,x1,y1],start:[x,y,yaw],scene:$('experiment-scene').value,simulation_profile:$('simulation-profile').value}));}catch{}
   }
   function fill(value){
     if(!value||value.version!==1||!Array.isArray(value.region)||value.region.length!==4||!Array.isArray(value.start)||value.start.length!==3||![...value.region,...value.start].every(v=>typeof v==='number'&&Number.isFinite(v)))throw new Error('任务文件格式无效。');
     const values=[...value.region,...value.start.slice(0,2),value.start[2]*180/Math.PI];
-    if(values.slice(0,6).some(v=>Math.abs(v)>25)||Math.abs(values[6])>180||values[2]-values[0]<.5||values[3]-values[1]<.5)throw new Error('任务坐标或区域范围无效。');
+    const selected=value.scene||'survey';
+    if(!Object.hasOwn(sceneNames,selected))throw new Error('不支持的地形场景。');
+    if(values.slice(0,6).some(v=>Math.abs(v)>sceneLimit(selected))||Math.abs(values[6])>180||values[2]-values[0]<.5||values[3]-values[1]<.5)throw new Error('任务坐标或区域范围无效。');
+    if(!['legacy','r5_support_v1'].includes(value.simulation_profile||'legacy'))throw new Error('不支持的仿真车辆配置。');
+    $('simulation-profile').value=value.simulation_profile||'legacy';
+    $('experiment-scene').value=selected;updateSceneBounds();
     fields.forEach((id,i)=>$(id).value=Number(values[i].toFixed(4)));render();
   }
   function fit(){
@@ -73,13 +86,14 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
   }
   function preview(event){
     const point=ground(event);if(!point)return;
-    const x=Math.max(-25,Math.min(25,point.x)),y=Math.max(-25,Math.min(25,point.y));
+    const limit=sceneLimit($('experiment-scene').value),x=Math.max(-limit,Math.min(limit,point.x)),y=Math.max(-limit,Math.min(limit,point.y));
     [Math.min(x,drag.x),Math.min(y,drag.y),Math.max(x,drag.x),Math.max(y,drag.y)].forEach((v,i)=>$(fields[i]).value=v.toFixed(2));render();
   }
   renderer.domElement.addEventListener('pointerdown',event=>{
     if(mode!=='region'||event.button!==0)return;
     event.stopImmediatePropagation();event.preventDefault();const point=ground(event);
-    if(!point||Math.abs(point.x)>25||Math.abs(point.y)>25){message('绘制范围为 -25 至 25 米；可滚轮缩放、右键平移。',true);return;}
+    const limit=sceneLimit($('experiment-scene').value);
+    if(!point||Math.abs(point.x)>limit||Math.abs(point.y)>limit){message(`绘制范围为 -${limit} 至 ${limit} 米；可滚轮缩放、右键平移。`,true);return;}
     drag={id:event.pointerId,x:point.x,y:point.y,previous:fields.slice(0,4).map(id=>$(id).value)};
     renderer.domElement.setPointerCapture(event.pointerId);preview(event);
   },true);
@@ -95,8 +109,14 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
   renderer.domElement.addEventListener('pointercancel',()=>{if(drag)cancel();},true);
   window.addEventListener('blur',cancel);
   fields.forEach(id=>$(id).oninput=()=>{cancel();render();});
+  $('simulation-profile').onchange=()=>render();
+  $('experiment-scene').onchange=()=>{
+    updateSceneBounds();const limit=sceneLimit($('experiment-scene').value);
+    for(const id of fields.slice(0,6))$(id).value=Math.max(-limit,Math.min(limit,Number($(id).value)));
+    render();message('地形草稿已更新，应用后创建新实验。');
+  };
   $('draw-region').onclick=()=>begin('region');$('place-spawn').onclick=()=>begin('spawn');$('fit-experiment').onclick=fit;
-  $('full-region').onclick=()=>{cancel();[-25,-25,25,25].forEach((v,i)=>$(fields[i]).value=v);render();fit();message('已选择 50×50 米任务区域；未知区域仍需逐步观测。');};
+  $('full-region').onclick=()=>{cancel();const limit=sceneLimit($('experiment-scene').value);[-limit,-limit,limit,limit].forEach((v,i)=>$(fields[i]).value=v);render();fit();message(`已选择 ${limit*2}×${limit*2} 米任务区域；未知区域仍需逐步观测。`);};
   $('show-experiment').onchange=()=>{overlay.visible=$('show-experiment').checked;if(!overlay.visible)cancel();};
   document.addEventListener('keydown',e=>{if(e.key==='Escape'){cancel();message('已取消地图选点。');}});
   $('save-experiment').onclick=async()=>{try{const url='/api/task?task='+encodeURIComponent(JSON.stringify(task()));await api(url);const a=document.createElement('a');a.href=url;a.download='mooncar-experiment.json';document.body.append(a);a.click();a.remove();message('已请求下载任务文件。');}catch(e){message(e.message,true);}};
@@ -122,7 +142,11 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
   window.addEventListener('pagehide',()=>{if(motionToken)fetch('/api/simulation/cancel',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}',keepalive:true}).catch(()=>{});});
   function sceneFrame(){
     const visible=state.enabled&&['starting','recording'].includes(state.phase);$('gazebo-scene').hidden=!state.enabled;
-    if(!visible){$('scene-status').textContent='仿真未运行';return;}
+    if(!visible||state.task?.gui===false){
+      $('gazebo-image').hidden=true;
+      $('scene-status').textContent=state.task?.gui===false?'本轮关闭图形画面采集':'仿真未运行';
+      return;
+    }
     if(sceneBusy)return;sceneBusy=true;const picture=new Image();picture.alt='实际 Gazebo 运行画面';
     picture.onload=()=>{picture.id='gazebo-image';$('gazebo-image').replaceWith(picture);$('scene-status').textContent='实时画面 · '+new Date().toLocaleTimeString();sceneBusy=false;};
     picture.onerror=()=>{$('scene-status').textContent='等待 Gazebo 画面';sceneBusy=false;};
@@ -134,7 +158,7 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
     try{
       state=await api('/api/simulation');
       if(state.autonomy?.active){overlay.visible=false;$('show-experiment').checked=false;}
-      const a=state.autonomy||{},names={idle:'尚未开始',planning:'比较观察位置',moving:'自动行驶',turning:'转向观察',observing:'采集新视角',budget_reached:'预算已用尽',no_candidates:'本轮探测结束',stopped:'已停止',fault:'已保护停车',distance_reached:'达到活动距离限制'};
+      const a=state.autonomy||{},names={idle:'尚未开始',planning:'比较观察位置',moving:'自动行驶',turning:'转向观察',observing:'采集新视角',localization_paused:'已停车，等待定位恢复',budget_reached:'预算已用尽',no_candidates:'本轮探测结束',stopped:'已停止',fault:'已保护停车',distance_reached:'达到活动距离限制'};
       $('survey-strategy').disabled=!!a.active||busy;
       if(a.active){$('survey-budget').value=a.budget_seconds;$('survey-radius').value=a.radius;if(a.strategy)$('survey-strategy').value=a.strategy;}
       $('survey-state').textContent=(names[a.phase]||'等待自主探测服务')+(a.budget_seconds?` · ${Math.round(a.elapsed_seconds||0)} / ${a.budget_seconds} 仿真秒`:'');
@@ -154,7 +178,7 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
       if(a.phase&&a.phase!=='idle'&&(a.active||surveyKey!==lastSurveyPhase))message(`${names[a.phase]||a.phase}：${a.reason}`,a.phase==='fault');
       lastSurveyPhase=surveyKey;
       const labels={idle:'尚未启动',restarting:'正在结束旧实验并初始化',starting:'仿真启动中，等待传感器档案',recording:'仿真运行，采集档案已建立',stopping:'正在结束实验',stopped:'已结束，档案已保留',failed:'启动或运行失败'};
-      const active=state.task?`实际任务：(${state.task.start[0].toFixed(2)}, ${state.task.start[1].toFixed(2)}) m · ${(state.task.start[2]*180/Math.PI).toFixed(1)}°。`:'';
+      const active=state.task?`实际任务：${sceneNames[state.task.scene||'survey']} · (${state.task.start[0].toFixed(2)}, ${state.task.start[1].toFixed(2)}) m · ${(state.task.start[2]*180/Math.PI).toFixed(1)}°。`:'';
       $('experiment-state').textContent=state.enabled?`${labels[state.phase]||state.phase}。${active}${state.error||''}`:'当前服务只支持编辑和保存；启动服务时加 --simulation 才能应用到 Gazebo。';
       if(state.session&&state.session!==followed&&state.phase==='recording'){await onSession(state.session);followed=state.session;}
     }catch(e){state={enabled:false};navigationOverlay.visible=false;$('experiment-state').textContent=`仿真服务未连接：${e.message}`;}
@@ -162,13 +186,15 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
   }
   $('experiment-form').onsubmit=async e=>{e.preventDefault();if(busy)return;try{const value=task();cancel();stopPlayback();busy=true;buttons();await api('/api/simulation/apply',value);state.phase='restarting';message('正在新建仿真与采集会话。区域仅保存为任务边界，尚未自动遍历。');}catch(error){message(error.message,true);}finally{busy=false;buttons();poll();}};
   $('stop-experiment').onclick=async()=>{if(busy)return;busy=true;buttons();try{await api('/api/simulation/stop',{});state.phase='stopping';}catch(e){message(e.message,true);}finally{busy=false;buttons();poll();}};
+  updateSceneBounds();
   try{const saved=localStorage.getItem('mooncar-experiment-draft');if(saved)fill(JSON.parse(saved));}catch{}
   render();poll();setInterval(poll,600);
   return {cancel,telemetry:()=>state.motion,pick(event){
     if(!mode||event.button!==0)return false;
     if(mode==='region')return true;
     const point=ground(event);
-    if(!point||Math.abs(point.x)>25||Math.abs(point.y)>25){message('请选择 -25 至 25 米范围内的地面。',true);return true;}
+    const limit=sceneLimit(mode==='goal'?(state.task?.scene||'survey'):$('experiment-scene').value);
+    if(!point||Math.abs(point.x)>limit||Math.abs(point.y)>limit){message(`请选择 -${limit} 至 ${limit} 米范围内的地面。`,true);return true;}
     const x=Number(point.x.toFixed(2)),y=Number(point.y.toFixed(2));
     if(mode==='goal'){$('drive-x').value=x;$('drive-y').value=y;cancel();message(`导航目标：(${x}, ${y}) m。点击“开始导航并采集”执行。`);return true;}
     if(mode==='spawn'){$('spawn-x').value=x;$('spawn-y').value=y;mode='heading';message('再点击车辆前进方向。');}

@@ -1,11 +1,17 @@
 {
+  "physics_config": {
+    "backend": "dart",
+    "step_seconds": 0.001,
+    "engine": "libmooncar-physics7-dartsim.so",
+    "scope": "numerical runtime configuration, not measured soil properties"
+  },
   "scene": "ramp",
   "world": "mooncar_ramp_v2.sdf",
   "size_m": 16.0,
   "grid_step_m": 0.25,
   "spawn_ground_z_m": 0.0,
   "height_min_m": -0.0188,
-  "height_max_m": 0.4337,
+  "height_max_m": 0.6089,
   "cell_count_by_class": {
     "regolith_passable": 3426,
     "sand_soft": 180,
@@ -45,13 +51,14 @@
       "position_m": [
         -2.8,
         3.8,
-        0.1941
+        0.194
       ],
       "radii_m": [
         0.48,
         0.4,
         0.3
       ],
+      "variant": 0,
       "class_id": 3
     },
     {
@@ -59,42 +66,783 @@
       "position_m": [
         4.3,
         -4.0,
-        0.3985
+        0.4615
       ],
       "radii_m": [
         0.62,
         0.49,
         0.38
       ],
+      "variant": 1,
       "class_id": 3
     }
   ],
+  "detail_version": "terrain-v2-detail-v1",
+  "detail_seed": 20261006,
+  "surface_atlas": {
+    "version": "continuous-atlas-v1",
+    "seed": 20261006,
+    "pixels_per_m": 128,
+    "size_px": 2048,
+    "blend_sigma_m": 0.15,
+    "uv": "southwest=(0,0), northeast=(1,1)",
+    "status": "procedural appearance; not measured lunar reflectance"
+  },
+  "pebbles": {
+    "seed": 20261006,
+    "count": 46,
+    "density_per_m2": 1.5,
+    "eligible_cell_area_m2": 30.625,
+    "maximum_count": 120,
+    "diameter_range_m": [
+      0.03,
+      0.1
+    ],
+    "instances": [
+      {
+        "position_m": [
+          5.364645949661268,
+          6.541681830267572,
+          0.03849561961150636
+        ],
+        "ground_z_m": 0.039661645342366866,
+        "diameter_m": 0.04664102923442011,
+        "variant": 1,
+        "yaw_rad": 5.638431040235889,
+        "exposed_vertex_range_m": [
+          -0.012768001367382011,
+          0.010552513249828047
+        ]
+      },
+      {
+        "position_m": [
+          5.713797266476635,
+          1.748103729594966,
+          0.5146430120983689
+        ],
+        "ground_z_m": 0.5158321690589436,
+        "diameter_m": 0.04756627842298386,
+        "variant": 0,
+        "yaw_rad": 5.697670606044993,
+        "exposed_vertex_range_m": [
+          -0.01443252207390866,
+          0.010711326780047492
+        ]
+      },
+      {
+        "position_m": [
+          2.8465540290320748,
+          2.6098802926732665,
+          0.12660352068276604
+        ],
+        "ground_z_m": 0.12880419998230735,
+        "diameter_m": 0.08802717198165233,
+        "variant": 2,
+        "yaw_rad": 1.9645509731833553,
+        "exposed_vertex_range_m": [
+          -0.024049673197528487,
+          0.019963912793297678
+        ]
+      },
+      {
+        "position_m": [
+          5.47425313134955,
+          -1.3243776521097657,
+          0.5031902520526069
+        ],
+        "ground_z_m": 0.504969613124707,
+        "diameter_m": 0.07117444288400465,
+        "variant": 0,
+        "yaw_rad": 1.3553600617894295,
+        "exposed_vertex_range_m": [
+          -0.021352087067534553,
+          0.015723134056965904
+        ]
+      },
+      {
+        "position_m": [
+          2.307431626860293,
+          2.055857121652191,
+          0.08313991313254578
+        ],
+        "ground_z_m": 0.08488925437594214,
+        "diameter_m": 0.0699736497358544,
+        "variant": 2,
+        "yaw_rad": 1.3545617418908629,
+        "exposed_vertex_range_m": [
+          -0.019061249435947683,
+          0.01592557543197952
+        ]
+      },
+      {
+        "position_m": [
+          5.801806152618343,
+          4.053114455562048,
+          0.3201959218053826
+        ],
+        "ground_z_m": 0.3211449247738951,
+        "diameter_m": 0.0379601187405007,
+        "variant": 4,
+        "yaw_rad": 1.432839044473604,
+        "exposed_vertex_range_m": [
+          -0.010637529920069444,
+          0.008555328931824702
+        ]
+      },
+      {
+        "position_m": [
+          6.675889022972994,
+          4.485780188440812,
+          0.29950168397995486
+        ],
+        "ground_z_m": 0.3004364534922705,
+        "diameter_m": 0.03739078049262526,
+        "variant": 1,
+        "yaw_rad": 2.8851276795583014,
+        "exposed_vertex_range_m": [
+          -0.01041997889369528,
+          0.008335134508163422
+        ]
+      },
+      {
+        "position_m": [
+          2.147481527955078,
+          2.2815585510124277,
+          0.06796743899841046
+        ],
+        "ground_z_m": 0.06873378572274326,
+        "diameter_m": 0.030653868973312237,
+        "variant": 4,
+        "yaw_rad": 1.1121953580766513,
+        "exposed_vertex_range_m": [
+          -0.00841178070115492,
+          0.006915153785501199
+        ]
+      },
+      {
+        "position_m": [
+          2.7986392026321156,
+          1.6633400961157294,
+          0.1312245202576226
+        ],
+        "ground_z_m": 0.1328653458150084,
+        "diameter_m": 0.06563302229543191,
+        "variant": 5,
+        "yaw_rad": 2.8434793504758664,
+        "exposed_vertex_range_m": [
+          -0.017878627979037304,
+          0.01493788316867864
+        ]
+      },
+      {
+        "position_m": [
+          2.86838527810802,
+          2.2427369417473346,
+          0.1351923563928328
+        ],
+        "ground_z_m": 0.1374137337179357,
+        "diameter_m": 0.08885509300411532,
+        "variant": 5,
+        "yaw_rad": 4.112235207291439,
+        "exposed_vertex_range_m": [
+          -0.024176237801010636,
+          0.02025130870104702
+        ]
+      },
+      {
+        "position_m": [
+          4.614793465016316,
+          -2.7965425704372953,
+          0.33556049786004283
+        ],
+        "ground_z_m": 0.3372727827830844,
+        "diameter_m": 0.06849139692166492,
+        "variant": 0,
+        "yaw_rad": 2.943384592725613,
+        "exposed_vertex_range_m": [
+          -0.019625874680963662,
+          0.015358324752187957
+        ]
+      },
+      {
+        "position_m": [
+          6.871858080652151,
+          7.312304745572564,
+          -0.013767192149475303
+        ],
+        "ground_z_m": -0.011736889466425211,
+        "diameter_m": 0.08121210732200368,
+        "variant": 2,
+        "yaw_rad": 0.039047450961229385,
+        "exposed_vertex_range_m": [
+          -0.02233912860707582,
+          0.018266925053926023
+        ]
+      },
+      {
+        "position_m": [
+          7.054694474983189,
+          4.779628624426546,
+          0.25719231176686125
+        ],
+        "ground_z_m": 0.2592668265633435,
+        "diameter_m": 0.08298059185928874,
+        "variant": 5,
+        "yaw_rad": 3.637360756502594,
+        "exposed_vertex_range_m": [
+          -0.022828600730137316,
+          0.01983383662897953
+        ]
+      },
+      {
+        "position_m": [
+          7.24502339299146,
+          6.171722084972082,
+          0.05924117067284711
+        ],
+        "ground_z_m": 0.06029505215489947,
+        "diameter_m": 0.04215525928209465,
+        "variant": 4,
+        "yaw_rad": 2.5906366082227037,
+        "exposed_vertex_range_m": [
+          -0.011686212894948846,
+          0.009391416746098474
+        ]
+      },
+      {
+        "position_m": [
+          5.307483979778929,
+          5.925445235636126,
+          0.08658614164940971
+        ],
+        "ground_z_m": 0.08881607011602324,
+        "diameter_m": 0.08919713866454104,
+        "variant": 5,
+        "yaw_rad": 2.090334794710683,
+        "exposed_vertex_range_m": [
+          -0.02425572949372333,
+          0.02034283983854719
+        ]
+      },
+      {
+        "position_m": [
+          3.263525115867445,
+          2.287362089578055,
+          0.17713358286712885
+        ],
+        "ground_z_m": 0.17887479115569313,
+        "diameter_m": 0.0696483315425706,
+        "variant": 3,
+        "yaw_rad": 6.034543236843358,
+        "exposed_vertex_range_m": [
+          -0.019358342308494425,
+          0.01546582346279085
+        ]
+      },
+      {
+        "position_m": [
+          5.602899373077941,
+          5.333170807541592,
+          0.14826867093955673
+        ],
+        "ground_z_m": 0.15059887132347877,
+        "diameter_m": 0.09320801535688106,
+        "variant": 3,
+        "yaw_rad": 5.109391898372731,
+        "exposed_vertex_range_m": [
+          -0.025839948958272158,
+          0.02076405872016837
+        ]
+      },
+      {
+        "position_m": [
+          3.225953408344933,
+          -2.2273313315947636,
+          0.16551584796754254
+        ],
+        "ground_z_m": 0.1678340897841566,
+        "diameter_m": 0.09272967266456178,
+        "variant": 1,
+        "yaw_rad": 2.7774764598895656,
+        "exposed_vertex_range_m": [
+          -0.025948272370975994,
+          0.020416563961304895
+        ]
+      },
+      {
+        "position_m": [
+          4.757837951440902,
+          2.7014903957610077,
+          0.3482555741434602
+        ],
+        "ground_z_m": 0.3493910896981533,
+        "diameter_m": 0.045420622187724635,
+        "variant": 2,
+        "yaw_rad": 4.4624810252017735,
+        "exposed_vertex_range_m": [
+          -0.012655118271831522,
+          0.01028975746327726
+        ]
+      },
+      {
+        "position_m": [
+          6.7381554958589085,
+          7.30453993390797,
+          -0.011987025704602304
+        ],
+        "ground_z_m": -0.010110919988262008,
+        "diameter_m": 0.07504422865361182,
+        "variant": 0,
+        "yaw_rad": 4.099324505500863,
+        "exposed_vertex_range_m": [
+          -0.02072455727168191,
+          0.01685127084723133
+        ]
+      },
+      {
+        "position_m": [
+          4.709199787340906,
+          5.222438922437723,
+          0.13798679782954063
+        ],
+        "ground_z_m": 0.13962262470871456,
+        "diameter_m": 0.06543307516695746,
+        "variant": 1,
+        "yaw_rad": 2.308255989298688,
+        "exposed_vertex_range_m": [
+          -0.018220020424557656,
+          0.014496517158921085
+        ]
+      },
+      {
+        "position_m": [
+          4.7628965552221345,
+          6.220106446271473,
+          0.05798632887929921
+        ],
+        "ground_z_m": 0.05981907135819972,
+        "diameter_m": 0.07330969915602059,
+        "variant": 2,
+        "yaw_rad": 2.289407126802556,
+        "exposed_vertex_range_m": [
+          -0.020287198828395803,
+          0.016367650749614493
+        ]
+      },
+      {
+        "position_m": [
+          7.46041900461175,
+          5.642432504718723,
+          0.1285041654095814
+        ],
+        "ground_z_m": 0.1302559492352345,
+        "diameter_m": 0.0700713530261239,
+        "variant": 2,
+        "yaw_rad": 1.3604211898976957,
+        "exposed_vertex_range_m": [
+          -0.01928637497329952,
+          0.015749301539762423
+        ]
+      },
+      {
+        "position_m": [
+          3.97325861340857,
+          1.3103249057946333,
+          0.2859389513555812
+        ],
+        "ground_z_m": 0.2872306078589199,
+        "diameter_m": 0.05166626013354917,
+        "variant": 4,
+        "yaw_rad": 0.4445583596418753,
+        "exposed_vertex_range_m": [
+          -0.013956733236124563,
+          0.011876396830650005
+        ]
+      },
+      {
+        "position_m": [
+          6.078685897612338,
+          2.2887136404833037,
+          0.5247318179800569
+        ],
+        "ground_z_m": 0.5267967422608513,
+        "diameter_m": 0.08259697123177645,
+        "variant": 3,
+        "yaw_rad": 6.149276126253151,
+        "exposed_vertex_range_m": [
+          -0.022777249461350402,
+          0.018521236154537823
+        ]
+      },
+      {
+        "position_m": [
+          2.118183116419835,
+          2.0616071596553893,
+          0.06630912676786621
+        ],
+        "ground_z_m": 0.0685481407722619,
+        "diameter_m": 0.08956056017582781,
+        "variant": 5,
+        "yaw_rad": 0.10414290121297612,
+        "exposed_vertex_range_m": [
+          -0.02488047006577207,
+          0.019899810022141834
+        ]
+      },
+      {
+        "position_m": [
+          1.6170268806580839,
+          1.6942118413316538,
+          0.03285003705644009
+        ],
+        "ground_z_m": 0.03424858519188363,
+        "diameter_m": 0.05594192541774168,
+        "variant": 0,
+        "yaw_rad": 0.9879814030912327,
+        "exposed_vertex_range_m": [
+          -0.015655333642148665,
+          0.01248064065560913
+        ]
+      },
+      {
+        "position_m": [
+          7.8671559984123505,
+          4.395179509735285,
+          0.31449982685087663
+        ],
+        "ground_z_m": 0.31548560523340957,
+        "diameter_m": 0.03943113530131713,
+        "variant": 2,
+        "yaw_rad": 5.812539865064727,
+        "exposed_vertex_range_m": [
+          -0.0106729096767611,
+          0.009042657973897417
+        ]
+      },
+      {
+        "position_m": [
+          7.3157351952381635,
+          5.330411183752645,
+          0.17291129270603
+        ],
+        "ground_z_m": 0.17479703403788896,
+        "diameter_m": 0.07542965327435838,
+        "variant": 5,
+        "yaw_rad": 4.297508579372943,
+        "exposed_vertex_range_m": [
+          -0.020981579431354258,
+          0.01818457321873901
+        ]
+      },
+      {
+        "position_m": [
+          7.425616456750178,
+          5.256717611921322,
+          0.18505946808164808
+        ],
+        "ground_z_m": 0.18631231789026118,
+        "diameter_m": 0.05011399234452413,
+        "variant": 4,
+        "yaw_rad": 2.2955626674807106,
+        "exposed_vertex_range_m": [
+          -0.013988060787847145,
+          0.011068935384414946
+        ]
+      },
+      {
+        "position_m": [
+          7.785377780064527,
+          7.598714467899954,
+          -0.01608994649601853
+        ],
+        "ground_z_m": -0.01424158536232957,
+        "diameter_m": 0.07393444534755841,
+        "variant": 3,
+        "yaw_rad": 1.766647629555853,
+        "exposed_vertex_range_m": [
+          -0.020325067788259245,
+          0.016642154885519966
+        ]
+      },
+      {
+        "position_m": [
+          1.863115246527572,
+          2.3567018892366116,
+          0.04409229470897704
+        ],
+        "ground_z_m": 0.045057669732628584,
+        "diameter_m": 0.038615000946061705,
+        "variant": 0,
+        "yaw_rad": 4.022783634451249,
+        "exposed_vertex_range_m": [
+          -0.010552464374191786,
+          0.008780195770653407
+        ]
+      },
+      {
+        "position_m": [
+          5.501779530181986,
+          6.461755075506739,
+          0.04382845028634998
+        ],
+        "ground_z_m": 0.04474114800325471,
+        "diameter_m": 0.03650790867618908,
+        "variant": 3,
+        "yaw_rad": 5.274821667160232,
+        "exposed_vertex_range_m": [
+          -0.01005321869259599,
+          0.008200735645498551
+        ]
+      },
+      {
+        "position_m": [
+          7.323770363063073,
+          6.268289431172077,
+          0.04898034030910328
+        ],
+        "ground_z_m": 0.05008615275332822,
+        "diameter_m": 0.04423249776899749,
+        "variant": 1,
+        "yaw_rad": 6.156115554843085,
+        "exposed_vertex_range_m": [
+          -0.012143768792673579,
+          0.009972480091825164
+        ]
+      },
+      {
+        "position_m": [
+          3.572546290885368,
+          2.172053723722105,
+          0.21563643875574892
+        ],
+        "ground_z_m": 0.21742476270858033,
+        "diameter_m": 0.07153295811325605,
+        "variant": 3,
+        "yaw_rad": 0.0656199791209204,
+        "exposed_vertex_range_m": [
+          -0.019841521590812178,
+          0.015924957465815875
+        ]
+      },
+      {
+        "position_m": [
+          5.415688453246844,
+          7.319613982317502,
+          0.001916667226037085
+        ],
+        "ground_z_m": 0.0030571339459131595,
+        "diameter_m": 0.04561866879504298,
+        "variant": 3,
+        "yaw_rad": 0.6990589459233396,
+        "exposed_vertex_range_m": [
+          -0.0125189832842734,
+          0.010290351113248088
+        ]
+      },
+      {
+        "position_m": [
+          2.9448159195359462,
+          2.712482808005654,
+          0.13527253218649116
+        ],
+        "ground_z_m": 0.1365255579962114,
+        "diameter_m": 0.05012103238881026,
+        "variant": 0,
+        "yaw_rad": 2.133101629828335,
+        "exposed_vertex_range_m": [
+          -0.014230038781503515,
+          0.011218425105657098
+        ]
+      },
+      {
+        "position_m": [
+          7.252043949157924,
+          6.706811230394883,
+          0.008697687206760521
+        ],
+        "ground_z_m": 0.010264767455875661,
+        "diameter_m": 0.06268320996460562,
+        "variant": 4,
+        "yaw_rad": 3.225734848181267,
+        "exposed_vertex_range_m": [
+          -0.01721527479300541,
+          0.0141263301892974
+        ]
+      },
+      {
+        "position_m": [
+          7.620280616786338,
+          7.908110186229865,
+          -0.013602703706285892
+        ],
+        "ground_z_m": -0.012340709293953303,
+        "diameter_m": 0.05047977649330358,
+        "variant": 4,
+        "yaw_rad": 5.991442136401592,
+        "exposed_vertex_range_m": [
+          -0.013891566675040094,
+          0.011348321571611697
+        ]
+      },
+      {
+        "position_m": [
+          7.970077716633043,
+          7.626463720148191,
+          -0.013330921077256818
+        ],
+        "ground_z_m": -0.012372419544466749,
+        "diameter_m": 0.038340061311602794,
+        "variant": 1,
+        "yaw_rad": 4.116152005643127,
+        "exposed_vertex_range_m": [
+          -0.01055435631157303,
+          0.008615674344228367
+        ]
+      },
+      {
+        "position_m": [
+          4.564116727441668,
+          2.36329234580701,
+          0.34246572535394315
+        ],
+        "ground_z_m": 0.3432867175569355,
+        "diameter_m": 0.03283968811969369,
+        "variant": 5,
+        "yaw_rad": 4.126808809080809,
+        "exposed_vertex_range_m": [
+          -0.008927621603035063,
+          0.007492222456811803
+        ]
+      },
+      {
+        "position_m": [
+          3.129568743237503,
+          2.9134813074079777,
+          0.14890163470659806
+        ],
+        "ground_z_m": 0.14992712125032245,
+        "diameter_m": 0.041019461748975396,
+        "variant": 4,
+        "yaw_rad": 1.4114706812077469,
+        "exposed_vertex_range_m": [
+          -0.011317289709311534,
+          0.009192441165176174
+        ]
+      },
+      {
+        "position_m": [
+          5.81293403835971,
+          5.326766395702779,
+          0.15278079340285386
+        ],
+        "ground_z_m": 0.15483652218536179,
+        "diameter_m": 0.08222915130031702,
+        "variant": 1,
+        "yaw_rad": 4.396375260687277,
+        "exposed_vertex_range_m": [
+          -0.022216461992304398,
+          0.018898113657854126
+        ]
+      },
+      {
+        "position_m": [
+          5.949130103874714,
+          7.212305081789678,
+          -0.00020613416317488958
+        ],
+        "ground_z_m": 0.002263730443760559,
+        "diameter_m": 0.09879458427741793,
+        "variant": 0,
+        "yaw_rad": 3.4725766274366663,
+        "exposed_vertex_range_m": [
+          -0.02796742953253194,
+          0.022281549259640446
+        ]
+      },
+      {
+        "position_m": [
+          4.725991140049515,
+          1.8056854382156962,
+          0.38987237659706075
+        ],
+        "ground_z_m": 0.3912517755509601,
+        "diameter_m": 0.055175958155972024,
+        "variant": 0,
+        "yaw_rad": 5.223745360907326,
+        "exposed_vertex_range_m": [
+          -0.01731611740759076,
+          0.012945788077152076
+        ]
+      },
+      {
+        "position_m": [
+          2.917575268165096,
+          2.8996146305768384,
+          0.1278413933811118
+        ],
+        "ground_z_m": 0.12892062251491562,
+        "diameter_m": 0.04316916535215219,
+        "variant": 4,
+        "yaw_rad": 6.052999402194423,
+        "exposed_vertex_range_m": [
+          -0.011693776717349863,
+          0.00989080595872624
+        ]
+      }
+    ],
+    "status": "engineered deterministic detail, not measured rock abundance"
+  },
+  "rock_variant_sha256": {
+    "boulder_00.obj": "de5dda8be5a555f774754af92f9b7cfa8d4a94861d4b8cbc599a499a1f6cc7ff",
+    "boulder_01.obj": "58fd4d526a0d07f107add2ba179b789a547cccfb2bb2f1c8f88bf4c45124d804",
+    "boulder_02.obj": "29257859503fffc14fa31d637290573fe70ef25592403bff7f1a79c75d1d7a61",
+    "boulder_03.obj": "e4fbe8a7043d660cf45583a22e8ef6ae39bd81711635138d6f7d92f338950bf8",
+    "boulder_04.obj": "f1eb5dfdd5feecf7428d691f1acd122bc7130d37422c035fb5dc0f0f0d2d7dfb",
+    "boulder_05.obj": "861d49d6bf9d8d4b3dc6b16bd6d070bc52ef6c46e00e03034d2376555fdf85da"
+  },
+  "detail_generator_sha256": "6d7fa48a8786c132f0c682948fada993e0b5b7ff9c3b926046a611ec1a10c7a3",
+  "material_generator_sha256": "19b575c0a52551c6c9fe58e87c16bbb7cbfc56ee2d06821dba0caede14b9d165",
   "boulder_projected_area_fraction": 0.0060844,
   "measured_patch": null,
+  "generator_sha256": "29e169fc18ebef9968c3a9ab8b5cf7719a348e195000fdb00254e82e2bb43084",
+  "contact_parameter_status": "engineering assumptions; not literature-calibrated mu/mu2",
   "labels": "class_mask.png is row-major from north to south; x increases east, y increases north",
-  "world_sha256": "f919b081532356d448e21492c5dac0a74d05e67f9f8fc29bd821b0a1d9c830ad",
+  "world_sha256": "516c14c62f745aba854a6a12771a4e80bd4ccf031ef4baaf7118f3e7892f8233",
   "mesh_sha256": {
-    "regolith_passable.obj": "da566a15a9f374e9885774ccc9cef1cfc31053ef8fce55ab47602576b41993c2",
-    "rock_boulder.obj": "a36a2f550b1d76df32307102277002050477ca911c7f598e2bdd02b9df1bc80f",
-    "rubble_gravel.obj": "ff92f88b41cd1186dac92317415af63835ab1e5d9f758c50ff50343a93d5454a",
-    "sand_soft.obj": "8fda341e06a810931fecfce7c39b6e92fea1c16145a5eaa52531526c3d8b3c85"
+    "regolith_passable.obj": "ac49ea41d8f42388ea253bc5f6711934009691eccf3b001957736abf670a7f20",
+    "rock_boulder.obj": "069787ddc54c8a90211d4704d4f494251d58d624ec5febb1fc70f857a1017376",
+    "rubble_gravel.obj": "b592a4408d3556ae0bf8467b83a174a471840d20143abf579665ef82731294ec",
+    "sand_soft.obj": "6302ccdde179bb28ae904732486a07485582c7fb33fead69a675388d7778a8c5",
+    "surface_pebbles.obj": "61a495ff5831640a7bf58965050c2e0a557b0998b4dc8ef5dda0bb2b1bc5df3d"
   },
-  "boulder_mesh_sha256": "625ae79ea0c407737832a37fe323d99fdb4d3d02e89af737b3961146042f1d87",
+  "boulder_mesh_sha256": "de5dda8be5a555f774754af92f9b7cfa8d4a94861d4b8cbc599a499a1f6cc7ff",
   "texture_sha256": {
-    "crater_floor_albedo.png": "81575d01c310124d19c69739cba16ca305286423bf2065d68934d278974aacc8",
-    "crater_floor_normal.png": "4587a329eb18a0271842b555d31f29a24c7bddd4460ceb201521263de8e7efc0",
-    "crater_floor_roughness.png": "db0a44e93cb352582e8857580b012899c5f8ac397548c9358d6a099e75bd0ab2",
-    "regolith_passable_albedo.png": "bbe08a6272aa35f248f2184c6920c8a8de20f9ee75e00ea67d0a7cdbd915492e",
-    "regolith_passable_normal.png": "da05c2f695378abe881aaf399a9345964d7915d2aecfaf043947aaf28620c7b7",
-    "regolith_passable_roughness.png": "3367a72ae117a561810ccd6ddbf3263283aff3c7cfa0351a17c48f0e65ab95fd",
-    "rock_boulder_albedo.png": "db15ab884aeabaae82cd50e01d3de41524e4fdee2a4d01192af8b8c1b1e25448",
-    "rock_boulder_normal.png": "957a33506489f4ce4109775011b3193fcb7e377684fa851c6c47a405e7b276be",
-    "rock_boulder_roughness.png": "ae7ce3b68fae65e437a7ed99d47f1a0f9ef877426933afdaa8b49551bb670e06",
-    "rubble_gravel_albedo.png": "0d237e4e57315d01445df662feb08784c5961e9d38532209e9db03b2e7a8c85a",
-    "rubble_gravel_normal.png": "db16bdc9ecfa8358008cb0f7b55d252572a68527c9895be56078dcb82c06d174",
-    "rubble_gravel_roughness.png": "fc240dff2256ae5c87a047c65f5ca7c980abfe9593df26724161ee96a4350a98",
-    "sand_soft_albedo.png": "24476b6e18dbd915a8f193f1f165e4be2a97e760aea473a412639129317d8e32",
-    "sand_soft_normal.png": "4e33ab177174d195637fdd53cb81325fc7cf21936dbad086d7aa2a10f0792404",
-    "sand_soft_roughness.png": "83fb1ca1c113d42e8f5e5012847b6773eb107a499d45bae4f0129e07896bb0f8"
+    "crater_floor_albedo.png": "71300615b9f3703afd910430da5f64cd65e985bc928e440c66f3d847df629e48",
+    "crater_floor_normal.png": "f95cbca7af1e5c3695fc45c77cd2105168649115f0e01046d1fce3875e450212",
+    "crater_floor_roughness.png": "4bbe17939350d22688304f7ad5ffc3d604b654d06b3ddedfbee2a5b092dd43a0",
+    "ramp_surface_albedo.png": "455fb098d432b7b6aafb15e84a4194101482f88fd398f06445d1ed848a28f74d",
+    "ramp_surface_normal.png": "18185280f3248a3246c9a26fa29851679f392b4fdb07f353af4018a99b3f0f59",
+    "ramp_surface_roughness.png": "4bf957b313ae6ae9fab84baeb1f7bfb21065beb05ca951e0caea10af6bb902bc",
+    "regolith_passable_albedo.png": "7a39a73884480b3dc802e23fc55d575e6eeaf6741c51cda117fa8810c73ca3a4",
+    "regolith_passable_normal.png": "7767372653f4dfa53fbb60b39ec16857286d03d89c19c1c0d1536899c7736c64",
+    "regolith_passable_roughness.png": "64670b52e5deff893d9790b8f8dd5384be6ca9e330b182538c58620fa53ffb2b",
+    "rock_boulder_albedo.png": "ae0726433fd056adb69a8767b7d7d4bd8030e35faf6e7ebba65bfd2a9cf88e4b",
+    "rock_boulder_normal.png": "9bcd55d4d21b0ee1ba8f9a49cdfde38f019d0cc9c8b6c043d87968463f4724aa",
+    "rock_boulder_roughness.png": "9ca060e9b6504f6f8f735b538208968b76ef09861cbe976bb0630ddf29085ea4",
+    "rubble_gravel_albedo.png": "362b036455eb891a0ec32130696f5b50997754cfe08359da947ab88a8be121ff",
+    "rubble_gravel_normal.png": "00ca5c8041f76b0310330ba1dd374ad0c65b17788979d11fc6881bb3c4a8538f",
+    "rubble_gravel_roughness.png": "aaf0c748962830d932bdd876f910a9480431d0171faf4d4bf1a6d947e0dce174",
+    "sand_soft_albedo.png": "c170567f57e402b4d042053c6290e930fcb3a8af04f4a661ce443cedce3b4ffc",
+    "sand_soft_normal.png": "62b49e95068a4e282fc9b0b79816cc09023fe4096379a5618936fe13780f5f03",
+    "sand_soft_roughness.png": "7708c476689699bf98908af45706ec9e42b22d2393d6e7b9030372ab7e0acac8"
+  },
+  "geometry_reference": {
+    "doi": "10.1038/s41467-024-46233-8",
+    "page": 3,
+    "route_reference_slope_deg": 8.86,
+    "derived_ramp_height_m": 0.5960080372373034,
+    "sampled_center_route_max_slope_deg": 8.860000000000001,
+    "sampled_surface_max_gradient_deg": 9.245862854578602,
+    "scope": "reference slope sets longitudinal ramp component; engineered shape and placement, not a route reconstruction or global slope cap"
   }
 }

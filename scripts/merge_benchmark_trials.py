@@ -27,7 +27,10 @@ def merge_trials(target_dir: Path, source_dir: Path, strategies_to_replace: list
         strat = trial['strategy']
         if strat in strategies_to_replace and strat in source_by_strategy:
             new_trial = source_by_strategy[strat]
-            print(f"Replacing target trial {trial['index']} ({strat}) with new result: status={new_trial.get('status')}")
+            print(f"Checking target trial {trial['index']} ({strat}) with new result: status={new_trial.get('status')}")
+            if new_trial.get('status') == 'trial_failed' or 'capture' not in new_trial:
+                print(f"WARNING: Skipping strategy {strat} because new trial failed (status='{new_trial.get('status')}')")
+                continue
             
             # Copy capture directory
             new_capture_src = Path(new_trial['capture'])

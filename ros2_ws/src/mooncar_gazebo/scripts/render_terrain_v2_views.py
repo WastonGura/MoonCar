@@ -38,9 +38,11 @@ def draw():
             rx, ry, _ = rock["radii_m"]
             plan.add_patch(Circle((x, y), max(rx, ry), facecolor="#30333a",
                                   edgecolor="#edece8", linewidth=1.1))
-        if manifest["measured_patch"]:
-            px, py = manifest["measured_patch"]["center_m"]
-            width = manifest["measured_patch"]["size_m"]
+        for key in ("measured_patch", "measured_background_patch"):
+            if not manifest.get(key):
+                continue
+            px, py = manifest[key]["center_m"]
+            width = manifest[key]["size_m"]
             plan.add_patch(Rectangle((px - width / 2, py - width / 2), width, width,
                                      fill=False, edgecolor="#d48640", linewidth=1.4))
             plan.text(px + width / 2 + 0.3, py + width / 2,

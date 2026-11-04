@@ -3,6 +3,7 @@ import copy,json,hashlib
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import numpy as np
+from r5_csv import read_numeric_csv
 
 WHEELS=('front_left','front_right','rear_left','rear_right')
 MATRIX=(('original','zero',0.),('original','straight-1',.1),('original','straight-2',.1),
@@ -31,7 +32,7 @@ def generate(source,output):
 
 def contact_grid(path,physics,schedule,identities):
     """Explicit empty ECS snapshots qualify absent contact; missing never qualifies."""
-    rows=np.genfromtxt(path,delimiter=',',names=True);rows=np.atleast_1d(rows)
+    rows=read_numeric_csv(path,delimiter=',',names=True);rows=np.atleast_1d(rows)
     first=schedule['parked']['before']['iteration'];last=schedule['stop']['after']['iteration']
     active=rows[(rows['iteration']>first)&(rows['iteration']<=last)]
     phy=physics[(physics['iteration']>first)&(physics['iteration']<=last)]

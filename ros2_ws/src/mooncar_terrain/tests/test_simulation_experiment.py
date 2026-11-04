@@ -17,6 +17,25 @@ from terrain_map import TerrainMap
 
 
 class ExperimentTests(unittest.TestCase):
+    def test_simulation_profile_is_explicit_and_round_trips(self):
+        task=dict(version=1,region=[-25,-25,25,25],start=[0,0,0])
+        self.assertNotIn('simulation_profile',validate_task(task))
+        selected=dict(task,simulation_profile='r5_support_v1')
+        self.assertEqual(validate_task(selected),selected)
+        for profile in ('typo','r5_v2',None):
+            with self.assertRaises(ValueError):validate_task(dict(task,simulation_profile=profile))
+
+    def test_stopped_state_allows_next_experiment(self):
+        sim=SimulationExperiment.__new__(SimulationExperiment)
+        sim.lock=threading.Lock();sim.worker=None;sim._stop=Mock()
+        self.assertEqual(sim.stop(),dict(accepted=True))
+        worker=sim.worker
+        if worker:worker.join(timeout=2)
+        with sim.lock:
+            self.assertEqual(sim.phase,'stopped')
+            self.assertIsNone(sim.worker)
+        sim._stop.assert_called_once_with()
+
     def test_startup_refreshes_missing_tf_once(self):
         with tempfile.TemporaryDirectory() as directory:
             sim=SimulationExperiment.__new__(SimulationExperiment)

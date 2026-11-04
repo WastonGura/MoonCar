@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="wheel_tread" params="angle radius width">
+  <xacro:macro name="wheel_tread" params="angle radius width tread_height:=0.018">
     <visual>
       <origin
         xyz="${radius * sin(angle)} 0 ${radius * cos(angle)}"
         rpy="0 ${angle} 0"/>
       <geometry>
-        <box size="${radius * 0.34} ${width + 0.018} 0.018"/>
+        <box size="${radius * 0.34} ${width + 0.018} ${tread_height}"/>
       </geometry>
       <material name="mooncar_wheel_black"/>
     </visual>
   </xacro:macro>
 
-  <xacro:macro name="skid_steer_wheel" params="prefix name parent x y z radius width mass">
+  <xacro:macro name="skid_steer_wheel" params="prefix name parent x y z radius width mass tread_radius_offset:=0.006 tread_height:=0.018">
     <link name="${prefix}${name}_link">
       <visual name="${name}_tire">
         <origin xyz="0 0 0" rpy="1.57079632679 0 0"/>
@@ -35,14 +35,14 @@
         </geometry>
         <material name="mooncar_sensor_blue"/>
       </visual>
-      <xacro:wheel_tread angle="0.0" radius="${radius + 0.006}" width="${width}"/>
-      <xacro:wheel_tread angle="0.785398" radius="${radius + 0.006}" width="${width}"/>
-      <xacro:wheel_tread angle="1.570796" radius="${radius + 0.006}" width="${width}"/>
-      <xacro:wheel_tread angle="2.356194" radius="${radius + 0.006}" width="${width}"/>
-      <xacro:wheel_tread angle="3.141593" radius="${radius + 0.006}" width="${width}"/>
-      <xacro:wheel_tread angle="3.926991" radius="${radius + 0.006}" width="${width}"/>
-      <xacro:wheel_tread angle="4.712389" radius="${radius + 0.006}" width="${width}"/>
-      <xacro:wheel_tread angle="5.497787" radius="${radius + 0.006}" width="${width}"/>
+      <xacro:wheel_tread angle="0.0" radius="${radius + tread_radius_offset}" width="${width}" tread_height="${tread_height}"/>
+      <xacro:wheel_tread angle="0.785398" radius="${radius + tread_radius_offset}" width="${width}" tread_height="${tread_height}"/>
+      <xacro:wheel_tread angle="1.570796" radius="${radius + tread_radius_offset}" width="${width}" tread_height="${tread_height}"/>
+      <xacro:wheel_tread angle="2.356194" radius="${radius + tread_radius_offset}" width="${width}" tread_height="${tread_height}"/>
+      <xacro:wheel_tread angle="3.141593" radius="${radius + tread_radius_offset}" width="${width}" tread_height="${tread_height}"/>
+      <xacro:wheel_tread angle="3.926991" radius="${radius + tread_radius_offset}" width="${width}" tread_height="${tread_height}"/>
+      <xacro:wheel_tread angle="4.712389" radius="${radius + tread_radius_offset}" width="${width}" tread_height="${tread_height}"/>
+      <xacro:wheel_tread angle="5.497787" radius="${radius + tread_radius_offset}" width="${width}" tread_height="${tread_height}"/>
       <collision>
         <origin xyz="0 0 0" rpy="1.57079632679 0 0"/>
         <geometry>

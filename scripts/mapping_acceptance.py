@@ -3,18 +3,23 @@ import math
 import numpy as np
 from terrain_reference import reference_grid
 
-VERSION='mapping-acceptance-v1.1'
-PROFILE=dict(height_tolerance_m=.05, slope_tolerance_deg=5., minimum_coverage=.8,
+VERSION='mapping-acceptance-v1.2'
+PROFILE=dict(height_tolerance_m=.05, slope_tolerance_deg=5.,
              minimum_precision=.9, status='provisional_simulation_targets')
 
 
 def validate_profile(profile):
-    for name in ('height_tolerance_m','slope_tolerance_deg','minimum_coverage','minimum_precision'):
+    for name in ('height_tolerance_m','slope_tolerance_deg','minimum_precision'):
         value=profile.get(name)
         if type(value) not in (float,int) or not math.isfinite(value) or value<=0:
             raise ValueError(f'Invalid profile field: {name}')
-    if profile['slope_tolerance_deg']>90 or max(profile['minimum_coverage'],profile['minimum_precision'])>1:
+    if profile['slope_tolerance_deg']>90 or profile['minimum_precision']>1:
         raise ValueError('Invalid degree or fraction thresholds')
+    # Accept archived profiles, but never use their former coverage threshold.
+    if 'minimum_coverage' in profile:
+        value=profile['minimum_coverage']
+        if type(value) not in (float,int) or not math.isfinite(value) or not 0<value<=1:
+            raise ValueError('Invalid legacy profile field: minimum_coverage')
 
 
 def checked_cells(cells, reference=False):
@@ -69,6 +74,7 @@ def build_reference(shapes,origin,radius,resolution=.25):
 def score(reference,estimates,*,evidence,profile=None):
     """Score all declared ROI cells; missing/wrong estimates never shrink denominators."""
     profile=dict(PROFILE if profile is None else profile);validate_profile(profile)
+    profile.pop('minimum_coverage',None)
     r=reference.get('resolution')
     if type(r) not in (float,int) or not math.isfinite(r) or r<=0:raise ValueError('Invalid grid resolution')
     refs=checked_cells(reference['cells'],True);est=checked_cells(estimates)
@@ -111,16 +117,17 @@ def score(reference,estimates,*,evidence,profile=None):
             height_rmse_m=math.sqrt(sum(e*e for e in height)/len(height)) if height and evaluable else None,
             height_p95_abs_m=float(np.percentile(np.abs(height),95)) if height and evaluable else None,
             slope_mae_deg=sum(abs(e) for e in slope)/len(slope) if slope and evaluable else None,
-            geometry_pass=bool(evaluable and n and coverage>=profile['minimum_coverage'] and
+            geometry_pass=bool(evaluable and n and
                                precision is not None and precision>=profile['minimum_precision']))
     summary=aggregate(rows)
     summary['by_category']={name:aggregate([c for c in rows if c['category']==name]) for name in ('ground','terrain')}
-    geometry_pass=summary['geometry_pass'] and all(v['geometry_pass'] for v in summary['by_category'].values() if v['eligible_cells'])
+    # Unmeasured categories have unknown accuracy, not a hidden coverage gate.
+    unassessed=[name for name,v in summary['by_category'].items() if v['eligible_cells'] and not v['estimated_cells']]
+    geometry_pass=summary['geometry_pass'] and all(v['geometry_pass'] for v in summary['by_category'].values() if v['estimated_cells'])
     failed_gates=[]
     if evaluable:
         for name,value in [('all',summary),*summary['by_category'].items()]:
-            if not value['eligible_cells']:continue
-            if value['C']<profile['minimum_coverage']:failed_gates.append(name+': coverage below target')
+            if not value['eligible_cells'] or (name!='all' and not value['estimated_cells']):continue
             if value['P'] is None or value['P']<profile['minimum_precision']:failed_gates.append(name+': precision below target or undefined')
         if evidence.get('runtime_fault') is True:failed_gates.append('Recorded execution fault')
         if evidence.get('safety_pass') is False:failed_gates.append('Recorded safety failure')
@@ -134,6 +141,7 @@ def score(reference,estimates,*,evidence,profile=None):
             row.update(qualified=None,height_error_m=None,slope_error_deg=None)
             if row['eligible']:row['state']='not_evaluable'
     summary.update(version=VERSION,status=status,evaluable=evaluable,geometry_pass=geometry_pass,
+                   coverage_gate_enabled=False,coverage_role='descriptive_only',unassessed_categories=unassessed,
                    profile=profile,evidence=evidence,problems=problems,failed_gates=failed_gates,
                    outside_roi_estimate_cells=len(est.keys()-refs.keys()))
     return rows,summary

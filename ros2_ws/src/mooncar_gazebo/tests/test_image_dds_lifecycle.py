@@ -41,7 +41,7 @@ class LifecycleTests(unittest.TestCase):
     def test_writer_failure_fails(self):
         self.history.path=Path(self.tmp.name);self.history.write();self.assertTrue(self.history.errors)
     def test_real_transient_participant_reproduction(self):
-        p=Path('/evidence/lifecycle-preflight/result.json')
+        p=Path(os.environ.get('R5_DDS_PREFLIGHT_ROOT','/evidence'))/'lifecycle-preflight/result.json'
         if not p.exists():self.skipTest('Current container evidence required')
         result=json.loads(p.read_text());self.assertTrue(result['passed']);self.assertTrue(result['stale_mapping_reproduced'])
         self.assertFalse(result['without_history']['verified']);self.assertTrue(result['after_exit']['verified'])
@@ -61,7 +61,7 @@ class LifecycleTests(unittest.TestCase):
     def test_missing_receiver_before_shutdown_rejects(self):
         first,final=self.active_proofs();del final['processes']['2'];self.assertFalse(active_receiver_gate(first,final))
     def test_real_teardown_proof_is_taken_while_peers_alive(self):
-        p=Path('/evidence/teardown-preflight/result.json')
+        p=Path(os.environ.get('R5_DDS_PREFLIGHT_ROOT','/evidence'))/'teardown-preflight/result.json'
         if not p.exists():self.skipTest('Current container evidence required')
         result=json.loads(p.read_text());self.assertTrue(result['passed']);self.assertTrue(result['active_gate'])
         self.assertTrue(active_receiver_gate(result['initial'],result['before_peer_shutdown']))

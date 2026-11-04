@@ -3,6 +3,7 @@ import copy,json
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import numpy as np
+from r5_csv import read_numeric_csv
 from r5_contact_source import sha,WHEELS
 from r5_load_diagnostic import semantic
 
@@ -31,7 +32,7 @@ def generate(source,output):
     (p/'manifest.json').write_text(json.dumps(result,indent=2)+'\n');return result
 
 def qualify(physics,result,path,mode,parameters):
-    rows=np.genfromtxt(path,delimiter=',',names=True);rows=np.atleast_1d(rows)
+    rows=read_numeric_csv(path,delimiter=',',names=True);rows=np.atleast_1d(rows)
     if len(rows)<2 or not np.all(np.diff(rows['iteration'])==1):raise ValueError('Slip controller grid missing or duplicated')
     active=physics[(physics['t']>=result['sim_started'])&(physics['t']<=result['sim_ended'])]
     index=np.searchsorted(rows['iteration'],active['iteration'])

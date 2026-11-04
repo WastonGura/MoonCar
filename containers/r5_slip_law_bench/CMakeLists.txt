@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+project(r5_slip_law_bench LANGUAGES CXX)
+find_package(DART REQUIRED COMPONENTS collision-ode)
+add_executable(r5-slip-law-bench SlipLawBench.cc)
+target_link_libraries(r5-slip-law-bench PRIVATE dart dart-collision-ode)
+target_compile_features(r5-slip-law-bench PRIVATE cxx_std_17)
+target_compile_options(r5-slip-law-bench PRIVATE -Wall -Wextra -Werror)

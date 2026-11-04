@@ -216,6 +216,71 @@ def plot_prediction_errors(report_dir, out_path):
     print(f"Saved Chinese prediction errors plot to {out_path}")
 
 
+def plot_acceptance_bars(benchmark_dir, out_path):
+    comp_file = benchmark_dir / 'comparison.csv'
+    if not comp_file.exists():
+        print(f"Skipping acceptance bars for {benchmark_dir}: comparison.csv missing")
+        return
+
+    with open(comp_file, 'r', encoding='utf-8-sig') as f:
+        rows = list(csv.DictReader(f))
+
+    # Parse acceptance metrics
+    data_by_strat = {}
+    for r in rows:
+        strat = r.get('strategy', '')
+        if not strat:
+            continue
+        try:
+            c_val = float(r.get('acceptance_C', 0)) * 100.0 if r.get('acceptance_C') else None
+            p_val = float(r.get('acceptance_P', 0)) * 100.0 if r.get('acceptance_P') else None
+            s_val = float(r.get('acceptance_S', 0)) if r.get('acceptance_S') else None
+        except Exception:
+            c_val, p_val, s_val = None, None, None
+        data_by_strat[strat] = {'C': c_val, 'P': p_val, 'S': s_val, 'status': r.get('acceptance_status', '')}
+
+    strats_present = [s for s in STRATEGY_ORDER if s in data_by_strat]
+    if not strats_present:
+        return
+
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5), layout='constrained')
+    metrics = [
+        ('C', '有效重建覆盖率 C (%)', '覆盖率 (%)', None, None, (0, 105)),
+        ('P', '几何达标率 P (%)', '达标率 (%)', 90.0, '精度底线 (90%)', (0, 105)),
+        ('S', '达标地表覆盖分 S (分)', '综合分 (0~100)', None, None, (0, 105)),
+    ]
+
+    labels = [STRATEGY_CN.get(s, s) for s in strats_present]
+    positions = list(range(len(strats_present)))
+
+    for ax, (m_key, title, ylabel, threshold, thresh_label, ylim) in zip(axes, metrics):
+        vals = [data_by_strat[s][m_key] if data_by_strat[s][m_key] is not None else 0 for s in strats_present]
+        for i, (strat, val) in enumerate(zip(strats_present, vals)):
+            style = STYLE_MAP.get(strat, {'color': '#f2f2f2', 'edge': 'black', 'hatch': ''})
+            ax.bar(i, val, color=style['color'], edgecolor=style['edge'], hatch=style['hatch'], width=0.55, linewidth=1.3, zorder=2)
+            if val > 0:
+                ax.text(i, val + 1.5, f"{val:.1f}", ha='center', va='bottom', fontsize=9.5, fontweight='bold')
+
+        if threshold is not None:
+            ax.axhline(threshold, color='#dc2626', linestyle='--', linewidth=1.8, label=thresh_label, zorder=4)
+        ax.set_xticks(positions)
+        ax.set_xticklabels(labels, fontsize=9.5, rotation=15)
+        ax.set_title(title, fontsize=12, fontweight='bold', pad=8)
+        ax.set_ylabel(ylabel, fontsize=10.5)
+        ax.set_ylim(*ylim)
+        ax.grid(True, linestyle=':', alpha=0.5, axis='y', zorder=1)
+        if threshold is not None:
+            ax.legend(fontsize=9.5, loc='lower right')
+
+    fig.supxlabel('注：C 与 S 仅作统计，无通过门槛；P≥90% 为暂定几何精度目标。历史数据沿用其原评价记录，本图不改写旧判定。', fontsize=9.5)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out_path, dpi=200)
+    pdf_path = out_path.with_suffix('.pdf')
+    fig.savefig(pdf_path)
+    plt.close(fig)
+    print(f"Saved Chinese acceptance bars plot to {out_path}")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report-dir', type=Path, help='Path to report directory containing comparison.csv and prediction-errors.csv')
@@ -238,8 +303,10 @@ def main():
                 continue
             bar_out = report / 'comparison_bar_chart_cn.png'
             pred_out = report / 'prediction_errors_cn.png'
+            acc_out = report / 'acceptance_bar_chart_cn.png'
             plot_comparison_bars(report, bar_out)
             plot_prediction_errors(report, pred_out)
+            plot_acceptance_bars(evidence / bench, acc_out)
     else:
         if args.report_dir and args.bar_out:
             plot_comparison_bars(args.report_dir, args.bar_out)

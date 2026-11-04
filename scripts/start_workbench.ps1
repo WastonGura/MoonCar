@@ -1,4 +1,9 @@
 # Reuse the existing, preconfigured Docker environment; never restart an active experiment.
+param([switch]$R5Candidate)
+if ($R5Candidate) {
+    & (Join-Path $PSScriptRoot 'start_r5_workbench.ps1')
+    return
+}
 $ErrorActionPreference = 'Stop'
 $workbenchUrl = 'http://127.0.0.1:8765'
 $simulationUrl = 'http://127.0.0.1:8766'
@@ -13,10 +18,17 @@ if ($workbenchState.enabled -eq $true) {
     return
 }
 if ($null -ne $workbenchState) { throw 'Port 8765 has a service without simulation mode. Leave it running; check its configuration.' }
-if ((Get-WorkbenchState $simulationUrl).enabled -ne $true) {
-$containerState = docker inspect --format '{{.State.Running}}' mooncar-terrain-validation
+$projectRoot = Split-Path -Parent $PSScriptRoot
+$containerJson = docker inspect mooncar-terrain-validation 2>$null
 if ($LASTEXITCODE -ne 0) { throw 'The configured mooncar-terrain-validation container is missing. No environment will be installed automatically.' }
-if ($containerState -ne 'true') {
+$container = ($containerJson | ConvertFrom-Json)[0]
+$sourceMount = ($container.Mounts | Where-Object Destination -eq '/source').Source -replace '\\', '/'
+$evidenceMount = ($container.Mounts | Where-Object Destination -eq '/evidence').Source -replace '\\', '/'
+if ($sourceMount -ne $projectRoot.Replace('\', '/') -or $evidenceMount -ne (Join-Path $projectRoot 'tmp\ros_acceptance').Replace('\', '/')) {
+    throw 'The configured container still mounts another project path. Recreate it with the mounts in containers/README.md.'
+}
+if ((Get-WorkbenchState $simulationUrl).enabled -ne $true) {
+if (-not $container.State.Running) {
     docker start mooncar-terrain-validation
     if ($LASTEXITCODE -ne 0) { throw 'Docker could not start the configured container.' }
 }
@@ -29,7 +41,6 @@ foreach ($attempt in 1..10) {
 if ((Get-WorkbenchState $simulationUrl).enabled -ne $true) { throw 'Simulation service did not become ready. Check tmp/ros_acceptance/frontend-experiments-server.log.' }
 }
 # Serve the site on Windows instead of asking Chrome to connect to Docker's published port.
-$projectRoot = Split-Path -Parent $PSScriptRoot
 $pythonRuntime = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
 if (-not (Test-Path -LiteralPath $pythonRuntime)) { throw 'The existing local Python runtime was not found; no dependencies were installed.' }
 Write-Output "Open Chrome at $workbenchUrl . Keep this PowerShell window open."

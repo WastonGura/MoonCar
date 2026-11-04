@@ -238,7 +238,7 @@ def capture(folder, robot_sdf, world_sdf, seconds, raw_depth=False, runtime_cont
     process=subprocess.Popen(['gz','topic','-e','-t','/world/lunar_yard/dynamic_pose/info','--json-output'],stdout=subprocess.PIPE,stderr=gzlog,text=True)
     reader=threading.Thread(target=receive,daemon=True); reader.start()
     try:
-        while time.monotonic()-wall_started<1200:
+        while time.monotonic()-wall_started<max(1200, seconds*8):
             rclpy.spin_once(node,timeout_sec=.03)
             if errors: raise RuntimeError(errors[0])
             if process.poll() is not None: raise RuntimeError('Gazebo truth stream ended')

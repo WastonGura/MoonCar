@@ -62,7 +62,8 @@ def main():
     result['turn_control_profile'] = args.profile
     if result.get('passed'):
         import numpy as np
-        data = np.genfromtxt(folder/'physics-steps.csv', delimiter=',', names=True)
+from r5_csv import read_numeric_csv
+        data = read_numeric_csv(folder/'physics-steps.csv', delimiter=',', names=True)
         result['turn_control_outcome'] = outcome(data, result)
         rows = [json.loads(r) for r in (folder/'observations.jsonl').read_text().splitlines()]
         commands = {round(r['values'][0], 12) for r in rows if r['kind'] == 'source_command'}
