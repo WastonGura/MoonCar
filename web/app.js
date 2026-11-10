@@ -17,7 +17,7 @@ const groups = Object.fromEntries(['surface','mesh','cloud','hazards','track','v
 Object.values(groups).forEach(g => scene.add(g));
 const markers = new THREE.Group(); scene.add(markers);
 const objLoader = new OBJLoader();
-let map = null, pickMode = null, start = null, goal = null, surfaceMesh = null, meshObj = null, inspectedCell = null;
+let map = null, pickMode = null, start = null, goal = null, surfaceMesh = null, meshObj = null, inspection = null;
 let measureMode = false, measureA = null, measureB = null, fpvMode = false, latestRobotPose = null;
 let generation = 0, frameCount = 0, playing = false, playTimer = null, loading = false;
 let mapTask=null, pendingMap=null, seekTimer=null, playbackGeneration=0;
@@ -26,6 +26,7 @@ let liveBusy=false, lastArchiveVersion=null;
 let navigation={enabled:false}, navigationToken='', navigationBusy=false, heartbeatBusy=false;
 let liveSurvey=null;
 const ray = new THREE.Raycaster();
+const mapPlane = new THREE.Plane(new THREE.Vector3(0,0,1),0);
 const modes = {fixed:'固定地形代价',direction:'加入行驶方向',uncertainty:'加入观测支持度',full:'方向 + 观测支持度'};
 const statuses = {ok:'找到路线',invalid_start:'起点或车体覆盖区域不可通行',invalid_goal:'终点或车体覆盖区域不可通行',no_path:'没有可行路线',budget_exceeded:'超出计算预算'};
 
@@ -124,8 +125,7 @@ function draw(data, refit=false, preserveSelection=false) {
   $('empty').hidden=!!data.points.length;
   $('source').textContent=`来源：${data.source}。坐标系：${data.frame}。${data.robot?'显示车体位置、方向与轨迹。':'缺少车体位姿，仅显示相机轨迹。'}`;
   $('results').textContent='选择起终点，比较路线。';
-  const inspected=data.cells.find(c=>c.valid&&c.ix===inspectedCell?.ix&&c.iy===inspectedCell?.iy);
-  if(inspected)showCell(inspected);else $('cell-detail').textContent='点击地表查看观测结果。';
+  showCell();
   const retain=old=>old&&data.cells.find(c=>c.valid&&c.ix===old.ix&&c.iy===old.iy)||null;
   start=preserveSelection?retain(previousStart):null;goal=preserveSelection?retain(previousGoal):null;
   if(meshObj)updateMeshColors(meshObj);
@@ -374,7 +374,7 @@ async function followSession(name){
 }
 $('session').onchange=async()=>{
   liveSurvey?.leave(false);$('observed-update-mode').textContent='随采集档案更新';
-  inspectedCell=null;
+  inspection=null;showCell();
   stopPlayback();cancelSeek();pendingMap=null;cacheController?.abort();replayCache=null;const token=++generation;
   $('cache-status').textContent=$('session').value?'正在检查档案…':'选择档案后自动准备回放缓存。';
   frameCount=0;showBuffered();$('frame-label').textContent='0 / 0 帧';
@@ -481,10 +481,58 @@ window.addEventListener('keydown', e => {
   }
 });
 
-function showCell(cell){
+function showCell(){
+  if(!inspection){
+    $('cell-detail').textContent='点击任意地图位置，查看观测结果与可用的导航判定。';
+    return;
+  }
+  const {x,y}=inspection, r=map?.resolution;
+  const cell=r?map.cells.find(c=>c.ix===Math.floor(x/r)&&c.iy===Math.floor(y/r)):null;
+  const nav=$('live').checked?inspection.navigation:null;
+  const labels={passable:'可通行',restricted:'可通行，有附加代价',buffer:'安全余量区',hazard:'禁行',
+                unknown:'未知，等待观测',outside:'超出当前导航地图',unavailable:'当前视图无可用导航判定'};
+  const seconds=stamp=>`${stamp.toFixed(2)} s（地图时钟）`;
+  const xy=(x,y)=>`${x.toFixed(2)}, ${y.toFixed(2)} m`;
+  const reasonList=mask=>['坡度','粗糙度','凸起台阶','落差'].filter((_,i)=>mask&(1<<i)).join('、');
+  const rows=[['所选坐标',xy(x,y)],['导航判定',inspection.pending&&$('live').checked?'读取中…':labels[nav?.status||'unavailable']]];
+  if(nav?.stamp!=null)rows.push(['导航图时间',seconds(nav.stamp)]);
+  if(nav?.center)rows.push(['导航格中心 / 边长',`${xy(...nav.center)} / ${nav.resolution.toFixed(2)} m`],['导航代价',nav.cost]);
+  const terrain=nav?.terrain, effective=terrain?.effective;
+  if(nav?.keepout)rows.push(['禁行标注','位于人工禁行区']);
+  if(nav?.status==='buffer'){
+    const h=nav.nearby_hazard;
+    rows.push(['安全余量',h?`最近的禁行格距此 ${h.distance.toFixed(2)} m（${xy(...h.center)}）`:'未在当前图中找到对应禁行格']);
+    if(h?.keepout)rows.push(['邻近禁行格标注','人工禁行区']);
+    if(h?.terrain?.effective.reason)rows.push(['邻近禁行格地形依据',reasonList(h.terrain.effective.reason)]);
+  }
+  if(nav?.status==='hazard'&&!nav.keepout&&!effective?.reason)rows.push(['禁行依据','当前记录没有可对应的来源']);
+  if(terrain){
+    rows.push(['地形观测',`已观测 · ${terrain.resolution.toFixed(2)} m 地形格`],
+              ['地形风险依据',reasonList(effective.reason)||'未触发地形硬阈值'],
+              ['地形高度 / 坡度 / 粗糙度',`${effective.height.toFixed(3)} m / ${effective.slope.toFixed(1)}° / ${(effective.roughness*1000).toFixed(1)} mm`],
+              ['地形代价 / 依据时间',`${effective.cost} / ${seconds(effective.stamp)}`],
+              ['最近观测 / 记录次数',`${seconds(terrain.last_observed)} / ${terrain.observations} 次`]);
+  }else rows.push(['地形观测',cell?.observations?'已采样（来自当前地表）':'当前视图无该位置的地形观测记录']);
+  rows.push(['当前地表拟合',cell?.valid?'已拟合':cell?.observations?'有采样，未拟合':'无地表数据']);
+  if(cell?.valid)rows.push(['拟合高度',`${cell.z.toFixed(3)} m`],['拟合坡度',`${cell.slope.toFixed(1)}°`],
+    ['拟合粗糙度',`${(cell.roughness*1000).toFixed(1)} mm`],['采样充分度',`${Math.round((cell.quality||0)*100)}%`],
+    ['格内覆盖',`${Math.round((cell.coverage||0)*100)}%`],['观察方向数',cell.view_directions||0],
+    ['观测支持度',`${Math.round(cell.support*100)} / 100`]);
+  if(cell?.observations)rows.push(['地表观测帧数',cell.observations]);
   const dl=document.createElement('dl');
-  for(const [label,value] of [['坐标',`${cell.x.toFixed(2)}, ${cell.y.toFixed(2)} m`],['高度',`${cell.z.toFixed(3)} m`],['坡度',`${cell.slope.toFixed(1)}°`],['粗糙度',`${(cell.roughness*1000).toFixed(1)} mm`],['采样充分度',`${Math.round((cell.quality||0)*100)}%`],['格内覆盖',`${Math.round((cell.coverage||0)*100)}%`],['观察方向数',cell.view_directions||0],['观测支持度',`${Math.round(cell.support*100)} / 100`],['观测帧数',cell.observations]]) {const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;dl.append(dt,dd);}
+  for(const [label,value] of rows) {const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;dl.append(dt,dd);}
   $('cell-detail').replaceChildren(dl);
+}
+async function inspectPoint(point){
+  const session=$('session').value, current={x:point.x,y:point.y};
+  inspection=current;
+  current.pending=Boolean($('live').checked&&session&&session===experiment.inspectionSession());
+  showCell();
+  if(!current.pending)return;
+  try{current.navigation=await api('/api/simulation/cell?'+new URLSearchParams({session,x:point.x,y:point.y}));}
+  catch{current.navigation=null;}
+  current.pending=false;
+  if(inspection===current)showCell();
 }
 let pointerDown=null;
 renderer.domElement.addEventListener('pointerdown',e=>pointerDown=[e.clientX,e.clientY]);
@@ -535,24 +583,26 @@ renderer.domElement.addEventListener('pointerup',e=>{
     return;
   }
 
-  let cell=null;
+  let cell=null, point=null;
   if(surfaceMesh&&groups.surface.visible){
     const hit=ray.intersectObject(surfaceMesh)[0];
-    if(hit)cell=surfaceMesh.userData.cells[Math.floor(hit.faceIndex/2)];
+    if(hit){point=hit.point;cell=surfaceMesh.userData.cells[Math.floor(hit.faceIndex/2)];}
   }
   if(!cell&&meshObj&&groups.mesh.visible){
     const hit=ray.intersectObject(meshObj,true)[0];
+    if(hit)point=hit.point;
     if(hit&&map?.cells){
       const half=map.resolution/2;
       cell=map.cells.find(c=>c.valid&&Math.abs(c.x-hit.point.x)<=half&&Math.abs(c.y-hit.point.y)<=half);
     }
   }
-  if(!cell)return;
-  inspectedCell=cell;showCell(cell);
+  if(pickMode&&!cell)return;
+  point=point||ray.ray.intersectPlane(mapPlane,new THREE.Vector3());
+  if(point)inspectPoint(point);
   if(pickMode){if(pickMode==='start')start=cell;else goal=cell;pickMode=null;clear(groups.routes);$('results').textContent='目标已改变，请重新规划。';renderMarkers();message('已选择位置。规划会检查整个车体覆盖范围。');}
 });
 $('timeline').oninput=()=>{
-  $('live').checked=false;stopPlayback();generation++;pendingMap=null;loading=true;renderMarkers();
+  $('live').checked=false;inspection=null;showCell();stopPlayback();generation++;pendingMap=null;loading=true;renderMarkers();
   cancelSeek();
   if(replayCache?.has($('timeline').value))seekRAF=requestAnimationFrame(()=>{seekRAF=null;loadMap();});
   else seekTimer=setTimeout(()=>{seekTimer=null;loadMap();},100);
@@ -582,6 +632,7 @@ new ResizeObserver(()=>{const r=$('viewport').getBoundingClientRect();renderer.s
 const experiment=experimentEditor({scene,camera,controls,renderer,api,message,stopPlayback:()=>{stopPlayback();pickMode=null;},onSession:followSession});
 liveSurvey=liveSurveyPanel({api,onEnter:()=>{
   stopPlayback();cancelSeek();cacheController?.abort();replayCache=null;++generation;pendingMap=null;loading=false;
+  inspection=null;showCell();
   $('live').checked=false;clear(groups.mesh);meshObj=null;
   $('surface').checked=true;groups.surface.visible=true;
   $('timeline').disabled=true;$('play').disabled=true;
@@ -607,7 +658,7 @@ liveSurvey=liveSurveyPanel({api,onEnter:()=>{
   }
 }});
 fit();renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});sessions();
-$('live').onchange=()=>{if(liveSurvey?.isActive()){liveSurvey.leave();return;}stopPlayback();cancelSeek();generation++;pendingMap=null;loading=false;renderMarkers();$('connection').textContent=$('live').checked?'采集档案 · 跟随更新':'本地档案 · 离线回放';$('live-status').textContent=$('live').checked?'每 2 秒检查采集档案；地形变化后需重新规划。':'离线回放。';if($('session').value&&lastArchiveVersion!==null)prepareReplay({frames:frameCount,archive_updated_ns:lastArchiveVersion});};
+$('live').onchange=()=>{if(liveSurvey?.isActive()){liveSurvey.leave();return;}inspection=null;showCell();stopPlayback();cancelSeek();generation++;pendingMap=null;loading=false;renderMarkers();$('connection').textContent=$('live').checked?'采集档案 · 跟随更新':'本地档案 · 离线回放';$('live-status').textContent=$('live').checked?'每 2 秒检查采集档案；地形变化后需重新规划。':'离线回放。';if($('session').value&&lastArchiveVersion!==null)prepareReplay({frames:frameCount,archive_updated_ns:lastArchiveVersion});};
 setInterval(async()=>{
   if(!$('live').checked||!$('session').value||liveBusy||loading)return;
   liveBusy=true;const name=$('session').value;

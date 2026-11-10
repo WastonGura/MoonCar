@@ -1,3 +1,4 @@
+import base64
 import http.client
 import json
 from pathlib import Path
@@ -5,15 +6,47 @@ import sys
 import tempfile
 import threading
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 ROOT = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from map_workbench import create_server
+from map_cell_inspection import inspect_cell
+from map_workbench import SimulationProxy, create_server
 from terrain_map import TerrainMap
 
 
 class WorkbenchApiTests(unittest.TestCase):
+    def test_navigation_cell_inspection_via_proxy(self):
+        with tempfile.TemporaryDirectory() as directory:
+            (Path(directory) / 'test.npz').touch()
+            grid = dict(origin=[-1., 0.], resolution=.2, width=5, height=1, stamp=12.,
+                        data=base64.b64encode(bytes((255, 0, 20, 99, 100))).decode())
+            effective = dict(reason=4, stamp=9., cost=100)
+            evidence = dict(frame='map', resolution=.2, stamp=11.,
+                            cells={'-1,0': dict(effective=effective, last_observed=10.)})
+            simulation = Mock()
+            simulation.inspect_cell.side_effect = lambda session,x,y: inspect_cell(grid,evidence,None,x,y)
+            server = create_server(directory, port=0, simulation=simulation)
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            proxy = SimulationProxy(f'http://127.0.0.1:{server.server_port}')
+            try:
+                results = [proxy.inspect_cell('test.npz', x, .1) for x in (-.9,-.7,-.5,-.3,-.1,.1)]
+                self.assertEqual([item['status'] for item in results],
+                                 ['unknown','passable','restricted','buffer','hazard','outside'])
+                self.assertEqual(results[0]['cost'], -1)
+                self.assertEqual(results[3]['nearby_hazard']['terrain']['effective'], effective)
+                self.assertEqual(results[4]['terrain']['last_observed'], 10.)
+                self.assertEqual(results[4]['stamp'], 12.)
+                with self.assertRaises(ValueError):
+                    proxy.inspect_cell('test.npz', float('nan'), .1)
+                with self.assertRaises(ValueError):
+                    proxy.inspect_cell('../test.npz', -.1, .1)
+            finally:
+                server.shutdown()
+                server.server_close()
+                thread.join()
+
     def test_replay_reuses_fusion_without_future_points_or_stale_archives(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'test.npz'

@@ -224,6 +224,22 @@ class SimulationExperiment:
                         autonomy=self.autonomy.state() if hasattr(self,'autonomy') else {},
                         session=str(archives[-1].relative_to(self.directory)).replace('\\','/') if archives else None)
 
+    def inspect_cell(self, session, x, y):
+        from map_cell_inspection import inspect_cell
+        with self.lock:
+            if (self.phase!='starting' or not self.current or not session.startswith(self.current['id']+'/')
+                    or not self.process or self.process.poll() is not None):
+                return dict(status='unavailable')
+            path = self.directory/self.current['id']/'terrain-cell-evidence.json'
+            with self.motion.lock:
+                grid = self.motion.grid_view if self.motion.grid_fresh() else None
+                keepout = self.motion.keepout_grid
+        try:
+            evidence = json.loads(path.read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            evidence = None
+        return inspect_cell(grid, evidence, keepout, x, y)
+
     def image(self):
         if not self.current or self.phase not in ('starting',):
             raise ValueError('仿真现场尚未启动')

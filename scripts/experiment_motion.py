@@ -109,6 +109,7 @@ class ExperimentMotion(Node):
         self.active=False;self.goal_handle=None;self.token='';self.phase='idle';self.error=''
         self.last_heartbeat=0.;self.started=0.;self.last_depth=0.;self.depth_message='等待传感器';self.region=None
         self.path=[];self.track=[];self.goal=None;self.grid=None;self.grid_view=None;self.grid_received=0.;self.last_path=0.
+        self.keepout_grid=None
         self.feedback={};self.sim_started=0.;self.sim_budget=180.
         self.best_distance=math.inf;self.best_goal_distance=math.inf;self.last_progress_sim=0.
         self.goal_request_future=None;self.goal_request_id='';self.goal_request_kind='';self.goal_sent_wall=0.
@@ -128,6 +129,8 @@ class ExperimentMotion(Node):
         self.create_subscription(DiagnosticArray,'/mooncar/terrain/status',self.depth,10,callback_group=self.data_group)
         self.create_subscription(Path,'/plan',self.on_path,10,callback_group=self.data_group)
         self.create_subscription(OccupancyGrid,'/global_costmap/costmap',self.on_grid,
+                                 QoSProfile(depth=1,durability=DurabilityPolicy.TRANSIENT_LOCAL),callback_group=self.data_group)
+        self.create_subscription(OccupancyGrid,'/mooncar/terrain/keepout',self.on_keepout,
                                  QoSProfile(depth=1,durability=DurabilityPolicy.TRANSIENT_LOCAL),callback_group=self.data_group)
         self.create_timer(.1,self.tick,clock=Clock(clock_type=ClockType.STEADY_TIME),callback_group=self.control_group)
 
@@ -495,7 +498,12 @@ class ExperimentMotion(Node):
                 self.grid=msg;self.grid_received=time.monotonic()
                 i=msg.info
                 self.grid_view=dict(version=self.grid_received,width=i.width,height=i.height,resolution=i.resolution,
+                                    stamp=msg.header.stamp.sec+msg.header.stamp.nanosec/1e9,
                                     origin=[i.origin.position.x,i.origin.position.y],data=base64.b64encode(msg.data.tobytes()).decode())
+
+    def on_keepout(self,msg):
+        if msg.header.frame_id=='map':
+            with self.lock:self.keepout_grid=msg
 
     def grid_fresh(self):
         if self.grid is None:return False
@@ -751,6 +759,7 @@ class ExperimentMotion(Node):
                     self.gimbal_capture_last_stamp=None
                     self.gimbal_capture_dropped_old=0;self.gimbal_capture_dropped_future=0
             self.path=[];self.track=[];self.goal=None;self.grid=None;self.grid_view=None;self.feedback={};self.last_path=0.
+            self.keepout_grid=None
             self.quality=None;self.quality_received=0.;self.mission_limits=None
             self.stop_diagnostics=None
             with self.localization_lock:

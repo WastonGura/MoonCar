@@ -4,13 +4,14 @@ import argparse
 from functools import lru_cache
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import math
 from pathlib import Path
 import sys
 import signal
 import secrets
 import threading
 import zipfile
-from urllib.parse import parse_qs, urlsplit
+from urllib.parse import parse_qs, urlencode, urlsplit
 from urllib.request import Request, ProxyHandler, build_opener
 from urllib.error import HTTPError, URLError
 
@@ -44,6 +45,7 @@ class SimulationProxy:
             raise ValueError('仿真服务未连接，请检查 Docker 工作台服务') from error
 
     def state(self):return self.request('')
+    def inspect_cell(self,session,x,y):return self.request('/cell?'+urlencode(dict(session=session,x=x,y=y)))
     def apply(self,body):return self.request('/apply',body)
     def stop(self):return self.request('/stop',{})
     def command(self,action,body):return self.request('/'+action,body)
@@ -173,6 +175,13 @@ def create_server(directory, port=8765, host='127.0.0.1', navigator=None, simula
                     return self.send(dict(sessions=sessions))
                 if parts.path == '/api/simulation':
                     return self.send(simulation.state() if simulation else dict(enabled=False))
+                if parts.path == '/api/simulation/cell':
+                    x, y = (float(query.get(axis, ['nan'])[0]) for axis in ('x', 'y'))
+                    if not all(math.isfinite(v) and abs(v)<=10000 for v in (x,y)):
+                        raise ValueError('无效的地图坐标')
+                    name = query.get('session', [''])[0]
+                    archive(name)
+                    return self.send(simulation.inspect_cell(name,x,y) if simulation else dict(status='unavailable'))
                 if parts.path == '/api/simulation/scene.jpg':
                     if simulation is None:raise ValueError('当前服务未启用仿真')
                     return self.send(simulation.image(),mime='image/jpeg')

@@ -15,12 +15,12 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
   function drawNavigation(){
     const m=state.motion||{},visible=$('live').checked&&$('session').value===state.session;
     navigationOverlay.visible=visible;
-    $('actual-navigation').textContent=!visible?'实际导航仅在跟随当前采集时显示。':`黑色实线：${m.active?'当前':'最后一次'} Nav2 路径；灰色虚线：本次已行驶轨迹；圆环：目标点。浅灰底图是导航已知区域，深色为障碍及安全余量；不代表深度相机已完整采集。`+(m.path_age>5&&m.active?' 路径尚未更新。':'');
+    $('actual-navigation').textContent=!visible?'实际导航仅在跟随当前采集时显示。':`黑色实线：${m.active?'当前':'最后一次'} Nav2 路径；灰色虚线：本次已行驶轨迹；圆环：目标点。导航底图：浅灰可通行、黄褐有代价、橙色安全余量、红色禁行、透明未知。点击地图查阅具体格子的判定。`+(m.path_age>5&&m.active?' 路径尚未更新。':'');
     if(visible&&m.goal&&m.navigation_grid){const g=m.navigation_grid,x=Math.floor((m.goal[0]-g.origin[0])/g.resolution),y=Math.floor((m.goal[1]-g.origin[1])/g.resolution);if(x>=0&&y>=0&&x<g.width&&y<g.height){const cost=atob(g.data).charCodeAt(y*g.width+x);if(cost>=99&&cost!==255)$('actual-navigation').textContent+=' 当前观测已将目标判为障碍或安全余量区，请在其外侧重新选点。';}}
     const a=state.autonomy||{};
     const key=JSON.stringify([m.path,m.track,m.goal,m.map_bounds,m.navigation_grid?.version,a.active,a.origin,a.radius,a.decision]);if(key===navigationKey)return;navigationKey=key;
     while(navigationOverlay.children.length){const o=navigationOverlay.children[0];navigationOverlay.remove(o);o.traverse(c=>{c.geometry?.dispose();c.material?.map?.dispose();c.material?.dispose();});}
-    if(m.navigation_grid){const g=m.navigation_grid,raw=atob(g.data),pixels=new Uint8Array(g.width*g.height*4);for(let i=0;i<raw.length;i++){const cost=raw.charCodeAt(i),shade=cost>=99?80:cost>0?190:220;pixels.set([shade,shade,shade,cost===255?0:110],i*4);}const texture=new THREE.DataTexture(pixels,g.width,g.height);texture.needsUpdate=true;const mesh=new THREE.Mesh(new THREE.PlaneGeometry(g.width*g.resolution,g.height*g.resolution),new THREE.MeshBasicMaterial({map:texture,transparent:true,side:THREE.DoubleSide,depthWrite:false}));mesh.position.set(g.origin[0]+g.width*g.resolution/2,g.origin[1]+g.height*g.resolution/2,-.08);navigationOverlay.add(mesh);}
+    if(m.navigation_grid){const g=m.navigation_grid,raw=atob(g.data),pixels=new Uint8Array(g.width*g.height*4);for(let i=0;i<raw.length;i++){const cost=raw.charCodeAt(i);pixels.set(cost===255?[0,0,0,0]:cost>=100?[185,53,48,185]:cost===99?[223,113,36,155]:cost>0?[183,145,80,110]:[220,220,220,110],i*4);}const texture=new THREE.DataTexture(pixels,g.width,g.height);texture.needsUpdate=true;const mesh=new THREE.Mesh(new THREE.PlaneGeometry(g.width*g.resolution,g.height*g.resolution),new THREE.MeshBasicMaterial({map:texture,transparent:true,side:THREE.DoubleSide,depthWrite:false}));mesh.position.set(g.origin[0]+g.width*g.resolution/2,g.origin[1]+g.height*g.resolution/2,-.08);navigationOverlay.add(mesh);}
     function route(points,dashed,color,z){if(!points?.length)return;const mat=dashed?new THREE.LineDashedMaterial({color,dashSize:.12,gapSize:.08,depthTest:false}):new THREE.LineBasicMaterial({color,depthTest:false});const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(points.map(p=>new THREE.Vector3(p[0],p[1],(p[2]||0)+z))),mat);line.computeLineDistances();line.renderOrder=30;navigationOverlay.add(line);}
     route(m.path,false,0x111111,.18);route(m.track,true,0x777777,.21);
     if(m.map_bounds){const [x0,y0,x1,y1]=m.map_bounds;route([[x0,y0],[x1,y0],[x1,y1],[x0,y1],[x0,y0]],true,0xaaaaaa,.02);}
@@ -191,7 +191,7 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
   updateSceneBounds();
   try{const saved=localStorage.getItem('mooncar-experiment-draft-r5-window-v1');if(saved)fill(JSON.parse(saved));}catch{}
   render();poll();setInterval(poll,600);
-  return {cancel,telemetry:()=>state.motion,pick(event){
+  return {cancel,telemetry:()=>state.motion,inspectionSession:()=>state.session,pick(event){
     if(!mode||event.button!==0)return false;
     if(mode==='region')return true;
     const point=ground(event);
