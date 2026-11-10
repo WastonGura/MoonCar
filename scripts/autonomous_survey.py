@@ -1348,8 +1348,8 @@ class AutonomousSurvey:
         options=[p for p in targets if p not in attempted]
         if not options:
             return False
-        pan=min(options,key=lambda p:(-len(targets[p]),abs(p-position[0])))
-        tilt=-.2618
+        pan=min(options,key=lambda p:(abs(p-position[0])<.12,-len(targets[p]),abs(p-position[0])))
+        tilt=-.5236 if abs(pan-position[0])<.12 and abs(position[1]+.2618)<.12 else -.2618
         rate=getattr(self.motion,'gimbal_command_rate_rad_s',None) or 1.5
         seconds=math.hypot(pan-position[0],tilt-position[1])/rate+3.+FRONTIER_OBSERVATION_SECONDS
         decision=dict(x=pose['x'],y=pose['y'],yaw=wrap(pose['yaw']+pan),kind='turn',

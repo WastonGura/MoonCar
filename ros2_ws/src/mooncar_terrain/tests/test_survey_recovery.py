@@ -76,7 +76,7 @@ class SurveyRecoveryTests(unittest.TestCase):
     def run_frontier_mission(self, fresh_grid):
         survey=self.make_survey(strategy='surface_view_v2')
         survey.initial_depth_scan=True
-        survey.motion.gimbal_position=[0.,0.]
+        survey.motion.gimbal_position=[0.,-.2618]
         survey.motion.gimbal_command_rate_rad_s=.35
         info=NS(width=40,height=40,resolution=.2,origin=NS(position=NS(x=-4.,y=-4.)))
         cells=[0 if 10<=i<30 and 10<=j<30 else -1 for j in range(40) for i in range(40)]
@@ -107,6 +107,7 @@ class SurveyRecoveryTests(unittest.TestCase):
         scan=survey.data['frontier_observations'][0]
         self.assertEqual(scan['outcome'],'observed')
         self.assertGreater(scan['newly_known_cells'],0)
+        self.assertGreater(abs(scan['pan']),.12)
         self.assertEqual(executor.call_count,2)
         self.assertTrue(survey.data['history'][0]['success'])
         self.assertEqual(survey.data['phase'],'no_candidates')
