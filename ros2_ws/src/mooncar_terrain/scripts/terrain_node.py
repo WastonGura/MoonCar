@@ -2,6 +2,7 @@
 from collections import deque
 import json
 import math
+import os
 from pathlib import Path
 import sys
 import time
@@ -60,6 +61,10 @@ class TerrainNode(Node):
         self.traversability_pub = self.create_publisher(
             OccupancyGrid, '/mooncar/terrain/traversability_map', grid_qos)
         self.traversability_cells = {}
+        evidence_path = os.environ.get('MOONCAR_TERRAIN_EVIDENCE_PATH')
+        self.evidence_path = Path(evidence_path) if evidence_path else None
+        self.cell_evidence = {}
+        self.evidence_written_at = -math.inf
         self.diag_pub = self.create_publisher(DiagnosticArray, '/mooncar/terrain/status', 10)
         self.require_laser_localization = self.get_parameter('require_laser_localization').value
         self.localization_quality = LocalizationQuality(required=self.require_laser_localization)
@@ -194,13 +199,14 @@ class TerrainNode(Node):
             )
             terrain_points = points[~is_self]
 
+            evidence_enabled = getattr(self, 'evidence_path', None) is not None
             if len(terrain_points) >= 10:
-                cells = classify_cells(terrain_points, **{
+                cells = classify_cells(terrain_points, return_elevation=evidence_enabled, **{
                     name: self.get_parameter(name).value for name in
                     ('resolution', 'slope_deg', 'roughness', 'step_height', 'drop_height')})
             else:
                 cells = []
-            hazards = [(x, y, 0.2) for x, y, _, _, reason in cells if reason]
+            hazards = [(row[0], row[1], 0.2) for row in cells if row[4]]
             cloud = point_cloud2.create_cloud_xyz32(
                 Header(stamp=msg.header.stamp, frame_id=self.frame),
                 np.asarray(hazards, dtype=np.float32).reshape(-1, 3))
@@ -215,6 +221,8 @@ class TerrainNode(Node):
             roughness_mild = float(self.get_parameter('roughness_mild').value) if hasattr(self, 'get_parameter') else 0.015
             roughness_max = float(self.get_parameter('roughness').value) if hasattr(self, 'get_parameter') else 0.040
             t_res = float(self.get_parameter('traversability_resolution').value) if hasattr(self, 'get_parameter') else 0.20
+            if evidence_enabled:
+                stamp = msg.header.stamp.sec + msg.header.stamp.nanosec / 1e9
 
             for row in cells:
                 cx, cy, slope, residual, reason = row[:5]
@@ -227,6 +235,9 @@ class TerrainNode(Node):
                 old_cost, old_stamp = self.traversability_cells.get(k, (0, 0.0))
                 new_cost = max(cost, old_cost) if now - old_stamp < 5.0 else cost
                 self.traversability_cells[k] = (new_cost, now)
+                if evidence_enabled:
+                    reasons = reason | (1 if slope >= slope_max else 0) | (2 if residual >= roughness_max else 0)
+                    self.record_cell_evidence(k, stamp, new_cost, cost, slope, residual, reasons, row[5])
 
             self.publish_traversability_map(rt.x, rt.y)
 
@@ -264,6 +275,8 @@ class TerrainNode(Node):
         expired = [k for k, (_, stamp) in self.traversability_cells.items() if now - stamp > persistence]
         for k in expired:
             del self.traversability_cells[k]
+            if getattr(self, 'evidence_path', None):
+                self.cell_evidence.pop(k, None)
 
         for (k_ix, k_iy), (cost, stamp) in self.traversability_cells.items():
             col = k_ix - origin_ix
@@ -283,6 +296,32 @@ class TerrainNode(Node):
         msg.info.origin.orientation.w = 1.0
         msg.data = grid.ravel().tolist()
         self.traversability_pub.publish(msg)
+        self.write_cell_evidence(r, msg.header.stamp)
+
+    def record_cell_evidence(self, key, stamp, retained_cost, cost, slope, roughness, reasons, height):
+        previous = self.cell_evidence.get(key)
+        if previous and retained_cost > cost:
+            effective = previous['effective']
+        else:
+            effective = dict(stamp=stamp, cost=cost, slope=float(slope),
+                             roughness=float(roughness), reason=int(reasons), height=height)
+        self.cell_evidence[key] = dict(effective=effective, last_observed=stamp,
+                                       observations=(previous['observations'] if previous else 0) + 1)
+
+    def write_cell_evidence(self, resolution, stamp):
+        path = getattr(self, 'evidence_path', None)
+        now = time.monotonic()
+        if path is None or now - self.evidence_written_at < 1.0:
+            return
+        self.evidence_written_at = now
+        payload = dict(frame=self.frame, resolution=resolution, stamp=stamp.sec + stamp.nanosec / 1e9,
+                       cells={f'{x},{y}': item for (x, y), item in self.cell_evidence.items()})
+        temp = path.with_suffix('.tmp')
+        try:
+            temp.write_text(json.dumps(payload, separators=(',', ':')), encoding='utf-8')
+            temp.replace(path)
+        except OSError as error:
+            self.get_logger().warn(f'Could not record terrain inspection evidence: {error}', throttle_duration_sec=30.)
 
 
 

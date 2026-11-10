@@ -71,6 +71,18 @@ class TraversabilityCostmapTest(unittest.TestCase):
         # 6th element is fitted plane z elevation
         self.assertTrue(math.isfinite(elev_cells[0][5]))
 
+    def test_evidence_keeps_the_observation_that_set_the_retained_cost(self):
+        node = Mock(cell_evidence={})
+        key = (2, 3)
+        TerrainNode.record_cell_evidence(node, key, 10., 100, 100, 20., .01, 1, .4)
+        TerrainNode.record_cell_evidence(node, key, 11., 100, 0, 2., .01, 0, .5)
+        self.assertEqual(node.cell_evidence[key]['effective']['reason'], 1)
+        self.assertEqual(node.cell_evidence[key]['effective']['stamp'], 10.)
+        self.assertEqual(node.cell_evidence[key]['last_observed'], 11.)
+        self.assertEqual(node.cell_evidence[key]['observations'], 2)
+        TerrainNode.record_cell_evidence(node, key, 20., 0, 0, 2., .01, 0, .5)
+        self.assertEqual(node.cell_evidence[key]['effective']['reason'], 0)
+
     def test_occupancy_grid_generation_and_eviction(self):
         """TerrainNode generates snapped OccupancyGrid, sets unknown to -1, and evicts stale cells."""
         node = Mock()
