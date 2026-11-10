@@ -3,11 +3,12 @@ from pathlib import Path
 import sys
 import threading
 import time
+from types import SimpleNamespace as NS
 import unittest
 from unittest.mock import Mock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / 'scripts'))
-from autonomous_survey import AutonomousSurvey
+from autonomous_survey import AutonomousSurvey, visible_unknown_frontiers
 
 
 class SurveyRecoveryTests(unittest.TestCase):
@@ -71,6 +72,60 @@ class SurveyRecoveryTests(unittest.TestCase):
         self.assertEqual((scan['x'], scan['y']), (0., 0.))
         self.assertTrue(all(r['retry_blocked'] for r in records if not r.get('recovery')))
         survey.motion.cancel.assert_called_once()
+
+    def run_frontier_mission(self, fresh_grid):
+        survey=self.make_survey(strategy='surface_view_v2')
+        survey.initial_depth_scan=True
+        survey.motion.gimbal_position=[0.,0.]
+        survey.motion.gimbal_command_rate_rad_s=.35
+        info=NS(width=40,height=40,resolution=.2,origin=NS(position=NS(x=-4.,y=-4.)))
+        cells=[0 if 10<=i<30 and 10<=j<30 else -1 for j in range(40) for i in range(40)]
+        def grid(stamp,data):
+            return NS(info=info,header=NS(stamp=NS(sec=stamp,nanosec=0)),data=data)
+        survey.motion.grid=grid(0,cells)
+        survey.initial_depth_observation=Mock(return_value=True)
+        clock=survey.motion.get_clock.return_value.now.return_value
+        def advance(seconds):
+            clock.nanoseconds+=int(seconds*1e9)
+        def execute(decision,turn=False):
+            if decision.get('frontier_observation'):
+                self.assertTrue(turn and decision['use_pan_tilt'])
+                self.assertEqual((decision['x'],decision['y']),(0.,0.))
+                advance(1)
+                survey.motion.quality=dict(survey.motion.quality,frames=2,stamp=1.)
+                if fresh_grid:survey.motion.grid=grid(2,[0]*len(cells))
+            return True
+        plans=[None,self.decision(0),None] if fresh_grid else [None,None,None]
+        with patch('autonomous_survey.choose_view',side_effect=[(p,dict(budget_limited=False)) for p in plans]), \
+                patch('autonomous_survey.time.sleep',side_effect=advance), \
+                patch.object(survey,'execute',side_effect=execute) as executor:
+            survey.run()
+        return survey,executor
+
+    def test_new_navigation_evidence_allows_exploration_to_resume(self):
+        survey,executor=self.run_frontier_mission(fresh_grid=True)
+        scan=survey.data['frontier_observations'][0]
+        self.assertEqual(scan['outcome'],'observed')
+        self.assertGreater(scan['newly_known_cells'],0)
+        self.assertEqual(executor.call_count,2)
+        self.assertTrue(survey.data['history'][0]['success'])
+        self.assertEqual(survey.data['phase'],'no_candidates')
+
+    def test_stale_navigation_evidence_cannot_authorize_a_move(self):
+        survey,executor=self.run_frontier_mission(fresh_grid=False)
+        self.assertEqual(executor.call_count,2)
+        self.assertEqual(survey.data['history'],[])
+        self.assertEqual([r['outcome'] for r in survey.data['frontier_observations']],
+                         ['no_new_evidence','no_new_evidence'])
+        self.assertEqual(survey.data['phase'],'no_candidates')
+        self.assertIn('待探测',survey.data['reason'])
+
+    def test_frontier_rays_do_not_look_through_obstacles(self):
+        info=NS(width=40,height=40,resolution=.2,origin=NS(position=NS(x=-4.,y=-4.)))
+        cells=[0 if 10<i<29 and 10<j<29 else 100 if 10<=i<=29 and 10<=j<=29 else -1
+               for j in range(40) for i in range(40)]
+        grid=NS(info=info,data=cells)
+        self.assertEqual(visible_unknown_frontiers(grid,dict(x=0.,y=0.,yaw=0.),[0.,0.],8.),{})
 
     def test_successful_navigation_after_scan_resumes_planning(self):
         survey = self.make_survey()
@@ -157,6 +212,8 @@ class SurveyRecoveryTests(unittest.TestCase):
         for depth in (False,True):
             with self.subTest(depth=depth):
                 survey=self.make_survey();survey.initial_depth_scan=depth
+                survey.motion.grid=NS(info=NS(width=1,height=1,resolution=.2,
+                                             origin=NS(position=NS(x=0.,y=0.))),data=[0])
                 with patch.object(survey,'initial_depth_observation',return_value=True), \
                         patch('autonomous_survey.choose_view',return_value=(None,dict(budget_limited=False))) as planner:
                     survey.run()

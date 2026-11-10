@@ -158,12 +158,15 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
     try{
       state=await api('/api/simulation');
       if(state.autonomy?.active){overlay.visible=false;$('show-experiment').checked=false;}
-      const a=state.autonomy||{},names={idle:'尚未开始',planning:'比较观察位置',moving:'自动行驶',turning:'转向观察',observing:'采集新视角',localization_paused:'已停车，等待定位恢复',budget_reached:'预算已用尽',no_candidates:'本轮探测结束',stopped:'已停止',fault:'已保护停车',distance_reached:'达到活动距离限制'};
+      const a=state.autonomy||{},names={idle:'尚未开始',planning:'比较观察位置',moving:'自动行驶',turning:'转向观察',gimbal_scanning:'云台扫描',observing:'采集新视角',localization_paused:'已停车，等待定位恢复',budget_reached:'预算已用尽',no_candidates:'暂无安全候选',stopped:'已停止',fault:'已保护停车',distance_reached:'达到活动距离限制'};
       $('survey-strategy').disabled=!!a.active||busy;
       if(a.active){$('survey-budget').value=a.budget_seconds;$('survey-radius').value=a.radius;if(a.strategy)$('survey-strategy').value=a.strategy;}
       $('survey-state').textContent=(names[a.phase]||'等待自主探测服务')+(a.budget_seconds?` · ${Math.round(a.elapsed_seconds||0)} / ${a.budget_seconds} 仿真秒`:'');
       $('survey-reason').textContent=a.reason||'启动后显示下一观察位置及选择原因。';
-      const last=a.history?.filter(h=>Number.isFinite(h.actual_quality_gain_m2)).at(-1);$('survey-result').textContent=`已记录 ${a.history?.length||0} 次观察动作`+(last?`；上次${last.success?'完成':'未完成'}，实际采样质量增量 ${last.actual_quality_gain_m2.toFixed(2)} m²（活动范围内质量加权面积）。`:'');
+      const last=a.history?.filter(h=>Number.isFinite(h.actual_quality_gain_m2)).at(-1);
+      const scan=a.frontier_observations?.at(-1);
+      $('survey-result').textContent=`已记录 ${a.history?.length||0} 次观察动作`+(last?`；上次${last.success?'完成':'未完成'}，实际采样质量增量 ${last.actual_quality_gain_m2.toFixed(2)} m²（活动范围内质量加权面积）。`:'')+
+        (scan?` 未知边界补观测 ${a.frontier_observations.length} 次，最近一次确认 ${scan.newly_known_cells??0} 个边界格。`:'');
       $('live-motion').hidden=!state.enabled;
       const motionNames={idle:'等待导航目标',planning:'正在规划',executing:'车辆正在行驶并采集',cancelling:'正在停车',cancelled:'已停车',succeeded:'已到达目标',failed:'导航未完成'};
       const p=state.motion?.pose;

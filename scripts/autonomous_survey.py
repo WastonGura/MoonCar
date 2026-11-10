@@ -29,6 +29,8 @@ RECOVERY_SCAN_SECONDS = 2 * 2.356 / 1.5 + 2. + 3.
 EXECUTION_POLICY = 'bounded-recovery-v1'
 INITIAL_DEPTH_SCAN_SECONDS = 90.
 INITIAL_DEPTH_OBSERVATION_WALL_SECONDS = 20.
+FRONTIER_SCANS_PER_STOP = 2
+FRONTIER_OBSERVATION_SECONDS = 5.
 REVISIT_POSITION_TOLERANCE_M = .05
 # Operational wait limit, not a localization performance target. The original
 # mission budget continues to run while parked; a dead producer cannot hang it.
@@ -94,6 +96,41 @@ def bounded_gimbal_targets(start,waypoints):
         for step in range(1,count+1):
             yield tuple(previous[i]+(target[i]-previous[i])*step/count for i in (0,1))
         current=list(target)
+
+
+def visible_unknown_frontiers(grid, pose, origin, radius):
+    """Find the first unknown cell on camera rays from the parked rover."""
+    info=grid.info;r=info.resolution;ox,oy=info.origin.position.x,info.origin.position.y
+    costs=np.asarray(grid.data,dtype=np.int16).reshape(info.height,info.width)
+    targets={}
+    for pan in (-2.356,-math.pi/2,-math.pi/4,0.,math.pi/4,math.pi/2,2.356):
+        yaw=pose['yaw']+pan
+        cx,cy=pose['x']+.435*math.cos(yaw),pose['y']+.435*math.sin(yaw)
+        cells=set()
+        for angle in np.linspace(yaw-math.pi/6,yaw+math.pi/6,13):
+            for distance in np.arange(r/2,5.5,r/2):
+                x,y=cx+distance*math.cos(angle),cy+distance*math.sin(angle)
+                i,j=math.floor((x-ox)/r),math.floor((y-oy)/r)
+                if not (0<=i<info.width and 0<=j<info.height):break
+                cost=costs[j,i]
+                if cost>=100:break
+                if cost<0:
+                    center=(ox+(i+.5)*r,oy+(j+.5)*r)
+                    if distance>=.25 and math.hypot(center[0]-origin[0],center[1]-origin[1])<=radius:
+                        cells.add(center)
+                    break
+        if cells:targets[pan]=cells
+    return targets
+
+
+def newly_known_cells(grid, points):
+    info=grid.info;r=info.resolution;ox,oy=info.origin.position.x,info.origin.position.y
+    known=0
+    for x,y in points:
+        i,j=math.floor((x-ox)/r),math.floor((y-oy)/r)
+        if 0<=i<info.width and 0<=j<info.height and grid.data[j*info.width+i]>=0:
+            known+=1
+    return known
 
 
 def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='quality_view_heuristic_v1',return_diagnostics=False,
@@ -1160,7 +1197,7 @@ class AutonomousSurvey:
             if len(self.data.get('localization_pauses',[]))==generation:return False
             # Revisit transactions own their evidence/gauge and interruption
             # rules. Do not replay one after a health epoch changes.
-            if any(decision.get(k) for k in ('localization_revisit','precise_revisit','preplan_unknown_observation')):
+            if any(decision.get(k) for k in ('localization_revisit','precise_revisit','preplan_unknown_observation','frontier_observation')):
                 return False
             if not self.has_action_budget(decision):
                 self.stop('定位恢复后剩余时间不足以继续观察动作','budget_reached');return False
@@ -1300,8 +1337,62 @@ class AutonomousSurvey:
                     evidence['status']='connected';self.data['phase']='planning';self.save();return True
         evidence['status']='blocked';self.stop('启动观察后仍无已观测的连通通路，已停止','blocked');return False
 
+    def observe_unknown_frontier(self, grid, pose, attempted):
+        if not self.initial_depth_scan or not callable(getattr(self.motion,'pan_tilt',None)):
+            return False
+        targets=visible_unknown_frontiers(grid,pose,self.origin,self.data['radius'])
+        self.data['visible_unknown_frontier_cells']=len(set().union(*targets.values()))
+        if len(attempted)>=FRONTIER_SCANS_PER_STOP:
+            return False
+        position=getattr(self.motion,'gimbal_position',None) or [0.,0.]
+        options=[p for p in targets if p not in attempted]
+        if not options:
+            return False
+        pan=min(options,key=lambda p:(-len(targets[p]),abs(p-position[0])))
+        tilt=-.2618
+        rate=getattr(self.motion,'gimbal_command_rate_rad_s',None) or 1.5
+        seconds=math.hypot(pan-position[0],tilt-position[1])/rate+3.+FRONTIER_OBSERVATION_SECONDS
+        decision=dict(x=pose['x'],y=pose['y'],yaw=wrap(pose['yaw']+pan),kind='turn',
+                      use_pan_tilt=True,pan=pan,tilt=tilt,estimated_seconds=seconds,frontier_observation=True)
+        if not self.has_action_budget(decision):
+            self.stop('剩余时间不足以补观测未知边界，待探测区域保留','budget_reached')
+            return False
+        attempted.add(pan)
+        with self.motion.lock:
+            before=self.motion.quality
+            before_stamp=grid.header.stamp.sec+grid.header.stamp.nanosec/1e9
+        record=dict(decision,targeted_cells=sorted(targets[pan]),started_sim=self.now(),outcome='running')
+        with self.lock:
+            if not self.data['active']:return False
+            self.data.setdefault('frontier_observations',[]).append(record)
+            self.data.update(decision=decision,phase='observing',reason='从当前位置用云台补看未知边界，再根据新地图规划')
+            self.save()
+        if not self.execute(decision,turn=True):
+            record.update(outcome='failed' if self.data['active'] else 'interrupted',
+                          motion_error=self.motion.state().get('error'))
+            self.save()
+            return False
+        settled=self.now()
+        wall_deadline=time.monotonic()+INITIAL_DEPTH_OBSERVATION_WALL_SECONDS
+        known=0;grid_stamp=before_stamp
+        while self.healthy() and not self.revisit_interrupt_pending() and self.now()<settled+FRONTIER_OBSERVATION_SECONDS and time.monotonic()<wall_deadline:
+            with self.motion.lock:
+                current=self.motion.grid;quality=self.motion.quality
+                if current is not None and self.motion.grid_fresh():
+                    grid_stamp=current.header.stamp.sec+current.header.stamp.nanosec/1e9
+                    if (grid_stamp>max(before_stamp,settled) and quality.get('frames',0)>before.get('frames',0)
+                            and quality.get('stamp',0)>before.get('stamp',0)):
+                        known=newly_known_cells(current,targets[pan])
+            if known:break
+            time.sleep(.15)
+        record.update(outcome=('observed' if known else 'no_new_evidence') if self.data['active'] else 'interrupted',
+                      newly_known_cells=known,source_grid_stamp=grid_stamp,end_sim=self.now())
+        self.save()
+        return bool(known)
+
     def run(self):
         self.wall_started=time.monotonic();history=[];failures=0
+        frontier_attempts=set()
         self.data.setdefault('recovery_attempts',0)
         self.data.setdefault('execution_policy',EXECUTION_POLICY)
         try:
@@ -1318,6 +1409,12 @@ class AutonomousSurvey:
                 before=quality
                 strategy=self.data.get('strategy','quality_view_heuristic_v1')
                 if failures>=MAX_CONSECUTIVE_ACTION_FAILURES:
+                    if history[-1].get('dispatch_error','').startswith('目标尚未观测'):
+                        attempts=len(frontier_attempts)
+                        observed=self.observe_unknown_frontier(grid,pose,frontier_attempts)
+                        if not self.data['active']:break
+                        if observed:failures=0
+                        if len(frontier_attempts)>attempts or self.revisit_interrupt_pending():continue
                     if (strategy not in V3_STRATEGIES or
                             self.data['recovery_attempts']>=MAX_RECOVERY_SCANS or
                             not callable(getattr(self.motion,'pan_tilt',None))):
@@ -1342,7 +1439,12 @@ class AutonomousSurvey:
                     self.data['candidate_diagnostics']=diagnostics
                     if diagnostics['budget_limited']:
                         self.stop('剩余时间不足以完成下一候选观察动作','budget_reached')
-                    else:self.stop('没有新的安全候选观察位置；不代表整个环境已探测完毕','no_candidates')
+                    else:
+                        attempts=len(frontier_attempts)
+                        self.observe_unknown_frontier(grid,pose,frontier_attempts)
+                        if not self.data['active']:break
+                        if len(frontier_attempts)>attempts or self.revisit_interrupt_pending():continue
+                        self.stop('暂无新的安全观察位置；未观测区域保留待探测','no_candidates')
                     break
                 if not self.has_action_budget(decision):
                     diagnostics['execution_budget_recheck_rejected']=True
@@ -1418,7 +1520,9 @@ class AutonomousSurvey:
                     record['retry_blocked']=True
                 # A successful stationary scan does not prove failed navigation recovered.
                 if not success:failures+=1
-                elif decision['kind']!='turn':failures=0
+                elif decision['kind']!='turn':
+                    failures=0
+                    frontier_attempts.clear()
         except Exception as error:self.stop(f'自主探测已停止：{error}','fault')
         finally:
             if self.data['active']:self.stop('自主探测结束')
