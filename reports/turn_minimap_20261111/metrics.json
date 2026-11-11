@@ -1,0 +1,19 @@
+{
+  "experiment": "experiment-78d0b0570521",
+  "tested_commit": "e31371b45462407918618607c7214cf3b662b83c",
+  "algorithm_commit": "190a7a2",
+  "turn_start_sim": 37.15475,
+  "turn_end_sim": 38.24925,
+  "actual_heading_change_deg": 13.402728865273522,
+  "tail_heading_change_deg": 16.214649501698617,
+  "maximum_turn_xy_displacement_m": 0.03313571255405316,
+  "final_truth_sim": 40.32525,
+  "stop_reason": "predicted_obstacle_footprint",
+  "first_run_experiment": "experiment-d0fa4fb37388",
+  "first_run_reason": "localization recovery timed out after the first ascent",
+  "run_count": 2,
+  "capture_fps": 3,
+  "task_completed": false,
+  "completed_uphill_moves": 3,
+  "return_and_continuation_executed": false
+}

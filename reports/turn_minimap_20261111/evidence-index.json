@@ -1,0 +1,118 @@
+{
+  "causal_frames_checked": 1025,
+  "future_state_or_map_frames": 0,
+  "raw_files": {
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/case/result.json": {
+      "bytes": 74544,
+      "sha256": "4a0d851f22b11c10fb83f5ceb57aec6394be268425654511356c5ce002d16832"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/case/states.jsonl": {
+      "bytes": 1966578,
+      "sha256": "125bf92c51bdb034e44f81d6aa484682b7ac9d320e237172a4b898a5083f1850"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/case/navigation-grids.jsonl": {
+      "bytes": 696030,
+      "sha256": "6f30899ee2bbc79ebc2729e4419b3d6b3e46d8992f52d4af0150aa428edc1a8b"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/case/observer/truth.jsonl": {
+      "bytes": 2932720,
+      "sha256": "7625d1a168a7470563db3dd28e09eb5a1f0b7d110f0960a5fe5262876c0bcdd1"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/case/observer/alignment.jsonl": {
+      "bytes": 4638882,
+      "sha256": "956f4d6853f9b164eea4c70ca783476efed799a5018bd4f53439900c99af400c"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/case/observer/tf.jsonl": {
+      "bytes": 4556058,
+      "sha256": "23ed14b85db1612fbceb0ddce4fe53071f2e89866a649d2889942e5eabfe74a0"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/case/observer/samples.jsonl": {
+      "bytes": 7391867,
+      "sha256": "39ebf844a490d71b1596f071a39bdc938ab7540a1218567ec08f0cfd16a39227"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/fixture/feedback-turn.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/video/frames.jsonl": {
+      "bytes": 146305,
+      "sha256": "31062fe7618fd6b6caffaea2fc045c49fc8e26d2e74a25555a8732d56f590f05"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/video/scene-walltime.mp4": {
+      "bytes": 1547999,
+      "sha256": "6c7dedfc5c3401410636b37f0acd52092ec04225bf773e97b119c3333acab395"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/video/recording.json": {
+      "bytes": 411,
+      "sha256": "21530f6915ba71dac0ffa6d3237e3d5d2eee0f2a01cdffaf783acf9a3acd84b2"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/protocol.json": {
+      "bytes": 266,
+      "sha256": "6452279b33861baec73f0170f4b00a6266177d51bc423dd1db80ad58e9b80632"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/backend-exit.json": {
+      "bytes": 21,
+      "sha256": "81868a6e94ffc0178bf833deb1c9013d9fab4ee95ddb876a5e8ec4f1d26376d2"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/trial/video-exit.json": {
+      "bytes": 21,
+      "sha256": "56296949d3a02e635b050fd6b4762f0f0b52c23d05b925203095f7daf8e19027"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/case/result.json": {
+      "bytes": 80088,
+      "sha256": "d9b453dee3a796aee70795d2b08955ff14e0382a4f0687de525fbc5e6788ad3d"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/case/states.jsonl": {
+      "bytes": 3611560,
+      "sha256": "d7248496bb155ff0808c721328dc0b947a4e27fc2e511effceb4be423542ae25"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/case/navigation-grids.jsonl": {
+      "bytes": 1873958,
+      "sha256": "1c8df4ef9e2a0979a2295d682c15905226a2d7aaefe58b9609b593fc7a55f618"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/case/observer/truth.jsonl": {
+      "bytes": 5288644,
+      "sha256": "fcc7cc5e23f55da8c56f8463ae548edb8e0a19f4cb76b8106f7d9344aad15a4c"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/case/observer/alignment.jsonl": {
+      "bytes": 11263768,
+      "sha256": "ea96972a9341866b477c0f9fa4da4758a94d5bd0e21db794a64c5df2e9eb2ac1"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/case/observer/tf.jsonl": {
+      "bytes": 11978670,
+      "sha256": "380a49c43bd14b98b7dce2903442d65ed7c6dcb7bd5dfb97d6d604bfc250fec7"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/case/observer/samples.jsonl": {
+      "bytes": 18635889,
+      "sha256": "bba0a05d6b5a0adf34f19b2a4c25bb070b64aa53db1437de30a1a53aca52201f"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/fixture/feedback-turn.jsonl": {
+      "bytes": 12395,
+      "sha256": "7a07e9c4c9ddf89d459efe2bba7914d7fab03b04c70ed15d9cca991c06c10ba4"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/video/frames.jsonl": {
+      "bytes": 130618,
+      "sha256": "4ec269630f91df0d58fe057001652615de8a860f126ada94e7a61999f2ac0ac8"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/video/scene-walltime.mp4": {
+      "bytes": 3042687,
+      "sha256": "70376c80ea06c03dabe0020eb2a7976d285aebf04988f714a29cad6774f7d7a2"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/video/recording.json": {
+      "bytes": 374,
+      "sha256": "634d57b85f9ba37f099f316aa1292ac4fec5f59249b9c398323700b785f979f3"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/protocol.json": {
+      "bytes": 266,
+      "sha256": "6452279b33861baec73f0170f4b00a6266177d51bc423dd1db80ad58e9b80632"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/backend-exit.json": {
+      "bytes": 21,
+      "sha256": "81868a6e94ffc0178bf833deb1c9013d9fab4ee95ddb876a5e8ec4f1d26376d2"
+    },
+    "tmp/ros_acceptance/turn-minimap-video-20261111/retry/video-exit.json": {
+      "bytes": 21,
+      "sha256": "81868a6e94ffc0178bf833deb1c9013d9fab4ee95ddb876a5e8ec4f1d26376d2"
+    }
+  }
+}

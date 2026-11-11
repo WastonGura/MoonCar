@@ -1,0 +1,92 @@
+{
+  "video": "reports\\turn_minimap_20261111\\v2-uphill-turn-minimap.mp4",
+  "experiment": "experiment-78d0b0570521",
+  "tested_commit": "e31371b45462407918618607c7214cf3b662b83c",
+  "outcome": "failed",
+  "reason": "坡面固定动作未完成，已安全停止",
+  "actions": [
+    {
+      "kind": "advance",
+      "action": [
+        "move",
+        1.0,
+        0.0
+      ],
+      "started_seconds": 2.9987500000000002,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "x": 1.0,
+        "y": 0.0
+      },
+      "end_sim": 11.43875
+    },
+    {
+      "kind": "advance",
+      "action": [
+        "move",
+        2.5,
+        0.0
+      ],
+      "started_seconds": 10.1515,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "x": 2.5,
+        "y": 0.0
+      },
+      "end_sim": 23.239
+    },
+    {
+      "kind": "advance",
+      "action": [
+        "move",
+        4.0,
+        0.0
+      ],
+      "started_seconds": 21.9595,
+      "outcome": "succeeded",
+      "success": true,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "x": 4.0,
+        "y": 0.0
+      },
+      "end_sim": 35.1375
+    },
+    {
+      "kind": "turn",
+      "action": [
+        "turn",
+        1.5707963267948966
+      ],
+      "started_seconds": 33.856,
+      "outcome": "failed",
+      "success": false,
+      "decision": {
+        "estimated_seconds": 30.0,
+        "yaw": 1.5707963267948966
+      },
+      "end_sim": 38.24925
+    }
+  ],
+  "controller_stop_reason": "predicted_obstacle_footprint",
+  "sim_range": [
+    0.333,
+    40.32025
+  ],
+  "video_seconds": 51.25,
+  "frames": 1025,
+  "fps": 20,
+  "actual_captures": 832,
+  "navigation_snapshots": 35,
+  "wheel_error": null,
+  "capture_error": null,
+  "encoder_exit": 0,
+  "decoder_exit": 0,
+  "map_policy": "Only navigation snapshots received by the displayed capture are used; unknown remains unknown.",
+  "vehicle_marker": "Latest available localization pose; north-up map follows that position.",
+  "display_timing": "Screenshots selected causally on interpolated wall/sim pairs; qualitative event alignment."
+}
