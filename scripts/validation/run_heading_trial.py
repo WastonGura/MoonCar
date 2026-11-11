@@ -4,6 +4,7 @@ import argparse
 import copy
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import shutil
@@ -21,6 +22,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=('half_spin', 'fixed_observe', 'gimbal_observe', 'feedback_observe'), required=True)
     parser.add_argument('--record-video', action='store_true', help='Actual X11 Gazebo GUI frames with per-frame capture timestamps')
+    parser.add_argument('--camera-pose', default='1.7 -3.2 2.6 0 0.55 1.016',
+                        help='Six Gazebo GUI camera pose coordinates for this recording')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sessions', type=Path, required=True)
     args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=False)
@@ -39,7 +42,11 @@ def main():
         MOONCAR_VALIDATION_OUTPUT=str(args.output/'fixture'), MOONCAR_RAMP_HEADING_CASE=args.mode,
         OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1')
     if args.record_video:
-        env.update(MOONCAR_VALIDATION_GUI='1',MOONCAR_VALIDATION_CAMERA_POSE='1.7 -3.2 2.6 0 0.55 1.016',LP_NUM_THREADS='1')
+        camera = args.camera_pose.split()
+        if len(camera)!=6 or not all(math.isfinite(float(v)) for v in camera):
+            raise ValueError('The recording camera needs six finite pose coordinates')
+        env.update(MOONCAR_VALIDATION_GUI='1',MOONCAR_VALIDATION_CAMERA_POSE=args.camera_pose,
+                   MOONCAR_VALIDATION_VIDEO_TAIL_SECONDS='2',LP_NUM_THREADS='1')
     for key in ('ROS_STATIC_PEERS', 'ROS_LOCALHOST_ONLY', 'MOONCAR_LASER_ODOMETRY_MODE'):
         env.pop(key, None)
     def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()

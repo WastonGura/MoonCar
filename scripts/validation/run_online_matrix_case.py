@@ -57,6 +57,8 @@ def main():
     result = dict(case=args.case, outcome='failed', actions=[], software=software)
     begun = time.monotonic(); experiment = None; processes = {}; handles = []; primary = None
     state_log = (args.output/'states.jsonl').open('x')
+    grid_log = (args.output/'navigation-grids.jsonl').open('x') if os.environ.get('MOONCAR_VALIDATION_GUI')=='1' else None
+    last_grid_version = None
     resources = (args.output/'resources.jsonl').open('x')
     readiness = (args.output/'readiness.jsonl').open('x')
     last_resource = last_progress = 0.; premature = []; first_ready = first_active = None
@@ -66,7 +68,7 @@ def main():
         return lifecycle_snapshot(args.output/'lifecycle/latest.json', snapshot_errors)
 
     def sample():
-        nonlocal last_resource, last_progress, first_ready, first_active
+        nonlocal last_resource, last_progress, first_ready, first_active, last_grid_version
         value = request(); now = time.monotonic()
         if experiment and (value.get('task') or {}).get('id') != experiment:
             raise RuntimeError('Owned experiment identity changed')
@@ -74,6 +76,11 @@ def main():
         saved = dict(value)
         saved['motion'] = {k: v for k, v in motion.items() if k not in ('navigation_grid', 'path', 'track')}
         state_log.write(json.dumps(dict(wall=now, state=saved), ensure_ascii=False)+'\n'); state_log.flush()
+        grid = motion.get('navigation_grid')
+        if grid_log is not None and grid and grid.get('version') != last_grid_version:
+            grid_log.write(json.dumps(dict(wall=now, grid=grid))+'\n')
+            grid_log.flush()
+            last_grid_version = grid.get('version')
         active = bool(live.get('all_active')) and now-live.get('wall', 0) < 3
         if motion.get('ready') and first_ready is None: first_ready = now
         if active and first_active is None: first_active = now
@@ -190,6 +197,15 @@ def main():
                 if (current.get('task') or {}).get('id') == experiment:
                     result['terminal_before_cleanup'] = current
                     request('/explore_stop', {}); request('/cancel', {})
+                    tail = float(os.environ.get('MOONCAR_VALIDATION_VIDEO_TAIL_SECONDS', '0'))
+                    if tail > 0:
+                        sim = current['motion']['diagnostics'].get('sim_stamp')
+                        deadline = time.monotonic()+30
+                        while sim is not None and time.monotonic()<deadline:
+                            value, _ = sample()
+                            stamp = value['motion']['diagnostics'].get('sim_stamp')
+                            if stamp is not None and stamp >= sim+tail:break
+                            time.sleep(.25)
             except Exception as error: result['cleanup_request_error'] = repr(error)
         for name, process in reversed(list(processes.items())):
             if process.poll() is None: process.send_signal(signal.SIGINT)
@@ -202,6 +218,7 @@ def main():
             except Exception as error: result['world_stop_error'] = repr(error)
         for handle in handles: handle.close()
         for stream in (state_log, resources, readiness): stream.close()
+        if grid_log is not None:grid_log.close()
         result.update(elapsed_wall_s=time.monotonic()-begun, first_product_ready_wall=first_ready,
             first_lifecycle_active_wall=first_active, premature_ready_samples=len(premature),
             snapshot_read_errors=snapshot_errors)
