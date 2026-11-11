@@ -214,6 +214,13 @@ def main():
                 process.kill(); code = process.wait(timeout=5); result[name+'_forced'] = True
             result[name+'_exit'] = code
         if experiment:
+            stop_file = os.environ.get('MOONCAR_VALIDATION_VIDEO_STOP_FILE')
+            receipt = os.environ.get('MOONCAR_VALIDATION_VIDEO_RECEIPT')
+            if stop_file:
+                Path(stop_file).touch()
+                deadline = time.monotonic()+8
+                while receipt and not Path(receipt).is_file() and time.monotonic()<deadline:
+                    time.sleep(.1)
             try: request('/stop', {})
             except Exception as error: result['world_stop_error'] = repr(error)
         for handle in handles: handle.close()

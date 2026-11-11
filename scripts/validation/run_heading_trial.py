@@ -24,6 +24,7 @@ def main():
     parser.add_argument('--record-video', action='store_true', help='Actual X11 Gazebo GUI frames with per-frame capture timestamps')
     parser.add_argument('--camera-pose', default='1.7 -3.2 2.6 0 0.55 1.016',
                         help='Six Gazebo GUI camera pose coordinates for this recording')
+    parser.add_argument('--capture-fps', type=int, default=6)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sessions', type=Path, required=True)
     args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=False)
@@ -46,7 +47,9 @@ def main():
         if len(camera)!=6 or not all(math.isfinite(float(v)) for v in camera):
             raise ValueError('The recording camera needs six finite pose coordinates')
         env.update(MOONCAR_VALIDATION_GUI='1',MOONCAR_VALIDATION_CAMERA_POSE=args.camera_pose,
-                   MOONCAR_VALIDATION_VIDEO_TAIL_SECONDS='2',LP_NUM_THREADS='1')
+                   MOONCAR_VALIDATION_VIDEO_TAIL_SECONDS='2',
+                   MOONCAR_VALIDATION_VIDEO_STOP_FILE=str(args.output/'screen-stop'),
+                   MOONCAR_VALIDATION_VIDEO_RECEIPT=str(args.output/'video/recording.json'),LP_NUM_THREADS='1')
     for key in ('ROS_STATIC_PEERS', 'ROS_LOCALHOST_ONLY', 'MOONCAR_LASER_ODOMETRY_MODE'):
         env.pop(key, None)
     def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -93,7 +96,8 @@ def main():
             if args.record_video:
                 video_log=(args.output/'screen-recorder.log').open('x')
                 video=subprocess.Popen([sys.executable,'-B',str(ROOT/'scripts/validation/record_screen.py'),
-                    '--output',str(args.output/'video'),'--follow-workbench'],env=env,stdout=video_log,stderr=subprocess.STDOUT)
+                    '--output',str(args.output/'video'),'--follow-workbench','--fps',str(args.capture_fps),
+                    '--stop-file',str(args.output/'screen-stop')],env=env,stdout=video_log,stderr=subprocess.STDOUT)
             with (args.output/'driver.log').open('x') as driver_log:
                 code = subprocess.run([sys.executable, '-B', str(ROOT/'scripts/validation/run_online_matrix_case.py'),
                     '--case', 'ramp', '--output', str(args.output/'case'), '--sessions', str(args.sessions)],

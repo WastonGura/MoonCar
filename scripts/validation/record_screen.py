@@ -28,8 +28,12 @@ def gui_capture_environment(experiment,proc=Path('/proc')):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--fps',type=int,default=6)
+    p.add_argument('--stop-file',type=Path,help='Owned driver signals completion before closing the GUI')
     p.add_argument('--follow-workbench',action='store_true',help='Follow the owned GUI nested Xvfb display and Xauthority')
-    args=p.parse_args();args.output.mkdir(parents=True,exist_ok=False)
+    args=p.parse_args()
+    if not 1<=args.fps<=30:raise ValueError('Capture FPS must be between 1 and 30')
+    args.output.mkdir(parents=True,exist_ok=False)
     os.sched_setaffinity(0,{5})
     stopped=False
     def stop(*_):
@@ -52,7 +56,7 @@ def main():
             time.sleep(.2)
         else:raise RuntimeError('No owned GUI display appeared before recording deadline')
     first=ImageGrab.grab(xdisplay=os.environ['DISPLAY']).convert('RGB')
-    w,h=first.size;fps=6
+    w,h=first.size;fps=args.fps
     frames=0;error=None
     with (args.output/'ffmpeg.log').open('x') as log, (args.output/'frames.jsonl').open('x',buffering=1) as timing:
         encoder=subprocess.Popen(['ffmpeg','-nostdin','-hide_banner','-loglevel','warning',
@@ -60,7 +64,7 @@ def main():
             '-an','-c:v','libx264','-threads','1','-preset','ultrafast','-crf','23','-pix_fmt','yuv420p',
             '-movflags','+faststart',str(args.output/'scene-walltime.mp4')],stdin=subprocess.PIPE,stderr=log)
         try:
-            while not stopped:
+            while not stopped and not (args.stop_file and args.stop_file.exists()):
                 begun=time.monotonic();picture=ImageGrab.grab(xdisplay=os.environ['DISPLAY']).convert('RGB')
                 captured=time.monotonic()
                 encoder.stdin.write(picture.tobytes())
