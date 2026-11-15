@@ -4,6 +4,8 @@
 
 完整视频：[原策略，2 分 57.3 秒](baseline/baseline-autonomy.mp4)；[邻域候选策略，3 分 2.25 秒](candidate/candidate-autonomy.mp4)。两条视频均含随车小地图和四轮状态，成片时长含启动、收尾与片尾停帧，因此不等于实际探测时长。
 
+[左右并排对照视频，3 分 2.45 秒](v2-autonomy-side-by-side.mp4)：左侧原策略，右侧邻域候选策略，保留两边全部画面、小地图与四轮面板。按共同仿真时钟对齐，候选组起始补 4 帧（0.2 秒），原策略末尾补 103 帧（5.15 秒）停车画面，未删减原视频。输出 2560×1072、20 fps，生成脚本为 `combine.py`，完整解码、帧数与 SHA256 核验见 `combined-summary.json`。
+
 ## 对照条件
 
 - 原生 V2 场景 `survey_v2_native`、R5 支承模型、默认 `rgbd_window` 定位，无主动回访。
