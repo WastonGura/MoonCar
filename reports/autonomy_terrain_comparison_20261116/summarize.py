@@ -51,7 +51,17 @@ def main():
         errors=[r['xy_error_m'] for r in alignment]
         research=args.raw/(name+'-sessions')/experiment/'research'
         quality=list(research.glob('autonomy-*/quality-end.json'))
-        quality_result=metrics(read(quality[0]),survey['origin'],survey['radius']) if quality and survey.get('origin') else None
+        quality_map=read(quality[0]) if quality else None
+        quality_result=metrics(quality_map,survey['origin'],survey['radius']) if quality_map and survey.get('origin') else None
+        world_coverage=None
+        if quality_map:
+            resolution=quality_map['resolution']
+            cells=[c for c in quality_map['cells']
+                   if all(-15 <= (c[key]+.5)*resolution <= 15 for key in ('ix','iy'))]
+            world_coverage=dict(world_bounds=[-15,-15,15,15],
+                observed_area_m2=len(cells)*resolution**2,
+                sufficient_area_m2=sum(c['quality']>=.8 for c in cells)*resolution**2,
+                valid_surface_area_m2=sum(c.get('fit_state')=='valid' for c in cells)*resolution**2)
         summary=dict(strategy=name,experiment=experiment,terrain_strategy=software.get('terrain_strategy'),
                      tested_commit=result['software']['git_commit'],outcome=result['outcome'],
                      phase=survey.get('phase'),reason=survey.get('reason'),budget_seconds=survey.get('budget_seconds'),
@@ -60,6 +70,8 @@ def main():
                      movement_actions=sum(r.get('kind')!='turn' for r in history),
                      localization_pauses=len(survey.get('localization_pauses',[])),
                      truth_track_length_m_sampled_10hz=distance,coverage=quality_result,
+                     coverage_scope='Start-relative 8 m disk only; excludes sensor observations beyond this disk.',
+                     full_world_coverage=world_coverage,
                      xy_error_m=dict(median=float(np.median(errors)),p95=float(np.percentile(errors,95)),
                                      maximum=max(errors)) if errors else None,
                      actual_gui_captures=recording['frame_count'],capture_error=recording.get('error'),
