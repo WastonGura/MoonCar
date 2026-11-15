@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One isolated slope heading trial; never changes the installed default config."""
+"""One isolated R5 validation run, with optional full GUI recording."""
 import argparse
 import copy
 import hashlib
@@ -20,12 +20,15 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--mode', choices=('half_spin', 'fixed_observe', 'gimbal_observe', 'feedback_observe'), required=True)
+    parser.add_argument('--mode', choices=('half_spin', 'fixed_observe', 'gimbal_observe', 'feedback_observe','autonomy'), required=True)
     parser.add_argument('--record-video', action='store_true', help='Actual X11 Gazebo GUI frames with per-frame capture timestamps')
     parser.add_argument('--camera-pose', default='1.7 -3.2 2.6 0 0.55 1.016',
                         help='Six Gazebo GUI camera pose coordinates for this recording')
     parser.add_argument('--capture-fps', type=int, default=6)
     parser.add_argument('--terrain-strategy',choices=('baseline','elevation_neighborhood_v1'),default='baseline')
+    parser.add_argument('--survey-budget',type=float,default=180.)
+    parser.add_argument('--radius',type=float,default=8.)
+    parser.add_argument('--wall-budget',type=float,default=1800.)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sessions', type=Path, required=True)
     args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=False)
@@ -44,6 +47,9 @@ def main():
         MOONCAR_VALIDATION_OUTPUT=str(args.output/'fixture'), MOONCAR_RAMP_HEADING_CASE=args.mode,
         OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1')
     env['MOONCAR_TERRAIN_STRATEGY']=args.terrain_strategy
+    if args.mode=='autonomy':
+        env.pop('MOONCAR_RAMP_HEADING_CASE',None)
+        if args.record_video:env['MOONCAR_VALIDATION_FOLLOW_CAMERA']='1'
     if args.record_video:
         camera = args.camera_pose.split()
         if len(camera)!=6 or not all(math.isfinite(float(v)) for v in camera):
@@ -59,6 +65,7 @@ def main():
         (args.output/name).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n')
     protocol = dict(mode=args.mode, changes=[], production_defaults_changed=False,
         terrain_strategy=args.terrain_strategy,
+        survey_budget=args.survey_budget,radius=args.radius,wall_budget=args.wall_budget,
         maximum_new_worlds=1, control_truth_inputs=False, physical_parameters_changed=False,
         actual_gui_video=args.record_video, video_timing_comparable_to_headless=False)
     if args.mode == 'half_spin':
@@ -85,7 +92,7 @@ def main():
     try:
         with (args.output/'backend.log').open('x') as log:
             backend = subprocess.Popen([sys.executable, '-B', str(ROOT/'scripts/validation/launch_backend.py'),
-                '--fixture', 'ramp', '--sessions', str(args.sessions)], env=env,
+                '--fixture', 'native' if args.mode=='autonomy' else 'ramp', '--sessions', str(args.sessions)], env=env,
                 stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
             deadline = time.monotonic()+45
             while True:
@@ -103,8 +110,12 @@ def main():
                     '--stop-file',str(args.output/'screen-stop')],env=env,stdout=video_log,stderr=subprocess.STDOUT)
             with (args.output/'driver.log').open('x') as driver_log:
                 code = subprocess.run([sys.executable, '-B', str(ROOT/'scripts/validation/run_online_matrix_case.py'),
-                    '--case', 'ramp', '--output', str(args.output/'case'), '--sessions', str(args.sessions)],
-                    env=env, stdout=driver_log, stderr=subprocess.STDOUT, timeout=1350).returncode
+                    '--case', 'autonomy' if args.mode=='autonomy' else 'ramp',
+                    '--output', str(args.output/'case'), '--sessions', str(args.sessions),
+                    *(['--survey-budget',str(args.survey_budget),'--radius',str(args.radius),
+                       '--wall-budget',str(args.wall_budget)] if args.mode=='autonomy' else [])],
+                    env=env, stdout=driver_log, stderr=subprocess.STDOUT,
+                    timeout=args.wall_budget+150 if args.mode=='autonomy' else 1350).returncode
             write('driver-exit.json', dict(exit_code=code))
     finally:
         if video:

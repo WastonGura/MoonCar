@@ -21,6 +21,9 @@ def main():
     parser.add_argument('--case', choices=('direct', 'autonomy', 'ramp'), required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sessions', type=Path, required=True)
+    parser.add_argument('--wall-budget',type=float,default=None)
+    parser.add_argument('--survey-budget',type=float,default=None)
+    parser.add_argument('--radius',type=float,default=None)
     args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=False)
     api = 'http://127.0.0.1:8766'
     here = Path(__file__).resolve().parent
@@ -47,10 +50,16 @@ def main():
         start=[0., 0., 0.] if ramp else [.5, 0., 0.])
     wall_budget = 480 if args.case == 'direct' else 1200
     sim_budget = 300 if ramp else 180
+    if args.wall_budget is not None:wall_budget=args.wall_budget
+    if args.survey_budget is not None:sim_budget=args.survey_budget
+    radius=args.radius if args.radius is not None else 8 if ramp else 14
+    if not 15<=sim_budget<=1800 or not 2<=radius<=25 or not math.isfinite(wall_budget) or wall_budget<30:
+        raise ValueError('Invalid experiment collection limits')
     route = [('move', [1.2, 0.]), ('turn', math.pi/4), ('turn', 0.), ('move', [.5, 0.]),
              ('pan_tilt', [.4, -.2]), ('pan_tilt', [0., 0.])]
     write('protocol.json', dict(case=args.case, heading_trial=os.environ.get('MOONCAR_RAMP_HEADING_CASE'), task=task, software=software, wall_budget_s=wall_budget,
         mission_sim_budget_s=sim_budget, planned_direct_actions=route if args.case == 'direct' else None,
+        terrain_strategy=os.environ.get('MOONCAR_TERRAIN_STRATEGY','baseline'),radius=radius,
         readiness='Record product ready independently; test dispatch waits for all four actual Nav2 lifecycle states ACTIVE',
         product_changes=False, automatic_retries=False, truth_used_for_control=False,
         scope='Measured single run; budgets are collection limits, not performance acceptance thresholds'))
@@ -114,7 +123,9 @@ def main():
         while True:
             value, active = sample(); motion = value.get('motion', {})
             health = motion.get('diagnostics', {}).get('laser_localization', {})
-            if motion.get('ready') and health.get('healthy') and active: return value
+            camera_ready=(not os.environ.get('MOONCAR_VALIDATION_FOLLOW_CAMERA') or
+                          (args.output/'camera/ready.json').is_file())
+            if motion.get('ready') and health.get('healthy') and active and camera_ready: return value
             if time.monotonic() > deadline: raise TimeoutError('Navigation lifecycle/localization readiness not met')
             time.sleep(.25)
 
@@ -133,9 +144,13 @@ def main():
         spawn('observer', [sys.executable, '-B', str(here/'observe_simulation.py'), '--folder',
             str(args.output/'observer'), '--world', 'mooncar_ramp_v2' if ramp else 'mooncar_survey_v2',
             '--start-x', '0' if ramp else '.5'], env)
+        if os.environ.get('MOONCAR_VALIDATION_FOLLOW_CAMERA'):
+            spawn('camera',[sys.executable,'-B',str(here/'follow_camera.py'),
+                            '--output',str(args.output/'camera')],env)
         value = await_ready(150); write('ready.json', value)
         actual = json.loads((args.sessions/experiment/'software.json').read_text())
         assert actual['simulation_profile'] == 'r5_support_v1' and actual['localization_mode'] == 'rgbd_window'
+        assert actual.get('terrain_strategy','baseline')==os.environ.get('MOONCAR_TERRAIN_STRATEGY','baseline')
         loaded = json.loads((args.sessions/experiment/'support-runtime/loaded.json').read_text())
         assert loaded['profile'] == 'r5_support_v1' and loaded['main_step_s'] == .00025
         write('support-loaded.json', loaded)
@@ -175,7 +190,7 @@ def main():
                     request('/cancel', {})
             result['outcome'] = 'passed' if all(a.get('phase') == 'succeeded' for a in result['actions']) else 'failed'
         else:
-            body = dict(experiment=experiment, budget_seconds=sim_budget, radius=8 if ramp else 14,
+            body = dict(experiment=experiment, budget_seconds=sim_budget, radius=radius,
                         strategy='surface_view_v2')
             write('explore-request.json', body); write('explore-response.json', request('/explore', body))
             while True:
