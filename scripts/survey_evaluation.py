@@ -16,7 +16,7 @@ import uuid
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = 'survey-metrics-v1'
+VERSION = 'survey-metrics-v2'
 
 
 def write_json(path, value):
@@ -26,21 +26,22 @@ def write_json(path, value):
 
 
 def scoped_cells(quality, origin, radius, keys=None):
+    """None means every observed cell; numeric radii reproduce historical reports."""
     r = quality['resolution']
     return {(c['ix'], c['iy']): c for c in quality['cells']
-            if abs((c['ix']+.5)*r) <= 25 and abs((c['iy']+.5)*r) <= 25
-            and math.hypot((c['ix']+.5)*r-origin[0], (c['iy']+.5)*r-origin[1]) <= radius
+            if (radius is None or (abs((c['ix']+.5)*r) <= 25 and abs((c['iy']+.5)*r) <= 25
+                and math.hypot((c['ix']+.5)*r-origin[0], (c['iy']+.5)*r-origin[1]) <= radius))
             and (keys is None or (c['ix'], c['iy']) in keys)}
 
 
 def metrics(quality, origin, radius):
-    """Cell-centre disk intersected with the fixed 50 m world; never discovered-area denominator."""
+    """Uncropped observed area, or the historical fixed disk when explicitly requested."""
     r = quality['resolution']; cells = scoped_cells(quality, origin, radius)
-    count = sum(abs((x+.5)*r) <= 25 and abs((y+.5)*r) <= 25
+    count = None if radius is None else sum(abs((x+.5)*r) <= 25 and abs((y+.5)*r) <= 25
                 and math.hypot((x+.5)*r-origin[0], (y+.5)*r-origin[1]) <= radius
                 for x in range(math.floor((origin[0]-radius)/r), math.ceil((origin[0]+radius)/r))
                 for y in range(math.floor((origin[1]-radius)/r), math.ceil((origin[1]+radius)/r)))
-    area = count*r*r
+    area = count*r*r if count is not None else None
     return dict(roi_area_m2=area, observed_area_m2=len(cells)*r*r,
                 observed_fraction=len(cells)/count if count else None,
                 quality_area_m2=sum(c['quality'] for c in cells.values())*r*r,
@@ -78,7 +79,8 @@ class EvidenceRecorder:
         manifest = dict(version=VERSION, run_id=survey.path.stem, created_utc=datetime.now(timezone.utc).isoformat(),
                         task=survey.task, mission=json.loads(json.dumps(survey.state())), strategy=survey.data.get('strategy','quality_view_heuristic_v1'),
                         quality_formula='C * (0.7 + 0.3 * min(V/3, 1))', sufficient_threshold=.8,
-                        scope='cell centres inside start-relative disk intersected with [-25,25]^2',
+                        scope=('all unique observed cell centres; no radius or coordinate crop' if survey.data['radius'] is None
+                               else 'cell centres inside start-relative disk intersected with [-25,25]^2'),
                         runtime=sys.version, status='recording', reference_status='not_provided',
                         ros_distro=os.environ.get('ROS_DISTRO'),
                         limitations=['sampling quality is not accuracy or traversability',
@@ -276,6 +278,15 @@ def report(folder, reference=None):
     import numpy as np
     observed_gray=LinearSegmentedColormap.from_list('observed_gray',['#c4c4c4','#151515'])
     origin, radius = mission['origin'], mission['radius']
+    if radius is None:
+        extent=final['resolution']
+        xs=[c['ix']*extent for c in final['cells']]+[origin[0]]
+        ys=[c['iy']*extent for c in final['cells']]+[origin[1]]
+        plot_xlim=(min(xs)-.5,max(xs)+extent+.5)
+        plot_ylim=(min(ys)-.5,max(ys)+extent+.5)
+    else:
+        plot_xlim=(origin[0]-radius-.5,origin[0]+radius+.5)
+        plot_ylim=(origin[1]-radius-.5,origin[1]+radius+.5)
     fig, axes = plt.subplots(1,2,figsize=(10,4.8),layout='constrained')
     for ax,label in zip(axes,('start','end')):
         path = folder/f'quality-{label}.json'
@@ -285,11 +296,11 @@ def report(folder, reference=None):
         patches = [Rectangle((c['ix']*r,c['iy']*r),r,r) for c in cells]
         collection = PatchCollection(patches,cmap='Greys',edgecolor='none')
         collection.set_array(np.array([c['quality'] for c in cells])); collection.set_clim(0,1); ax.add_collection(collection)
-        ax.add_patch(Circle(origin,radius,fill=False,color='black',linestyle='--'))
+        if radius is not None:ax.add_patch(Circle(origin,radius,fill=False,color='black',linestyle='--'))
         track=[row['pose'] for row in (rows if label=='end' else rows[:1]) if row.get('pose')]
         ax.plot([p['x'] for p in track],[p['y'] for p in track],color='black',linewidth=.8)
-        ax.plot(*origin,'kx'); ax.set(xlim=(origin[0]-radius-.5,origin[0]+radius+.5),
-                                    ylim=(origin[1]-radius-.5,origin[1]+radius+.5),aspect='equal',
+        ax.plot(*origin,'kx'); ax.set(xlim=plot_xlim,
+                                    ylim=plot_ylim,aspect='equal',
                                     xlabel='map X (m)',ylabel='map Y (m)',title=f'{label}: sampling sufficiency')
     fig.colorbar(collection,ax=axes,label='Sampling score Q (not accuracy)',shrink=.75)
     fig.savefig(folder/'sampling-comparison.png',dpi=180); fig.savefig(folder/'sampling-comparison.pdf'); plt.close(fig)
@@ -315,7 +326,8 @@ def report(folder, reference=None):
         summary['valid_surface_area_m2']=sum(c['valid'] for c in cells)*terrain.resolution**2
         summary['raw_evaluated_frames']=count
         fig,axes=plt.subplots(1,2,figsize=(10,4.8),layout='constrained')
-        cloud=terrain.cloud();keep=(np.hypot(cloud[:,0]-origin[0],cloud[:,1]-origin[1])<=radius)&(np.abs(cloud[:,:2])<=25).all(axis=1)
+        cloud=terrain.cloud();keep=(np.ones(len(cloud),dtype=bool) if radius is None else
+            (np.hypot(cloud[:,0]-origin[0],cloud[:,1]-origin[1])<=radius)&(np.abs(cloud[:,:2])<=25).all(axis=1))
         cloud=cloud[keep]
         if len(cloud):
             plot=axes[0].scatter(cloud[:,0],cloud[:,1],c=cloud[:,2],s=.4,cmap=observed_gray,vmin=-.1,vmax=1.5)
@@ -325,7 +337,7 @@ def report(folder, reference=None):
         patch.set_array(np.array([c['slope'] for c in valid]));patch.set_clim(0,60);axes[1].add_collection(patch)
         fig.colorbar(patch,ax=axes[1],label='Fitted slope (degrees)',shrink=.7)
         for ax,title in zip(axes,('Observed point cloud (top view)','Valid single-surface terrain')):
-            ax.set(xlim=(origin[0]-radius-.5,origin[0]+radius+.5),ylim=(origin[1]-radius-.5,origin[1]+radius+.5),aspect='equal',title=title,xlabel='map X (m)',ylabel='map Y (m)')
+            ax.set(xlim=plot_xlim,ylim=plot_ylim,aspect='equal',title=title,xlabel='map X (m)',ylabel='map Y (m)')
         fig.savefig(folder/'collected-map.png',dpi=180);fig.savefig(folder/'collected-map.pdf');plt.close(fig)
         if reference:
             ref=json.loads(Path(reference).read_text(encoding='utf-8'))
@@ -333,12 +345,14 @@ def report(folder, reference=None):
             write_json(folder/'reference.json',ref)
     elif reference: raise ValueError('Raw archive required for reference comparison')
     write_json(folder/'summary.json',summary)
+    scope_label=(f"固定评价面积：{summary['roi_area_m2']:.2f} 平方米" if summary['roi_area_m2'] is not None
+                 else '全部观测格统计，不设半径裁剪，不计算受任意范围影响的覆盖率')
     (folder/'README.md').write_text(f'''# 自主探测实验 {summary['run_id']}
 
 - 结束状态：{summary['status']}；{summary['reason']}
 - 证据状态：{summary['capture_status']}；版本：{VERSION}
 - 仿真时间：{elapsed:.1f} / {summary['budget_seconds']} 秒；定位采样路径：{summary['path_m']:.2f} 米
-- 固定评价面积：{summary['roi_area_m2']:.2f} 平方米；新增投影观测面积：{summary['new_observed_area_m2']:.2f} 平方米
+- {scope_label}；总投影观测面积：{summary['final_observed_area_m2']:.2f} 平方米；新增投影观测面积：{summary['new_observed_area_m2']:.2f} 平方米
 - 质量加权面积增量：{summary['quality_gain_m2']:.2f} 平方米；新增深度关键帧：{summary['new_frames']}
 - 动作：{summary['actions']}；未成功动作：{summary['failed_actions']}。取消或预算中断计入未成功，原因见 actions.csv。
 - 高度 RMSE（米）：{summary['height_rmse_m']}；坡度 MAE（度）：{summary['slope_mae_deg']}。None 表示未测；参考状态：{summary['reference_status']}。

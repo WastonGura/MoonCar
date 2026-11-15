@@ -52,8 +52,9 @@ def main():
     sim_budget = 300 if ramp else 180
     if args.wall_budget is not None:wall_budget=args.wall_budget
     if args.survey_budget is not None:sim_budget=args.survey_budget
-    radius=args.radius if args.radius is not None else 8 if ramp else 14
-    if not 15<=sim_budget<=1800 or not 2<=radius<=25 or not math.isfinite(wall_budget) or wall_budget<30:
+    radius=args.radius if args.radius is not None else 8 if ramp else None
+    if (not 15<=sim_budget<=1800 or (radius is not None and not 2<=radius<=25)
+            or not math.isfinite(wall_budget) or wall_budget<30):
         raise ValueError('Invalid experiment collection limits')
     route = [('move', [1.2, 0.]), ('turn', math.pi/4), ('turn', 0.), ('move', [.5, 0.]),
              ('pan_tilt', [.4, -.2]), ('pan_tilt', [0., 0.])]

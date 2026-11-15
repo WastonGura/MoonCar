@@ -100,6 +100,7 @@ def bounded_gimbal_targets(start,waypoints):
 
 def visible_unknown_frontiers(grid, pose, origin, radius):
     """Find the first unknown cell on camera rays from the parked rover."""
+    radius = math.inf if radius is None else radius
     info=grid.info;r=info.resolution;ox,oy=info.origin.position.x,info.origin.position.y
     costs=np.asarray(grid.data,dtype=np.int16).reshape(info.height,info.width)
     targets={}
@@ -136,6 +137,7 @@ def newly_known_cells(grid, points):
 def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='quality_view_heuristic_v1',return_diagnostics=False,
                 _boundary_fallback=False,*,depth_observed_visibility=False):
     """Known-space reachability plus conservative planar camera visibility prediction."""
+    radius = math.inf if radius is None else radius
     if strategy not in (*LEGACY_STRATEGIES,*STRATEGIES,'quality_view_heuristic_v1'):raise ValueError('Unknown survey strategy')
     planner_v3=strategy in V3_STRATEGIES
     planner_v2=strategy in (*V2_STRATEGIES,*V3_STRATEGIES)
@@ -477,13 +479,15 @@ class AutonomousSurvey:
             temporary.replace(self.path)
 
     def start(self,body,task,directory):
-        if not isinstance(body,dict) or set(body) not in ({'experiment','budget_seconds','radius'}, {'experiment','budget_seconds','radius','strategy'}) or body['experiment']!=task['id']:
+        if (not isinstance(body,dict) or not {'experiment','budget_seconds'} <= set(body)
+                or set(body)-{'experiment','budget_seconds','radius','strategy'} or body['experiment']!=task['id']):
             raise ValueError('实验已改变，请刷新后启动自主探测')
         strategy=body.get('strategy','surface_view_v2')
         if strategy not in (*LEGACY_STRATEGIES,*STRATEGIES):raise ValueError('请选择就近观察、覆盖优先或地表补采策略')
-        budget,radius=body['budget_seconds'],body['radius']
-        if not all(type(v) in (int,float) and math.isfinite(v) for v in (budget,radius)) or not 15<=budget<=1800 or not 2<=radius<=25:
-            raise ValueError('时间预算为 15～1800 仿真秒，活动距离为 2～25 米')
+        budget,radius=body['budget_seconds'],body.get('radius')
+        if (type(budget) not in (int,float) or not math.isfinite(budget) or not 15<=budget<=1800
+                or (radius is not None and (type(radius) not in (int,float) or not math.isfinite(radius) or not 2<=radius<=25))):
+            raise ValueError('时间预算为 15～1800 仿真秒；活动半径可不设，旧任务指定时为 2～25 米')
         with self.lock:
             if self.data['active'] or self.worker and self.worker.is_alive():raise ValueError('自主探测尚未结束')
             with self.motion.lock:
@@ -588,7 +592,8 @@ class AutonomousSurvey:
                 if self.motion.quality is None:failed.append('尚无采样质量数据')
                 elif time.monotonic()-self.motion.quality_received>12:failed.append('采样质量超过 12 秒未更新')
                 reason,phase='；'.join(failed or ['导航就绪条件失效'])+'，已停止','fault'
-            elif math.hypot(state['pose']['x']-self.origin[0],state['pose']['y']-self.origin[1])>self.data['radius']-.65:
+            elif (self.data['radius'] is not None and
+                  math.hypot(state['pose']['x']-self.origin[0],state['pose']['y']-self.origin[1])>self.data['radius']-.65):
                 reason,phase='已接近活动距离限制','distance_reached'
             else:reason=''
         if retry_localization:

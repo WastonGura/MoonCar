@@ -97,6 +97,7 @@ def line_cells(a, b, grid):
 
 
 def safe_segment(a, b, grid, costs, clearance, within_region, region, origin, radius):
+    radius = math.inf if radius is None else radius
     info = grid.info; r = info.resolution; offset = info.origin.position
     yaw = math.atan2(b['y']-a['y'], b['x']-a['x'])
     for x, y in line_cells(a, b, grid):
@@ -166,6 +167,7 @@ class RGBDRevisitPolicy:
         return True
 
     def plan(self, current, grid, costs, clearance, within_region, region, origin, radius, remaining, gimbal):
+        radius = math.inf if radius is None else radius
         self.plan_diagnostics=dict(mode='normal_exact',observations=len(self.observations),breadcrumbs=len(self.breadcrumbs),
             cheap_examined=0,cheap_eligible=0,route_validations=0,rejections=[],remaining_seconds=remaining)
         if self.pending is None: return None
@@ -244,6 +246,7 @@ class RGBDRevisitPolicy:
         return min(choices, key=lambda row:(row['estimated_seconds'], row['checkpoint']['trace_xy_sigma_upper_m']))
 
     def _plan_retired_nearby(self,current,grid,costs,clearance,within_region,region,origin,radius,remaining):
+        radius = math.inf if radius is None else radius
         """Plan a new legal viewpoint near an unchanged saved real observation.
 
         Only an actual typed retirement transaction enables this bounded search.
@@ -324,6 +327,7 @@ class RGBDRevisitPolicy:
 
     def unknown_clearance_scan(self,current,grid,costs,clearance,within_region,region,origin,radius,remaining,gimbal,*,gimbal_rate=.35):
         """Aim once at real unknown cells; this never declares them traversable."""
+        radius = math.inf if radius is None else radius
         if (self.pending is None or self.running or self.pending.get('retirement_event') is not None
                 or self.plan_diagnostics.get('mode')!='normal_exact' or self.plan_diagnostics.get('cheap_eligible')!=0
                 or self.attempts>=MAX_REVISITS-1 or not finite(gimbal_rate) or gimbal_rate<=0

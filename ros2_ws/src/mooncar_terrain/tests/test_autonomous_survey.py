@@ -16,6 +16,33 @@ from terrain_map import TerrainMap
 
 
 class SurveyTests(unittest.TestCase):
+    def test_unbounded_view_can_explore_beyond_old_start_radius(self):
+        grid=NS(info=NS(width=120,height=120,resolution=.25,
+                       origin=NS(position=NS(x=-15.,y=-15.))),data=[0]*14400)
+        quality=dict(resolution=.25,cells=[])
+        pose=dict(x=9.,y=0.,yaw=0.)
+        self.assertIsNone(choose_view(grid,quality,pose,[0,0],8,[],100,'surface_view_v2'))
+        choice=choose_view(grid,quality,pose,[0,0],None,[],100,'surface_view_v2')
+        self.assertIsNotNone(choice)
+        self.assertGreater(math.hypot(choice['x'],choice['y']),8)
+
+    def test_start_without_radius_records_null_and_keeps_deadline(self):
+        motion=Mock();motion.lock=threading.RLock()
+        motion.get_clock.return_value.now.return_value.nanoseconds=0
+        motion.quality={};motion.quality_received=__import__('time').monotonic()
+        motion.state.return_value=dict(active=False,ready=True,pose=dict(x=0,y=0,yaw=0))
+        motion.spin_client.server_is_ready.return_value=True
+        with tempfile.TemporaryDirectory() as directory,patch('autonomous_survey.threading.Thread'):
+            (Path(directory)/'test').mkdir()
+            survey=AutonomousSurvey(motion)
+            survey.start(dict(experiment='test',budget_seconds=180),dict(id='test',start=[0,0,0]),directory)
+            self.assertIsNone(survey.data['radius'])
+            self.assertIsNone(motion.mission_limits['radius'])
+            self.assertEqual(motion.mission_limits['deadline'],180)
+            import json
+            saved=json.loads(survey.path.read_text(),parse_constant=lambda v: self.fail('Nonfinite JSON: '+v))
+            self.assertIsNone(saved['radius'])
+
     def test_candidate_clearance_rejects_inscribed_cost(self):
         resolution=.25;width=80
         data=[0]*(width*width)

@@ -14,6 +14,42 @@ import numpy as np
 
 
 class EvaluationTests(unittest.TestCase):
+    def test_total_area_has_no_radius_or_legacy_world_crop(self):
+        before=dict(resolution=1.,cells=[dict(ix=0,iy=0,quality=.5)],frames=1,stamp=1)
+        after=dict(resolution=1.,cells=before['cells']+[dict(ix=30,iy=0,quality=1.),
+                                                    dict(ix=-40,iy=3,quality=.8)],frames=2,stamp=2)
+        total=metrics(after,[0,0],None)
+        self.assertEqual(total['observed_area_m2'],3.)
+        self.assertIsNone(total['roi_area_m2'])
+        self.assertIsNone(total['observed_fraction'])
+        self.assertEqual(gain(before,after,[0,0],None)['new_observed_m2'],2.)
+        self.assertEqual(gain(before,after,[0,0],8)['new_observed_m2'],0.)
+
+    def test_unbounded_report_preserves_distant_observations(self):
+        with tempfile.TemporaryDirectory() as root:
+            folder=Path(root)/'autonomy-total';folder.mkdir()
+            terrain=TerrainMap()
+            start=terrain.quality(with_surface=True)
+            terrain.add_frame(np.array([[x,y,0.] for x in np.arange(30.01,30.25,.06)
+                                        for y in np.arange(.01,.25,.06)]),1.)
+            end=terrain.quality(with_surface=True);terrain.save(folder/'observations.npz')
+            mission=dict(phase='budget_reached',origin=[0,0],radius=None,budget_seconds=15,
+                         elapsed_seconds=1,reason='synthetic test',history=[])
+            write_json(folder/'manifest.json',dict(version=VERSION,run_id='autonomy-total',mission=mission,
+                                                 strategy='synthetic',status='captured',limitations=[]))
+            write_json(folder/'mission.json',mission)
+            rows=[]
+            for i,q in enumerate((start,end)):
+                write_json(folder/f"quality-{('start','end')[i]}.json",q)
+                rows.append(dict(elapsed_seconds=i,sim_stamp=i,path_m=0.,pose=dict(x=0,y=0),
+                                 **metrics(q,[0,0],None)))
+            (folder/'telemetry.jsonl').write_text(''.join(json.dumps(row)+'\n' for row in rows))
+            summary=report(folder)
+            self.assertEqual(summary['final_observed_area_m2'],.0625)
+            self.assertIsNone(summary['roi_area_m2'])
+            self.assertIn('不设半径裁剪',(folder/'README.md').read_text(encoding='utf-8'))
+            self.assertGreater((folder/'collected-map.png').stat().st_size,100)
+
     def test_scope_and_gain(self):
         before=dict(resolution=1.,cells=[dict(ix=0,iy=0,quality=.5)],frames=1,stamp=1)
         after=dict(resolution=1.,cells=[dict(ix=0,iy=0,quality=.8),dict(ix=1,iy=0,quality=.4),dict(ix=9,iy=9,quality=1.)],frames=2,stamp=2)

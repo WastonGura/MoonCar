@@ -729,7 +729,8 @@ class ExperimentMotion(Node):
                         limits=getattr(self,'mission_limits',None)
                         if limits:
                             if self.get_clock().now().nanoseconds/1e9>=limits['deadline']:reason='自主探测时间预算已用尽'
-                            elif math.hypot(p['x']-limits['origin'][0],p['y']-limits['origin'][1])>limits['radius']-.65:reason='接近自主探测活动距离限制'
+                            elif (limits.get('radius') is not None and
+                                  math.hypot(p['x']-limits['origin'][0],p['y']-limits['origin'][1])>limits['radius']-.65):reason='接近自主探测活动距离限制'
                         if not reason and self.goal_request_kind=='navigate_to_pose' and self.phase=='executing':
                             direct=math.hypot(p['x']-self.goal[0],p['y']-self.goal[1])
                             if direct<=self.best_goal_distance-.15:

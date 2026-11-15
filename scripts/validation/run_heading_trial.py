@@ -27,7 +27,7 @@ def main():
     parser.add_argument('--capture-fps', type=int, default=6)
     parser.add_argument('--terrain-strategy',choices=('baseline','elevation_neighborhood_v1'),default='baseline')
     parser.add_argument('--survey-budget',type=float,default=180.)
-    parser.add_argument('--radius',type=float,default=8.)
+    parser.add_argument('--radius',type=float,default=None,help='Optional legacy start radius; omitted means full scene')
     parser.add_argument('--wall-budget',type=float,default=1800.)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sessions', type=Path, required=True)
@@ -65,7 +65,7 @@ def main():
         (args.output/name).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n')
     protocol = dict(mode=args.mode, changes=[], production_defaults_changed=False,
         terrain_strategy=args.terrain_strategy,
-        survey_budget=args.survey_budget,radius=args.radius,wall_budget=args.wall_budget,
+        survey_budget=args.survey_budget,radius=args.radius if args.mode=='autonomy' else 8.,wall_budget=args.wall_budget,
         maximum_new_worlds=1, control_truth_inputs=False, physical_parameters_changed=False,
         actual_gui_video=args.record_video, video_timing_comparable_to_headless=False)
     if args.mode == 'half_spin':
@@ -112,8 +112,9 @@ def main():
                 code = subprocess.run([sys.executable, '-B', str(ROOT/'scripts/validation/run_online_matrix_case.py'),
                     '--case', 'autonomy' if args.mode=='autonomy' else 'ramp',
                     '--output', str(args.output/'case'), '--sessions', str(args.sessions),
-                    *(['--survey-budget',str(args.survey_budget),'--radius',str(args.radius),
-                       '--wall-budget',str(args.wall_budget)] if args.mode=='autonomy' else [])],
+                    *(['--survey-budget',str(args.survey_budget),
+                       '--wall-budget',str(args.wall_budget)] if args.mode=='autonomy' else []),
+                    *(['--radius',str(args.radius)] if args.mode=='autonomy' and args.radius is not None else [])],
                     env=env, stdout=driver_log, stderr=subprocess.STDOUT,
                     timeout=args.wall_budget+150 if args.mode=='autonomy' else 1350).returncode
             write('driver-exit.json', dict(exit_code=code))

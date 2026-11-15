@@ -23,7 +23,7 @@
         <p class="note">三种策略共用导航与安全限制。地表补采仅对采样不足的格子尝试换方向观察；陡面和高残差格子不奖励。</p>
         <div class="coordinate-fields">
           <label>时间（仿真秒）<input id="survey-budget" aria-label="时间预算（仿真秒）" type="number" min="15" max="1800" step="1" value="180" required></label>
-          <label>距起点最远（米）<input id="survey-radius" type="number" min="2" max="25" step="any" value="10" required></label>
+          <p class="note">全场探索，不限制距起点的距离；保留场地边界与安全保护。</p>
         </div>
         <button id="survey-start" class="primary" disabled>从当前位置自主探测</button>
         <button id="survey-stop" disabled>停止自主探测</button>

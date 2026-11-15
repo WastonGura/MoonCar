@@ -122,11 +122,11 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
   $('save-experiment').onclick=async()=>{try{const url='/api/task?task='+encodeURIComponent(JSON.stringify(task()));await api(url);const a=document.createElement('a');a.href=url;a.download='mooncar-experiment.json';document.body.append(a);a.click();a.remove();message('已请求下载任务文件。');}catch(e){message(e.message,true);}};
   $('load-experiment').onclick=()=>$('experiment-file').click();
   $('experiment-file').onchange=async()=>{try{const file=$('experiment-file').files[0];if(!file)return;if(file.size>8192)throw new Error('任务文件不能超过 8 KB。');fill(JSON.parse(await file.text()));cancel();fit();message('已载入任务草稿；尚未应用到仿真。');}catch(e){message(e.message,true);}finally{$('experiment-file').value='';}};
-  function buttons(){const changing=['restarting','stopping'].includes(state.phase);$('apply-experiment').disabled=!state.enabled||busy||changing;$('stop-experiment').disabled=!state.enabled||busy||changing||!['starting','recording','failed'].includes(state.phase);$('drive-start').disabled=!state.motion?.ready||!state.session||state.motion?.active||state.autonomy?.active||busy||changing;$('drive-stop').disabled=!state.motion?.active;$('survey-start').disabled=!state.motion?.ready||!state.session||state.motion?.active||state.autonomy?.active||busy||changing;$('survey-stop').disabled=!state.autonomy?.active;for(const id of ['survey-budget','survey-radius'])$(id).disabled=!!state.autonomy?.active;}
+  function buttons(){const changing=['restarting','stopping'].includes(state.phase);$('apply-experiment').disabled=!state.enabled||busy||changing;$('stop-experiment').disabled=!state.enabled||busy||changing||!['starting','recording','failed'].includes(state.phase);$('drive-start').disabled=!state.motion?.ready||!state.session||state.motion?.active||state.autonomy?.active||busy||changing;$('drive-stop').disabled=!state.motion?.active;$('survey-start').disabled=!state.motion?.ready||!state.session||state.motion?.active||state.autonomy?.active||busy||changing;$('survey-stop').disabled=!state.autonomy?.active;$('survey-budget').disabled=!!state.autonomy?.active;}
   $('survey-start').onclick=async()=>{
-    const inputs=[$('survey-budget'),$('survey-radius')];if(!inputs.every(i=>i.reportValidity()))return;
+    const budget=$('survey-budget');if(!budget.reportValidity())return;
     busy=true;buttons();stopPlayback();motionToken='';
-    try{await api('/api/simulation/explore',{experiment:state.task?.id,budget_seconds:Number(inputs[0].value),radius:Number(inputs[1].value),strategy:$('survey-strategy').value});$('live').checked=true;await onSession(state.session);message('自主探测已启动，车辆将自行选择下一观察位置。');}
+    try{await api('/api/simulation/explore',{experiment:state.task?.id,budget_seconds:Number(budget.value),radius:null,strategy:$('survey-strategy').value});$('live').checked=true;await onSession(state.session);message('自主探测已启动，车辆将自行选择下一观察位置。');}
     catch(e){message(e.message,true);}finally{busy=false;buttons();poll();}
   };
   $('survey-stop').onclick=async()=>{try{await api('/api/simulation/explore_stop',{});message('已请求停止自主探测，保留采集记录。');}catch(e){message(e.message,true);}};
@@ -160,7 +160,7 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
       if(state.autonomy?.active){overlay.visible=false;$('show-experiment').checked=false;}
       const a=state.autonomy||{},names={idle:'尚未开始',planning:'比较观察位置',moving:'自动行驶',turning:'转向观察',gimbal_scanning:'云台扫描',observing:'采集新视角',localization_paused:'已停车，等待定位恢复',budget_reached:'预算已用尽',no_candidates:'暂无安全候选',stopped:'已停止',fault:'已保护停车',distance_reached:'达到活动距离限制'};
       $('survey-strategy').disabled=!!a.active||busy;
-      if(a.active){$('survey-budget').value=a.budget_seconds;$('survey-radius').value=a.radius;if(a.strategy)$('survey-strategy').value=a.strategy;}
+      if(a.active){$('survey-budget').value=a.budget_seconds;if(a.strategy)$('survey-strategy').value=a.strategy;}
       $('survey-state').textContent=(names[a.phase]||'等待自主探测服务')+(a.budget_seconds?` · ${Math.round(a.elapsed_seconds||0)} / ${a.budget_seconds} 仿真秒`:'');
       $('survey-reason').textContent=a.reason||'启动后显示下一观察位置及选择原因。';
       const last=a.history?.filter(h=>Number.isFinite(h.actual_quality_gain_m2)).at(-1);
