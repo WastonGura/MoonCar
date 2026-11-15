@@ -1,0 +1,44 @@
+[
+  {
+    "strategy": "baseline",
+    "audited_frames": 3546,
+    "future_data_violations": 0,
+    "complete_decode_exit": 0,
+    "video": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1072,
+          "r_frame_rate": "20/1",
+          "nb_frames": "3546"
+        }
+      ],
+      "format": {
+        "duration": "177.300000"
+      }
+    }
+  },
+  {
+    "strategy": "candidate",
+    "audited_frames": 3645,
+    "future_data_violations": 0,
+    "complete_decode_exit": 0,
+    "video": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1072,
+          "r_frame_rate": "20/1",
+          "nb_frames": "3645"
+        }
+      ],
+      "format": {
+        "duration": "182.250000"
+      }
+    }
+  }
+]

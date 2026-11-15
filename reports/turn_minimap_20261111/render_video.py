@@ -31,6 +31,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--trial', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--autonomy',action='store_true')
+    parser.add_argument('--label',default='')
+    parser.add_argument('--filename',default='v2-uphill-turn-minimap.mp4')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     result = read(args.trial/'case/result.json')
@@ -50,8 +53,8 @@ def main():
     capture_times = np.interp([r['capture_wall'] for r in capture], walls, sims)
     start, end = float(capture_times[0]), float(capture_times[-1])
     starts = [autonomy['started']+r['started_seconds'] for r in actions]
-    turn = next((s for s, a in zip(starts, actions) if a['kind']=='turn'), None)
-    turn_end = next((a['end_sim'] for a in actions if a['kind']=='turn' and 'end_sim' in a), None)
+    turn = None if args.autonomy else next((s for s, a in zip(starts, actions) if a['kind']=='turn'), None)
+    turn_end = None if args.autonomy else next((a['end_sim'] for a in actions if a['kind']=='turn' and 'end_sim' in a), None)
     stopped_sim = autonomy.get('started', 0)+autonomy.get('elapsed_seconds', math.inf)
     event_path = args.trial/'fixture/feedback-turn.jsonl'
     terminals = [row for row in rows(event_path) if row.get('event')=='terminal'] if event_path.exists() else []
@@ -66,7 +69,8 @@ def main():
     wheels = None
     wheel_error = None
     try:
-        reference = turn if turn is not None else starts[0] if starts else truth[0]['stamp']+1.
+        reference = (autonomy.get('started',truth[0]['stamp']+1.) if args.autonomy else
+                     turn if turn is not None else starts[0] if starts else truth[0]['stamp']+1.)
         wheels, _ = load_wheels(args.trial/'case/observer', reference)
     except ValueError as error:
         wheel_error = str(error)
@@ -163,7 +167,14 @@ def main():
             text(d, (99, 298), '等待观测地图', 17, GOLD)
         return gi, pi
 
-    def stage(stamp):
+    def stage(stamp,state):
+        if args.autonomy:
+            survey=state.get('autonomy',{})
+            labels=dict(idle='等待自主探测',planning='选择观察位置',moving='自主行驶',
+                        turning='车体转向',gimbal_scanning='云台观察',observing='采集新视角',
+                        localization_paused='停车等待定位',budget_reached='时间预算结束',
+                        no_candidates='暂无安全候选',fault='任务已停车',stopped='任务已结束')
+            return labels.get(survey.get('phase'),'准备自主探测'),survey.get('reason','等待任务启动')
         if stamp>=stopped_sim and autonomy.get('phase')=='fault':
             return '任务已停车', stop_label
         index = bisect.bisect_right(starts, stamp)-1
@@ -180,7 +191,11 @@ def main():
     def frame(picture, stamp, wall, held=False):
         image = Image.new('RGB', (WIDTH, HEIGHT), BG)
         ti = bisect.bisect_right(truth_times, stamp)-1
-        if ti>=0:
+        if args.autonomy:
+            left=(picture.width-560)//2
+            top=min(max(48,(picture.height+28)//2-180),picture.height-340)
+            picture=picture.crop((left,top,left+560,top+340))
+        elif ti>=0:
             # The recorded GUI camera has a fixed known pose and a 90 degree
             # horizontal field of view. Use the logged body position solely to
             # center a digital crop of the actual pixels.
@@ -197,13 +212,14 @@ def main():
         fitted = ImageOps.contain(picture, (WIDTH, 720), method=Image.Resampling.LANCZOS)
         image.paste(fitted, ((WIDTH-fitted.width)//2, 68+(720-fitted.height)//2))
         d = ImageDraw.Draw(image)
-        text(d, (25, 13), '寻迹者探测车   V2 上坡与转向', 28)
+        title='寻迹者探测车   V2 自主探测 · '+args.label if args.autonomy else '寻迹者探测车   V2 上坡与转向'
+        text(d, (25, 13), title, 28)
         text(d, (806, 23), f"版本 {result['software']['git_commit'][:7]}    仿真 {stamp:06.2f} s", 17, MUTED)
         si = bisect.bisect_right(state_walls, wall)-1
         state = states[si]['state'] if si>=0 else dict(motion={})
         gi, pi = minimap(image, wall, stamp, state)
         d = ImageDraw.Draw(image)
-        label, status = stage(stamp)
+        label, status = stage(stamp,state)
         d.rounded_rectangle((894, 88, 1255, 185), radius=13, fill='#101d2d')
         text(d, (911, 99), label, 22)
         color = '#ff998d' if label=='任务已停车' or status=='已停止' else CYAN
@@ -214,7 +230,7 @@ def main():
         text(d, (826, 767), '记录结束 · 停帧' if held else speed, 17, MUTED)
         d.rectangle((0, 794, WIDTH, HEIGHT), fill=BG)
         text(d, (25, 806), '四轮状态', 22)
-        reference_label = '转向起点' if turn is not None else '首段行驶起点'
+        reference_label = '任务起点' if args.autonomy else '转向起点' if turn is not None else '首段行驶起点'
         text(d, (171, 812), f'根据关节与车体记录计算 · 累计转角以{reference_label}为零', 15, MUTED)
         for i, (name, label, tag, color) in enumerate(WHEELS):
             x = 24+i*314
@@ -250,7 +266,7 @@ def main():
     raw_size = recording['width']*recording['height']*3
     decoder = subprocess.Popen(['ffmpeg','-v','error','-i',str(args.trial/'video/scene-walltime.mp4'),
                                 '-f','rawvideo','-pix_fmt','rgb24','pipe:1'],stdout=subprocess.PIPE)
-    target = args.output/'v2-uphill-turn-minimap.mp4'
+    target = args.output/args.filename
     encoder = subprocess.Popen(['ffmpeg','-v','error','-y','-f','rawvideo','-pix_fmt','rgb24',
                                 '-s',f'{WIDTH}x{HEIGHT}','-r',str(FPS),'-i','pipe:0',
                                 '-an','-c:v','libx264','-threads','2','-preset','fast','-crf','20',
@@ -278,8 +294,9 @@ def main():
         encoder.stdin.close()
         decoded, encoded = decoder.wait(timeout=30), encoder.wait(timeout=60)
     if decoded or encoded:raise RuntimeError('Video decoder or encoder failed')
-    (args.output/'frame-alignment.jsonl').write_text(''.join(json.dumps(row)+'\n' for row in alignment),encoding='utf-8')
+    (args.output/'frame-alignment.jsonl').write_text(''.join(json.dumps(row)+'\n' for row in alignment),encoding='utf-8',newline='\n')
     summary = dict(video=str(target),experiment=result.get('experiment'),tested_commit=result['software']['git_commit'],
+                   autonomy_video=args.autonomy,label=args.label,
                    outcome=result['outcome'],reason=autonomy.get('reason'),actions=actions,
                    controller_stop_reason=stop_reason,
                    sim_range=[start,end],video_seconds=len(timeline)/FPS,frames=len(timeline),fps=FPS,
@@ -289,7 +306,7 @@ def main():
                    map_policy='Only navigation snapshots received by the displayed capture are used; unknown remains unknown.',
                    vehicle_marker='Latest available localization pose; north-up map follows that position.',
                    display_timing='Screenshots selected causally on interpolated wall/sim pairs; qualitative event alignment.')
-    (args.output/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    (args.output/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps(summary,ensure_ascii=False),flush=True)
 
 
