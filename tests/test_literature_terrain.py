@@ -31,11 +31,23 @@ def test_ground_hazards_remain_distinct_from_missing_support(name,points):
         return
     half_x=.2 if name in ('raised_25cm','drop_25cm') else .4
     cells=[c for c in result if abs(c[0])<half_x and abs(c[1])<.4]
+    if name.startswith('isolated_'):
+        cells=[c for c in result if 0<c[0]<.2 and 0<c[1]<.2]
     assert cells
     if name in ('flat','gentle_10deg'):
         assert all(c[4]==0 for c in cells)
     else:
         assert all(c[4]!=0 for c in cells)
+
+
+def test_new_height_hazard_is_not_averaged_into_old_ground():
+    scenes=dict(synthetic_scenes())
+    candidate=ElevationNeighborhood()
+    for stamp in range(6):
+        candidate.update(scenes['flat'],float(stamp))
+    result=candidate.update(scenes['isolated_obstacle_25cm'],6.)
+    cell=next(c for c in result if 0<c[0]<.2 and 0<c[1]<.2)
+    assert cell[4]&4
 
 
 def test_failed_or_duplicate_updates_leave_the_map_unchanged():

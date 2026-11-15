@@ -48,6 +48,12 @@ def synthetic_scenes():
         yield name,np.column_stack((x.ravel(),y.ravel(),height.ravel()))
     line=np.linspace(.01,.19,20)
     yield 'single_scanline',np.column_stack((line,line*0+.1,line*0))
+    keep=np.hypot(x-.125,y-.125)>.14
+    ground=np.column_stack((x[keep],y[keep],x[keep]*0))
+    px,py=np.meshgrid(np.linspace(.105,.14,6),np.linspace(.105,.14,6))
+    for name,height in (('isolated_obstacle_25cm',.25),('isolated_drop_25cm',-.25)):
+        patch=np.column_stack((px.ravel(),py.ravel(),px.ravel()*0+height))
+        yield name,np.vstack((ground,patch))
 
 
 def statistics(values):
@@ -130,6 +136,8 @@ def main():
         for strategy,result in (('baseline',baseline),('candidate',cells)):
             half_x=.2 if name in ('raised_25cm','drop_25cm') else .4
             center=[c for c in result if abs(c[0])<half_x and abs(c[1])<.4]
+            if name.startswith('isolated_'):
+                center=[c for c in result if 0<c[0]<.2 and 0<c[1]<.2]
             entry[strategy]=dict(known=len(center),hazard=sum(c[4]!=0 or c[2]>=18 or c[3]>=.04 for c in center),
                                  reasons=sorted({int(c[4]) for c in center}))
         expected='unknown' if name=='single_scanline' else 'passable' if name in ('flat','gentle_10deg') else 'hazard'

@@ -45,24 +45,26 @@ class ElevationNeighborhood:
         updates=[]
         for i,key in enumerate(unique):
             heights=sorted_heights[starts[i]:starts[i+1]]
-            updates.append((tuple(map(int,key)),float(np.median(heights)),float(np.var(heights))))
+            updates.append((tuple(map(int,key)),float(np.median(heights)),float(np.var(heights)),
+                            float(heights.min()),float(heights.max())))
         expired={k for k,v in self.cells.items() if stamp-v['stamp']>self.max_age}
         remaining=self.cells.keys()-expired
-        if len(remaining|{key for key,_,_ in updates})>self.max_cells:
+        if len(remaining|{item[0] for item in updates})>self.max_cells:
             raise ValueError('Elevation map capacity reached')
         for key in expired:
             del self.cells[key]
-        for key,height,variance in updates:
+        for key,height,variance,low,high in updates:
             old=self.cells.get(key)
             if old is None:
-                self.cells[key]=dict(height=height,m2=0.,count=1,within_variance=variance,stamp=stamp)
+                self.cells[key]=dict(height=height,m2=0.,count=1,within_variance=variance,stamp=stamp,
+                                     latest_min=low,latest_max=high)
             else:
                 count=old['count']+1
                 delta=height-old['height']
                 mean=old['height']+delta/count
                 self.cells[key]=dict(height=mean,m2=old['m2']+delta*(height-mean),count=count,
                                      within_variance=old['within_variance']+(variance-old['within_variance'])/count,
-                                     stamp=stamp)
+                                     stamp=stamp,latest_min=low,latest_max=high)
         self.last_stamp=stamp
         outputs=sorted({(int(k[0])//self.ratio,int(k[1])//self.ratio) for k in unique})
         if not outputs:
@@ -72,15 +74,16 @@ class ElevationNeighborhood:
         positions=np.column_stack(((fine_keys+.5)*self.fine_resolution,
                                    [row['height'] for row in entries]))
         variances=np.array([row['within_variance']+row['m2']/max(1,row['count']-1) for row in entries])
+        extents=np.array([[row['latest_min'],row['latest_max']] for row in entries])
         result=[]
         for key in outputs:
-            cell=self._classify(key,fine_keys,positions,variances,
+            cell=self._classify(key,fine_keys,positions,variances,extents,
                                 slope_deg,roughness,step_height,drop_height)
             if cell is not None:
                 result.append(cell if return_elevation else cell[:5])
         return result
 
-    def _classify(self, key, fine_keys, positions, variances,
+    def _classify(self, key, fine_keys, positions, variances, extents,
                   slope_max, roughness_max, step_height, drop_height):
         center=(np.asarray(key,dtype=float)+.5)*self.resolution
         fine=self.fine_resolution
@@ -103,6 +106,11 @@ class ElevationNeighborhood:
         residual=float(np.sqrt(np.mean((centered@normal)**2+variance*normal[2]**2)))
         reason=(1 if slope>=slope_max else 0)|(2 if residual>=roughness_max else 0)
         gradient=-normal[:2]/normal[2] if normal[2]>1e-6 else np.zeros(2)
+        if normal[2]>1e-6:
+            plane_height=xyz[:,2].mean()+(positions[own,:2]-xyz[:,:2].mean(axis=0))@gradient
+            relative_height=extents[own]-plane_height[:,None]
+            reason|=4 if np.any(relative_height[:,1]>step_height) else 0
+            reason|=8 if np.any(relative_height[:,0]<-drop_height) else 0
         for (ix,iy),height in zip(fine_keys[own],positions[own,2]):
             for dx,dy in ((1,0),(-1,0),(0,1),(0,-1)):
                 neighbor=self.cells.get((ix+dx,iy+dy))
