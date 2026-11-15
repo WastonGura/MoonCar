@@ -25,6 +25,7 @@ def main():
     parser.add_argument('--camera-pose', default='1.7 -3.2 2.6 0 0.55 1.016',
                         help='Six Gazebo GUI camera pose coordinates for this recording')
     parser.add_argument('--capture-fps', type=int, default=6)
+    parser.add_argument('--terrain-strategy',choices=('baseline','elevation_neighborhood_v1'),default='baseline')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sessions', type=Path, required=True)
     args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=False)
@@ -42,6 +43,7 @@ def main():
         MOONCAR_RUNTIME_MANIFEST='/evidence/runtime-baseline.json',
         MOONCAR_VALIDATION_OUTPUT=str(args.output/'fixture'), MOONCAR_RAMP_HEADING_CASE=args.mode,
         OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1')
+    env['MOONCAR_TERRAIN_STRATEGY']=args.terrain_strategy
     if args.record_video:
         camera = args.camera_pose.split()
         if len(camera)!=6 or not all(math.isfinite(float(v)) for v in camera):
@@ -56,6 +58,7 @@ def main():
     def write(name, value):
         (args.output/name).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n')
     protocol = dict(mode=args.mode, changes=[], production_defaults_changed=False,
+        terrain_strategy=args.terrain_strategy,
         maximum_new_worlds=1, control_truth_inputs=False, physical_parameters_changed=False,
         actual_gui_video=args.record_video, video_timing_comparable_to_headless=False)
     if args.mode == 'half_spin':

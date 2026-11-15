@@ -336,6 +336,7 @@ class SimulationExperiment:
                     folder.mkdir()
                     write_json(folder/'software.json',dict(
                         software=getattr(self,'software',dict(verified=False)),
+                        terrain_strategy=os.environ.get('MOONCAR_TERRAIN_STRATEGY','baseline'),
                         simulation_profile=task.get('simulation_profile','legacy'),
                         localization_mode=self.laser_odometry_mode if self.laser_odometry else None))
                     (folder/'task.json').write_text(json.dumps(task, indent=2)+'\n', encoding='utf-8')

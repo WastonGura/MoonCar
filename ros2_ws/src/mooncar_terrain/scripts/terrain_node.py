@@ -61,6 +61,17 @@ class TerrainNode(Node):
         self.traversability_pub = self.create_publisher(
             OccupancyGrid, '/mooncar/terrain/traversability_map', grid_qos)
         self.traversability_cells = {}
+        self.terrain_strategy = os.environ.get('MOONCAR_TERRAIN_STRATEGY','baseline')
+        self.neighborhood_classifier = None
+        if self.terrain_strategy == 'elevation_neighborhood_v1':
+            try:
+                from literature_terrain import ElevationNeighborhood
+            except ImportError:
+                sys.path.insert(0,str(Path(__file__).resolve().parents[4]/'scripts'))
+                from literature_terrain import ElevationNeighborhood
+            self.neighborhood_classifier = ElevationNeighborhood()
+        elif self.terrain_strategy != 'baseline':
+            raise ValueError('Unknown experimental terrain strategy')
         evidence_path = os.environ.get('MOONCAR_TERRAIN_EVIDENCE_PATH')
         self.evidence_path = Path(evidence_path) if evidence_path else None
         self.cell_evidence = {}
@@ -200,7 +211,15 @@ class TerrainNode(Node):
             terrain_points = points[~is_self]
 
             evidence_enabled = getattr(self, 'evidence_path', None) is not None
-            if len(terrain_points) >= 10:
+            if self.neighborhood_classifier is not None:
+                cells = self.neighborhood_classifier.update(
+                    terrain_points, msg.header.stamp.sec + msg.header.stamp.nanosec / 1e9,
+                    slope_deg=self.get_parameter('slope_deg').value,
+                    roughness=self.get_parameter('roughness').value,
+                    step_height=self.get_parameter('step_height').value,
+                    drop_height=self.get_parameter('drop_height').value,
+                    return_elevation=evidence_enabled)
+            elif len(terrain_points) >= 10:
                 cells = classify_cells(terrain_points, return_elevation=evidence_enabled, **{
                     name: self.get_parameter(name).value for name in
                     ('resolution', 'slope_deg', 'roughness', 'step_height', 'drop_height')})
@@ -248,6 +267,7 @@ class TerrainNode(Node):
             self.status(DiagnosticStatus.OK, 'Geometry observed with synchronized IMU attitude',
                         [('points', len(points)), ('cells', len(cells)),
                          ('hazard_cells', len(hazards)),
+                         ('terrain_strategy', self.terrain_strategy),
                          ('traversability_cells', len(self.traversability_cells)),
                          ('tilt_deg', round(tilt_degrees(imu[1]), 3))])
         except (ValueError, TransformException) as error:

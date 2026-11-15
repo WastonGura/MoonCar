@@ -53,6 +53,8 @@ def verify(root,manifest,install,output):
     pairs += [(p,slam/'offline_rgbd_window'/p.name) for p in (root/'scripts/offline_rgbd_window').glob('*.py')]
     pairs += [(root/'ros2_ws/src/mooncar_terrain/scripts/terrain_geometry.py',
                install_prefix(install,'mooncar_terrain')/'lib/mooncar_terrain/terrain_geometry.py')]
+    pairs += [(root/'scripts/literature_terrain.py',
+               install_prefix(install,'mooncar_terrain')/'lib/mooncar_terrain/literature_terrain.py')]
     for package,parts in [('mooncar_description',['urdf']),('mooncar_gazebo',['launch','config','worlds','models','materials']),('mooncar_navigation',['launch','config'])]:
         prefix=install_prefix(install,package)/'share'/package
         for part in parts:
