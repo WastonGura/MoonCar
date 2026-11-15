@@ -1,0 +1,19 @@
+{
+  "before_commit": "9214592",
+  "optimized_sha256": "6b98769b3ad17ab35a340f1817542b310c4b5d91a2f9c29e47b4394f2cd64e4d",
+  "datasets": [
+    {
+      "archive": "tmp\\ros_acceptance\\turn-minimap-video-20261111\\sessions\\experiment-d0fa4fb37388\\survey-20261111T042738561263Z.npz",
+      "frames": 15,
+      "classified_rows": 5418,
+      "maximum_numeric_difference": 0.0
+    },
+    {
+      "archive": "tmp\\ros_acceptance\\turn-minimap-video-20261111\\retry-sessions\\experiment-78d0b0570521\\survey-20261111T043230276576Z.npz",
+      "frames": 64,
+      "classified_rows": 13916,
+      "maximum_numeric_difference": 0.0
+    }
+  ],
+  "classification_changes": 0
+}

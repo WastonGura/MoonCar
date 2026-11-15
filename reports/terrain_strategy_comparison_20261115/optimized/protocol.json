@@ -1,0 +1,30 @@
+{
+  "baseline_commit": "5fe51ab",
+  "tested_commit": "f34ce4b2ae6facee88bf7434d70804f4f620b1b0",
+  "archives": {
+    "tmp\\ros_acceptance\\turn-minimap-video-20261111\\sessions\\experiment-d0fa4fb37388\\survey-20261111T042738561263Z.npz": "4b9854055d739e2096cde047a7a9aab7eb8e39a6e507d227703820740c2ec38d",
+    "tmp\\ros_acceptance\\turn-minimap-video-20261111\\retry-sessions\\experiment-78d0b0570521\\survey-20261111T043230276576Z.npz": "4bc3f25288b8cf285e6d9f81887deae2ccbc761bbc4620d0827ab4b540e4189d"
+  },
+  "source_sha256": {
+    "scripts\\literature_terrain.py": "6b98769b3ad17ab35a340f1817542b310c4b5d91a2f9c29e47b4394f2cd64e4d",
+    "scripts\\compare_terrain_strategies.py": "e0d5d519435c4b92c26fe69fa76513e262a5d64b25be21c9214df3e296529b24",
+    "ros2_ws\\src\\mooncar_terrain\\scripts\\terrain_geometry.py": "ee70695e63e9e1f4dda4d5bd86fdb6625a6c02ac03f9ab5c9209b32aeab68778"
+  },
+  "parameters": {
+    "output_resolution": 0.2,
+    "fine_resolution": 0.05,
+    "normal_radius": 0.36,
+    "max_age_s": 5.0,
+    "slope_deg": 18.0,
+    "roughness_m": 0.04,
+    "step_m": 0.18,
+    "drop_m": 0.12
+  },
+  "localization": "same archived corrected sensor/robot poses",
+  "threads": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "scope": "Offline terrain classification. Movement and safety-check implementations are excluded from this A/B.",
+  "limitations": "Keyframes omit some online depth frames. No calibrated pose/depth covariance is present. Known-cell metrics exclude unknown, which is reported separately."
+}
