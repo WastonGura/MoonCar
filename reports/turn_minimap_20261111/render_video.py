@@ -23,6 +23,32 @@ def rows(path):
         return [json.loads(line) for line in stream if line.strip()]
 
 
+def state_rows(path):
+    # Action histories grow with mission length and are repeated in every
+    # snapshot. Video overlays need only these original state fields.
+    result=[]
+    with path.open(encoding='utf-8') as stream:
+        for line in stream:
+            if not line.strip():continue
+            row=json.loads(line);state=row['state'];motion=state['motion']
+            result.append(dict(wall=row['wall'],state=dict(
+                motion=dict(pose=motion.get('pose'),goal=motion.get('goal'),
+                            diagnostics=dict(sim_stamp=motion.get('diagnostics',{}).get('sim_stamp'))),
+                autonomy={k:state['autonomy'][k] for k in ('phase','reason') if k in state.get('autonomy',{})})))
+    return result
+
+
+def safe_commands(path):
+    result=[]
+    with path.open(encoding='utf-8') as stream:
+        for line in stream:
+            if not line.strip():continue
+            row=json.loads(line)
+            if row.get('topic')=='/mooncar/cmd_vel_safe' and row.get('sim') is not None:
+                result.append(row)
+    return result
+
+
 def read(path):
     return json.loads(path.read_text(encoding='utf-8'))
 
@@ -40,7 +66,7 @@ def main():
     result = read(args.trial/'case/result.json')
     autonomy = result.get('autonomy', {})
     actions = autonomy.get('history', [])
-    states = rows(args.trial/'case/states.jsonl')
+    states = state_rows(args.trial/'case/states.jsonl')
     grids = rows(args.trial/'case/navigation-grids.jsonl')
     capture = rows(args.trial/'video/frames.jsonl')
     recording = read(args.trial/'video/recording.json')
@@ -64,8 +90,7 @@ def main():
                   'predicted_unknown_footprint':'预测足迹进入未知区域'}.get(stop_reason, autonomy.get('reason','保护停车'))
     truth = rows(args.trial/'case/observer/truth.jsonl')
     truth_times = [r['stamp'] for r in truth]
-    commands = [r for r in rows(args.trial/'case/observer/samples.jsonl')
-                if r.get('topic')=='/mooncar/cmd_vel_safe' and r.get('sim') is not None]
+    commands = safe_commands(args.trial/'case/observer/samples.jsonl')
     command_times = [r['sim'] for r in commands]
     wheels = None
     wheel_error = None

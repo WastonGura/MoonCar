@@ -15,9 +15,12 @@ def write(path, value):
 
 
 def main():
+    global OUTPUT
     parser = argparse.ArgumentParser()
     parser.add_argument('--raw', type=Path, required=True)
+    parser.add_argument('--output',type=Path,default=OUTPUT)
     args = parser.parse_args()
+    OUTPUT=args.output.resolve()
     summaries = read(OUTPUT/'summary.json')
     video = read(OUTPUT/'video-summary.json')
     common = read(OUTPUT/'common-area-errors.json')
@@ -47,8 +50,10 @@ def main():
         summary['quality_end_rpc_total_m2'] = len(end['cells'])*end['resolution']**2
     write(OUTPUT/'summary.json', summaries)
     a, b = summaries
+    budgets=[read(args.raw/name/'protocol.json')['wall_budget'] for name in ('baseline','candidate')]
+    if budgets[0]!=budgets[1]:raise ValueError('Different collection budgets')
     def pair(key, digits=2):
-        return f"{a[key]:.{digits}f} | {b[key]:.{digits}f}"
+        return ' | '.join(f"{s[key]:.{digits}f}" if s[key] is not None else '—' for s in summaries)
     def errors(key):
         return ' | '.join(f"{s['single_surface'][key]*100:.2f}" if s['single_surface'][key] is not None else '—' for s in summaries)
     text = f'''# V3 地形自主探测与测绘对照
@@ -82,7 +87,7 @@ def main():
 
 原策略结束原因：{a['reason']}。邻域策略结束原因：{b['reason']}。
 
-本轮新策略总观测面积增加 {(b['total_observed_m2']/a['total_observed_m2']-1)*100:.1f}%，有效高程面积增加 {(b['valid_surface_m2']/a['valid_surface_m2']-1)*100:.1f}%，扩展距离也更大。但其定位 XY 误差 P95 同时从 {a['localization_xy_p95_m']*100:.2f} cm 增至 {b['localization_xy_p95_m']*100:.2f} cm。两组路线和距离不同，这里记录实际代价，不把它简单归因于地形分类策略；也不能用较小的高程 RMSE 宣称整张地图的三维位置都达到毫米级精度。
+本轮新策略相对于原策略的最终总观测面积差为 {(b['total_observed_m2']/a['total_observed_m2']-1)*100:+.1f}%，有效高程面积差为 {(b['valid_surface_m2']/a['valid_surface_m2']-1)*100:+.1f}%。原、新策略的定位 XY 误差 P95 分别为 {a['localization_xy_p95_m']*100:.2f} cm、{b['localization_xy_p95_m']*100:.2f} cm。两组路线、距离及实际持续时间需要一起看；发生提前停车时，不能仅根据不同运行时长的最终面积判断相同时长下的探索效率。这里记录实际结果，不把所有差异简单归因于地形分类策略；也不能用较小的高程 RMSE 宣称整张地图的三维位置都达到毫米级精度。
 
 观测面积是相机实际采集格子的水平投影去重面积，包含数据不足、拟合失败和岩石，不等同于车走过的面积或已完成的可靠地图。有效高程面积另列。面积统计不设置起点圆、不裁去参考场地以外的实际观测；图面使用物理场地的完整 30×30 米范围。参考范围外观测格数量分别为 {a['outside_reference_cells']} 和 {b['outside_reference_cells']}，只计面积、不计算无参考的高度误差。
 
@@ -90,7 +95,7 @@ def main():
 
 ## 对照条件与地图含义
 
-同一无附加标柱 V3 场地，同一起点 `(0.5, 0, 0)`，同一 R5 / `rgbd_window` 定位，180 仿真秒预算，2400 墙钟秒采集上限，按序运行；每墙钟秒 3 帧实际 GUI 录屏。固定相同资源分配、导航与安全参数、无主动定位回访；默认地形策略仍是原策略。两轮采集期间没有离线编码，也没有改动产品代码。两次试验前、中、后的源文件和安装文件校验一致。
+同一无附加标柱 V3 场地，同一起点 `(0.5, 0, 0)`，同一 R5 / `rgbd_window` 定位，{a['budget_seconds']:.0f} 仿真秒预算，{budgets[0]:.0f} 墙钟秒采集上限，按序运行；每墙钟秒 3 帧实际 GUI 录屏。固定相同资源分配、导航与安全参数、无主动定位回访；默认地形策略仍是原策略。两轮采集期间没有离线编码，也没有改动产品代码。两次试验前、中、后的源文件和安装文件校验一致。
 
 真值由当前 V3 碰撞地面三角网格、岩石和碎石的实际变换构建。地面共享 10 cm 高程网格已经与实际碰撞顶点核对，在固定对角线三角形内插值；岩石使用竖直射线的最高可见碰撞表面。5 cm 参考采样组成 25 cm 评价格，中心样本与实测高程格中心完全重合。真值不输入导航、定位或建图，没有用真值轨迹替换估计位姿，没有最佳拟合配准、垂直偏移修正或补洞。
 
@@ -104,7 +109,7 @@ def main():
 
 保存两组任务结果、最终实际地图快照、任务开始/结束 RPC 质量图、软件源清单、安装校验和逐帧地图选择日志。`reference.npz` 为参考高程/坡度/混合格及细采样；构建方法及输入哈希见 `reference-metadata.json`。解析几何、2 cm 已知偏差、未知/无效格及混合格的评价检查见 `reference-checks.json`。
 
-完整原始录屏、状态、定位对照和点云档案保存在本地：`{args.raw.as_posix()}`。源视频全长解码、导航小地图时序、实测图时序、最终合成视频解码与运行前后版本一致性均检查；文件摘要见 `evidence-sha256.json`。重新生成使用本目录 `compose.py --raw <上述目录>` 与 `verify.py --raw <上述目录>`，源视频先由 `reports/turn_minimap_20261111/render_video.py --autonomy --scene-label V3` 生成。
+完整原始录屏、状态、定位对照和点云档案保存在本地：`{args.raw.as_posix()}`。源视频全长解码、导航小地图时序、实测图时序、最终合成视频解码与运行前后版本一致性均检查；文件摘要见 `evidence-sha256.json`。重新生成使用 `reports/v3_mapping_comparison_20261117/compose.py --raw <上述目录> --output <本目录>` 与同目录 `verify.py --raw <上述目录> --output <本目录> --budget {a['budget_seconds']:.0f}`，源视频先由 `reports/turn_minimap_20261111/render_video.py --autonomy --scene-label V3` 生成。
 '''
     (OUTPUT/'README.md').write_text(text, encoding='utf-8', newline='\n')
 

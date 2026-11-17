@@ -7,7 +7,17 @@ import subprocess
 
 
 def rows(path):
-    return [json.loads(s) for s in path.read_text(encoding='utf-8').splitlines() if s.strip()]
+    result=[]
+    with path.open(encoding='utf-8') as stream:
+        for line in stream:
+            if not line.strip():continue
+            row=json.loads(line)
+            if path.name=='states.jsonl':
+                row=dict(wall=row['wall'],state=dict(motion=dict(pose=row['state']['motion'].get('pose'))))
+            elif path.name=='navigation-grids.jsonl':
+                row=dict(wall=row['wall'],grid=dict(stamp=row['grid'].get('stamp',0)))
+            result.append(row)
+    return result
 
 
 def main():

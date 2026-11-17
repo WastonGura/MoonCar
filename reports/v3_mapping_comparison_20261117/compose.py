@@ -76,19 +76,30 @@ def load_source(raw, name, reference):
                 terminal_wall = min(terminal_wall, row['wall'])
     if not math.isfinite(terminal_wall):
         raise ValueError('No terminal mission state receipt')
-    snapshots = []
-    with (folder/'case/observer/survey-map.jsonl').open(encoding='utf-8') as stream:
+    capacity_warning=None
+    with (folder/'case/observer/samples.jsonl').open(encoding='utf-8') as stream:
         for line in stream:
+            event=json.loads(line)
+            if event.get('topic')=='/mooncar/map/status' and any('Session capacity reached' in s.get('message','') for s in event.get('status',[])):
+                capacity_warning=dict(wall=event['wall'],sim=event.get('sim'));break
+    snapshots = []
+    map_path=folder/'case/observer/survey-map.jsonl'
+    with map_path.open('rb') as stream:
+        while True:
+            offset=stream.tell();line=stream.readline()
+            if not line:break
             row = json.loads(line)
             if row['wall'] <= terminal_wall and row['payload']['stamp'] <= end+1e-6:
-                snapshots.append(row)
+                snapshots.append(dict(wall=row['wall'],sim=row['sim'],offset=offset,
+                    payload={k:row['payload'][k] for k in ('stamp','frames')},
+                    observed_m2=len(row['payload']['cells'])*row['payload']['resolution']**2))
     if not snapshots:
         raise ValueError('No actual reconstruction captured')
     if any(a['wall'] > b['wall'] for a, b in zip(snapshots, snapshots[1:])):
         raise ValueError('Map receipts not monotonic')
-    maps, stats = compare(snapshots[-1]['payload'], reference)
+    maps, stats = compare(map_payload(dict(map_path=map_path,snapshots=snapshots),-1), reference)
     initial = next((r for r in reversed(snapshots) if r['sim'] is not None and r['sim'] <= mission['started']), None)
-    baseline_area = len(initial['payload']['cells'])*.25**2 if initial else None
+    baseline_area = initial['observed_m2'] if initial else None
     alignment = rows(folder/'case/observer/alignment.jsonl')
     errors = [r['xy_error_m'] for r in alignment if mission['started'] <= r['stamp'] <= end]
     truth = [r for r in rows(folder/'case/observer/truth.jsonl') if mission['started'] <= r['stamp'] <= end]
@@ -110,12 +121,21 @@ def load_source(raw, name, reference):
                  localization_xy_p95_m=float(np.percentile(errors, 95)) if errors else None,
                  capture=read(folder/'video/recording.json'),
                  process_exits={k:read(folder/(k+'-exit.json'))['exit_code'] for k in ('driver', 'video', 'backend')})
-    return dict(name=name, result=result, mission=mission, snapshots=snapshots,
+    return dict(name=name, result=result, mission=mission, snapshots=snapshots,map_path=map_path,capacity_warning=capacity_warning,
                 map_walls=[r['wall'] for r in snapshots], poses=poses,
                 pose_walls=[r['wall'] for r in poses], states=states,
                 state_walls=[r['wall'] for r in states],
                 alignment=rows(raw/'rendered'/name/'frame-alignment.jsonl'),
                 metadata=read(raw/'rendered'/name/'summary.json'), stats=stats)
+
+
+def map_payload(source,index):
+    header=source['snapshots'][index]
+    with source['map_path'].open('rb') as stream:
+        stream.seek(header['offset']);row=json.loads(stream.readline())
+    if row['wall']!=header['wall'] or row['payload']['stamp']!=header['payload']['stamp']:
+        raise ValueError('Reconstruction changed after indexing')
+    return row['payload']
 
 
 def select_map(source, wall, sim):
@@ -129,13 +149,20 @@ def select_map(source, wall, sim):
 
 
 def main():
+    global OUTPUT
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--raw', type=Path, required=True)
+    parser.add_argument('--output',type=Path,default=OUTPUT)
+    parser.add_argument('--crf',type=int,default=21)
+    parser.add_argument('--maxrate-kbps',type=int)
     args = parser.parse_args()
+    if not 0<=args.crf<=40:raise ValueError('Unsupported video CRF')
+    if args.maxrate_kbps is not None and args.maxrate_kbps<100:raise ValueError('Unsupported video bitrate cap')
+    OUTPUT=args.output.resolve();OUTPUT.mkdir(parents=True,exist_ok=True)
     reference = build(OUTPUT)
     low, high = -.35, math.ceil(float(reference['z'].max())*10)/10
     sources = [load_source(args.raw, name, reference) for name in ('baseline', 'candidate')]
-    final_maps = [compare(s['snapshots'][-1]['payload'], reference)[0] for s in sources]
+    final_maps = [compare(map_payload(s,-1), reference)[0] for s in sources]
     common = final_maps[0]['single'] & final_maps[1]['single']
     overlap = dict(common_valid_single_surface_cells=int(common.sum()),
                    common_valid_single_surface_m2=float(common.sum())*.25**2,
@@ -172,7 +199,7 @@ def main():
         for side, (source, record) in enumerate(zip(sources, records)):
             mi = record['map_index']
             if cache[side] is None or cache[side][0] != mi:
-                payload = source['snapshots'][mi]['payload'] if mi >= 0 else dict(resolution=.25, frames=0, stamp=0, cells=[])
+                payload = map_payload(source,mi) if mi >= 0 else dict(resolution=.25, frames=0, stamp=0, cells=[])
                 maps, stats = compare(payload, reference)
                 cache[side] = (mi, raster(maps['z'], maps['observed'], maps['valid'], low, high),
                                raster(maps['error'], maps['observed'], maps['valid'], -.1, .1, reference['mixed']), stats)
@@ -212,6 +239,10 @@ def main():
             text(x, 686, f"单表面高度 RMSE {value}   匹配 {stats['single_surface']['count']} 格", 22)
             record = records[side]
             text(x, 723, f"实际画面 {record['sim']:.2f} s · 测绘源帧 {stats['stamp']:.2f} s", 20, MUTED)
+            if record.get('capacity_warning_wall') is not None:
+                text(x,751,'测绘会话容量已满，新帧未加入地图',18,'#ff9d85')
+            elif source['stats']['outcome'] not in ('passed','budget_completed') and record['capture_wall']>=source['stats']['terminal_receipt_wall']:
+                text(x,751,f"本组已提前停车：实际运行 {source['stats']['elapsed_seconds']:.1f} 秒",18,'#ff9d85')
             # Estimated poses only; the environment reference does not correct
             # this path or the reconstructed maps.
             pi = record['pose_index']
@@ -249,6 +280,7 @@ def main():
                     pi -= 1
                 snapshot = source['snapshots'][mi] if mi >= 0 else None
                 record = dict(source_frame=selected, capture_wall=wall, sim=sim, map_index=mi,
+                              capacity_warning_wall=source['capacity_warning']['wall'] if source['capacity_warning'] and source['capacity_warning']['wall']<=wall else None,
                               pose_index=pi, pose_receipt_wall=source['poses'][pi]['wall'] if pi >= 0 else None,
                               pose_sim=source['poses'][pi]['sim'] if pi >= 0 else None,
                               map_receipt_wall=snapshot['wall'] if snapshot else None,
@@ -272,7 +304,8 @@ def main():
     filters = [f'[{i}:v]setpts=PTS-STARTPTS,tpad=start_mode=clone:start={a}:stop_mode=clone:stop={b}[v{i}]' for i, (a, b) in enumerate(zip(leading, trailing))]
     filters += ['[v0][v1]hstack=inputs=2:shortest=1[top]', '[top][2:v]vstack=inputs=2:shortest=1[out]']
     target = OUTPUT/'v3-exploration-mapping-comparison.mp4'
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(videos[0]), '-i', str(videos[1]), '-i', str(layer), '-filter_complex', ';'.join(filters), '-map', '[out]', '-an', '-c:v', 'libx264', '-threads', '4', '-preset', 'fast', '-crf', '21', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', str(target)], check=True)
+    rate_control=[] if args.maxrate_kbps is None else ['-maxrate',f'{args.maxrate_kbps}k','-bufsize',f'{2*args.maxrate_kbps}k']
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(videos[0]), '-i', str(videos[1]), '-i', str(layer), '-filter_complex', ';'.join(filters), '-map', '[out]', '-an', '-c:v', 'libx264', '-threads', '4', '-preset', 'fast', '-crf', str(args.crf), *rate_control, '-pix_fmt', 'yuv420p', '-movflags', '+faststart', str(target)], check=True)
     subprocess.run(['ffmpeg', '-v', 'error', '-i', str(target), '-f', 'null', '-'], check=True)
     probe = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width,height,nb_frames,r_frame_rate:format=duration', '-of', 'json', str(target)]))
     if int(probe['streams'][0]['nb_frames']) != count:
@@ -282,7 +315,7 @@ def main():
     (OUTPUT/'overlay-timing.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in audit), encoding='utf-8', newline='\n')
     write(OUTPUT/'summary.json', [s['stats'] for s in sources])
     write(OUTPUT/'video-summary.json', dict(video=target.name, frames=count, fps=fps, seconds=count/fps,
-        leading_holds=leading, trailing_holds=trailing, probe=probe, full_decode_exit=0,
+        leading_holds=leading, trailing_holds=trailing, probe=probe, full_decode_exit=0,crf=args.crf,maxrate_kbps=args.maxrate_kbps,
         map_future_data_violations=0, source_metadata=metadata, height_range_m=[low, high], error_range_m=[-.1, .1],
         sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
     print(json.dumps(dict(video=str(target), seconds=count/fps, summaries=[s['stats'] for s in sources]), ensure_ascii=False), flush=True)
