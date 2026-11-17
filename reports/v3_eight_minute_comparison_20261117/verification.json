@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "audited_map_displays": 19118,
+  "future_data_violations": 0,
+  "source_videos": [
+    {
+      "strategy": "baseline",
+      "audited_frames": 1982,
+      "future_data_violations": 0,
+      "complete_decode_exit": 0,
+      "video": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 1280,
+            "height": 1072,
+            "r_frame_rate": "20/1",
+            "nb_frames": "1982"
+          }
+        ],
+        "format": {
+          "duration": "99.100000"
+        }
+      }
+    },
+    {
+      "strategy": "candidate",
+      "audited_frames": 9580,
+      "future_data_violations": 0,
+      "complete_decode_exit": 0,
+      "video": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 1280,
+            "height": 1072,
+            "r_frame_rate": "20/1",
+            "nb_frames": "9580"
+          }
+        ],
+        "format": {
+          "duration": "479.000000"
+        }
+      }
+    }
+  ],
+  "verified_product_sources": 679,
+  "verified_install_files": 134,
+  "frozen_runtime_unchanged": true,
+  "final_statistics_match_video_snapshot": true,
+  "resource_isolation_limitation": "A baseline Gazebo process remained resident after baseline and was found after the pair. Clean resource isolation was not verified. Continued CPU consumption during candidate was not measured.",
+  "strict_resource_isolation_verified": false
+}
