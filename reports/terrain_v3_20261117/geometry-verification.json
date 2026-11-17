@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "version": "terrain-v3-continuous-v1",
+  "triangles": 180000,
+  "vertices": 90601,
+  "projected_area_m2": 900.0,
+  "holes_or_nonmanifold_edges": 0,
+  "boundary_edges": 1200,
+  "visual_collision_identical": true,
+  "grid_matches_written_mesh": true,
+  "preserved_v2_world_sha256": "08e9837e09b53e06fa0569423e0dc4775b1456508ca999cfef6fdf3444fb1555",
+  "former_49deg_seam_now_deg": 6.214086231934534,
+  "patch_border_bands": [
+    {
+      "center_m": [
+        4.8,
+        3.6
+      ],
+      "slope_max_deg": 19.699348005228945,
+      "slope_p95_deg": 12.309821689538106,
+      "over_18deg_area_m2": 0.039999999999999716,
+      "outside_border_slope_max_deg": 16.121699191328066,
+      "outside_border_slope_p95_deg": 9.032064511744013
+    },
+    {
+      "center_m": [
+        6.0,
+        -5.1
+      ],
+      "slope_max_deg": 25.58860849566634,
+      "slope_p95_deg": 14.360231685545482,
+      "over_18deg_area_m2": 0.1199999999999996,
+      "outside_border_slope_max_deg": 18.046054044326706,
+      "outside_border_slope_p95_deg": 10.94770785799736
+    }
+  ],
+  "whole_surface_max_slope_deg": 39.571099064216014,
+  "scope": "Geometry and resource verification; genuine steep crater faces are retained, not capped at 18 degrees"
+}

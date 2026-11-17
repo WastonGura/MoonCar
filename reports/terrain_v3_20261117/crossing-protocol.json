@@ -1,0 +1,24 @@
+{
+  "mode": "direct",
+  "changes": [],
+  "production_defaults_changed": false,
+  "terrain_strategy": "baseline",
+  "survey_budget": 180.0,
+  "radius": null,
+  "wall_budget": 900.0,
+  "scene": "survey_v3_native",
+  "start": [
+    -2.3,
+    -10.1,
+    0.5627372227610833
+  ],
+  "direct_goal": [
+    4.2,
+    -6.0
+  ],
+  "maximum_new_worlds": 1,
+  "control_truth_inputs": false,
+  "physical_parameters_changed": false,
+  "actual_gui_video": true,
+  "video_timing_comparable_to_headless": false
+}

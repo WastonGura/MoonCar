@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-17",
+  "tested_product_commit": "3caf0c0cd564b4967981bdf5d4209ef528a10c59",
+  "test_files": [
+    "ros2_ws/src/mooncar_gazebo/tests/test_terrain_v3.py",
+    "ros2_ws/src/mooncar_gazebo/tests/test_support_profile.py",
+    "ros2_ws/src/mooncar_terrain/tests/test_experiment_scenes.py",
+    "tests/test_validation_trial_outcome.py",
+    "tests/test_runtime_baseline.py"
+  ],
+  "unique_tests": 23,
+  "initial_passed": 22,
+  "initial_failed": 1,
+  "initial_failure": "Strict equality on floating area 900.0000000000005 versus 900",
+  "correction": "Numeric tolerance assertion, 8 decimal places; no geometry or solver change",
+  "failed_case_rerun_passed": 1,
+  "final_unique_passed": 23,
+  "javascript_syntax_check": "passed",
+  "scope": "Offline product regression and resource checks; live crossing result is recorded separately"
+}

@@ -1,0 +1,76 @@
+{
+  "experiment": "experiment-b236f4d6edff",
+  "tested_commit": "3caf0c0cd564b4967981bdf5d4209ef528a10c59",
+  "scene": "survey_v3_native",
+  "outcome": "passed",
+  "actions": [
+    {
+      "kind": "pan_tilt",
+      "target": [
+        0.0,
+        -0.262
+      ],
+      "phase": "succeeded"
+    },
+    {
+      "kind": "move",
+      "target": [
+        -0.6749999999999998,
+        -9.075
+      ],
+      "phase": "succeeded"
+    },
+    {
+      "kind": "move",
+      "target": [
+        0.9500000000000002,
+        -8.05
+      ],
+      "phase": "succeeded"
+    },
+    {
+      "kind": "move",
+      "target": [
+        2.575,
+        -7.025
+      ],
+      "phase": "succeeded"
+    },
+    {
+      "kind": "move",
+      "target": [
+        4.2,
+        -6.0
+      ],
+      "phase": "succeeded"
+    }
+  ],
+  "successful_moves": 4,
+  "truth_track_m": 7.600824465408857,
+  "final_truth_xyz": [
+    4.083134771973154,
+    -6.137845232372079,
+    -0.057295451140552796
+  ],
+  "final_truth_distance_to_goal_m": 0.18071743028684112,
+  "crossed_old_background_west_edge": true,
+  "edge_crossing_y_m": -6.738607023771295,
+  "unhealthy_active_state_snapshots": 0,
+  "active_state_snapshots": 1280,
+  "xy_error_m": {
+    "median": 0.020606853982017812,
+    "p95": 0.037237816852580714,
+    "maximum": 0.03941985456610185
+  },
+  "maximum_absolute_body_roll_deg": 5.474815512422441,
+  "maximum_absolute_body_pitch_deg": 5.7418699152113835,
+  "wall_seconds": 414.9324129459999,
+  "actual_screen_captures": 1216,
+  "capture_error": null,
+  "process_exits": {
+    "driver": 0,
+    "video": 0,
+    "backend": 0
+  },
+  "scope": "One controlled route through the old patch edge, default localization and terrain classifier; not whole-field/long-duration or tyre-soil calibration"
+}

@@ -1,0 +1,16 @@
+{
+  "video": "v3-terrain-crossing.mp4",
+  "experiment": "experiment-b236f4d6edff",
+  "tested_commit": "3caf0c0cd564b4967981bdf5d4209ef528a10c59",
+  "frames": 1111,
+  "fps": 20,
+  "seconds": 55.55,
+  "source_capture_count": 1216,
+  "sim_range": [
+    0.15225,
+    53.6965
+  ],
+  "complete_decode_exit": 0,
+  "display": "Complete actual GUI capture, following camera center crop; simulation-time playback with 2 second final hold",
+  "timing": "Qualitative interpolation from received wall/sim pairs; each state received by its displayed capture"
+}
