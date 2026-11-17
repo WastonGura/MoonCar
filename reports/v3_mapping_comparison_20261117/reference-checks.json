@@ -1,0 +1,13 @@
+{
+  "analytic_checks": [
+    "fixed_triangle_diagonal_not_bilinear",
+    "plane_height_and_slope",
+    "no_unknown_fill",
+    "invalid_cells_not_scored",
+    "outside_area_counted",
+    "known_2cm_bias_recovered",
+    "mixed_surfaces_separate",
+    "highest_exposed_triangle"
+  ],
+  "passed": true
+}

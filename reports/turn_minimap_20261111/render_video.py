@@ -34,6 +34,7 @@ def main():
     parser.add_argument('--autonomy',action='store_true')
     parser.add_argument('--label',default='')
     parser.add_argument('--filename',default='v2-uphill-turn-minimap.mp4')
+    parser.add_argument('--scene-label',default='V2')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     result = read(args.trial/'case/result.json')
@@ -212,7 +213,7 @@ def main():
         fitted = ImageOps.contain(picture, (WIDTH, 720), method=Image.Resampling.LANCZOS)
         image.paste(fitted, ((WIDTH-fitted.width)//2, 68+(720-fitted.height)//2))
         d = ImageDraw.Draw(image)
-        title='寻迹者探测车   V2 自主探测 · '+args.label if args.autonomy else '寻迹者探测车   V2 上坡与转向'
+        title=f'寻迹者探测车   {args.scene_label} 自主探测 · '+args.label if args.autonomy else f'寻迹者探测车   {args.scene_label} 上坡与转向'
         text(d, (25, 13), title, 28)
         text(d, (806, 23), f"版本 {result['software']['git_commit'][:7]}    仿真 {stamp:06.2f} s", 17, MUTED)
         si = bisect.bisect_right(state_walls, wall)-1
