@@ -11,6 +11,15 @@ from trial_outcome import lifecycle_snapshot, mission_outcome
 
 
 class TrialOutcomeTests(unittest.TestCase):
+    def test_survey_map_capture_preserves_heights_and_does_not_accept_status(self):
+        import json
+        from observe_simulation import survey_map_payload
+        payload=dict(resolution=.25,frames=3,stamp=2.,cells=[dict(ix=36,iy=-8,z=-.123,valid=True)])
+        self.assertEqual(survey_map_payload(json.dumps(payload)),payload)
+        for invalid in (dict(healthy=True,stamp=2.),dict(payload,resolution=0),
+                        dict(payload,stamp=float('nan')),dict(payload,frames=True)):
+            with self.assertRaises(ValueError):survey_map_payload(json.dumps(invalid))
+
     def test_normal_budget_stop_is_distinct_from_failure(self):
         self.assertEqual(mission_outcome('budget_reached'), 'budget_completed')
         self.assertEqual(mission_outcome('completed'), 'passed')

@@ -38,9 +38,21 @@ TOPIC_TYPES = {
     '/odometry/filtered': 'nav_msgs/msg/Odometry',
     '/odom': 'nav_msgs/msg/Odometry',
     '/mooncar/map/status': 'diagnostic_msgs/msg/DiagnosticArray',
+    '/mooncar/map/quality': 'std_msgs/msg/String',
     '/tf': 'tf2_msgs/msg/TFMessage',
     '/tf_static': 'tf2_msgs/msg/TFMessage',
 }
+
+
+def survey_map_payload(text):
+    """Keep real reconstructed cells unchanged; reject a status message as a map."""
+    value=json.loads(text)
+    if (not isinstance(value,dict) or not isinstance(value.get('cells'),list)
+            or type(value.get('frames')) is not int or value['frames']<0
+            or type(value.get('resolution')) not in (int,float) or not math.isfinite(value['resolution']) or value['resolution']<=0
+            or type(value.get('stamp')) not in (int,float) or not math.isfinite(value['stamp']) or value['stamp']<0):
+        raise ValueError('Invalid reconstructed survey map header')
+    return value
 
 
 def finite_json(value):
@@ -107,7 +119,7 @@ def make_node(args, folder, stopped):
             self.listener = TransformListener(self.buffer, self)
             self.lock = threading.Lock()
             self.files = {name: (folder / (name + '.jsonl')).open('x', encoding='utf-8', buffering=1)
-                          for name in ('truth', 'alignment', 'samples', 'tf', 'missing')}
+                          for name in ('truth', 'alignment', 'samples', 'tf', 'missing','survey-map')}
             self.counts = Counter()
             self.pending = deque()
             self.pending_limit = 4096
@@ -117,6 +129,7 @@ def make_node(args, folder, stopped):
             self.distinct = Counter()
             self.last_stamps = {}
             self.quality = None
+            self.last_survey_map_key = None
             self.first_truth_stamp = self.last_truth_stamp = None
             self.first_clock_stamp = self.last_clock_stamp = None
             self.ready_written = False
@@ -144,6 +157,7 @@ def make_node(args, folder, stopped):
             for topic in ('/cmd_vel', '/mooncar/cmd_vel_safe'):
                 subscribe(Twist, topic, self.command_seen, QoSProfile(depth=10))
             subscribe(String, '/mooncar/laser_odometry/status', self.string_seen, QoSProfile(depth=10))
+            subscribe(String, '/mooncar/map/quality', self.survey_map_seen, QoSProfile(depth=1))
             subscribe(Bool, '/mooncar/workbench/permit', self.permit_seen, QoSProfile(depth=1))
             for topic in ('/mooncar/laser_odometry', '/odometry/filtered', '/odom'):
                 subscribe(Odometry, topic, self.odom_seen, qos_profile_sensor_data)
@@ -228,6 +242,14 @@ def make_node(args, folder, stopped):
 
         def permit_seen(self, topic, msg):
             self.emit('samples', dict(self.envelope('permit', topic), data=bool(msg.data)))
+
+        def survey_map_seen(self,topic,msg):
+            received=self.envelope('reconstructed-survey-map',topic)
+            payload=survey_map_payload(msg.data)
+            key=(payload['stamp'],payload['frames'])
+            if key!=self.last_survey_map_key:
+                self.emit('survey-map',dict(received,payload=payload))
+                self.last_survey_map_key=key
 
         def odom_seen(self, topic, msg):
             value = stamp_ns(msg.header.stamp)
