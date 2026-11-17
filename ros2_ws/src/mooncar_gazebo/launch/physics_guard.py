@@ -16,7 +16,7 @@ def resolve_control_profile(world_path, model_file, requested='auto'):
     world=ET.parse(world_path).find('world')
     engine=world.findtext("plugin[@name='gz::sim::systems::Physics']/engine/filename",'')
     compatible=(model_file=='mooncar_r5.urdf.xacro' and world.get('name') in
-                ('mooncar_ramp_v2','mooncar_curve_v2','mooncar_survey_v2') and Path(engine).name==PLUGIN_NAME)
+                ('mooncar_ramp_v2','mooncar_curve_v2','mooncar_survey_v2','mooncar_survey_v3') and Path(engine).name==PLUGIN_NAME)
     if requested=='r5_dart_v2' and not compatible:
         raise RuntimeError('r5_dart_v2 control requires R5 and a project DART v2 world')
     return ('r5_dart_v2' if compatible else 'legacy') if requested=='auto' else requested

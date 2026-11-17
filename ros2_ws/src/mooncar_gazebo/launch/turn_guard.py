@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-WORLDS = ('mooncar_ramp_v2', 'mooncar_curve_v2', 'mooncar_survey_v2')
+WORLDS = ('mooncar_ramp_v2', 'mooncar_curve_v2', 'mooncar_survey_v2','mooncar_survey_v3')
 LIBRARIES = ('libode.so.8.0.2', 'libmooncar-adaptive-axle-allocation.so', 'libmooncar-turn-slip-control.so')
 
 def sha(path):

@@ -3,7 +3,7 @@ import hashlib, json, os, re, signal, subprocess, sys, tempfile, time
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-WORLDS=('mooncar_ramp_v2','mooncar_curve_v2','mooncar_survey_v2')
+WORLDS=('mooncar_ramp_v2','mooncar_curve_v2','mooncar_survey_v2','mooncar_survey_v3')
 VERSIONS={'fastdds':'2.14.6','rmw_fastrtps_shared_cpp':'8.4.4','rmw_fastrtps_cpp':'8.4.4'}
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 

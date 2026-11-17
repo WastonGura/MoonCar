@@ -15,14 +15,17 @@ import numpy as np
 
 PACKAGE = Path(__file__).resolve().parents[1] / 'ros2_ws/src/mooncar_gazebo'
 V2_WORLD = PACKAGE / 'worlds/mooncar_survey_v2.sdf'
+V3_WORLD = PACKAGE / 'worlds/mooncar_survey_v3.sdf'
 V2_SCENES = ('survey_v2', 'survey_v2_native')
-SCENES = ('survey', *V2_SCENES, 'visible_ramp_v1', 'visible_curve_v1')
+V3_SCENES = ('survey_v3_native',)
+CONTINUOUS_SCENES = (*V2_SCENES,*V3_SCENES)
+SCENES = ('survey', *CONTINUOUS_SCENES, 'visible_ramp_v1', 'visible_curve_v1')
 
 
 def scene_bounds(scene):
     if scene not in SCENES:
         raise ValueError('Unknown experiment scene')
-    return (-15., -15., 15., 15.) if scene in V2_SCENES else (-25., -25., 25., 25.)
+    return (-15., -15., 15., 15.) if scene in CONTINUOUS_SCENES else (-25., -25., 25., 25.)
 
 
 def scene_metadata(scene, localization_mode='terrain'):
@@ -42,7 +45,9 @@ def scene_metadata(scene, localization_mode='terrain'):
     if scene in V2_SCENES:
         fixtures = '追加四个定位标柱' if scene == 'survey_v2' else '原生地形，无追加定位标柱'
         description = f'Gazebo Terrain V2 survey 30×30 米（{fixtures}）'
-    result = dict(scene=scene, world_name='mooncar_survey_v2' if scene in V2_SCENES else 'lunar_yard',
+    if scene in V3_SCENES:description='Gazebo Terrain V3 连续地形 30×30 米（无追加定位标柱）'
+    world_name='mooncar_survey_v3' if scene in V3_SCENES else 'mooncar_survey_v2' if scene in V2_SCENES else 'lunar_yard'
+    result = dict(scene=scene, world_name=world_name,
                   bounds=list(bounds), localization_mode=localization_mode or 'baseline',
                   camera_sensor_profile='rgbd_v1' if localization_mode in ('rgbd','rgbd_window') else 'legacy',
                   source_description=f'{description}；{sources[localization_mode]}；历史深度位姿未做回环修正')
@@ -51,6 +56,9 @@ def scene_metadata(scene, localization_mode='terrain'):
                       canonical_world_sha256=hashlib.sha256(V2_WORLD.read_bytes()).hexdigest(),
                       localization_fixture_profile=('terrain_v2_workbench_markers_v1'
                                                     if scene == 'survey_v2' else 'none'))
+    if scene in V3_SCENES:
+        result.update(canonical_world='worlds/mooncar_survey_v3.sdf',canonical_world_sha256=hashlib.sha256(V3_WORLD.read_bytes()).hexdigest(),
+                      terrain_version='terrain-v3-continuous-v1',localization_fixture_profile='none')
     return result
 
 
@@ -67,12 +75,14 @@ def _resource(uri):
 def verify_installed_scene_resources(installed_package):
     """The setup geometry and the resources actually loaded by Gazebo must agree."""
     installed_package = Path(installed_package)
-    resources = {PACKAGE / 'worlds/lunar_yard.sdf', V2_WORLD}
-    for element in ET.parse(V2_WORLD).iter():
-        if element.tag in ('uri', 'albedo_map', 'normal_map', 'roughness_map'):
-            resources.add(_resource(element.text))
-    resources.update(PACKAGE / 'models/terrain_v2/survey' / name
-                     for name in ('manifest.json', 'height_grid.npz', 'class_mask.png'))
+    resources = {PACKAGE / 'worlds/lunar_yard.sdf', V2_WORLD,V3_WORLD}
+    for world in (V2_WORLD,V3_WORLD):
+        for element in ET.parse(world).iter():
+            if element.tag in ('uri', 'albedo_map', 'normal_map', 'roughness_map'):
+                resources.add(_resource(element.text))
+    for version in ('v2','v3'):
+        resources.update(PACKAGE / f'models/terrain_{version}/survey' / name
+                         for name in ('manifest.json', 'height_grid.npz', 'class_mask.png'))
     for source in sorted(resources):
         installed = installed_package / source.relative_to(PACKAGE)
         if (not installed.is_file() or hashlib.sha256(installed.read_bytes()).digest() !=
@@ -132,12 +142,13 @@ def _component_bounds(vertices, faces):
     return [(np.min(points, axis=0)[:2], np.max(points, axis=0)[:2]) for points in groups.values()]
 
 
-@lru_cache(maxsize=1)
-def _v2_geometry():
+@lru_cache(maxsize=2)
+def _v2_geometry(version='v2'):
     ground, classes, obstacles = [], [], []
-    manifest = json.loads((PACKAGE / 'models/terrain_v2/survey/manifest.json').read_text(encoding='utf-8'))
+    folder=PACKAGE/f'models/terrain_{version}/survey'
+    manifest = json.loads((folder/'manifest.json').read_text(encoding='utf-8'))
     ground_files = set(manifest['mesh_sha256']) - {'surface_pebbles.obj'}
-    for model in ET.parse(V2_WORLD).findall('./world/model'):
+    for model in ET.parse(V3_WORLD if version=='v3' else V2_WORLD).findall('./world/model'):
         for link in model.findall('link'):
             for collision in link.findall('collision'):
                 mesh = collision.find('geometry/mesh')
@@ -148,7 +159,7 @@ def _v2_geometry():
                 scale = np.asarray(list(map(float, mesh.findtext('scale', '1 1 1').split())))
                 matrix = _transform(model) @ _transform(link) @ _transform(collision)
                 vertices = (vertices * scale) @ matrix[:3, :3].T + matrix[:3, 3]
-                if path.parent == PACKAGE / 'models/terrain_v2/survey' and path.name in ground_files:
+                if path.parent == folder and path.name in ground_files:
                     ground.append(vertices[faces])
                     classes.extend([path.stem] * len(faces))
                 elif path.name == 'surface_pebbles.obj':
@@ -159,8 +170,8 @@ def _v2_geometry():
     return triangles, np.asarray(classes), obstacles, triangles[:, :, :2].min(axis=1), triangles[:, :, :2].max(axis=1)
 
 
-def v2_spawn_obstacles(*, include_markers=True):
-    obstacles = [(low.copy(), high.copy()) for low, high in _v2_geometry()[2]]
+def v2_spawn_obstacles(*, include_markers=True,scene='survey_v2'):
+    obstacles = [(low.copy(), high.copy()) for low, high in _v2_geometry('v3' if scene in V3_SCENES else 'v2')[2]]
     for marker in v2_marker_metadata() if include_markers else ():
         center, size = np.asarray(marker['position_m']), np.asarray(marker['size_m'])
         obstacles.append((center[:2]-size[:2]/2, center[:2]+size[:2]/2))
@@ -234,7 +245,7 @@ def _clip(triangle, low, high):
     return polygon
 
 
-def validate_v2_spawn(x, y, yaw, *, include_markers=True):
+def validate_v2_spawn(x, y, yaw, *, include_markers=True,scene='survey_v2'):
     """Require a supported, gently graded regolith start before any process starts.
 
     These conservative setup limits only select the initial parked position;
@@ -247,8 +258,8 @@ def validate_v2_spawn(x, y, yaw, *, include_markers=True):
     low, high = np.array([x-hx, y-hy]), np.array([x+hx, y+hy])
     if np.any(low < -15) or np.any(high > 15):
         raise ValueError('起点车体超出 Terrain V2 地表边界，请选择周围平地')
-    triangles, classes, _, minimum, maximum = _v2_geometry()
-    for obstacle_low, obstacle_high in v2_spawn_obstacles(include_markers=include_markers):
+    triangles, classes, _, minimum, maximum = _v2_geometry('v3' if scene in V3_SCENES else 'v2')
+    for obstacle_low, obstacle_high in v2_spawn_obstacles(include_markers=include_markers,scene=scene):
         if np.all(high >= obstacle_low) and np.all(low <= obstacle_high):
             raise ValueError('起点车体与 Terrain V2 岩石或碎石重叠，请选择周围平地')
     selected = np.flatnonzero(np.all(maximum >= low, axis=1) & np.all(minimum <= high, axis=1))

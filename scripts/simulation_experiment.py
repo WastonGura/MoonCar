@@ -12,7 +12,7 @@ import uuid
 import xml.etree.ElementTree as ET
 import numpy as np
 from survey_evaluation import write_json
-from experiment_scenes import (SCENES, V2_SCENES, V2_WORLD, add_v2_localization_markers,
+from experiment_scenes import (SCENES, V2_SCENES, V2_WORLD, V3_SCENES, V3_WORLD, CONTINUOUS_SCENES, add_v2_localization_markers,
                                scene_bounds, scene_metadata, validate_v2_spawn,
                                v2_marker_metadata, v2_spawn_obstacles,
                                verify_installed_scene_resources)
@@ -51,6 +51,7 @@ def survey_world(scene='survey'):
         return add_v2_localization_markers(ET.parse(V2_WORLD))
     if scene == 'survey_v2_native':
         return ET.parse(V2_WORLD)
+    if scene in V3_SCENES:return ET.parse(V3_WORLD)
     tree=ET.parse(WORLD);world=tree.getroot().find('world')
     if scene!='survey':
         # Controlled visibility fixtures: retain the same physics, sensors and ground.
@@ -87,8 +88,8 @@ def survey_world(scene='survey'):
 
 def spawn_obstacles(scene='survey'):
     # Conservative bounds are setup-only world metadata, never sensor observations.
-    if scene in V2_SCENES:
-        return v2_spawn_obstacles(include_markers=scene == 'survey_v2')
+    if scene in CONTINUOUS_SCENES:
+        return v2_spawn_obstacles(include_markers=scene == 'survey_v2',scene=scene)
     obstacles = []
     for model in survey_world(scene).findall('./world/model'):
         for link in model.findall('link'):
@@ -138,8 +139,8 @@ def validate_task(body):
     for low, high in spawn_obstacles(scene):
         if x+hx >= low[0] and x-hx <= high[0] and y+hy >= low[1] and y-hy <= high[1]:
             raise ValueError('起点车体与场景障碍或坡面重叠，请选择周围平地')
-    if scene in V2_SCENES:
-        validate_v2_spawn(x, y, yaw, include_markers=scene == 'survey_v2')
+    if scene in CONTINUOUS_SCENES:
+        validate_v2_spawn(x, y, yaw, include_markers=scene == 'survey_v2',scene=scene)
     return dict(version=1, region=list(map(float, region)), start=list(map(float, start)),
                 **({'scene':scene} if 'scene' in body else {}),**({'gui':body['gui']} if 'gui' in body else {}),
                 **({'simulation_profile':profile} if 'simulation_profile' in body else {}))
@@ -318,10 +319,10 @@ class SimulationExperiment:
         task = validate_task(body)  # Reject bad requests before stopping the current experiment.
         scene = task.get('scene', 'survey')
         setup = scene_metadata(scene, self.laser_odometry_mode if self.laser_odometry else None)
-        setup.update(validate_v2_spawn(*task['start'], include_markers=scene == 'survey_v2')
-                     if scene in V2_SCENES else dict(initial_z=0., setup_only=True))
+        setup.update(validate_v2_spawn(*task['start'], include_markers=scene == 'survey_v2',scene=scene)
+                     if scene in CONTINUOUS_SCENES else dict(initial_z=0., setup_only=True))
         setup['localization_markers'] = list(v2_marker_metadata()) if scene == 'survey_v2' else []
-        setup['render_engine'] = 'ogre2' if scene in V2_SCENES else 'ogre'
+        setup['render_engine'] = 'ogre2' if scene in CONTINUOUS_SCENES else 'ogre'
         with self.lock:
             if self.worker and self.worker.is_alive():
                 raise ValueError('正在切换实验，请等待完成')

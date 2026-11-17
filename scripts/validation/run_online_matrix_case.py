@@ -24,6 +24,9 @@ def main():
     parser.add_argument('--wall-budget',type=float,default=None)
     parser.add_argument('--survey-budget',type=float,default=None)
     parser.add_argument('--radius',type=float,default=None)
+    parser.add_argument('--scene',choices=('survey_v2_native','survey_v3_native'),default='survey_v2_native')
+    parser.add_argument('--start',type=float,nargs=3)
+    parser.add_argument('--direct-goal',type=float,nargs=2)
     args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=False)
     api = 'http://127.0.0.1:8766'
     here = Path(__file__).resolve().parent
@@ -45,9 +48,12 @@ def main():
     assert software.get('verified') and software.get('product_clean')
     assert software['baseline']['simulation_profile'] == 'r5_support_v1'
     ramp = args.case == 'ramp'
-    task = dict(version=1, scene='survey_v2_native', simulation_profile='r5_support_v1', gui=os.environ.get('MOONCAR_VALIDATION_GUI')=='1',
+    task = dict(version=1, scene=args.scene, simulation_profile='r5_support_v1', gui=os.environ.get('MOONCAR_VALIDATION_GUI')=='1',
         region=[-8., -8., 8., 8.] if ramp else [-15., -15., 15., 15.],
         start=[0., 0., 0.] if ramp else [.5, 0., 0.])
+    if args.start is not None:task['start']=args.start
+    if args.direct_goal is not None and (args.case!='direct' or not all(math.isfinite(v) for v in args.direct_goal)):
+        raise ValueError('A finite direct goal requires the direct case')
     wall_budget = 480 if args.case == 'direct' else 1200
     sim_budget = 300 if ramp else 180
     if args.wall_budget is not None:wall_budget=args.wall_budget
@@ -58,6 +64,13 @@ def main():
         raise ValueError('Invalid experiment collection limits')
     route = [('move', [1.2, 0.]), ('turn', math.pi/4), ('turn', 0.), ('move', [.5, 0.]),
              ('pan_tilt', [.4, -.2]), ('pan_tilt', [0., 0.])]
+    if args.direct_goal is not None:
+        # Keep each declared goal within the depth camera's observed horizon.
+        distance=math.dist(task['start'][:2],args.direct_goal)
+        segments=max(1,math.ceil(distance/2.5))
+        route=[('pan_tilt',[0.,-.262])]+[('move',[
+            task['start'][axis]+(args.direct_goal[axis]-task['start'][axis])*index/segments
+            for axis in (0,1)]) for index in range(1,segments+1)]
     write('protocol.json', dict(case=args.case, heading_trial=os.environ.get('MOONCAR_RAMP_HEADING_CASE'), task=task, software=software, wall_budget_s=wall_budget,
         mission_sim_budget_s=sim_budget, planned_direct_actions=route if args.case == 'direct' else None,
         terrain_strategy=os.environ.get('MOONCAR_TERRAIN_STRATEGY','baseline'),radius=radius,
@@ -143,8 +156,8 @@ def main():
         spawn('lifecycle', [sys.executable, '-B', str(here/'observe_lifecycle.py'),
                            '--output', str(args.output/'lifecycle')], env)
         spawn('observer', [sys.executable, '-B', str(here/'observe_simulation.py'), '--folder',
-            str(args.output/'observer'), '--world', 'mooncar_ramp_v2' if ramp else 'mooncar_survey_v2',
-            '--start-x', '0' if ramp else '.5'], env)
+            str(args.output/'observer'), '--world', 'mooncar_ramp_v2' if ramp else 'mooncar_survey_v3' if args.scene=='survey_v3_native' else 'mooncar_survey_v2',
+            '--start-x',str(task['start'][0]),'--start-y',str(task['start'][1]),'--start-yaw',str(task['start'][2])], env)
         if os.environ.get('MOONCAR_VALIDATION_FOLLOW_CAMERA'):
             spawn('camera',[sys.executable,'-B',str(here/'follow_camera.py'),
                             '--output',str(args.output/'camera')],env)

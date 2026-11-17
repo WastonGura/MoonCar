@@ -2,13 +2,13 @@ import * as THREE from 'three';
 
 export function experimentEditor({scene,camera,controls,renderer,api,message,stopPlayback,onSession}) {
   const $=id=>document.getElementById(id), fields=['region-x0','region-y0','region-x1','region-y1','spawn-x','spawn-y','spawn-yaw'];
-  const sceneNames={survey:'标准场景',survey_v2_native:'Terrain V2（原始地形）',survey_v2:'Terrain V2（定位标柱）',visible_ramp_v1:'坡面测试场景',visible_curve_v1:'曲面测试场景'};
-  const sceneLimit=scene=>['survey_v2','survey_v2_native'].includes(scene)?15:25;
+  const sceneNames={survey:'标准场景',survey_v3_native:'Terrain V3（连续地形）',survey_v2_native:'Terrain V2（历史地形）',survey_v2:'Terrain V2（定位标柱）',visible_ramp_v1:'坡面测试场景',visible_curve_v1:'曲面测试场景'};
+  const sceneLimit=scene=>['survey_v3_native','survey_v2','survey_v2_native'].includes(scene)?15:25;
   function updateSceneBounds(){
     const selected=$('experiment-scene').value,limit=sceneLimit(selected);
     for(const id of fields.slice(0,6)){$(id).min=-limit;$(id).max=limit;}
     $('full-region').textContent=`选择 ${limit*2}×${limit*2} 米全场`;
-    $('experiment-scene-note').textContent=selected==='survey_v2_native'?'原始 V2 月面地形，无额外定位标柱；定位方案以本次采集档案为准，请在受支承的缓坡或平地放置车辆。':selected==='survey_v2'?'V2 月面地形加入四个真实定位标柱，保留旧激光方案的对照场景。':'标准场景及测试场景使用原地形配置。';
+    $('experiment-scene-note').textContent=selected==='survey_v3_native'?'V3 连续月面地形，保留实测坑坡并平滑衔接周围地面，无额外定位标柱。请在平缓、完整受支承的位置放置车辆。':selected==='survey_v2_native'?'历史 V2 月面地形，保留用于复现旧实验；请在受支承的缓坡或平地放置车辆。':selected==='survey_v2'?'V2 月面地形加入四个真实定位标柱，保留旧激光方案的对照场景。':'标准场景及测试场景使用原地形配置。';
   }
   const overlay=new THREE.Group();scene.add(overlay);
   const navigationOverlay=new THREE.Group();scene.add(navigationOverlay);let navigationKey='',lastMotionPhase='',lastSurveyPhase='';
