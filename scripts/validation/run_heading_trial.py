@@ -50,6 +50,8 @@ def main():
         MOONCAR_VALIDATION_OUTPUT=str(args.output/'fixture'), MOONCAR_RAMP_HEADING_CASE=args.mode,
         OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1')
     env['MOONCAR_TERRAIN_STRATEGY']=args.terrain_strategy
+    if args.mode=='autonomy':
+        env['MOONCAR_AUTONOMY_WALL_LIMIT_SECONDS']=str(max(3600.,args.wall_budget))
     if args.mode in ('autonomy','direct'):
         env.pop('MOONCAR_RAMP_HEADING_CASE',None)
         if args.record_video:env['MOONCAR_VALIDATION_FOLLOW_CAMERA']='1'
@@ -69,6 +71,7 @@ def main():
     protocol = dict(mode=args.mode, changes=[], production_defaults_changed=False,
         terrain_strategy=args.terrain_strategy,
         survey_budget=args.survey_budget,radius=args.radius if args.mode in ('autonomy','direct') else 8.,wall_budget=args.wall_budget,
+        autonomy_wall_limit_seconds=max(3600.,args.wall_budget) if args.mode=='autonomy' else None,
         scene=args.scene,start=args.start,direct_goal=args.direct_goal,
         maximum_new_worlds=1, control_truth_inputs=False, physical_parameters_changed=False,
         actual_gui_video=args.record_video, video_timing_comparable_to_headless=False)

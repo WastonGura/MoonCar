@@ -450,7 +450,11 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
 
 
 class AutonomousSurvey:
-    def __init__(self,motion,initial_depth_scan=False,localization_revisit_enabled=True):
+    def __init__(self,motion,initial_depth_scan=False,localization_revisit_enabled=True,wall_limit_seconds=3600.):
+        if (type(wall_limit_seconds) not in (int,float) or not math.isfinite(wall_limit_seconds)
+                or not 30<=wall_limit_seconds<=86400):
+            raise ValueError('Autonomy wall limit must be 30..86400 seconds')
+        self.wall_limit_seconds=float(wall_limit_seconds)
         self.motion=motion;self.lock=threading.RLock();self.worker=None
         self.initial_depth_scan=bool(initial_depth_scan)
         self.localization_revisit_enabled=bool(localization_revisit_enabled)
@@ -506,7 +510,7 @@ class AutonomousSurvey:
             self.revisit_old_proof=ReobservedAnchorProof();self.revisit_receipt_cursor=None;self.revisit_receipt_snapshot=None
             self.path=Path(directory)/task['id']/f'autonomy-{strategy}-{uuid.uuid4().hex[:8]}.json'
             self.data=dict(active=True,phase='planning',reason='根据当前观测比较转向、前进与换位补采',
-                           origin=self.origin,budget_seconds=budget,radius=radius,started=started,
+                           origin=self.origin,budget_seconds=budget,wall_limit_seconds=self.wall_limit_seconds,radius=radius,started=started,
                            elapsed_seconds=0,history=[],decision=None,archive=self.path.name,strategy=strategy)
             self.data['metrics_version']=VERSION
             self.data['execution_policy']=EXECUTION_POLICY
@@ -555,8 +559,8 @@ class AutonomousSurvey:
         if not self.data['active']:return False
         if self.now()-self.data['started']>=self.data['budget_seconds']:
             self.stop('时间预算已用尽，已停止运动并保留采集档案','budget_reached');return False
-        if time.monotonic()-self.wall_started>3600:
-            self.stop('达到一小时运行上限','budget_reached');return False
+        if time.monotonic()-self.wall_started>self.wall_limit_seconds:
+            self.stop(f'达到墙钟运行上限（{self.wall_limit_seconds:g} 秒）','budget_reached');return False
         state=self.motion.state()
         health=state.get('diagnostics',{}).get('laser_localization',{})
         stopped_for_localization=(state.get('error')==LOCALIZATION_STOP_REASON and
@@ -627,7 +631,7 @@ class AutonomousSurvey:
             now=time.monotonic()
             if self.now()-self.data['started']>=self.data['budget_seconds']:
                 event['outcome']='budget_reached';self.stop('等待定位恢复时任务时间已用尽','budget_reached');return False
-            if now-event['started_wall']>=LOCALIZATION_RECOVERY_WALL_SECONDS or now-self.wall_started>=3600:
+            if now-event['started_wall']>=LOCALIZATION_RECOVERY_WALL_SECONDS or now-self.wall_started>=self.wall_limit_seconds:
                 event['outcome']='timeout';self.stop('定位未恢复就绪，已停止并保留采集档案','fault');return False
             current=self.motion.state();quality=current.get('diagnostics',{}).get('laser_localization',{})
             if quality.get('session_id')!=session:

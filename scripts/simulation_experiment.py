@@ -183,7 +183,8 @@ class SimulationExperiment:
         from autonomous_survey import AutonomousSurvey
         self.autonomy=AutonomousSurvey(self.motion,
             initial_depth_scan=self.laser_odometry and self.laser_odometry_mode in ('terrain','rgbd','rgbd_window'),
-            localization_revisit_enabled=self.laser_odometry_mode=='rgbd')
+            localization_revisit_enabled=self.laser_odometry_mode=='rgbd',
+            wall_limit_seconds=float(os.environ.get('MOONCAR_AUTONOMY_WALL_LIMIT_SECONDS','3600')))
         self.executor=MultiThreadedExecutor(num_threads=4);self.executor.add_node(self.motion)
         self.ros_thread=threading.Thread(target=self.executor.spin,daemon=True);self.ros_thread.start()
 
