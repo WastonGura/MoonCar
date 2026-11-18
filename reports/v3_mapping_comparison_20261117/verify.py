@@ -118,8 +118,9 @@ def main():
         receipt['strict_resource_isolation_verified']=False
     (OUTPUT/'verification.json').write_text(json.dumps(receipt, indent=2)+'\n', encoding='utf-8', newline='\n')
     paths += [args.raw/'runtime-source.json', args.raw/'runtime-before.json', args.raw/'runtime-after.json']
-    paths += [OUTPUT.parent/'turn_minimap_20261111/render_video.py',
-              OUTPUT.parent/'autonomy_terrain_comparison_20261116/verify.py',
+    reports = Path(__file__).resolve().parents[1]
+    paths += [reports/'turn_minimap_20261111/render_video.py',
+              reports/'autonomy_terrain_comparison_20261116/verify.py',
               Path(__file__).resolve(),Path(__file__).with_name('compose.py'),Path(__file__).with_name('map_reference.py')]
     paths += [p for p in OUTPUT.iterdir() if p.suffix in ('.json', '.jsonl', '.png', '.mp4', '.py', '.npz', '.md') and p.name != 'evidence-sha256.json']
     for path in paths:

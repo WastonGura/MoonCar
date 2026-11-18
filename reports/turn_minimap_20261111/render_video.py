@@ -33,7 +33,8 @@ def state_rows(path):
             row=json.loads(line);state=row['state'];motion=state['motion']
             result.append(dict(wall=row['wall'],state=dict(
                 motion=dict(pose=motion.get('pose'),goal=motion.get('goal'),
-                            diagnostics=dict(sim_stamp=motion.get('diagnostics',{}).get('sim_stamp'))),
+                            diagnostics={key: motion.get('diagnostics', {}).get(key)
+                                         for key in ('sim_stamp', 'gimbal_position', 'gimbal_joint_stamp_sim')}),
                 autonomy={k:state['autonomy'][k] for k in ('phase','reason') if k in state.get('autonomy',{})})))
     return result
 
@@ -61,7 +62,11 @@ def main():
     parser.add_argument('--label',default='')
     parser.add_argument('--filename',default='v2-uphill-turn-minimap.mp4')
     parser.add_argument('--scene-label',default='V2')
+    parser.add_argument('--font',type=Path,default=Path('C:/Windows/Fonts/msyh.ttc'))
+    parser.add_argument('--fps',type=int,default=FPS)
     args = parser.parse_args()
+    if not 6 <= args.fps <= 60:
+        parser.error('Output FPS must be between 6 and 60')
     args.output.mkdir(parents=True, exist_ok=True)
     result = read(args.trial/'case/result.json')
     autonomy = result.get('autonomy', {})
@@ -100,7 +105,7 @@ def main():
         wheels, _ = load_wheels(args.trial/'case/observer', reference)
     except ValueError as error:
         wheel_error = str(error)
-    font = Path('C:/Windows/Fonts/msyh.ttc')
+    font = args.font
     if not font.exists():
         font = Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
     fonts = {size: ImageFont.truetype(str(font), size) for size in (13, 15, 17, 19, 22, 25, 28)}
@@ -251,6 +256,12 @@ def main():
         color = '#ff998d' if label=='任务已停车' or status=='已停止' else CYAN
         for i in range(0,min(len(status),40),20):
             text(d, (911, 132+(i//20)*23), status[i:i+20], 17, color)
+        diagnostics = state['motion'].get('diagnostics', {})
+        feedback_stamp = diagnostics.get('gimbal_joint_stamp_sim')
+        if (args.autonomy and diagnostics.get('gimbal_position')
+                and feedback_stamp is not None and feedback_stamp <= stamp + 1e-6):
+            pan, tilt = diagnostics['gimbal_position']
+            text(d, (356, 767), f'云台实测  偏航 {math.degrees(pan):+.1f}°   俯仰 {math.degrees(tilt):+.1f}°', 17, MUTED)
         speed = '.25× 仿真时间' if turn is not None and turn<=stamp<=((turn_end or end)+2.) else '1× 仿真时间'
         text(d, (26, 767), 'Gazebo 现场录屏 · 随车裁切', 17)
         text(d, (826, 767), '记录结束 · 停帧' if held else speed, 17, MUTED)
@@ -287,14 +298,14 @@ def main():
     while stamp<end:
         timeline.append(stamp)
         slow = turn is not None and turn<=stamp<=((turn_end or end)+2.)
-        stamp += (.25 if slow else 1.)/FPS
-    timeline.extend([end]*(2*FPS))
+        stamp += (.25 if slow else 1.)/args.fps
+    timeline.extend([end]*(2*args.fps))
     raw_size = recording['width']*recording['height']*3
     decoder = subprocess.Popen(['ffmpeg','-v','error','-i',str(args.trial/'video/scene-walltime.mp4'),
                                 '-f','rawvideo','-pix_fmt','rgb24','pipe:1'],stdout=subprocess.PIPE)
     target = args.output/args.filename
     encoder = subprocess.Popen(['ffmpeg','-v','error','-y','-f','rawvideo','-pix_fmt','rgb24',
-                                '-s',f'{WIDTH}x{HEIGHT}','-r',str(FPS),'-i','pipe:0',
+                                '-s',f'{WIDTH}x{HEIGHT}','-r',str(args.fps),'-i','pipe:0',
                                 '-an','-c:v','libx264','-threads','2','-preset','fast','-crf','20',
                                 '-pix_fmt','yuv420p','-movflags','+faststart',str(target)],stdin=subprocess.PIPE)
     cursor = -1
@@ -310,7 +321,7 @@ def main():
                 if len(data)!=raw_size:raise ValueError('Source footage ended before the selected frame')
                 picture = Image.frombytes('RGB',(recording['width'],recording['height']),data)
                 cursor += 1
-            composed = frame(picture,stamp,capture[index]['capture_wall'],i>=len(timeline)-FPS*2)
+            composed = frame(picture,stamp,capture[index]['capture_wall'],i>=len(timeline)-args.fps*2)
             while previews and stamp>=previews[0][0]:
                 composed.save(args.output/previews.pop(0)[1])
             encoder.stdin.write(composed.tobytes())
@@ -325,7 +336,7 @@ def main():
                    autonomy_video=args.autonomy,label=args.label,
                    outcome=result['outcome'],reason=autonomy.get('reason'),actions=actions,
                    controller_stop_reason=stop_reason,
-                   sim_range=[start,end],video_seconds=len(timeline)/FPS,frames=len(timeline),fps=FPS,
+                   sim_range=[start,end],video_seconds=len(timeline)/args.fps,frames=len(timeline),fps=args.fps,
                    actual_captures=len(capture),navigation_snapshots=len(grids),wheel_error=wheel_error,
                    capture_error=recording.get('error'),
                    encoder_exit=encoded,decoder_exit=decoded,

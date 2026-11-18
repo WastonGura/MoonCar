@@ -1,4 +1,5 @@
 """Analytic checks for the offline evaluator, with no simulation processes."""
+import argparse
 import json
 from pathlib import Path
 
@@ -8,6 +9,9 @@ from map_reference import ground_at, overlay_triangles, reduce_reference, compar
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, default=Path(__file__).with_name('reference-checks.json'))
+    args = parser.parse_args()
     axis = np.array([0., 1.])
     heights = np.array([[0., 0.], [0., 1.]])
     assert np.allclose(ground_at(axis, heights, [.8, .2], [.2, .8]), [.2, .2])
@@ -52,7 +56,7 @@ def main():
                                   'no_unknown_fill', 'invalid_cells_not_scored', 'outside_area_counted',
                                   'known_2cm_bias_recovered', 'mixed_surfaces_separate', 'highest_exposed_triangle'],
                   passed=True)
-    Path(__file__).with_name('reference-checks.json').write_text(json.dumps(checks, indent=2)+'\n', encoding='utf-8', newline='\n')
+    args.output.write_text(json.dumps(checks, indent=2)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps(checks))
 
 

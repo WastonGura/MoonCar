@@ -17,7 +17,6 @@ BG, WHITE, MUTED = '#0b1420', '#edf3f8', '#a8b7c6'
 BLUE, ORANGE = '#65b8ff', '#ffb366'
 UNKNOWN, INVALID, MIXED = (30, 42, 57), (224, 164, 49), (165, 106, 192)
 W, H, SIDE = 2560, 820, 440
-FONTS = {s:ImageFont.truetype('C:/Windows/Fonts/msyh.ttc', s) for s in (16, 18, 20, 22, 24, 28, 30)}
 HEIGHT_COLORS = np.array([[33, 73, 126], [55, 145, 170], [116, 187, 153], [226, 217, 149], [205, 146, 96], [241, 232, 219]], dtype=float)
 
 
@@ -56,6 +55,9 @@ def load_source(raw, name, reference):
     folder = raw/name
     result = read(folder/'case/result.json')
     mission = result['autonomy']
+    protocol = read(folder/'protocol.json')
+    camera_mode = protocol.get('camera_mode')
+    label = {'fixed': '固定版', 'gimbal': '云台版'}.get(camera_mode, '原策略' if name == 'baseline' else '邻域策略')
     if mission['radius'] is not None:
         raise ValueError('Expected uncropped exploration')
     end = mission['started']+mission['elapsed_seconds']
@@ -107,7 +109,8 @@ def load_source(raw, name, reference):
     for row in truth:
         if row['stamp']-previous >= .1:
             trail.append(row['xyz'][:2]); previous = row['stamp']
-    stats.update(strategy=name, terrain_strategy='baseline' if name == 'baseline' else 'elevation_neighborhood_v1',
+    stats.update(strategy=name, terrain_strategy=protocol['terrain_strategy'],
+                 camera_mode=camera_mode, autonomy_strategy=mission.get('strategy'),
                  experiment=result['experiment'], tested_commit=result['software']['git_commit'],
                  outcome=result['outcome'], reason=mission['reason'], budget_seconds=mission['budget_seconds'],
                  elapsed_seconds=mission['elapsed_seconds'], wall_seconds=result['elapsed_wall_s'],
@@ -121,7 +124,8 @@ def load_source(raw, name, reference):
                  localization_xy_p95_m=float(np.percentile(errors, 95)) if errors else None,
                  capture=read(folder/'video/recording.json'),
                  process_exits={k:read(folder/(k+'-exit.json'))['exit_code'] for k in ('driver', 'video', 'backend')})
-    return dict(name=name, result=result, mission=mission, snapshots=snapshots,map_path=map_path,capacity_warning=capacity_warning,
+    return dict(name=name, label=label, result=result, mission=mission, snapshots=snapshots,
+                map_path=map_path, capacity_warning=capacity_warning,
                 map_walls=[r['wall'] for r in snapshots], poses=poses,
                 pose_walls=[r['wall'] for r in poses], states=states,
                 state_walls=[r['wall'] for r in states],
@@ -155,10 +159,12 @@ def main():
     parser.add_argument('--output',type=Path,default=OUTPUT)
     parser.add_argument('--crf',type=int,default=21)
     parser.add_argument('--maxrate-kbps',type=int)
+    parser.add_argument('--font',type=Path,default=Path('C:/Windows/Fonts/msyh.ttc'))
     args = parser.parse_args()
     if not 0<=args.crf<=40:raise ValueError('Unsupported video CRF')
     if args.maxrate_kbps is not None and args.maxrate_kbps<100:raise ValueError('Unsupported video bitrate cap')
     OUTPUT=args.output.resolve();OUTPUT.mkdir(parents=True,exist_ok=True)
+    fonts = {size: ImageFont.truetype(str(args.font), size) for size in (16, 18, 20, 22, 24, 28, 30)}
     reference = build(OUTPUT)
     low, high = -.35, math.ceil(float(reference['z'].max())*10)/10
     sources = [load_source(args.raw, name, reference) for name in ('baseline', 'candidate')]
@@ -177,8 +183,11 @@ def main():
     write(OUTPUT/'common-area-errors.json', overlap)
     metadata = [s['metadata'] for s in sources]
     fps = metadata[0]['fps']
-    origin = min(s['sim_range'][0] for s in metadata)
-    leading = [round((s['sim_range'][0]-origin)*fps) for s in metadata]
+    camera_comparison = [source['stats']['camera_mode'] for source in sources] == ['fixed', 'gimbal']
+    starts = [m['sim_range'][0] - (source['mission']['started'] if camera_comparison else 0.)
+              for source, m in zip(sources, metadata)]
+    origin = min(starts)
+    leading = [round((start-origin)*fps) for start in starts]
     count = max(s['frames']+pad for s, pad in zip(metadata, leading))
     trailing = [count-s['frames']-pad for s, pad in zip(metadata, leading)]
     truth_image = raster(reference['z'], np.ones((N, N), bool), np.ones((N, N), bool), low, high)
@@ -191,9 +200,11 @@ def main():
         frame = Image.new('RGB', (W, H), BG)
         d = ImageDraw.Draw(frame)
         def text(x, y, value, size=22, fill=WHITE):
-            d.text((x, y), value, font=FONTS[size], fill=fill)
+            d.text((x, y), value, font=fonts[size], fill=fill)
         text(28, 12, 'V3 测绘对照  |  同一坐标与比例 · 全场 30 × 30 m · 25 cm 格 · 未测格保留为空', 28)
-        titles = ['原策略 · 实测高程', '原策略 · 高度差', '环境真值 · 高程基准', '邻域策略 · 实测高程', '邻域策略 · 高度差']
+        left, right = (source['label'] for source in sources)
+        titles = [f'{left} · 实测高程', f'{left} · 高度差', '环境真值 · 高程基准',
+                  f'{right} · 实测高程', f'{right} · 高度差']
         positions = [34, 546, 1058, 1570, 2082]
         visuals, summaries = [], []
         for side, (source, record) in enumerate(zip(sources, records)):
@@ -238,7 +249,9 @@ def main():
             text(x, 650, f"已观测 {stats['total_observed_m2']:.2f} m²   有效高程 {stats['valid_surface_m2']:.2f} m²", 24, fill)
             text(x, 686, f"单表面高度 RMSE {value}   匹配 {stats['single_surface']['count']} 格", 22)
             record = records[side]
-            text(x, 723, f"实际画面 {record['sim']:.2f} s · 测绘源帧 {stats['stamp']:.2f} s", 20, MUTED)
+            start = source['mission']['started'] if camera_comparison else 0.
+            label = '任务经过' if camera_comparison else '实际画面'
+            text(x, 723, f"{label} {max(0.,record['sim']-start):.2f} s · 测绘源帧 {max(0.,stats['stamp']-start):.2f} s", 20, MUTED)
             if record.get('capacity_warning_wall') is not None:
                 text(x,751,'测绘会话容量已满，新帧未加入地图',18,'#ff9d85')
             elif source['stats']['outcome'] not in ('passed','budget_completed') and record['capture_wall']>=source['stats']['terminal_receipt_wall']:
@@ -315,7 +328,8 @@ def main():
     (OUTPUT/'overlay-timing.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in audit), encoding='utf-8', newline='\n')
     write(OUTPUT/'summary.json', [s['stats'] for s in sources])
     write(OUTPUT/'video-summary.json', dict(video=target.name, frames=count, fps=fps, seconds=count/fps,
-        leading_holds=leading, trailing_holds=trailing, probe=probe, full_decode_exit=0,crf=args.crf,maxrate_kbps=args.maxrate_kbps,
+        leading_holds=leading, trailing_holds=trailing, synchronization='mission start' if camera_comparison else 'simulation clock',
+        probe=probe, full_decode_exit=0,crf=args.crf,maxrate_kbps=args.maxrate_kbps,
         map_future_data_violations=0, source_metadata=metadata, height_range_m=[low, high], error_range_m=[-.1, .1],
         sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
     print(json.dumps(dict(video=str(target), seconds=count/fps, summaries=[s['stats'] for s in sources]), ensure_ascii=False), flush=True)
