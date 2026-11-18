@@ -3,11 +3,13 @@
 Coordinates are metres in one gravity-aligned session frame. Pose corrections
 must be applied before fusion; this module does not implement SLAM loop closure.
 """
+from contextlib import ExitStack, contextmanager
 import json
 import io
 import math
 import os
 from pathlib import Path
+import shutil
 import tempfile
 import zipfile
 
@@ -16,23 +18,161 @@ import numpy as np
 from terrain_geometry import transform_points
 
 
-def open_archive(path):
-    # Capture one atomic file version before the expensive point fusion starts.
-    with open(path, 'rb') as handle:
+MAX_PART_FRAMES = 5_000
+MAX_PART_POINTS = 5_000_000
+MAX_PART_BYTES = 150_000_000
+MAX_INDEX_BYTES = 16_000_000
+LEGACY_FORMATS = ('mooncar-observations-v1', 'mooncar-observations-v2')
+SEGMENTED_FORMAT = 'mooncar-observations-v3'
+
+
+def _check_part(archive):
+    entries = archive.infolist()
+    if len(entries) not in (6, 8) or sum(i.file_size for i in entries) > MAX_PART_BYTES:
+        raise ValueError('Observation segment exceeds supported capacity')
+
+
+def _decode_index(archive):
+    if archive.getinfo('index.json').file_size > MAX_INDEX_BYTES:
+        raise ValueError('Observation index exceeds supported capacity')
+    index = json.loads(archive.read('index.json'))
+    meta, ends, stamps = index['metadata'], index['ends'], np.asarray(index['stamps'])
+    if (meta.get('format') != SEGMENTED_FORMAT or type(meta.get('frames')) is not int
+            or not isinstance(ends, list) or len(ends) < 2
+            or any(type(end) is not int for end in ends)
+            or any(not 0 < b-a <= MAX_PART_FRAMES for a, b in zip([0]+ends, ends))
+            or ends[-1] != meta.get('frames')):
+        raise ValueError('Invalid segmented archive index')
+    expected = ['index.json'] + [_part_name(i) for i in range(len(ends))]
+    if sorted(archive.namelist()) != sorted(expected):
+        raise ValueError('Invalid observation segment names')
+    if any(archive.getinfo(name).file_size > MAX_PART_BYTES for name in expected[1:]):
+        raise ValueError('Observation segment exceeds supported capacity')
+    _check_stamps(stamps, ends[-1])
+    return meta, stamps, ends
+
+
+def _check_stamps(stamps, count):
+    if (type(count) is not int or count < 0 or stamps.shape != (count,)
+            or stamps.dtype.kind not in 'fiu' or not np.isfinite(stamps).all()
+            or (count and stamps[0] < 0) or np.any(stamps[1:] <= stamps[:-1])):
+        raise ValueError('Invalid archive timestamps')
+
+
+def _part_name(index):
+    return f'segments/{index:09d}.npz'
+
+
+def _parts_from_bundle(archive, ends):
+    for index, end in enumerate(ends):
+        buffer = io.BytesIO(archive.read(_part_name(index)))
+        with zipfile.ZipFile(buffer) as part:
+            _check_part(part)
+        buffer.seek(0)
+        with np.load(buffer, allow_pickle=False) as data:
+            yield end, data
+
+
+@contextmanager
+def _observation_archive(path, *, replay=False):
+    # Hold a single snapshot across reads, even if the producer replaces it.
+    with ExitStack() as stack:
+        handle = stack.enter_context(open(path, 'rb'))
+        archive = stack.enter_context(zipfile.ZipFile(handle))
         stat = os.fstat(handle.fileno())
-        if stat.st_size > 150000000:
-            raise ValueError('Archive exceeds supported capacity')
-        blob = handle.read(150000001)
-    if len(blob) > 150000000:
-        raise ValueError('Archive exceeds supported capacity')
-    with zipfile.ZipFile(io.BytesIO(blob)) as archive:
-        if len(archive.infolist()) not in (6, 8) or sum(i.file_size for i in archive.infolist()) > 150000000:
-            raise ValueError('Archive exceeds supported capacity')
-    return np.load(io.BytesIO(blob), allow_pickle=False), stat.st_mtime_ns
+        if 'index.json' in archive.namelist():
+            if replay and os.name == 'nt':
+                # Release the live archive before fusion so Windows readers
+                # do not block atomic replacement for the entire replay.
+                snapshot = stack.enter_context(tempfile.TemporaryFile())
+                handle.seek(0)
+                shutil.copyfileobj(handle, snapshot)
+                archive.close()
+                handle.close()
+                archive = stack.enter_context(zipfile.ZipFile(snapshot))
+            meta, stamps, ends = _decode_index(archive)
+            yield meta, stamps, stat.st_mtime_ns, _parts_from_bundle(archive, ends)
+        else:
+            _check_part(archive)
+            if stat.st_size > MAX_PART_BYTES:
+                raise ValueError('Archive exceeds supported capacity')
+            handle.seek(0)
+            blob = handle.read(MAX_PART_BYTES+1)
+            if len(blob) > MAX_PART_BYTES:
+                raise ValueError('Archive exceeds supported capacity')
+            # Legacy archives were snapshotted in memory before fusion. Keep
+            # the same replacement behavior for readers on Windows.
+            handle.close()
+            with np.load(io.BytesIO(blob), allow_pickle=False) as data:
+                meta, stamps = json.loads(str(data['metadata'])), data['stamps']
+                if meta.get('format') not in LEGACY_FORMATS or len(stamps) > MAX_PART_FRAMES:
+                    raise ValueError('Invalid map metadata')
+                _check_stamps(stamps, meta.get('frames'))
+                yield meta, stamps, stat.st_mtime_ns, iter(((len(stamps), data),))
+
+
+@contextmanager
+def _atomic_output(path):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(dir=path.parent, suffix='.tmp', delete=False) as handle:
+        temporary = Path(handle.name)
+        try:
+            yield handle
+            handle.flush()
+            os.fsync(handle.fileno())
+            handle.close()
+            os.replace(temporary, path)
+        finally:
+            handle.close()
+            temporary.unlink(missing_ok=True)
+
+
+def _write_part(handle, metadata, frames, robot_poses):
+    offsets = np.cumsum([0] + [len(f[1]) for f in frames], dtype=np.int64)
+    np.savez_compressed(handle, metadata=np.array(json.dumps(metadata)),
+                        points=np.concatenate([f[1] for f in frames]) if frames else np.empty((0, 3)),
+                        offsets=offsets, stamps=np.array([f[0] for f in frames]),
+                        translations=np.array([f[2] for f in frames]).reshape(-1, 3),
+                        quaternions=np.array([f[3] for f in frames]).reshape(-1, 4),
+                        robot_poses=np.array([p if p is not None else np.zeros(7) for p in robot_poses]).reshape(-1, 7),
+                        robot_valid=np.array([p is not None for p in robot_poses], dtype=bool))
+
+
+def _read_part(data, expected_stamps):
+    meta = json.loads(str(data['metadata']))
+    if meta.get('format') not in LEGACY_FORMATS:
+        raise ValueError('Unsupported observation segment')
+    points, offsets, stamps = data['points'], data['offsets'], data['stamps']
+    translations, quaternions = data['translations'], data['quaternions']
+    count = len(expected_stamps)
+    robot_poses = data['robot_poses'] if meta['format'].endswith('v2') else np.zeros((count, 7))
+    robot_valid = data['robot_valid'] if meta['format'].endswith('v2') else np.zeros(count, dtype=bool)
+    if (robot_poses.shape != (count, 7) or robot_valid.shape != (count,)
+            or robot_valid.dtype.kind != 'b' or not np.isfinite(robot_poses).all()
+            or np.any(np.abs(robot_poses[:, :3]) > 10000)
+            or np.any(np.linalg.norm(robot_poses[robot_valid, 3:], axis=1) < 1e-9)):
+        raise ValueError('Invalid archived robot poses')
+    if (count > MAX_PART_FRAMES or points.ndim != 2 or points.shape[1] != 3
+            or len(points) > MAX_PART_POINTS or offsets.dtype.kind not in 'iu'
+            or offsets.shape != (count + 1,) or offsets[0] != 0 or offsets[-1] != len(points)
+            or np.any(offsets[1:] <= offsets[:-1]) or np.any(np.diff(offsets) < 3)
+            or np.any(np.diff(offsets) > 100000)
+            or translations.shape != (count, 3) or quaternions.shape != (count, 4)
+            or not np.array_equal(stamps, expected_stamps) or meta.get('frames') != count):
+        raise ValueError('Invalid archive arrays')
+    if not np.isfinite(points).all() or not np.isfinite(translations).all() or not np.isfinite(quaternions).all():
+        raise ValueError('Invalid archive values')
+    if np.any(np.abs(points) > 10000) or np.any(np.abs(translations) > 10000):
+        raise ValueError('Archive coordinates exceed supported range')
+    if np.any(np.linalg.norm(quaternions, axis=1) < 1e-9):
+        raise ValueError('Invalid archive quaternion')
+    return meta, points, offsets, translations, quaternions, robot_poses, robot_valid
 
 
 class TerrainMap:
-    def __init__(self, resolution=0.25, voxel_size=0.05, frame='map', source='observations'):
+    def __init__(self, resolution=0.25, voxel_size=0.05, frame='map', source='observations',
+                 *, spool_directory=None):
         if not all(math.isfinite(v) and v > 0 for v in (resolution, voxel_size)):
             raise ValueError('Map resolutions must be finite and positive')
         if voxel_size > resolution / 2:
@@ -43,6 +183,11 @@ class TerrainMap:
         self.frame, self.source = frame, source
         self.frames = []
         self.robot_poses = []
+        self._parts = []
+        self._part_start = 0
+        self._part_points = 0
+        self._spool_directory = spool_directory
+        self._spool = None
         self._voxels = {}
         self._views = {}
         self._sampling = {}
@@ -53,7 +198,7 @@ class TerrainMap:
                   robot_translation=None, robot_quaternion=None):
         """Store sensor-frame samples and their timestamped sensor-to-session pose.
 
-        Capacity limits fail explicitly rather than silently dropping old terrain.
+        Raw observations roll into bounded segments within the same map.
         Repeated timestamps are rejected to avoid duplicate-message confidence.
         """
         points = np.asarray(points, dtype=np.float64)
@@ -75,13 +220,14 @@ class TerrainMap:
                     or not np.isfinite(rq).all() or np.linalg.norm(rq) < 1e-9 or np.any(np.abs(rt) > 10000)):
                 raise ValueError('Invalid robot pose')
             robot = np.concatenate((rt, rq / np.linalg.norm(rq)))
-        if len(self.frames) >= 5000 or sum(len(f[1]) for f in self.frames) + len(points) > 5000000:
-            raise ValueError('Session capacity reached; save and start another session')
         # Fuse the same precision that is archived, including voxel-boundary cases.
         points = points.astype(np.float32)
         world = transform_points(points, translation, quaternion)
         if not np.isfinite(world).all() or np.max(np.abs(world)) > 10000:
             raise ValueError('Invalid transformed coordinates')
+        if (len(self.frames) - self._part_start >= MAX_PART_FRAMES
+                or self._part_points + len(points) > MAX_PART_POINTS):
+            self._seal_part()
         keys, inverse = np.unique(np.floor(world / self.voxel_size).astype(np.int64),
                                   axis=0, return_inverse=True)
         sums = np.zeros((len(keys), 3))
@@ -102,9 +248,29 @@ class TerrainMap:
             angle=math.atan2(translation[1]-(key[1]+.5)*self.resolution,translation[0]-(key[0]+.5)*self.resolution)
             bearing=int((angle+math.pi)/(math.pi/4))%8
             self._sampling[key]=(mask | (1 << int((by%4)*4+bx%4)),views | (1 << bearing))
-        self.frames.append((float(stamp), points.astype(np.float32).copy(),
-                            translation.copy(), quaternion.copy()))
+        self.frames.append((float(stamp), points, translation.copy(), quaternion.copy()))
         self.robot_poses.append(robot)
+        self._part_points += len(points)
+
+    def _write_frames(self, handle, start, end):
+        metadata = dict(self.metadata(), format=LEGACY_FORMATS[1], frames=end-start)
+        _write_part(handle, metadata, self.frames[start:end], self.robot_poses[start:end])
+
+    def _seal_part(self):
+        end = len(self.frames)
+        path = None
+        if self._spool_directory is not None:
+            if self._spool is None:
+                self._spool = tempfile.TemporaryDirectory(prefix='.survey-parts-', dir=self._spool_directory)
+            path = Path(self._spool.name) / f'{len(self._parts):09d}.part'
+            with _atomic_output(path) as handle:
+                self._write_frames(handle, self._part_start, end)
+            # The live map only needs each sealed frame's stamp and poses.
+            for i in range(self._part_start, end):
+                stamp, _, translation, quaternion = self.frames[i]
+                self.frames[i] = (stamp, None, translation, quaternion)
+        self._parts.append((end, path))
+        self._part_start, self._part_points = end, 0
 
     def cloud(self):
         if self._cloud is None:
@@ -200,85 +366,61 @@ class TerrainMap:
                     trajectory_frame='sensor origin', stamp=self.frames[-1][0] if self.frames else None)
 
     def save(self, path):
-        """Atomic compressed archive; no pickle, world mesh or synthetic fill."""
-        path = Path(path)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        offsets = np.cumsum([0] + [len(f[1]) for f in self.frames], dtype=np.int64)
-        with tempfile.NamedTemporaryFile(dir=path.parent, suffix='.tmp', delete=False) as handle:
-            temp = Path(handle.name)
-            try:
-                np.savez_compressed(handle, metadata=np.array(json.dumps(self.metadata())),
-                                    points=np.concatenate([f[1] for f in self.frames]) if self.frames else np.empty((0, 3)),
-                                    offsets=offsets, stamps=np.array([f[0] for f in self.frames]),
-                                    translations=np.array([f[2] for f in self.frames]).reshape(-1, 3),
-                                    quaternions=np.array([f[3] for f in self.frames]).reshape(-1, 4),
-                                    robot_poses=np.array([p if p is not None else np.zeros(7) for p in self.robot_poses]).reshape(-1, 7),
-                                    robot_valid=np.array([p is not None for p in self.robot_poses], dtype=bool))
-                handle.flush()
-                os.fsync(handle.fileno())
-            except Exception:
-                handle.close()
-                temp.unlink(missing_ok=True)
-                raise
-        try:
-            os.replace(temp, path)
-        finally:
-            temp.unlink(missing_ok=True)
+        """Atomically save one portable archive, with bounded observation segments."""
+        with _atomic_output(path) as handle:
+            if not self._parts:
+                self._write_frames(handle, 0, len(self.frames))
+                return
+            parts = [*self._parts, (len(self.frames), None)]
+            index = json.dumps(dict(metadata=dict(self.metadata(), format=SEGMENTED_FORMAT),
+                                    ends=[end for end, _ in parts], stamps=[f[0] for f in self.frames]))
+            if len(index) > MAX_INDEX_BYTES:
+                raise OSError('Observation index exceeds supported capacity')
+            with zipfile.ZipFile(handle, 'w', allowZip64=True) as archive:
+                archive.writestr('index.json', index, compress_type=zipfile.ZIP_DEFLATED)
+                start = 0
+                for number, (end, path) in enumerate(parts):
+                    with archive.open(_part_name(number), 'w') as member:
+                        if path is not None:
+                            with path.open('rb') as source:
+                                shutil.copyfileobj(source, member)
+                        else:
+                            self._write_frames(member, start, end)
+                    start = end
 
     @classmethod
     def inspect(cls, path):
-        data, modified = open_archive(path)
-        with data:
-            meta = json.loads(str(data['metadata']))
-        if (meta.get('format') not in ('mooncar-observations-v1', 'mooncar-observations-v2')
-                or type(meta.get('frames')) is not int or not 0 <= meta['frames'] <= 5000):
-            raise ValueError('Invalid map metadata')
-        cls(meta['resolution'], meta['voxel_size'], meta['frame'], meta['source'])
-        return dict(**meta, archive_updated_ns=modified)
+        with _observation_archive(path) as (meta, _, modified, _parts):
+            cls(meta['resolution'], meta['voxel_size'], meta['frame'], meta['source'])
+            return dict(**meta, archive_updated_ns=modified)
+
+    @staticmethod
+    def archive_stamps(path):
+        with _observation_archive(path) as (_, stamps, _modified, _parts):
+            return stamps
 
     @classmethod
     def load(cls, path, until=None):
-        data, modified = open_archive(path)
-        with data:
-            meta = json.loads(str(data['metadata']))
-            if meta.get('format') not in ('mooncar-observations-v1', 'mooncar-observations-v2'):
-                raise ValueError('Unsupported map archive')
-            points, offsets, stamps = data['points'], data['offsets'], data['stamps']
-            translations, quaternions = data['translations'], data['quaternions']
+        with _observation_archive(path, replay=True) as (meta, stamps, modified, parts):
             count = len(stamps)
-            robot_poses = data['robot_poses'] if meta['format'].endswith('v2') else np.zeros((count, 7))
-            robot_valid = data['robot_valid'] if meta['format'].endswith('v2') else np.zeros(count, dtype=bool)
-            if (robot_poses.shape != (count, 7) or robot_valid.shape != (count,)
-                    or robot_valid.dtype.kind != 'b' or not np.isfinite(robot_poses).all()
-                    or np.any(np.abs(robot_poses[:, :3]) > 10000)
-                    or np.any(np.linalg.norm(robot_poses[robot_valid, 3:], axis=1) < 1e-9)):
-                raise ValueError('Invalid archived robot poses')
-            if (count > 5000 or points.ndim != 2 or points.shape[1] != 3 or len(points) > 5000000
-                    or offsets.dtype.kind not in 'iu' or offsets.shape != (count + 1,)
-                    or offsets[0] != 0 or offsets[-1] != len(points) or np.any(np.diff(offsets) < 3)
-                    or np.any(np.diff(offsets) > 100000)
-                    or translations.shape != (count, 3) or quaternions.shape != (count, 4)
-                    or stamps.shape != (count,) or meta.get('frames') != count):
-                raise ValueError('Invalid archive arrays')
             if until is not None and (not isinstance(until, int) or not 0 <= until <= count):
                 raise ValueError('Invalid replay frame count')
+            stop = count if until is None else until
             result = cls(meta['resolution'], meta['voxel_size'], meta['frame'], meta['source'])
             result.archive_updated_ns = modified
-            # Validate all frames even when replay displays a prefix.
-            for i in range(count):
-                if not np.isfinite(stamps[i]) or stamps[i] < 0 or (i and stamps[i] <= stamps[i - 1]):
-                    raise ValueError('Invalid archive timestamps')
-            if not np.isfinite(points).all() or not np.isfinite(translations).all() or not np.isfinite(quaternions).all():
-                raise ValueError('Invalid archive values')
-            if np.any(np.abs(points) > 10000) or np.any(np.abs(translations) > 10000):
-                raise ValueError('Archive coordinates exceed supported range')
-            if np.any(np.linalg.norm(quaternions, axis=1) < 1e-9):
-                raise ValueError('Invalid archive quaternion')
-            for i in range(count if until is None else until):
-                result.add_frame(points[offsets[i]:offsets[i + 1]], float(stamps[i]), translations[i], quaternions[i],
-                                 robot_poses[i, :3] if robot_valid[i] else None,
-                                 robot_poses[i, 3:] if robot_valid[i] else None)
-        return result
+            start = 0
+            # Validate the complete archive even for a prefix replay.
+            for end, data in parts:
+                part_meta, points, offsets, translations, quaternions, robot_poses, robot_valid = (
+                    _read_part(data, stamps[start:end]))
+                if any(part_meta.get(key) != meta.get(key) for key in ('resolution', 'voxel_size', 'frame', 'source')):
+                    raise ValueError('Observation segment coordinate contract mismatch')
+                for i in range(min(end, stop)-start):
+                    result.add_frame(points[offsets[i]:offsets[i + 1]], float(stamps[start+i]), translations[i],
+                                     quaternions[i], robot_poses[i, :3] if robot_valid[i] else None,
+                                     robot_poses[i, 3:] if robot_valid[i] else None)
+                start = end
+            return result
 
     def export_ply(self, path):
         cloud = self.cloud()

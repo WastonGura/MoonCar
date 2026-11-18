@@ -43,7 +43,7 @@ python scripts/offline_survey.py run tmp/survey-example-result/task-replay.json 
 
 ## 输入现有NPZ档案
 
-支持已有`mooncar-observations-v2`档案，原档案不改写。任务输入写为：
+支持旧版 v2 和自动分段的 v3 测绘档案，原档案不改写。两种档案均使用下列任务输入声明。
 
 ```json
 {"format":"observations-v2","path":"session.npz","contract":"input-contract.json"}
@@ -94,7 +94,7 @@ python scripts/offline_survey.py run tmp/survey-example-result/task-replay.json 
 
 零有效点或区域内不足三点的帧保留原因；少量点出现过的格子标为观测不足，而非伪造平地。全部输入时间戳都核验，截止之后的损坏或重复时间戳也不会被静默忽略。
 
-当前沿用单会话上限：5000帧、500万原始点，每帧最多10万投影点；旧NPZ仍受既有读取容量限制。任务最多10万个格心，输出不覆盖已有目录或输入材料。
+按目录提供的输入仍限 5000 帧、500 万原始点。分段测绘档案按每段应用同一限制，每帧最多 10 万投影点。任务最多10万个格心，输出不覆盖已有目录或输入材料。
 
 ## 质量与参考
 

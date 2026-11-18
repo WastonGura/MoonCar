@@ -50,16 +50,16 @@ class MapRecorder(Node):
                             ('uplink_url', ''), ('uplink_token_file', ''), ('uplink_task_file', '')]:
             self.declare_parameter(name, value)
         self.localization_quality=LocalizationQuality(required=self.get_parameter('require_laser_localization').value)
+        self.directory = Path(self.get_parameter('output_directory').value).expanduser()
+        self.directory.mkdir(parents=True, exist_ok=True)
         self.terrain = TerrainMap(self.get_parameter('resolution').value,
                                   self.get_parameter('voxel_size').value,
                                   self.get_parameter('frame').value,
-                                  self.get_parameter('source').value)
+                                  self.get_parameter('source').value, spool_directory=self.directory)
         self.keyframe_distance = self.get_parameter('keyframe_distance').value
         self.keyframe_angle = self.get_parameter('keyframe_angle').value
         if not all(np.isfinite(v) and v > 0 for v in (self.keyframe_distance, self.keyframe_angle)):
             raise ValueError('Keyframe thresholds must be finite and positive')
-        self.directory = Path(self.get_parameter('output_directory').value).expanduser()
-        self.directory.mkdir(parents=True, exist_ok=True)
         self.path = self.directory / f'survey-{datetime.now(timezone.utc):%Y%m%dT%H%M%S%fZ}.npz'
         self.uplink = None
         uplink = [self.get_parameter(name).value for name in ('uplink_url', 'uplink_token_file', 'uplink_task_file')]
@@ -188,6 +188,8 @@ class MapRecorder(Node):
                     self.get_logger().error(f'Live uplink queue failed; local archive retained: {error}')
             self.last_observation = time.monotonic()
             self.status(DiagnosticStatus.OK, 'Depth frame recorded; historical pose errors are not corrected by loop closure')
+        except OSError as error:
+            self.status(DiagnosticStatus.ERROR, f'Observation segment write failed: {error}')
         except (ValueError, TransformException) as error:
             self.status(DiagnosticStatus.WARN, str(error))
 

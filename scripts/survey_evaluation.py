@@ -160,14 +160,14 @@ class EvidenceRecorder:
             if saved.returncode: self.errors.append('Recorder save service failed; checking periodic archive')
             # Recorder saves asynchronously; wait for the final published observation to reach disk.
             sys.path.insert(0, str(ROOT/'ros2_ws/src/mooncar_terrain/scripts'))
-            from terrain_map import open_archive
+            from terrain_map import TerrainMap
             deadline = time.monotonic()+10
             while True:
                 sources = sorted(self.survey.path.parent.glob('*.npz'))
                 if not sources: raise ValueError('Raw observation archive missing')
                 source = sources[-1]
-                with open_archive(source)[0] as data:
-                    saved_stamp = float(data['stamps'][-1]) if len(data['stamps']) else 0
+                stamps = TerrainMap.archive_stamps(source)
+                saved_stamp = float(stamps[-1]) if len(stamps) else 0
                 if saved_stamp >= target_stamp or time.monotonic() >= deadline: break
                 time.sleep(.5)
             # Atomic producer replacement means opening this file captures one complete version.
@@ -315,9 +315,8 @@ def report(folder, reference=None):
     raw=folder/'observations.npz'; cells=[]
     if raw.exists():
         sys.path.insert(0,str(ROOT/'ros2_ws/src/mooncar_terrain/scripts'))
-        from terrain_map import TerrainMap,open_archive
-        with open_archive(raw)[0] as data:
-            count=int(np.searchsorted(data['stamps'], last['quality_stamp'],side='right'))
+        from terrain_map import TerrainMap
+        count=int(np.searchsorted(TerrainMap.archive_stamps(raw), last['quality_stamp'],side='right'))
         terrain=TerrainMap.load(raw,until=count)
         # The raw archive may carry warm-start history; freeze at the evaluated observation stamp.
         scoped=scoped_cells(terrain.quality(),origin,radius)

@@ -11,7 +11,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'ros2_ws/src/mooncar_terrain/scripts'))
 from terrain_geometry import project_depth
-from terrain_map import TerrainMap
+from terrain_map import SEGMENTED_FORMAT, TerrainMap
 
 TASK_FORMAT = 'mooncar-survey-task-v1'
 INPUT_FORMAT = 'mooncar-survey-input-v1'
@@ -177,7 +177,7 @@ def load_input(task, task_path):
         sidecar = (base / inp['contract']).resolve()
         contract = validate_input_contract(read_json(sidecar), task)
         meta = TerrainMap.inspect(source)
-        if meta['format'] != 'mooncar-observations-v2' or meta['frame'] != contract['frame']:
+        if meta['format'] not in ('mooncar-observations-v2', SEGMENTED_FORMAT) or meta['frame'] != contract['frame']:
             raise ValueError('NPZ frame/format differs from declared contract')
         # Existing API performs full archive validation, including frames after cutoff.
         model = TerrainMap.load(source)

@@ -125,5 +125,50 @@ class TerrainMapTests(unittest.TestCase):
             self.assertEqual(TerrainMap.load(path).snapshot()['points'], [])
 
 
+    def test_segment_rollover_keeps_live_map_and_portable_replay(self):
+        with tempfile.TemporaryDirectory() as folder, patch('terrain_map.MAX_PART_FRAMES', 2):
+            path = Path(folder) / 'segmented.npz'
+            terrain = TerrainMap(spool_directory=folder)
+            points = plane()
+            for stamp in range(1, 6):
+                terrain.add_frame(points, stamp, (3.*stamp, 0., 0.),
+                                  robot_translation=(3.*stamp-.2, 0., 0.), robot_quaternion=(0., 0., 0., 1.))
+            self.addCleanup(terrain._spool.cleanup)
+            self.assertEqual([frame[1] is not None for frame in terrain.frames], [False]*4 + [True])
+            self.assertEqual(terrain.quality()['frames'], 5)
+            self.assertTrue(any(cell['ix'] >= 60 for cell in terrain.elevation()))
+            terrain.save(path)
+            terrain._spool.cleanup()
+
+            self.assertEqual(TerrainMap.inspect(path)['format'], 'mooncar-observations-v3')
+            np.testing.assert_array_equal(TerrainMap.archive_stamps(path), [1., 2., 3., 4., 5.])
+            # The bundle can be moved/copied without all of the spool files.
+            portable = path.with_name('portable.npz')
+            path.replace(portable)
+            self.assertEqual(TerrainMap.load(portable).snapshot(), terrain.snapshot())
+            prefix = TerrainMap.load(portable, until=3)
+            self.assertEqual(prefix.quality()['frames'], 3)
+            self.assertEqual(prefix.snapshot()['robot']['position'], [8.8, 0., 0.])
+            self.assertLess(float(prefix.cloud()[:, 0].max()), 10.)
+
+    def test_rollover_write_failure_preserves_map_and_can_be_retried(self):
+        with tempfile.TemporaryDirectory() as folder, patch('terrain_map.MAX_PART_POINTS', 5):
+            terrain = TerrainMap(spool_directory=folder)
+            points = plane()[:5]
+            terrain.add_frame(points, 1.)
+            before = terrain.snapshot()
+            with patch.object(terrain, '_write_frames', side_effect=OSError('disk full')):
+                with self.assertRaisesRegex(OSError, 'disk full'):
+                    terrain.add_frame(points, 2., (2., 0., 0.))
+            self.addCleanup(terrain._spool.cleanup)
+            self.assertEqual(terrain.snapshot(), before)
+            np.testing.assert_array_equal(terrain.frames[0][1], points.astype(np.float32))
+            terrain.add_frame(points, 2., (2., 0., 0.))
+            self.assertEqual(terrain.quality()['frames'], 2)
+            path = Path(folder) / 'map.npz'
+            terrain.save(path)
+            self.assertEqual(TerrainMap.load(path).snapshot(), terrain.snapshot())
+
+
 if __name__ == '__main__':
     unittest.main()
