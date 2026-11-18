@@ -118,6 +118,47 @@ class PhotometricSamplingTests(unittest.TestCase):
         self.assertTrue((~costs[1][2]).any())
 
 
+class MetricSpreadSelectionTests(unittest.TestCase):
+    def setUp(self):
+        self.frontend = TrackFrontend()
+        centers = np.array([(x, y) for y in (40, 120, 200) for x in (40, 120, 200, 280)])
+        pixels = np.repeat(centers, 12, axis=0) + np.tile(
+            [(i % 4*5, i // 4*5) for i in range(12)], (len(centers), 1))
+        ids = np.arange(len(pixels))
+        lateral = np.tile([-.13, .13]*4 + [-.85, .85]*2, len(centers))
+        points = np.column_stack(((pixels[:, 0]-160.)/40., lateral, np.full(len(pixels), 2.)))
+        self.features = dict(pixels=pixels, points=points, track_ids=ids,
+            covariance=np.repeat((np.eye(3)*.003**2)[None], len(ids), axis=0),
+            measured_roi=np.array([0, 0, 320, 240]), image_shape=(240, 320))
+        self.frontend.keyframes.append((dict(submitted_ids=ids), ids))
+        self.frontend.age.update({int(track): 5 if track % 12 < 8 else 1 for track in ids})
+
+    def test_metric_spread_retry_replaces_weak_selection_with_verified_tracks(self):
+        selected, diagnostic = self.frontend.select(self.features)
+        retry = diagnostic['metric_spread_retry']
+        original = retry['original_metric_support_eigenvalues_m2']
+        improved = diagnostic['metric_support_eigenvalues_m2']
+        self.assertLess(original[1]/original[2], .02)
+        self.assertGreaterEqual(improved[1]/improved[2], .02)
+        self.assertTrue(diagnostic['adequate'])
+        self.assertTrue(retry['accepted'])
+        self.assertEqual(len(selected), 96)
+        self.assertEqual(diagnostic['connected'], len(selected))
+
+    def test_metric_spread_retry_still_rejects_a_narrow_view(self):
+        self.features['points'][:, 1] *= .10
+        _, diagnostic = self.frontend.select(self.features)
+        self.assertFalse(diagnostic['adequate'])
+        self.assertFalse(diagnostic['metric_spread_retry']['accepted'])
+
+    def test_metric_spread_retry_cannot_bypass_tracking_failure(self):
+        self.features['tracking_pose_adequate'] = False
+        _, diagnostic = self.frontend.select(self.features)
+        self.assertFalse(diagnostic['adequate'])
+        self.assertFalse(diagnostic['tracking_pose_adequate'])
+        self.assertNotIn('metric_spread_retry', diagnostic)
+
+
 class PersistentTrackTests(unittest.TestCase):
     def test_recent_measured_reference_recovers_only_verified_map_ids_with_new_depth(self):
         frontend=TrackFrontend(track_budget=576)

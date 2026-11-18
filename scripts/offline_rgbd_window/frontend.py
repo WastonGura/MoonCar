@@ -523,6 +523,41 @@ class TrackFrontend:
         order = lambda i: (-self.age.get(int(ids[i]), 0), float(np.trace(features['covariance'][i])), int(ids[i]))
         old.sort(key=order)
         new.sort(key=order)
+
+        selected = self._select_observations(old, new, cells)
+        connected = sum(int(ids[index]) in active for index in selected)
+        enough_connections = not self.keyframes or connected >= 24
+        tracking_adequate = features.get('tracking_pose_adequate', True)
+        adequate, support = (self.measurements._spatial_support(features, selected)
+                             if len(selected) >= 24 else (False, {}))
+        retry = None
+        if not adequate and enough_connections and tracking_adequate and support:
+            eigenvalues = support['metric_support_eigenvalues_m2']
+            if eigenvalues[1] < .02*eigenvalues[2]:
+                candidate = self._select_for_metric_spread(features, selected, old, new, cells)
+                candidate_adequate, candidate_support = self.measurements._spatial_support(features, candidate)
+                known = candidate[np.isin(ids[candidate], tuple(active))]
+                # New landmarks can enter a keyframe, but alone they cannot
+                # constrain this pose in the coordinates of the existing map.
+                shared_adequate = (not self.keyframes or
+                                   (len(known) >= 24 and self.measurements._spatial_support(features, known)[0]))
+                retry = dict(candidate_support, accepted=bool(candidate_adequate and shared_adequate),
+                             connected_spatial_adequate=bool(shared_adequate),
+                             original_metric_support_eigenvalues_m2=eigenvalues)
+                if retry['accepted']:
+                    selected, connected, adequate = candidate, len(known), True
+                    support = candidate_support
+        diagnostic = dict(selected=len(selected), connected=int(connected),
+                          adequate=bool(adequate and enough_connections and tracking_adequate), **support)
+        if not diagnostic['adequate']:
+            diagnostic['tracking_pose_adequate'] = bool(tracking_adequate)
+        if retry is not None:
+            diagnostic['metric_spread_retry'] = retry
+        if self.track_budget is not None:
+            diagnostic['tracking_budget'] = {k:v for k,v in self.last_tracking.items() if k.startswith('budget_')}
+        return selected, diagnostic
+
+    def _select_observations(self, old, new, cells):
         chosen, counts = [], Counter()
         # Reserve a quarter of the measurement budget for incoming landmarks;
         # identities seen by older frames retain priority among the rest.
@@ -535,20 +570,20 @@ class TrackFrontend:
                     continue
                 chosen.append(index)
                 counts[cell] += 1
-        selected = np.asarray(chosen, dtype=int)
-        connected = sum(int(ids[index]) in active for index in selected)
-        adequate = len(selected) >= 24
-        support = {}
-        if adequate:
-            adequate, support = self.measurements._spatial_support(features, selected)
-        if self.keyframes and connected < 24:
-            adequate = False
-        if not features.get('tracking_pose_adequate', True):
-            adequate = False
-        diagnostic = dict(selected=len(selected), connected=int(connected), adequate=bool(adequate), **support)
-        if self.track_budget is not None:
-            diagnostic['tracking_budget'] = {k:v for k,v in self.last_tracking.items() if k.startswith('budget_')}
-        return selected, diagnostic
+        return np.asarray(chosen, dtype=int)
+
+    def _select_for_metric_spread(self, features, selected, old, new, cells):
+        """Re-rank a rejected frame once using its weak measured direction."""
+        points = features['points']
+        center = points[selected].mean(axis=0)
+        eigenvalues, axes = np.linalg.eigh(np.cov(points[selected].T))
+        lateral, longitudinal = ((points-center) @ axes[:, 1:]).T
+        # Spend the existing per-cell budget on measured points that improve
+        # lateral spread instead of adding leverage along the dominant axis.
+        # Neither the ranks nor the eigenvectors enter the pose optimizer.
+        score = lateral**2/max(eigenvalues[1], .0025) - longitudinal**2/eigenvalues[2]
+        order = lambda i: -score[i]
+        return self._select_observations(sorted(old, key=order), sorted(new, key=order), cells)
 
     def commit(self, features, selected):
         # Keep full measured tables for descriptor re-identification, but only
