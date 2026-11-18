@@ -355,6 +355,10 @@ class SimulationExperiment:
                     env = dict(os.environ, ROS_DOMAIN_ID=self.ros_domain, GZ_PARTITION='mooncar-'+ident)
                     env['MOONCAR_WINDOW_OUTPUT']=str(folder/'window-localization.jsonl')
                     env['MOONCAR_TERRAIN_EVIDENCE_PATH']=str(folder/'terrain-cell-evidence.json')
+                    if scene in CONTINUOUS_SCENES:
+                        env['MOONCAR_SCENE_KEEP_IN'] = json.dumps(scene_bounds(scene))
+                    else:
+                        env.pop('MOONCAR_SCENE_KEEP_IN', None)
                     if task.get('simulation_profile')=='r5_support_v1':
                         env['MOONCAR_SUPPORT_RECEIPT_ROOT']=str(folder/'support-runtime')
                     self.log = (folder/'simulation.log').open('w')

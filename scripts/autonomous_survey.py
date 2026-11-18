@@ -98,8 +98,14 @@ def bounded_gimbal_targets(start,waypoints):
         current=list(target)
 
 
-def visible_unknown_frontiers(grid, pose, origin, radius):
+def inside_survey_region(region, x, y):
+    xmin, ymin, xmax, ymax = region
+    return xmin <= x < xmax and ymin <= y < ymax
+
+
+def visible_unknown_frontiers(grid, pose, origin, radius, *, region=None):
     """Find the first unknown cell on camera rays from the parked rover."""
+    region = scene_bounds('survey') if region is None else region
     radius = math.inf if radius is None else radius
     info=grid.info;r=info.resolution;ox,oy=info.origin.position.x,info.origin.position.y
     costs=np.asarray(grid.data,dtype=np.int16).reshape(info.height,info.width)
@@ -111,13 +117,15 @@ def visible_unknown_frontiers(grid, pose, origin, radius):
         for angle in np.linspace(yaw-math.pi/6,yaw+math.pi/6,13):
             for distance in np.arange(r/2,5.5,r/2):
                 x,y=cx+distance*math.cos(angle),cy+distance*math.sin(angle)
+                if not inside_survey_region(region, x, y):break
                 i,j=math.floor((x-ox)/r),math.floor((y-oy)/r)
                 if not (0<=i<info.width and 0<=j<info.height):break
                 cost=costs[j,i]
                 if cost>=100:break
                 if cost<0:
                     center=(ox+(i+.5)*r,oy+(j+.5)*r)
-                    if distance>=.25 and math.hypot(center[0]-origin[0],center[1]-origin[1])<=radius:
+                    if (distance>=.25 and inside_survey_region(region, *center)
+                            and math.hypot(center[0]-origin[0],center[1]-origin[1])<=radius):
                         cells.add(center)
                     break
         if cells:targets[pan]=cells
@@ -135,9 +143,14 @@ def newly_known_cells(grid, points):
 
 
 def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='quality_view_heuristic_v1',return_diagnostics=False,
-                _boundary_fallback=False,*,depth_observed_visibility=False):
+                _boundary_fallback=False,*,depth_observed_visibility=False,region=None):
     """Known-space reachability plus conservative planar camera visibility prediction."""
     radius = math.inf if radius is None else radius
+    region = scene_bounds('survey') if region is None else region
+    xmin, ymin, xmax, ymax = region
+    def inside_motion_region(x, y):
+        # Leave room for the chassis at any candidate observation heading.
+        return xmin+.7 <= x <= xmax-.7 and ymin+.7 <= y <= ymax-.7
     if strategy not in (*LEGACY_STRATEGIES,*STRATEGIES,'quality_view_heuristic_v1'):raise ValueError('Unknown survey strategy')
     planner_v3=strategy in V3_STRATEGIES
     planner_v2=strategy in (*V2_STRATEGIES,*V3_STRATEGIES)
@@ -165,7 +178,7 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
             dist_to_robot=math.hypot(px-pose['x'],py-pose['y'])
             max_cost=100 if dist_to_robot<=.65 else 99
             if not 0<=costs[ny,nx]<max_cost:continue
-            if abs(px)>24.3 or abs(py)>24.3 or math.hypot(px-origin[0],py-origin[1])>radius-.75:continue
+            if not inside_motion_region(px, py) or math.hypot(px-origin[0],py-origin[1])>radius-.75:continue
             if planner_v3:
                 terrain_weight = 1.0 + 2.5 * ((max(0, int(costs[ny, nx])) / 100.0) ** 2)
                 nd = distance + resolution * terrain_weight
@@ -173,7 +186,9 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
                 nd = distance + resolution * (1 + costs[ny, nx] / 100)
             if nd<=(12 if _boundary_fallback else 6) and nd<distances.get((nx,ny),math.inf):
                 distances[(nx,ny)]=nd;parents[(nx,ny)]=(x,y);heapq.heappush(queue,(nd,nx,ny))
-    qr=quality['resolution'];cells=scoped_cells(quality,origin,radius)
+    qr=quality['resolution']
+    cells={key:cell for key,cell in scoped_cells(quality,origin,radius).items()
+           if inside_survey_region(region, (key[0]+.5)*qr, (key[1]+.5)*qr)}
     observed={k:c['quality'] for k,c in cells.items()}
     elevations={k:c['z'] for k,c in cells.items() if c.get('z') is not None}
     # Traversability uncertainty is separate from optical occlusion. Only
@@ -304,6 +319,9 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
         return cos_align < 0.25
     def visibility(x,y,yaw,tilt=-0.2618):
         visible=set();cx,cy=x+.435*math.cos(yaw),y+.435*math.sin(yaw)
+        def eligible_cell(key):
+            px, py = (key[0]+.5)*qr, (key[1]+.5)*qr
+            return inside_survey_region(region, px, py) and math.hypot(px-origin[0],py-origin[1]) <= radius
         if planner_v3 and elevations:
             robot_key=(math.floor(x/qr),math.floor(y/qr))
             z_robot=elevations.get(robot_key,float(pose.get('z',0.0)) if isinstance(pose,dict) else 0.0)
@@ -315,16 +333,16 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
                 max_slope=s_min
                 for r in np.arange(.25,5.51,.25):
                     px,py=cx+r*math.cos(angle),cy+r*math.sin(angle)
-                    if math.hypot(px-origin[0],py-origin[1])>radius or abs(px)>25 or abs(py)>25:break
+                    if math.hypot(px-origin[0],py-origin[1])>radius or not inside_survey_region(region,px,py):break
                     ix,iy=index(px,py)
                     if not inside(ix,iy):
                         if _boundary_fallback and r>=.6:
                             key=(math.floor(px/qr),math.floor(py/qr))
-                            if math.hypot((key[0]+.5)*qr-origin[0],(key[1]+.5)*qr-origin[1])<=radius:
+                            if eligible_cell(key):
                                 visible.add(key)
                         break
                     cost=costs[iy,ix];key=(math.floor(px/qr),math.floor(py/qr))
-                    in_roi=math.hypot((key[0]+.5)*qr-origin[0],(key[1]+.5)*qr-origin[1])<=radius
+                    in_roi=eligible_cell(key)
                     zt=elevations.get(key,z_robot)
                     slope=(zt-cz)/r
                     if slope<max_slope:
@@ -343,22 +361,23 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
             for angle in np.linspace(yaw-math.pi/6,yaw+math.pi/6,17):
                 for r in np.arange(.25,5.51,.25):
                     px,py=cx+r*math.cos(angle),cy+r*math.sin(angle)
-                    if math.hypot(px-origin[0],py-origin[1])>radius or abs(px)>25 or abs(py)>25:break
+                    if math.hypot(px-origin[0],py-origin[1])>radius or not inside_survey_region(region,px,py):break
                     ix,iy=index(px,py)
                     if not inside(ix,iy):
                         if _boundary_fallback and r>=.6:
                             key=(math.floor(px/qr),math.floor(py/qr))
-                            if math.hypot((key[0]+.5)*qr-origin[0],(key[1]+.5)*qr-origin[1])<=radius:
+                            if eligible_cell(key):
                                 visible.add(key)
                         break
                     cost=costs[iy,ix];key=(math.floor(px/qr),math.floor(py/qr))
-                    if r>=.6 and math.hypot((key[0]+.5)*qr-origin[0],(key[1]+.5)*qr-origin[1])<=radius:
+                    if r>=.6 and eligible_cell(key):
                         if not is_grazing(key, angle):
                             visible.add(key)
                     if blocks_visibility(cost,key):break
         return visible,(cx,cy)
     candidates=[]
     for x,y,distance,path in positions:
+        if distance and not inside_motion_region(x, y):continue
         route_visible=set();route_cameras={}
         if planner_v2 and distance:
             step=max(1,round(.75/resolution));sampled=path[::step]
@@ -424,12 +443,12 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
             candidates.append(candidate)
     diagnostics['budget_limited']=not candidates and diagnostics['positive_gain_over_budget']>0
     best=max(candidates,key=lambda c:c['score'],default=None)
-    task_extends_map=(origin[0]-radius<ox or origin[0]+radius>ox+info.width*resolution or
-                      origin[1]-radius<oy or origin[1]+radius>oy+info.height*resolution)
+    task_extends_map=(max(xmin,origin[0]-radius)<ox or min(xmax,origin[0]+radius)>ox+info.width*resolution or
+                      max(ymin,origin[1]-radius)<oy or min(ymax,origin[1]+radius)>oy+info.height*resolution)
     if best is None and planner_v2 and not _boundary_fallback and not diagnostics['budget_limited'] and task_extends_map:
         fallback,details=choose_view(grid,quality,pose,origin,radius,history,remaining,strategy,
                                      return_diagnostics=True,_boundary_fallback=True,
-                                     depth_observed_visibility=depth_observed_visibility)
+                                     depth_observed_visibility=depth_observed_visibility,region=region)
         diagnostics['map_boundary_fallback']=details
         if fallback is not None:fallback['map_boundary_fallback']=True
         return result(fallback)
@@ -1349,7 +1368,7 @@ class AutonomousSurvey:
     def observe_unknown_frontier(self, grid, pose, attempted):
         if not self.initial_depth_scan or not callable(getattr(self.motion,'pan_tilt',None)):
             return False
-        targets=visible_unknown_frontiers(grid,pose,self.origin,self.data['radius'])
+        targets=visible_unknown_frontiers(grid,pose,self.origin,self.data['radius'],region=self.task['region'])
         self.data['visible_unknown_frontier_cells']=len(set().union(*targets.values()))
         if len(attempted)>=FRONTIER_SCANS_PER_STOP:
             return False
@@ -1443,7 +1462,7 @@ class AutonomousSurvey:
                     decision,diagnostics=choose_view(grid,quality,pose,self.origin,self.data['radius'],history,
                                          self.data['budget_seconds']-(self.now()-self.data['started'])-EXECUTION_MARGIN_SECONDS,
                                          strategy,return_diagnostics=True,
-                                         depth_observed_visibility=self.initial_depth_scan)
+                                         depth_observed_visibility=self.initial_depth_scan,region=self.task['region'])
                 if not decision:
                     self.data['candidate_diagnostics']=diagnostics
                     if diagnostics['budget_limited']:

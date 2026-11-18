@@ -23,7 +23,7 @@ class GeometryTest(unittest.TestCase):
         grid.info.origin.position.x = 3.0
         grid.info.origin.orientation.z = np.sin(np.pi/4)
         grid.info.origin.orientation.w = np.cos(np.pi/4)
-        node = Mock(zones=[{'x': 2.5, 'y': 0.5, 'radius': 0.4}])
+        node = Mock(region=None, zones=[{'x': 2.5, 'y': 0.5, 'radius': 0.4}])
         KeepoutNode.on_map(node, grid)
         mask = node.publisher.publish.call_args.args[0]
         self.assertEqual(list(mask.data), [100, -1])
@@ -32,7 +32,7 @@ class GeometryTest(unittest.TestCase):
         grid = OccupancyGrid()
         grid.info.width, grid.info.height, grid.info.resolution = 2, 1, 1.0
         grid.info.origin.orientation.w = 1.0
-        node = Mock(zones=[{'x': 2.5, 'y': 0.5, 'radius': 0.6}])
+        node = Mock(region=None, zones=[{'x': 2.5, 'y': 0.5, 'radius': 0.6}])
         KeepoutNode.on_map(node, grid)
         mask = node.publisher.publish.call_args.args[0]
         self.assertGreaterEqual(mask.info.width, 4)
@@ -40,6 +40,18 @@ class GeometryTest(unittest.TestCase):
         iy = math.floor((0.5-mask.info.origin.position.y)/mask.info.resolution)
         self.assertEqual(mask.data[iy*mask.info.width+ix], 100)
         self.assertEqual(mask.data[0], -1)
+
+    def test_keepout_marks_scene_exterior_without_clearing_interior_unknown(self):
+        grid = OccupancyGrid()
+        grid.info.width = grid.info.height = 3
+        grid.info.resolution = 0.25
+        grid.info.origin.position.x = 14.5
+        grid.info.origin.position.y = -15.25
+        grid.info.origin.orientation.w = 1.0
+        node = Mock(region=[-15., -15., 15., 15.], zones=[])
+        KeepoutNode.on_map(node, grid)
+        mask = node.publisher.publish.call_args.args[0]
+        self.assertEqual(list(mask.data), [100, 100, 100, -1, -1, 100, -1, -1, 100])
 
     def surface(self, z):
         x, y = np.meshgrid(np.linspace(0.01, 0.28, 12), np.linspace(0.01, 0.28, 12))

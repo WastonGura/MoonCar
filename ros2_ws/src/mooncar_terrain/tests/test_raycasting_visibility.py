@@ -10,7 +10,46 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / 'scripts'))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from autonomous_survey import choose_view,known_chassis_clearance
+from autonomous_survey import choose_view, known_chassis_clearance, visible_unknown_frontiers
+from experiment_scenes import scene_bounds
+
+
+class SceneBoundaryTests(unittest.TestCase):
+    def fixture(self, first_unknown_x):
+        resolution = .25
+        width, height = 32, 24
+        costs = [0 if ix < first_unknown_x else -1
+                 for _ in range(height) for ix in range(40, 40+width)]
+        grid = NS(info=NS(width=width, height=height, resolution=resolution,
+                          origin=NS(position=NS(x=10., y=-3.))), data=costs)
+        quality = dict(resolution=resolution, cells=[
+            dict(ix=ix, iy=iy, quality=1., points=1, z=0.)
+            for iy in range(-12, 12) for ix in range(40, first_unknown_x)])
+        return grid, quality, dict(x=13.8, y=0., yaw=0., z=0.)
+
+    def test_exterior_unknown_cells_do_not_offer_observation_gain(self):
+        grid, quality, pose = self.fixture(first_unknown_x=60)
+        region = scene_bounds('survey_v3_native')
+        for strategy in ('surface_view_v2', 'coverage_view_v3'):
+            with self.subTest(strategy=strategy):
+                args = (grid, quality, pose, [0., 0.], None, [], 6., strategy)
+                self.assertIsNotNone(choose_view(*args))
+                self.assertIsNone(choose_view(*args, region=region))
+        self.assertTrue(visible_unknown_frontiers(grid, pose, [0., 0.], None))
+        self.assertFalse(visible_unknown_frontiers(grid, pose, [0., 0.], None, region=region))
+
+    def test_unknown_cells_just_inside_scene_edge_remain_targets(self):
+        grid, quality, pose = self.fixture(first_unknown_x=59)
+        region = scene_bounds('survey_v3_native')
+        for strategy in ('surface_view_v2', 'coverage_view_v3'):
+            with self.subTest(strategy=strategy):
+                decision = choose_view(grid, quality, pose, [0., 0.], None, [], 6., strategy, region=region)
+                self.assertIsNotNone(decision)
+                self.assertTrue(any(ix == 59 for ix, _ in decision['visible_cells']))
+                self.assertTrue(all(ix < 60 for ix, _ in decision['visible_cells']))
+        targets = visible_unknown_frontiers(grid, pose, [0., 0.], None, region=region)
+        self.assertTrue(targets)
+        self.assertTrue(all(x == 14.875 for points in targets.values() for x, _ in points))
 
 
 class RaycastingVisibilityTests(unittest.TestCase):
@@ -265,11 +304,13 @@ class SupportedUnknownVisibilityTests(unittest.TestCase):
         quality=dict(resolution=resolution,cells=[dict(ix=x,iy=y,quality=1.,points=1)
                                                 for x in range(-10,10) for y in range(-10,10)])
         with patch('autonomous_survey.choose_view',wraps=choose_view) as recursive:
+            region=scene_bounds('survey_v3_native')
             chosen=choose_view(grid,quality,dict(x=0.,y=0.,yaw=0.),[0.,0.],8.,[],100.,
-                               'coverage_view_v2',depth_observed_visibility=True)
+                               'coverage_view_v2',depth_observed_visibility=True,region=region)
         self.assertIsNotNone(chosen);self.assertTrue(chosen['map_boundary_fallback'])
         self.assertTrue(recursive.called)
         self.assertIs(recursive.call_args.kwargs['depth_observed_visibility'],True)
+        self.assertEqual(recursive.call_args.kwargs['region'],region)
 
 
 class DepthFallbackTests(unittest.TestCase):

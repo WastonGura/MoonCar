@@ -226,8 +226,10 @@ class SurveyTests(unittest.TestCase):
         motion.grid=Mock();motion.grid_fresh.return_value=True;motion.pose.return_value=dict(x=0,y=0,yaw=0)
         motion.state.return_value=dict(active=False,ready=True,pose=dict(x=0,y=0,yaw=0),error='')
         survey=AutonomousSurvey(motion);survey.origin=[0,0]
+        survey.task = dict(region=[-15., -15., 15., 15.])
         survey.data=dict(active=True,started=0.,budget_seconds=15,radius=6,history=[])
-        with patch('autonomous_survey.choose_view',return_value=(None,dict(budget_limited=True))):survey.run()
+        with patch('autonomous_survey.choose_view',return_value=(None,dict(budget_limited=True))) as planner:survey.run()
+        self.assertEqual(planner.call_args.kwargs['region'], survey.task['region'])
         self.assertEqual(survey.data['phase'],'budget_reached')
         self.assertIn('剩余时间不足',survey.data['reason'])
 
@@ -238,6 +240,7 @@ class SurveyTests(unittest.TestCase):
         motion.grid=Mock();motion.grid_fresh.return_value=True;motion.pose.return_value=dict(x=0,y=0,yaw=0)
         motion.state.return_value=dict(active=False,ready=True,pose=dict(x=0,y=0,yaw=0),error='')
         survey=AutonomousSurvey(motion);survey.origin=[0,0]
+        survey.task = dict(region=[-15., -15., 15., 15.])
         survey.data=dict(active=True,started=0.,budget_seconds=15,radius=6,history=[])
         decision=dict(x=1.,y=0.,yaw=0.,kind='advance',estimated_seconds=14.6)
         with patch('autonomous_survey.choose_view',return_value=(decision,dict(budget_limited=False))),patch.object(survey,'execute') as execute:
@@ -252,6 +255,7 @@ class SurveyTests(unittest.TestCase):
         motion.grid=Mock();motion.grid_fresh.return_value=True;motion.pose.return_value=dict(x=0,y=0,yaw=0)
         motion.state.return_value=dict(active=False,ready=True,pose=dict(x=0,y=0,yaw=0),error='')
         survey=AutonomousSurvey(motion);survey.origin=[0,0]
+        survey.task = dict(region=[-15., -15., 15., 15.])
         survey.data=dict(active=True,started=0.,budget_seconds=20,radius=6,history=[])
         decision=dict(x=1.,y=0.,yaw=0.,kind='advance',estimated_seconds=10.,expected_new_m2=1.,
                       expected_improvement_m2=0.,visible_cells=[])
@@ -268,6 +272,7 @@ class SurveyTests(unittest.TestCase):
         pose=dict(x=0.,y=0.,yaw=0.)
         motion.pose.return_value=pose;motion.state.return_value=dict(ready=True,pose=pose,error='')
         survey=AutonomousSurvey(motion);survey.origin=[0,0]
+        survey.task = dict(region=[-15., -15., 15., 15.])
         survey.data=dict(active=True,started=0.,budget_seconds=15,radius=6,history=[])
         decision=dict(x=1.,y=0.,yaw=0.,kind='advance',expected_new_m2=1.,expected_improvement_m2=0.,
                       expected_quality_gain_m2=1.,estimated_seconds=6.,visible_cells=[[0,0]])

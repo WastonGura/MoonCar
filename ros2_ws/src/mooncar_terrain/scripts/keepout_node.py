@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import copy
+import json
 import math
+import os
 
 from nav_msgs.msg import OccupancyGrid
 import numpy as np
@@ -19,6 +21,12 @@ class KeepoutNode(Node):
         for zone in self.zones:
             if not all(math.isfinite(zone[k]) for k in ('x', 'y', 'radius')) or zone['radius'] <= 0:
                 raise ValueError('Keepout zone needs finite coordinates and a positive radius')
+        self.region = json.loads(os.environ.get('MOONCAR_SCENE_KEEP_IN', 'null'))
+        if self.region is not None:
+            if (not isinstance(self.region, list) or len(self.region) != 4 or
+                    not all(type(value) in (int, float) and math.isfinite(value) for value in self.region) or
+                    self.region[0] >= self.region[2] or self.region[1] >= self.region[3]):
+                raise ValueError('Scene keep-in region needs ordered finite world bounds')
         qos = QoSProfile(depth=1, durability=DurabilityPolicy.TRANSIENT_LOCAL)
         self.publisher = self.create_publisher(OccupancyGrid, '/mooncar/terrain/keepout', qos)
         self.create_subscription(OccupancyGrid, '/map', self.on_map, qos)
@@ -47,6 +55,10 @@ class KeepoutNode(Node):
         y = mask.info.origin.position.y + px*s + py*c
         # The prior adds hazards only; it must not clear unknown map cells.
         data = np.full(row.shape, -1, dtype=np.int8)
+        if self.region is not None:
+            xmin, ymin, xmax, ymax = self.region
+            outside_scene = (x < xmin) | (x >= xmax) | (y < ymin) | (y >= ymax)
+            data[outside_scene] = 100
         for zone in self.zones:
             data[(x-zone['x'])**2+(y-zone['y'])**2 <= zone['radius']**2] = 100
         mask.data = data.ravel().tolist()
