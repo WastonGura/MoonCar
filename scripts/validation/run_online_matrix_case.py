@@ -23,6 +23,8 @@ def main():
     parser.add_argument('--sessions', type=Path, required=True)
     parser.add_argument('--wall-budget',type=float,default=None)
     parser.add_argument('--survey-budget',type=float,default=None)
+    parser.add_argument('--autonomy-strategy', choices=('surface_view_v2', 'surface_view_v3'),
+                        default='surface_view_v2')
     parser.add_argument('--radius',type=float,default=None)
     parser.add_argument('--scene',choices=('survey_v2_native','survey_v3_native'),default='survey_v2_native')
     parser.add_argument('--start',type=float,nargs=3)
@@ -73,6 +75,7 @@ def main():
             for axis in (0,1)]) for index in range(1,segments+1)]
     write('protocol.json', dict(case=args.case, heading_trial=os.environ.get('MOONCAR_RAMP_HEADING_CASE'), task=task, software=software, wall_budget_s=wall_budget,
         mission_sim_budget_s=sim_budget, planned_direct_actions=route if args.case == 'direct' else None,
+        autonomy_strategy=args.autonomy_strategy if args.case == 'autonomy' else None,
         terrain_strategy=os.environ.get('MOONCAR_TERRAIN_STRATEGY','baseline'),radius=radius,
         readiness='Record product ready independently; test dispatch waits for all four actual Nav2 lifecycle states ACTIVE',
         product_changes=False, automatic_retries=False, truth_used_for_control=False,
@@ -205,7 +208,7 @@ def main():
             result['outcome'] = 'passed' if all(a.get('phase') == 'succeeded' for a in result['actions']) else 'failed'
         else:
             body = dict(experiment=experiment, budget_seconds=sim_budget, radius=radius,
-                        strategy='surface_view_v2')
+                        strategy=args.autonomy_strategy)
             write('explore-request.json', body); write('explore-response.json', request('/explore', body))
             while True:
                 value, _ = sample(); autonomy = value.get('autonomy', {})

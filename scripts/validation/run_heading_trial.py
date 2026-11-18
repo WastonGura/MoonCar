@@ -29,12 +29,17 @@ def main():
                         help='Six Gazebo GUI camera pose coordinates for this recording')
     parser.add_argument('--capture-fps', type=int, default=6)
     parser.add_argument('--terrain-strategy',choices=('baseline','elevation_neighborhood_v1'),default='baseline')
+    parser.add_argument('--autonomy-camera', choices=('fixed', 'gimbal'),
+                        help='Compare the shipped fixed-view / gimbal surface exploration variants')
     parser.add_argument('--survey-budget',type=float,default=180.)
     parser.add_argument('--radius',type=float,default=None,help='Optional legacy start radius; omitted means full scene')
     parser.add_argument('--wall-budget',type=float,default=1800.)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--sessions', type=Path, required=True)
-    args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=False)
+    args = parser.parse_args()
+    if args.autonomy_camera and args.mode != 'autonomy':
+        parser.error('--autonomy-camera requires --mode autonomy')
+    args.output.mkdir(parents=True, exist_ok=False)
     if args.record_video and not os.environ.get('DISPLAY'):
         raise RuntimeError('Video requires DISPLAY; start this runner through xvfb-run')
     opener = build_opener(ProxyHandler({}))
@@ -46,7 +51,7 @@ def main():
     if existing is not None: raise RuntimeError('Preserve the existing workbench')
     env = dict(os.environ, ROS_DOMAIN_ID='89', ROS_AUTOMATIC_DISCOVERY_RANGE='LOCALHOST',
         MOONCAR_EXPERIMENT_ROS_DOMAIN_ID='89', MOONCAR_RGBD_CPUSET='0,1',
-        MOONCAR_RUNTIME_MANIFEST='/evidence/runtime-baseline.json',
+        MOONCAR_RUNTIME_MANIFEST=os.environ.get('MOONCAR_RUNTIME_MANIFEST', '/evidence/runtime-baseline.json'),
         MOONCAR_VALIDATION_OUTPUT=str(args.output/'fixture'), MOONCAR_RAMP_HEADING_CASE=args.mode,
         OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1')
     env['MOONCAR_TERRAIN_STRATEGY']=args.terrain_strategy
@@ -69,6 +74,8 @@ def main():
     def write(name, value):
         (args.output/name).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n')
     protocol = dict(mode=args.mode, changes=[], production_defaults_changed=False,
+        camera_mode=args.autonomy_camera, pan_tilt_locked=args.autonomy_camera == 'fixed',
+        autonomy_strategy='surface_view_v3' if args.autonomy_camera == 'gimbal' else 'surface_view_v2',
         terrain_strategy=args.terrain_strategy,
         survey_budget=args.survey_budget,radius=args.radius if args.mode in ('autonomy','direct') else 8.,wall_budget=args.wall_budget,
         autonomy_wall_limit_seconds=max(3600.,args.wall_budget) if args.mode=='autonomy' else None,
@@ -99,7 +106,8 @@ def main():
     try:
         with (args.output/'backend.log').open('x') as log:
             backend = subprocess.Popen([sys.executable, '-B', str(ROOT/'scripts/validation/launch_backend.py'),
-                '--fixture', 'native' if args.mode in ('autonomy','direct') else 'ramp', '--sessions', str(args.sessions)], env=env,
+                '--fixture', 'native' if args.mode in ('autonomy','direct') else 'ramp', '--sessions', str(args.sessions),
+                *(['--lock-camera'] if args.autonomy_camera == 'fixed' else [])], env=env,
                 stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
             deadline = time.monotonic()+45
             while True:
@@ -122,6 +130,7 @@ def main():
                     *(['--survey-budget',str(args.survey_budget),
                        '--wall-budget',str(args.wall_budget)] if args.mode in ('autonomy','direct') else []),
                     '--scene',args.scene,
+                    *(['--autonomy-strategy', protocol['autonomy_strategy']] if args.mode == 'autonomy' else []),
                     *(['--start',*map(str,args.start)] if args.start is not None else []),
                     *(['--direct-goal',*map(str,args.direct_goal)] if args.direct_goal is not None else []),
                     *(['--radius',str(args.radius)] if args.mode=='autonomy' and args.radius is not None else [])],

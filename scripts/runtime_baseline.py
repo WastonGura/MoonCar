@@ -51,8 +51,9 @@ def verify(root,manifest,install,output):
     pairs=[];slam=install_prefix(install,'mooncar_slam')/'lib/mooncar_slam'
     pairs += [(root/'scripts'/n,slam/n) for n in ('rgbd_window_odometry.py','rgbd_window_shadow.py','localization_quality.py')]
     pairs += [(p,slam/'offline_rgbd_window'/p.name) for p in (root/'scripts/offline_rgbd_window').glob('*.py')]
-    pairs += [(root/'ros2_ws/src/mooncar_terrain/scripts/terrain_geometry.py',
-               install_prefix(install,'mooncar_terrain')/'lib/mooncar_terrain/terrain_geometry.py')]
+    terrain_install = install_prefix(install,'mooncar_terrain')/'lib/mooncar_terrain'
+    pairs += [(root/'ros2_ws/src/mooncar_terrain/scripts'/name, terrain_install/name)
+              for name in ('terrain_geometry.py', 'terrain_map.py', 'map_recorder.py')]
     pairs += [(root/'scripts/literature_terrain.py',
                install_prefix(install,'mooncar_terrain')/'lib/mooncar_terrain/literature_terrain.py')]
     for package,parts in [('mooncar_description',['urdf']),('mooncar_gazebo',['launch','config','worlds','models','materials']),('mooncar_navigation',['launch','config'])]:
