@@ -52,6 +52,11 @@ def prepare_bridge_config(source, profile):
     joints['ros_topic_name'] = '/joint_states'
     depth['gz_topic_name'] = BASE + '/depth_image'
     info['gz_topic_name'] = BASE + '/camera_info'
+    for row in rows:
+        if row.get('ros_topic_name') == '/mooncar/rgb/image' and row.get('direction') == 'GZ_TO_ROS':
+            row['gz_topic_name'] = BASE + '/image'
+        elif row.get('ros_topic_name') == '/mooncar/rgb/camera_info' and row.get('direction') == 'GZ_TO_ROS':
+            row['gz_topic_name'] = BASE + '/camera_info'
     rgb = copy.deepcopy(depth)
     rgb.update(ros_topic_name='/mooncar/localization_rgb/image', gz_topic_name=BASE + '/image')
     rgb_info = copy.deepcopy(info)

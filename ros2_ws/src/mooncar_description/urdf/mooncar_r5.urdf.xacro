@@ -272,6 +272,13 @@
        below need the actual installation drawing or measurement. -->
   <!-- 2-DOF Pan-Tilt Gimbal for Depth Camera -->
   <link name="${prefix}camera_mount_link">
+    <visual name="camera_mount_mast">
+      <origin xyz="0.01 0 -0.0525" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.105"/>
+      </geometry>
+      <material name="mooncar_dark_gray"/>
+    </visual>
     <visual name="camera_mount_base">
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -297,7 +304,9 @@
   <joint name="${prefix}camera_mount_joint" type="fixed">
     <parent link="${prefix}base_link"/>
     <child link="${prefix}camera_mount_link"/>
-    <origin xyz="${chassis_length / 2.0 - 0.02} 0 0.04" rpy="0 0 0"/>
+    <!-- Elevated above lidar scan plane (z=0.201m) and battery top (z=0.227m)
+         so full +/-135 deg gimbal pan clears chassis hardware. -->
+    <origin xyz="${chassis_length / 2.0 - 0.02} 0 0.145" rpy="0 0 0"/>
   </joint>
 
   <link name="${prefix}camera_pan_link">
@@ -478,25 +487,27 @@
     lidar_max_angle="${pi - 2 * pi / 3200}"
     depth_hfov="${73 * pi / 180}" depth_width="640" depth_height="480"
     depth_min_range="0.35"/>
-  <gazebo reference="${prefix}depth_camera_link">
-    <sensor name="mooncar_rgb_camera" type="camera">
-      <pose>${camera_length / 2.0} 0 0 0 0 0</pose>
-      <always_on>true</always_on>
-      <update_rate>10</update_rate>
-      <topic>/mooncar/rgb</topic>
-      <gz_frame_id>${prefix}rgb_camera_optical_frame</gz_frame_id>
-      <camera name="mooncar_rgb_camera">
-        <camera_info_topic>/mooncar/rgb/camera_info</camera_info_topic>
-        <horizontal_fov>${69 * pi / 180}</horizontal_fov>
-        <image>
-          <width>640</width>
-          <height>480</height>
-          <format>R8G8B8</format>
-        </image>
-        <clip><near>0.05</near><far>8.0</far></clip>
-      </camera>
-    </sensor>
-  </gazebo>
+  <xacro:unless value="${'$(arg camera_sensor_profile)' == 'rgbd_v1'}">
+    <gazebo reference="${prefix}depth_camera_link">
+      <sensor name="mooncar_rgb_camera" type="camera">
+        <pose>${camera_length / 2.0} 0 0 0 0 0</pose>
+        <always_on>true</always_on>
+        <update_rate>10</update_rate>
+        <topic>/mooncar/rgb</topic>
+        <gz_frame_id>${prefix}rgb_camera_optical_frame</gz_frame_id>
+        <camera name="mooncar_rgb_camera">
+          <camera_info_topic>/mooncar/rgb/camera_info</camera_info_topic>
+          <horizontal_fov>${69 * pi / 180}</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip><near>0.05</near><far>8.0</far></clip>
+        </camera>
+      </sensor>
+    </gazebo>
+  </xacro:unless>
   <xacro:mooncar_gazebo_drive
     prefix="${prefix}"
     joint_state_update_rate="${100 if '$(arg camera_sensor_profile)' == 'rgbd_v1' else 30}"

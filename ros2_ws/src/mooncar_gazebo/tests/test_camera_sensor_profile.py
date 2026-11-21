@@ -49,6 +49,10 @@ class CameraBridgeTests(unittest.TestCase):
                     row['gz_topic_name'] = camera.BASE + '/depth_image'
                 if row.get('ros_topic_name') == '/mooncar/depth/camera_info':
                     row['gz_topic_name'] = camera.BASE + '/camera_info'
+                if row.get('ros_topic_name') == '/mooncar/rgb/image':
+                    row['gz_topic_name'] = camera.BASE + '/image'
+                if row.get('ros_topic_name') == '/mooncar/rgb/camera_info':
+                    row['gz_topic_name'] = camera.BASE + '/camera_info'
                 if row.get('ros_topic_name') == '/mooncar/joint_states_raw':
                     row['ros_topic_name'] = '/joint_states'
             self.assertEqual(actual[:len(original)], expected)
@@ -112,8 +116,14 @@ class CameraModelTests(unittest.TestCase):
             self.assertEqual(changed.findtext('topic'), camera.BASE)
             self.assertEqual(changed.findtext('gz_frame_id'), 'depth_camera_optical_frame')
             self.assertEqual(changed.findtext('camera/optical_frame_id'), 'depth_camera_optical_frame')
-            # A single Gazebo RGBD rendering camera supplies both images. Its
-            # image dimensions/FOV/pose/rate/clips remain this model's original.
+            # A single Gazebo RGBD rendering camera supplies both images. Under
+            # rgbd_v1, R5 omits the redundant standalone mooncar_rgb_camera.
+            if model == 'mooncar_r5.urdf.xacro':
+                self.assertIsNotNone(old.find('.//sensor[@name="mooncar_rgb_camera"]'))
+                self.assertIsNone(new.find('.//sensor[@name="mooncar_rgb_camera"]'))
+                for g in list(old.findall('gazebo')):
+                    if g.find('sensor[@name="mooncar_rgb_camera"]') is not None:
+                        old.remove(g)
             changed.set('type', original.get('type'))
             changed.find('topic').text = original.findtext('topic')
             changed.find('camera').remove(changed.find('camera/optical_frame_id'))
@@ -122,6 +132,18 @@ class CameraModelTests(unittest.TestCase):
             self.assertEqual(new.findtext(path), '100')
             new.find(path).text = old.findtext(path)
             self.assertEqual(ET.tostring(new), ET.tostring(old))
+
+    def test_r5_gimbal_clears_battery_and_lidar_scan_plane(self):
+        robot = ET.fromstring(self.expand('mooncar_r5.urdf.xacro', 'rgbd_v1'))
+        def joint_z(name):
+            origin = robot.find(f"joint[@name='{name}']/origin")
+            return float(origin.get('xyz').split()[2])
+        base_z = joint_z('base_footprint_joint')
+        battery_top = base_z + joint_z('battery_joint') + float(robot.find("link[@name='battery_link']/collision/geometry/box").get('size').split()[2]) / 2.0
+        lidar_scan_z = base_z + joint_z('lidar_joint') + joint_z('lidar_scan_joint')
+        camera_z = base_z + joint_z('camera_mount_joint') + joint_z('camera_pan_joint') + joint_z('camera_tilt_joint') + joint_z('depth_camera_joint')
+        self.assertGreater(camera_z, battery_top + 0.04)
+        self.assertGreater(camera_z, lidar_scan_z + 0.06)
 
     def test_r5_support_joint_observation_rate_is_also_camera_scoped(self):
         for profile, expected in (('legacy', '30'), ('rgbd_v1', '100')):
