@@ -31,6 +31,10 @@ def main():
     parser.add_argument('--terrain-strategy',choices=('baseline','elevation_neighborhood_v1'),default='elevation_neighborhood_v1')
     parser.add_argument('--autonomy-camera', choices=('fixed', 'gimbal'),
                         help='Compare the shipped fixed-view / gimbal surface exploration variants')
+    parser.add_argument('--autonomy-strategy',
+                        choices=('surface_view_v2', 'surface_view_v3', 'coverage_view_v3', 'hybrid_frontier_v4'),
+                        default=None,
+                        help='Explicit autonomy strategy override; defaults to surface_view_v3 (gimbal) or surface_view_v2 (fixed)')
     parser.add_argument('--survey-budget',type=float,default=180.)
     parser.add_argument('--radius',type=float,default=None,help='Optional legacy start radius; omitted means full scene')
     parser.add_argument('--wall-budget',type=float,default=1800.)
@@ -73,9 +77,12 @@ def main():
     def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
     def write(name, value):
         (args.output/name).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n')
+    autonomy_strategy = args.autonomy_strategy or (
+        'surface_view_v3' if args.autonomy_camera == 'gimbal' else 'surface_view_v2'
+    )
     protocol = dict(mode=args.mode, changes=[], production_defaults_changed=False,
         camera_mode=args.autonomy_camera, pan_tilt_locked=args.autonomy_camera == 'fixed',
-        autonomy_strategy='surface_view_v3' if args.autonomy_camera == 'gimbal' else 'surface_view_v2',
+        autonomy_strategy=autonomy_strategy,
         terrain_strategy=args.terrain_strategy,
         survey_budget=args.survey_budget,radius=args.radius if args.mode in ('autonomy','direct') else 8.,wall_budget=args.wall_budget,
         autonomy_wall_limit_seconds=max(3600.,args.wall_budget) if args.mode=='autonomy' else None,
