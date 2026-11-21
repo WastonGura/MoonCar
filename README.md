@@ -39,6 +39,7 @@ reports/       实验报告、对照结果与评分脚本
 ```
 
 核心技术文档入口：
+* 文献与算法溯源：[docs/references.md](docs/references.md)
 * 系统架构与仿真计划：[docs/architecture.md](docs/architecture.md) · [docs/simulation_plan.md](docs/simulation_plan.md) · [docs/simulation_validation_scope.md](docs/simulation_validation_scope.md)
 * 定位与测绘工作流：[docs/window_localization.md](docs/window_localization.md) · [docs/offline_survey.md](docs/offline_survey.md) · [docs/live_survey.md](docs/live_survey.md) · [docs/mapping_acceptance.md](docs/mapping_acceptance.md)
 * 问题修复清单与硬件交接：[docs/repair_checklist_20261103.md](docs/repair_checklist_20261103.md) · [docs/hardware_handoff.md](docs/hardware_handoff.md) · [docs/uart_protocol.md](docs/uart_protocol.md)
