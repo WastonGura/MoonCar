@@ -28,7 +28,7 @@ def main():
     parser.add_argument('--camera-pose', default='1.7 -3.2 2.6 0 0.55 1.016',
                         help='Six Gazebo GUI camera pose coordinates for this recording')
     parser.add_argument('--capture-fps', type=int, default=6)
-    parser.add_argument('--terrain-strategy',choices=('baseline','elevation_neighborhood_v1'),default='baseline')
+    parser.add_argument('--terrain-strategy',choices=('baseline','elevation_neighborhood_v1'),default='elevation_neighborhood_v1')
     parser.add_argument('--autonomy-camera', choices=('fixed', 'gimbal'),
                         help='Compare the shipped fixed-view / gimbal surface exploration variants')
     parser.add_argument('--survey-budget',type=float,default=180.)

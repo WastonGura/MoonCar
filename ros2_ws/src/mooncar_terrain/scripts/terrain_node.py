@@ -61,7 +61,7 @@ class TerrainNode(Node):
         self.traversability_pub = self.create_publisher(
             OccupancyGrid, '/mooncar/terrain/traversability_map', grid_qos)
         self.traversability_cells = {}
-        self.terrain_strategy = os.environ.get('MOONCAR_TERRAIN_STRATEGY','baseline')
+        self.terrain_strategy = os.environ.get('MOONCAR_TERRAIN_STRATEGY','elevation_neighborhood_v1')
         self.neighborhood_classifier = None
         if self.terrain_strategy == 'elevation_neighborhood_v1':
             try:

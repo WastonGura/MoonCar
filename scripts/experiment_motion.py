@@ -19,6 +19,7 @@ from rclpy.executors import SingleThreadedExecutor
 from rclpy.node import Node
 from rclpy.parameter import Parameter
 from diagnostic_msgs.msg import DiagnosticArray, DiagnosticStatus
+from lifecycle_msgs.srv import GetState
 from nav2_msgs.action import NavigateToPose, Spin
 from std_msgs.msg import Bool, Float64, String
 from tf2_ros import Buffer, TransformListener
@@ -33,6 +34,11 @@ MAX_FUTURE_TF_SECONDS = .3
 NAVIGATION_STALL_REASON = '导航持续未接近目标，已取消候选动作'
 GIMBAL_TOLERANCE = math.radians(5)
 GIMBAL_FEEDBACK_FUTURE_TOLERANCE = .05
+NAV2_LIFECYCLE_NODES = ('bt_navigator', 'controller_server', 'planner_server', 'behavior_server')
+NAV2_LIFECYCLE_ACTIVE_ID = 3
+NAV2_LIFECYCLE_POLL_SECONDS = .5
+NAV2_LIFECYCLE_TIMEOUT_SECONDS = 2.
+NAV2_LIFECYCLE_MAX_AGE_SECONDS = 5.
 
 
 @dataclass(frozen=True)
@@ -96,6 +102,10 @@ class ExperimentMotion(Node):
         self.buffer=Buffer(node=self);self.listener=TransformListener(self.buffer,self)
         self.client=ActionClient(self,NavigateToPose,'/navigate_to_pose',callback_group=self.control_group)
         self.spin_client=ActionClient(self,Spin,'/spin',callback_group=self.control_group)
+        self.nav2_lifecycle_lock=threading.RLock()
+        self.nav2_lifecycle_states={}
+        self.nav2_lifecycle_pending={}
+        self.nav2_lifecycle_clients=self._create_nav2_lifecycle_clients()
         self.permit=self.create_publisher(Bool,'/mooncar/workbench/permit',1)
         self.pub_camera_pan=self.create_publisher(Float64,'/mooncar/cmd_camera_pan',10)
         self.pub_camera_tilt=self.create_publisher(Float64,'/mooncar/cmd_camera_tilt',10)
@@ -133,6 +143,57 @@ class ExperimentMotion(Node):
         self.create_subscription(OccupancyGrid,'/mooncar/terrain/keepout',self.on_keepout,
                                  QoSProfile(depth=1,durability=DurabilityPolicy.TRANSIENT_LOCAL),callback_group=self.data_group)
         self.create_timer(.1,self.tick,clock=Clock(clock_type=ClockType.STEADY_TIME),callback_group=self.control_group)
+        self.create_timer(NAV2_LIFECYCLE_POLL_SECONDS,self.poll_nav2_lifecycle,
+                          clock=Clock(clock_type=ClockType.STEADY_TIME),callback_group=self.data_group)
+
+    def _create_nav2_lifecycle_clients(self):
+        return {name:self.create_client(GetState,f'/{name}/get_state',callback_group=self.data_group)
+                for name in NAV2_LIFECYCLE_NODES}
+
+    def _collect_nav2_lifecycle_locked(self,now):
+        for name,(future,sent) in list(self.nav2_lifecycle_pending.items()):
+            if future.done():
+                try:
+                    current=future.result().current_state
+                    self.nav2_lifecycle_states[name]=dict(id=int(current.id),label=str(current.label),wall=now)
+                except Exception as error:
+                    self.nav2_lifecycle_states[name]=dict(error=repr(error),wall=now)
+                del self.nav2_lifecycle_pending[name]
+            elif now-sent>=NAV2_LIFECYCLE_TIMEOUT_SECONDS:
+                client=self.nav2_lifecycle_clients.get(name)
+                if client is not None:
+                    try:client.remove_pending_request(future)
+                    except Exception:pass
+                future.cancel()
+                self.nav2_lifecycle_states[name]=dict(error='get_state_timeout',wall=now)
+                del self.nav2_lifecycle_pending[name]
+
+    def poll_nav2_lifecycle(self,now=None):
+        now=time.monotonic() if now is None else float(now)
+        with self.nav2_lifecycle_lock:
+            self._collect_nav2_lifecycle_locked(now)
+            for name,client in self.nav2_lifecycle_clients.items():
+                if name not in self.nav2_lifecycle_pending and client.service_is_ready():
+                    self.nav2_lifecycle_pending[name]=(client.call_async(GetState.Request()),now)
+
+    def nav2_lifecycle_snapshot(self,now=None):
+        now=time.monotonic() if now is None else float(now)
+        if not hasattr(self,'nav2_lifecycle_lock'):
+            return dict(all_active=True,behavior_active=True,nodes={})
+        with self.nav2_lifecycle_lock:
+            self._collect_nav2_lifecycle_locked(now)
+            nodes={};active_flags={}
+            for name in NAV2_LIFECYCLE_NODES:
+                entry=self.nav2_lifecycle_states.get(name)
+                fresh=entry is not None and now-entry.get('wall',-math.inf)<=NAV2_LIFECYCLE_MAX_AGE_SECONDS
+                is_active=bool(fresh and entry.get('id')==NAV2_LIFECYCLE_ACTIVE_ID)
+                active_flags[name]=is_active
+                if entry is None:nodes[name]='unknown'
+                elif not fresh:nodes[name]='stale'
+                else:nodes[name]=entry.get('label') or entry.get('error') or 'unknown'
+            return dict(all_active=all(active_flags.values()),
+                        behavior_active=active_flags.get('behavior_server',False),
+                        nodes=nodes)
 
     def destroy_node(self):
         self.clock_executor.shutdown()
@@ -292,8 +353,9 @@ class ExperimentMotion(Node):
         with self.lock:
             if self.active:
                 raise ValueError('等待导航结束及转向服务就绪')
-            require_dispatch_ready(self.state(),'等待导航结束及转向服务就绪')
-            if not self.spin_client.server_is_ready():
+            state=self.state()
+            require_dispatch_ready(state,'等待导航结束及转向服务就绪')
+            if not self.spin_client.server_is_ready() or not state.get('diagnostics',{}).get('spin_ready',True):
                 raise ValueError('等待导航结束及转向服务就绪')
             p=self.pose();self.check_start(task,p)
             angle=math.atan2(math.sin(yaw-p['yaw']),math.cos(yaw-p['yaw']))
@@ -446,12 +508,15 @@ class ExperimentMotion(Node):
             except Exception as error:p=None;pose_error=str(error)
             if slew:self.drain_gimbal_captures()
             wall=time.monotonic();sim=self.get_clock().now().nanoseconds/1e9
-            navigation_ready=self.client.server_is_ready();map_fresh=self.grid_fresh()
+            lifecycle=self.nav2_lifecycle_snapshot(wall) if hasattr(self,'nav2_lifecycle_lock') else dict(all_active=True,behavior_active=True,nodes={})
+            navigation_ready=self.client.server_is_ready() and lifecycle['all_active'];map_fresh=self.grid_fresh()
+            spin_ready=self.spin_client.server_is_ready() and lifecycle['behavior_active']
             depth_active=wall-self.last_depth<6
             age=lambda stamp:round(wall-stamp,3) if stamp else None
             diagnostics=dict(sim_stamp=sim,pose_error=pose_error,navigation_ready=navigation_ready,
+                nav2_lifecycle_active=lifecycle['all_active'],nav2_lifecycle=lifecycle['nodes'],
                 laser_localization=self.localization_state(),
-                spin_ready=self.spin_client.server_is_ready(),
+                spin_ready=spin_ready,
                 depth_age_wall_seconds=age(self.last_depth),depth_message=self.depth_message,
                 quality_age_wall_seconds=age(self.quality_received),quality_present=self.quality is not None,
                 costmap_age_wall_seconds=age(self.grid_received) if self.grid else None,costmap_fresh=map_fresh,
@@ -785,3 +850,16 @@ class ExperimentMotion(Node):
             self.client.destroy();self.spin_client.destroy()
             self.client=ActionClient(self,NavigateToPose,'/navigate_to_pose',callback_group=self.control_group)
             self.spin_client=ActionClient(self,Spin,'/spin',callback_group=self.control_group)
+            if hasattr(self,'nav2_lifecycle_lock'):
+                with self.nav2_lifecycle_lock:
+                    for name,(future,_) in list(self.nav2_lifecycle_pending.items()):
+                        client=self.nav2_lifecycle_clients.get(name)
+                        if client is not None:
+                            try:client.remove_pending_request(future)
+                            except Exception:pass
+                        future.cancel()
+                    self.nav2_lifecycle_pending.clear()
+                    self.nav2_lifecycle_states.clear()
+                    for client in self.nav2_lifecycle_clients.values():
+                        self.destroy_client(client)
+                    self.nav2_lifecycle_clients=self._create_nav2_lifecycle_clients()

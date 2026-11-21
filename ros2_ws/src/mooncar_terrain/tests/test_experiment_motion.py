@@ -516,5 +516,72 @@ class MotionTests(unittest.TestCase):
         self.assertFalse(state.permit.publish.call_args.args[0].data)
         state.turn.assert_not_called()
 
+    def test_navigation_ready_requires_all_nav2_lifecycle_nodes_active_and_resets(self):
+        import rclpy
+        from experiment_motion import NAV2_LIFECYCLE_NODES, NAV2_LIFECYCLE_MAX_AGE_SECONDS, NAV2_LIFECYCLE_TIMEOUT_SECONDS
+        rclpy.init(args=['--ros-args','-p','use_sim_time:=true'],domain_id=91)
+        node=ExperimentMotion()
+        try:
+            node.pose=Mock(return_value=dict(x=0.,y=0.,z=0.,yaw=0.))
+            node.grid_fresh=Mock(return_value=True)
+            node.last_depth=time.monotonic()
+            node.client.server_is_ready=Mock(return_value=True)
+            node.spin_client.server_is_ready=Mock(return_value=True)
+            # Action servers visible before lifecycle ACTIVE must NOT report ready.
+            s0=node.state()
+            self.assertFalse(s0['ready'])
+            self.assertFalse(s0['diagnostics']['navigation_ready'])
+            self.assertFalse(s0['diagnostics']['nav2_lifecycle_active'])
+            self.assertFalse(s0['diagnostics']['spin_ready'])
+            now=time.monotonic()
+            with node.nav2_lifecycle_lock:
+                for name in NAV2_LIFECYCLE_NODES:
+                    node.nav2_lifecycle_states[name]=dict(id=2 if name=='bt_navigator' else 3,
+                        label='inactive' if name=='bt_navigator' else 'active',wall=now)
+            s1=node.state()
+            self.assertFalse(s1['ready'])
+            self.assertFalse(s1['diagnostics']['nav2_lifecycle_active'])
+            self.assertEqual(s1['diagnostics']['nav2_lifecycle']['bt_navigator'],'inactive')
+            self.assertTrue(s1['diagnostics']['spin_ready'])
+            with node.nav2_lifecycle_lock:
+                node.nav2_lifecycle_states['bt_navigator']=dict(id=3,label='active',wall=now)
+            s2=node.state()
+            self.assertTrue(s2['ready'])
+            self.assertTrue(s2['diagnostics']['navigation_ready'])
+            self.assertTrue(s2['diagnostics']['nav2_lifecycle_active'])
+            # Stale lifecycle status drops readiness back to False.
+            with node.nav2_lifecycle_lock:
+                node.nav2_lifecycle_states['planner_server']['wall']=now-NAV2_LIFECYCLE_MAX_AGE_SECONDS-1.
+            s3=node.state()
+            self.assertFalse(s3['ready'])
+            self.assertEqual(s3['diagnostics']['nav2_lifecycle']['planner_server'],'stale')
+            # Timed-out pending lifecycle query is cancelled and retried cleanly.
+            stuck_future=Mock();stuck_future.done.return_value=False
+            fake_client=Mock();fake_client.service_is_ready.return_value=True
+            retry_future=Mock();retry_future.done.return_value=False
+            fake_client.call_async.return_value=retry_future
+            with node.nav2_lifecycle_lock:
+                old_bt_client=node.nav2_lifecycle_clients['bt_navigator']
+                node.nav2_lifecycle_clients['bt_navigator']=fake_client
+                node.nav2_lifecycle_pending['bt_navigator']=(stuck_future,100.)
+            node.poll_nav2_lifecycle(now=100.+NAV2_LIFECYCLE_TIMEOUT_SECONDS+.1)
+            fake_client.remove_pending_request.assert_called_once_with(stuck_future)
+            stuck_future.cancel.assert_called_once()
+            self.assertEqual(node.nav2_lifecycle_states['bt_navigator']['error'],'get_state_timeout')
+            self.assertIs(node.nav2_lifecycle_pending['bt_navigator'][0],retry_future)
+            with node.nav2_lifecycle_lock:
+                node.nav2_lifecycle_clients['bt_navigator']=old_bt_client
+                node.nav2_lifecycle_pending.clear()
+                for name in NAV2_LIFECYCLE_NODES:
+                    node.nav2_lifecycle_states[name]=dict(id=3,label='active',wall=time.monotonic())
+            # reset() clears previous experiment lifecycle states and replaces clients.
+            old_clients=dict(node.nav2_lifecycle_clients)
+            node.reset()
+            self.assertEqual(node.nav2_lifecycle_states,{})
+            for name in NAV2_LIFECYCLE_NODES:
+                self.assertIsNot(node.nav2_lifecycle_clients[name],old_clients[name])
+        finally:
+            node.destroy_node();rclpy.shutdown()
+
 
 if __name__=='__main__':unittest.main()

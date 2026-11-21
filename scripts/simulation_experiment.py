@@ -275,32 +275,74 @@ class SimulationExperiment:
                 return self.motion.start(body,self.current)
             raise ValueError('当前仿真实验不可执行导航')
 
+    def _find_experiment_processes(self, pgid=None, gz_partition=None):
+        """Return alive (pid, pgid) pairs owned by the launch group or GZ_PARTITION."""
+        self_pid = os.getpid()
+        marker = f'GZ_PARTITION={gz_partition}'.encode() if gz_partition else None
+        found = []
+        # Container PID 1 may retain exited grandchildren as zombies; they cannot run.
+        for entry in Path('/proc').glob('[0-9]*/stat'):
+            try:
+                pid = int(entry.parent.name)
+                if pid == self_pid:
+                    continue
+                fields = entry.read_text().rsplit(')', 1)[1].split()
+                if fields[0] in ('Z', 'X'):
+                    continue
+                proc_pgid = int(fields[2])
+            except (OSError, ValueError, IndexError):
+                continue
+            owned = (pgid is not None and proc_pgid == pgid)
+            if not owned and marker is not None:
+                try:
+                    environ = (entry.parent / 'environ').read_bytes().split(b'\x00')
+                    owned = marker in environ
+                except OSError:
+                    owned = False
+            if owned:
+                found.append((pid, proc_pgid))
+        return found
+
     def _stop(self):
         if hasattr(self,'autonomy'):
             self.autonomy.stop('实验正在结束')
             if self.autonomy.worker:self.autonomy.worker.join(timeout=10)
         if hasattr(self,'motion'):self.motion.cancel('实验正在结束')
-        def alive_group(pgid):
-            # Container PID 1 may retain exited grandchildren as zombies; they cannot run.
-            for entry in Path('/proc').glob('[0-9]*/stat'):
-                try:
-                    fields = entry.read_text().rsplit(')',1)[1].split()
-                    if int(fields[2]) == pgid and fields[0] not in ('Z','X'):
-                        return True
-                except (OSError, ValueError, IndexError):
-                    continue
-            return False
-        if self.process is not None:
-            pgid = self.process.pid
+        pgid = self.process.pid if self.process is not None else None
+        current = getattr(self, 'current', None)
+        gz_partition = getattr(self, 'gz_partition', None)
+        if gz_partition is None and isinstance(current, dict) and current.get('id'):
+            gz_partition = 'mooncar-' + current['id']
+        if pgid is not None or gz_partition is not None:
+            own_pgid = os.getpgrp() if hasattr(os, 'getpgrp') else None
             for sig, timeout in ((signal.SIGINT, 12), (signal.SIGTERM, 5), (signal.SIGKILL, 3)):
-                try:
-                    os.killpg(pgid, sig)
-                except ProcessLookupError:
+                signaled = False
+                if pgid is not None:
+                    try:
+                        os.killpg(pgid, sig)
+                        signaled = True
+                    except ProcessLookupError:
+                        pass
+                detached = [(pid, p_pgid) for pid, p_pgid in self._find_experiment_processes(pgid, gz_partition)
+                            if p_pgid != pgid]
+                seen_groups = set()
+                for pid, p_pgid in detached:
+                    try:
+                        if p_pgid > 0 and p_pgid != own_pgid and p_pgid not in seen_groups:
+                            os.killpg(p_pgid, sig)
+                            seen_groups.add(p_pgid)
+                        else:
+                            os.kill(pid, sig)
+                        signaled = True
+                    except ProcessLookupError:
+                        continue
+                if not signaled and not self._find_experiment_processes(pgid, gz_partition):
                     break
                 deadline = time.monotonic()+timeout
                 while time.monotonic() < deadline:
-                    self.process.poll()
-                    if not alive_group(pgid):
+                    if self.process is not None:
+                        self.process.poll()
+                    if not self._find_experiment_processes(pgid, gz_partition):
                         break
                     time.sleep(.1)
                 else:
@@ -308,8 +350,10 @@ class SimulationExperiment:
                 break
             else:
                 raise RuntimeError('旧仿真进程未退出，禁止创建新实验')
-            self.process.wait(timeout=2)
-            self.process = None
+            if self.process is not None:
+                self.process.wait(timeout=2)
+                self.process = None
+            self.gz_partition = None
         # Old publishers must be gone before clearing their cached TF/map/quality.
         if hasattr(self,'motion'):self.motion.reset()
         if self.log:
@@ -338,7 +382,7 @@ class SimulationExperiment:
                     folder.mkdir()
                     write_json(folder/'software.json',dict(
                         software=getattr(self,'software',dict(verified=False)),
-                        terrain_strategy=os.environ.get('MOONCAR_TERRAIN_STRATEGY','baseline'),
+                        terrain_strategy=os.environ.get('MOONCAR_TERRAIN_STRATEGY','elevation_neighborhood_v1'),
                         simulation_profile=task.get('simulation_profile','legacy'),
                         localization_mode=self.laser_odometry_mode if self.laser_odometry else None))
                     (folder/'task.json').write_text(json.dumps(task, indent=2)+'\n', encoding='utf-8')
@@ -376,6 +420,7 @@ class SimulationExperiment:
                     process = subprocess.Popen(command, stdout=self.log, stderr=subprocess.STDOUT, env=env, start_new_session=True)
                     with self.lock:
                         self.process, self.current = process, dict(task, id=ident)
+                        self.gz_partition = 'mooncar-' + ident
                         self.started_at = time.monotonic()
                         self.phase = 'starting'
                 except Exception as exc:

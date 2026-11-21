@@ -184,5 +184,48 @@ class ExperimentTests(unittest.TestCase):
             finally:
                 client.close();server.shutdown();server.server_close();thread.join()
 
+    def test_stop_signals_detached_gz_partition_orphans(self):
+        import signal
+        sim=SimulationExperiment.__new__(SimulationExperiment)
+        sim.motion=Mock();sim.process=Mock();sim.process.pid=1000;sim.log=None
+        sim.current=dict(id='experiment-orphan123');sim.gz_partition='mooncar-experiment-orphan123'
+        killpg_calls=[]
+        def fake_killpg(pgid,sig):
+            killpg_calls.append((pgid,sig))
+        # First poll sees detached gz sim in its own session PGID 13915; after signaling it exits.
+        sequence=[[(13915,13915)],[]]
+        with patch.object(sim,'_find_experiment_processes',side_effect=sequence), \
+             patch('simulation_experiment.os.killpg',side_effect=fake_killpg), \
+             patch('simulation_experiment.os.getpgrp',return_value=999999,create=True):
+            sim._stop()
+        self.assertIn((1000,signal.SIGINT),killpg_calls)
+        self.assertIn((13915,signal.SIGINT),killpg_calls)
+        self.assertIsNone(sim.process)
+        self.assertIsNone(sim.gz_partition)
+        sim.motion.reset.assert_called_once_with()
+
+    def test_stop_raises_if_detached_orphan_survives_sigkill(self):
+        sim=SimulationExperiment.__new__(SimulationExperiment)
+        sim.motion=Mock();sim.process=Mock();sim.process.pid=1000;sim.log=None
+        sim.current=dict(id='experiment-stuck');sim.gz_partition='mooncar-experiment-stuck'
+        now=[0.]
+        def fake_monotonic():
+            now[0]+=100.
+            return now[0]
+        with patch.object(sim,'_find_experiment_processes',return_value=[(13915,13915)]), \
+             patch('simulation_experiment.os.killpg'), \
+             patch('simulation_experiment.os.getpgrp',return_value=999999,create=True), \
+             patch('simulation_experiment.time.monotonic',side_effect=fake_monotonic):
+            with self.assertRaisesRegex(RuntimeError,'旧仿真进程未退出'):
+                sim._stop()
+
+    def test_default_terrain_strategy_is_elevation_neighborhood_with_baseline_rollback(self):
+        root=Path(__file__).resolve().parents[4]
+        baseline=json.loads((root/'config/simulation_baseline.json').read_text(encoding='utf-8'))
+        self.assertEqual(baseline['terrain_strategy'],'elevation_neighborhood_v1')
+        node_source=(root/'ros2_ws/src/mooncar_terrain/scripts/terrain_node.py').read_text(encoding='utf-8')
+        self.assertIn("os.environ.get('MOONCAR_TERRAIN_STRATEGY','elevation_neighborhood_v1')",node_source)
+        self.assertIn("elif self.terrain_strategy != 'baseline':",node_source)
+
 
 if __name__=='__main__':unittest.main()

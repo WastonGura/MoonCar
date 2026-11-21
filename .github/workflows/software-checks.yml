@@ -26,6 +26,7 @@ jobs:
             python3-yaml \
             python3-matplotlib \
             python3-serial \
+            ros-jazzy-lifecycle-msgs \
             ros-jazzy-nav2-msgs \
             ros-jazzy-diagnostic-msgs
       - name: Python and portable firmware checks

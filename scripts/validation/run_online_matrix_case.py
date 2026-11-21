@@ -76,7 +76,7 @@ def main():
     write('protocol.json', dict(case=args.case, heading_trial=os.environ.get('MOONCAR_RAMP_HEADING_CASE'), task=task, software=software, wall_budget_s=wall_budget,
         mission_sim_budget_s=sim_budget, planned_direct_actions=route if args.case == 'direct' else None,
         autonomy_strategy=args.autonomy_strategy if args.case == 'autonomy' else None,
-        terrain_strategy=os.environ.get('MOONCAR_TERRAIN_STRATEGY','baseline'),radius=radius,
+        terrain_strategy=os.environ.get('MOONCAR_TERRAIN_STRATEGY','elevation_neighborhood_v1'),radius=radius,
         readiness='Record product ready independently; test dispatch waits for all four actual Nav2 lifecycle states ACTIVE',
         product_changes=False, automatic_retries=False, truth_used_for_control=False,
         scope='Measured single run; budgets are collection limits, not performance acceptance thresholds'))
@@ -167,7 +167,7 @@ def main():
         value = await_ready(150); write('ready.json', value)
         actual = json.loads((args.sessions/experiment/'software.json').read_text())
         assert actual['simulation_profile'] == 'r5_support_v1' and actual['localization_mode'] == 'rgbd_window'
-        assert actual.get('terrain_strategy','baseline')==os.environ.get('MOONCAR_TERRAIN_STRATEGY','baseline')
+        assert actual.get('terrain_strategy','elevation_neighborhood_v1')==os.environ.get('MOONCAR_TERRAIN_STRATEGY','elevation_neighborhood_v1')
         loaded = json.loads((args.sessions/experiment/'support-runtime/loaded.json').read_text())
         assert loaded['profile'] == 'r5_support_v1' and loaded['main_step_s'] == .00025
         write('support-loaded.json', loaded)
