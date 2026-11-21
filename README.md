@@ -15,6 +15,7 @@ MoonCar（寻迹者探测车）是一套基于 **ROS 2 Jazzy + Gazebo** 的四�
 
 ### 近期关键验证节点
 
+* **2026-11-22 — V3 四组 8 分钟自主探索与云台消融对照**：见 [reports/v4_4way_comparison_20261122/README.md](reports/v4_4way_comparison_20261122/README.md)。在抬升云台 + 单 RGBD 渲染 + R5 Nav2 足迹基线上，`surface_v3` 相比 11-18 高程 RMSE 由 0.65 cm 降至 **0.15 cm**、XY P95 降至 **6.18 cm**（504.31 / 463.31 m²）；`hybrid_v4` 无云台版实现 **XY P95 4.90 cm** 与后半程 **+235.9 m²** 全场最高；`hybrid_v4` 云台版实现 **0 次底盘原地自转**、前半程 **+317.8 m²** 与四组共同区域高程 **RMSE 0.179 cm** 全场最佳（四路 2560×1260 并排对比视频归档至本地 `output/v4-4way-comparison-20261122/`）。
 * **2026-11-18 — V3 自主探测固定版 vs 云台版 8 分钟对照**：见 [reports/v3_camera_comparison_20261118/README.md](reports/v3_camera_comparison_20261118/README.md)。在 480 仿真秒预算内，固定版与云台版分别观测 488.44 / 499.88 m²（有效高程面积 432.12 / 456.25 m²），XY 定位误差 P95 分别为 5.37 / 8.23 cm，共同区域高程 RMSE 0.22 / 0.65 cm，全程 0 次定位暂停。
 * **2026-11-17 — V3 连续地形与 8 分钟自主探索**：重建无接缝连续表面（[docs/terrain_v3_20261117.md](docs/terrain_v3_20261117.md)），并记录 8 分钟长跑表现与测绘容量边界（[docs/v3_eight_minute_comparison_20261117.md](docs/v3_eight_minute_comparison_20261117.md)）。
 * **2026-11-04 — 固定视向 / 云台观察对照与全面复测**：验证云台可无位移完成侧向观察（[reports/CAMERA_MODE_COMPARISON_20261104.md](reports/CAMERA_MODE_COMPARISON_20261104.md)），并汇总剩余问题与修复清单（[docs/repair_checklist_20261103.md](docs/repair_checklist_20261103.md)）。
