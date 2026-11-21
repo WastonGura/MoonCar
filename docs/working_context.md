@@ -39,8 +39,11 @@
    * 实现：[scripts/frontier_planner.py](../scripts/frontier_planner.py) + [scripts/autonomous_survey.py](../scripts/autonomous_survey.py)（并在 [web/index.html](../web/index.html)、[web/app.js](../web/app.js) 与 [run_online_matrix_case.py](../scripts/validation/run_online_matrix_case.py) 接入选项，完整保留 `surface_view_v2` / `surface_view_v3` 基线）。关键改进：对齐 R5 真实相机位姿（`forward=0.183 m`, `z=0.285 m`, `HFOV=73°`）；同时提取占据未知前沿与雷达已清障但深度未观测前沿；全图降采样 Dijkstra + 2-opt TSP 前沿排序打破原 6 m 视野墙；移动后 `|arrival_pan| <= 135°` 直接使用云台偏航替代底盘原地 Spin、移动前若云台偏转超过 10° 自动回中保 VIO 前视、并用自适应驻留（0.8–3.0 s）替换固定 3 s 等待。
    * 单测与 30×30 m 离线闭环 480 s 对比基准（合成运动学基准，非 Gazebo 实测）：[test_hybrid_frontier_v4.py](../tests/test_hybrid_frontier_v4.py)（5/5 通过）；`LiDAR+Depth` 双传感器模式下 8 分钟覆盖面积达 **527.3 m²（58.6%）**，较 `surface_view_v3`（382.1 m² / 42.5%）提升 **+38.0%**、较 `surface_view_v2`（407.9 m² / 45.3%）提升 **+29.3%**，底盘原地旋转由 12 次降至 **0 次**，规划中位耗时由 1136 ms 降至 **633.5 ms（-44.2%）**；`Depth-only` 模式下达 **459.2 m²（51.0%）**，较 `v3`（364.4 m²）提升 **+26.0%**，旋转 15 → **0 次**。
 
+3. **原始文献归档与 Nav2 R5 足迹对齐**：
+   * [docs/references.md](references.md)：完整沉淀 9 篇核心原始论文（Yamauchi 1997 / González-Baños & Latombe 2002 / Bircher 2016 / Fankhauser 2018 / Selin 2019 / Macenski 2020 & 2023 / Zhou 2021 / Cao 2021）的已核实 DOI、BibTeX 与代码映射。
+   * [nav2_profile.py](../ros2_ws/src/mooncar_navigation/launch/nav2_profile.py) + [nav2_params_r5.yaml](../ros2_ws/src/mooncar_navigation/config/nav2_params_r5.yaml)：按 `simulation_profile` 区分 `legacy`（`0.86×0.72 m` / 膨胀 `0.65 m`）与 `r5_support_v1`（`0.50×0.44 m` 与 `laser_filter_r5.yaml` 对齐 / 膨胀 `0.45 m > 外接半径 0.333 m` / `cost_scaling_factor = 4.0` / RPP `cost_scaling_dist = 0.45 m`），同步接入 `terrain_navigation.launch.py`、`navigation.launch.py`、`experiment_motion.py`（`within_region` 与半径护栏）、`simulation_experiment.py`、`observation_path.py` 与 `frontier_planner.py`（`0.45 m` 净空与边界裕度）。
+
 ## 下一步计划
 
-1. 在 Docker Gazebo 真实 V3 地形上开展 `surface_view_v3` vs `hybrid_frontier_v4`（配合抬升云台）8 分钟实测 A/B 对比，验证高程覆盖、XY/高程精度与 CPU 负载。
-2. 审视并按需收紧 Nav2 / `experiment_motion.py` 中仍沿用的旧车 `0.86×0.72 m` 轮廓与 `inflation_radius`（对比 R5 实际 `0.466×0.381 m`）。
-3. 推进坡面行驶换向（平缓区转向 / 缓弯，R1）与坡面弱几何重选 / 定位协方差校准（R4/R5/R7）。
+1. 在 Docker Gazebo 真实 V3 地形上开展 `surface_view_v3` vs `hybrid_frontier_v4`（配合抬升云台与 R5 Nav2 足迹）8 分钟实测 A/B 对比，验证高程覆盖、XY/高程精度与 CPU 负载。
+2. 推进坡面行驶换向（平缓区转向 / 缓弯，R1）与坡面弱几何重选 / 定位协方差校准（R4/R5/R7）。

@@ -1,5 +1,7 @@
 import os
 import copy
+import importlib.util
+from pathlib import Path
 import tempfile
 
 from ament_index_python.packages import get_package_share_directory
@@ -39,11 +41,22 @@ def configure_revisit_controller(params):
     controller['controller_plugins']=plugins
 
 
+def _load_nav2_profile():
+    spec = importlib.util.spec_from_file_location(
+        'mooncar_nav2_profile', Path(__file__).resolve().with_name('nav2_profile.py')
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def setup(context):
     navigation = get_package_share_directory('mooncar_navigation')
     terrain = get_package_share_directory('mooncar_terrain')
     with open(os.path.join(navigation, 'config', 'nav2_params.yaml')) as stream:
         params = yaml.safe_load(stream)
+    simulation_profile = LaunchConfiguration('simulation_profile').perform(context)
+    _load_nav2_profile().apply_nav2_profile(params, simulation_profile, inplace=True)
     online = LaunchConfiguration('online_mapping').perform(context).lower()=='true'
     laser_setting = LaunchConfiguration('laser_odometry').perform(context).lower()
     if laser_setting not in ('true','false'):

@@ -23,6 +23,10 @@ R5_CAMERA_HFOV_RAD = math.radians(73.0)
 R5_CAMERA_HALF_VFOV_RAD = 0.5061
 R5_CAMERA_MAX_RANGE_M = 5.5
 R5_CAMERA_MIN_RANGE_M = 0.6
+# Matches nav2_params_r5.yaml inflation_radius (0.45 m > R5 circumscribed 0.333 m)
+# and within_region(profile='r5_support_v1') worst-case corner (0.333 + 0.10 = 0.433 m).
+R5_CHASSIS_CLEARANCE_M = 0.45
+R5_BOUNDARY_MARGIN_M = 0.45
 GIMBAL_PAN_LIMIT_RAD = 2.35619
 GIMBAL_TILT_DEFAULT_RAD = -0.2618
 GIMBAL_RECENTER_THRESHOLD_RAD = 0.175  # ~10 deg
@@ -39,7 +43,7 @@ def inside_survey_region(region, x, y):
     return xmin <= x < xmax and ymin <= y < ymax
 
 
-def known_chassis_clearance(costs, x, y, resolution, margin_m=0.65):
+def known_chassis_clearance(costs, x, y, resolution, margin_m=R5_CHASSIS_CLEARANCE_M):
     height, width = costs.shape
     n = math.ceil(margin_m / resolution)
     if x < n or y < n or x + n >= width or y + n >= height:
@@ -61,7 +65,9 @@ def resampling_value(cell, key, resolution, camera):
 
 
 def run_dijkstra(costs, ox, oy, resolution, pose, origin, radius, region,
-                 max_cost_distance=6.0, stride=1):
+                 max_cost_distance=6.0, stride=1,
+                 boundary_margin_m=R5_BOUNDARY_MARGIN_M,
+                 chassis_clearance_m=R5_CHASSIS_CLEARANCE_M):
     """Terrain-weighted Dijkstra over known passable cells, optional coarse stride for global search."""
     height, width = costs.shape
     xmin, ymin, xmax, ymax = region
@@ -77,6 +83,7 @@ def run_dijkstra(costs, ox, oy, resolution, pose, origin, radius, region,
     parents = {(sx, sy): None}
     queue = [(0.0, sx, sy)]
     neighbors = ((stride, 0), (-stride, 0), (0, stride), (0, -stride))
+    radius_margin_m = boundary_margin_m + 0.05
     while queue:
         dist, x, y = heapq.heappop(queue)
         if dist != distances[(x, y)]:
@@ -88,12 +95,13 @@ def run_dijkstra(costs, ox, oy, resolution, pose, origin, radius, region,
             c = int(costs[ny, nx])
             px = ox + (nx + 0.5) * resolution
             py = oy + (ny + 0.5) * resolution
-            if not (xmin + 0.7 <= px <= xmax - 0.7 and ymin + 0.7 <= py <= ymax - 0.7):
+            if not (xmin + boundary_margin_m <= px <= xmax - boundary_margin_m
+                    and ymin + boundary_margin_m <= py <= ymax - boundary_margin_m):
                 continue
-            if math.hypot(px - origin[0], py - origin[1]) > radius - 0.75:
+            if math.hypot(px - origin[0], py - origin[1]) > radius - radius_margin_m:
                 continue
             d_robot = math.hypot(px - pose['x'], py - pose['y'])
-            max_c = 100 if d_robot <= 0.65 else 99
+            max_c = 100 if d_robot <= chassis_clearance_m else 99
             if not (0 <= c < max_c):
                 continue
             if stride > 1:
@@ -249,7 +257,7 @@ def order_frontier_tour(pose, waypoints):
 
 
 def find_standoff_viewpoint(cluster, costs, ox, oy, resolution, distances, parents,
-                            pose, max_cost=55):
+                            pose, max_cost=55, chassis_clearance_m=R5_CHASSIS_CLEARANCE_M):
     """Find a reachable, chassis-clear standoff viewpoint facing a frontier cluster."""
     cx, cy = cluster['cx'], cluster['cy']
     base_dir = math.atan2(pose['y'] - cy, pose['x'] - cx)
@@ -284,7 +292,7 @@ def find_standoff_viewpoint(cluster, costs, ox, oy, resolution, distances, paren
                 vy = oy + (iy + 0.5) * resolution
             if costs[iy, ix] > max_cost:
                 continue
-            if not known_chassis_clearance(costs, ix, iy, resolution):
+            if not known_chassis_clearance(costs, ix, iy, resolution, margin_m=chassis_clearance_m):
                 continue
             d = distances[key]
             if d < best_dist:
@@ -304,7 +312,9 @@ def find_standoff_viewpoint(cluster, costs, ox, oy, resolution, distances, paren
 def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
                        *, current_gimbal=(0.0, GIMBAL_TILT_DEFAULT_RAD),
                        gimbal_available=True, depth_observed_visibility=False,
-                       region=None, return_diagnostics=False):
+                       region=None, return_diagnostics=False,
+                       chassis_clearance_m=R5_CHASSIS_CLEARANCE_M,
+                       boundary_margin_m=R5_BOUNDARY_MARGIN_M):
     """Dual-layer planner (AEP + FUEL): local NBV with true gimbal decoupling + global frontier tour."""
     radius = math.inf if radius is None else radius
     region = scene_bounds('survey') if region is None else region
@@ -312,7 +322,8 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
     current_pan = float(current_gimbal[0]) if current_gimbal and len(current_gimbal) >= 1 else 0.0
 
     def inside_motion_region(x, y):
-        return xmin + 0.7 <= x <= xmax - 0.7 and ymin + 0.7 <= y <= ymax - 0.7
+        return (xmin + boundary_margin_m <= x <= xmax - boundary_margin_m
+                and ymin + boundary_margin_m <= y <= ymax - boundary_margin_m)
 
     diagnostics = dict(
         planner_version='hybrid-frontier-v4.0',
@@ -448,10 +459,15 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
     global_distances, global_parents = run_dijkstra(
         costs, ox, oy, resolution, pose, origin, radius, region,
         max_cost_distance=45.0, stride=global_stride,
+        boundary_margin_m=boundary_margin_m,
+        chassis_clearance_m=chassis_clearance_m,
     )
     frontier_waypoints = []
     for cl in clusters:
-        wp = find_standoff_viewpoint(cl, costs, ox, oy, resolution, global_distances, global_parents, pose)
+        wp = find_standoff_viewpoint(
+            cl, costs, ox, oy, resolution, global_distances, global_parents, pose,
+            chassis_clearance_m=chassis_clearance_m,
+        )
         if wp is not None:
             # Skip already-blocked frontier standoffs
             if any(math.hypot(wp['x'] - h['x'], wp['y'] - h['y']) < 0.7 and h.get('blocked') for h in history[-80:]):
@@ -471,6 +487,8 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
     local_distances, local_parents = run_dijkstra(
         costs, ox, oy, resolution, pose, origin, radius, region,
         max_cost_distance=7.5, stride=1,
+        boundary_margin_m=boundary_margin_m,
+        chassis_clearance_m=chassis_clearance_m,
     )
     positions = [(pose['x'], pose['y'], 0.0, [(pose['x'], pose['y'])], None)]
     for distance in (1.5, 2.5, 3.8):
@@ -481,7 +499,7 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
             iy = int(math.floor((y - oy) / resolution))
             if (ix, iy) not in local_distances or costs[iy, ix] > 55:
                 continue
-            if not known_chassis_clearance(costs, ix, iy, resolution):
+            if not known_chassis_clearance(costs, ix, iy, resolution, margin_m=chassis_clearance_m):
                 continue
             if any(math.hypot(x - p[0], y - p[1]) < 0.35 for p in positions):
                 continue
@@ -651,7 +669,7 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
                     px, py = path[i]
                     ix = int(math.floor((px - ox) / resolution))
                     iy = int(math.floor((py - oy) / resolution))
-                    if inside_motion_region(px, py) and known_chassis_clearance(costs, ix, iy, resolution):
+                    if inside_motion_region(px, py) and known_chassis_clearance(costs, ix, iy, resolution, margin_m=chassis_clearance_m):
                         target_pt = (px, py)
                         break
             gx, gy = target_pt

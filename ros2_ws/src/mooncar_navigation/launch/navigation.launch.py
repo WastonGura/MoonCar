@@ -2,7 +2,13 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, TimerAction, GroupAction
 from launch.conditions import IfCondition, UnlessCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, AndSubstitution
+from launch.substitutions import (
+    AndSubstitution,
+    EqualsSubstitution,
+    IfElseSubstitution,
+    LaunchConfiguration,
+    PathJoinSubstitution,
+)
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
@@ -24,7 +30,15 @@ def generate_launch_description():
         [FindPackageShare("mooncar_gazebo"), "launch", "simulation.launch.py"]
     )
     default_params = PathJoinSubstitution(
-        [FindPackageShare("mooncar_navigation"), "config", "nav2_params.yaml"]
+        [
+            FindPackageShare("mooncar_navigation"),
+            "config",
+            IfElseSubstitution(
+                EqualsSubstitution(LaunchConfiguration("simulation_profile"), "r5_support_v1"),
+                "nav2_params_r5.yaml",
+                "nav2_params.yaml",
+            ),
+        ]
     )
     default_ekf_params = PathJoinSubstitution(
         [FindPackageShare("mooncar_slam"), "config", "ekf.yaml"]
@@ -141,6 +155,7 @@ def generate_launch_description():
             DeclareLaunchArgument(
                 "map", description="Absolute path to a saved occupancy-map YAML file."
             ),
+            DeclareLaunchArgument('simulation_profile', default_value='legacy'),
             DeclareLaunchArgument(
                 "params_file",
                 default_value=default_params,
@@ -163,7 +178,6 @@ def generate_launch_description():
             DeclareLaunchArgument('use_slam_mapper', default_value='true'),
             DeclareLaunchArgument('camera_sensor_profile', default_value='legacy'),
             DeclareLaunchArgument('online_mapping', default_value='false'),
-            DeclareLaunchArgument('simulation_profile',default_value='legacy'),
             DeclareLaunchArgument('world', default_value=PathJoinSubstitution([FindPackageShare('mooncar_gazebo'),'worlds','lunar_yard.sdf'])),
             DeclareLaunchArgument('world_name', default_value='lunar_yard'),
             IncludeLaunchDescription(

@@ -134,8 +134,9 @@ def validate_task(body):
             or not (.5 <= x1-x0 <= high_x-low_x and .5 <= y1-y0 <= high_y-low_y)
             or abs(yaw) > math.pi):
         raise ValueError(f'坐标范围为 {low_x:g} 至 {high_x:g} 米；区域每边至少 0.5 米；朝向为 -180 至 180 度')
-    hx = .43*abs(math.cos(yaw)) + .36*abs(math.sin(yaw)) + .1
-    hy = .43*abs(math.sin(yaw)) + .36*abs(math.cos(yaw)) + .1
+    half_l, half_w = (.25, .22) if profile == 'r5_support_v1' else (.43, .36)
+    hx = half_l*abs(math.cos(yaw)) + half_w*abs(math.sin(yaw)) + .1
+    hy = half_l*abs(math.sin(yaw)) + half_w*abs(math.cos(yaw)) + .1
     for low, high in spawn_obstacles(scene):
         if x+hx >= low[0] and x-hx <= high[0] and y+hy >= low[1] and y-hy <= high[1]:
             raise ValueError('起点车体与场景障碍或坡面重叠，请选择周围平地')

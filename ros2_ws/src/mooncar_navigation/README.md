@@ -6,10 +6,13 @@ in the MoonCar Gazebo simulation.
 ## Runtime contract
 
 For the explicit R5 support candidate, pass
-`simulation_profile:=r5_support_v1` to `terrain_navigation.launch.py` or select
-it in the workbench. It forwards the bound support model and precision profile
-through the simulation launch. The existing conservative navigation footprint
-and safety thresholds remain in force.
+`simulation_profile:=r5_support_v1` to `terrain_navigation.launch.py` or
+`navigation.launch.py` (or select it in the workbench). It forwards the bound
+support model and precision profile through the simulation launch and applies
+the R5 navigation footprint (`0.50 m x 0.44 m`, matching `laser_filter_r5.yaml`)
+with `0.45 m` inflation (`config/nav2_params_r5.yaml` / `launch/nav2_profile.py`).
+The `legacy` profile keeps the original `0.86 m x 0.72 m` footprint and `0.65 m`
+inflation (`config/nav2_params.yaml`).
 
 Sparse keepout and traversability maps use `mooncar_terrain::RiskOverlay`.
 Unknown or free overlay cells preserve other layers; positive risk overrides

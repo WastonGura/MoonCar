@@ -146,9 +146,11 @@ def newly_known_cells(grid, points):
 
 def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='quality_view_heuristic_v1',return_diagnostics=False,
                 _boundary_fallback=False,*,depth_observed_visibility=False,region=None,
-                current_gimbal=None,gimbal_available=True):
+                current_gimbal=None,gimbal_available=True,simulation_profile=None):
     """Known-space reachability plus conservative planar camera visibility prediction."""
     if strategy in V4_STRATEGIES:
+        clearance_m = 0.65 if simulation_profile == 'legacy' else 0.45
+        boundary_m = 0.70 if simulation_profile == 'legacy' else 0.45
         return choose_hybrid_view(
             grid, quality, pose, origin, radius, history, remaining,
             current_gimbal=current_gimbal or (0.0, GIMBAL_TILT_DEFAULT_RAD),
@@ -156,6 +158,8 @@ def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='qual
             depth_observed_visibility=depth_observed_visibility,
             region=region,
             return_diagnostics=return_diagnostics,
+            chassis_clearance_m=clearance_m,
+            boundary_margin_m=boundary_m,
         )
     radius = math.inf if radius is None else radius
     region = scene_bounds('survey') if region is None else region
@@ -1476,7 +1480,8 @@ class AutonomousSurvey:
                                          strategy,return_diagnostics=True,
                                          depth_observed_visibility=self.initial_depth_scan,region=self.task['region'],
                                          current_gimbal=getattr(self.motion,'gimbal_position',None),
-                                         gimbal_available=callable(getattr(self.motion,'pan_tilt',None)))
+                                         gimbal_available=callable(getattr(self.motion,'pan_tilt',None)),
+                                         simulation_profile=self.task.get('simulation_profile'))
                 if not decision:
                     self.data['candidate_diagnostics']=diagnostics
                     if diagnostics['budget_limited']:

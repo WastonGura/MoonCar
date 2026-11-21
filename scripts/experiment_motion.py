@@ -50,10 +50,12 @@ class GimbalJointCapture:
     received_wall: float
 
 
-def within_region(region, x, y, yaw):
-    hx=.43*abs(math.cos(yaw))+.36*abs(math.sin(yaw))+.1
-    hy=.43*abs(math.sin(yaw))+.36*abs(math.cos(yaw))+.1
-    return region[0]+hx <= x <= region[2]-hx and region[1]+hy <= y <= region[3]-hy
+def within_region(region, x, y, yaw, half_length=.43, half_width=.36, margin=.1, profile=None):
+    if profile == 'r5_support_v1':
+        half_length, half_width = .25, .22
+    hx = half_length * abs(math.cos(yaw)) + half_width * abs(math.sin(yaw)) + margin
+    hy = half_length * abs(math.sin(yaw)) + half_width * abs(math.cos(yaw)) + margin
+    return region[0] + hx <= x <= region[2] - hx and region[1] + hy <= y <= region[3] - hy
 
 
 class ExperimentMotion(Node):
@@ -117,7 +119,7 @@ class ExperimentMotion(Node):
         self.gimbal_capture_dropped_old=0;self.gimbal_capture_dropped_future=0
         self.lock=threading.RLock()
         self.active=False;self.goal_handle=None;self.token='';self.phase='idle';self.error=''
-        self.last_heartbeat=0.;self.started=0.;self.last_depth=0.;self.depth_message='等待传感器';self.region=None
+        self.last_heartbeat=0.;self.started=0.;self.last_depth=0.;self.depth_message='等待传感器';self.region=None;self.simulation_profile='legacy'
         self.path=[];self.track=[];self.goal=None;self.grid=None;self.grid_view=None;self.grid_received=0.;self.last_path=0.
         self.keepout_grid=None
         self.feedback={};self.sim_started=0.;self.sim_budget=180.
@@ -358,11 +360,12 @@ class ExperimentMotion(Node):
             if not self.spin_client.server_is_ready() or not state.get('diagnostics',{}).get('spin_ready',True):
                 raise ValueError('等待导航结束及转向服务就绪')
             p=self.pose();self.check_start(task,p)
+            profile=task.get('simulation_profile','legacy')
             angle=math.atan2(math.sin(yaw-p['yaw']),math.cos(yaw-p['yaw']))
-            if not within_region(task['region'],p['x'],p['y'],p['yaw']) or not within_region(task['region'],p['x'],p['y'],yaw):
+            if not within_region(task['region'],p['x'],p['y'],p['yaw'],profile=profile) or not within_region(task['region'],p['x'],p['y'],yaw,profile=profile):
                 raise ValueError('转向前后车体须位于任务区域内')
             # Spin keeps Nav2 collision prediction and the same safety relay as translation.
-            self.region=task['region'];self.token=secrets.token_urlsafe(24);token=self.token
+            self.region=task['region'];self.simulation_profile=profile;self.token=secrets.token_urlsafe(24);token=self.token
             self.activate_localization_action();self.phase='planning';self.error='';self.goal_handle=None
             self.stop_diagnostics=None
             self.started=self.last_heartbeat=time.monotonic()
@@ -386,8 +389,10 @@ class ExperimentMotion(Node):
             p=self.pose()
             if task:
                 self.check_start(task,p)
-                if not within_region(task['region'],p['x'],p['y'],p['yaw']):
+                profile=task.get('simulation_profile','legacy')
+                if not within_region(task['region'],p['x'],p['y'],p['yaw'],profile=profile):
                     raise ValueError('车辆须位于任务区域内')
+                self.simulation_profile=profile
             rate=getattr(self,'gimbal_command_rate_rad_s',None)
             slew=type(rate) in (int,float) and rate>0
             if slew:
@@ -637,10 +642,11 @@ class ExperimentMotion(Node):
             require_dispatch_ready(self.state(),'等待导航、定位与传感器就绪')
             self.check_goal(goal)
             p=self.pose();self.check_start(task,p)
+            profile=task.get('simulation_profile','legacy')
             yaw=math.atan2(goal[1]-p['y'],goal[0]-p['x'])
-            if not within_region(task['region'],p['x'],p['y'],p['yaw']) or not within_region(task['region'],*goal,yaw):
+            if not within_region(task['region'],p['x'],p['y'],p['yaw'],profile=profile) or not within_region(task['region'],*goal,yaw,profile=profile):
                 raise ValueError('起点及目标的整个车体需位于探测区域内，并留出边界余量')
-            self.region=task['region'];self.token=secrets.token_urlsafe(24);token=self.token
+            self.region=task['region'];self.simulation_profile=profile;self.token=secrets.token_urlsafe(24);token=self.token
             self.activate_localization_action();self.phase='planning';self.error='';self.goal_handle=None
             self.stop_diagnostics=None
             self.started=self.last_heartbeat=time.monotonic()
@@ -790,12 +796,14 @@ class ExperimentMotion(Node):
                         p=self.pose()
                         if not self.track or math.hypot(p['x']-self.track[-1][0],p['y']-self.track[-1][1])>=.05:
                             self.track.append([p['x'],p['y'],p['z']])
-                        if not within_region(self.region,p['x'],p['y'],p['yaw']):reason='接近探测区域边界，已停止运动'
+                        profile=getattr(self,'simulation_profile','legacy')
+                        if not within_region(self.region,p['x'],p['y'],p['yaw'],profile=profile):reason='接近探测区域边界，已停止运动'
                         limits=getattr(self,'mission_limits',None)
                         if limits:
+                            radius_margin=.45 if profile=='r5_support_v1' else .65
                             if self.get_clock().now().nanoseconds/1e9>=limits['deadline']:reason='自主探测时间预算已用尽'
                             elif (limits.get('radius') is not None and
-                                  math.hypot(p['x']-limits['origin'][0],p['y']-limits['origin'][1])>limits['radius']-.65):reason='接近自主探测活动距离限制'
+                                  math.hypot(p['x']-limits['origin'][0],p['y']-limits['origin'][1])>limits['radius']-radius_margin):reason='接近自主探测活动距离限制'
                         if not reason and self.goal_request_kind=='navigate_to_pose' and self.phase=='executing':
                             direct=math.hypot(p['x']-self.goal[0],p['y']-self.goal[1])
                             if direct<=self.best_goal_distance-.15:

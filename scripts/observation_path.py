@@ -29,7 +29,7 @@ def compute_path(node,goal,state,observation_yaw):
     from experiment_motion import within_region
     motion=state['motion'];pose=motion['pose'];task=state['task']
     if motion['active'] or not motion['ready']:raise ValueError('Planning requires a stationary, ready experiment')
-    if not within_region(task['region'],*goal,observation_yaw):raise ValueError('Observation pose outside task boundary')
+    if not within_region(task['region'],*goal,observation_yaw,profile=task.get('simulation_profile')):raise ValueError('Observation pose outside task boundary')
     client=ActionClient(node,ComputePathToPose,'/compute_path_to_pose');handle=None
     def wait(future):
         deadline=time.monotonic()+15

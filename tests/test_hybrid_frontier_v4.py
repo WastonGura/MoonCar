@@ -171,6 +171,56 @@ class HybridFrontierUnitTests(unittest.TestCase):
         self.assertEqual(executed[2][2], True)
         self.assertAlmostEqual(executed[2][3], round(math.pi / 2.0, 3), places=2)
 
+    def test_r5_clearance_enters_corridor_blocked_by_legacy_clearance(self):
+        # 1.1 m clear corridor (y in [-0.55, +0.55]) -> safe for R5 (0.45 m) but blocked for legacy (0.65 m).
+        grid, arr = make_grid(width=140, height=100, resolution=0.1, ox=-2.0, oy=-5.0, fill=100)
+        # Start bay around (0, 0)
+        arr[35:65, 5:35] = 0
+        # Narrow 1.1 m corridor along x in [1.0, 6.5], y in [-0.55, +0.55] -> rows 45..55 (11 cells = 1.1 m)
+        arr[45:56, 30:85] = 0
+        # Open unknown room at the end of corridor
+        arr[35:65, 85:125] = -1
+        grid.data = arr.ravel()
+        qr = 0.25
+        # Mark start bay as already observed so the only gain lies down the corridor
+        cells = [
+            dict(ix=qx, iy=qy, quality=0.95, z=0.0, fit_state='valid', bearing_mask=255, points=20)
+            for qx in range(-6, 10) for qy in range(-6, 6)
+        ]
+        quality = dict(resolution=qr, cells=cells, frames=10, stamp=10.0)
+        pose = dict(x=0.0, y=0.0, z=0.0, yaw=0.0)
+        region = (-2.0, -5.0, 12.0, 5.0)
+
+        r5_pick = choose_view(
+            grid, quality, pose, [0.0, 0.0], 15.0, [], 120.0,
+            'hybrid_frontier_v4', region=region, simulation_profile='r5_support_v1',
+        )
+        legacy_pick = choose_view(
+            grid, quality, pose, [0.0, 0.0], 15.0, [], 120.0,
+            'hybrid_frontier_v4', region=region, simulation_profile='legacy',
+        )
+        self.assertIsNotNone(r5_pick)
+        self.assertGreater(r5_pick['x'], 1.2)
+        if legacy_pick is not None:
+            self.assertLess(legacy_pick['x'], 1.5)
+
+    def test_within_region_supports_r5_and_legacy_profiles(self):
+        import ast
+        src = (ROOT / 'scripts' / 'experiment_motion.py').read_text(encoding='utf-8')
+        tree = ast.parse(src)
+        fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'within_region')
+        ns = {'math': math}
+        exec(compile(ast.Module(body=[fn], type_ignores=[]), '<within_region>', 'exec'), ns)
+        within_region = ns['within_region']
+
+        region = [-1.0, -2.0, 8.0, 6.0]
+        # x = 7.60 -> 0.40 m from xmax=8.0: inside for R5 (0.25+0.10=0.35), outside for legacy (0.43+0.10=0.53)
+        self.assertFalse(within_region(region, 7.60, 2.0, 0.0))
+        self.assertFalse(within_region(region, 7.60, 2.0, 0.0, profile='legacy'))
+        self.assertTrue(within_region(region, 7.60, 2.0, 0.0, profile='r5_support_v1'))
+        # x = 7.70 -> 0.30 m from xmax=8.0: outside even for R5 (needs 0.35 m)
+        self.assertFalse(within_region(region, 7.70, 2.0, 0.0, profile='r5_support_v1'))
+
 
 if __name__ == '__main__':
     unittest.main()
