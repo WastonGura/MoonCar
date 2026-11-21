@@ -23,7 +23,7 @@ def main():
     parser.add_argument('--sessions', type=Path, required=True)
     parser.add_argument('--wall-budget',type=float,default=None)
     parser.add_argument('--survey-budget',type=float,default=None)
-    parser.add_argument('--autonomy-strategy', choices=('surface_view_v2', 'surface_view_v3'),
+    parser.add_argument('--autonomy-strategy', choices=('surface_view_v2', 'surface_view_v3', 'hybrid_frontier_v4'),
                         default='surface_view_v2')
     parser.add_argument('--radius',type=float,default=None)
     parser.add_argument('--scene',choices=('survey_v2_native','survey_v3_native'),default='survey_v2_native')

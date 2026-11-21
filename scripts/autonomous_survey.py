@@ -14,12 +14,14 @@ import numpy as np
 from localization_revisit import RGBDRevisitPolicy, ReobservedAnchorProof, RetiredCheckpoint, MAX_REVISITS, sample_payload
 from survey_evaluation import VERSION, EvidenceRecorder, gain, scoped_cells
 from experiment_scenes import scene_bounds
+from frontier_planner import choose_hybrid_view, GIMBAL_PAN_LIMIT_RAD, GIMBAL_RECENTER_THRESHOLD_RAD, GIMBAL_TILT_DEFAULT_RAD
 from localization_quality import LocalizationDispatchRejected
 
 LEGACY_STRATEGIES = ('nearest_view_v1', 'coverage_view_v1', 'surface_view_v1')
 V2_STRATEGIES = ('nearest_view_v2', 'coverage_view_v2', 'surface_view_v2')
 V3_STRATEGIES = ('nearest_view_v3', 'coverage_view_v3', 'surface_view_v3')
-STRATEGIES = (*V2_STRATEGIES, *V3_STRATEGIES)
+V4_STRATEGIES = ('hybrid_frontier_v4',)
+STRATEGIES = (*V2_STRATEGIES, *V3_STRATEGIES, *V4_STRATEGIES)
 EXECUTION_MARGIN_SECONDS = 4.
 INACTIVE_POSE_GRACE_SECONDS = 1.
 MAX_CONSECUTIVE_ACTION_FAILURES = 3
@@ -143,8 +145,18 @@ def newly_known_cells(grid, points):
 
 
 def choose_view(grid,quality,pose,origin,radius,history,remaining,strategy='quality_view_heuristic_v1',return_diagnostics=False,
-                _boundary_fallback=False,*,depth_observed_visibility=False,region=None):
+                _boundary_fallback=False,*,depth_observed_visibility=False,region=None,
+                current_gimbal=None,gimbal_available=True):
     """Known-space reachability plus conservative planar camera visibility prediction."""
+    if strategy in V4_STRATEGIES:
+        return choose_hybrid_view(
+            grid, quality, pose, origin, radius, history, remaining,
+            current_gimbal=current_gimbal or (0.0, GIMBAL_TILT_DEFAULT_RAD),
+            gimbal_available=gimbal_available,
+            depth_observed_visibility=depth_observed_visibility,
+            region=region,
+            return_diagnostics=return_diagnostics,
+        )
     radius = math.inf if radius is None else radius
     region = scene_bounds('survey') if region is None else region
     xmin, ymin, xmax, ymax = region
@@ -1443,7 +1455,7 @@ class AutonomousSurvey:
                         if not self.data['active']:break
                         if observed:failures=0
                         if len(frontier_attempts)>attempts or self.revisit_interrupt_pending():continue
-                    if (strategy not in V3_STRATEGIES or
+                    if (strategy not in (*V3_STRATEGIES, *V4_STRATEGIES) or
                             self.data['recovery_attempts']>=MAX_RECOVERY_SCANS or
                             not callable(getattr(self.motion,'pan_tilt',None))):
                         self.stop('连续三个候选动作未能执行，恢复机会已用尽或不可用；已停止，请检查场地与导航','fault')
@@ -1462,7 +1474,9 @@ class AutonomousSurvey:
                     decision,diagnostics=choose_view(grid,quality,pose,self.origin,self.data['radius'],history,
                                          self.data['budget_seconds']-(self.now()-self.data['started'])-EXECUTION_MARGIN_SECONDS,
                                          strategy,return_diagnostics=True,
-                                         depth_observed_visibility=self.initial_depth_scan,region=self.task['region'])
+                                         depth_observed_visibility=self.initial_depth_scan,region=self.task['region'],
+                                         current_gimbal=getattr(self.motion,'gimbal_position',None),
+                                         gimbal_available=callable(getattr(self.motion,'pan_tilt',None)))
                 if not decision:
                     self.data['candidate_diagnostics']=diagnostics
                     if diagnostics['budget_limited']:
@@ -1498,15 +1512,49 @@ class AutonomousSurvey:
                         diagnostics['execution_budget_recheck_rejected']=True
                         self.data['candidate_diagnostics']=diagnostics
                     self.stop('写入动作记录后剩余时间不足以完成下一观察动作','budget_reached');break
-                if decision['kind']!='turn':success=self.execute(decision)
+                if decision['kind']!='turn':
+                    if strategy in V4_STRATEGIES and callable(getattr(self.motion,'pan_tilt',None)):
+                        gimbal_pos=getattr(self.motion,'gimbal_position',None)
+                        if isinstance(gimbal_pos,(list,tuple)) and len(gimbal_pos)>=1 and abs(float(gimbal_pos[0]))>GIMBAL_RECENTER_THRESHOLD_RAD:
+                            recenter=dict(x=pose['x'],y=pose['y'],yaw=pose['yaw'],kind='turn',
+                                          pan=0.0,tilt=GIMBAL_TILT_DEFAULT_RAD,use_pan_tilt=True,
+                                          estimated_seconds=abs(float(gimbal_pos[0]))/1.5+2.0)
+                            success=self.execute(recenter,turn=True)
+                    if success and self.healthy():
+                        success=self.execute(decision)
                 if success and self.healthy():
-                    angle=abs(wrap(decision['yaw']-self.motion.pose()['yaw']))
-                    if decision.get('use_pan_tilt') or angle>.12:
+                    actual_yaw=self.motion.pose()['yaw']
+                    rel_yaw=wrap(decision['yaw']-actual_yaw)
+                    if strategy in V4_STRATEGIES and decision['kind']!='turn' and callable(getattr(self.motion,'pan_tilt',None)):
+                        if abs(rel_yaw)>0.12:
+                            if abs(rel_yaw)<=GIMBAL_PAN_LIMIT_RAD:
+                                decision['pan']=round(float(rel_yaw),3)
+                                decision['tilt']=round(GIMBAL_TILT_DEFAULT_RAD,3)
+                                decision['use_pan_tilt']=True
+                                success=self.execute(decision,turn=True)
+                            else:
+                                decision['use_pan_tilt']=False
+                                success=self.execute(decision,turn=True)
+                    elif decision.get('use_pan_tilt') or abs(rel_yaw)>.12:
                         if decision.get('recovery'):self.data['recovery_attempts']+=1
                         success=self.execute(decision,turn=True)
                 if success and self.healthy():
-                    self.data['phase']='observing';until=self.now()+3
-                    while self.healthy() and self.now()<until:time.sleep(.2)
+                    arrived_sim=self.now()
+                    self.data['phase']='observing'
+                    if strategy in V4_STRATEGIES:
+                        min_until=arrived_sim+0.8
+                        max_until=arrived_sim+3.0
+                        before_frames=before.get('frames',0) if isinstance(before,dict) else 0
+                        while self.healthy() and self.now()<max_until:
+                            if self.now()>=min_until:
+                                cur_q=self.motion.quality
+                                if (isinstance(cur_q,dict) and cur_q.get('frames',0)>before_frames
+                                        and cur_q.get('stamp',0)>arrived_sim):
+                                    break
+                            time.sleep(.15)
+                    else:
+                        until=arrived_sim+3
+                        while self.healthy() and self.now()<until:time.sleep(.2)
                 current=self.motion.quality
                 if decision.get('recovery') and success and self.data['active']:
                     if current.get('frames',0)<=before.get('frames',0):

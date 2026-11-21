@@ -19,7 +19,7 @@
       </section>
       <section id="autonomy-controls">
         <h2>自主探测</h2>
-        <label>探测策略<select id="survey-strategy"><option value="nearest_view_v2">就近观察</option><option value="coverage_view_v2">覆盖优先</option><option value="surface_view_v2" selected>地表补采</option></select></label>
+        <label>探测策略<select id="survey-strategy"><option value="hybrid_frontier_v4">混合前沿云台协同 (v4)</option><option value="nearest_view_v2">就近观察</option><option value="coverage_view_v2">覆盖优先</option><option value="surface_view_v2" selected>地表补采</option></select></label>
         <p class="note">三种策略共用导航与安全限制。地表补采仅对采样不足的格子尝试换方向观察；陡面和高残差格子不奖励。</p>
         <div class="coordinate-fields">
           <label>时间（仿真秒）<input id="survey-budget" aria-label="时间预算（仿真秒）" type="number" min="15" max="1800" step="1" value="180" required></label>

@@ -329,6 +329,7 @@ function sessionLabel(name, strategy) {
   const time=`${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
   const experiment=name.match(/(?:^|\/)experiment-([a-f0-9]+)\//)?.[1];
   const labels={
+    hybrid_frontier_v4:'[混合前沿 v4]',
     coverage_view_v3:'[覆盖优先 v3]',
     surface_view_v3:'[地表补采 v3]',
     nearest_view_v3:'[就近观察 v3]',

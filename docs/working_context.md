@@ -29,9 +29,18 @@
 2. **修复实验退出残留孤儿 Gazebo 进程**：[scripts/simulation_experiment.py](../scripts/simulation_experiment.py) 的 `_stop()` 除信号原 launch 进程组外，还按实验唯一环境变量 `GZ_PARTITION=mooncar-<id>` 扫描 `/proc`，发现并按 `SIGINT → SIGTERM → SIGKILL` 清理独立会话（`setsid` 脱离原 PGID）的残留 `gz sim` 子进程，未清干净则明确拒绝启动新实验。
 3. **切换默认地形策略为 `elevation_neighborhood_v1`**：统一更新 [terrain_node.py](../ros2_ws/src/mooncar_terrain/scripts/terrain_node.py)、[simulation_experiment.py](../scripts/simulation_experiment.py)、[config/simulation_baseline.json](../config/simulation_baseline.json) 与验证脚本默认值，保留 `MOONCAR_TERRAIN_STRATEGY=baseline` 显式回退通道。
 
+## 2026-11-21 R5 模型清理与文献驱动自主探索策略 `hybrid_frontier_v4`
+
+1. **R5 车体传感器与桥接清理**（不改动已冻结的悬架/轴距/摩擦与控制参数）：
+   * [mooncar_r5.urdf.xacro](../ros2_ws/src/mooncar_description/urdf/mooncar_r5.urdf.xacro)：将 `camera_mount_joint` 抬升至 `z=0.145`（相机光心世界高度 `0.285 m`，高于电池顶 `0.227 m` 逾 5.8 cm、高于雷达扫描面 `0.2013 m` 逾 8.4 cm，消除前后向穿模与遮挡，保持质心 `x` 坐标不变）；`rgbd_v1` 模式下禁用重复的独立 `mooncar_rgb_camera` CPU 渲染（`legacy` 保持原样）。
+   * [camera_sensor_profile.py](../ros2_ws/src/mooncar_gazebo/launch/camera_sensor_profile.py)：`rgbd_v1` 模式下将 `/mooncar/rgb/image` 与 `/mooncar/rgb/camera_info` 桥接重定向至 `/mooncar/localization_rgbd/*`；新增单测验证云台净空与单相机桥接（[test_camera_sensor_profile.py](../ros2_ws/src/mooncar_gazebo/tests/test_camera_sensor_profile.py)）。
+2. **双层前沿探索 + 底盘/云台真解耦策略 `hybrid_frontier_v4`**：
+   * 文献依据：Yamauchi (*CIRA 1997*, Frontier)、González-Baños & Latombe (*IJRR 2002*, Safe-Region NBV)、Bircher et al. (*ICRA 2016*, RH-NBV)、Selin et al. (*IEEE RA-L 2019*, AEP 局部 NBV + 全局前沿双层切换)、Zhou et al. (*IEEE RA-L 2021*, FUEL 前沿聚类 + 开放式 TSP 巡航) / Cao et al. (*RSS 2021*, TARE 分层探索)。
+   * 实现：[scripts/frontier_planner.py](../scripts/frontier_planner.py) + [scripts/autonomous_survey.py](../scripts/autonomous_survey.py)（并在 [web/index.html](../web/index.html)、[web/app.js](../web/app.js) 与 [run_online_matrix_case.py](../scripts/validation/run_online_matrix_case.py) 接入选项，完整保留 `surface_view_v2` / `surface_view_v3` 基线）。关键改进：对齐 R5 真实相机位姿（`forward=0.183 m`, `z=0.285 m`, `HFOV=73°`）；同时提取占据未知前沿与雷达已清障但深度未观测前沿；全图降采样 Dijkstra + 2-opt TSP 前沿排序打破原 6 m 视野墙；移动后 `|arrival_pan| <= 135°` 直接使用云台偏航替代底盘原地 Spin、移动前若云台偏转超过 10° 自动回中保 VIO 前视、并用自适应驻留（0.8–3.0 s）替换固定 3 s 等待。
+   * 单测与 30×30 m 离线闭环 480 s 对比基准（合成运动学基准，非 Gazebo 实测）：[test_hybrid_frontier_v4.py](../tests/test_hybrid_frontier_v4.py)（5/5 通过）；`LiDAR+Depth` 双传感器模式下 8 分钟覆盖面积达 **527.3 m²（58.6%）**，较 `surface_view_v3`（382.1 m² / 42.5%）提升 **+38.0%**、较 `surface_view_v2`（407.9 m² / 45.3%）提升 **+29.3%**，底盘原地旋转由 12 次降至 **0 次**，规划中位耗时由 1136 ms 降至 **633.5 ms（-44.2%）**；`Depth-only` 模式下达 **459.2 m²（51.0%）**，较 `v3`（364.4 m²）提升 **+26.0%**，旋转 15 → **0 次**。
+
 ## 下一步计划
 
-回到小车核心算法优化（参照 [docs/repair_checklist_20261103.md](repair_checklist_20261103.md)）：
-1. 提升 30×30 m 自主探索后半程覆盖效率，并优化云台自主探索协同。
-2. 推进坡面行驶换向（平缓区转向 / 缓弯）接入代码。
-3. 定向复现坡面弱特征区域，实测验证 11-18 弱几何点重选并校准定位协方差。
+1. 在 Docker Gazebo 真实 V3 地形上开展 `surface_view_v3` vs `hybrid_frontier_v4`（配合抬升云台）8 分钟实测 A/B 对比，验证高程覆盖、XY/高程精度与 CPU 负载。
+2. 审视并按需收紧 Nav2 / `experiment_motion.py` 中仍沿用的旧车 `0.86×0.72 m` 轮廓与 `inflation_radius`（对比 R5 实际 `0.466×0.381 m`）。
+3. 推进坡面行驶换向（平缓区转向 / 缓弯，R1）与坡面弱几何重选 / 定位协方差校准（R4/R5/R7）。
