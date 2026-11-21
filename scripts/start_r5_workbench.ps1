@@ -21,8 +21,34 @@ if ($null -ne (Get-R5State $backendUrl)) {
     Write-Output "Backend already running; preserved: $backendUrl"
     return
 }
-$pythonRuntime = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
-& $pythonRuntime (Join-Path $PSScriptRoot 'runtime_baseline.py') freeze --output (Join-Path $evidencePath 'runtime-source.json')
+function Invoke-MoonCarPython {
+    param(
+        [string[]]$WithPackages = @(),
+        [Parameter(Mandatory)][string[]]$Arguments
+    )
+    if ($env:MOONCAR_PYTHON -and (Test-Path -LiteralPath $env:MOONCAR_PYTHON)) {
+        & $env:MOONCAR_PYTHON @Arguments
+        return
+    }
+    $uv = Get-Command uv -ErrorAction SilentlyContinue
+    if ($uv) {
+        $uvArgs = @('run', '--no-project')
+        foreach ($pkg in $WithPackages) { $uvArgs += @('--with', $pkg) }
+        $uvArgs += @('python') + $Arguments
+        & $uv.Source @uvArgs
+        return
+    }
+    foreach ($candidate in @('python', 'py')) {
+        $cmd = Get-Command $candidate -ErrorAction SilentlyContinue
+        if ($cmd -and $cmd.Source -notmatch 'WindowsApps\\python(\.exe)?$') {
+            & $cmd.Source @Arguments
+            return
+        }
+    }
+    throw 'Python runtime not found. Install uv (recommended) or Python 3 with numpy, or set MOONCAR_PYTHON.'
+}
+
+Invoke-MoonCarPython -Arguments @((Join-Path $PSScriptRoot 'runtime_baseline.py'), 'freeze', '--output', (Join-Path $evidencePath 'runtime-source.json'))
 if ($LASTEXITCODE -ne 0) { throw 'Commit product changes before starting a versioned workbench.' }
 $existing = & $docker inspect $containerName 2>$null
 if ($LASTEXITCODE -eq 0) {
@@ -57,11 +83,9 @@ while ($null -eq (Get-R5State $backendUrl)) {
     Start-Sleep -Milliseconds 500
 }
 if ($BackendOnly) { Write-Output "R5 backend ready: $backendUrl"; return }
-$pythonRuntime = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
-if (-not (Test-Path -LiteralPath $pythonRuntime)) { throw 'Existing Windows Python runtime is unavailable.' }
 Write-Output "Open $frontendUrl . R5 support is selected for new tasks. Ctrl+C stops this dedicated workbench."
 try {
-    & $pythonRuntime (Join-Path $PSScriptRoot 'map_workbench.py') --sessions (Join-Path $evidencePath 'sessions') --port 8775 --simulation-url $backendUrl
+    Invoke-MoonCarPython -WithPackages @('numpy') -Arguments @((Join-Path $PSScriptRoot 'map_workbench.py'), '--sessions', (Join-Path $evidencePath 'sessions'), '--port', '8775', '--simulation-url', $backendUrl)
 } finally {
     & $docker stop --time 12 $containerName | Out-Null
 }

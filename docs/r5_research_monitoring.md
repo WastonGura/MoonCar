@@ -8,7 +8,7 @@
 的宿主目录。例如以下命令只读取已停止的历史 v3 批次：
 
 ```powershell
-python D:/Documents/Projects/Repositories/MoonCar-mapping/scripts/r5_host_progress.py --runtime D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/terrain-v2/r5-suspension-acceptance-v3-20261015/runtime
+python ../scripts/r5_host_progress.py --runtime ../reports/evidence/terrain-v2/r5-suspension-acceptance-v3-20261015/runtime
 ```
 
 监控新批次时，改为新批次宿主路径并加 `--watch`，默认每五秒更新。该工具只有文件
@@ -24,4 +24,4 @@ PID 启动身份、前后状态和 traceback；进程随后退出不会抹掉已
 不要忽略所有 `PermissionError`，也不要为进度查询提高容器权限。
 
 本次修复及无物理步进回归见
-[修复报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/R5_DDS_MONITOR_FIX_20261015.md)。
+[修复报告](../reports/R5_DDS_MONITOR_FIX_20261015.md)。

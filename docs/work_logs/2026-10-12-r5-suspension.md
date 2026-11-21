@@ -14,4 +14,4 @@
 
 停止后修正准备器，生成真正平面网格并检查整段路线资格；旧错误夹具在启动前被拒绝。新目录只准备未运行，保存旧源码快照及停止后差异。46 项相关回归、10 个 AST 检查通过；C++ 观察器严格编译通过。本轮专用容器已停止，原始证据约 5.37 GiB 本地保留。生产默认、控制和发布批准未改，没有提交或推送，保留原工作树改动。
 
-报告：[R5_SUSPENSION_20261012.md](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/R5_SUSPENSION_20261012.md)。证据入口：[SUMMARY.json](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/terrain-v2/r5-suspension-20261012/SUMMARY.json)。
+报告：[R5_SUSPENSION_20261012.md](../../reports/R5_SUSPENSION_20261012.md)。证据入口：[SUMMARY.json](../../reports/evidence/terrain-v2/r5-suspension-20261012/SUMMARY.json)。

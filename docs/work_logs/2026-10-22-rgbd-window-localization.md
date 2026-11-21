@@ -51,7 +51,7 @@
 
 旧在线阶段的失败结论没有被新离线原型覆盖。尤其需要区分：当前比较中的 269/273 是封存的当前 `MetricRGBDOdometry` 对同录像的离线输出计数，不是第 23 轮当时在线质量状态的计数。原在线自主任务主窗约 121.672s，本次读入的是包含起停阶段的 136s 整体档案。
 
-历史依据：[扩展修复报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/LOCALIZATION_EXPANSION_REPAIR_20261021.md)、[原在线 RGBD 输入与失效合同](D:/Documents/Projects/Repositories/MoonCar-mapping/docs/rgbd_metric_localization.md)。
+历史依据：[扩展修复报告](../../reports/LOCALIZATION_EXPANSION_REPAIR_20261021.md)、[原在线 RGBD 输入与失效合同](../rgbd_metric_localization.md)。
 
 ## 4. 新方案的设计取舍
 
@@ -75,7 +75,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 共享身份一旦断开，后端看到的是一批与已提交局部地图无联系的新点。此时画面“有很多特征”并不等于有足够的联合约束。因此先修身份连续性，再评估滑窗是否减少不确定性，比调整协方差或单纯增加新点更有诊断价值。
 
-实现入口：[原型说明](D:/Documents/Projects/Repositories/MoonCar-mapping/scripts/offline_rgbd_window/README.md)、[跟踪前端](D:/Documents/Projects/Repositories/MoonCar-mapping/scripts/offline_rgbd_window/frontend.py)、[窗口核心](D:/Documents/Projects/Repositories/MoonCar-mapping/scripts/offline_rgbd_window/core.py)。
+实现入口：[原型说明](../../scripts/offline_rgbd_window/README.md)、[跟踪前端](../../scripts/offline_rgbd_window/frontend.py)、[窗口核心](../../scripts/offline_rgbd_window/core.py)。
 
 ## 5. 前端方案的早期尝试与第一版真实回放
 
@@ -87,7 +87,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 这一步还处理过完全相同 CLAHE 图像中的数值漂移：当实测图像逐像素完全相同时，零光流已是精确最小值，可直接用零流，再继续执行当前深度和几何检查。它只解决“完全相同图像”的数值情形；序列 25 前 190 帧的前端检查仍只有 1/38 次计划支撑充足，说明该局部分支没有修好一般近静止或真实运动中的断链。
 
-上述诊断保存在[序列 25 早期诊断目录](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/offline-rgbd-window-20261021/diagnostic-25)。下表对应已引入持久 KLT、但尚未完成本轮两处修复的封存版本，不把不同前端尝试混成一个版本。
+上述诊断保存在[序列 25 早期诊断目录](../../tmp/ros_acceptance/offline-rgbd-window-20261021/diagnostic-25)。下表对应已引入持久 KLT、但尚未完成本轮两处修复的封存版本，不把不同前端尝试混成一个版本。
 
 ### 5.2 封存三序列回放仍失败
 
@@ -103,7 +103,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 此时没有采用“只比较成功前缀、把后续失败删掉”的统计方法。25 和 27 只有初始化点，其零位置误差来自坐标定义，不算精度收益；23 前缀较低的不确定性也无法证明剩余整段的增长改善。初轮结论因此是：实现可以求解，但真实运动下跟踪连续性不足，长期收益尚未证明。
 
-依据：[首轮原型报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/RGBD_WINDOW_OFFLINE_PROTOTYPE_20261021.md)。本次最终修复只对序列 23 重新做完整比较，没有把 25、27 的失败改写为通过。
+依据：[首轮原型报告](../../reports/RGBD_WINDOW_OFFLINE_PROTOTYPE_20261021.md)。本次最终修复只对序列 23 重新做完整比较，没有把 25、27 的失败改写为通过。
 
 ## 6. 第一次断链诊断：精化失败被错误当成身份死亡
 
@@ -125,7 +125,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 短片段前端检查的 45/45 次计划支撑充足，22.9s 共享点由 2 条恢复为 73 条。它支持本处诊断，但当时还没有完成后端与整段真值比较，不能据此宣布原型整体修复。
 
-证据：[修复前逐门记录](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/gate-trace-before.json)、[第一次修复的前端确认](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/gate-trace-after.json)。
+证据：[修复前逐门记录](../../reports/evidence/rgbd-window-tracking-repair-20261022/gate-trace-before.json)、[第一次修复的前端确认](../../reports/evidence/rgbd-window-tracking-repair-20261022/gate-trace-after.json)。
 
 ## 7. 中间回放再次失败：修好 22 秒断点仍不够
 
@@ -137,7 +137,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 这一阶段修正了最初容易产生的判断：“只要修复光度精化门，问题就全部结束。”第一次修复消除了一个断点，但更长的实际运动暴露了另一个独立机制。
 
-证据：[61 秒前后的原始门记录](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/gate-trace-61-before.json)、[中间回放停止回执](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/attempt01-stopped.json)。
+证据：[61 秒前后的原始门记录](../../reports/evidence/rgbd-window-tracking-repair-20261022/gate-trace-61-before.json)、[中间回放停止回执](../../reports/evidence/rgbd-window-tracking-repair-20261022/attempt01-stopped.json)。
 
 ## 8. 第二次诊断：相机转动与零光流初值不匹配
 
@@ -167,7 +167,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 随后冻结实现，运行一轮完整 Sequence 23。没有继续增加窗口大小、放宽共享点数、调大噪声、调整关键帧频率或追加回访补丁。
 
-证据：[真实七帧最终确认](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/rotation-search-seed-61-confirmation.json)。ORB 可行性、转动记录、正反失败原因和本地状态快照仍在原诊断目录中，详见第 12 节。
+证据：[真实七帧最终确认](../../reports/evidence/rgbd-window-tracking-repair-20261022/rotation-search-seed-61-confirmation.json)。ORB 可行性、转动记录、正反失败原因和本地状态快照仍在原诊断目录中，详见第 12 节。
 
 ## 9. 最终整段比较的组织与结果
 
@@ -212,7 +212,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 此外，前端和优化频率也发生了变化。这次比较是两条整体管线的对照，没有做隔离滑窗因素的消融实验，不能把全部收益单独归因于联合优化。
 
-结果依据：[最终修复报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/RGBD_WINDOW_TRACKING_REPAIR_20261022.md)、[完整统计](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/summary.json)、[共同起终点](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/common_endpoints.json)。
+结果依据：[最终修复报告](../../reports/RGBD_WINDOW_TRACKING_REPAIR_20261022.md)、[完整统计](../../reports/evidence/rgbd-window-tracking-repair-20261022/summary.json)、[共同起终点](../../reports/evidence/rgbd-window-tracking-repair-20261022/common_endpoints.json)。
 
 ## 10. 接入工作台前的新判断：精度进展与在线时效分开验证
 
@@ -242,7 +242,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 因此当前适合进入实验性接入开发，首轮建议做 V2 旁路：新方案读取实时数据并记录结果，现有定位继续承担控制。先核对误差、C、轨迹断链、丢帧和测量年龄，满足时效后再验证用新定位驱动自主探索。该建议尚未实施；本次用户要求先写日志，没有开始接入或启动实验。
 
-代码依据：[离线调度与评分](D:/Documents/Projects/Repositories/MoonCar-mapping/scripts/offline_rgbd_window/run.py)、[现有在线 RGBD 节点](D:/Documents/Projects/Repositories/MoonCar-mapping/ros2_ws/src/mooncar_slam/scripts/rgbd_odometry_node.py)、[定位质量合同](D:/Documents/Projects/Repositories/MoonCar-mapping/scripts/localization_quality.py)。
+代码依据：[离线调度与评分](../../scripts/offline_rgbd_window/run.py)、[现有在线 RGBD 节点](../../ros2_ws/src/mooncar_slam/scripts/rgbd_odometry_node.py)、[定位质量合同](../../scripts/localization_quality.py)。
 
 ## 11. 本轮明确保留或没有采用的方向
 
@@ -265,25 +265,25 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 | 文件 | 用途 |
 |---|---|
-| [core.py](D:/Documents/Projects/Repositories/MoonCar-mapping/scripts/offline_rgbd_window/core.py) | 一阶联合求解、条件 C、Schur 边缘化和失败回滚；本轮跟踪修复未改变 |
-| [data.py](D:/Documents/Projects/Repositories/MoonCar-mapping/scripts/offline_rgbd_window/data.py) | 冻结 RGBD 曝光与几何校验、真值评分所需工具；本轮未改变 |
-| [frontend.py](D:/Documents/Projects/Repositories/MoonCar-mapping/scripts/offline_rgbd_window/frontend.py) | ORB 新点、KLT 身份延续、精化回退、旋转投影搜索初值及支撑选择 |
-| [run.py](D:/Documents/Projects/Repositories/MoonCar-mapping/scripts/offline_rgbd_window/run.py) | 离线调度、可选封存基线复用、结果与源码封存 |
-| [summarize.py](D:/Documents/Projects/Repositories/MoonCar-mapping/scripts/offline_rgbd_window/summarize.py) | 封存结果的统计、CSV 和曲线；本轮仅调整单序列图布局 |
-| [轨迹专项测试](D:/Documents/Projects/Repositories/MoonCar-mapping/tests/test_offline_rgbd_window_tracks.py) | 近静止身份、旋转搜索、无效投影回退及投影不能绕过实际检查 |
-| [统计与缓存测试](D:/Documents/Projects/Repositories/MoonCar-mapping/tests/test_offline_rgbd_window_metrics.py) | 封存基线复用与公平统计 |
+| [core.py](../../scripts/offline_rgbd_window/core.py) | 一阶联合求解、条件 C、Schur 边缘化和失败回滚；本轮跟踪修复未改变 |
+| [data.py](../../scripts/offline_rgbd_window/data.py) | 冻结 RGBD 曝光与几何校验、真值评分所需工具；本轮未改变 |
+| [frontend.py](../../scripts/offline_rgbd_window/frontend.py) | ORB 新点、KLT 身份延续、精化回退、旋转投影搜索初值及支撑选择 |
+| [run.py](../../scripts/offline_rgbd_window/run.py) | 离线调度、可选封存基线复用、结果与源码封存 |
+| [summarize.py](../../scripts/offline_rgbd_window/summarize.py) | 封存结果的统计、CSV 和曲线；本轮仅调整单序列图布局 |
+| [轨迹专项测试](../../tests/test_offline_rgbd_window_tracks.py) | 近静止身份、旋转搜索、无效投影回退及投影不能绕过实际检查 |
+| [统计与缓存测试](../../tests/test_offline_rgbd_window_metrics.py) | 封存基线复用与公平统计 |
 
 ### 结果证据
 
-- [初轮离线原型报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/RGBD_WINDOW_OFFLINE_PROTOTYPE_20261021.md)：三序列初轮失败及模型边界。
-- [最终跟踪修复报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/RGBD_WINDOW_TRACKING_REPAIR_20261022.md)：本次单序列完整结果。
-- [逐计划原型输出](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/sequence23-tracking-final-01/window.jsonl)、[运行配置与哈希](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/sequence23-tracking-final-01/run.json)。
-- [测试记录](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/tracking-final-tests-01.log)、[最终完整运行回执](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/tracking-final-comparison-01.json)、[证据完整性核验](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/integrity.json)。
-- [原始诊断目录](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/offline-rgbd-window-20261022/tracking-diagnostic-23)：含 `orb-recovery-61-feasibility.json`、`recorded-motion-61.json`、`fb-reasons-61.json`、诊断脚本及真实状态/七帧输入快照。较大快照保留原处，没有为了日志复制或重新运行。
+- [初轮离线原型报告](../../reports/RGBD_WINDOW_OFFLINE_PROTOTYPE_20261021.md)：三序列初轮失败及模型边界。
+- [最终跟踪修复报告](../../reports/RGBD_WINDOW_TRACKING_REPAIR_20261022.md)：本次单序列完整结果。
+- [逐计划原型输出](../../reports/evidence/rgbd-window-tracking-repair-20261022/sequence23-tracking-final-01/window.jsonl)、[运行配置与哈希](../../reports/evidence/rgbd-window-tracking-repair-20261022/sequence23-tracking-final-01/run.json)。
+- [测试记录](../../reports/evidence/rgbd-window-tracking-repair-20261022/tracking-final-tests-01.log)、[最终完整运行回执](../../reports/evidence/rgbd-window-tracking-repair-20261022/tracking-final-comparison-01.json)、[证据完整性核验](../../reports/evidence/rgbd-window-tracking-repair-20261022/integrity.json)。
+- [原始诊断目录](../../tmp/ros_acceptance/offline-rgbd-window-20261022/tracking-diagnostic-23)：含 `orb-recovery-61-feasibility.json`、`recorded-motion-61.json`、`fb-reasons-61.json`、诊断脚本及真实状态/七帧输入快照。较大快照保留原处，没有为了日志复制或重新运行。
 
 最终前端源码 SHA256 为 `f45502a26bf9559d22970cb598f09088ba96634100a93c43e3d9f85bfda13be3`；核心模型仍为 `14d47cf88d17bbc81c39b32f4ae12c4bb7499659aefc4e21196a684dc4c55bf0`。其余哈希和逐文件核验以运行回执为准。
 
-![同一录像的模型不确定性与实际误差](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/rgbd-window-tracking-repair-20261022/comparison.png)
+![同一录像的模型不确定性与实际误差](../../reports/evidence/rgbd-window-tracking-repair-20261022/comparison.png)
 
 ## 13. 交接时应保留的判断
 
@@ -340,7 +340,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 就绪后273次状态轮询原定位均健康、故障计数1→1。旁路、观察器和bag均正常退出、未forced，世界停止且所属子进程0。25个既有源文件保持原哈希，工作台服务保留。
 
-详细数据、原始记录与新实现链接见 [首轮V2旁路报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/RGBD_WINDOW_SHADOW_V2_20261022.md)。本次最小适配和唯一轮次到此收束；动态精度、持续输出和在线时效仍未通过，不开展额外实验。
+详细数据、原始记录与新实现链接见 [首轮V2旁路报告](../../reports/RGBD_WINDOW_SHADOW_V2_20261022.md)。本次最小适配和唯一轮次到此收束；动态精度、持续输出和在线时效仍未通过，不开展额外实验。
 
 ## 15. 后续授权：等价性能优化与更高频真实曝光查询（单轮在线仍未通过）
 
@@ -360,7 +360,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 上述结果是小样本离线计算对照，两组测时方式也不同；不把它们合成整条在线管线的加速倍数，不据此宣称已经满足0.3秒观测年龄要求。实际图像配对、TF等待、解码、排队和交付仍须由本轮在线记录判断。
 
-证据：[前端等价与性能收据](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/rgbd-window-latency-20261022/frontend/validation-01.json)、[核心数值、性能与query收据](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/rgbd-window-latency-20261022/core/core-performance-01.json)。优化后前端 SHA256 为 `353be9f2c965fa0f422b8621e440bc8764cace72063a2ccee0f5519c4b2e95cd`，核心为 `6a3cda4a476e3a83f085bbc26979cd95258ae7977bfaa1a9de41706667b73899`；原版本保存在各自证据目录。
+证据：[前端等价与性能收据](../../tmp/ros_acceptance/rgbd-window-latency-20261022/frontend/validation-01.json)、[核心数值、性能与query收据](../../tmp/ros_acceptance/rgbd-window-latency-20261022/core/core-performance-01.json)。优化后前端 SHA256 为 `353be9f2c965fa0f422b8621e440bc8764cace72063a2ccee0f5519c4b2e95cd`，核心为 `6a3cda4a476e3a83f085bbc26979cd95258ae7977bfaa1a9de41706667b73899`；原版本保存在各自证据目录。
 
 ### 15.2 100ms计划查询与500ms持久关键帧分开
 
@@ -376,7 +376,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 启动前针对性检查合计55项通过，分别为核心12项、前端6项、旁路适配13项、评价17项和网关7项；这是本轮专项检查口径，不表示重跑或重新验收此前全部软件、录像与正式场景。网关检查使用真实 `SimulationExperiment.command` 和临时localhost HTTP服务，同源请求200，错误/缺失Origin为403，过期实验为400，没有启动测试世界。
 
-证据：[适配13项收据](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/rgbd-window-latency-20261022/adapter-tests-13.json)、[评价17项日志](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/rgbd-window-shadow-20261022/evaluation-tests-02.log)、[网关7项收据](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/rgbd-window-latency-20261022/pan-tilt-gateway-tests-01.json)。
+证据：[适配13项收据](../../tmp/ros_acceptance/rgbd-window-latency-20261022/adapter-tests-13.json)、[评价17项日志](../../tmp/ros_acceptance/rgbd-window-shadow-20261022/evaluation-tests-02.log)、[网关7项收据](../../tmp/ros_acceptance/rgbd-window-latency-20261022/pan-tilt-gateway-tests-01.json)。
 
 ### 15.4 唯一实测已结束：有延迟改善，仍未通过
 
@@ -405,7 +405,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 相较上一轮，端到端墙时P95由1.583698降至1.059228s，最长实际交付间隔由7.725降至0.366sim。两轮窗口、计划调度和扫描流程不同，这些是各自实际记录的改善，不是相同输入下隔离每个改动的在线受控加速结论。当前仍有大量超龄或无输出计划，新鲜时间覆盖不足，不能写成在线修好或允许接管默认定位。
 
-本轮到此停止，不追加实验，不追认平移/转向通过。默认定位替换、回访问题闭合及正式全场、长时、坡面、实车验收继续保留为未完成。最终依据：[本轮V2延迟旁路报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/RGBD_WINDOW_LATENCY_V2_20261022.md)、[闭合评价摘要](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/rgbd-window-latency-20261022/trial-01/evaluation/summary.json)。
+本轮到此停止，不追加实验，不追认平移/转向通过。默认定位替换、回访问题闭合及正式全场、长时、坡面、实车验收继续保留为未完成。最终依据：[本轮V2延迟旁路报告](../../reports/RGBD_WINDOW_LATENCY_V2_20261022.md)、[闭合评价摘要](../../tmp/ros_acceptance/rgbd-window-latency-20261022/trial-01/evaluation/summary.json)。
 
 ## 16. 后续限定修复：默认RGBD墙钟观测超时与启动资源隔离（本轮验证完成）
 
@@ -415,7 +415,7 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 使用上一轮已关闭的短采集，按原生已观测完成调用集合重放252个曝光，连续保留实际参考库状态；没有按全合法图像补入未观测调用。所有原生已发布参考ID复现一致，位置最大差约6.90×10⁻¹⁶m、协方差最大差约4.07×10⁻²⁰m²。只对25.0–25.3s四个曝光做局部profile并冻结上下文，25.1s离线核心墙时约73.1ms，包含4次完整fit及8次双向BF调用，没有新模板自注册。
 
-这证明同一测量与库状态下没有稳定复现原505.7ms核心墙时，支持先检查运行资源配置；它不能单独证明原延迟由哪种调度、抢占或限制引起。未经证实的新BF匹配器方案没有采用，默认核心仍为原 `27785720`。证据：[短采集复现与局部profile收据](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/default-rgbd-timeout-20261022/profile/profile-receipt.json)。
+这证明同一测量与库状态下没有稳定复现原505.7ms核心墙时，支持先检查运行资源配置；它不能单独证明原延迟由哪种调度、抢占或限制引起。未经证实的新BF匹配器方案没有采用，默认核心仍为原 `27785720`。证据：[短采集复现与局部profile收据](../../tmp/ros_acceptance/default-rgbd-timeout-20261022/profile/profile-receipt.json)。
 
 ### 16.2 首次启动失败保留，隔离移到原生库导入前
 
@@ -423,21 +423,21 @@ ORB 用于补充新点，正反金字塔 KLT 用于持续维护已有像素身�
 
 修订为wrapper主入口在任何原生库导入前读取显式 `MOONCAR_RGBD_CPUSET` 并设置启动affinity；导入解码模块不产生设置affinity的副作用。限定验证中，默认RGBD进程启动于CPU0–1，runtime只验证而不再晚期pin；Gazebo及被动旁路限定CPU2–5，旁路nice19。其余ROS和证据进程保持原有共享资源。这个分配不是CPU独占，也不承诺最坏计算时限；总6CPU配额、质量门、传感器、物理、默认定位数学及回访均保持原值。
 
-runtime允许每条线程使用其合法分配中的任意非空子集。若实际掩码逃逸，监视JSONL会保存进程身份、允许CPU和实际线程掩码，便于区分真实越界与合法线程收窄。证据：[首次启动结果](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/default-rgbd-timeout-20261022/trial-01/result.json)、[保留的旧版检查](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/default-rgbd-timeout-20261022/runtime-tests/original01/focused-tests-01.json)。
+runtime允许每条线程使用其合法分配中的任意非空子集。若实际掩码逃逸，监视JSONL会保存进程身份、允许CPU和实际线程掩码，便于区分真实越界与合法线程收窄。证据：[首次启动结果](../../tmp/ros_acceptance/default-rgbd-timeout-20261022/trial-01/result.json)、[保留的旧版检查](../../tmp/ros_acceptance/default-rgbd-timeout-20261022/runtime-tests/original01/focused-tests-01.json)。
 
 ### 16.3 最终专项检查与当前验证边界
 
 本轮最终专项合计56项通过：wrapper与启动合同48项、修订后runtime 8项。runtime真实小进程检查包含启动继承、后生线程、合法更窄子集，以及实际线程逃逸后监视记录的具体内容；没有启动测试世界。旧runtime 7项属于旧版合同，保留历史但不重复加进56项。
 
-证据：[wrapper/启动检查](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/default-rgbd-timeout-20261022/startup-affinity/receipt-01.json)、[最终runtime 8项收据](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/default-rgbd-timeout-20261022/runtime-tests/focused-tests-02.json)。最终wrapper SHA256为 `1ba0156961ae5f37088c912f78d85d261f52a4e80fd3aab3efac5da07aeb0e95`；runtime及测试实际首末哈希见收据。
+证据：[wrapper/启动检查](../../tmp/ros_acceptance/default-rgbd-timeout-20261022/startup-affinity/receipt-01.json)、[最终runtime 8项收据](../../tmp/ros_acceptance/default-rgbd-timeout-20261022/runtime-tests/focused-tests-02.json)。最终wrapper SHA256为 `1ba0156961ae5f37088c912f78d85d261f52a4e80fd3aab3efac5da07aeb0e95`；runtime及测试实际首末哈希见收据。
 
 ### 16.4 闭合结果：默认定位本轮未再超时，实际运动已经覆盖
 
 修订后的实验 `experiment-bd3ef8a69286` 完成固定路线，结果为 `route_complete`；所有writer正常退出，世界已停止。整窗为1.462–53.218s，共51.756sim，默认定位就绪屏障后窗口为12.595–53.218s。本次限定任务实际创建了两个世界：前一次8690启动隔离检查失败，后一次bd3完成运动验证；前次失败单列保留，没有将其写成成功，也不再追加第三次。
 
-就绪屏障后353次API状态均healthy、故障计数始终0；1161条原生状态没有unhealthy记录。source整个生命周期的 `depth_observation_stale_before_compute` 与 `depth_observation_stale_after_compute` 计数均为0。407份完整逐曝光计时中，解码加核心墙时P95为0.119833s、最大0.167144s；新曝光计算后仿真年龄P95为0.136sim、最大0.200sim。该证据支持本轮限定工况下默认RGBD超时修复验证成立，不外推为所有负载与长时工况的deadline保证，也不把状态采样扩写为不可见callback的证明。证据：[默认定位健康与计时摘要](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/default-rgbd-timeout-20261022/trial-02/default-health-summary.json)。
+就绪屏障后353次API状态均healthy、故障计数始终0；1161条原生状态没有unhealthy记录。source整个生命周期的 `depth_observation_stale_before_compute` 与 `depth_observation_stale_after_compute` 计数均为0。407份完整逐曝光计时中，解码加核心墙时P95为0.119833s、最大0.167144s；新曝光计算后仿真年龄P95为0.136sim、最大0.200sim。该证据支持本轮限定工况下默认RGBD超时修复验证成立，不外推为所有负载与长时工况的deadline保证，也不把状态采样扩写为不可见callback的证明。证据：[默认定位健康与计时摘要](../../tmp/ros_acceptance/default-rgbd-timeout-20261022/trial-02/default-health-summary.json)。
 
-独立真值确认车体确实运动：前进段净XY位移0.797942m、路径0.803288m；请求45°的转向段实际净偏航55.5906°，同时有约4.13cm的XY位移。因此本轮覆盖了实际平移与转向，但不能追认为45°精确跟踪通过；本轮没有继续修改转向控制。证据：[真实动作分段](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/default-rgbd-timeout-20261022/trial-02/physical-actions.json)。
+独立真值确认车体确实运动：前进段净XY位移0.797942m、路径0.803288m；请求45°的转向段实际净偏航55.5906°，同时有约4.13cm的XY位移。因此本轮覆盖了实际平移与转向，但不能追认为45°精确跟踪通过；本轮没有继续修改转向控制。证据：[真实动作分段](../../tmp/ros_acceptance/default-rgbd-timeout-20261022/trial-02/physical-actions.json)。
 
 ### 16.5 新旁路仍有大量无输出和超龄，连续性未通过
 
@@ -456,7 +456,7 @@ runtime允许每条线程使用其合法分配中的任意非空子集。若实�
 
 误差统计只对应实际有输出且有真值的样本，计划分母保留全部518次；moving、turning条件也不能只用各21次成功样本替代70/67次计划。原始曝光丢失160次与计划无输出311次是不同调度口径，不能互相代替。小误差表明已交付输出在这段实际运动中有测量价值，但207/518的输出率、超龄和2.051sim交付空窗仍不足以支持在线连续定位。
 
-本轮默认RGBD超时修复在限定验证中成立，新方案动态旁路也取得了真实覆盖；新方案在线连续性仍未通过，默认定位与回访没有换成新方案。本轮到此收束，不追加世界或修理转向误差。最终依据：[本轮超时修复报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/DEFAULT_RGBD_TIMEOUT_V2_20261022.md)、[闭合旁路评价摘要](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/default-rgbd-timeout-20261022/trial-02/evaluation/summary.json)。
+本轮默认RGBD超时修复在限定验证中成立，新方案动态旁路也取得了真实覆盖；新方案在线连续性仍未通过，默认定位与回访没有换成新方案。本轮到此收束，不追加世界或修理转向误差。最终依据：[本轮超时修复报告](../../reports/DEFAULT_RGBD_TIMEOUT_V2_20261022.md)、[闭合旁路评价摘要](../../tmp/ros_acceptance/default-rgbd-timeout-20261022/trial-02/evaluation/summary.json)。
 
 ## 17. 新限定授权：修复2.051sim旁路交付空窗（实测已闭合）
 
@@ -470,7 +470,7 @@ runtime允许每条线程使用其合法分配中的任意非空子集。若实�
 
 节点的周期 `tick` 只保留clock回退守卫，移除运行中按clock提前expire。缺失槽改由后继真实曝光的时间水位确认，关闭时再结算final tail；每个100ms槽仍只有一次终结记录。实际曝光时间戳不变，迟到曝光的真实年龄继续保留，不以重新分槽伪造新鲜观测。单槽替换、失败分母和原有前后端测量门均保留。
 
-改动不涉及前端、滑窗核心、默认定位、运行资源隔离、导航或回访。当前专项32项通过，为适配15项与评价17项；不重复计入旧版测试，也不以此代替在线实测。证据：[本轮32项专项收据](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/shadow-continuity-20261022/adapter-evaluator-tests-01.json)。
+改动不涉及前端、滑窗核心、默认定位、运行资源隔离、导航或回访。当前专项32项通过，为适配15项与评价17项；不重复计入旧版测试，也不以此代替在线实测。证据：[本轮32项专项收据](../../tmp/ros_acceptance/shadow-continuity-20261022/adapter-evaluator-tests-01.json)。
 
 ### 17.3 同一实际处理序列的必要离线反事实
 
@@ -478,7 +478,7 @@ runtime允许每条线程使用其合法分配中的任意非空子集。若实�
 
 使用同一184个真实输入，只改为按曝光分槽，得到184/184次求解，原11次支撑拒绝全部消失；23.1–24.4s的共享身份由原21/19恢复为49–66。完整前缀的计划变化使22.7s已提交关键帧，22.9s成为查询，随后23.2、23.7、24.2s继续接力。因此这不是“单独补22.9一帧就修好”的因果证明。
 
-该短重放的最大成功输出曝光间隔由2.1降至0.6sim，总process CPU约36s。它支持调度修复能在相同实际输入上恢复关键帧接力，但曝光间隔不是在线ready交付间隔，不能据此承诺实时负载下不会再有2.051sim空窗。没有展开大历史、匹配器profile或额外测量算法修改。证据：[原生复现与同输入反事实收据](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/shadow-continuity-20261022/replay/comparison.json)。
+该短重放的最大成功输出曝光间隔由2.1降至0.6sim，总process CPU约36s。它支持调度修复能在相同实际输入上恢复关键帧接力，但曝光间隔不是在线ready交付间隔，不能据此承诺实时负载下不会再有2.051sim空窗。没有展开大历史、匹配器profile或额外测量算法修改。证据：[原生复现与同输入反事实收据](../../tmp/ros_acceptance/shadow-continuity-20261022/replay/comparison.json)。
 
 ### 17.4 唯一新V2完成路线，默认定位保持健康
 
@@ -510,7 +510,7 @@ runtime允许每条线程使用其合法分配中的任意非空子集。若实�
 
 误差只反映实际输出样本，不能代表200次无输出计划；327次中1次窗后交付也不计为窗内及时交付。相较上一轮，长交付空窗和连续失败明显缩短，但仍有大量替换、无输出和超龄，墙时P95与仿真年龄P95分别超过原0.5wall及0.3sim参考。不能把成功样本的小误差或较短交付间隔写成完全连续、已经满足在线时效，或可以替换默认定位。
 
-本轮限定调度缺陷已修复，默认定位、回访与其他测量门未换；在线旁路连续性仍未通过。本轮到此收束，不扩其他修复、不再创建世界。最终依据：[旁路连续性V2报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/SHADOW_CONTINUITY_V2_20261022.md)、[本轮闭合评价](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/shadow-continuity-20261022/trial-01/evaluation/summary.json)。
+本轮限定调度缺陷已修复，默认定位、回访与其他测量门未换；在线旁路连续性仍未通过。本轮到此收束，不扩其他修复、不再创建世界。最终依据：[旁路连续性V2报告](../../reports/SHADOW_CONTINUITY_V2_20261022.md)、[本轮闭合评价](../../tmp/ros_acceptance/shadow-continuity-20261022/trial-01/evaluation/summary.json)。
 
 ## 18. 新限定授权：旁路吞吐与迟到（在线联合验证已闭合）
 
@@ -537,7 +537,7 @@ runtime允许每条线程使用其合法分配中的任意非空子集。若实�
 
 运行helper增加显式 `shadow_nice` 参数，只接受5或19，默认值仍为19以保留旧调用。新轮次显式传5，使旁路与nice5的Gazebo在同一背景CPU2–5上竞争；默认RGBD仍为CPU0–1、nice0，总CPU配额保持原值。其余ROS资源继续共享，不构成CPU独占或最坏时限保证。
 
-11项无世界短测通过，包含原nice19的8项合同，以及真实nice5和后生线程、非法参数、实际优先级不符的拒绝；旧源保存在本轮originals。这个调整没有证明nice19是此前迟到的唯一原因，也没有做运行公平性benchmark。证据：[runtime 11项收据](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/shadow-throughput-20261022/runtime-tests-01.json)。
+11项无世界短测通过，包含原nice19的8项合同，以及真实nice5和后生线程、非法参数、实际优先级不符的拒绝；旧源保存在本轮originals。这个调整没有证明nice19是此前迟到的唯一原因，也没有做运行公平性benchmark。证据：[runtime 11项收据](../../tmp/ros_acceptance/shadow-throughput-20261022/runtime-tests-01.json)。
 
 ### 18.4 唯一新V2完成路线，仍有曝光覆盖与拒绝
 
@@ -566,7 +566,7 @@ runtime允许每条线程使用其合法分配中的任意非空子集。若实�
 
 真值确认本窗车体路径0.849269m，moving与turning覆盖分别约6.751/5.530sim；误差仍只对实际输出评分，不能代表121次无输出计划。50个真实同时间共同样本中，新旁路/默认定位的XY误差P95分别为8.57090/2.19787mm，本轮也没有同时间精度优于默认定位的证据。条件σ不是经校准的全局后验，小C不能替代实际误差和输出覆盖。
 
-相较上一轮，输出比例和仿真时间新鲜覆盖提高，但本轮端到端墙时P95并未降低，仍有117次覆盖、3次raw拒绝及大量迟到。两项改动在同一轮联合验证，轨迹和运行时调度也有差异，不能把在线变化率单独归因于前端优化或nice5，更不能据此断言已完全修好或可以替换默认定位。证据：[本轮闭合评价摘要](D:/Documents/Projects/Repositories/MoonCar-mapping/tmp/ros_acceptance/shadow-throughput-20261022/trial-01/evaluation/summary.json)。本轮到此收束，没有追加分析、修复或新世界。
+相较上一轮，输出比例和仿真时间新鲜覆盖提高，但本轮端到端墙时P95并未降低，仍有117次覆盖、3次raw拒绝及大量迟到。两项改动在同一轮联合验证，轨迹和运行时调度也有差异，不能把在线变化率单独归因于前端优化或nice5，更不能据此断言已完全修好或可以替换默认定位。证据：[本轮闭合评价摘要](../../tmp/ros_acceptance/shadow-throughput-20261022/trial-01/evaluation/summary.json)。本轮到此收束，没有追加分析、修复或新世界。
 
 ## 19. 2026-10-23：普通帧轻量查询的离线原型与停止结论
 
@@ -613,7 +613,7 @@ Docker当时未运行，恢复用户目录安装的Docker Desktop及既有6CPU/6
 
 比较61.802wall/58.197进程CPU秒正常结束，29个保护源首末一致。23份小文件副本逐一hash，319MB输入pickle、冻结Frame及原bag3份大文件原位列hash；默认定位/回访/前端/核心/在线调度不变。所有计算已停止，容器仅sleep；没有接工作台、没有新V2，也没有为越过门槛再追加微调或重跑。
 
-报告：[离线缓存求解结果](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/QUERY_CACHE_OFFLINE_20261023.md)。证据：[封档结论](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/query-cache-offline-20261023/comparison-01/summary.json)、[源码与副本哈希](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/query-cache-offline-20261023/integrity.json)。本轮完成原型及约定离线对照，实时性问题仍未解决。
+报告：[离线缓存求解结果](../../reports/QUERY_CACHE_OFFLINE_20261023.md)。证据：[封档结论](../../reports/evidence/query-cache-offline-20261023/comparison-01/summary.json)、[源码与副本哈希](../../reports/evidence/query-cache-offline-20261023/integrity.json)。本轮完成原型及约定离线对照，实时性问题仍未解决。
 
 ## 20. 2026-10-23：只修关键帧缓存构建的重复复制，再同录像比较
 
@@ -656,7 +656,7 @@ Docker当时未运行，恢复用户目录安装的Docker Desktop及既有6CPU/6
 
 正式一次三臂运行87.949wall/87.457进程CPU秒正常结束；31个保护源未变、8个比较源码/helper/input哈希首末一致。12专项通过，29份证据副本hash、1份复用frozen输入原位hash；旧cache/原测试与唯一profile一并归档。所有计算已停，没有后续微调、第二次比较、前端/并行/在线/V2工作。
 
-报告：[缓存构建优化与同录像结果](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/QUERY_CACHE_BUILD_OFFLINE_20261023.md)。证据：[完整验收门](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/query-cache-build-offline-20261023/comparison-01/summary.json)、[三组值](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/query-cache-build-offline-20261023/comparison-01/observations.json)、[源码及副本哈希](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/query-cache-build-offline-20261023/integrity.json)。
+报告：[缓存构建优化与同录像结果](../../reports/QUERY_CACHE_BUILD_OFFLINE_20261023.md)。证据：[完整验收门](../../reports/evidence/query-cache-build-offline-20261023/comparison-01/summary.json)、[三组值](../../reports/evidence/query-cache-build-offline-20261023/comparison-01/observations.json)、[源码及副本哈希](../../reports/evidence/query-cache-build-offline-20261023/integrity.json)。
 
 ## 21. 2026-10-23：只优化普通query，再用同一冻结录像做一次离线对照
 
@@ -701,7 +701,7 @@ queryP95三组降17.4569/14.8290/13.2067%，中位14.8290%未到20%；query总�
 
 唯一正式运行84.449wall/83.904进程CPU秒正常结束，31protected与8个比较源码、helper/input首末一致。31份小文件副本逐一hash、1份复用frozen-input原位hash，含旧源码/原测试/两份pstats/直接原因JSON/逐计划及三组全部计时。所有计算已停，container仅sleep infinity，未启动工作台、ROS节点或世界。本轮授权到此收束，没有因未全达标而继续扩排查。
 
-报告：[普通帧耗时优化与同录像结果](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/QUERY_FRAME_OFFLINE_20261023.md)。证据：[全部门及结论](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/query-frame-offline-20261023/comparison-01/summary.json)、[三组值](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/query-frame-offline-20261023/comparison-01/observations.json)、[副本及源码哈希](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/query-frame-offline-20261023/integrity.json)。
+报告：[普通帧耗时优化与同录像结果](../../reports/QUERY_FRAME_OFFLINE_20261023.md)。证据：[全部门及结论](../../reports/evidence/query-frame-offline-20261023/comparison-01/summary.json)、[三组值](../../reports/evidence/query-frame-offline-20261023/comparison-01/observations.json)、[副本及源码哈希](../../reports/evidence/query-frame-offline-20261023/integrity.json)。
 
 ## 22. 2026-10-23：显式接入缓存旁路，单轮V2平移/转向验证闭合
 
@@ -743,7 +743,7 @@ queryP95三组降17.4569/14.8290/13.2067%，中位14.8290%未到20%；query总�
 
 barrier7.549之后454 API、1380 nativequality均healthy，fault0，before/aftercompute stale累计0；初始化另有initializing/stale/recovering，普通stale生命周期1、窗内delta0，不写全生命周期零异常。driver/shadow/observer/bag全exit0且非forced，ownedworld stopped/children0，含收尾132.842wall。30protected与候选首末hash同；80copiedhash/12rawhash，原bag/samples原位，世界停、工作台后端保留。结论为在线缓存可运行、平移/转向覆盖成立、可用性和延迟有改善，但实时连续性仍未过，继续旁路不切默认。没有第二轮、追加优化或回访修改。
 
-报告：[缓存旁路V2验证](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/CACHED_QUERY_SHADOW_V2_20261023.md)。证据：[全部计划与评价](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/cached-query-shadow-v2-20261023/evaluation/summary.json)、[缓存生命周期](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/cached-query-shadow-v2-20261023/cache-lifecycle-summary.json)、[副本及源码哈希](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/cached-query-shadow-v2-20261023/integrity.json)。
+报告：[缓存旁路V2验证](../../reports/CACHED_QUERY_SHADOW_V2_20261023.md)。证据：[全部计划与评价](../../reports/evidence/cached-query-shadow-v2-20261023/evaluation/summary.json)、[缓存生命周期](../../reports/evidence/cached-query-shadow-v2-20261023/cache-lifecycle-summary.json)、[副本及源码哈希](../../reports/evidence/cached-query-shadow-v2-20261023/integrity.json)。
 
 ## 23. 2026-10-23：只优化仿真视觉图像块采样，再做一次同录像和V2验证
 
@@ -783,7 +783,7 @@ pair sim/wall跨度比.395→.524、到达墙时间隔P50.240→.188秒，并未
 
 barrier12.037后371API/1196source quality全healthy，globalfault始终1；启动已有fault1、initializing/stale/recovering。普通stale生命周期1/windowdelta0，before/aftercompute stale累计0。action_fault_counter0→1是activate时复制globalfault的动作基准快照，不是新健康故障或租约故障。保留启动事实但不扩大修复。driver/shadow/observer/bag全exit0非forced，ownedworldstopped/children0，含收尾111.382wall秒；31保护/候选首末一致，99copiedhash/15rawhash，bag/samples及复用录像原位。世界停、后端保留；没有第二V2、第二热点、默认切换或实车工作。
 
-报告：[视觉采样优化与V2验证](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/VISION_FRONTEND_V2_20261023.md)。证据：[离线结论与门](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/vision-frontend-v2-20261023/comparison-02/summary.json)、[在线完整评价](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/vision-frontend-v2-20261023/evaluation/summary.json)、[源码及副本hash](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/vision-frontend-v2-20261023/integrity.json)。本轮完成单热点仿真优化，P95参考已达到，仍保留少量丢帧/迟到的限制。
+报告：[视觉采样优化与V2验证](../../reports/VISION_FRONTEND_V2_20261023.md)。证据：[离线结论与门](../../reports/evidence/vision-frontend-v2-20261023/comparison-02/summary.json)、[在线完整评价](../../reports/evidence/vision-frontend-v2-20261023/evaluation/summary.json)、[源码及副本hash](../../reports/evidence/vision-frontend-v2-20261023/integrity.json)。本轮完成单热点仿真优化，P95参考已达到，仍保留少量丢帧/迟到的限制。
 
 ## 24. 2026-10-23：只查剩余16覆盖/3迟到，移除KF重复求解后线上目标仍未达成
 
@@ -819,7 +819,7 @@ barrier12.037后371API/1196source quality全healthy，globalfault始终1；启�
 
 move真值净.777208m/path.779488m，turn55.5058°+46.361mm漂移，仅证运动覆盖非45°控制通过。460成功errorP955.63501mm/max10.08474；move66/68P955.57417、turn50/51P955.70163、pureturn8/8P954.00809；条件σP954.90118mm非标定后验，36common新/defaultP955.63669/3.79688mm，不宣称更准。barrier9.834后392API/1242source全healthy/globalfault1保持，启动stale/recovering/unsync/fromfuture另列，before/aftercompute stale累计0、窗内源计数无增量。driver/shadow/observer/bag全0非forced，ownedworldstopped/children0，116.808wall含收尾；96copiedhash/19rawhash，29保护及候选首末同。世界停、后端保留，默认/回访/前端/节点/资源/实车未改。保留数值等价的减算量改动，剩余线上覆盖与迟到仍未解决。
 
-报告：[尾部事件与V2结果](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/SHADOW_TAIL_V2_20261023.md)。证据：[原19事件](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/shadow-tail-v2-20261023/cause-before.json)、[新迟到及等待记录](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/shadow-tail-v2-20261023/tail-after.json)、[离线门](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/shadow-tail-v2-20261023/comparison-01/summary.json)、[在线全计划](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/shadow-tail-v2-20261023/evaluation/summary.json)、[源码及副本hash](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/shadow-tail-v2-20261023/integrity.json)。本轮按限定范围收束，不称目标完成。
+报告：[尾部事件与V2结果](../../reports/SHADOW_TAIL_V2_20261023.md)。证据：[原19事件](../../reports/evidence/shadow-tail-v2-20261023/cause-before.json)、[新迟到及等待记录](../../reports/evidence/shadow-tail-v2-20261023/tail-after.json)、[离线门](../../reports/evidence/shadow-tail-v2-20261023/comparison-01/summary.json)、[在线全计划](../../reports/evidence/shadow-tail-v2-20261023/evaluation/summary.json)、[源码及副本hash](../../reports/evidence/shadow-tail-v2-20261023/integrity.json)。本轮按限定范围收束，不称目标完成。
 
 ## 25. 2026-10-23：只读调查本轮新增覆盖与迟到的直接原因
 
@@ -829,7 +829,7 @@ move真值净.777208m/path.779488m，turn55.5058°+46.361mm漂移，仅证运动
 
 最大0.646sim交付空窗精确为2.748→3.394：2.7/2.8/2.9三张突发收到（后两间隔17.6/16.9ms），2.8先被覆盖；2.9等待历史IMU括号.505wall期间，3.0/3.1又被覆盖；3.2才恢复。真正notfresh为.394sim，均在ready9.834前。小窗只读bag1.3墙秒内82IMU/41clock，可靠记录有连续10ms的2.65–3.13 IMU、包含2.89/2.90/2.91，record早于shadow等待；排除发布端没有覆盖。shadow等时计数121→162且缓存未满500/无invalid等计数，observer漏2.85–2.90，支持浅best-effort订阅/回调历史样本遗漏。没有shadow逐header，不能将observer70ms缺口冒充shadow实测，不能唯一归因DDS/executor/系统调度。bag也有clock约348ms交付停顿，但imu_at只用header，不把clock停顿直接当括号失败原因。
 
-纯JSON成本对照确认cache P95仍86.6→56.1ms，而front188.9/query79.2ms比前轮164.8/54.5ms高；KF扣各自cache平均77.8→100.6ms。KF状态维度与信息矩阵稀疏度负载也不同，非严格同输入A/B。两次新签名只在KF，不直接解释query耗时；固定输入已含全部签名/复制且KF改善25.4%。选点/观测构造在front/back计时之间，finished后另有plain/JSON/flush，原计时不能唯一细分CPU计算/调度。下一次最小诊断应记录IMUheaders、实际offer/take与阶段墙/线程CPU；本次仅明确证据缺口，未实施。报告[原因核查](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/SHADOW_TAIL_CAUSE_20261023.md)，当前线上问题仍未修完。
+纯JSON成本对照确认cache P95仍86.6→56.1ms，而front188.9/query79.2ms比前轮164.8/54.5ms高；KF扣各自cache平均77.8→100.6ms。KF状态维度与信息矩阵稀疏度负载也不同，非严格同输入A/B。两次新签名只在KF，不直接解释query耗时；固定输入已含全部签名/复制且KF改善25.4%。选点/观测构造在front/back计时之间，finished后另有plain/JSON/flush，原计时不能唯一细分CPU计算/调度。下一次最小诊断应记录IMUheaders、实际offer/take与阶段墙/线程CPU；本次仅明确证据缺口，未实施。报告[原因核查](../../reports/SHADOW_TAIL_CAUSE_20261023.md)，当前线上问题仍未修完。
 
 ## 26. 2026-10-23：尝试可靠IMU接收与阶段诊断，只完成一轮V2
 
@@ -861,7 +861,7 @@ nodef720f185…、online2658aaba…，原件从上轮封存快照校hash保存�
 
 439成功误差P957.970mm/max7.983，条件σP954.890mm非标定后验；moving63/68、turn59/65、pureturn7/8。实际move净.781134m/path.786165m、turn54.917°+41.586mm漂移，仅证覆盖非45°控制跟踪；55common新/defaultP957.970/4.280mm不宣称更准。barrier8.071后474API/1423native质量全healthy/globalfault1保持，初始化stale/recovering保留。四writer0非forced、owned世界停/children0、134.773wall含收尾；工作台后端保留。30保护源、16候选首末同，92份证据副本与原位raw hashes封存。默认/回访/估计数学/实车均未改。
 
-报告：[IMU接收修复与V2验证](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/SHADOW_IMU_RECEPTION_V2_20261023.md)。证据：[26项检查](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/shadow-imu-reception-v2-20261023/tests-01.json)、[全计划评价](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/shadow-imu-reception-v2-20261023/evaluation/summary.json)、[实际IMU与bag对照](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/shadow-imu-reception-v2-20261023/imu-reception-audit/summary.json)、[阶段计时](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/shadow-imu-reception-v2-20261023/phase-audit.json)。本次接收修复已尝试并验证，整体实时性仍未修完。
+报告：[IMU接收修复与V2验证](../../reports/SHADOW_IMU_RECEPTION_V2_20261023.md)。证据：[26项检查](../../reports/evidence/shadow-imu-reception-v2-20261023/tests-01.json)、[全计划评价](../../reports/evidence/shadow-imu-reception-v2-20261023/evaluation/summary.json)、[实际IMU与bag对照](../../reports/evidence/shadow-imu-reception-v2-20261023/imu-reception-audit/summary.json)、[阶段计时](../../reports/evidence/shadow-imu-reception-v2-20261023/phase-audit.json)。本次接收修复已尝试并验证，整体实时性仍未修完。
 
 ## 27. 2026-10-23：暂停零散优化，固定完整输入与资源做AB/BA对照
 
@@ -900,7 +900,7 @@ source releasebegin迟到P99 .364–.390ms、max26.663–41.863ms在原10/50门�
 
 同输入/专用资源下两版完整成功交付P95约.13秒、输出相同，既没有证明最近改动整体变快，也没有复现此前V2 .4–.5秒P95/大量迟到的退化。不能仅凭此前不同在线运行认定新接收改坏算法；同样，缺少Gazebo/default并发这一事实并非独立负载干预，尚不能唯一归因CPU/GIL/调度。保留“在线实时性仍未验收”的限制，不以隔离回放替代工作台/长期验证。
 
-本轮无产品source变化、无新world、无导航或回访变化，四臂全部清理，只保留原backend。报告：[固定条件完整链对照](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/FULL_CHAIN_AB_20261023.md)。证据：[冻结协议](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/full-chain-ab-20261023/protocol.json)、[四run及两pair评价](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/full-chain-ab-20261023/evaluation/summary.json)、[campaign闭合](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/evidence/full-chain-ab-20261023/campaign-result.json)。到此停止，不再追加零散修复/正式对照。
+本轮无产品source变化、无新world、无导航或回访变化，四臂全部清理，只保留原backend。报告：[固定条件完整链对照](../../reports/FULL_CHAIN_AB_20261023.md)。证据：[冻结协议](../../reports/evidence/full-chain-ab-20261023/protocol.json)、[四run及两pair评价](../../reports/evidence/full-chain-ab-20261023/evaluation/summary.json)、[campaign闭合](../../reports/evidence/full-chain-ab-20261023/campaign-result.json)。到此停止，不再追加零散修复/正式对照。
 
 ## 28. 2026-10-29：分段测量及相同画面亮度采样优化
 

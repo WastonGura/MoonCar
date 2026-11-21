@@ -27,13 +27,39 @@ $evidenceMount = ($container.Mounts | Where-Object Destination -eq '/evidence').
 if ($sourceMount -ne $projectRoot.Replace('\', '/') -or $evidenceMount -ne (Join-Path $projectRoot 'tmp\ros_acceptance').Replace('\', '/')) {
     throw 'The configured container still mounts another project path. Recreate it with the mounts in containers/README.md.'
 }
+function Invoke-MoonCarPython {
+    param(
+        [string[]]$WithPackages = @(),
+        [Parameter(Mandatory)][string[]]$Arguments
+    )
+    if ($env:MOONCAR_PYTHON -and (Test-Path -LiteralPath $env:MOONCAR_PYTHON)) {
+        & $env:MOONCAR_PYTHON @Arguments
+        return
+    }
+    $uv = Get-Command uv -ErrorAction SilentlyContinue
+    if ($uv) {
+        $uvArgs = @('run', '--no-project')
+        foreach ($pkg in $WithPackages) { $uvArgs += @('--with', $pkg) }
+        $uvArgs += @('python') + $Arguments
+        & $uv.Source @uvArgs
+        return
+    }
+    foreach ($candidate in @('python', 'py')) {
+        $cmd = Get-Command $candidate -ErrorAction SilentlyContinue
+        if ($cmd -and $cmd.Source -notmatch 'WindowsApps\\python(\.exe)?$') {
+            & $cmd.Source @Arguments
+            return
+        }
+    }
+    throw 'Python runtime not found. Install uv (recommended) or Python 3 with numpy, or set MOONCAR_PYTHON.'
+}
+
 if ((Get-WorkbenchState $simulationUrl).enabled -ne $true) {
 if (-not $container.State.Running) {
     docker start mooncar-terrain-validation
     if ($LASTEXITCODE -ne 0) { throw 'Docker could not start the configured container.' }
 }
-$pythonRuntime = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
-& $pythonRuntime (Join-Path $PSScriptRoot 'runtime_baseline.py') freeze --output (Join-Path $projectRoot 'tmp\ros_acceptance\runtime-source.json')
+Invoke-MoonCarPython -Arguments @((Join-Path $PSScriptRoot 'runtime_baseline.py'), 'freeze', '--output', (Join-Path $projectRoot 'tmp\ros_acceptance\runtime-source.json'))
 if ($LASTEXITCODE -ne 0) { throw 'Commit product changes before starting a versioned workbench.' }
 Write-Output 'Rebuilding and verifying the committed runtime; log: tmp/ros_acceptance/runtime-build.log'
 docker exec mooncar-terrain-validation bash /source/containers/prepare_workbench.sh
@@ -47,7 +73,5 @@ foreach ($attempt in 1..10) {
 if ((Get-WorkbenchState $simulationUrl).enabled -ne $true) { throw 'Simulation service did not become ready. Check tmp/ros_acceptance/frontend-experiments-server.log.' }
 }
 # Serve the site on Windows instead of asking Chrome to connect to Docker's published port.
-$pythonRuntime = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
-if (-not (Test-Path -LiteralPath $pythonRuntime)) { throw 'The existing local Python runtime was not found; no dependencies were installed.' }
 Write-Output "Open Chrome at $workbenchUrl . Keep this PowerShell window open."
-& $pythonRuntime (Join-Path $PSScriptRoot 'map_workbench.py') --sessions (Join-Path $projectRoot 'tmp\ros_acceptance\frontend-experiments') --port 8765 --simulation-url $simulationUrl
+Invoke-MoonCarPython -WithPackages @('numpy') -Arguments @((Join-Path $PSScriptRoot 'map_workbench.py'), '--sessions', (Join-Path $projectRoot 'tmp\ros_acceptance\frontend-experiments'), '--port', '8765', '--simulation-url', $simulationUrl)

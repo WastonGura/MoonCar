@@ -1,6 +1,6 @@
 # RGBD 前台跟踪与后台关键帧优化：下一步开发方案
 
-2026-10-29，Asia/Tokyo。独立双线程离线原型已实现并通过本轮离线筛查；实际实现、首版内存失败、修复和验证见 [执行报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/ASYNC_RGBD_PROTOTYPE_20261029.md)。2026-10-30又完成原始消息完整链路AB/BA，确认前后改善、严格100ms墙时预算未达标，见 [完整链路报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/ASYNC_FULL_CHAIN_20261030.md)。下文保留实施前方案及后续门槛，尚未接入工作台或默认定位。
+2026-10-29，Asia/Tokyo。独立双线程离线原型已实现并通过本轮离线筛查；实际实现、首版内存失败、修复和验证见 [执行报告](../reports/ASYNC_RGBD_PROTOTYPE_20261029.md)。2026-10-30又完成原始消息完整链路AB/BA，确认前后改善、严格100ms墙时预算未达标，见 [完整链路报告](../reports/ASYNC_FULL_CHAIN_20261030.md)。下文保留实施前方案及后续门槛，尚未接入工作台或默认定位。
 
 ## 目标与依据
 
@@ -71,4 +71,4 @@
 
 工作量为中等规模改造，主要风险是提交与快照一致性，不是增加线程API。先交付可独立验证、也可独立淘汰的离线原型，避免一次改动算法、调度和工作台后失去比较依据。
 
-参考：[最近实测报告](D:/Documents/Projects/Repositories/MoonCar-mapping/reports/PATCH_CHUNK_SOAK_20261029.md)。
+参考：[最近实测报告](../reports/PATCH_CHUNK_SOAK_20261029.md)。
