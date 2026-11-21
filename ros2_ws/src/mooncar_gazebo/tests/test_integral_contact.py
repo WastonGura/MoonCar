@@ -36,7 +36,8 @@ class IntegralContactTest(unittest.TestCase):
         self.assertLess(float(np.max(abs(ratio(x,coarse)/ratio(x,fine)-1))),1e-4)
     def test_pressure_distribution_and_cap_preserved(self):
         p=np.asarray(self.law['pressure_density']);self.assertEqual(p[0],0);self.assertEqual(p[-1],0)
-        np.testing.assert_equal(p,p[::-1]);self.assertAlmostEqual(float(np.trapezoid(p,np.linspace(0,1,len(p)))),1,places=14)
+        integrate=getattr(np,'trapezoid',np.trapz)
+        np.testing.assert_equal(p,p[::-1]);self.assertAlmostEqual(float(integrate(p,np.linspace(0,1,len(p)))),1,places=14)
         self.assertEqual(self.law['source_soil'],SOIL)
         self.assertEqual(float(ratio(float('inf'),self.law)),self.law['cap'])
 

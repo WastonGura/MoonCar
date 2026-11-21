@@ -1,0 +1,45 @@
+{
+  "single_change": "Add speed-dependent native WheelSlip",
+  "production_changed": false,
+  "contact_physics_changed_in_test_copy": true,
+  "prediction": {
+    "status": "conditional_analytic_prediction_not_a_Gazebo_result",
+    "assumptions": "Flat symmetric wheel geometry; unsaturated linear slip; equal absolute wheel speeds; negligible other lateral forces",
+    "icr_body_x_m": -0.006237889179185711,
+    "maximum_center_offset_for_half_turn_m": 0.012475778358371423,
+    "nominal_force_ratio": 0.09483539716097855,
+    "saturation_limit": 0.2,
+    "caution": "Predicted residual is nonzero; transient motion, slopes and step consistency still require actual validation"
+  },
+  "parameters": {
+    "front_left": {
+      "slip_compliance_lateral": 10.0,
+      "slip_compliance_longitudinal": 0.0,
+      "wheel_normal_force": 3.572514673566879,
+      "wheel_radius": 0.076
+    },
+    "front_right": {
+      "slip_compliance_lateral": 10.0,
+      "slip_compliance_longitudinal": 0.0,
+      "wheel_normal_force": 3.572514673566879,
+      "wheel_radius": 0.076
+    },
+    "rear_left": {
+      "slip_compliance_lateral": 10.0,
+      "slip_compliance_longitudinal": 0.0,
+      "wheel_normal_force": 3.868145326433121,
+      "wheel_radius": 0.076
+    },
+    "rear_right": {
+      "slip_compliance_lateral": 10.0,
+      "slip_compliance_longitudinal": 0.0,
+      "wheel_normal_force": 3.868145326433121,
+      "wheel_radius": 0.076
+    }
+  },
+  "models": {
+    "baseline": "7190fec8a878724a4b5096b6cae0d5492d5e968c485948d8d93241375c4e5aca",
+    "candidate": "eda2d3e04a669d3aa5b2ee0633fe9c8bd5daac9f638ee1364158426bc384c81a",
+    "restore": "7190fec8a878724a4b5096b6cae0d5492d5e968c485948d8d93241375c4e5aca"
+  }
+}

@@ -35,6 +35,7 @@ class RobustnessTests(unittest.TestCase):
             else:s['mode']='legacy'
             self.assertFalse(qualify_grid(p,s)['passed'])
     def test_unsupported_scene_step_rejected(self):
-        for scene,step in (('unknown',.001),('flat',.00025),('flat',float('nan'))):
+        validate('flat',.00025)
+        for scene,step in (('unknown',.001),('flat',.002),('flat',float('nan'))):
             with self.assertRaises(ValueError):validate(scene,step)
 

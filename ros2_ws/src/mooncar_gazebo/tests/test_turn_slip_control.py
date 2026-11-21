@@ -52,7 +52,7 @@ class TurnSlipTests(unittest.TestCase):
         self.fixture();self.gate['iteration'][2]=2
         with self.assertRaises(ValueError):self.check()
     def test_single_mode_model_change_and_restore_hash(self):
-        source=ROOT/'reports/evidence/terrain-v2/r5-axle-allocation-20261010/allocator-models/candidate.sdf'
+        source=Path(__file__).resolve().parent/'fixtures/axle-candidate.sdf'
         manifest=generate(source,self.p/'models')
         self.assertEqual(manifest['models']['always'],manifest['models']['restore'])
         self.assertNotEqual(manifest['models']['always'],manifest['models']['pure_turn'])

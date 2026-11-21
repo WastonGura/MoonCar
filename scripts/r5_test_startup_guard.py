@@ -2,7 +2,7 @@
 import hashlib,json
 from pathlib import Path
 
-BASE_SHA='a86a52b9ec2cfb55baf748ac08abb139be92a9e5a8e5b4ed318325a04fee6d6c'
+BASE_SHA='af77edc91b6d6a9b678bc7797e924afce3288a077fafc461d62670d183dc9e93'
 OLD='''        while complete_receipt(receipt) is None:
             if child.poll() is not None:raise RuntimeError('Bridge exited before DDS receipt')
             if time.monotonic()>end:raise TimeoutError('Bridge DDS receipt timeout')

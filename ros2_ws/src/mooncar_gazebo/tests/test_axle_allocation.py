@@ -34,7 +34,7 @@ class AxleAllocationTests(unittest.TestCase):
     def test_model_only_enable_flag_changes_and_restore_exact(self):
         with tempfile.TemporaryDirectory() as tmp:
             d=Path(tmp);(d/'slip').mkdir()
-            snapshot=ROOT/'reports/evidence/terrain-v2/r5-slip-probe-20261010'
+            snapshot=Path(__file__).resolve().parent/'fixtures'
             tree=ET.parse(snapshot/'r5-d0.sdf')
             parameters=json.loads((snapshot/'slip-models/manifest.json').read_text())['parameters']
             plugin=ET.SubElement(tree.find('model'),'plugin',filename='gz-sim-wheel-slip-system',name='gz::sim::systems::WheelSlip')

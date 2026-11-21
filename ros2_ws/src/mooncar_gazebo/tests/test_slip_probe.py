@@ -15,7 +15,7 @@ from audit_r5_drive_constraints import WHEELS
 
 class SlipProbeTests(unittest.TestCase):
     def test_exact_single_intervention_and_restore(self):
-        source=ROOT/'reports/evidence/terrain-v2/r5-slip-probe-20261010/r5-d0.sdf'
+        source=Path(__file__).resolve().parent/'fixtures/r5-d0.sdf'
         before=source.read_bytes()
         with tempfile.TemporaryDirectory() as tmp:
             auth=Path(tmp)/'auth.json';auth.write_text(json.dumps(dict(human_reply='允许测试侧向滑移模型，仅限测试副本',production_change_allowed=False)))

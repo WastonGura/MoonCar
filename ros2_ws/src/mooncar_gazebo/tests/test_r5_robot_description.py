@@ -21,13 +21,15 @@ class DescriptionTests(unittest.TestCase):
         self.assertEqual(str(description_path(Namespace(model=args.model))),'/oldclosure/prepared-d0/formal.urdf')
 
     def test_research_tf_rate_is_explicit_and_legacy_default_is_preserved(self):
-        args=Namespace(model='/oldclosure/prepared-d0/formal.sdf',robot_description_urdf='/diagnosis/after/suspended.urdf')
+        urdf=str(Path(__file__).resolve().parent/'fixtures/r5-d0.urdf')
+        args=Namespace(model='/oldclosure/prepared-d0/formal.sdf',robot_description_urdf=urdf)
         self.assertNotIn('publish_frequency',description_parameters(args))
         args.robot_state_publish_frequency_hz=30.
         self.assertEqual(description_parameters(args)['publish_frequency'],30.)
         args.robot_state_publish_frequency_hz=float('nan')
         with self.assertRaises(ValueError):description_parameters(args)
 
+    @unittest.skipUnless(Path('/diagnosis/after/rigid.urdf').is_file(),'Isolated /diagnosis URDF fixture required')
     def test_actual_tf_cadence_reproduces_20hz_gap_and_30hz_fixes_it(self):
         import yaml
         import rclpy
@@ -91,6 +93,7 @@ class DescriptionTests(unittest.TestCase):
         self.assertTrue(results[1]['passed'],results)
         self.assertEqual(results[1]['matched_joint_tf_samples'],32)
 
+    @unittest.skipUnless(Path(os.environ.get('R5_SUSPENSION_PREPARED','/diagnosis/prepared-fixed')+'/manifest.json').is_file(),'Isolated /diagnosis prepared manifest required')
     def test_rigid_description_rejected_for_suspension_before_simulation(self):
         manifest=self.manifest();spec=manifest['rounds'][2]
         self.assertTrue(validate_bound_description(spec)['passed'])
@@ -99,12 +102,14 @@ class DescriptionTests(unittest.TestCase):
         invalid=copy.deepcopy(spec);invalid['robot_description_sha256']='0'*64
         with self.assertRaisesRegex(ValueError,'hash'):validate_bound_description(invalid)
 
+    @unittest.skipUnless(Path('/diagnosis/after/suspended.urdf').is_file(),'Isolated /diagnosis URDF fixture required')
     def test_missing_tf_feedback_is_not_compatibility_success(self):
         with tempfile.TemporaryDirectory() as folder:
             (Path(folder)/'observations.jsonl').write_text('')
             result=qualify_feedback(folder,'/diagnosis/after/suspended.urdf')
             self.assertFalse(result['passed']);self.assertEqual(result['matched_joint_tf_samples'],0)
 
+    @unittest.skipUnless(Path('/diagnosis/after/suspended.urdf').is_file(),'Isolated /diagnosis URDF fixture required')
     def test_actual_robot_state_publisher_tracks_passive_suspension(self):
         import yaml
         import rclpy

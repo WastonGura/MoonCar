@@ -64,7 +64,8 @@ def build(old,segments):
     pressure=old['soil']['Ks_Pa_per_m']*.076**old['soil']['n']*np.maximum(0,np.cos(effective)-math.cos(entry))**old['soil']['n']
     pressure=(pressure+pressure[::-1])/2
     pressure[0]=pressure[-1]=0.
-    area=np.trapezoid(pressure,x)
+    integrate=getattr(np,'trapezoid',np.trapz)
+    area=integrate(pressure,x)
     # This normalizes the discretized shape, not the frozen pressure force cap.
     density=pressure/area
     ccap=.076*.05/old['load_N']*old['soil']['cohesion_Pa']*entry

@@ -48,7 +48,7 @@ class DriveConstraintAuditTests(unittest.TestCase):
         with self.assertRaises(ValueError):propose(model,dict(front=7.,rear=8.),.076)
 
     def test_actual_frozen_model_is_read_only(self):
-        model=ROOT/'reports/evidence/terrain-v2/r5-turn-control-20261010/r5-d0.sdf'
+        model=Path(__file__).resolve().parent/'fixtures/r5-d0.sdf'
         if not model.is_file():self.skipTest('Archived frozen R5 model needed')
         before=model.read_bytes();audit,_=model_audit(model)
         self.assertEqual(before,model.read_bytes())

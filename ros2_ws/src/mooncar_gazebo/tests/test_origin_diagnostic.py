@@ -94,7 +94,7 @@ class OriginDiagnosticTests(unittest.TestCase):
 
     def test_native_integer_nanoseconds_avoid_float_search_overshoot(self):
         import importlib.util
-        p=Path(__file__).resolve().parents[4]/'reports/evidence/terrain-v2/r5-origin-20261009/derive_origin_evidence.py'
+        p=Path(__file__).resolve().parent/'fixtures/derive_origin_evidence.py'
         spec=importlib.util.spec_from_file_location('origin_offline',p);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
         row={'header':{'stamp':{'sec':'8','nsec':243_000_000}}}
         ns=module.stamp_ns(row)

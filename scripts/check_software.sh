@@ -8,6 +8,7 @@ unset ROS_STATIC_PEERS ROS_LOCALHOST_ONLY
 for package in mooncar_control mooncar_navigation mooncar_terrain mooncar_gazebo mooncar_slam; do
   python3 -m unittest discover -s "$root/ros2_ws/src/$package/tests" -v
 done
+python3 -m unittest discover -s "$root/tests" -v
 temp="$(mktemp -d)"
 trap 'rm -f "$temp/test_core"; rmdir "$temp"' EXIT
 gcc -std=c11 -Wall -Wextra -Werror -fsanitize=undefined \

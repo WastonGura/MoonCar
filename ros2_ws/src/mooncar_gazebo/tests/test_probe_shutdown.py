@@ -79,33 +79,43 @@ class ProbeShutdownTests(unittest.TestCase):
 
     @unittest.skipIf(sys.platform=='win32','ROS witness integration runs in dedicated container')
     def test_real_ros_witness_sigint_without_any_simulator(self):
+        import os
         import rclpy
         from sensor_msgs.msg import Imu
         from rclpy.qos import qos_profile_sensor_data
-        with tempfile.TemporaryDirectory() as folder:
-            with (Path(folder)/'process.log').open('w') as log:
-                process=subprocess.Popen([sys.executable,'-B',str(Path(__file__).resolve().parents[4]/'scripts/r5_capture_probe.py'),
-                    '--output',folder,'--image-trace','headers'],stdout=log,stderr=log)
-                rclpy.init();node=rclpy.create_node('witness_shutdown_regression')
-                publisher=node.create_publisher(Imu,'/mooncar/imu',qos_profile_sensor_data)
-                try:
-                    deadline=time.monotonic()+5
-                    while publisher.get_subscription_count()==0 and time.monotonic()<deadline:
-                        rclpy.spin_once(node,timeout_sec=.01)
-                    self.assertGreater(publisher.get_subscription_count(),0)
-                    for i in range(1200):
-                        message=Imu();message.header.stamp.nanosec=i
-                        publisher.publish(message);time.sleep(.001)
-                    time.sleep(.1);started=time.monotonic()
-                    import signal
-                    process.send_signal(signal.SIGINT);process.wait(timeout=8)
-                    self.assertLess(time.monotonic()-started,5)
-                    self.assertEqual(process.returncode,0,(Path(folder)/'process.log').read_text())
-                    status=json.loads((Path(folder)/'probe-status.json').read_text())
-                    self.assertTrue(status['passed'],status);self.assertGreater(status['events']['written'],500)
-                    self.assertEqual(status['events']['submitted'],status['events']['written'])
-                finally:
-                    if process.poll() is None:process.kill();process.wait()
-                    node.destroy_node();rclpy.shutdown()
+        saved_env={k:os.environ.get(k) for k in ('ROS_AUTOMATIC_DISCOVERY_RANGE','ROS_DOMAIN_ID','ROS_LOCALHOST_ONLY')}
+        os.environ['ROS_AUTOMATIC_DISCOVERY_RANGE']='LOCALHOST'
+        os.environ['ROS_DOMAIN_ID']='92'
+        os.environ.pop('ROS_LOCALHOST_ONLY',None)
+        try:
+            with tempfile.TemporaryDirectory() as folder:
+                with (Path(folder)/'process.log').open('w') as log:
+                    process=subprocess.Popen([sys.executable,'-B',str(Path(__file__).resolve().parents[4]/'scripts/r5_capture_probe.py'),
+                        '--output',folder,'--image-trace','headers'],stdout=log,stderr=log)
+                    rclpy.init();node=rclpy.create_node('witness_shutdown_regression')
+                    publisher=node.create_publisher(Imu,'/mooncar/imu',qos_profile_sensor_data)
+                    try:
+                        deadline=time.monotonic()+5
+                        while publisher.get_subscription_count()==0 and time.monotonic()<deadline:
+                            rclpy.spin_once(node,timeout_sec=.01)
+                        self.assertGreater(publisher.get_subscription_count(),0)
+                        for i in range(1200):
+                            message=Imu();message.header.stamp.nanosec=i
+                            publisher.publish(message);time.sleep(.001)
+                        time.sleep(.1);started=time.monotonic()
+                        import signal
+                        process.send_signal(signal.SIGINT);process.wait(timeout=8)
+                        self.assertLess(time.monotonic()-started,5)
+                        self.assertEqual(process.returncode,0,(Path(folder)/'process.log').read_text())
+                        status=json.loads((Path(folder)/'probe-status.json').read_text())
+                        self.assertTrue(status['passed'],status);self.assertGreater(status['events']['written'],500)
+                        self.assertEqual(status['events']['submitted'],status['events']['written'])
+                    finally:
+                        if process.poll() is None:process.kill();process.wait()
+                        node.destroy_node();rclpy.shutdown()
+        finally:
+            for k,v in saved_env.items():
+                if v is None:os.environ.pop(k,None)
+                else:os.environ[k]=v
 
 if __name__=='__main__':unittest.main()
