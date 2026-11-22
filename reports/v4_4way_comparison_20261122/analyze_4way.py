@@ -38,7 +38,7 @@ GROUPS = (
          strategy='surface_view_v3', camera_mode='gimbal', color='#ff9f43'),
     dict(key='hybrid_v4_fixed', label='hybrid_v4 (无云台)', short='hybrid_v4\n(无云台)',
          strategy='hybrid_frontier_v4', camera_mode='fixed', color='#c58af9'),
-    dict(key='hybrid_v4_gimbal', label='hybrid_v4 (有云台)', short='hybrid_v4\n(有云台)',
+    dict(key='hybrid_v41_gimbal', label='hybrid_v4.1 (有云台)', short='hybrid_v4.1\n(有云台)',
          strategy='hybrid_frontier_v4', camera_mode='gimbal', color='#2ed573'),
 )
 
@@ -293,7 +293,7 @@ def plot_charts(details, output_dir):
         ts = [p['elapsed_seconds'] / 60.0 for p in pts]
         obs = [p['total_observed_m2'] for p in pts]
         val = [p['valid_surface_m2'] for p in pts]
-        lw = 2.8 if g['key'] == 'hybrid_v4_gimbal' else 2.0
+        lw = 2.8 if g['key'] == 'hybrid_v41_gimbal' else 2.0
         ls = '--' if g['camera_mode'] == 'fixed' else '-'
         axes[0].plot(ts, obs, marker='o', markersize=4.5, linewidth=lw, linestyle=ls, color=g['color'], label=g['label'])
         axes[1].plot(ts, val, marker='s', markersize=4.5, linewidth=lw, linestyle=ls, color=g['color'], label=g['label'])

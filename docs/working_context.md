@@ -43,16 +43,17 @@
    * [docs/references.md](references.md)：完整沉淀 9 篇核心原始论文（Yamauchi 1997 / González-Baños & Latombe 2002 / Bircher 2016 / Fankhauser 2018 / Selin 2019 / Macenski 2020 & 2023 / Zhou 2021 / Cao 2021）的已核实 DOI、BibTeX 与代码映射。
    * [nav2_profile.py](../ros2_ws/src/mooncar_navigation/launch/nav2_profile.py) + [nav2_params_r5.yaml](../ros2_ws/src/mooncar_navigation/config/nav2_params_r5.yaml)：按 `simulation_profile` 区分 `legacy`（`0.86×0.72 m` / 膨胀 `0.65 m`）与 `r5_support_v1`（`0.50×0.44 m` 与 `laser_filter_r5.yaml` 对齐 / 膨胀 `0.45 m > 外接半径 0.333 m` / `cost_scaling_factor = 4.0` / RPP `cost_scaling_dist = 0.45 m`），同步接入 `terrain_navigation.launch.py`、`navigation.launch.py`、`experiment_motion.py`（`within_region` 与半径护栏）、`simulation_experiment.py`、`observation_path.py` 与 `frontier_planner.py`（`0.45 m` 净空与边界裕度）。
 
-## 2026-11-22 V3 地形四组 8 分钟全物理 Gazebo + 3D 录屏对比
+## 2026-11-22 V3 地形四组 8 分钟全物理 Gazebo + 3D 录屏对比（含 `v4.1` 迭代）
 
-- 完整报告与图表：[reports/v4_4way_comparison_20261122/README.md](../reports/v4_4way_comparison_20261122/README.md)（测试提交 `c86f127`，138 项安装文件前后核验 0 漂移；四路 2560×1260 并排对比视频及单路高清 MP4 归档至本地 `output/v4-4way-comparison-20261122/`）。
-- **核心结果**（全 4 组 100% 动作成功、0 定位暂停，单轮耗时 38–42.5 分钟较 11-18 提速 ~21%）：
-  - `surface_v3_gimbal`：观测 **504.31 m²** / 有效高程 **463.31 m²** / RMSE **0.15 cm** / XY P95 **6.18 cm**（相比 11-18 旧 R5 同策略 `0.65 cm / 8.23 cm` 精度提升 4.3×，印证抬升云台 + R5 Nav2 + 去重渲染收益）；但底盘原地转向 18 次（75.0 s）。
+- 完整报告与图表：[reports/v4_4way_comparison_20261122/README.md](../reports/v4_4way_comparison_20261122/README.md)（测试提交 `c86f127` / `0778a0f`，138 项安装文件前后核验 0 漂移；四路 2560×1260 并排对比视频及单路高清 MP4 归档至本地 `output/v4-4way-comparison-20261122/`）。
+- **核心结果**（全组 100% 动作成功、0 定位暂停）：
+  - **`hybrid_v4.1`（有云台，commit `0778a0f`，四道防碎片滤波 + `0.35 rad/s` 真实云台速率）**：观测 **550.75 m²** / 有效高程 **495.06 m²**（全场断层第一，较 `v4.0` 提升 **+33.4%**、较 `surface_v3` 高 **+9.2%**、较无云台版高 **+15.1%**）/ 后半程 **+259.8 m²**（全场第一，较 `v4.0` 暴涨 **3.35×**）/ **底盘原地自转 0 次（0.0 s）** / 云台耗时由 70.4 s 降至 **29.7 s** / **XY P95 5.94 cm**（云台组最佳）/ **全图高程 RMSE 0.15 cm** / **坡度 MAE 0.095°** / 27/27 动作、仅 1 次精准跨区切换。
+  - `surface_v3_gimbal`：观测 **504.31 m²** / 有效高程 **463.31 m²** / RMSE **0.15 cm** / XY P95 **6.18 cm**（相比 11-18 旧 R5 同策略 `0.65 cm / 8.23 cm` 精度提升 4.3×）；但底盘原地转向 18 次（75.0 s）。
   - `coverage_v3_gimbal`：观测 **489.19 m²** / 有效 **447.31 m²** / RMSE **0.13 cm** / XY P95 **6.09 cm** / 22 次底盘转向（63.0 s）。
-  - `hybrid_v4_fixed`（无云台固定俯角 `-28°`）：观测 **478.31 m²** / 有效 **448.69 m²** / **后半程（4–8 min）新增 +235.9 m² 全场第一** / **XY P95 4.90 cm 全场最佳** / 坡度 MAE **0.082°** / 转向时间仅 13.8 s（比 `surface_v3` 降 81.6%）。
-  - `hybrid_v4_gimbal`（有云台）：**前半程（0–4 min）新增 +317.8 m² 全场第一** / **底盘原地旋转 0 次（0.0 s）** / **四组共同区域（55.56 m²）高程 RMSE 0.179 cm 全场最佳**；同时暴露深度单源建图下频繁 `±90°` 侧扫产生“侧视口袋伪前沿”拉回后半程的根因，明确 `v4.1` 迭代方向。
+  - `hybrid_v4_fixed`（无云台固定俯角 `-28°`）：观测 **478.31 m²** / 有效 **448.69 m²** / 后半程 +235.9 m² / **XY P95 4.90 cm** / 坡度 MAE **0.082°** / 转向时间 13.8 s（比 `surface_v3` 降 81.6%）。
+  - `hybrid_v4.0`（有云台初版，保留作消融基线）：观测 412.75 m² / 有效 384.62 m²（前半程 +317.8 m²，后半程因碎片侧视口袋与高估云台速度回落至 +77.5 m²），为 `v4.1` 迭代提供直接因果依据。
 
 ## 下一步计划
 
-1. 基于 11-22 四组真机级物理对比发现，实现 `hybrid_frontier_v4.1`（过滤侧视小盲袋前沿 + 按真实 `0.35 rad/s` 云台速率校准侧扫门槛），兼得有云台前半程爆发/零底盘自转与无云台后半程推进/4.9 cm 定位精度。
-2. 推进坡面行驶换向（平缓区转向 / 缓弯，R1）与坡面弱几何重选 / 定位协方差校准（R4/R5/R7）。
+1. 推进坡面行驶换向（平缓区转向 / 缓弯，R1）与坡面弱几何重选 / 定位协方差校准（R4/R5/R7）。
+2. 待实车硬件到齐后，按 [docs/hardware_handoff.md](hardware_handoff.md) 与 [docs/hardware_parameter_gaps.md](hardware_parameter_gaps.md) 开展树莓派、OAK-D-Lite EEPROM 标定、S3 雷达外参与 STM32 联调。
