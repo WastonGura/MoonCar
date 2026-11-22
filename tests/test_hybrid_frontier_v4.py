@@ -221,6 +221,32 @@ class HybridFrontierUnitTests(unittest.TestCase):
         # x = 7.70 -> 0.30 m from xmax=8.0: outside even for R5 (needs 0.35 m)
         self.assertFalse(within_region(region, 7.70, 2.0, 0.0, profile='r5_support_v1'))
 
+    def test_v41_filters_small_side_pocket_fragment_when_large_frontier_exists(self):
+        # Fully known passable 30x30 m costmap except:
+        # 1) A tiny 0.5x0.5 m fragment pocket near (-3, 0) (area 0.25 m2)
+        # 2) A large 6x6 m continuous unknown region around (+8, +8) (area 36 m2)
+        grid, arr = make_grid(fill=0)
+        # Tiny 5x5 cell pocket at x in [-3.5, -3.0], y in [-0.5, 0.0] -> ix 115..120, iy 145..150
+        arr[145:150, 115:120] = -1
+        # Large 60x60 cell unknown region at x in [5, 11], y in [5, 11] -> ix 200..260, iy 200..260
+        arr[200:260, 200:260] = -1
+        region = (-15.0, -15.0, 15.0, 15.0)
+        clusters = extract_frontier_clusters(arr, -15.0, -15.0, 0.1, region, (0.0, 0.0), math.inf)
+        self.assertGreaterEqual(len(clusters), 1)
+        # Tiny rear pocket must be filtered out while large frontier survives with high macro_unknown_m2.
+        for cl in clusters:
+            self.assertGreater(cl['cx'], 2.0)
+            self.assertGreaterEqual(cl['macro_unknown_m2'], 3.5)
+
+    def test_v41_tour_prefers_forward_large_unknown_over_rear_fragment(self):
+        pose = dict(x=0.0, y=0.0, yaw=0.0)
+        waypoints = [
+            dict(x=-3.0, y=0.0, path_distance=3.0, cluster_count=4, macro_unknown_m2=1.5),
+            dict(x=8.0, y=0.5, path_distance=8.0, cluster_count=40, macro_unknown_m2=12.0),
+        ]
+        order = order_frontier_tour(pose, waypoints)
+        self.assertEqual(order[0], 1)
+
 
 if __name__ == '__main__':
     unittest.main()

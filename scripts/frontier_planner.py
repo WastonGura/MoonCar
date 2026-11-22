@@ -30,8 +30,14 @@ R5_BOUNDARY_MARGIN_M = 0.45
 GIMBAL_PAN_LIMIT_RAD = 2.35619
 GIMBAL_TILT_DEFAULT_RAD = -0.2618
 GIMBAL_RECENTER_THRESHOLD_RAD = 0.175  # ~10 deg
+# Matches runtime gimbal_command_rate_rad_s in simulation_experiment.py (0.35 rad/s).
+GIMBAL_SLEW_RATE_RAD_S = 0.35
 LOCAL_NEW_GAIN_SWITCH_M2 = 1.5
 GLOBAL_WAYPOINT_STEP_M = 6.0
+MACRO_UNKNOWN_RADIUS_M = 2.0
+MIN_PRIMARY_FRONTIER_CELLS = 10
+MIN_PRIMARY_MACRO_UNKNOWN_M2 = 3.5
+MIN_GLOBAL_VIEW_GAIN_M2 = 1.5
 
 
 def wrap(angle):
@@ -200,12 +206,71 @@ def extract_frontier_clusters(costs, ox, oy, resolution, region, origin, radius,
 
     min_count = max(1, min_cells // step)
     clusters = [cl for cl in clusters if cl['count'] >= min_count]
-    clusters.sort(key=lambda cl: cl['count'], reverse=True)
-    return clusters[:16]
+    if not clusters:
+        return []
+
+    # Gate 1 (FUEL-inspired macro-unknown scoring): measure how much genuinely
+    # unobserved area lies within MACRO_UNKNOWN_RADIUS_M around each cluster so
+    # tiny side-pan pockets do not lure the rover back over mapped space.
+    rad_cells = max(1, int(round(MACRO_UNKNOWN_RADIUS_M / resolution)))
+    cell_area = resolution * resolution
+    q_rad = max(1, int(round(MACRO_UNKNOWN_RADIUS_M / quality_resolution)))
+    q_area = quality_resolution * quality_resolution
+    for cl in clusters:
+        cl['raw_count'] = cl['count'] * step
+        cix = int(math.floor((cl['cx'] - ox) / resolution))
+        ciy = int(math.floor((cl['cy'] - oy) / resolution))
+        x0, x1 = max(0, cix - rad_cells), min(width, cix + rad_cells + 1)
+        y0, y1 = max(0, ciy - rad_cells), min(height, ciy + rad_cells + 1)
+        sub_unk = unknown[y0:y1, x0:x1]
+        if sub_unk.size:
+            xs_w = ox + (np.arange(x0, x1) + 0.5) * resolution
+            ys_w = oy + (np.arange(y0, y1) + 0.5) * resolution
+            in_reg = ((xs_w >= xmin) & (xs_w < xmax))[None, :] & ((ys_w >= ymin) & (ys_w < ymax))[:, None]
+            if math.isfinite(radius):
+                in_reg &= (np.hypot(xs_w[None, :] - origin[0], ys_w[:, None] - origin[1]) <= radius)
+            costmap_unk_m2 = float(np.count_nonzero(sub_unk & in_reg)) * cell_area
+        else:
+            costmap_unk_m2 = 0.0
+
+        quality_unk_m2 = 0.0
+        if observed_keys is not None:
+            cqx = int(math.floor(cl['cx'] / quality_resolution))
+            cqy = int(math.floor(cl['cy'] / quality_resolution))
+            unobs_q = 0
+            for qxi in range(cqx - q_rad, cqx + q_rad + 1):
+                wx = (qxi + 0.5) * quality_resolution
+                if not (xmin <= wx < xmax):
+                    continue
+                ix_c = int(math.floor((wx - ox) / resolution))
+                if not (0 <= ix_c < width):
+                    continue
+                for qyi in range(cqy - q_rad, cqy + q_rad + 1):
+                    wy = (qyi + 0.5) * quality_resolution
+                    if not (ymin <= wy < ymax):
+                        continue
+                    if math.isfinite(radius) and math.hypot(wx - origin[0], wy - origin[1]) > radius:
+                        continue
+                    iy_c = int(math.floor((wy - oy) / resolution))
+                    if not (0 <= iy_c < height) or costs[iy_c, ix_c] >= 99:
+                        continue
+                    if (qxi, qyi) not in observed_keys:
+                        unobs_q += 1
+            quality_unk_m2 = unobs_q * q_area
+        cl['macro_unknown_m2'] = round(max(costmap_unk_m2, quality_unk_m2), 2)
+
+    primary = [
+        cl for cl in clusters
+        if cl['raw_count'] >= MIN_PRIMARY_FRONTIER_CELLS
+        and cl['macro_unknown_m2'] >= MIN_PRIMARY_MACRO_UNKNOWN_M2
+    ]
+    selected = primary if primary else clusters
+    selected.sort(key=lambda cl: (cl['macro_unknown_m2'] * (1.0 + 0.02 * cl['raw_count']), cl['raw_count']), reverse=True)
+    return selected[:16]
 
 
 def order_frontier_tour(pose, waypoints):
-    """Order frontier viewpoints via greedy nearest-neighbor + 2-opt open TSP (FUEL-inspired)."""
+    """Order frontier viewpoints via greedy nearest-neighbor + 2-opt open TSP (FUEL/TARE-inspired)."""
     n = len(waypoints)
     if n <= 1:
         return list(range(n))
@@ -215,9 +280,15 @@ def order_frontier_tour(pose, waypoints):
         dx, dy = wp['x'] - pose['x'], wp['y'] - pose['y']
         dist = wp.get('path_distance', math.hypot(dx, dy))
         heading_err = abs(wrap(math.atan2(dy, dx) - pose['yaw'])) if math.hypot(dx, dy) > 0.1 else 0.0
-        # Slight preference for heading continuity and larger clusters.
-        size_bonus = 1.0 + 0.15 * min(wp.get('cluster_count', 1), 20) / 20.0
-        return (dist + 0.8 * heading_err) / size_bonus
+        # Gate 3 (TARE-inspired): favor large continuous unknown regions and
+        # add backtrack hysteresis so rear fragments do not pull the rover back.
+        macro_m2 = wp.get('macro_unknown_m2')
+        if macro_m2 is not None:
+            size_bonus = 1.0 + 1.5 * min(max(0.0, float(macro_m2)), 12.0) / 12.0
+        else:
+            size_bonus = 1.0 + 0.15 * min(wp.get('cluster_count', 1), 20) / 20.0
+        backtrack_penalty = 4.5 * (heading_err - math.pi / 2.0) if heading_err > math.pi / 2.0 else 0.0
+        return (dist + 1.0 * heading_err + backtrack_penalty) / size_bonus
 
     def edge_cost(a, b):
         wa, wb = waypoints[a], waypoints[b]
@@ -305,6 +376,7 @@ def find_standoff_viewpoint(cluster, costs, ox, oy, resolution, distances, paren
                     path=path,
                     cluster_cx=cx, cluster_cy=cy,
                     cluster_count=cluster['count'],
+                    macro_unknown_m2=cluster.get('macro_unknown_m2', cluster['count'] * 0.25),
                 )
     return best
 
@@ -326,7 +398,7 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
                 and ymin + boundary_margin_m <= y <= ymax - boundary_margin_m)
 
     diagnostics = dict(
-        planner_version='hybrid-frontier-v4.0',
+        planner_version='hybrid-frontier-v4.1',
         reachable_move_positions=0,
         candidate_orientations=0,
         history_rejected=0,
@@ -472,7 +544,17 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
             # Skip already-blocked frontier standoffs
             if any(math.hypot(wp['x'] - h['x'], wp['y'] - h['y']) < 0.7 and h.get('blocked') for h in history[-80:]):
                 continue
+            # Gate 2 (AEP-inspired): evaluate actual view gain before entering the global tour.
+            vis_cells, _ = visibility(wp['x'], wp['y'], wp['yaw'])
+            wp['expected_new_m2'] = round(sum(q not in observed for q in vis_cells) * qr * qr, 3)
             frontier_waypoints.append(wp)
+
+    strong_waypoints = [
+        wp for wp in frontier_waypoints
+        if wp['expected_new_m2'] >= MIN_GLOBAL_VIEW_GAIN_M2 or wp.get('macro_unknown_m2', 0.0) >= 6.0
+    ]
+    if strong_waypoints:
+        frontier_waypoints = strong_waypoints
 
     tour_order = order_frontier_tour(pose, frontier_waypoints)
     diagnostics['global_tour_length'] = len(tour_order)
@@ -516,7 +598,11 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
 
     # 3. Evaluate Local NBV Candidates with True Chassis-Gimbal Decoupling
     candidates = []
-    recenter_penalty_s = (abs(current_pan) / 1.5 + 1.0) if (gimbal_available and abs(current_pan) > GIMBAL_RECENTER_THRESHOLD_RAD) else 0.0
+    recenter_penalty_s = (
+        abs(current_pan) / GIMBAL_SLEW_RATE_RAD_S + 1.5
+        if (gimbal_available and abs(current_pan) > GIMBAL_RECENTER_THRESHOLD_RAD)
+        else 0.0
+    )
 
     for x, y, distance, path, hint_yaw in positions:
         if distance and not inside_motion_region(x, y):
@@ -556,7 +642,7 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
                 pan = float(wrap(yaw - pose['yaw']))
                 tilt = GIMBAL_TILT_DEFAULT_RAD
                 if gimbal_available and abs(pan) <= GIMBAL_PAN_LIMIT_RAD:
-                    seconds = abs(pan - current_pan) / 1.5 + 1.8
+                    seconds = abs(pan - current_pan) / GIMBAL_SLEW_RATE_RAD_S + 2.2
                     use_pan_tilt = True
                     requires_chassis_spin = False
                 elif gimbal_available:
@@ -572,14 +658,17 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
                 arrival_pan = float(wrap(yaw - bearing))
                 tilt = GIMBAL_TILT_DEFAULT_RAD
                 if gimbal_available and abs(arrival_pan) <= GIMBAL_PAN_LIMIT_RAD:
-                    # True chassis-gimbal decoupling: drive forward (camera centered),
-                    # then pan ONLY the gimbal at the destination (zero chassis spin!).
-                    # Include the round-trip re-centering cost so we only pan sideways
-                    # when side gain genuinely outweighs continuous forward exploration.
+                    # Gate 4: True chassis-gimbal decoupling with realistic 0.35 rad/s
+                    # round-trip slew + re-centering cost so sideways pans only trigger
+                    # when side gain genuinely beats continuous forward exploration.
                     use_pan_tilt = True
                     pan = arrival_pan
                     requires_chassis_spin = False
-                    arrival_look_s = (abs(arrival_pan) / 1.5 + 1.2) if abs(arrival_pan) > 0.12 else 0.8
+                    arrival_look_s = (
+                        2.0 * abs(arrival_pan) / GIMBAL_SLEW_RATE_RAD_S + 2.5
+                        if abs(arrival_pan) > GIMBAL_RECENTER_THRESHOLD_RAD
+                        else 0.8
+                    )
                     seconds = recenter_penalty_s + distance / 0.16 + turn_to_bearing / 0.35 + arrival_look_s + 1.5
                 else:
                     use_pan_tilt = False
