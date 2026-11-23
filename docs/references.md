@@ -68,11 +68,39 @@
 - **完整引文**：S. Macenski, S. Singh, F. Martín, and J. Ginés, "Regulated Pure Pursuit for Robot Path Tracking," *Autonomous Robots*, vol. 47, pp. 685–694, 2023.
 - **DOI**：<https://doi.org/10.1007/s10514-023-10097-6>（arXiv: <https://doi.org/10.48550/arXiv.2305.20026>）
 - **核心思想**：在经典 Pure Pursuit 基础上引入曲率限速、障碍代价接近限速（`cost_scaling_dist`）与碰撞前瞻检查，改善狭窄及近障环境下的路径跟踪安全性。
-- **本项目映射**：[ros2_ws/src/mooncar_navigation/config/nav2_params.yaml](../ros2_ws/src/mooncar_navigation/config/nav2_params.yaml) 与 [nav2_params_r5.yaml](../ros2_ws/src/mooncar_navigation/config/nav2_params_r5.yaml) 的 `controller_server.FollowPath`（`RegulatedPurePursuitController`），并将 R5 下的 `cost_scaling_dist` 对齐为 `0.45 m`。
+- **本项目映射**：[ros2_ws/src/mooncar_navigation/config/nav2_params.yaml](../ros2_ws/src/mooncar_navigation/config/nav2_params.yaml) 与 [nav2_params_r5.yaml](../ros2_ws/src/mooncar_navigation/config/nav2_params_r5.yaml) 的 `controller_server.FollowPath`（`RegulatedPurePursuitController`），并将 R5 下的 `cost_scaling_dist` 对齐为 `0.45 m`；同时派生坡面专用的 `SlopeFollowPath`（关闭 `use_rotate_to_heading` 与倒车，启用曲率限速 `regulated_linear_scaling_min_radius = 0.90 m`）。
 
 ---
 
-## 4. BibTeX 汇总（可直接用于论文 / 科创结题报告）
+## 4. 坡面滑移力学与四轮滑移转向控制（Slope Locomotion & Skid-Steer Kinematics）
+
+### [10] Ishigami et al. (2007) — 松软月壤行星探测车转向滑移土力学模型
+- **完整引文**：G. Ishigami, A. Miwa, K. Nagatani, and K. Yoshida, "Terramechanics-Based Model for Steering Maneuver of Planetary Exploration Rovers on Loose Soil," *Journal of Field Robotics (JFR)*, vol. 24, no. 3, pp. 233–250, Mar. 2007.
+- **DOI**：<https://doi.org/10.1002/rob.20187>
+- **核心思想**：建立轮-壤三维接触应力与滑转/侧滑角（slip ratio / slip angle）动力学模型，定量揭示行星探测车在低重力与非平整松软坡面上转向时横向滑移与中心漂移的物理机理。
+- **本项目映射**：解释并指导 R5 实车在 8.8° 坡面执行纯原地 `Spin` 产生约 30–35 cm 下坡偏移的机理分析，驱动 [scripts/slope_heading.py](../scripts/slope_heading.py) 将“观察视向调整”优先交由二轴云台完成，避免不必要的坡面底盘纯转。
+
+### [11] Ishigami, Nagatani & Yoshida (2009) — 行星探测车坡面行驶与滑移补偿转向控制
+- **完整引文**：G. Ishigami, K. Nagatani, and K. Yoshida, "Slope Traversal Controls for Planetary Exploration Rover on Sandy Terrain," *Journal of Field Robotics (JFR)*, vol. 26, no. 3, pp. 264–286, Mar. 2009.
+- **DOI**：<https://doi.org/10.1002/rob.20277>
+- **核心思想**：对比分析坡面横向行驶与转向中的下坡滑移抑制策略，指出在低牵引坡面上应优先采用大半径平顺曲率转移或选择低坡度过渡区换向，避免高曲率/原地转向诱发的失稳滑移。
+- **本项目映射**：[scripts/slope_heading.py](../scripts/slope_heading.py) 中的 `find_gentle_turn_zone()`（优先沿起始朝向兼容路径驶入实测平缓区再转向）与 `plan_smooth_arc_maneuver()`（无平缓区时采用有界曲率前进缓弯 + 全程扫掠足迹核验）。
+
+### [12] Rabiee & Biswas (2019) — 基于摩擦力的四轮滑移转向运动学模型
+- **完整引文**：S. Rabiee and J. Biswas, "A Friction-Based Kinematic Model for Skid-Steer Wheeled Mobile Robots," *2019 International Conference on Robotics and Automation (ICRA)*, Montreal, QC, Canada, 2019, pp. 8563–8569.
+- **DOI**：<https://doi.org/10.1109/ICRA.2019.8794216>
+- **核心思想**：基于车轮-地面接触摩擦约束推导四轮滑移转向移动机器人（SSWMR）的瞬时旋转中心（ICR）分布规律，说明内侧车轮反转原地转向需要克服显著更大的侧向摩擦阻力矩。
+- **本项目映射**：为 MoonCar 四轮差速底盘设置 `DEFAULT_ARC_RADII_M = (1.1, 1.5, 2.0, 2.5) m`（远大于半轮距 `~0.19 m`），确保坡面缓弯时四轮均保持正向滚动牵引而不发生内轮反转打滑。
+
+### [13] Martínez et al. (2024) — 坡面四轮滑移转向车辆的 ICR 运动学
+- **完整引文**：J. L. Martínez, J. Morales, M. Sánchez, and A. García-Cerezo, "ICR-based Kinematics for Wheeled Skid-Steer Vehicles on Firm Slopes," *2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)*, Abu Dhabi, UAE, 2024, pp. 1322–1328.
+- **DOI**：<https://doi.org/10.1109/IROS58592.2024.10801776>
+- **核心思想**：将 ICR 滑移转向运动学推广至倾斜坡面，证明重力沿坡分量会使原地转向的瞬时旋转中心明显向下坡方向偏移，导致无外部位姿约束的纯旋转必然伴随下坡侧移。
+- **本项目映射**：支撑 [ros2_ws/src/mooncar_navigation/config/behavior_trees/navigate_to_pose_slope_safe.xml](../ros2_ws/src/mooncar_navigation/config/behavior_trees/navigate_to_pose_slope_safe.xml)（移除坡面导航行为树中的 `Spin` 与 `BackUp` 恢复动作）与 [terrain_navigation.launch.py](../ros2_ws/src/mooncar_navigation/launch/terrain_navigation.launch.py) 中的 `SlopeFollowPath`（禁用隐式 `use_rotate_to_heading`），同时保留平地 `FollowPath` 完整转向能力。
+
+---
+
+## 5. BibTeX 汇总（可直接用于论文 / 科创结题报告）
 
 ```bibtex
 @inproceedings{yamauchi1997frontier,
@@ -162,5 +190,45 @@
   volume  = {47},
   pages   = {685--694},
   doi     = {10.1007/s10514-023-10097-6}
+}
+
+@article{ishigami2007terramechanics,
+  author  = {Ishigami, Genya and Miwa, Akiko and Nagatani, Keiji and Yoshida, Kazuya},
+  title   = {Terramechanics-Based Model for Steering Maneuver of Planetary Exploration Rovers on Loose Soil},
+  journal = {Journal of Field Robotics},
+  year    = {2007},
+  volume  = {24},
+  number  = {3},
+  pages   = {233--250},
+  doi     = {10.1002/rob.20187}
+}
+
+@article{ishigami2009slope,
+  author  = {Ishigami, Genya and Nagatani, Keiji and Yoshida, Kazuya},
+  title   = {Slope Traversal Controls for Planetary Exploration Rover on Sandy Terrain},
+  journal = {Journal of Field Robotics},
+  year    = {2009},
+  volume  = {26},
+  number  = {3},
+  pages   = {264--286},
+  doi     = {10.1002/rob.20277}
+}
+
+@inproceedings{rabiee2019friction,
+  author    = {Rabiee, Sadegh and Biswas, Joydeep},
+  title     = {A Friction-Based Kinematic Model for Skid-Steer Wheeled Mobile Robots},
+  booktitle = {2019 International Conference on Robotics and Automation (ICRA)},
+  year      = {2019},
+  pages     = {8563--8569},
+  doi       = {10.1109/ICRA.2019.8794216}
+}
+
+@inproceedings{martinez2024icr,
+  author    = {Mart{\'i}nez, Jorge L. and Morales, Jes{\'u}s and S{\'a}nchez, Manuel and Garc{\'i}a-Cerezo, Alfonso},
+  title     = {{ICR}-based Kinematics for Wheeled Skid-Steer Vehicles on Firm Slopes},
+  booktitle = {2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year      = {2024},
+  pages     = {1322--1328},
+  doi       = {10.1109/IROS58592.2024.10801776}
 }
 ```

@@ -62,7 +62,7 @@ def apply_nav2_profile(params, simulation_profile='legacy', *, inplace=False):
         inflation['cost_scaling_factor'] = geom['cost_scaling_factor']
     controller = result.get('controller_server', {}).get('ros__parameters', {})
     if geom['cost_scaling_dist_m'] is not None:
-        for plugin_name in ('FollowPath', 'RevisitFollowPath'):
+        for plugin_name in ('FollowPath', 'RevisitFollowPath', 'SlopeFollowPath'):
             plugin = controller.get(plugin_name)
             if isinstance(plugin, dict):
                 plugin['cost_scaling_dist'] = geom['cost_scaling_dist_m']

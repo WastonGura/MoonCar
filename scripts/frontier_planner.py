@@ -13,6 +13,7 @@ import math
 import numpy as np
 
 from experiment_scenes import scene_bounds
+from slope_heading import MAX_DEPARTURE_HEADING_ERR_RAD, assess_local_slope
 from survey_evaluation import scoped_cells
 
 
@@ -412,7 +413,14 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
         frontier_cluster_count=0,
         global_frontier_fallback=False,
         global_tour_length=0,
+        slope_safe_active=False,
     )
+
+    sim_profile = 'legacy' if chassis_clearance_m >= 0.6 else 'r5_support_v1'
+    local_slope = assess_local_slope(pose, quality, simulation_profile=sim_profile)
+    on_steep_slope = bool(local_slope['slope_exceeded'] or local_slope['roughness_exceeded'])
+    diagnostics['local_slope'] = local_slope
+    diagnostics['slope_safe_active'] = on_steep_slope
 
     def result(value):
         return (value, diagnostics) if return_diagnostics else value
@@ -645,9 +653,8 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
                     seconds = abs(pan - current_pan) / GIMBAL_SLEW_RATE_RAD_S + 2.2
                     use_pan_tilt = True
                     requires_chassis_spin = False
-                elif gimbal_available:
-                    # Skip 180-deg in-place chassis spin when gimbal is available;
-                    # rear blind spots are observed during motion or from adjacent stops.
+                elif gimbal_available or on_steep_slope:
+                    # Skip in-place chassis spin when gimbal is available or on a steep slope.
                     continue
                 else:
                     seconds = abs(pan) / 0.3 + 2.5
@@ -655,6 +662,10 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
                     requires_chassis_spin = True
             else:
                 turn_to_bearing = abs(wrap(bearing - pose['yaw']))
+                if on_steep_slope and turn_to_bearing > MAX_DEPARTURE_HEADING_ERR_RAD:
+                    # On sloped terrain, disallow immediate large departure heading changes
+                    # that would require an in-place chassis spin on the slope.
+                    continue
                 arrival_pan = float(wrap(yaw - bearing))
                 tilt = GIMBAL_TILT_DEFAULT_RAD
                 if gimbal_available and abs(arrival_pan) <= GIMBAL_PAN_LIMIT_RAD:
@@ -710,6 +721,7 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
                 pan=round(pan, 3), tilt=round(tilt, 3),
                 use_pan_tilt=use_pan_tilt,
                 requires_chassis_spin=requires_chassis_spin,
+                slope_safe=bool(on_steep_slope and distance >= 0.1),
                 expected_new_m2=round(new_m2, 3),
                 expected_improvement_m2=round(improve_m2, 3),
                 expected_utility_m2=round(utility, 3),
@@ -770,6 +782,8 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
             if any(math.hypot(gx - h['x'], gy - h['y']) < 0.7 and h.get('blocked') for h in history[-80:]):
                 continue
             bearing = math.atan2(gy - pose['y'], gx - pose['x'])
+            if on_steep_slope and abs(wrap(bearing - pose['yaw'])) > MAX_DEPARTURE_HEADING_ERR_RAD:
+                continue
             is_final_standoff = math.hypot(gx - wp['x'], gy - wp['y']) < 0.5
             desired_yaw = wp['yaw'] if is_final_standoff else bearing
             arrival_pan = float(wrap(desired_yaw - bearing))
@@ -787,6 +801,7 @@ def choose_hybrid_view(grid, quality, pose, origin, radius, history, remaining,
                 pan=round(pan, 3), tilt=round(GIMBAL_TILT_DEFAULT_RAD, 3),
                 use_pan_tilt=use_pan_tilt,
                 requires_chassis_spin=False,
+                slope_safe=bool(on_steep_slope),
                 expected_new_m2=round(new_m2, 3),
                 expected_improvement_m2=0.0,
                 expected_utility_m2=round(max(new_m2, wp['cluster_count'] * qr * qr * 0.25), 3),

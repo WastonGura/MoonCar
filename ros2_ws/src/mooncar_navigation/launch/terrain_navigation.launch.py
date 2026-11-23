@@ -41,6 +41,33 @@ def configure_revisit_controller(params):
     controller['controller_plugins']=plugins
 
 
+def configure_slope_safe_controller(params):
+    """Task-scoped slope-safe controller without implicit in-place rotation.
+
+    Ordinary flat-ground FollowPath remains untouched. SlopeFollowPath disables
+    use_rotate_to_heading and reversing, and enforces curvature-regulated forward
+    pursuit so transits off sloped terrain do not trigger wheel-breakaway spins.
+    """
+    controller=params['controller_server']['ros__parameters']
+    slope_ctrl=copy.deepcopy(controller['FollowPath'])
+    slope_ctrl.update(
+        desired_linear_vel=.14,
+        lookahead_dist=.50,
+        min_lookahead_dist=.30,
+        max_lookahead_dist=.70,
+        use_rotate_to_heading=False,
+        allow_reversing=False,
+        use_regulated_linear_velocity_scaling=True,
+        regulated_linear_scaling_min_radius=.90,
+        regulated_linear_scaling_min_speed=.06,
+        max_angular_accel=2.0,
+    )
+    controller['SlopeFollowPath']=slope_ctrl
+    plugins=list(controller['controller_plugins'])
+    if 'SlopeFollowPath' not in plugins:plugins.append('SlopeFollowPath')
+    controller['controller_plugins']=plugins
+
+
 def _load_nav2_profile():
     spec = importlib.util.spec_from_file_location(
         'mooncar_nav2_profile', Path(__file__).resolve().with_name('nav2_profile.py')
@@ -87,6 +114,7 @@ def setup(context):
         # The web UI requests a position, not a terminal heading.
         configure_workbench_goal_checkers(params,navigation)
         configure_revisit_controller(params)
+        configure_slope_safe_controller(params)
     for name in ('local_costmap', 'global_costmap'):
         costmap = params[name][name]['ros__parameters']
         if online and name == 'global_costmap':

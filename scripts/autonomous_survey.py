@@ -16,6 +16,7 @@ from survey_evaluation import VERSION, EvidenceRecorder, gain, scoped_cells
 from experiment_scenes import scene_bounds
 from frontier_planner import choose_hybrid_view, GIMBAL_PAN_LIMIT_RAD, GIMBAL_RECENTER_THRESHOLD_RAD, GIMBAL_TILT_DEFAULT_RAD
 from localization_quality import LocalizationDispatchRejected
+from slope_heading import assess_local_slope, plan_heading_adjustment
 
 LEGACY_STRATEGIES = ('nearest_view_v1', 'coverage_view_v1', 'surface_view_v1')
 V2_STRATEGIES = ('nearest_view_v2', 'coverage_view_v2', 'surface_view_v2')
@@ -1261,8 +1262,12 @@ class AutonomousSurvey:
                     response=self.motion.turn(decision['yaw'],self.task)
                 else:
                     body=dict(experiment=self.task['id'],goal=[decision['x'],decision['y']])
-                    response=(self.motion.start(body,self.task,precise_revisit=True) if decision.get('precise_revisit')
-                              else self.motion.start(body,self.task))
+                    if decision.get('precise_revisit'):
+                        response=self.motion.start(body,self.task,precise_revisit=True)
+                    elif decision.get('slope_safe'):
+                        response=self.motion.start(body,self.task,slope_safe=True)
+                    else:
+                        response=self.motion.start(body,self.task)
             except ValueError as error:
                 if turn or not str(error).startswith(('目标位于障碍','目标尚未观测','目标超出当前导航地图边界')):
                     raise
@@ -1434,6 +1439,129 @@ class AutonomousSurvey:
         self.save()
         return bool(known)
 
+    def _pose_with_attitude(self):
+        pose=dict(self.motion.pose())
+        if callable(getattr(self.motion,'pose_attitude',None)):
+            try:
+                att=self.motion.pose_attitude()
+                if isinstance(att,dict):
+                    for key in ('roll','pitch','tilt_deg'):
+                        if key in att:pose[key]=att[key]
+            except Exception:
+                pass
+        return pose
+
+    def execute_slope_safe_heading(self,target_yaw,intent='travel_heading',*,allow_arc_fallback=True):
+        """Execute a bounded, intent-separated slope-safe heading adjustment transaction.
+
+        Completed stages are tracked so recovery never replays an already-finished transit.
+        """
+        if not self.healthy():
+            return False,dict(status='unhealthy',reason='not_healthy_before_plan')
+        with self.motion.lock:
+            if not self.motion.grid_fresh():
+                return False,dict(status='failed',reason='costmap_stale')
+            grid=self.motion.grid;quality=self.motion.quality
+            pose=self._pose_with_attitude()
+            gimbal=getattr(self.motion,'gimbal_position',None)
+        remaining=max(0.,self.data['budget_seconds']-(self.now()-self.data['started'])-EXECUTION_MARGIN_SECONDS)
+        profile=self.task.get('simulation_profile','r5_support_v1')
+        plan=plan_heading_adjustment(
+            intent,target_yaw,pose,grid,quality,self.task['region'],self.origin,self.data['radius'],remaining,
+            gimbal_available=callable(getattr(self.motion,'pan_tilt',None)),
+            current_gimbal=gimbal or (0.0,GIMBAL_TILT_DEFAULT_RAD),
+            simulation_profile=profile,
+            allow_arc_fallback=allow_arc_fallback,
+        )
+        record=dict(
+            intent=intent,target_yaw=float(target_yaw),started_sim=self.now(),
+            start_pose=dict(pose),plan=plan,completed_stages=[],stage_results=[],
+            status='planned' if plan['feasible'] else 'refused',
+            reason=plan['reason'],
+        )
+        with self.lock:
+            self.data.setdefault('slope_heading_maneuvers',[]).append(record)
+            self.save()
+        if not plan['feasible']:
+            record['end_sim']=self.now();self.save()
+            return False,record
+        if not plan['stages']:
+            record.update(status='succeeded',end_sim=self.now(),end_pose=dict(pose));self.save()
+            return True,record
+
+        for stage in plan['stages']:
+            stage_name=stage['stage']
+            if stage_name in record['completed_stages']:
+                continue
+            if not self.healthy():
+                record.update(status='interrupted',reason='unhealthy_during_stage',end_sim=self.now());self.save()
+                return False,record
+            st_start=self.now()
+            st_pose_before=self._pose_with_attitude()
+            kind=stage['kind']
+            if kind=='gimbal':
+                decision=dict(x=st_pose_before['x'],y=st_pose_before['y'],yaw=float(target_yaw),
+                              kind='turn',use_pan_tilt=True,pan=stage['pan'],tilt=stage['tilt'],
+                              estimated_seconds=stage.get('estimated_seconds',10.),slope_heading_stage=stage_name)
+                ok=self.execute(decision,turn=True)
+            elif kind=='advance':
+                decision=dict(x=stage['x'],y=stage['y'],kind='advance',
+                              slope_safe=bool(stage.get('slope_safe',True)),
+                              estimated_seconds=stage.get('estimated_seconds',30.),slope_heading_stage=stage_name)
+                ok=self.execute(decision,turn=False)
+            elif kind=='verify_slope':
+                # Wait briefly for vehicle to settle and verify measured gentle slope before spinning.
+                settle_until=self.now()+1.0;settle_wall_until=time.monotonic()+5.0
+                while self.healthy() and self.now()<settle_until and time.monotonic()<settle_wall_until:time.sleep(.1)
+                with self.motion.lock:
+                    cur_pose=self._pose_with_attitude();cur_quality=self.motion.quality
+                check=assess_local_slope(cur_pose,cur_quality,simulation_profile=profile,
+                                         gentle_slope_max_deg=stage.get('max_slope_deg',5.0))
+                target_xy=stage.get('target_xy')
+                dist_err=(math.hypot(cur_pose['x']-target_xy[0],cur_pose['y']-target_xy[1])
+                          if target_xy else 0.0)
+                ok=bool(check['in_place_turn_safe'] and dist_err<=0.45)
+                record['stage_results'].append(dict(
+                    stage=stage_name,kind=kind,started_sim=st_start,end_sim=self.now(),
+                    pose=cur_pose,slope_check=check,distance_to_staging_m=round(dist_err,4),success=ok,
+                ))
+                if not ok:
+                    record.update(status='failed',reason='staging_zone_slope_or_position_unverified',
+                                  end_sim=self.now(),end_pose=cur_pose);self.save()
+                    return False,record
+                record['completed_stages'].append(stage_name);self.save()
+                continue
+            elif kind=='turn':
+                decision=dict(x=st_pose_before['x'],y=st_pose_before['y'],yaw=stage['yaw'],
+                              kind='turn',use_pan_tilt=False,
+                              estimated_seconds=stage.get('estimated_seconds',20.),slope_heading_stage=stage_name)
+                ok=self.execute(decision,turn=True)
+            else:
+                record.update(status='failed',reason=f'unknown_stage_kind:{kind}',end_sim=self.now());self.save()
+                return False,record
+
+            st_pose_after=self._pose_with_attitude() if self.healthy() else None
+            st_disp=(round(math.hypot(st_pose_after['x']-st_pose_before['x'],st_pose_after['y']-st_pose_before['y']),4)
+                     if st_pose_after else None)
+            record['stage_results'].append(dict(
+                stage=stage_name,kind=kind,started_sim=st_start,end_sim=self.now(),
+                pose_before=st_pose_before,pose_after=st_pose_after,
+                displacement_m=st_disp,
+                goal_dispatch=self.motion.state().get('diagnostics',{}).get('goal_dispatch'),
+                success=bool(ok),
+            ))
+            if not ok:
+                record.update(status='failed',reason=f'stage_failed:{stage_name}',
+                              end_sim=self.now(),end_pose=st_pose_after);self.save()
+                return False,record
+            record['completed_stages'].append(stage_name);self.save()
+
+        final_pose=self._pose_with_attitude()
+        record.update(status='succeeded',end_sim=self.now(),end_pose=final_pose,
+                      final_yaw_error_deg=round(math.degrees(abs(wrap(target_yaw-final_pose['yaw']))),2))
+        self.save()
+        return True,record
+
     def run(self):
         self.wall_started=time.monotonic();history=[];failures=0
         frontier_attempts=set()
@@ -1447,7 +1575,7 @@ class AutonomousSurvey:
                     failures=0
                     continue
                 with self.motion.lock:
-                    grid=self.motion.grid;quality=self.motion.quality;pose=self.motion.pose()
+                    grid=self.motion.grid;quality=self.motion.quality;pose=self._pose_with_attitude()
                     if not self.motion.grid_fresh():
                         raise ValueError('导航地图未更新')
                 before=quality

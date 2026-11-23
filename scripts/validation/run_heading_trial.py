@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--mode', choices=('half_spin', 'fixed_observe', 'gimbal_observe', 'feedback_observe','autonomy','direct'), required=True)
+    parser.add_argument('--mode', choices=('half_spin', 'fixed_observe', 'gimbal_observe', 'feedback_observe', 'slope_safe_turn', 'autonomy', 'direct'), required=True)
     parser.add_argument('--scene',choices=('survey_v2_native','survey_v3_native'),default='survey_v2_native')
     parser.add_argument('--start',type=float,nargs=3)
     parser.add_argument('--direct-goal',type=float,nargs=2)

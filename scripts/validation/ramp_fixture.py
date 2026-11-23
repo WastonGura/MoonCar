@@ -69,6 +69,16 @@ elif HEADING_CASE in ('fixed_observe','feedback_observe'):
     ROUTE=ROUTE[:5]+[('move',4.3,0.)]
 elif HEADING_CASE=='gimbal_observe':
     ROUTE=ROUTE[:3]+[('gimbal',math.pi/2,-.2618),('gimbal',0.,-.2618),('move',4.3,0.)]
+elif HEADING_CASE=='slope_safe_turn':
+    # Climb to mid-ramp (~8.8 deg at x=4.0), inspect sideways with gimbal (observe_heading),
+    # recenter gimbal, then request a 180-deg travel_heading reversal (pi) which must NOT
+    # in-place Spin on the 8.8 deg ramp — instead staging uphill to the observed gentle crest
+    # via SlopeFollowPath (no rotate_to_heading, no BT Spin) before turning safely!
+    ROUTE=[('move',1.,0.),('move',2.5,0.),('move',4.,0.),
+           ('slope_heading','observe_heading',math.pi/2),
+           ('slope_heading','observe_heading',0.),
+           ('slope_heading','travel_heading',math.pi),
+           ('move',4.,0.)]
 elif HEADING_CASE!='full_route':
     raise ValueError('Unknown heading trial')
 if HEADING_CASE=='feedback_observe':
@@ -82,13 +92,17 @@ def run(self):
         if HEADING_CASE=='feedback_observe':self.motion.feedback_turn_enabled=True
         for item in ROUTE:
             if not self.healthy():return
-            record=dict(kind='advance' if item[0]=='move' else 'gimbal_observe' if item[0]=='gimbal' else 'turn',action=list(item),started_seconds=self.now()-self.data['started'],outcome='running',success=False)
+            record=dict(kind='advance' if item[0]=='move' else 'gimbal_observe' if item[0]=='gimbal' else 'slope_heading' if item[0]=='slope_heading' else 'turn',action=list(item),started_seconds=self.now()-self.data['started'],outcome='running',success=False)
             self.data['history'].append(record);self.save()
-            decision=dict(estimated_seconds=30.)
-            if item[0]=='move':decision.update(x=item[1],y=item[2])
-            elif item[0]=='gimbal':decision.update(use_pan_tilt=True,pan=item[1],tilt=item[2])
-            else:decision['yaw']=item[1]
-            success=self.execute(decision,turn=item[0]!='move')
+            if item[0]=='slope_heading':
+                success,maneuver=self.execute_slope_safe_heading(item[2],intent=item[1])
+                decision=dict(intent=item[1],target_yaw=item[2],strategy=maneuver.get('plan',{}).get('strategy'),maneuver=maneuver)
+            else:
+                decision=dict(estimated_seconds=30.)
+                if item[0]=='move':decision.update(x=item[1],y=item[2])
+                elif item[0]=='gimbal':decision.update(use_pan_tilt=True,pan=item[1],tilt=item[2])
+                else:decision['yaw']=item[1]
+                success=self.execute(decision,turn=item[0]!='move')
             record["decision"]=dict(decision)
             record.update(success=bool(success),outcome='succeeded' if success else 'failed',end_sim=self.now());self.save()
             if not success:

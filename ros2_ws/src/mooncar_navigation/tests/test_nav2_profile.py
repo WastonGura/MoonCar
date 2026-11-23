@@ -109,6 +109,22 @@ class Nav2ProfileTest(unittest.TestCase):
                 controller = resolved['controller_server']['ros__parameters']
                 self.assertAlmostEqual(controller['FollowPath']['cost_scaling_dist'], 0.45)
                 self.assertAlmostEqual(controller['RevisitFollowPath']['cost_scaling_dist'], 0.45)
+                self.assertAlmostEqual(controller['SlopeFollowPath']['cost_scaling_dist'], 0.45)
+            controller = resolved['controller_server']['ros__parameters']
+            self.assertIn('SlopeFollowPath', controller['controller_plugins'])
+            self.assertTrue(controller['FollowPath']['use_rotate_to_heading'])
+            self.assertFalse(controller['SlopeFollowPath']['use_rotate_to_heading'])
+            self.assertFalse(controller['SlopeFollowPath']['allow_reversing'])
+
+    def test_slope_safe_behavior_tree_disables_spin_and_uses_slope_controller(self):
+        bt_path = NAV_ROOT / 'config' / 'behavior_trees' / 'navigate_to_pose_slope_safe.xml'
+        self.assertTrue(bt_path.is_file())
+        tree = ET.parse(bt_path)
+        followers = tree.findall('.//FollowPath')
+        self.assertEqual(len(followers), 1)
+        self.assertEqual(followers[0].get('controller_id'), 'SlopeFollowPath')
+        self.assertEqual(len(tree.findall('.//Spin')), 0)
+        self.assertEqual(len(tree.findall('.//BackUp')), 0)
 
     def test_navigation_launch_default_params_follow_simulation_profile(self):
         try:

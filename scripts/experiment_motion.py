@@ -491,6 +491,20 @@ class ExperimentMotion(Node):
         p,q=t.transform.translation,t.transform.rotation
         return dict(x=p.x,y=p.y,z=p.z,yaw=math.atan2(2*(q.w*q.z+q.x*q.y),1-2*(q.y*q.y+q.z*q.z)))
 
+    def pose_attitude(self):
+        """Return measured 3D attitude (roll, pitch, yaw, tilt_deg) from map->base_footprint TF."""
+        health=self.localization_state()
+        if not health['healthy']:
+            raise LocalizationDispatchRejected(health)
+        t=self.buffer.lookup_transform('map','base_footprint',rclpy.time.Time())
+        age=(self.get_clock().now().nanoseconds-rclpy.time.Time.from_msg(t.header.stamp).nanoseconds)/1e9
+        if not -MAX_FUTURE_TF_SECONDS <= age <= 2:raise ValueError(f'车辆定位时间失效：TF 与仿真时钟相差 {age:.3f} 秒')
+        q=t.transform.rotation
+        from slope_heading import quaternion_to_rpy
+        roll,pitch,yaw=quaternion_to_rpy(q.x,q.y,q.z,q.w)
+        cos_tilt=max(-1.,min(1.,math.cos(roll)*math.cos(pitch)))
+        return dict(roll=roll,pitch=pitch,yaw=yaw,tilt_deg=math.degrees(math.acos(cos_tilt)))
+
     def refresh_tf_listener(self):
         with self.lock:
             self.listener.unregister()
@@ -616,10 +630,12 @@ class ExperimentMotion(Node):
         if cost<0:raise ValueError('目标尚未观测；请先选择已观测的可通行位置')
         if cost>=99:raise ValueError('目标位于障碍或车体安全余量内，请远离障碍重新选点')
 
-    def start(self,body,task,*,precise_revisit=False):
+    def start(self,body,task,*,precise_revisit=False,slope_safe=False):
         if not isinstance(body,dict) or set(body)!={'experiment','goal'} or body['experiment']!=task['id']:
             raise ValueError('实验已改变，请刷新状态后重试')
         if type(precise_revisit) is not bool:raise ValueError('精确回访标志必须是内部布尔值')
+        if type(slope_safe) is not bool:raise ValueError('坡面安全标志必须是内部布尔值')
+        if precise_revisit and slope_safe:raise ValueError('精确回访与坡面安全模式不能同时启用')
         behavior_tree=None
         if precise_revisit:
             from pathlib import Path as FilePath
@@ -633,6 +649,20 @@ class ExperimentMotion(Node):
                        and followers[0].get('goal_checker_id')=='revisit_goal_checker')
             except (OSError,XML.ParseError) as error:raise ValueError('精确回访行为树资源无效，已停止') from error
             if not valid:raise ValueError('精确回访行为树没有专用到位检查器，已停止')
+            behavior_tree=str(installed)
+        elif slope_safe:
+            from pathlib import Path as FilePath
+            from ament_index_python.packages import get_package_share_directory
+            import xml.etree.ElementTree as XML
+            installed=FilePath(get_package_share_directory('mooncar_navigation'))/'config'/'behavior_trees'/'navigate_to_pose_slope_safe.xml'
+            if not installed.is_file():raise ValueError('坡面安全行为树尚未安装，已停止')
+            try:
+                tree=XML.parse(installed);followers=tree.findall('.//FollowPath');spins=tree.findall('.//Spin')
+                valid=(tree.getroot().tag=='root' and len(followers)==1
+                       and followers[0].get('controller_id')=='SlopeFollowPath'
+                       and len(spins)==0)
+            except (OSError,XML.ParseError) as error:raise ValueError('坡面安全行为树资源无效，已停止') from error
+            if not valid:raise ValueError('坡面安全行为树必须使用 SlopeFollowPath 且不含 Spin 恢复，已停止')
             behavior_tree=str(installed)
         goal=body['goal']
         if not isinstance(goal,list) or len(goal)!=2 or not all(type(v) in (int,float) and math.isfinite(v) for v in goal):
@@ -656,12 +686,14 @@ class ExperimentMotion(Node):
             self.last_progress_sim=self.sim_started
             self.goal=list(goal);self.path=[];self.track=[[p['x'],p['y'],p['z']]];self.feedback={}
             request=NavigateToPose.Goal();request.pose.header.frame_id='map'
-            if precise_revisit:request.behavior_tree=behavior_tree
+            if behavior_tree is not None:request.behavior_tree=behavior_tree
             request.pose.pose.position.x,request.pose.pose.position.y=map(float,goal)
             request.pose.pose.orientation.z,request.pose.pose.orientation.w=math.sin(yaw/2),math.cos(yaw/2)
             self.send_goal(self.client,request,token,'navigate_to_pose',lambda msg:self.on_feedback(msg,token))
             if precise_revisit:self.goal_dispatch.update(precise_revisit=True,behavior_tree=behavior_tree,
                 goal_checker_id='revisit_goal_checker',position_tolerance_m=.05)
+            elif slope_safe:self.goal_dispatch.update(slope_safe=True,behavior_tree=behavior_tree,
+                controller_id='SlopeFollowPath',spin_recovery_disabled=True)
             return dict(token=token)
 
     def accepted(self,future,token,request_id=''):
