@@ -532,9 +532,34 @@ class ExperimentMotion(Node):
             spin_ready=self.spin_client.server_is_ready() and lifecycle['behavior_active']
             depth_active=wall-self.last_depth<6
             age=lambda stamp:round(wall-stamp,3) if stamp else None
+            loc_uncertainty=None
+            with self.localization_lock:
+                loc_payload=getattr(self.localization_quality,'payload',None)
+                last_fit=loc_payload.get('last_fit') if isinstance(loc_payload,dict) else None
+                if isinstance(last_fit,dict):
+                    cond_std=last_fit.get('conditional_position_std_m') or last_fit.get('position_std_m')
+                    cond_xy=(max(float(cond_std[0]),float(cond_std[1]))
+                             if isinstance(cond_std,(list,tuple)) and len(cond_std)>=2
+                             and all(type(v) in (int,float) and math.isfinite(v) for v in cond_std[:2]) else None)
+                    loc_uncertainty=dict(
+                        conditional_xy_std_m=cond_xy,
+                        calibrated_xy_std_m=last_fit.get('calibrated_xy_std_m'),
+                        calibrated_xy_bound_95_m=last_fit.get('calibrated_xy_bound_95_m'),
+                        cumulative_travel_m=last_fit.get('cumulative_travel_m'),
+                        uncertainty_calibration=last_fit.get('uncertainty_calibration'),
+                    )
+            local_slope=None
+            if p is not None and self.quality is not None:
+                try:
+                    from slope_heading import assess_local_slope
+                    local_slope=assess_local_slope(p,self.quality,simulation_profile=getattr(self,'simulation_profile','r5_support_v1'))
+                except Exception:
+                    local_slope=None
             diagnostics=dict(sim_stamp=sim,pose_error=pose_error,navigation_ready=navigation_ready,
                 nav2_lifecycle_active=lifecycle['all_active'],nav2_lifecycle=lifecycle['nodes'],
                 laser_localization=self.localization_state(),
+                localization_uncertainty=loc_uncertainty,
+                local_slope=local_slope,
                 spin_ready=spin_ready,
                 depth_age_wall_seconds=age(self.last_depth),depth_message=self.depth_message,
                 quality_age_wall_seconds=age(self.quality_received),quality_present=self.quality is not None,

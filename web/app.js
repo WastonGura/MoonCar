@@ -123,6 +123,7 @@ function draw(data, refit=false, preserveSelection=false) {
   }
   $('map-info').textContent=`${data.points.length.toLocaleString()} 个体素点 · ${data.cells.filter(c=>c.valid).length} 个地表格 · ${data.resolution} m/格`;
   $('empty').hidden=!!data.points.length;
+  updateViewportLegend(min, max, heights.length > 0);
   $('source').textContent=`来源：${data.source}。坐标系：${data.frame}。${data.robot?'显示车体位置、方向与轨迹。':'缺少车体位姿，仅显示相机轨迹。'}`;
   $('results').textContent='选择起终点，比较路线。';
   showCell();
@@ -392,13 +393,47 @@ $('session').onchange=async()=>{
     await prepareReplay(info,true);
   }catch(e){if(token===generation)message(e.message,true);}
 };
+function updateViewportLegend(minZ = Infinity, maxZ = -Infinity, hasHeight = false) {
+  const wrap = $('viewport-legend');
+  if (!wrap) return;
+  const isColormap = $('colormap-mode')?.checked;
+  const isQuality = $('quality-mode')?.checked;
+  if (!isColormap && !isQuality) {
+    wrap.hidden = true;
+    return;
+  }
+  const title = $('legend-title'), bar = $('legend-bar');
+  const lo = $('legend-min'), mid = $('legend-mid'), hi = $('legend-max');
+  if (isColormap) {
+    if (!hasHeight || !Number.isFinite(minZ) || !Number.isFinite(maxZ)) {
+      wrap.hidden = true;
+      return;
+    }
+    wrap.hidden = false;
+    title.textContent = '高程科学伪彩 (Turbo · m)';
+    bar.classList.remove('quality-bar');
+    lo.textContent = `${minZ.toFixed(2)} m`;
+    mid.textContent = `${((minZ + maxZ) / 2).toFixed(2)} m`;
+    hi.textContent = `${maxZ.toFixed(2)} m`;
+  } else {
+    wrap.hidden = !map?.points?.length;
+    title.textContent = '格栅采样质量热力';
+    bar.classList.add('quality-bar');
+    lo.textContent = '0%';
+    mid.textContent = '50%';
+    hi.textContent = '100%';
+  }
+}
+
 $('refresh').onclick=sessions;$('fit').onclick=()=>fit();$('top').onclick=()=>fit(true);
+$('quality-legend').hidden = !$('quality-mode').checked;
 $('quality-mode').onchange = () => {
   if ($('quality-mode').checked && $('colormap-mode')?.checked) {
     $('colormap-mode').checked = false;
   }
   $('quality-legend').hidden = !$('quality-mode').checked;
   if (map) draw(map, false, true);
+  else updateViewportLegend();
   if (meshObj) updateMeshColors(meshObj);
 };
 if ($('colormap-mode')) $('colormap-mode').onchange = () => {
@@ -407,6 +442,7 @@ if ($('colormap-mode')) $('colormap-mode').onchange = () => {
     $('quality-legend').hidden = true;
   }
   if (map) draw(map, false, true);
+  else updateViewportLegend();
   if (meshObj) updateMeshColors(meshObj);
 };
 for(const key of Object.keys(groups)) if($(key)) { groups[key].visible = $(key).checked; $(key).onchange=()=>groups[key].visible=$(key).checked; }

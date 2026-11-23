@@ -153,6 +153,148 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
     picture.src='/api/simulation/scene.jpg?t='+Date.now();
   }
   setInterval(sceneFrame,600);
+  function setPill(el, text, kind, visible = true) {
+    if (!el) return;
+    el.hidden = !visible;
+    el.textContent = text;
+    el.className = `pill pill-${kind}`;
+  }
+  function updateTelemetryHUD() {
+    const m = state.motion || {}, d = m.diagnostics || {}, a = state.autonomy || {};
+    const liveSim = !!state.enabled && ['starting', 'recording'].includes(state.phase);
+    const modeTag = $('telemetry-mode-tag');
+    if (modeTag) {
+      modeTag.textContent = liveSim ? (a.active ? '自主探测中' : '在线仿真') : '离线回放';
+      modeTag.className = `tag ${liveSim ? (a.active ? 'tag-accent' : 'tag-ok') : ''}`;
+    }
+
+    // 1. Localization health + R5 calibrated 95% error bound
+    const loc = d.laser_localization || {};
+    const unc = d.localization_uncertainty || null;
+    const locTile = $('kpi-loc-bound')?.closest('.kpi-tile');
+    if (liveSim && unc && Number.isFinite(unc.calibrated_xy_bound_95_m)) {
+      const b95cm = unc.calibrated_xy_bound_95_m * 100;
+      const condMm = Number.isFinite(unc.conditional_xy_std_m) ? (unc.conditional_xy_std_m * 1000).toFixed(1) : '--';
+      $('kpi-loc-bound').textContent = `±${b95cm.toFixed(1)} cm`;
+      $('kpi-loc-sub').textContent = `${loc.healthy ? '正常' : (loc.reason || '恢复中')} · 条件σ ${condMm} mm`;
+      if (locTile) locTile.className = `kpi-tile ${loc.healthy ? 'is-ok' : 'is-warn'}`;
+      setPill($('badge-loc'), `定位 ${loc.healthy ? '正常' : '恢复中'} · ±${b95cm.toFixed(1)}cm`, loc.healthy ? 'ok' : 'warn', true);
+    } else if (liveSim && loc.required) {
+      $('kpi-loc-bound').textContent = loc.healthy ? '已锁定' : '等待恢复';
+      $('kpi-loc-sub').textContent = loc.reason || 'rgbd_window';
+      if (locTile) locTile.className = `kpi-tile ${loc.healthy ? 'is-ok' : 'is-warn'}`;
+      setPill($('badge-loc'), `定位 · ${loc.healthy ? '正常' : (loc.reason || '初始化')}`, loc.healthy ? 'ok' : 'warn', true);
+    } else {
+      if ($('kpi-loc-bound')) $('kpi-loc-bound').textContent = '--';
+      if ($('kpi-loc-sub')) $('kpi-loc-sub').textContent = liveSim ? '等待 rgbd_window 输出' : '仅在线仿真显示';
+      if (locTile) locTile.className = 'kpi-tile';
+      setPill($('badge-loc'), '定位 · 待机', 'muted', false);
+    }
+
+    // 2. Cumulative travel & live pose
+    const p = m.pose;
+    if ($('kpi-travel')) {
+      if (liveSim && unc && Number.isFinite(unc.cumulative_travel_m)) {
+        $('kpi-travel').textContent = `${unc.cumulative_travel_m.toFixed(1)} m`;
+      } else {
+        $('kpi-travel').textContent = liveSim ? '0.0 m' : '--';
+      }
+      $('kpi-travel-sub').textContent = p
+        ? `(${p.x.toFixed(2)}, ${p.y.toFixed(2)}) · ${(p.yaw * 180 / Math.PI).toFixed(0)}°`
+        : '位姿 --';
+    }
+
+    // 3. Gimbal live pan/tilt degrees
+    const gpos = d.gimbal_position;
+    if ($('kpi-gimbal')) {
+      if (liveSim && Array.isArray(gpos) && gpos.length >= 2 && Number.isFinite(gpos[0]) && Number.isFinite(gpos[1])) {
+        const panDeg = (gpos[0] * 180 / Math.PI).toFixed(1);
+        const tiltDeg = (gpos[1] * 180 / Math.PI).toFixed(1);
+        $('kpi-gimbal').textContent = `${panDeg}° / ${tiltDeg}°`;
+        $('kpi-gimbal-sub').textContent = Math.abs(gpos[0]) > 0.175 ? '侧向扫描姿态' : '前向巡航姿态';
+        setPill($('badge-gimbal'), `云台 ${panDeg}° / ${tiltDeg}°`, 'info', true);
+      } else {
+        $('kpi-gimbal').textContent = '--';
+        $('kpi-gimbal-sub').textContent = '偏航 / 俯仰';
+        setPill($('badge-gimbal'), '云台 · --', 'muted', false);
+      }
+    }
+
+    // 4. R1 local slope & SlopeFollowPath protection status
+    const slope = d.local_slope || a.decision?.candidate_diagnostics?.local_slope || null;
+    const slopeSafeActive = !!(d.goal_dispatch?.slope_safe || a.decision?.slope_safe || (slope && slope.slope_exceeded));
+    const slopeTile = $('kpi-slope')?.closest('.kpi-tile');
+    if ($('kpi-slope')) {
+      if (liveSim && slope && Number.isFinite(slope.slope_deg)) {
+        $('kpi-slope').textContent = `${slope.slope_deg.toFixed(1)}°`;
+        $('kpi-slope-sub').textContent = slopeSafeActive ? '坡面安全模式 (禁Spin)' : '平缓包络 (≤5°)';
+        if (slopeTile) slopeTile.className = `kpi-tile ${slopeSafeActive ? 'is-warn' : 'is-ok'}`;
+        setPill($('badge-slope'), `坡度 ${slope.slope_deg.toFixed(1)}° · ${slopeSafeActive ? '坡面防滑' : '平缓'}`, slopeSafeActive ? 'warn' : 'ok', true);
+      } else {
+        $('kpi-slope').textContent = '--';
+        $('kpi-slope-sub').textContent = slopeSafeActive ? 'SlopeFollowPath 已激活' : '等待地形坡度';
+        if (slopeTile) slopeTile.className = `kpi-tile ${slopeSafeActive ? 'is-warn' : ''}`;
+        setPill($('badge-slope'), '坡度 · --', 'muted', false);
+      }
+    }
+
+    // 5. Nav2 4-node lifecycle indicator
+    const navEl = $('kpi-nav2');
+    if (navEl) {
+      const nodes = d.nav2_lifecycle;
+      if (liveSim && nodes && Object.keys(nodes).length) {
+        const shortNames = { bt_navigator: 'BT', controller_server: 'CTRL', planner_server: 'PLAN', behavior_server: 'BEH' };
+        navEl.replaceChildren();
+        const prefix = document.createElement('span');
+        prefix.textContent = 'Nav2：';
+        navEl.append(prefix);
+        for (const [k, label] of Object.entries(shortNames)) {
+          const span = document.createElement('span');
+          const ok = nodes[k] === 'active';
+          span.className = `nav2-dot ${ok ? 'active-node' : ''}`;
+          span.textContent = `${ok ? '●' : '○'} ${label}`;
+          span.title = `${k}: ${nodes[k] || 'unknown'}`;
+          navEl.append(span);
+        }
+      } else {
+        navEl.textContent = liveSim ? 'Nav2 生命周期：启动中…' : 'Nav2 生命周期：未启动在线仿真';
+      }
+    }
+
+    // 6. Autonomy budget progress bar & decision badge
+    const progWrap = $('survey-progress'), progFill = $('survey-progress-fill');
+    if (progWrap && progFill) {
+      if (a.budget_seconds && (a.active || a.elapsed_seconds > 0)) {
+        progWrap.hidden = false;
+        const pct = Math.max(0, Math.min(100, ((a.elapsed_seconds || 0) / a.budget_seconds) * 100));
+        progFill.style.width = `${pct.toFixed(1)}%`;
+      } else {
+        progWrap.hidden = true;
+      }
+    }
+    const metaTag = $('survey-decision-meta');
+    if (metaTag) {
+      if (a.active && a.decision) {
+        metaTag.hidden = false;
+        if (a.decision.slope_safe) {
+          metaTag.textContent = 'SlopeFollowPath';
+          metaTag.className = 'tag tag-warn';
+        } else if (a.decision.global_frontier_target) {
+          metaTag.textContent = '全局前沿巡航';
+          metaTag.className = 'tag tag-accent';
+        } else if (a.decision.use_pan_tilt && a.decision.kind === 'turn') {
+          metaTag.textContent = '云台观察';
+          metaTag.className = 'tag tag-ok';
+        } else {
+          metaTag.textContent = '局部 NBV';
+          metaTag.className = 'tag tag-accent';
+        }
+      } else {
+        metaTag.hidden = true;
+      }
+    }
+  }
+
   async function poll(){
     if(polling||busy)return;polling=true;
     try{
@@ -175,6 +317,7 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
       if(state.motion?.active&&Number.isFinite(remaining))$('drive-state').textContent+=`；剩余约 ${remaining.toFixed(2)} 米`;
       $('navigation-bounds').textContent=state.motion?.map_bounds?`导航地图当前范围：X ${state.motion.map_bounds[0].toFixed(1)}～${state.motion.map_bounds[2].toFixed(1)}，Y ${state.motion.map_bounds[1].toFixed(1)}～${state.motion.map_bounds[3].toFixed(1)} 米。边界内仍有未知区域。`:'等待导航地图。';
       drawNavigation();
+      updateTelemetryHUD();
       const phaseKey=state.task?.id+':'+state.motion?.phase;
       if(phaseKey!==lastMotionPhase){lastMotionPhase=phaseKey;if(['succeeded','cancelled','failed'].includes(state.motion?.phase))message($('drive-state').textContent,state.motion.phase!=='succeeded');}
       const surveyKey=a.archive+':'+a.phase+':'+a.reason;
@@ -186,7 +329,7 @@ export function experimentEditor({scene,camera,controls,renderer,api,message,sto
       const version=state.software?.verified?`代码版本 ${state.software.git_commit.slice(0,8)}。`:'代码版本未核验。';
       $('experiment-state').textContent=state.enabled?`${labels[state.phase]||state.phase}。${version}${active}${state.error||''}`:'当前服务只支持编辑和保存；启动服务时加 --simulation 才能应用到 Gazebo。';
       if(state.session&&state.session!==followed&&state.phase==='recording'){await onSession(state.session);followed=state.session;}
-    }catch(e){state={enabled:false};navigationOverlay.visible=false;$('experiment-state').textContent=`仿真服务未连接：${e.message}`;}
+    }catch(e){state={enabled:false};navigationOverlay.visible=false;updateTelemetryHUD();$('experiment-state').textContent=`仿真服务未连接：${e.message}`;}
     finally{polling=false;buttons();}
   }
   $('experiment-form').onsubmit=async e=>{e.preventDefault();if(busy)return;try{const value=task();cancel();stopPlayback();busy=true;buttons();await api('/api/simulation/apply',value);state.phase='restarting';message('正在新建仿真与采集会话。区域仅保存为任务边界，尚未自动遍历。');}catch(error){message(error.message,true);}finally{busy=false;buttons();poll();}};
