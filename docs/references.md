@@ -100,7 +100,29 @@
 
 ---
 
-## 5. BibTeX 汇总（可直接用于论文 / 科创结题报告）
+## 5. 滑动窗口视觉里程计与定位不确定度一致性校准（VO Uncertainty & NEES Consistency）
+
+### [14] Bailey et al. (2006) — SLAM 协方差一致性与 NEES 检验
+- **完整引文**：T. Bailey, J. Nieto, J. Guivant, M. Stevens, and E. Nebot, "Consistency of the EKF-SLAM Algorithm," *2006 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)*, Beijing, China, 2006, pp. 3562–3568.
+- **DOI**：<https://doi.org/10.1109/IROS.2006.281644>
+- **核心思想**：系统定义并运用归一化估计误差平方（Normalized Estimation Error Squared, NEES）检验定位估计器协方差矩阵的一致性，揭示忽视线性化与历史相关性时协方差会显著乐观（overconfident）。
+- **本项目映射**：[scripts/offline_rgbd_window/uncertainty.py](../scripts/offline_rgbd_window/uncertainty.py) 中 `evaluate_nees_coverage()` 与 `OdometryDriftUncertainty`，针对 `rgbd_window` 原始条件协方差 NEES 严重偏高（16.3–56.3，95% 覆盖率仅 4.6%–34.3%）的问题，构建并样本外验证基于累计估计里程的随机游走漂移校准模型。
+
+### [15] Leutenegger et al. (2015) — 基于关键帧与舒尔补边缘化的滑动窗口视觉惯性里程计（OKVIS）
+- **完整引文**：S. Leutenegger, S. Lynen, M. Bosse, R. Siegwart, and P. Furgale, "Keyframe-Based Visual–Inertial Odometry Using Nonlinear Optimization," *The International Journal of Robotics Research (IJRR)*, vol. 34, no. 3, pp. 314–334, Mar. 2015.
+- **DOI**：<https://doi.org/10.1177/0278364914554813>
+- **核心思想**：采用固定窗口关键帧优化并通过舒尔补（Schur complement）边缘化旧帧与路标形成先验信息矩阵，实现有界计算复杂度下的连续位姿估计；同时指出无全局回环时窗口边缘化仅给出局部条件精度，不可替代全局漂移界。
+- **本项目映射**：[scripts/offline_rgbd_window/core.py](../scripts/offline_rgbd_window/core.py) 中 `WindowEstimator._marginalize_oldest()` 与 [scripts/rgbd_window_odometry.py](../scripts/rgbd_window_odometry.py) 显式区分 `conditional_position_std_m`（局部条件标准差）与 `calibrated_xy_bound_95_m`（含累计漂移的 95% 全局误差界）。
+
+### [16] Zhang & Scaramuzza (2018) — 视觉（惯性）里程计轨迹误差定量评测规范
+- **完整引文**：Z. Zhang and D. Scaramuzza, "A Tutorial on Quantitative Trajectory Evaluation for Visual(-Inertial) Odometry," *2018 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)*, Madrid, Spain, 2018, pp. 7244–7251.
+- **DOI**：<https://doi.org/10.1109/IROS.2018.8593941>
+- **核心思想**：规范视觉里程计绝对轨迹误差（ATE）与相对位姿误差（RPE）随行驶路程增长的定量分解方法，强调在独立测试集上做跨场景泛化评估。
+- **本项目映射**：[reports/R4_R5_R7_UNCERTAINTY_CALIBRATION_20261123.md](../reports/R4_R5_R7_UNCERTAINTY_CALIBRATION_20261123.md) 在 6 次真实 Gazebo 全程实测（278 m 累计里程）中分离 4 组训练集与 2 组样本外验证集（`hybrid_v4.1` 58.74 m 平场 + `r1_ramp` 8.83° 坡道），实测样本外 95% 覆盖率分别达 **95.9%**（NEES 2.13）与 **100.0%**（NEES 1.41）。
+
+---
+
+## 6. BibTeX 汇总（可直接用于论文 / 科创结题报告）
 
 ```bibtex
 @inproceedings{yamauchi1997frontier,
@@ -230,5 +252,34 @@
   year      = {2024},
   pages     = {1322--1328},
   doi       = {10.1109/IROS58592.2024.10801776}
+}
+
+@inproceedings{bailey2006consistency,
+  author    = {Bailey, Tim and Nieto, Juan and Guivant, Jose and Stevens, Michael and Nebot, Eduardo},
+  title     = {Consistency of the {EKF-SLAM} Algorithm},
+  booktitle = {2006 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year      = {2006},
+  pages     = {3562--3568},
+  doi       = {10.1109/IROS.2006.281644}
+}
+
+@article{leutenegger2015keyframe,
+  author  = {Leutenegger, Stefan and Lynen, Simon and Bosse, Michael and Siegwart, Roland and Furgale, Paul},
+  title   = {Keyframe-Based Visual--Inertial Odometry Using Nonlinear Optimization},
+  journal = {The International Journal of Robotics Research},
+  year    = {2015},
+  volume  = {34},
+  number  = {3},
+  pages   = {314--334},
+  doi     = {10.1177/0278364914554813}
+}
+
+@inproceedings{zhang2018tutorial,
+  author    = {Zhang, Zichao and Scaramuzza, Davide},
+  title     = {A Tutorial on Quantitative Trajectory Evaluation for Visual(-Inertial) Odometry},
+  booktitle = {2018 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year      = {2018},
+  pages     = {7244--7251},
+  doi       = {10.1109/IROS.2018.8593941}
 }
 ```

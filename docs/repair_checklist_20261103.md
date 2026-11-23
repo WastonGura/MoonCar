@@ -1,5 +1,7 @@
 # 寻迹者探测车：逐项修复与验证清单
 
+> **R4/R5 定位不确定度样本外校准 & R7 弱特征接续已闭环（2026-11-23）**：见[R4/R5/R7 定位不确定度校准与接续审计报告](../reports/R4_R5_R7_UNCERTAINTY_CALIBRATION_20261123.md)。基于 6 次真实 Gazebo 全程实测（278 m 里程、297,112 条定位状态消息）完成误差分解与 2 参数随机游走漂移模型样本外校准（[uncertainty.py](../scripts/offline_rgbd_window/uncertainty.py) 已接入 [rgbd_window_odometry.py](../scripts/rgbd_window_odometry.py)）：样本外 95% 覆盖率由原始 `4.6%–34.3%`（NEES `16.3–56.3`）提升至 `hybrid_v4.1` **`95.9%`**（NEES **`2.13`**）与 `8.83°` 坡道 **`100.0%`**（NEES **`1.41`**）；全部 6 次实测均实现 **0 次定位暂停、0 次 `no_features` 断链**。
+
 > **R1 坡面安全换向已闭环（2026-11-23）**：见[R1 坡面安全换向真实 Gazebo 物理验证报告](../reports/R1_SLOPE_SAFE_VALIDATION_20261123.md)。已落地 `scripts/slope_heading.py`、`SlopeFollowPath`（禁用 `use_rotate_to_heading`/倒车）与 `navigate_to_pose_slope_safe.xml`（移除 `Spin`/`BackUp`），平地默认转向完全保留；在 `mooncar_ramp_v2.sdf` 真实物理仿真中 7/7 动作完成、0 次定位暂停：`-9.27°` 坡面观察改由云台完成（底盘净位移 `0.01 mm`），`180°` 行驶掉头自动识别 `8.827° > 5.0°` 并经 `SlopeFollowPath`（前进 2,137 条 / 倒车 0 / 纯原地转 0）驶入坡顶平缓区复核 `2.534°` 后安全转向，真值中心净位移降至 **`6.29 cm`**（较原 `35.3 cm` 下降 82.2%），全程 31,805 帧真值定位 XY P95 `3.44 cm`。
 
 > 坡面朝向需求更新（2026-11-04）：用户允许原地无法可靠实现时采用其他办法。限定半速纯转仍净移35.3/30.0cm，R1现象未消失；云台侧向观察/回正及短续行6/6成功，底盘扫描期最大变化<1mm且真实新增20深度关键帧。故观察需求有已测替代原型，不再以追求纯转零位移阻塞所有用途；行驶方向的平缓区转向/缓弯为设计待接入，不能整体打勾。见[试验](../reports/SLOPE_HEADING_TRIAL_20261104.md)与[替代设计](slope_heading_alternative_20261104.md)。默认未切换，旧视觉特征不足问题未修。

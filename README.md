@@ -75,12 +75,14 @@ bash scripts/accept_m6.sh --server-only
 
 ---
 
-## 当前待推进的主要事项
+## 仿真阶段里程碑与后续事项
 
-详见 [docs/repair_checklist_20261103.md](docs/repair_checklist_20261103.md) 与 [docs/working_context.md](docs/working_context.md)：
+详见 [docs/repair_checklist_20261103.md](docs/repair_checklist_20261103.md)、[docs/references.md](docs/references.md)（16 篇顶会/顶刊论文溯源与 BibTeX）与 [docs/working_context.md](docs/working_context.md)：
 
-1. **坡面行驶换向（R1）**：R5 坡面原地旋转仍存在 ~30–35 cm 滑移；云台已可替代观察转向，行驶换向的“平缓区转向 / 缓弯”方案尚待接入代码。
-2. **启动就绪竞态**：工作台 `ready` 状态可能早于 Nav2 生命周期 `ACTIVE`，需在产品侧修复。
-3. **定位置信度校准（R5）与弱几何恢复验证**：条件协方差显著小于实际误差，且 2026-11-18 的弱几何重选尚未在真实断链场景下实测触发。
-4. **测试与 CI 收口**：将根目录 `tests/` 统一纳入回归脚本与 CI，并修复 `mooncar_gazebo` 历史遗留失败用例。
-5. **实物硬件集成（H1）**：待设备齐备后开展树莓派、RGBD/IMU 标定与 STM32 联调。
+- **已完成（仿真与算法全链路闭环）**：
+  1. **自主探索双层规划（`hybrid_frontier_v4.1`）**：8 分钟 30×30 m 真实 Gazebo 四路对比中观测面积达 **550.75 m²**（有效高程 495.06 m²）、0 次底盘原地转、0 次定位暂停、高程 RMSE 0.15 cm，见 [reports/v4_4way_comparison_20261122/README.md](reports/v4_4way_comparison_20261122/README.md)。
+  2. **坡面安全换向（R1）**：实现意图分离（云台观察 + 平缓区过渡 / 有界曲率缓弯）、`SlopeFollowPath` 与无 `Spin` 行为树，在 `mooncar_ramp_v2.sdf` 8.83° 坡道 7/7 通过、换向位移降至 **6.29 cm**（下降 82.2%），见 [reports/R1_SLOPE_SAFE_VALIDATION_20261123.md](reports/R1_SLOPE_SAFE_VALIDATION_20261123.md)。
+  3. **定位不确定度样本外校准（R4/R5）与弱特征接续（R7）**：接入基于累计估计里程的随机游走漂移校准模型，样本外 95% 覆盖率达 **95.9%–100.0%**（NEES 1.41–2.13），6 次全程 278 m 实测 0 次定位暂停，见 [reports/R4_R5_R7_UNCERTAINTY_CALIBRATION_20261123.md](reports/R4_R5_R7_UNCERTAINTY_CALIBRATION_20261123.md)。
+  4. **启动就绪、足迹对齐与全量回归**：Nav2 生命周期 `/get_state` 就绪门、R5 足迹/膨胀对齐（`0.50×0.44 m` / `0.45 m`）、全量单元测试与 C11 固件 UBSan 纳入 `scripts/check_software.sh` 与 CI。
+- **后续事项**：
+  - **实物硬件集成（H1）**：待设备齐备后开展树莓派 5、RGBD/IMU 标定、二轴云台外参验证与 STM32 联调（参考 [docs/hardware_handoff.md](docs/hardware_handoff.md)）。

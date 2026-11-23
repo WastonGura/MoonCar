@@ -42,6 +42,7 @@ transport=importlib.util.module_from_spec(spec);sys.modules[spec.name]=transport
 from offline_rgbd_window.transport_async import install_async_transport,AsyncTransportProcessor
 from offline_rgbd_window.frontend import TrackFrontend
 from offline_rgbd_window.navigation import WindowOutputGate
+from offline_rgbd_window.uncertainty import OdometryDriftUncertainty
 from localization_quality import LaserQualitySource
 from terrain_odometry_node import TerrainOdometryNode,imu_at
 
@@ -56,6 +57,7 @@ class WindowOdometryNode(transport.ShadowNode):
         self.publication_lock=threading.RLock()
         super().__init__(args)
         self.output_gate=WindowOutputGate();self.quality=LaserQualitySource(self.epoch)
+        self.drift_uncertainty=OdometryDriftUncertainty()
         self.last_accepted=None;self.last_fit=None;self.sensor_for_publication=None;self.sensor_wz=None
         self.publisher=self.create_publisher(Odometry,'/mooncar/laser_odometry',10)
         self.filtered_publisher=self.create_publisher(Odometry,'/odometry/filtered',10)
@@ -90,8 +92,15 @@ class WindowOdometryNode(transport.ShadowNode):
                 # original publisher, fed exclusively by the window estimate.
                 TerrainOdometryNode.publish(self,image,result,heading,self.sensor_wz)
                 self.quality.observe(stamp/1e9,dict(accepted=True,reason='accepted'))
+                cond_std=np.sqrt(np.maximum(0,np.diag(result['covariance']))).tolist()
+                cal=self.drift_uncertainty.update(result['position'],result['covariance'])
                 self.last_fit=dict(accepted=True,reason='accepted',exposure_stamp=stamp/1e9,
-                    position_std_m=np.sqrt(np.maximum(0,np.diag(result['covariance']))).tolist(),
+                    position_std_m=cond_std,
+                    conditional_position_std_m=cond_std,
+                    calibrated_xy_std_m=round(cal['calibrated_xy_std_m'],6),
+                    calibrated_xy_bound_95_m=round(cal['calibrated_xy_bound_95_m'],6),
+                    cumulative_travel_m=round(cal['cumulative_travel_m'],4),
+                    uncertainty_calibration=cal['uncertainty_calibration'],
                     cache_version=row.get('cache_version'),gauge_stamp_ns=row.get('gauge_stamp_ns'),
                     covariance_kind='model_conditional')
                 self.event(type='navigation_pose_published',stamp_ns=stamp,published_wall_ns=time.monotonic_ns(),
