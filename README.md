@@ -44,7 +44,7 @@ reports/       实验报告、对照结果与评分脚本
 * 系统架构与仿真计划：[docs/architecture.md](docs/architecture.md) · [docs/simulation_plan.md](docs/simulation_plan.md) · [docs/simulation_validation_scope.md](docs/simulation_validation_scope.md)
 * 定位与测绘工作流：[docs/window_localization.md](docs/window_localization.md) · [docs/offline_survey.md](docs/offline_survey.md) · [docs/live_survey.md](docs/live_survey.md) · [docs/mapping_acceptance.md](docs/mapping_acceptance.md)
 * 问题修复清单与硬件交接：[docs/repair_checklist_20261103.md](docs/repair_checklist_20261103.md) · [docs/hardware_handoff.md](docs/hardware_handoff.md) · [docs/uart_protocol.md](docs/uart_protocol.md)
-* 阶段成果汇报与实车议题：[docs/PROGRESS_BRIEFING_20261124.md](docs/PROGRESS_BRIEFING_20261124.md) · 研发历程与技术演进：[docs/PROJECT_STORY_AND_EVOLUTION.md](docs/PROJECT_STORY_AND_EVOLUTION.md) · 学术文献溯源：[docs/references.md](docs/references.md)
+* 研发历程与技术演进：[docs/PROJECT_STORY_AND_EVOLUTION.md](docs/PROJECT_STORY_AND_EVOLUTION.md) · 仿真参数清单：[docs/SIMULATION_PARAMETERS.md](docs/SIMULATION_PARAMETERS.md) · 学术文献溯源：[docs/references.md](docs/references.md)
 
 ---
 
