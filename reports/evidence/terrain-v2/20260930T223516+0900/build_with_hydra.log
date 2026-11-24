@@ -1,0 +1,41 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 327B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/mooncar-dem:lammps-2025.7.22.4
+#2 DONE 0.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/3] FROM docker.io/library/mooncar-dem:lammps-2025.7.22.4@sha256:91241f6e0239ff14bda48b8c056c02f55226a41b9b28b5950d7d8d9c61117a6c
+#4 resolve docker.io/library/mooncar-dem:lammps-2025.7.22.4@sha256:91241f6e0239ff14bda48b8c056c02f55226a41b9b28b5950d7d8d9c61117a6c 0.0s done
+#4 DONE 0.0s
+
+#5 [2/3] RUN apt-get update && apt-get install -y --no-install-recommends mpich && rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 [3/3] RUN /opt/mooncar-dem/bin/pip install --no-cache-dir mpi4py==4.1.1
+#6 2.870 Collecting mpi4py==4.1.1
+#6 4.659   Downloading mpi4py-4.1.1-cp312-cp312-manylinux1_x86_64.manylinux_2_5_x86_64.whl.metadata (16 kB)
+#6 4.849 Downloading mpi4py-4.1.1-cp312-cp312-manylinux1_x86_64.manylinux_2_5_x86_64.whl (1.4 MB)
+#6 15.90    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 131.7 kB/s eta 0:00:00
+#6 16.24 Installing collected packages: mpi4py
+#6 16.31 Successfully installed mpi4py-4.1.1
+#6 DONE 16.4s
+
+#7 exporting to image
+#7 exporting layers
+#7 exporting layers 0.2s done
+#7 exporting manifest sha256:2973b81f8f60c70419ada63a10b2e412d50ad4c3dc48bc3efdbb2dfeef864a6f 0.0s done
+#7 exporting config sha256:62ec624ada747bb8910d279779394612e45df5cde0ac0766702395cb42fbec47 0.0s done
+#7 exporting attestation manifest sha256:e833ccb37f69c5de5c524bc4708a542f87b9284fc56ba5cd4ce0fdceeb4cf626 0.0s done
+#7 exporting manifest list sha256:350f304e8726067e55a274444eeb517dbf8d5955e6d8ccf2e72f8b75934b41ce 0.0s done
+#7 naming to docker.io/library/mooncar-dem:mpich-mpi4py-2025.7.22.4 done
+#7 unpacking to docker.io/library/mooncar-dem:mpich-mpi4py-2025.7.22.4 0.1s done
+#7 DONE 0.4s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/yzaptbahszgygp0nz57dl8bgx

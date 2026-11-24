@@ -1,0 +1,94 @@
+{
+  "version": "visual-reference-v1",
+  "status": "diagnostic_complete",
+  "run_id": "autonomy-137ca52327",
+  "alignment_status": "nominal_unverified",
+  "accepted_accuracy": false,
+  "resolution": 0.25,
+  "roi_area_m2": 314.0,
+  "raw_evaluated_frames": 324,
+  "source_folder": "/source/reports/evidence/terrain-workbench/continuous-20260912/autonomy-137ca52327",
+  "input_sha256": {
+    "summary.json": "6a339e910116d52b30262a88872c3672a5ae07917204d842342ba01a83db5734",
+    "quality-end.json": "910732dd704b376e03e0044f90e341776d0391e8b1b1a81c09ea8cdb96ab15f0",
+    "elevation.csv": "5e7c0c0f2fa6a0cf555b923ee17eabbeaf892be741de58a4adc3b59d7149362f",
+    "survey_yard.sdf": "6f1c9e24fe0dc1b4b83c099a9235927f97fb9039a11cd273b3bcee3618ff0505",
+    "observations.npz": "75767718b4de1b907c0e9b8b0a121fd847cdafef70d79e315939c589e12631aa"
+  },
+  "groups": [
+    {
+      "category": "all",
+      "reference_cells": 5024,
+      "observed_cells": 3031,
+      "valid_observed_cells": 2513,
+      "matched_cells": 2513,
+      "missing_cells": 1993,
+      "invalid_observed_cells": 518,
+      "height_rmse_m": 0.03245649045692857,
+      "height_bias_m": 0.0034290842840508234,
+      "height_p95_abs_m": 0.009400345446608638,
+      "slope_mae_deg": 1.0603509369529973
+    },
+    {
+      "category": "ground",
+      "reference_cells": 4524,
+      "observed_cells": 2750,
+      "valid_observed_cells": 2380,
+      "matched_cells": 2380,
+      "missing_cells": 1774,
+      "invalid_observed_cells": 370,
+      "height_rmse_m": 0.0067611325718759056,
+      "height_bias_m": 0.006011996152302881,
+      "height_p95_abs_m": 0.00939992982668288,
+      "slope_mae_deg": 0.28017442578326457
+    },
+    {
+      "category": "terrain",
+      "reference_cells": 235,
+      "observed_cells": 121,
+      "valid_observed_cells": 60,
+      "matched_cells": 60,
+      "missing_cells": 114,
+      "invalid_observed_cells": 61,
+      "height_rmse_m": 0.14091388284721743,
+      "height_bias_m": -0.0401311270827794,
+      "height_p95_abs_m": 0.4585888938908324,
+      "slope_mae_deg": 6.85006239052243
+    },
+    {
+      "category": "edge_or_complex",
+      "reference_cells": 265,
+      "observed_cells": 160,
+      "valid_observed_cells": 73,
+      "matched_cells": 73,
+      "missing_cells": 105,
+      "invalid_observed_cells": 87,
+      "height_rmse_m": 0.13584105658520332,
+      "height_bias_m": -0.04497800563964893,
+      "height_p95_abs_m": 0.30841647796530325,
+      "slope_mae_deg": 21.73757572284064
+    },
+    {
+      "category": "no_reference",
+      "reference_cells": 0,
+      "observed_cells": 0,
+      "valid_observed_cells": 0,
+      "matched_cells": 0,
+      "missing_cells": 0,
+      "invalid_observed_cells": 0,
+      "height_rmse_m": null,
+      "height_bias_m": null,
+      "height_p95_abs_m": null,
+      "slope_mae_deg": null
+    }
+  ],
+  "limitations": [
+    "Nominal identity map/world alignment only; errors include localization and representation effects, not calibrated camera accuracy.",
+    "Archived missions lack synchronized ground-truth trajectories; a later parked alignment check cannot certify them.",
+    "Reference is highest VISUAL surface, not collision geometry; no material, wheel slip or traversability truth.",
+    "Highest reference surface may differ from the visible side sampled by the camera. Uniform 5x5 fit differs from uneven observed voxel sampling; edge/complex cells are separately reported, never silently removed.",
+    "Five samples per cell axis can miss features narrower than 5 cm; primitive analytic shapes differ slightly from rendered meshes.",
+    "Missing projected ROI cells include occluded/unreachable surfaces; missing is not automatically an algorithm failure.",
+    "Q-bin association is descriptive; correlated cells and different terrain/poses do not establish causality or algorithm superiority."
+  ]
+}

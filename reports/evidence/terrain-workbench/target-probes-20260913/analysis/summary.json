@@ -1,0 +1,127 @@
+{
+  "trials": [
+    {
+      "folder": "ramp-repeat1-no_turn",
+      "status": "evaluated",
+      "experiment": "experiment-a4248dd6a0c6",
+      "arm": "no_turn",
+      "targets": 131,
+      "remaining_target_deficient": 20,
+      "target_recovered": 0,
+      "outside_target_recovered": 1,
+      "precommand_recovered": 0,
+      "selected_delta": 0.02,
+      "verified_negative": false,
+      "requested": null,
+      "actual": null,
+      "turn_seconds": 0.0,
+      "target_stamp": 17.0,
+      "action_stamp": 17.442,
+      "feature_stamp": 27.9,
+      "decision_stamp": 28.544
+    },
+    {
+      "folder": "ramp-repeat1-turn",
+      "status": "evaluated",
+      "experiment": "experiment-1bece01823f7",
+      "arm": "turn",
+      "targets": 131,
+      "remaining_target_deficient": 20,
+      "target_recovered": 0,
+      "outside_target_recovered": 5,
+      "precommand_recovered": 0,
+      "selected_delta": 0.02,
+      "verified_negative": true,
+      "requested": 0.020000000003473687,
+      "actual": 0.028478963502536536,
+      "turn_seconds": 0.40500000000000114,
+      "target_stamp": 16.8,
+      "action_stamp": 17.107,
+      "feature_stamp": 27.4,
+      "decision_stamp": 28.122
+    },
+    {
+      "folder": "ramp-repeat2-turn",
+      "status": "evaluated",
+      "experiment": "experiment-618942803305",
+      "arm": "turn",
+      "targets": 131,
+      "remaining_target_deficient": 15,
+      "target_recovered": 0,
+      "outside_target_recovered": 8,
+      "precommand_recovered": 0,
+      "selected_delta": 0.02,
+      "verified_negative": true,
+      "requested": 0.01999999999287072,
+      "actual": 0.029490613561733995,
+      "turn_seconds": 0.3539999999999992,
+      "target_stamp": 16.9,
+      "action_stamp": 17.221,
+      "feature_stamp": 27.6,
+      "decision_stamp": 28.248
+    },
+    {
+      "folder": "ramp-repeat2-no_turn",
+      "status": "evaluated",
+      "experiment": "experiment-5e63836661fd",
+      "arm": "no_turn",
+      "targets": 131,
+      "remaining_target_deficient": 19,
+      "target_recovered": 0,
+      "outside_target_recovered": 0,
+      "precommand_recovered": 0,
+      "selected_delta": 0.02,
+      "verified_negative": false,
+      "requested": null,
+      "actual": null,
+      "turn_seconds": 0.0,
+      "target_stamp": 17.1,
+      "action_stamp": 17.448,
+      "feature_stamp": 27.9,
+      "decision_stamp": 28.654
+    }
+  ],
+  "pairs": [
+    {
+      "pair": "ramp-repeat1",
+      "scope": "shared_targets",
+      "common": 18,
+      "turn_only": 0,
+      "hold_only": 0,
+      "net": 0
+    },
+    {
+      "pair": "ramp-repeat1",
+      "scope": "all_shared_deficient",
+      "common": 70,
+      "turn_only": 3,
+      "hold_only": 1,
+      "net": 2
+    },
+    {
+      "pair": "ramp-repeat2",
+      "scope": "shared_targets",
+      "common": 14,
+      "turn_only": 0,
+      "hold_only": 0,
+      "net": 0
+    },
+    {
+      "pair": "ramp-repeat2",
+      "scope": "all_shared_deficient",
+      "common": 97,
+      "turn_only": 7,
+      "hold_only": 0,
+      "net": 7
+    }
+  ],
+  "rejections": [],
+  "target_screen_passed": true,
+  "online_ready": false,
+  "scope": "Frozen pre-move deficient targets only",
+  "limits": [
+    "Two ramp repeats, exploratory screen only. Separate resets/target sets/poses limit causal conclusions.",
+    "Outside-target gains are retained; skipping this subtask cannot be equated with no global information benefit.",
+    "No learned model, optimality proof, new full three-strategy comparison, or hardware validation."
+  ]
+}

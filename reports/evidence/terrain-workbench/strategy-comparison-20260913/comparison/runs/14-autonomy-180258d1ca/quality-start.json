@@ -1,0 +1,1168 @@
+{
+  "resolution": 0.25,
+  "cells": [
+    {
+      "ix": 3,
+      "iy": -14,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "insufficient_xy_spread",
+      "points": 8,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 3,
+      "iy": -13,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 3,
+      "iy": -12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 3,
+      "iy": -11,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 4,
+      "iy": -14,
+      "coverage": 0.4375,
+      "view_directions": 1,
+      "quality": 0.35,
+      "fit_state": "valid",
+      "points": 35,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 4,
+      "iy": -13,
+      "coverage": 1.0,
+      "view_directions": 1,
+      "quality": 0.8,
+      "fit_state": "valid",
+      "points": 25,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 4,
+      "iy": -12,
+      "coverage": 1.0,
+      "view_directions": 1,
+      "quality": 0.8,
+      "fit_state": "valid",
+      "points": 25,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 4,
+      "iy": -11,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "valid",
+      "points": 18,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 5,
+      "iy": -14,
+      "coverage": 0.8125,
+      "view_directions": 1,
+      "quality": 0.65,
+      "fit_state": "steep_fit",
+      "points": 67,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 5,
+      "iy": -13,
+      "coverage": 1.0,
+      "view_directions": 1,
+      "quality": 0.8,
+      "fit_state": "valid",
+      "points": 20,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 5,
+      "iy": -12,
+      "coverage": 1.0,
+      "view_directions": 1,
+      "quality": 0.8,
+      "fit_state": "valid",
+      "points": 20,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 5,
+      "iy": -11,
+      "coverage": 1.0,
+      "view_directions": 1,
+      "quality": 0.8,
+      "fit_state": "valid",
+      "points": 20,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 5,
+      "iy": -15,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "insufficient_xy_spread",
+      "points": 10,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 5,
+      "iy": -10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 6,
+      "iy": -14,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "steep_fit",
+      "points": 85,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 6,
+      "iy": -13,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "valid",
+      "points": 15,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 6,
+      "iy": -12,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "valid",
+      "points": 15,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 6,
+      "iy": -11,
+      "coverage": 0.75,
+      "view_directions": 1,
+      "quality": 0.6,
+      "fit_state": "valid",
+      "points": 15,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 6,
+      "iy": -10,
+      "coverage": 0.5625,
+      "view_directions": 1,
+      "quality": 0.45,
+      "fit_state": "valid",
+      "points": 12,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 7,
+      "iy": -14,
+      "coverage": 0.625,
+      "view_directions": 1,
+      "quality": 0.5,
+      "fit_state": "steep_fit",
+      "points": 21,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 7,
+      "iy": -13,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 7,
+      "iy": -12,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 7,
+      "iy": -11,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 7,
+      "iy": -10,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 7,
+      "iy": -9,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 8,
+      "iy": -15,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 8,
+      "iy": -14,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 8,
+      "iy": -13,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 8,
+      "iy": -12,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 8,
+      "iy": -11,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 8,
+      "iy": -10,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 8,
+      "iy": -9,
+      "coverage": 0.4375,
+      "view_directions": 1,
+      "quality": 0.35,
+      "fit_state": "valid",
+      "points": 9,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 8,
+      "iy": -8,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 9,
+      "iy": -15,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 9,
+      "iy": -14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 9,
+      "iy": -13,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 9,
+      "iy": -12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 9,
+      "iy": -11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 9,
+      "iy": -10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 9,
+      "iy": -9,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 9,
+      "iy": -8,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 10,
+      "iy": -15,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 10,
+      "iy": -14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 10,
+      "iy": -13,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 10,
+      "iy": -12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 10,
+      "iy": -11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 10,
+      "iy": -10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 10,
+      "iy": -9,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 10,
+      "iy": -8,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 10,
+      "iy": -7,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 12,
+      "iy": -16,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 12,
+      "iy": -15,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 12,
+      "iy": -14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 12,
+      "iy": -13,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 12,
+      "iy": -12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 12,
+      "iy": -11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 12,
+      "iy": -10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 12,
+      "iy": -9,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 12,
+      "iy": -8,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 12,
+      "iy": -7,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 12,
+      "iy": -6,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 14,
+      "iy": -16,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 14,
+      "iy": -15,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 14,
+      "iy": -14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 14,
+      "iy": -13,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 14,
+      "iy": -12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 14,
+      "iy": -11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 14,
+      "iy": -10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 14,
+      "iy": -9,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 14,
+      "iy": -8,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 14,
+      "iy": -7,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 14,
+      "iy": -6,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 14,
+      "iy": -5,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 17,
+      "iy": -4,
+      "coverage": 0.375,
+      "view_directions": 1,
+      "quality": 0.3,
+      "fit_state": "valid",
+      "points": 17,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 17,
+      "iy": -17,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 17,
+      "iy": -16,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 17,
+      "iy": -15,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 17,
+      "iy": -14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 17,
+      "iy": -13,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 17,
+      "iy": -12,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 17,
+      "iy": -11,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 17,
+      "iy": -10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 17,
+      "iy": -9,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 17,
+      "iy": -8,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 17,
+      "iy": -7,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 17,
+      "iy": -6,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 17,
+      "iy": -5,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 18,
+      "iy": -4,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "insufficient_xy_spread",
+      "points": 6,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 19,
+      "iy": -4,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 19,
+      "iy": -17,
+      "coverage": 0.3125,
+      "view_directions": 1,
+      "quality": 0.25,
+      "fit_state": "insufficient_xy_spread",
+      "points": 12,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 19,
+      "iy": -18,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 19,
+      "iy": -16,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 20,
+      "iy": -17,
+      "coverage": 0.3125,
+      "view_directions": 1,
+      "quality": 0.25,
+      "fit_state": "nonplanar",
+      "points": 9,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 20,
+      "iy": -16,
+      "coverage": 0.5625,
+      "view_directions": 1,
+      "quality": 0.45,
+      "fit_state": "valid",
+      "points": 19,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 20,
+      "iy": -4,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 20,
+      "iy": -15,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 21,
+      "iy": -16,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 21,
+      "iy": -15,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 21,
+      "iy": -4,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": -14,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 5,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 22,
+      "iy": -13,
+      "coverage": 0.375,
+      "view_directions": 1,
+      "quality": 0.3,
+      "fit_state": "steep_fit",
+      "points": 7,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 22,
+      "iy": -12,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": -11,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": -10,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": -9,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": -8,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": -7,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": -6,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": -5,
+      "coverage": 0.1875,
+      "view_directions": 1,
+      "quality": 0.15,
+      "fit_state": "too_few_voxels",
+      "points": 3,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 22,
+      "iy": -4,
+      "coverage": 0.25,
+      "view_directions": 1,
+      "quality": 0.2,
+      "fit_state": "too_few_voxels",
+      "points": 4,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 23,
+      "iy": -14,
+      "coverage": 0.375,
+      "view_directions": 1,
+      "quality": 0.3,
+      "fit_state": "valid",
+      "points": 7,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 23,
+      "iy": -13,
+      "coverage": 0.5,
+      "view_directions": 1,
+      "quality": 0.4,
+      "fit_state": "valid",
+      "points": 10,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 24,
+      "iy": -14,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 24,
+      "iy": -13,
+      "coverage": 0.125,
+      "view_directions": 1,
+      "quality": 0.1,
+      "fit_state": "too_few_voxels",
+      "points": 2,
+      "bearing_mask": 128
+    },
+    {
+      "ix": 25,
+      "iy": -12,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 1
+    },
+    {
+      "ix": 25,
+      "iy": -13,
+      "coverage": 0.0625,
+      "view_directions": 1,
+      "quality": 0.05,
+      "fit_state": "too_few_voxels",
+      "points": 1,
+      "bearing_mask": 128
+    }
+  ],
+  "frames": 3,
+  "stamp": 4.0,
+  "meaning": "spatial sampling and bearing diversity; not accuracy or safety probability"
+}

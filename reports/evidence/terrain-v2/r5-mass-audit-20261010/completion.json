@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "simulation_attempts": 0,
+  "model_consistent": true,
+  "hardware_com_confirmed": false,
+  "turn_displacement_repaired": false,
+  "software_tests": 416,
+  "software_skipped": 0,
+  "new_tests": 27,
+  "frontend_tests": 3,
+  "firmware": "C11 strict warnings and UBSan passed",
+  "python_syntax": {
+    "passed": true,
+    "files": 86
+  },
+  "shell_syntax_passed": true,
+  "js_syntax_passed": true,
+  "preserved_original_files": 403,
+  "changed_original_files": [],
+  "own_container_stopped": true,
+  "original_workbench_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 255,
+    "Error": "",
+    "StartedAt": "2026-10-06T09:12:42.308277218Z",
+    "FinishedAt": "2026-10-07T09:22:59.503670959Z"
+  },
+  "image_id": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3",
+  "model_hashes": {
+    "mooncar-conversion.log": "a5d798437c0fd13ad5c297f3d29193577a69a5ba2eda389079c2d1731a547513",
+    "mooncar.sdf": "4956da6c7c3840a13e47e20abd844a9f4ebf68b797fe8ebd1f016398b48ddb81",
+    "mooncar.urdf": "8b916bab93f1543907c41774154e5c128b5c26161512edcc253a0d3b6896b0cc",
+    "mooncar_r5-conversion.log": "49911242b10152879efaa51721044e74e26efd18e8a534eaeb78acd2b1550b85",
+    "mooncar_r5.sdf": "21f4f28b22e6f7ba2d21d03ab74a5a8bc7dc5c0411c7ec8bbf574d2b1ec5e22f",
+    "mooncar_r5.urdf": "044b2c1e2847129300b230d877c458f9134ba9a540d2710bcee9b61b4ecf4b73"
+  },
+  "source_hashes": {
+    "scripts/audit_r5_mass.py": "8d08b4e23c6c174b36b276c5c68f0a6261a68583c0ba8e11437d4ddc05a531c5",
+    "scripts/build_r5_mass_catalog.py": "7f1afe4c35b44f5ffe38ad6dc18a0aa3993bfb5715b92557f0847c010320320e",
+    "scripts/report_r5_mass_audit.py": "86706dd424a0b9e32be965f1f7ee44c48a936ce0a0a3ec57b1cad86190ded885",
+    "scripts/prepare_r5_mass_audit.sh": "1d68dde530595ed9785540b9a63426e53da61ec468ae17cb156526184c74b19f",
+    "scripts/check_r5_mass_audit.sh": "75c3331fcdbf707f56a69a575c8a9e2eeee97bd4253e5f0cef1306095e99632a",
+    "ros2_ws/src/mooncar_gazebo/tests/test_mass_audit.py": "99d48bd8cad096d07ecf7d1499e0456f9f5521fa18327e9f0cf1adccc8bfe661"
+  },
+  "failures_preserved": [
+    "catalog/ partial first parse failure",
+    "software.log initial incomplete overlay"
+  ],
+  "final_report": "模型自洽，真实质量分布未确认"
+}

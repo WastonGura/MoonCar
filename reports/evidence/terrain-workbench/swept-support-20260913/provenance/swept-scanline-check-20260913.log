@@ -1,0 +1,3 @@
+PASS: shortest arc, camera lever arm, swept-only visibility, support rank, duplicate saturation, guards, no future samples
+PASS: scanline outside initial view gains enough hypothesized support during rotation
+PASS: partial-cell ray visibility survives an out-of-FOV cell centre

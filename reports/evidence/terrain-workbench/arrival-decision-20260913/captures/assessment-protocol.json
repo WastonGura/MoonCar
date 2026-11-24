@@ -1,0 +1,16 @@
+{
+  "saved_utc": "2026-09-13T10:06:07.714403+00:00",
+  "note": "Assessment implementation saved while captures run, before new batch outcome analysis. Capture and candidate model were frozen before the replacement batch.",
+  "files": {
+    "assess_arrival_gate.py": "726f8d1856d1429a9a5fccb7f490ab80173e1bc1428152ba2830a925b538aa87",
+    "test_arrival_resampling.py": "1b9b8f6b0f2e946dfc6b84e112395e699f5510c6129fefa69719694c37c94c8e",
+    "run_arrival_validation_prechecked.py": "347aa13edb14fd2afaee5796f0f5934471f0a45165a77d1946bb68375b3a142f",
+    "analyse_arrival_validation.py": "3c2a7fc4622d866394b657d0d068db4dcf0ac4f282fbabb2c2e520cf59d51d78"
+  },
+  "acceptance": [
+    "No zero-opportunity decisions followed by recovery of still-eligible cells",
+    "No skipped paired turn that recovers cells its hold control does not",
+    "Both turn and skip decision branches represented; all planned capture pairs complete",
+    "Post-arrival sensor snapshot required; shadow pass is not an online strategy efficacy claim"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "predictions": "/source/reports/evidence/terrain-workbench/resampling-model-20260913/analysis/samples.csv",
+  "trials": [
+    {"folder": "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures", "condition": "stationary"},
+    {"folder": "/source/reports/evidence/terrain-workbench/strategy-comparison-20260913/slope-captures", "condition": "approach"},
+    {"folder": "/source/reports/evidence/terrain-workbench/resampling-model-20260913/short-approach", "condition": "approach"}
+  ]
+}

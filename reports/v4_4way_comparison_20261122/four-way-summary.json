@@ -1,0 +1,1262 @@
+[
+  {
+    "strategy": "coverage_v3_gimbal",
+    "actual_elapsed_seconds": 458.4,
+    "declared_budget_seconds": 480.0,
+    "declared_wall_limit_seconds": 7200.0,
+    "outcome": "budget_completed",
+    "reason": "候选计算后剩余时间不足以完成下一观察动作",
+    "budget_exhausted_normally": true,
+    "minute_metrics": [
+      {
+        "elapsed_seconds": 0.0,
+        "total_observed_m2": 17.5,
+        "valid_surface_m2": 4.5625,
+        "map_stamp": 1.1,
+        "map_receipt_wall": 41465.599102732,
+        "path_length_m": 0.0,
+        "max_distance_from_start_m": 0.0,
+        "localization_xy_p95_m": null,
+        "recent_minute_xy_p95_m": null,
+        "localization_xy_max_m": null,
+        "height_rmse_m": 0.0019138403256905288
+      },
+      {
+        "elapsed_seconds": 60.0,
+        "total_observed_m2": 137.0,
+        "valid_surface_m2": 115.75,
+        "map_stamp": 62.4,
+        "map_receipt_wall": 41786.212887116,
+        "path_length_m": 6.071390861772117,
+        "max_distance_from_start_m": 2.942858875181518,
+        "localization_xy_p95_m": 0.019769751766130664,
+        "recent_minute_xy_p95_m": 0.019769751766130664,
+        "localization_xy_max_m": 0.021551961204746322,
+        "height_rmse_m": 0.002080779199413149
+      },
+      {
+        "elapsed_seconds": 120.0,
+        "total_observed_m2": 202.4375,
+        "valid_surface_m2": 173.75,
+        "map_stamp": 122.3,
+        "map_receipt_wall": 42104.761554179,
+        "path_length_m": 12.636937075539931,
+        "max_distance_from_start_m": 5.65697604191268,
+        "localization_xy_p95_m": 0.01958928602401587,
+        "recent_minute_xy_p95_m": 0.012962872240020799,
+        "localization_xy_max_m": 0.021551961204746322,
+        "height_rmse_m": 0.0016999785263267905
+      },
+      {
+        "elapsed_seconds": 180.0,
+        "total_observed_m2": 260.125,
+        "valid_surface_m2": 228.0,
+        "map_stamp": 178.2,
+        "map_receipt_wall": 42380.554044766,
+        "path_length_m": 18.446514878963622,
+        "max_distance_from_start_m": 10.280139839414147,
+        "localization_xy_p95_m": 0.018850229488346144,
+        "recent_minute_xy_p95_m": 0.014738492083248636,
+        "localization_xy_max_m": 0.021551961204746322,
+        "height_rmse_m": 0.0015010303555626741
+      },
+      {
+        "elapsed_seconds": 240.0,
+        "total_observed_m2": 317.375,
+        "valid_surface_m2": 277.625,
+        "map_stamp": 241.1,
+        "map_receipt_wall": 42661.495661741,
+        "path_length_m": 24.875064236895145,
+        "max_distance_from_start_m": 13.078474701720415,
+        "localization_xy_p95_m": 0.03502882235577612,
+        "recent_minute_xy_p95_m": 0.03859923603672529,
+        "localization_xy_max_m": 0.039043954563713346,
+        "height_rmse_m": 0.0014348117795138307
+      },
+      {
+        "elapsed_seconds": 300.0,
+        "total_observed_m2": 368.8125,
+        "valid_surface_m2": 331.1875,
+        "map_stamp": 302.2,
+        "map_receipt_wall": 42956.932220806,
+        "path_length_m": 30.803991085875026,
+        "max_distance_from_start_m": 13.450812478469947,
+        "localization_xy_p95_m": 0.04391226697018157,
+        "recent_minute_xy_p95_m": 0.04484728714077549,
+        "localization_xy_max_m": 0.04608842603633951,
+        "height_rmse_m": 0.001495939360759779
+      },
+      {
+        "elapsed_seconds": 360.0,
+        "total_observed_m2": 409.9375,
+        "valid_surface_m2": 374.375,
+        "map_stamp": 362.6,
+        "map_receipt_wall": 43252.36938736,
+        "path_length_m": 36.783831774898914,
+        "max_distance_from_start_m": 13.450812478469947,
+        "localization_xy_p95_m": 0.052846325343386444,
+        "recent_minute_xy_p95_m": 0.05359663121253796,
+        "localization_xy_max_m": 0.054671791281421245,
+        "height_rmse_m": 0.001421274541024166
+      },
+      {
+        "elapsed_seconds": 420.0,
+        "total_observed_m2": 455.8125,
+        "valid_surface_m2": 417.4375,
+        "map_stamp": 421.9,
+        "map_receipt_wall": 43533.711289627,
+        "path_length_m": 42.23508885248326,
+        "max_distance_from_start_m": 13.450812478469947,
+        "localization_xy_p95_m": 0.05690811204778752,
+        "recent_minute_xy_p95_m": 0.057937462928592726,
+        "localization_xy_max_m": 0.058799703553018376,
+        "height_rmse_m": 0.0013570416371263938
+      },
+      {
+        "elapsed_seconds": 458.4,
+        "total_observed_m2": 489.1875,
+        "valid_surface_m2": 447.3125,
+        "map_stamp": 458.3,
+        "map_receipt_wall": 43695.789723438,
+        "path_length_m": 45.408865252901485,
+        "max_distance_from_start_m": 13.450812478469947,
+        "localization_xy_p95_m": 0.060852242834096244,
+        "recent_minute_xy_p95_m": 0.06287118696937326,
+        "localization_xy_max_m": 0.06299266667047003,
+        "height_rmse_m": 0.0013211215668278297
+      }
+    ],
+    "half_windows": [
+      {
+        "start_seconds": 0.0,
+        "end_seconds": 240.0,
+        "reached": true,
+        "duration_seconds": 240.0,
+        "new_observed_m2": 299.875,
+        "valid_surface_change_m2": 273.0625,
+        "path_length_m": 24.875064236895145,
+        "selected_actions": {
+          "advance": 12
+        },
+        "successful_actions": 12,
+        "grouping": "Actions grouped by dispatch time; advance can include rotation"
+      },
+      {
+        "start_seconds": 240.0,
+        "end_seconds": 458.4,
+        "reached": true,
+        "duration_seconds": 218.39999999999998,
+        "new_observed_m2": 171.8125,
+        "valid_surface_change_m2": 169.6875,
+        "path_length_m": 20.53380101600634,
+        "selected_actions": {
+          "advance": 13
+        },
+        "successful_actions": 13,
+        "grouping": "Actions grouped by dispatch time; advance can include rotation"
+      }
+    ],
+    "phase_seconds": {
+      "idle": 0.020000000000000018,
+      "planning": 2.720499999999998,
+      "gimbal_scanning": 4.6575,
+      "moving": 297.0110000000001,
+      "turning": 62.999999999999915,
+      "observing": 90.99100000000004,
+      "budget_reached": 0.0
+    },
+    "active_unhealthy_snapshots": 0,
+    "localization_pauses": [],
+    "final_selected_action_counts": {
+      "advance": 25
+    },
+    "localization_memory": {
+      "samples": 426,
+      "first_minute_median_mib": 398.80078125,
+      "last_minute_median_mib": 429.765625,
+      "peak_mib": 462.59765625,
+      "scope": "RSS of primary localization process only, not whole simulation"
+    },
+    "common_duration_metrics": {
+      "elapsed_seconds": 458.4,
+      "total_observed_m2": 489.1875,
+      "valid_surface_m2": 447.3125,
+      "map_stamp": 458.3,
+      "map_receipt_wall": 43695.789723438,
+      "path_length_m": 45.408865252901485,
+      "max_distance_from_start_m": 13.450812478469947,
+      "localization_xy_p95_m": 0.060852242834096244,
+      "recent_minute_xy_p95_m": 0.06287118696937326,
+      "localization_xy_max_m": 0.06299266667047003,
+      "height_rmse_m": 0.0013211215668278297
+    },
+    "map_warning_counts": {
+      "Synchronized IMU unavailable; frame omitted": 48,
+      "Laser localization unavailable; depth frame omitted: status_stale": 132,
+      "Laser localization unavailable; new map frames suspended: status_recovering": 2104,
+      "Laser localization unavailable; depth frame omitted: status_recovering": 116,
+      "Laser localization unavailable; depth frame omitted: observation_before_ready": 130,
+      "No recent observations; saved map is historical": 25,
+      "Laser localization unavailable; new map frames suspended: status_from_future": 2
+    },
+    "first_capacity_warning": null,
+    "final_map_elapsed_seconds": 454.83425,
+    "map_age_at_mission_end_sim_seconds": 3.56574999999998,
+    "summary": {
+      "frames": 579,
+      "stamp": 458.3,
+      "total_observed_m2": 489.1875,
+      "valid_surface_m2": 447.3125,
+      "observed_inside_reference_m2": 489.1875,
+      "invalid_inside_reference_m2": 41.875,
+      "outside_reference_cells": 0,
+      "outside_valid_cells": 0,
+      "mixed_valid_cells": 30,
+      "single_surface": {
+        "count": 7127,
+        "mae_m": 0.00062826460857015,
+        "rmse_m": 0.0013211215668278297,
+        "p95_abs_m": 0.002012447330351357,
+        "signed_mean_m": 7.40715178253007e-05
+      },
+      "all_valid_including_mixed": {
+        "count": 7157,
+        "mae_m": 0.0007099111282098652,
+        "rmse_m": 0.0027764721494290606,
+        "p95_abs_m": 0.002128051299785205,
+        "signed_mean_m": 4.093369356548118e-05
+      },
+      "slope_mae_degrees": 0.11759373015894363,
+      "key": "coverage_v3_gimbal",
+      "label": "coverage_v3 (云台)",
+      "strategy": "coverage_v3_gimbal",
+      "terrain_strategy": "elevation_neighborhood_v1",
+      "camera_mode": "gimbal",
+      "autonomy_strategy": "coverage_view_v3",
+      "experiment": "experiment-390adcb2c83f",
+      "tested_commit": "c86f12794d3de756276ae2491178106a477de2f6",
+      "outcome": "budget_completed",
+      "reason": "候选计算后剩余时间不足以完成下一观察动作",
+      "budget_seconds": 480.0,
+      "elapsed_seconds": 458.4,
+      "wall_seconds": 2273.591544099996,
+      "realtime_factor": 0.20161932832199117,
+      "radius": null,
+      "terminal_receipt_wall": 43706.670679987,
+      "snapshot_receipt_wall": 43695.789723438,
+      "initial_received_observed_m2": 17.5,
+      "new_observed_since_start_m2": 471.6875,
+      "actions": 25,
+      "successful_actions": 25,
+      "move_actions": 25,
+      "chassis_turn_phases": 22,
+      "gimbal_selected_actions": 0,
+      "global_frontier_switches": 0,
+      "localization_pauses": 0,
+      "premature_ready_samples": 8,
+      "path_length_m": 45.40886525290137,
+      "max_distance_from_start_m": 13.450812478469947,
+      "localization_xy_p95_m": 0.060852242834096244,
+      "localization_xy_max_m": 0.06299266667047003,
+      "gimbal": {
+        "samples": 4799,
+        "pan_range_deg": [
+          -0.0,
+          0.0
+        ],
+        "tilt_range_deg": [
+          -29.93,
+          -0.0
+        ],
+        "startup_actions": 3,
+        "frontier_actions": 0
+      },
+      "localization": {
+        "plan_status": {
+          "solved": 4584
+        },
+        "longest_no_solution_frames": 0,
+        "spread_retry": {}
+      },
+      "archive": {
+        "frames": 579,
+        "raw_points": 7681347,
+        "segments": 2,
+        "mission_frames": 576,
+        "mission_raw_points": 7654710,
+        "first_part_end_sim": 251.5,
+        "last_stamp_sim": 458.3
+      },
+      "capture": {
+        "actual_screen_capture": true,
+        "frame_count": 6778,
+        "width": 1120,
+        "height": 760,
+        "nominal_cfr_fps": 3,
+        "encoder_exit": 0,
+        "error": null,
+        "experiment": "experiment-390adcb2c83f",
+        "captured_display": ":101",
+        "timing": "Use frames.jsonl for actual wall timing; CFR video is a frame sequence, not a precise wall clock.",
+        "truth_used_by_control": false
+      },
+      "process_exits": {
+        "driver": 0,
+        "video": 0,
+        "backend": 0
+      }
+    },
+    "label": "coverage_v3 (云台)",
+    "autonomy_strategy": "coverage_view_v3",
+    "camera_mode": "gimbal"
+  },
+  {
+    "strategy": "surface_v3_gimbal",
+    "actual_elapsed_seconds": 480.6,
+    "declared_budget_seconds": 480.0,
+    "declared_wall_limit_seconds": 7200.0,
+    "outcome": "budget_completed",
+    "reason": "剩余时间不足以完成下一候选观察动作",
+    "budget_exhausted_normally": true,
+    "minute_metrics": [
+      {
+        "elapsed_seconds": 0.0,
+        "total_observed_m2": 17.5,
+        "valid_surface_m2": 4.625,
+        "map_stamp": 1.1,
+        "map_receipt_wall": 38885.670967172,
+        "path_length_m": 0.0,
+        "max_distance_from_start_m": 0.0,
+        "localization_xy_p95_m": null,
+        "recent_minute_xy_p95_m": null,
+        "localization_xy_max_m": null,
+        "height_rmse_m": 0.0018868975829134053
+      },
+      {
+        "elapsed_seconds": 60.0,
+        "total_observed_m2": 98.25,
+        "valid_surface_m2": 81.5,
+        "map_stamp": 62.2,
+        "map_receipt_wall": 39186.2738359,
+        "path_length_m": 7.310960443973697,
+        "max_distance_from_start_m": 7.133852460686558,
+        "localization_xy_p95_m": 0.02738074567973171,
+        "recent_minute_xy_p95_m": 0.02738074567973171,
+        "localization_xy_max_m": 0.029061996473944834,
+        "height_rmse_m": 0.0016151651273508996
+      },
+      {
+        "elapsed_seconds": 120.0,
+        "total_observed_m2": 177.125,
+        "valid_surface_m2": 154.25,
+        "map_stamp": 122.2,
+        "map_receipt_wall": 39477.567926199,
+        "path_length_m": 13.276712803017661,
+        "max_distance_from_start_m": 9.899437915780746,
+        "localization_xy_p95_m": 0.04876286346745081,
+        "recent_minute_xy_p95_m": 0.049005182880665,
+        "localization_xy_max_m": 0.04983279037915092,
+        "height_rmse_m": 0.0012995819822715856
+      },
+      {
+        "elapsed_seconds": 180.0,
+        "total_observed_m2": 222.375,
+        "valid_surface_m2": 205.6875,
+        "map_stamp": 182.2,
+        "map_receipt_wall": 39763.233737778,
+        "path_length_m": 19.501911404763728,
+        "max_distance_from_start_m": 13.25416248763269,
+        "localization_xy_p95_m": 0.05964934364153656,
+        "recent_minute_xy_p95_m": 0.059855887567315406,
+        "localization_xy_max_m": 0.06102772253571202,
+        "height_rmse_m": 0.0012434731659890232
+      },
+      {
+        "elapsed_seconds": 240.0,
+        "total_observed_m2": 289.4375,
+        "valid_surface_m2": 265.3125,
+        "map_stamp": 242.2,
+        "map_receipt_wall": 40096.302747108,
+        "path_length_m": 26.482233477217466,
+        "max_distance_from_start_m": 13.25416248763269,
+        "localization_xy_p95_m": 0.05939125641882401,
+        "recent_minute_xy_p95_m": 0.0518642416229935,
+        "localization_xy_max_m": 0.06102772253571202,
+        "height_rmse_m": 0.0011926689365942128
+      },
+      {
+        "elapsed_seconds": 300.0,
+        "total_observed_m2": 338.6875,
+        "valid_surface_m2": 311.8125,
+        "map_stamp": 302.3,
+        "map_receipt_wall": 40412.415157163,
+        "path_length_m": 32.53430607523399,
+        "max_distance_from_start_m": 13.25416248763269,
+        "localization_xy_p95_m": 0.05911115298398166,
+        "recent_minute_xy_p95_m": 0.04403065663880187,
+        "localization_xy_max_m": 0.06102772253571202,
+        "height_rmse_m": 0.0015697584240313856
+      },
+      {
+        "elapsed_seconds": 360.0,
+        "total_observed_m2": 405.1875,
+        "valid_surface_m2": 370.0,
+        "map_stamp": 361.9,
+        "map_receipt_wall": 40698.772925273,
+        "path_length_m": 39.78789168565921,
+        "max_distance_from_start_m": 13.91363900946179,
+        "localization_xy_p95_m": 0.058964858956009,
+        "recent_minute_xy_p95_m": 0.056930040890261366,
+        "localization_xy_max_m": 0.06102772253571202,
+        "height_rmse_m": 0.0015846480781156322
+      },
+      {
+        "elapsed_seconds": 420.0,
+        "total_observed_m2": 444.8125,
+        "valid_surface_m2": 410.5,
+        "map_stamp": 422.2,
+        "map_receipt_wall": 41039.264720538,
+        "path_length_m": 45.02754731637401,
+        "max_distance_from_start_m": 15.13254891284136,
+        "localization_xy_p95_m": 0.061865779141074814,
+        "recent_minute_xy_p95_m": 0.062430338854349045,
+        "localization_xy_max_m": 0.06284680087734934,
+        "height_rmse_m": 0.0015855365777165235
+      },
+      {
+        "elapsed_seconds": 480.0,
+        "total_observed_m2": 504.3125,
+        "valid_surface_m2": 463.3125,
+        "map_stamp": 481.1,
+        "map_receipt_wall": 41376.437132407,
+        "path_length_m": 49.59384280944954,
+        "max_distance_from_start_m": 15.13254891284136,
+        "localization_xy_p95_m": 0.06175554562781396,
+        "recent_minute_xy_p95_m": 0.048486243398023196,
+        "localization_xy_max_m": 0.06284680087734934,
+        "height_rmse_m": 0.001499401422407517
+      },
+      {
+        "elapsed_seconds": 480.6,
+        "total_observed_m2": 504.3125,
+        "valid_surface_m2": 463.3125,
+        "map_stamp": 481.1,
+        "map_receipt_wall": 41376.437132407,
+        "path_length_m": 49.59384280992892,
+        "max_distance_from_start_m": 15.13254891284136,
+        "localization_xy_p95_m": 0.0617539770136945,
+        "recent_minute_xy_p95_m": 0.04825374468640023,
+        "localization_xy_max_m": 0.06284680087734934,
+        "height_rmse_m": 0.001499401422407517
+      }
+    ],
+    "half_windows": [
+      {
+        "start_seconds": 0.0,
+        "end_seconds": 240.0,
+        "reached": true,
+        "duration_seconds": 240.0,
+        "new_observed_m2": 271.9375,
+        "valid_surface_change_m2": 260.6875,
+        "path_length_m": 26.482233477217466,
+        "selected_actions": {
+          "advance": 9
+        },
+        "successful_actions": 9,
+        "grouping": "Actions grouped by dispatch time; advance can include rotation"
+      },
+      {
+        "start_seconds": 240.0,
+        "end_seconds": 480.0,
+        "reached": true,
+        "duration_seconds": 240.0,
+        "new_observed_m2": 214.875,
+        "valid_surface_change_m2": 198.0,
+        "path_length_m": 23.111609332232074,
+        "selected_actions": {
+          "advance": 8,
+          "resample": 2,
+          "turn": 1
+        },
+        "successful_actions": 11,
+        "grouping": "Actions grouped by dispatch time; advance can include rotation"
+      }
+    ],
+    "phase_seconds": {
+      "idle": 0.019000000000000128,
+      "planning": 2.4902500000000547,
+      "gimbal_scanning": 7.957249999999974,
+      "moving": 323.612,
+      "turning": 75.01275000000007,
+      "observing": 71.50874999999996,
+      "budget_reached": 0.0
+    },
+    "active_unhealthy_snapshots": 0,
+    "localization_pauses": [],
+    "final_selected_action_counts": {
+      "advance": 17,
+      "resample": 2,
+      "turn": 1
+    },
+    "localization_memory": {
+      "samples": 477,
+      "first_minute_median_mib": 391.9453125,
+      "last_minute_median_mib": 423.455078125,
+      "peak_mib": 443.8125,
+      "scope": "RSS of primary localization process only, not whole simulation"
+    },
+    "common_duration_metrics": {
+      "elapsed_seconds": 458.4,
+      "total_observed_m2": 482.0625,
+      "valid_surface_m2": 445.125,
+      "map_stamp": 458.2,
+      "map_receipt_wall": 41244.978565021,
+      "path_length_m": 48.53847538842612,
+      "max_distance_from_start_m": 15.13254891284136,
+      "localization_xy_p95_m": 0.06181039531449714,
+      "recent_minute_xy_p95_m": 0.060604089647216,
+      "localization_xy_max_m": 0.06284680087734934,
+      "height_rmse_m": 0.0015280366584693968
+    },
+    "map_warning_counts": {
+      "Synchronized IMU unavailable; frame omitted": 42,
+      "Laser localization unavailable; depth frame omitted: status_stale": 159,
+      "Laser localization unavailable; new map frames suspended: status_recovering": 2861,
+      "Laser localization unavailable; depth frame omitted: observation_before_ready": 152,
+      "Laser localization unavailable; new map frames suspended: status_from_future": 2,
+      "Laser localization unavailable; depth frame omitted: status_recovering": 131,
+      "No recent observations; saved map is historical": 31
+    },
+    "first_capacity_warning": null,
+    "final_map_elapsed_seconds": 477.27875,
+    "map_age_at_mission_end_sim_seconds": 3.3212500000000205,
+    "summary": {
+      "frames": 651,
+      "stamp": 481.1,
+      "total_observed_m2": 504.3125,
+      "valid_surface_m2": 463.3125,
+      "observed_inside_reference_m2": 504.3125,
+      "invalid_inside_reference_m2": 41.0,
+      "outside_reference_cells": 0,
+      "outside_valid_cells": 0,
+      "mixed_valid_cells": 32,
+      "single_surface": {
+        "count": 7381,
+        "mae_m": 0.0007585156591078492,
+        "rmse_m": 0.001499401422407517,
+        "p95_abs_m": 0.0024991560900657593,
+        "signed_mean_m": 0.0001697840949945054
+      },
+      "all_valid_including_mixed": {
+        "count": 7413,
+        "mae_m": 0.0008553467999235429,
+        "rmse_m": 0.0029568246338332244,
+        "p95_abs_m": 0.0026715275164057206,
+        "signed_mean_m": 0.00015831850538896956
+      },
+      "slope_mae_degrees": 0.11076181519009644,
+      "key": "surface_v3_gimbal",
+      "label": "surface_v3 (云台)",
+      "strategy": "surface_v3_gimbal",
+      "terrain_strategy": "elevation_neighborhood_v1",
+      "camera_mode": "gimbal",
+      "autonomy_strategy": "surface_view_v3",
+      "experiment": "experiment-f72c3d5cdb58",
+      "tested_commit": "c86f12794d3de756276ae2491178106a477de2f6",
+      "outcome": "budget_completed",
+      "reason": "剩余时间不足以完成下一候选观察动作",
+      "budget_seconds": 480.0,
+      "elapsed_seconds": 480.6,
+      "wall_seconds": 2541.486633050001,
+      "realtime_factor": 0.1891019192271883,
+      "radius": null,
+      "terminal_receipt_wall": 41388.680849287,
+      "snapshot_receipt_wall": 41376.437132407,
+      "initial_received_observed_m2": 17.5,
+      "new_observed_since_start_m2": 486.8125,
+      "actions": 20,
+      "successful_actions": 20,
+      "move_actions": 19,
+      "chassis_turn_phases": 18,
+      "gimbal_selected_actions": 1,
+      "global_frontier_switches": 0,
+      "localization_pauses": 0,
+      "premature_ready_samples": 8,
+      "path_length_m": 49.59384280992887,
+      "max_distance_from_start_m": 15.13254891284136,
+      "localization_xy_p95_m": 0.0617539770136945,
+      "localization_xy_max_m": 0.06284680087734934,
+      "gimbal": {
+        "samples": 5372,
+        "pan_range_deg": [
+          -0.0,
+          91.15
+        ],
+        "tilt_range_deg": [
+          -29.93,
+          -0.0
+        ],
+        "startup_actions": 3,
+        "frontier_actions": 0
+      },
+      "localization": {
+        "plan_status": {
+          "solved": 4806
+        },
+        "longest_no_solution_frames": 0,
+        "spread_retry": {}
+      },
+      "archive": {
+        "frames": 651,
+        "raw_points": 8612613,
+        "segments": 2,
+        "mission_frames": 648,
+        "mission_raw_points": 8585976,
+        "first_part_end_sim": 221.2,
+        "last_stamp_sim": 481.1
+      },
+      "capture": {
+        "actual_screen_capture": true,
+        "frame_count": 7577,
+        "width": 1120,
+        "height": 760,
+        "nominal_cfr_fps": 3,
+        "encoder_exit": 0,
+        "error": null,
+        "experiment": "experiment-f72c3d5cdb58",
+        "captured_display": ":101",
+        "timing": "Use frames.jsonl for actual wall timing; CFR video is a frame sequence, not a precise wall clock.",
+        "truth_used_by_control": false
+      },
+      "process_exits": {
+        "driver": 0,
+        "video": 0,
+        "backend": 0
+      }
+    },
+    "label": "surface_v3 (云台)",
+    "autonomy_strategy": "surface_view_v3",
+    "camera_mode": "gimbal"
+  },
+  {
+    "strategy": "hybrid_v4_fixed",
+    "actual_elapsed_seconds": 472.2,
+    "declared_budget_seconds": 480.0,
+    "declared_wall_limit_seconds": 7200.0,
+    "outcome": "budget_completed",
+    "reason": "剩余时间不足以完成下一候选观察动作",
+    "budget_exhausted_normally": true,
+    "minute_metrics": [
+      {
+        "elapsed_seconds": 0.0,
+        "total_observed_m2": 21.0625,
+        "valid_surface_m2": 6.1875,
+        "map_stamp": 0.9,
+        "map_receipt_wall": 44174.723338058,
+        "path_length_m": 0.0,
+        "max_distance_from_start_m": 0.0,
+        "localization_xy_p95_m": null,
+        "recent_minute_xy_p95_m": null,
+        "localization_xy_max_m": null,
+        "height_rmse_m": 0.0016208027683139138
+      },
+      {
+        "elapsed_seconds": 60.0,
+        "total_observed_m2": 103.875,
+        "valid_surface_m2": 86.6875,
+        "map_stamp": 62.1,
+        "map_receipt_wall": 44472.687160664,
+        "path_length_m": 7.249853081280527,
+        "max_distance_from_start_m": 6.748630531409018,
+        "localization_xy_p95_m": 0.02280264561363375,
+        "recent_minute_xy_p95_m": 0.02280264561363375,
+        "localization_xy_max_m": 0.023778616949910004,
+        "height_rmse_m": 0.0019634503970227426
+      },
+      {
+        "elapsed_seconds": 120.0,
+        "total_observed_m2": 175.625,
+        "valid_surface_m2": 154.0,
+        "map_stamp": 122.4,
+        "map_receipt_wall": 44758.078196007,
+        "path_length_m": 14.991519536762562,
+        "max_distance_from_start_m": 10.616534626418284,
+        "localization_xy_p95_m": 0.03437252595486983,
+        "recent_minute_xy_p95_m": 0.034489746971724126,
+        "localization_xy_max_m": 0.035215787074141795,
+        "height_rmse_m": 0.0018159201033215772
+      },
+      {
+        "elapsed_seconds": 180.0,
+        "total_observed_m2": 238.75,
+        "valid_surface_m2": 219.125,
+        "map_stamp": 182.2,
+        "map_receipt_wall": 45039.323272028,
+        "path_length_m": 22.931981123131184,
+        "max_distance_from_start_m": 13.800423335470825,
+        "localization_xy_p95_m": 0.034179244815213596,
+        "recent_minute_xy_p95_m": 0.032747663393693685,
+        "localization_xy_max_m": 0.035215787074141795,
+        "height_rmse_m": 0.0017967161240623384
+      },
+      {
+        "elapsed_seconds": 240.0,
+        "total_observed_m2": 242.375,
+        "valid_surface_m2": 226.875,
+        "map_stamp": 242.3,
+        "map_receipt_wall": 45306.264910295,
+        "path_length_m": 30.062374582231243,
+        "max_distance_from_start_m": 16.726494774617038,
+        "localization_xy_p95_m": 0.04180965545932625,
+        "recent_minute_xy_p95_m": 0.04339165099414652,
+        "localization_xy_max_m": 0.04386101293926215,
+        "height_rmse_m": 0.0018235236315211256
+      },
+      {
+        "elapsed_seconds": 300.0,
+        "total_observed_m2": 285.75,
+        "valid_surface_m2": 269.4375,
+        "map_stamp": 302.3,
+        "map_receipt_wall": 45644.679478019,
+        "path_length_m": 38.2403239318787,
+        "max_distance_from_start_m": 16.726494774617038,
+        "localization_xy_p95_m": 0.04074184686487035,
+        "recent_minute_xy_p95_m": 0.035607234187339,
+        "localization_xy_max_m": 0.04386101293926215,
+        "height_rmse_m": 0.0018219023117154415
+      },
+      {
+        "elapsed_seconds": 360.0,
+        "total_observed_m2": 352.75,
+        "valid_surface_m2": 331.125,
+        "map_stamp": 362.2,
+        "map_receipt_wall": 45977.66586911,
+        "path_length_m": 46.243400621597026,
+        "max_distance_from_start_m": 16.726494774617038,
+        "localization_xy_p95_m": 0.04024303162517376,
+        "recent_minute_xy_p95_m": 0.03566448014996261,
+        "localization_xy_max_m": 0.04386101293926215,
+        "height_rmse_m": 0.0018606567769246828
+      },
+      {
+        "elapsed_seconds": 420.0,
+        "total_observed_m2": 413.625,
+        "valid_surface_m2": 388.125,
+        "map_stamp": 421.9,
+        "map_receipt_wall": 46295.499967943,
+        "path_length_m": 54.6281310245181,
+        "max_distance_from_start_m": 16.726494774617038,
+        "localization_xy_p95_m": 0.048222975932038184,
+        "recent_minute_xy_p95_m": 0.0501106692964085,
+        "localization_xy_max_m": 0.05225737897335698,
+        "height_rmse_m": 0.0018312749542420271
+      },
+      {
+        "elapsed_seconds": 472.2,
+        "total_observed_m2": 478.3125,
+        "valid_surface_m2": 448.6875,
+        "map_stamp": 472.3,
+        "map_receipt_wall": 46592.243043163,
+        "path_length_m": 60.95830217365774,
+        "max_distance_from_start_m": 16.726494774617038,
+        "localization_xy_p95_m": 0.0489608538833226,
+        "recent_minute_xy_p95_m": 0.05038248516287329,
+        "localization_xy_max_m": 0.05225737897335698,
+        "height_rmse_m": 0.0019471401507161728
+      }
+    ],
+    "half_windows": [
+      {
+        "start_seconds": 0.0,
+        "end_seconds": 240.0,
+        "reached": true,
+        "duration_seconds": 240.0,
+        "new_observed_m2": 221.3125,
+        "valid_surface_change_m2": 220.6875,
+        "path_length_m": 30.062374582231243,
+        "selected_actions": {
+          "advance": 12
+        },
+        "successful_actions": 12,
+        "grouping": "Actions grouped by dispatch time; advance can include rotation"
+      },
+      {
+        "start_seconds": 240.0,
+        "end_seconds": 472.2,
+        "reached": true,
+        "duration_seconds": 232.2,
+        "new_observed_m2": 235.9375,
+        "valid_surface_change_m2": 221.8125,
+        "path_length_m": 30.8959275914265,
+        "selected_actions": {
+          "advance": 12
+        },
+        "successful_actions": 12,
+        "grouping": "Actions grouped by dispatch time; advance can include rotation"
+      }
+    ],
+    "phase_seconds": {
+      "idle": 0.009999999999999787,
+      "planning": 2.0744999999999907,
+      "moving": 398.56250000000017,
+      "observing": 57.784249999999886,
+      "turning": 13.753499999999999,
+      "budget_reached": 0.015249999999980446
+    },
+    "active_unhealthy_snapshots": 0,
+    "localization_pauses": [],
+    "final_selected_action_counts": {
+      "advance": 24
+    },
+    "localization_memory": {
+      "samples": 466,
+      "first_minute_median_mib": 417.4375,
+      "last_minute_median_mib": 485.75,
+      "peak_mib": 498.734375,
+      "scope": "RSS of primary localization process only, not whole simulation"
+    },
+    "common_duration_metrics": {
+      "elapsed_seconds": 458.4,
+      "total_observed_m2": 451.625,
+      "valid_surface_m2": 426.0625,
+      "map_stamp": 459.2,
+      "map_receipt_wall": 46516.899254744,
+      "path_length_m": 59.66658110716352,
+      "max_distance_from_start_m": 16.726494774617038,
+      "localization_xy_p95_m": 0.04898972120868855,
+      "recent_minute_xy_p95_m": 0.05091166731858343,
+      "localization_xy_max_m": 0.05225737897335698,
+      "height_rmse_m": 0.0018184763669459533
+    },
+    "map_warning_counts": {
+      "Synchronized IMU unavailable; frame omitted": 30,
+      "Laser localization unavailable; depth frame omitted: status_stale": 198,
+      "Laser localization unavailable; new map frames suspended: status_recovering": 3595,
+      "Laser localization unavailable; depth frame omitted: status_recovering": 153,
+      "Laser localization unavailable; depth frame omitted: observation_before_ready": 179,
+      "Laser localization unavailable; new map frames suspended: status_from_future": 3,
+      "No recent observations; saved map is historical": 32
+    },
+    "first_capacity_warning": null,
+    "final_map_elapsed_seconds": 468.99025,
+    "map_age_at_mission_end_sim_seconds": 3.2097499999999854,
+    "summary": {
+      "frames": 646,
+      "stamp": 472.3,
+      "total_observed_m2": 478.3125,
+      "valid_surface_m2": 448.6875,
+      "observed_inside_reference_m2": 478.3125,
+      "invalid_inside_reference_m2": 29.625,
+      "outside_reference_cells": 0,
+      "outside_valid_cells": 0,
+      "mixed_valid_cells": 23,
+      "single_surface": {
+        "count": 7156,
+        "mae_m": 0.0017224728733026683,
+        "rmse_m": 0.0019471401507161728,
+        "p95_abs_m": 0.002534386037008335,
+        "signed_mean_m": -0.0015391925585331024
+      },
+      "all_valid_including_mixed": {
+        "count": 7179,
+        "mae_m": 0.0017701573590394883,
+        "rmse_m": 0.0025482397000067374,
+        "p95_abs_m": 0.002547710242135913,
+        "signed_mean_m": -0.0015421422086116252
+      },
+      "slope_mae_degrees": 0.08162203740996755,
+      "key": "hybrid_v4_fixed",
+      "label": "hybrid_v4 (无云台)",
+      "strategy": "hybrid_v4_fixed",
+      "terrain_strategy": "elevation_neighborhood_v1",
+      "camera_mode": "fixed",
+      "autonomy_strategy": "hybrid_frontier_v4",
+      "experiment": "experiment-338802cb51de",
+      "tested_commit": "c86f12794d3de756276ae2491178106a477de2f6",
+      "outcome": "budget_completed",
+      "reason": "剩余时间不足以完成下一候选观察动作",
+      "budget_seconds": 480.0,
+      "elapsed_seconds": 472.2,
+      "wall_seconds": 2467.6527213730005,
+      "realtime_factor": 0.19135593753130228,
+      "radius": null,
+      "terminal_receipt_wall": 46604.994198718,
+      "snapshot_receipt_wall": 46592.243043163,
+      "initial_received_observed_m2": 21.0625,
+      "new_observed_since_start_m2": 457.25,
+      "actions": 24,
+      "successful_actions": 24,
+      "move_actions": 24,
+      "chassis_turn_phases": 9,
+      "gimbal_selected_actions": 0,
+      "global_frontier_switches": 5,
+      "localization_pauses": 0,
+      "premature_ready_samples": 9,
+      "path_length_m": 60.9583021736577,
+      "max_distance_from_start_m": 16.726494774617038,
+      "localization_xy_p95_m": 0.0489608538833226,
+      "localization_xy_max_m": 0.05225737897335698,
+      "gimbal": {
+        "samples": 5270,
+        "pan_range_deg": [
+          -0.0,
+          0.0
+        ],
+        "tilt_range_deg": [
+          -28.01,
+          -27.96
+        ],
+        "startup_actions": 0,
+        "frontier_actions": 0
+      },
+      "localization": {
+        "plan_status": {
+          "solved": 4722
+        },
+        "longest_no_solution_frames": 0,
+        "spread_retry": {}
+      },
+      "archive": {
+        "frames": 646,
+        "raw_points": 9167449,
+        "segments": 2,
+        "mission_frames": 643,
+        "mission_raw_points": 9123723,
+        "first_part_end_sim": 228.6,
+        "last_stamp_sim": 472.3
+      },
+      "capture": {
+        "actual_screen_capture": true,
+        "frame_count": 7358,
+        "width": 1120,
+        "height": 760,
+        "nominal_cfr_fps": 3,
+        "encoder_exit": 0,
+        "error": null,
+        "experiment": "experiment-338802cb51de",
+        "captured_display": ":101",
+        "timing": "Use frames.jsonl for actual wall timing; CFR video is a frame sequence, not a precise wall clock.",
+        "truth_used_by_control": false
+      },
+      "process_exits": {
+        "driver": 0,
+        "video": 0,
+        "backend": 0
+      }
+    },
+    "label": "hybrid_v4 (无云台)",
+    "autonomy_strategy": "hybrid_frontier_v4",
+    "camera_mode": "fixed"
+  },
+  {
+    "strategy": "hybrid_v41_gimbal",
+    "actual_elapsed_seconds": 471.2,
+    "declared_budget_seconds": 480.0,
+    "declared_wall_limit_seconds": 7200.0,
+    "outcome": "budget_completed",
+    "reason": "剩余时间不足以完成下一候选观察动作",
+    "budget_exhausted_normally": true,
+    "minute_metrics": [
+      {
+        "elapsed_seconds": 0.0,
+        "total_observed_m2": 17.5,
+        "valid_surface_m2": 4.5625,
+        "map_stamp": 0.8,
+        "map_receipt_wall": 115.691081072,
+        "path_length_m": 0.0,
+        "max_distance_from_start_m": 0.0,
+        "localization_xy_p95_m": null,
+        "recent_minute_xy_p95_m": null,
+        "localization_xy_max_m": null,
+        "height_rmse_m": 0.0019159791389786534
+      },
+      {
+        "elapsed_seconds": 60.0,
+        "total_observed_m2": 96.0625,
+        "valid_surface_m2": 81.75,
+        "map_stamp": 61.3,
+        "map_receipt_wall": 520.567454782,
+        "path_length_m": 8.050061131680044,
+        "max_distance_from_start_m": 7.640938451191946,
+        "localization_xy_p95_m": 0.03622751556273904,
+        "recent_minute_xy_p95_m": 0.03622751556273904,
+        "localization_xy_max_m": 0.03791497360669264,
+        "height_rmse_m": 0.0012559555005095479
+      },
+      {
+        "elapsed_seconds": 120.0,
+        "total_observed_m2": 177.25,
+        "valid_surface_m2": 153.4375,
+        "map_stamp": 121.3,
+        "map_receipt_wall": 930.550840131,
+        "path_length_m": 15.808305583603957,
+        "max_distance_from_start_m": 12.376312983759046,
+        "localization_xy_p95_m": 0.0512288805174041,
+        "recent_minute_xy_p95_m": 0.05159905244481082,
+        "localization_xy_max_m": 0.053081555543388045,
+        "height_rmse_m": 0.001005994940453367
+      },
+      {
+        "elapsed_seconds": 180.0,
+        "total_observed_m2": 224.4375,
+        "valid_surface_m2": 199.0,
+        "map_stamp": 181.6,
+        "map_receipt_wall": 1367.553360783,
+        "path_length_m": 23.991990507528755,
+        "max_distance_from_start_m": 14.602273738027497,
+        "localization_xy_p95_m": 0.06262683639757331,
+        "recent_minute_xy_p95_m": 0.06346247225160197,
+        "localization_xy_max_m": 0.06431459065120367,
+        "height_rmse_m": 0.0009532776170410633
+      },
+      {
+        "elapsed_seconds": 240.0,
+        "total_observed_m2": 291.0,
+        "valid_surface_m2": 261.875,
+        "map_stamp": 241.2,
+        "map_receipt_wall": 1818.413602871,
+        "path_length_m": 30.899766676082013,
+        "max_distance_from_start_m": 14.602273738027497,
+        "localization_xy_p95_m": 0.0618564808762129,
+        "recent_minute_xy_p95_m": 0.04413373955878048,
+        "localization_xy_max_m": 0.06431459065120367,
+        "height_rmse_m": 0.0012545971137527159
+      },
+      {
+        "elapsed_seconds": 300.0,
+        "total_observed_m2": 340.1875,
+        "valid_surface_m2": 306.0625,
+        "map_stamp": 301.2,
+        "map_receipt_wall": 2264.250907141,
+        "path_length_m": 37.873744765091466,
+        "max_distance_from_start_m": 14.602273738027497,
+        "localization_xy_p95_m": 0.060900944321740764,
+        "recent_minute_xy_p95_m": 0.024288933955351758,
+        "localization_xy_max_m": 0.06431459065120367,
+        "height_rmse_m": 0.0015030045012538128
+      },
+      {
+        "elapsed_seconds": 360.0,
+        "total_observed_m2": 408.9375,
+        "valid_surface_m2": 369.6875,
+        "map_stamp": 361.5,
+        "map_receipt_wall": 2695.718279679,
+        "path_length_m": 45.72709959015044,
+        "max_distance_from_start_m": 14.602273738027497,
+        "localization_xy_p95_m": 0.06014211840687799,
+        "recent_minute_xy_p95_m": 0.0328326892190472,
+        "localization_xy_max_m": 0.06431459065120367,
+        "height_rmse_m": 0.0014852143202999384
+      },
+      {
+        "elapsed_seconds": 420.0,
+        "total_observed_m2": 481.0625,
+        "valid_surface_m2": 430.625,
+        "map_stamp": 421.2,
+        "map_receipt_wall": 3060.715052305,
+        "path_length_m": 53.86004144471349,
+        "max_distance_from_start_m": 14.602273738027497,
+        "localization_xy_p95_m": 0.05968495554395631,
+        "recent_minute_xy_p95_m": 0.0482836590972332,
+        "localization_xy_max_m": 0.06431459065120367,
+        "height_rmse_m": 0.001505940927295184
+      },
+      {
+        "elapsed_seconds": 471.2,
+        "total_observed_m2": 550.75,
+        "valid_surface_m2": 495.0625,
+        "map_stamp": 471.9,
+        "map_receipt_wall": 3388.606700799,
+        "path_length_m": 58.94412830563106,
+        "max_distance_from_start_m": 14.602273738027497,
+        "localization_xy_p95_m": 0.059435263821020025,
+        "recent_minute_xy_p95_m": 0.052261004445642495,
+        "localization_xy_max_m": 0.06431459065120367,
+        "height_rmse_m": 0.0014959460221184247
+      }
+    ],
+    "half_windows": [
+      {
+        "start_seconds": 0.0,
+        "end_seconds": 240.0,
+        "reached": true,
+        "duration_seconds": 240.0,
+        "new_observed_m2": 273.5,
+        "valid_surface_change_m2": 257.3125,
+        "path_length_m": 30.899766676082013,
+        "selected_actions": {
+          "advance": 13
+        },
+        "successful_actions": 13,
+        "grouping": "Actions grouped by dispatch time; advance can include rotation"
+      },
+      {
+        "start_seconds": 240.0,
+        "end_seconds": 471.2,
+        "reached": true,
+        "duration_seconds": 231.2,
+        "new_observed_m2": 259.75,
+        "valid_surface_change_m2": 233.1875,
+        "path_length_m": 28.044361629549048,
+        "selected_actions": {
+          "advance": 13,
+          "turn": 1
+        },
+        "successful_actions": 14,
+        "grouping": "Actions grouped by dispatch time; advance can include rotation"
+      }
+    ],
+    "phase_seconds": {
+      "idle": 0.010000000000000231,
+      "planning": 2.2440000000000753,
+      "gimbal_scanning": 29.67525000000011,
+      "moving": 386.5417499999999,
+      "observing": 52.72899999999991,
+      "budget_reached": 0.0
+    },
+    "active_unhealthy_snapshots": 0,
+    "localization_pauses": [],
+    "final_selected_action_counts": {
+      "advance": 26,
+      "turn": 1
+    },
+    "localization_memory": {
+      "samples": 619,
+      "first_minute_median_mib": 413.81640625,
+      "last_minute_median_mib": 489.16015625,
+      "peak_mib": 501.43359375,
+      "scope": "RSS of primary localization process only, not whole simulation"
+    },
+    "common_duration_metrics": {
+      "elapsed_seconds": 458.4,
+      "total_observed_m2": 538.75,
+      "valid_surface_m2": 481.875,
+      "map_stamp": 459.2,
+      "map_receipt_wall": 3296.120432612,
+      "path_length_m": 58.132551424105465,
+      "max_distance_from_start_m": 14.602273738027497,
+      "localization_xy_p95_m": 0.05949148762435536,
+      "recent_minute_xy_p95_m": 0.052263269375098925,
+      "localization_xy_max_m": 0.06431459065120367,
+      "height_rmse_m": 0.0015130795856558635
+    },
+    "map_warning_counts": {
+      "Synchronized IMU unavailable; frame omitted": 41,
+      "Laser localization unavailable; depth frame omitted: status_stale": 181,
+      "Laser localization unavailable; new map frames suspended: status_recovering": 4525,
+      "Laser localization unavailable; depth frame omitted: status_recovering": 127,
+      "Laser localization unavailable; depth frame omitted: observation_before_ready": 163,
+      "No recent observations; saved map is historical": 56
+    },
+    "first_capacity_warning": null,
+    "final_map_elapsed_seconds": 469.553,
+    "map_age_at_mission_end_sim_seconds": 1.6469999999999914,
+    "summary": {
+      "frames": 694,
+      "stamp": 471.9,
+      "total_observed_m2": 550.75,
+      "valid_surface_m2": 495.0625,
+      "observed_inside_reference_m2": 550.75,
+      "invalid_inside_reference_m2": 55.6875,
+      "outside_reference_cells": 0,
+      "outside_valid_cells": 0,
+      "mixed_valid_cells": 30,
+      "single_surface": {
+        "count": 7891,
+        "mae_m": 0.0010708675901280296,
+        "rmse_m": 0.0014959460221184247,
+        "p95_abs_m": 0.0027042247854337405,
+        "signed_mean_m": 0.0007369304977660865
+      },
+      "all_valid_including_mixed": {
+        "count": 7921,
+        "mae_m": 0.0011652769225450406,
+        "rmse_m": 0.003043233107485322,
+        "p95_abs_m": 0.0027476149217254,
+        "signed_mean_m": 0.0007246757581422754
+      },
+      "slope_mae_degrees": 0.09495240854176892,
+      "key": "hybrid_v41_gimbal",
+      "label": "hybrid_v4.1 (有云台)",
+      "strategy": "hybrid_v41_gimbal",
+      "terrain_strategy": "elevation_neighborhood_v1",
+      "camera_mode": "gimbal",
+      "autonomy_strategy": "hybrid_frontier_v4",
+      "experiment": "experiment-f18308667236",
+      "tested_commit": "0778a0f3c8b5d80549d06984713f0b6fcac690f9",
+      "outcome": "budget_completed",
+      "reason": "剩余时间不足以完成下一候选观察动作",
+      "budget_seconds": 480.0,
+      "elapsed_seconds": 471.2,
+      "wall_seconds": 3324.220869921,
+      "realtime_factor": 0.14174750067410474,
+      "radius": null,
+      "terminal_receipt_wall": 3390.926221365,
+      "snapshot_receipt_wall": 3388.606700799,
+      "initial_received_observed_m2": 17.5,
+      "new_observed_since_start_m2": 533.25,
+      "actions": 27,
+      "successful_actions": 27,
+      "move_actions": 26,
+      "chassis_turn_phases": 0,
+      "gimbal_selected_actions": 27,
+      "global_frontier_switches": 1,
+      "localization_pauses": 0,
+      "premature_ready_samples": 6,
+      "path_length_m": 58.94412830563106,
+      "max_distance_from_start_m": 14.602273738027497,
+      "localization_xy_p95_m": 0.059435263821020025,
+      "localization_xy_max_m": 0.06431459065120367,
+      "gimbal": {
+        "samples": 6695,
+        "pan_range_deg": [
+          -34.85,
+          85.54
+        ],
+        "tilt_range_deg": [
+          -29.93,
+          -0.0
+        ],
+        "startup_actions": 3,
+        "frontier_actions": 0
+      },
+      "localization": {
+        "plan_status": {
+          "solved": 4712
+        },
+        "longest_no_solution_frames": 0,
+        "spread_retry": {}
+      },
+      "archive": {
+        "frames": 694,
+        "raw_points": 9231389,
+        "segments": 2,
+        "mission_frames": 691,
+        "mission_raw_points": 9204752,
+        "first_part_end_sim": 217.1,
+        "last_stamp_sim": 471.9
+      },
+      "capture": {
+        "actual_screen_capture": true,
+        "frame_count": 9910,
+        "width": 1120,
+        "height": 760,
+        "nominal_cfr_fps": 3,
+        "encoder_exit": 0,
+        "error": null,
+        "experiment": "experiment-f18308667236",
+        "captured_display": ":101",
+        "timing": "Use frames.jsonl for actual wall timing; CFR video is a frame sequence, not a precise wall clock.",
+        "truth_used_by_control": false
+      },
+      "process_exits": {
+        "driver": 0,
+        "video": 0,
+        "backend": 0
+      }
+    },
+    "label": "hybrid_v4.1 (有云台)",
+    "autonomy_strategy": "hybrid_frontier_v4",
+    "camera_mode": "gimbal"
+  }
+]

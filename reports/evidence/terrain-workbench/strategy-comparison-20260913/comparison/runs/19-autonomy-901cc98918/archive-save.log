@@ -1,0 +1,6 @@
+waiting for service to become available...
+requester: making request: std_srvs.srv.Trigger_Request()
+
+response:
+std_srvs.srv.Trigger_Response(success=True, message='/evidence/frontend-experiments/experiment-03ed51d5ff45/survey-20260913T033833772964Z.npz')
+

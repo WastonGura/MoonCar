@@ -1,0 +1,37 @@
+{
+  "trigger_sim": 38.21925,
+  "source_grid_stamp": 37.24625,
+  "source_grid_version": 761.076379675,
+  "current_pose": {
+    "x": 3.774488390040611,
+    "y": 0.026901482315085344,
+    "z": 0.2694095272419309,
+    "yaw": 0.17461912459874487
+  },
+  "first_conservative_trigger": {
+    "seconds": 1.9000000000000001,
+    "pose": [
+      3.77254547323339,
+      0.025939788059501433,
+      0.7446191245987454
+    ],
+    "cells": [
+      {
+        "x": 3.8500001490115983,
+        "y": 0.9500001609325412,
+        "cost": 99
+      }
+    ]
+  },
+  "nearest_lethal_cell": [
+    3.8500001490115983,
+    1.2500001654028896
+  ],
+  "lethal_to_trigger_distance_m": 0.30000000447034836,
+  "safety_rectangle_m": [
+    1.26,
+    1.12
+  ],
+  "exact_risk_steps": [],
+  "note": "Same padded rectangle and thresholds; exact rectangle/cell overlap checks all 41 predictions. Terrain-source reasons are absent for the nearby lethal cells in the retained final sidecar."
+}

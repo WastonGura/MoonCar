@@ -1,0 +1,18 @@
+{
+  "trials": [
+    {
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    }
+  ],
+  "reset": "new Gazebo process and empty recorder/SLAM per trial",
+  "baseline": "wait for fresh localization and first archive; record actual initial cells",
+  "purpose": "pilot feasibility comparison; two repeats are not statistical validation"
+}

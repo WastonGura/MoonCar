@@ -1,0 +1,366 @@
+{
+  "mirror_metrics": {
+    "pair_04_05": {
+      "description": "04-coplanar_mesh-right vs 05-mirrored_mesh-left (reflected)",
+      "max_xy_diff_m": 4.49164587741291e-06,
+      "max_xy_diff_mm": 0.0044916458774129095,
+      "end_xy_diff_m": 4.49164587741291e-06,
+      "end_xy_diff_mm": 0.0044916458774129095,
+      "max_yaw_diff_rad": 1.3223526764249982e-05,
+      "end_yaw_diff_rad": 8.95928246746891e-06,
+      "tilted_steps_round1": 204,
+      "tilted_steps_round2": 204,
+      "tilted_points_round1": 395,
+      "tilted_points_round2": 395,
+      "mirror_symmetry_status": "Near-perfect mirror (within 4.49 um across full 20,000 steps)"
+    },
+    "pair_03_06": {
+      "description": "03-coplanar_mesh-left vs 06-mirrored_mesh-right (reflected)",
+      "max_xy_diff_m": 0.002415510069830413,
+      "max_xy_diff_mm": 2.4155100698304133,
+      "end_xy_diff_m": 0.0023534866801696815,
+      "end_xy_diff_mm": 2.3534866801696817,
+      "max_yaw_diff_rad": 0.015673886093276135,
+      "end_yaw_diff_rad": 0.015547637191084096,
+      "tilted_steps_round1": 9,
+      "tilted_steps_round2": 203,
+      "tilted_points_round1": 9,
+      "tilted_points_round2": 394,
+      "mirror_symmetry_status": "Divergent (2.38 mm endpoint diff, 9 vs 203 tilted steps due to iter 17034 grazing contact bifurcation)"
+    }
+  },
+  "rounds": [
+    {
+      "name": "01-plate-left",
+      "max_displacement_mm": 0.1725562688298195,
+      "endpoint_displacement_mm": 0.17255572561675728,
+      "path_length_m": 0.00017267760019794504,
+      "unwrapped_turn_deg": 205.98555145354288,
+      "circle_fit_radius_mm": 1.1759639811738367,
+      "circle_fit_center_world_mm": [
+        -1.1757830011585786,
+        0.04378334916736815
+      ],
+      "circle_fit_residual_rms_um": 0.08628639149830754,
+      "instantaneous_center_median_mm": [
+        -0.006885224711682251,
+        0.1724185142656998
+      ],
+      "tilted_steps": 0,
+      "tilted_points": 0,
+      "max_normal_angle_deg": 0.0,
+      "contact_count_min": 8,
+      "contact_count_max": 8,
+      "mean_total_normal_load_N": 14.881319955973726,
+      "nominal_gravity_load_N": 14.88132,
+      "normal_load_error_pct": 2.9584925384222776e-07,
+      "ros_odometry_error": {
+        "endpoint_pos_err_mm": 0.1744104104970402,
+        "max_pos_err_mm": 0.17255626876443428,
+        "endpoint_yaw_err_deg": 22.074790215659252,
+        "reported_turn_deg": 228.3306141161327,
+        "sample_offset_s": 0.028000000000002245
+      },
+      "gz_odometry_error": {
+        "endpoint_pos_err_mm": 0.17255572541245826,
+        "max_pos_err_mm": 0.17255626882851954,
+        "endpoint_yaw_err_deg": 12.981855061644659,
+        "reported_turn_deg": 218.9052987581859,
+        "sample_offset_s": -0.006000000000000227
+      }
+    },
+    {
+      "name": "02-plate-right",
+      "max_displacement_mm": 0.17255625159969917,
+      "endpoint_displacement_mm": 0.17255578245342776,
+      "path_length_m": 0.00017267756935997544,
+      "unwrapped_turn_deg": -205.98555145319074,
+      "circle_fit_radius_mm": 1.1759895444036303,
+      "circle_fit_center_world_mm": [
+        -1.1758085890924048,
+        -0.04378215301183853
+      ],
+      "circle_fit_residual_rms_um": 0.08627986129900855,
+      "instantaneous_center_median_mm": [
+        -0.006885230378861504,
+        -0.17241867572575445
+      ],
+      "tilted_steps": 0,
+      "tilted_points": 0,
+      "max_normal_angle_deg": 0.0,
+      "contact_count_min": 8,
+      "contact_count_max": 8,
+      "mean_total_normal_load_N": 14.881319955973726,
+      "nominal_gravity_load_N": 14.88132,
+      "normal_load_error_pct": 2.9584925384222776e-07,
+      "ros_odometry_error": {
+        "endpoint_pos_err_mm": 0.17441046654733475,
+        "max_pos_err_mm": 0.17255625152913306,
+        "endpoint_yaw_err_deg": -22.07479021602545,
+        "reported_turn_deg": -228.33061411614594,
+        "sample_offset_s": 0.028000000000002245
+      },
+      "gz_odometry_error": {
+        "endpoint_pos_err_mm": 0.1725557823889797,
+        "max_pos_err_mm": 0.17255625159748686,
+        "endpoint_yaw_err_deg": -12.981855062035207,
+        "reported_turn_deg": -218.90529875822443,
+        "sample_offset_s": -0.006000000000000227
+      }
+    },
+    {
+      "name": "03-coplanar_mesh-left",
+      "max_displacement_mm": 0.88699927962369,
+      "endpoint_displacement_mm": 0.5357267206956945,
+      "path_length_m": 0.005711498809397659,
+      "unwrapped_turn_deg": 213.51201398745042,
+      "circle_fit_radius_mm": 0.39371669116410146,
+      "circle_fit_center_world_mm": [
+        -0.36257763797857523,
+        -0.00918046569172165
+      ],
+      "circle_fit_residual_rms_um": 102.57338812537007,
+      "instantaneous_center_median_mm": [
+        -0.14889325485237281,
+        -0.2574045162429852
+      ],
+      "tilted_steps": 9,
+      "tilted_points": 9,
+      "max_normal_angle_deg": 0.0262241845561582,
+      "contact_count_min": 8,
+      "contact_count_max": 16,
+      "mean_total_normal_load_N": 14.881313115162978,
+      "nominal_gravity_load_N": 14.88132,
+      "normal_load_error_pct": 4.626496186003397e-05,
+      "ros_odometry_error": {
+        "endpoint_pos_err_mm": 0.5137658430014173,
+        "max_pos_err_mm": 0.883661423580616,
+        "endpoint_yaw_err_deg": 14.489665322440601,
+        "reported_turn_deg": 228.3306714119264,
+        "sample_offset_s": 0.028000000000002245
+      },
+      "gz_odometry_error": {
+        "endpoint_pos_err_mm": 0.5406843980181931,
+        "max_pos_err_mm": 0.8836614233637712,
+        "endpoint_yaw_err_deg": 5.469004772009418,
+        "reported_turn_deg": 218.90529875776767,
+        "sample_offset_s": -0.006000000000000227
+      }
+    },
+    {
+      "name": "04-coplanar_mesh-right",
+      "max_displacement_mm": 2.1689532434050887,
+      "endpoint_displacement_mm": 2.166471155547216,
+      "path_length_m": 0.007251125709769663,
+      "unwrapped_turn_deg": -213.32765467727523,
+      "circle_fit_radius_mm": 1.009036021326066,
+      "circle_fit_center_world_mm": [
+        0.8051310366416055,
+        0.1498298127428465
+      ],
+      "circle_fit_residual_rms_um": 303.0081414529647,
+      "instantaneous_center_median_mm": [
+        1.2492331864222324,
+        0.7192522324872229
+      ],
+      "tilted_steps": 204,
+      "tilted_points": 395,
+      "max_normal_angle_deg": 0.15548560041911794,
+      "contact_count_min": 5,
+      "contact_count_max": 16,
+      "mean_total_normal_load_N": 14.88131311470691,
+      "nominal_gravity_load_N": 14.88132,
+      "normal_load_error_pct": 4.626802656773715e-05,
+      "ros_odometry_error": {
+        "endpoint_pos_err_mm": 2.166471155637428,
+        "max_pos_err_mm": 2.168456466626859,
+        "endpoint_yaw_err_deg": -14.697170995915235,
+        "reported_turn_deg": -227.96271791618898,
+        "sample_offset_s": -0.006000000000000227
+      },
+      "gz_odometry_error": {
+        "endpoint_pos_err_mm": 2.1664711557712675,
+        "max_pos_err_mm": 2.168788610445674,
+        "endpoint_yaw_err_deg": -5.639751837663412,
+        "reported_turn_deg": -218.90529875793715,
+        "sample_offset_s": -0.006000000000000227
+      }
+    },
+    {
+      "name": "05-mirrored_mesh-left",
+      "max_displacement_mm": 2.1708596832744043,
+      "endpoint_displacement_mm": 2.169513699142086,
+      "path_length_m": 0.007251620728040795,
+      "unwrapped_turn_deg": 213.32816800635445,
+      "circle_fit_radius_mm": 1.0094780526925513,
+      "circle_fit_center_world_mm": [
+        0.8073270311793659,
+        -0.1480038766990144
+      ],
+      "circle_fit_residual_rms_um": 304.1466819201745,
+      "instantaneous_center_median_mm": [
+        1.2482955993510247,
+        -0.7201543111747929
+      ],
+      "tilted_steps": 204,
+      "tilted_points": 395,
+      "max_normal_angle_deg": 0.15548824443429923,
+      "contact_count_min": 5,
+      "contact_count_max": 16,
+      "mean_total_normal_load_N": 14.881313114873308,
+      "nominal_gravity_load_N": 14.88132,
+      "normal_load_error_pct": 4.6266908397772565e-05,
+      "ros_odometry_error": {
+        "endpoint_pos_err_mm": 2.167867284009887,
+        "max_pos_err_mm": 2.17069900921942,
+        "endpoint_yaw_err_deg": 14.732173663104627,
+        "reported_turn_deg": 228.33061411638963,
+        "sample_offset_s": 0.028000000000002245
+      },
+      "gz_odometry_error": {
+        "endpoint_pos_err_mm": 2.169513699131376,
+        "max_pos_err_mm": 2.1706990093275684,
+        "endpoint_yaw_err_deg": 5.639238508561478,
+        "reported_turn_deg": 218.90529875791427,
+        "sample_offset_s": -0.006000000000000227
+      }
+    },
+    {
+      "name": "06-mirrored_mesh-right",
+      "max_displacement_mm": 1.9787358754334416,
+      "endpoint_displacement_mm": 1.9787358754334416,
+      "path_length_m": 0.0075864608483551055,
+      "unwrapped_turn_deg": -214.39241183924335,
+      "circle_fit_radius_mm": 1.042532079929525,
+      "circle_fit_center_world_mm": [
+        0.6699345741019187,
+        -0.5086813005615665
+      ],
+      "circle_fit_residual_rms_um": 211.02593895191106,
+      "instantaneous_center_median_mm": [
+        0.058927628302715994,
+        -0.34720287936331784
+      ],
+      "tilted_steps": 203,
+      "tilted_points": 394,
+      "max_normal_angle_deg": 0.1514233491321785,
+      "contact_count_min": 5,
+      "contact_count_max": 16,
+      "mean_total_normal_load_N": 14.881313115095665,
+      "nominal_gravity_load_N": 14.88132,
+      "normal_load_error_pct": 4.626541419400752e-05,
+      "ros_odometry_error": {
+        "endpoint_pos_err_mm": 1.9736063868056342,
+        "max_pos_err_mm": 1.9736063868056342,
+        "endpoint_yaw_err_deg": -13.645601811135514,
+        "reported_turn_deg": -227.96271791609328,
+        "sample_offset_s": -0.006000000000000227
+      },
+      "gz_odometry_error": {
+        "endpoint_pos_err_mm": 1.9736063856130373,
+        "max_pos_err_mm": 1.9736063856130373,
+        "endpoint_yaw_err_deg": -4.5881826526568,
+        "reported_turn_deg": -218.90529875761456,
+        "sample_offset_s": -0.006000000000000227
+      }
+    },
+    {
+      "name": "07-restore_plate-left",
+      "max_displacement_mm": 0.1725562688298195,
+      "endpoint_displacement_mm": 0.17255572561675728,
+      "path_length_m": 0.00017267760019794504,
+      "unwrapped_turn_deg": 205.98555145354288,
+      "circle_fit_radius_mm": 1.1759639811738367,
+      "circle_fit_center_world_mm": [
+        -1.1757830011585786,
+        0.04378334916736815
+      ],
+      "circle_fit_residual_rms_um": 0.08628639149830754,
+      "instantaneous_center_median_mm": [
+        -0.006885224711682251,
+        0.1724185142656998
+      ],
+      "tilted_steps": 0,
+      "tilted_points": 0,
+      "max_normal_angle_deg": 0.0,
+      "contact_count_min": 8,
+      "contact_count_max": 8,
+      "mean_total_normal_load_N": 14.881319955973726,
+      "nominal_gravity_load_N": 14.88132,
+      "normal_load_error_pct": 2.9584925384222776e-07,
+      "ros_odometry_error": {
+        "endpoint_pos_err_mm": 0.17441041049615869,
+        "max_pos_err_mm": 0.17255626882855513,
+        "endpoint_yaw_err_deg": 22.07484751143661,
+        "reported_turn_deg": 228.33067141191006,
+        "sample_offset_s": 0.028000000000002245
+      },
+      "gz_odometry_error": {
+        "endpoint_pos_err_mm": 0.17255572541245826,
+        "max_pos_err_mm": 0.17255626882851954,
+        "endpoint_yaw_err_deg": 12.981855061644659,
+        "reported_turn_deg": 218.9052987581859,
+        "sample_offset_s": -0.006000000000000227
+      }
+    },
+    {
+      "name": "08-restore_plate-right",
+      "max_displacement_mm": 0.17255625159969917,
+      "endpoint_displacement_mm": 0.17255578245342776,
+      "path_length_m": 0.00017267756935997544,
+      "unwrapped_turn_deg": -205.98555145319074,
+      "circle_fit_radius_mm": 1.1759895444036303,
+      "circle_fit_center_world_mm": [
+        -1.1758085890924048,
+        -0.04378215301183853
+      ],
+      "circle_fit_residual_rms_um": 0.08627986129900855,
+      "instantaneous_center_median_mm": [
+        -0.006885230378861504,
+        -0.17241867572575445
+      ],
+      "tilted_steps": 0,
+      "tilted_points": 0,
+      "max_normal_angle_deg": 0.0,
+      "contact_count_min": 8,
+      "contact_count_max": 8,
+      "mean_total_normal_load_N": 14.881319955973726,
+      "nominal_gravity_load_N": 14.88132,
+      "normal_load_error_pct": 2.9584925384222776e-07,
+      "ros_odometry_error": {
+        "endpoint_pos_err_mm": 0.1725557823930607,
+        "max_pos_err_mm": 0.1725562515291332,
+        "endpoint_yaw_err_deg": -22.039216923967604,
+        "reported_turn_deg": -227.96266062015684,
+        "sample_offset_s": -0.006000000000000227
+      },
+      "gz_odometry_error": {
+        "endpoint_pos_err_mm": 0.1725557823889797,
+        "max_pos_err_mm": 0.17255625159748686,
+        "endpoint_yaw_err_deg": -12.981855062035207,
+        "reported_turn_deg": -218.90529875822443,
+        "sample_offset_s": -0.006000000000000227
+      }
+    }
+  ],
+  "bifurcation_event_17034": {
+    "step_before_17034": {
+      "iter": 17034,
+      "03_RR_depth_m": 3.949e-11,
+      "06_RL_depth_m": 0.0,
+      "trajectory_diff_xy_um": 4.502840615860293
+    },
+    "step_loss_17035": {
+      "iter": 17035,
+      "03_RR_contacts": 3,
+      "06_RL_contacts": 0,
+      "mechanism": "06 RL experienced momentary contact loss (0 contacts), causing suspension drop"
+    },
+    "step_impact_17036": {
+      "iter": 17036,
+      "03_RR_depth_m": 4.02e-10,
+      "06_RL_depth_m": 2.489e-06,
+      "mechanism": "06 RL struck facet with 2.49 um penetration, entering 247-step tilted contact sequence until iter 17281"
+    }
+  }
+}

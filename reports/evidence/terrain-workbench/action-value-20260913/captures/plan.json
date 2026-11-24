@@ -1,0 +1,189 @@
+{
+  "created_utc": "2026-09-13T13:33:24.112945+00:00",
+  "trials": [
+    {
+      "folder": "ramp-repeat1-hold",
+      "repeat": 1,
+      "arm": "hold",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    },
+    {
+      "folder": "ramp-repeat1-small_turn",
+      "repeat": 1,
+      "arm": "small_turn",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    },
+    {
+      "folder": "ramp-repeat1-wide_turn",
+      "repeat": 1,
+      "arm": "wide_turn",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    },
+    {
+      "folder": "ramp-repeat1-advance",
+      "repeat": 1,
+      "arm": "advance",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    },
+    {
+      "folder": "ramp-repeat2-advance",
+      "repeat": 2,
+      "arm": "advance",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    },
+    {
+      "folder": "ramp-repeat2-wide_turn",
+      "repeat": 2,
+      "arm": "wide_turn",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    },
+    {
+      "folder": "ramp-repeat2-small_turn",
+      "repeat": 2,
+      "arm": "small_turn",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    },
+    {
+      "folder": "ramp-repeat2-hold",
+      "repeat": 2,
+      "arm": "hold",
+      "scene": "visible_ramp_v1",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "next_goal": [
+        0.1,
+        1.05
+      ],
+      "seconds": 60
+    }
+  ],
+  "source_sha256": {
+    "scripts/compare_observation_actions.py": "d0da752c87d13897094bc15d43cd83d49aae8873a45f496d60befb5669efb78b",
+    "scripts/capture_slope_resampling.py": "1a60d6c7c53ea6298a6b3b4d05eaa9ff0ae29bdf5142d93b6a63226f608a8e58",
+    "scripts/trajectory_evaluation.py": "23d0bd7509671a32255cbc2f884cd3474c7c00add93983c27e252386cff00e38",
+    "scripts/skip_probe.py": "b990f14e010645d8fe170e9ffadc32ea37c95d27741ce5ca4dd3611322923afa",
+    "scripts/swept_resampling.py": "1a038b2eebb36913165b450db43c86e43c12fc42ab41ac85fd49f1b4064f8c34",
+    "scripts/survey_evaluation.py": "004780a0d96f23b751ef8a5ef783730187dbdbc9847d2f84ca3fee30e8dd9f23",
+    "scripts/observation_path.py": "af3d01f56c0ccae98262c5d326b8f70fa23ffea72176b95874bfa89265ae8d93",
+    "scripts/resampling_dataset.py": "6abc429cc48228781b44484eabdf144c6faae11fa00e94a049c36fef5c367a85",
+    "scripts/autonomous_survey.py": "1b1ee3a62d418f44dd3c9ab62e4b4a5f931da62e6bc85b356281e00680d32202",
+    "scripts/experiment_motion.py": "59a67e5d05a0b657e9ce08ad8d783bf7e501d03849a156a92c41ee36b430479e",
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_map.py": "d43e3abdee30d4b70701fef793d65f8067149ae9bfdcbf4ada3041b407a1a856",
+    "tmp/evaluate_action_value.py": "74df15c925a58e3b6183066b089c9a704d5f7128c89034f5135430e722ce1755"
+  },
+  "protocol": [
+    "Eight fresh resets; two ramp repeats with reversed arm order. Hold, +.02rad, +.4rad, next Nav2 location then restore decision heading.",
+    "60simseconds, >=5s pre-move baseline and frozen targets, same initial Nav2 move,5s arrival holding. All arms query the same alternative path.",
+    "Pre-action sensor-only checkpoint <=5s old and >=22s remaining. Primary equal20simsecond window from command, INCLUDING movement/turn costs.",
+    "ROI is fixed radius8m disk around initial XY intersected with50m world. Utility=new observed area + recovered previously deficient area; report each separately, plus loss of previously valid area.",
+    "Retain shared-cohort comparisons: old deficits common to all4arms; novel cells absent from all4decision maps. Pre-move target versus outside-target separate. No per-arm subtraction of unequal eligible sets.",
+    "Record failures and incomplete windows; never replace a failed run. Require8 valid windows and successful prescribed movement/headings for comparison completeness, not superiority.",
+    "Turn forecasts use frozen v4; movement forecasts use existing path opportunity proxy, explicitly different models. No joint predicted ranking or online admission.",
+    "No parameter fitting on outcomes, no significance/accuracy/hardware claim; wide-turn .4rad and .75m onward displacement fixed in advance."
+  ]
+}

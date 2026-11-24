@@ -1,0 +1,15 @@
+{
+  "identical_cell_rows": 883,
+  "changed_decisions": [
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "before": "already_aligned",
+      "after": "try_observation"
+    }
+  ],
+  "development_only": true,
+  "inputs": {
+    "/source/reports/evidence/terrain-workbench/swept-support-20260913/analysis/cells.csv": "b71a0a566a592d88072af95602efcb85b87c679ad486e570c2ce391c826bbb9b",
+    "/evidence/small-angle-development-20260913/cells.csv": "b71a0a566a592d88072af95602efcb85b87c679ad486e570c2ce391c826bbb9b"
+  }
+}

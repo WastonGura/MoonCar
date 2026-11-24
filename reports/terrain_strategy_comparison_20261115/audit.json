@@ -1,0 +1,15 @@
+{
+  "final_candidate_commit": "6a5416e81659d45fd3bffe43515fc4c673248d24",
+  "baseline_source_unchanged": true,
+  "archived_frames": 79,
+  "synthetic_checks": 9,
+  "synthetic_candidate_checks_passed": 9,
+  "node_loading_smoke": {
+    "baseline": "original classifier",
+    "elevation_neighborhood_v1": "candidate classifier"
+  },
+  "runtime_installed_files_verified": 121,
+  "online_result": "failed",
+  "online_error": "TimeoutError('Navigation lifecycle/localization readiness not met')",
+  "online_actions_dispatched": 0
+}

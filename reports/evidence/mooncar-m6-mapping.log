@@ -1,0 +1,48 @@
+[1/4] Building MoonCar workspace
+Starting >>> mooncar_control
+Starting >>> mooncar_description
+Starting >>> mooncar_terrain
+Starting >>> mooncar_msgs
+Finished <<< mooncar_control [0.23s]
+Starting >>> mooncar_bringup
+Finished <<< mooncar_description [0.26s]
+Finished <<< mooncar_msgs [0.27s]
+Finished <<< mooncar_terrain [0.30s]
+Starting >>> mooncar_gazebo
+Finished <<< mooncar_gazebo [0.18s]
+Finished <<< mooncar_bringup [0.29s]
+Starting >>> mooncar_slam
+Finished <<< mooncar_slam [0.16s]
+Starting >>> mooncar_navigation
+Finished <<< mooncar_navigation [0.18s]
+
+Summary: 8 packages finished [1.13s]
+[2/4] Starting Gazebo, SLAM, EKF, and RViz
+[3/4] Waiting for laser data
+[4/4] Running drive and mapping checks
+[INFO] [1788559324.581352697] [mooncar_drive_smoke_test]: Waiting for command subscribers
+[INFO] [1788559333.715526341] [mooncar_drive_smoke_test]: Drive smoke test complete
+Waiting for /mooncar/scan
+Waiting for /odometry/filtered
+Waiting for /map
+[INFO] [1788559353.141992283] [map_saver]: 
+	map_saver lifecycle node launched. 
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[INFO] [1788559353.142248924] [map_saver]: Creating
+[INFO] [1788559353.145097123] [map_saver]: Configuring
+[INFO] [1788559353.160602567] [map_saver]: Saving map from 'map' topic to '/home/homura/mooncar_m6_mapping_regression' file
+[WARN] [1788559353.160668872] [map_saver]: Free threshold unspecified. Setting it to default value: 0.250000
+[WARN] [1788559353.160681495] [map_saver]: Occupied threshold unspecified. Setting it to default value: 0.650000
+[WARN] [1788559353.170315093] [map_io]: Image format unspecified. Setting it to: pgm
+[INFO] [1788559353.172777649] [map_io]: Received a 298 X 201 map @ 0.05 m/pix
+[INFO] [1788559353.212181440] [map_io]: Writing map occupancy data to /home/homura/mooncar_m6_mapping_regression.pgm
+[INFO] [1788559353.215467409] [map_io]: Writing map metadata to /home/homura/mooncar_m6_mapping_regression.yaml
+[INFO] [1788559353.216203078] [map_io]: Map saved
+[INFO] [1788559353.216235779] [map_saver]: Map saved successfully
+[INFO] [1788559353.219579567] [map_saver]: Destroying
+Mapping smoke test passed: /home/homura/mooncar_m6_mapping_regression.yaml
+
+M4 acceptance passed.
+Map: /home/homura/mooncar_m6_mapping_regression.yaml
+Launch log: /tmp/mooncar_m4_acceptance.log

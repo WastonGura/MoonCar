@@ -1,0 +1,85 @@
+{
+  "status": "diagnostic_complete",
+  "attempts": 12,
+  "limit": 12,
+  "production_changed": false,
+  "goal_achieved": false,
+  "input_pairs": [
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  ],
+  "comparisons": [
+    {
+      "maximum_excursion_reduction_m": 0.30066733186277506,
+      "remaining_maximum_excursion_m": 0.012475743704121245,
+      "yaw_loss_rad": -1.9041185690404916e-06,
+      "mechanism_probe_passed": true,
+      "previous_one_cm_screen_passed": false,
+      "whole_vehicle_accepted": false
+    },
+    {
+      "maximum_excursion_reduction_m": 0.30066733186277506,
+      "remaining_maximum_excursion_m": 0.012475743704121245,
+      "yaw_loss_rad": -1.9041185690404916e-06,
+      "mechanism_probe_passed": true,
+      "previous_one_cm_screen_passed": false,
+      "whole_vehicle_accepted": false
+    },
+    {
+      "maximum_excursion_reduction_m": 0.30066733186480443,
+      "remaining_maximum_excursion_m": 0.012475743655439478,
+      "yaw_loss_rad": -1.9041133847430558e-06,
+      "mechanism_probe_passed": true,
+      "previous_one_cm_screen_passed": false,
+      "whole_vehicle_accepted": false
+    },
+    {
+      "maximum_excursion_reduction_m": 0.30066733186480443,
+      "remaining_maximum_excursion_m": 0.012475743655439478,
+      "yaw_loss_rad": -1.9041133847430558e-06,
+      "mechanism_probe_passed": true,
+      "previous_one_cm_screen_passed": false,
+      "whole_vehicle_accepted": false
+    }
+  ],
+  "restore_input_pairs": [
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    },
+    {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  ],
+  "mechanism_confirmed": true,
+  "previous_one_cm_screen_passed": false,
+  "whole_vehicle_accepted": false,
+  "freeze_unchanged": true
+}

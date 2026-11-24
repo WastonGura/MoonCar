@@ -1,0 +1,52 @@
+{
+  "common_4way_cells": 3418,
+  "common_4way_m2": 213.625,
+  "common_4way": [
+    {
+      "key": "coverage_v3_gimbal",
+      "label": "coverage_v3 (云台)",
+      "rmse_m": 0.0010586743892033387,
+      "mae_m": 0.0006163301702479952,
+      "p95_abs_m": 0.0019505001672259
+    },
+    {
+      "key": "surface_v3_gimbal",
+      "label": "surface_v3 (云台)",
+      "rmse_m": 0.0009958498074857753,
+      "mae_m": 0.0006244003389082369,
+      "p95_abs_m": 0.001598783008672881
+    },
+    {
+      "key": "hybrid_v4_fixed",
+      "label": "hybrid_v4 (无云台)",
+      "rmse_m": 0.0017522998774542583,
+      "mae_m": 0.001602979259433022,
+      "p95_abs_m": 0.002364735982701981
+    },
+    {
+      "key": "hybrid_v41_gimbal",
+      "label": "hybrid_v4.1 (有云台)",
+      "rmse_m": 0.001141993751264503,
+      "mae_m": 0.0006846961896457165,
+      "p95_abs_m": 0.0016694174200837801
+    }
+  ],
+  "common_surface_v3_vs_hybrid_v4_cells": 4651,
+  "common_surface_v3_vs_hybrid_v4_m2": 290.6875,
+  "common_surface_v3_vs_hybrid_v4": [
+    {
+      "key": "surface_v3_gimbal",
+      "label": "surface_v3 (云台)",
+      "rmse_m": 0.0013280382532874489,
+      "mae_m": 0.0007374931121425452,
+      "p95_abs_m": 0.002322549267088225
+    },
+    {
+      "key": "hybrid_v41_gimbal",
+      "label": "hybrid_v4.1 (有云台)",
+      "rmse_m": 0.0013682233232404398,
+      "mae_m": 0.0008360726604355305,
+      "p95_abs_m": 0.0024728743477493466
+    }
+  ]
+}

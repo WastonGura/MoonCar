@@ -1,0 +1,88 @@
+{
+  "created_utc": "2026-09-13T08:30:21.767234+00:00",
+  "trials": [
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-repeat1",
+      "start": [
+        0,
+        -0.6,
+        0.463648
+      ],
+      "goal": [
+        0.8,
+        -0.2
+      ],
+      "seconds": 35,
+      "repeat": 1,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-repeat1",
+      "start": [
+        0,
+        0.6,
+        -0.463648
+      ],
+      "goal": [
+        0.8,
+        0.2
+      ],
+      "seconds": 35,
+      "repeat": 1,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-repeat2",
+      "start": [
+        0,
+        -0.6,
+        0.463648
+      ],
+      "goal": [
+        0.8,
+        -0.2
+      ],
+      "seconds": 35,
+      "repeat": 2,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-repeat2",
+      "start": [
+        0,
+        0.6,
+        -0.463648
+      ],
+      "goal": [
+        0.8,
+        0.2
+      ],
+      "seconds": 35,
+      "repeat": 2,
+      "observation_yaw": 0.0
+    }
+  ],
+  "conditions": [
+    "approach"
+  ],
+  "source_sha256": {
+    "scripts/observation_path.py": "d68a761f18665307bda599904615cc719af52346970eaf062144aa34f8eca178",
+    "scripts/resampling_dataset.py": "6abc429cc48228781b44484eabdf144c6faae11fa00e94a049c36fef5c367a85",
+    "scripts/capture_slope_resampling.py": "86ff8be3f2389ec6f1320a2a44c2f6711beb54d11810cf717648274f4b893eae",
+    "scripts/experiment_motion.py": "59a67e5d05a0b657e9ce08ad8d783bf7e501d03849a156a92c41ee36b430479e",
+    "scripts/simulation_experiment.py": "c9f5bf8177ce2dbf07089aba7d6782f0c5d2bc2d90d566f47e8749915d63e1b4",
+    "scripts/autonomous_survey.py": "1b1ee3a62d418f44dd3c9ab62e4b4a5f931da62e6bc85b356281e00680d32202",
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_map.py": "d43e3abdee30d4b70701fef793d65f8067149ae9bfdcbf4ada3041b407a1a856"
+  },
+  "limits": [
+    "Two repeated trajectories per independent world, no training or strategy efficacy claim",
+    "ComputePathToPose snapshot saved before NavigateToPose; navigation may replan",
+    "Intermediate headings assume path tangents; final observation heading explicitly executed with Nav2 Spin",
+    "Goal yaw tolerance .1 radians, goal position diagnostic; no relaxation after outcomes",
+    "True poses/world geometry evaluator-only; no future or truth features"
+  ]
+}

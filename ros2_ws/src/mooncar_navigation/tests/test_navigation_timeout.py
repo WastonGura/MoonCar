@@ -1,0 +1,144 @@
+import pathlib
+import sys
+from types import SimpleNamespace
+import unittest
+from unittest.mock import Mock, patch
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / 'scripts'))
+import navigation_smoke_test as smoke  # noqa: E402
+from mission_smoke_test import MissionTest
+from nav_msgs.msg import Odometry
+from sensor_msgs.msg import JointState
+from collections import deque
+import yaml
+
+
+class NavigationTimeoutTest(unittest.TestCase):
+    def test_joint_rate_uses_message_time_and_resets(self):
+        node = object.__new__(MissionTest)
+        node.joint_stamps = deque(maxlen=31)
+        node.joint_rate = None
+        msg = JointState()
+        for period, expected in [(34_000_000, 1000/34), (1_000_000, 1000.0)]:
+            for i in range(31):
+                ns = i * period
+                msg.header.stamp.sec, msg.header.stamp.nanosec = divmod(ns, 1_000_000_000)
+                node.on_joint_state(msg)
+            self.assertAlmostEqual(node.joint_rate, expected)
+        msg.header.stamp.sec = msg.header.stamp.nanosec = 0
+        node.on_joint_state(msg)
+        self.assertIsNone(node.joint_rate)
+
+    def test_scan_self_filter_matches_navigation_footprint(self):
+        root = pathlib.Path(__file__).resolve().parents[2]
+        bridge = yaml.safe_load((root/'mooncar_gazebo/config/ros_gz_bridge.yaml').read_text())
+        self.assertTrue(any(x['ros_topic_name'] == '/mooncar/scan_raw' and
+                            x['gz_topic_name'] == '/mooncar/scan' for x in bridge))
+        config = yaml.safe_load((root/'mooncar_gazebo/config/laser_filter.yaml').read_text())
+        box = config['scan_to_scan_filter_chain']['ros__parameters']['filter1']['params']
+        nav = yaml.safe_load((root/'mooncar_navigation/config/nav2_params.yaml').read_text())
+        footprint = yaml.safe_load(nav['local_costmap']['local_costmap']['ros__parameters']['footprint'])
+        self.assertEqual(box['box_frame'], 'base_footprint')
+        self.assertFalse(box['invert'])
+        self.assertEqual((box['min_x'], box['max_x']), (min(p[0] for p in footprint), max(p[0] for p in footprint)))
+        self.assertEqual((box['min_y'], box['max_y']), (min(p[1] for p in footprint), max(p[1] for p in footprint)))
+
+    def test_localization_quality_and_ground_truth(self):
+        root = pathlib.Path(__file__).resolve().parents[2]
+        config = yaml.safe_load((root/'mooncar_slam/config/ekf.yaml').read_text())
+        self.assertTrue(config['mooncar_ekf']['ros__parameters']['odom0_config'][7])
+        node = object.__new__(MissionTest)
+        node.max_position_variance = 0.0
+        msg = Odometry()
+        MissionTest.on_odometry(node, msg)
+        msg.pose.covariance[7] = 26.0
+        with self.assertRaisesRegex(RuntimeError, 'covariance diverged'):
+            MissionTest.on_odometry(node, msg)
+        with patch('mission_smoke_test.subprocess.run', return_value=SimpleNamespace(
+                stdout='{"pose":[{"name":"mooncar","position":{"x":1.5,"y":3.0}}]}\n{"pose":[]}')):
+            self.assertEqual(MissionTest.ground_truth(), (1.5, 3.0))
+
+    def test_lifecycle_readiness_without_cli_polling(self):
+        node = Mock()
+        node.get_parameter.return_value.value = 90.0
+        node.create_client.return_value.call_async.return_value.result.return_value.current_state.id = 3
+        with patch.object(smoke.rclpy, 'ok', return_value=True), \
+                patch.object(smoke.rclpy, 'spin_once'):
+            smoke.NavigationSmokeTest.wait_for_navigation(node)
+        self.assertEqual(node.create_client.call_count, 6)
+
+    def test_lifecycle_readiness_has_wall_deadline(self):
+        node = Mock()
+        node.get_parameter.return_value.value = 90.0
+        with patch.object(smoke.rclpy, 'ok', return_value=True), \
+                patch.object(smoke.time, 'monotonic', side_effect=[0.0, 91.0]):
+            with self.assertRaisesRegex(RuntimeError, 'Nav2 not ready'):
+                smoke.NavigationSmokeTest.wait_for_navigation(node)
+
+    def test_lifecycle_queries_are_limited_to_one_per_second(self):
+        node = Mock()
+        node.get_parameter.return_value.value = 90.0
+        node.create_client.return_value.call_async.return_value.result.return_value.current_state.id = 2
+        with patch.object(smoke.rclpy, 'ok', return_value=True), \
+                patch.object(smoke.rclpy, 'spin_once'), \
+                patch.object(smoke.time, 'monotonic', side_effect=[0.0, 0.0, 0.1, 0.2, 1.0, 91.0]):
+            with self.assertRaisesRegex(RuntimeError, 'Nav2 not ready'):
+                smoke.NavigationSmokeTest.wait_for_navigation(node)
+        self.assertEqual(node.create_client.return_value.call_async.call_count, 12)
+
+    def run_goal(self, speed, finish_at, **overrides):
+        params = {'goal_x': 3.5, 'goal_y': 3.0, 'goal_yaw': 0.0,
+                  'server_timeout_s': 30.0, 'goal_timeout_s': 180.0,
+                  'wall_timeout_s': 600.0, 'clock_stall_timeout_s': 30.0,
+                  'min_displacement_m': 0.0}
+        params.update(overrides)
+        clock = {'wall': 0.0, 'ros': 0.0}
+        result = Mock()
+        result.done.side_effect = lambda: clock['ros'] >= finish_at
+        result.result.return_value.status = smoke.GoalStatus.STATUS_SUCCEEDED
+        handle = Mock(accepted=True)
+        handle.get_result_async.return_value = result
+        sent = Mock()
+        sent.result.return_value = handle
+        node = Mock(position=(0.0, 0.0))
+        node.get_parameter.side_effect = lambda key: SimpleNamespace(value=params[key])
+        node.client.send_goal_async.return_value = sent
+        node.get_clock.return_value.now.side_effect = lambda: SimpleNamespace(
+            nanoseconds=int(clock['ros'] * 1e9), to_msg=lambda: smoke.rclpy.time.Time().to_msg())
+
+        def step(*args, **kwargs):
+            clock['wall'] += 1.0
+            clock['ros'] += speed
+
+        with patch.object(smoke.time, 'monotonic', side_effect=lambda: clock['wall']), \
+                patch.object(smoke.rclpy, 'spin_once', side_effect=step), \
+                patch.object(smoke.rclpy, 'spin_until_future_complete'), \
+                patch.object(smoke.rclpy, 'ok', return_value=True):
+            try:
+                smoke.NavigationSmokeTest.run(node)
+            except RuntimeError:
+                handle.cancel_goal_async.assert_called_once()
+                raise
+        handle.cancel_goal_async.assert_not_called()
+        return clock
+
+    def test_slow_simulation_can_finish_after_180_wall_seconds(self):
+        clock = self.run_goal(0.2, 45.0)
+        self.assertGreater(clock['wall'], 180.0)
+        self.assertLess(clock['ros'], 180.0)
+
+    def test_ros_timeout_cancels(self):
+        with self.assertRaisesRegex(RuntimeError, 'ROS seconds'):
+            self.run_goal(1.0, 200.0)
+
+    def test_stopped_clock_cancels(self):
+        with self.assertRaisesRegex(RuntimeError, 'clock stopped'):
+            self.run_goal(0.0, 1.0)
+
+    def test_wall_limit_cancels_slow_clock(self):
+        with self.assertRaisesRegex(RuntimeError, 'wall seconds'):
+            self.run_goal(0.01, 1.0, wall_timeout_s=10.0)
+
+
+if __name__ == '__main__':
+    unittest.main()

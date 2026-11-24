@@ -1,0 +1,12 @@
+....[WARN] [1789215931.553049518] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+........127.0.0.1 - - [12/Sep/2026 12:25:42] "POST /api/simulation/apply HTTP/1.1" 403 -
+127.0.0.1 - - [12/Sep/2026 12:25:42] "GET /api/info?session=../survey.npz HTTP/1.1" 400 -
+127.0.0.1 - - [12/Sep/2026 12:25:42] "GET /api/info?session=experiment-test/../survey.npz HTTP/1.1" 400 -
+127.0.0.1 - - [12/Sep/2026 12:25:42] "GET /api/info?session=%2Fetc%2Ftest.npz HTTP/1.1" 400 -
+127.0.0.1 - - [12/Sep/2026 12:25:42] "GET /api/info?session=experiment-test%5Csurvey.npz HTTP/1.1" 400 -
+.127.0.0.1 - - [12/Sep/2026 12:25:43] "POST /api/simulation/move HTTP/1.1" 403 -
+.
+----------------------------------------------------------------------
+Ran 14 tests in 13.566s
+
+OK

@@ -1,0 +1,26 @@
+MoonCar archive viewer: http://127.0.0.1:8766
+172.17.0.1 - - [13/Sep/2026 08:30:23] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:30:23] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:31:18] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:31:27] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:31:27] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+[WARN] [1789288294.524217193] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+172.17.0.1 - - [13/Sep/2026 08:32:08] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+127.0.0.1 - - [13/Sep/2026 08:32:08] "POST /api/simulation/stop HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:32:42] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:32:43] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:32:44] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+[WARN] [1789288368.837879056] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+172.17.0.1 - - [13/Sep/2026 08:35:20] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:35:24] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:35:24] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+[WARN] [1789288530.261315432] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+172.17.0.1 - - [13/Sep/2026 08:36:29] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:37:51] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:37:56] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+[WARN] [1789288680.916224184] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+172.17.0.1 - - [13/Sep/2026 08:38:27] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:40:21] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+172.17.0.1 - - [13/Sep/2026 08:40:29] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -
+[WARN] [1789288834.713544673] [tf2_buffer]: Detected jump back in time. Clearing tf buffer.
+172.17.0.1 - - [13/Sep/2026 08:42:57] "GET /api/simulation/scene.jpg HTTP/1.1" 400 -

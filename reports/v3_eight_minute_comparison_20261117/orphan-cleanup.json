@@ -1,0 +1,22 @@
+{
+  "owned_experiment": "experiment-c3a7d73a251a",
+  "process_identity": {
+    "pid": 13915,
+    "start_ticks": "1617671",
+    "argv": [
+      "gz sim -r -s -v 2 --render-engine ogre2 /tmp/mooncar-v2-lzr061wu.sdf"
+    ]
+  },
+  "gz_partition": "mooncar-experiment-c3a7d73a251a",
+  "observed_after_pair": "    PID    PPID    PGID STAT ELAPSED     TIME %CPU   RSS COMMAND\n  13915       1   13915 Ssl     4185 00:23:56 34.3 1169600 gz sim -r -s -v 2 --render-engine ogre2 /tmp/mooncar-v2-lzr061wu.sdf\n",
+  "performance_comparison_limitation": "A baseline Gazebo process remained resident after baseline and was found after the pair. Clean resource isolation was not verified. Continued CPU consumption during candidate was not measured.",
+  "action": "SIGTERM to verified owned Gazebo process group",
+  "removed": true,
+  "earlier_post_pair_ps_observation": {
+    "pid": 13915,
+    "elapsed_seconds": 4092,
+    "accumulated_cpu_time": "00:23:56",
+    "rss_kib": 1169600
+  },
+  "interpretation": "The later retained ps snapshot (elapsed 4185 s) has the same accumulated CPU time 00:23:56. These post-run samples do not prove ongoing CPU contention during the candidate. Resident memory and incomplete shutdown are confirmed."
+}

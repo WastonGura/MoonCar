@@ -1,0 +1,79 @@
+{
+  "correction": "Previous total-coverage conclusion used only the start-relative 8 m disk.",
+  "runs": [
+    {
+      "strategy": "baseline",
+      "experiment": "experiment-371c002dfcbb",
+      "resolution_m": 0.25,
+      "world_bounds": [
+        -15,
+        -15,
+        15,
+        15
+      ],
+      "elapsed_seconds": 169.6,
+      "full_observed_m2": 182.5,
+      "inside_start_radius_m2": 160.625,
+      "outside_start_radius_m2": 21.875,
+      "newly_observed_since_task_start_m2": 169.25,
+      "full_quality_at_least_08_m2": 86.875,
+      "max_distance_from_start_m": 2.510719438184649,
+      "endpoint_distance_from_start_m": 2.5106556692874586,
+      "truth_xy_bounds": [
+        [
+          0.5000140137432996,
+          -2.358821264510803
+        ],
+        [
+          2.6616854059862782,
+          1.178301289857964
+        ]
+      ],
+      "common_elapsed_seconds": 169.6,
+      "common_elapsed_full_observed_m2": 182.5,
+      "archive_reproduces_quality_cell_set": true
+    },
+    {
+      "strategy": "candidate",
+      "experiment": "experiment-42555ed21b7c",
+      "resolution_m": 0.25,
+      "world_bounds": [
+        -15,
+        -15,
+        15,
+        15
+      ],
+      "elapsed_seconds": 175.2,
+      "full_observed_m2": 210.6875,
+      "inside_start_radius_m2": 159.25,
+      "outside_start_radius_m2": 51.4375,
+      "newly_observed_since_task_start_m2": 197.4375,
+      "full_quality_at_least_08_m2": 116.375,
+      "max_distance_from_start_m": 5.484970143591275,
+      "endpoint_distance_from_start_m": 4.564692348195117,
+      "truth_xy_bounds": [
+        [
+          -4.88105497737922,
+          -3.16287096440043
+        ],
+        [
+          3.122205165778194,
+          1.1496875707499667
+        ]
+      ],
+      "common_elapsed_seconds": 169.6,
+      "common_elapsed_full_observed_m2": 208.375,
+      "archive_reproduces_quality_cell_set": true
+    }
+  ],
+  "source_sha256": {
+    "tmp\\ros_acceptance\\autonomy-terrain-video-20261116\\baseline-sessions\\experiment-371c002dfcbb\\research\\autonomy-surface_view_v2-e27e6a7e\\quality-start.json": "4a36cab248ec2abec2291bedf843e65d3169e3f7867b6198acf5720a6ee39ddd",
+    "tmp\\ros_acceptance\\autonomy-terrain-video-20261116\\baseline-sessions\\experiment-371c002dfcbb\\research\\autonomy-surface_view_v2-e27e6a7e\\quality-end.json": "da5265d1cf8ed732554ff6bbb94089ca73f3b48dd0c104d78035fcf74158a3a1",
+    "tmp\\ros_acceptance\\autonomy-terrain-video-20261116\\baseline-sessions\\experiment-371c002dfcbb\\research\\autonomy-surface_view_v2-e27e6a7e\\observations.npz": "5b12363310f40e7ac013cc7bef55d67c607d4f2107393d218aeb19c0e7f99b0d",
+    "tmp\\ros_acceptance\\autonomy-terrain-video-20261116\\baseline\\case\\observer\\truth.jsonl": "04172a0e649b1d2a0a03cba66d6281acb3ed64b19245f492a7f0d588094ba24a",
+    "tmp\\ros_acceptance\\autonomy-terrain-video-20261116\\candidate-sessions\\experiment-42555ed21b7c\\research\\autonomy-surface_view_v2-fad0ea02\\quality-start.json": "744aa8e701972bf5d476754e04e9fc5e59bde3a07280ce021f8b7b4e72b68cc2",
+    "tmp\\ros_acceptance\\autonomy-terrain-video-20261116\\candidate-sessions\\experiment-42555ed21b7c\\research\\autonomy-surface_view_v2-fad0ea02\\quality-end.json": "942a5e02d68f51f88da45a516e193c3e3070bef4a430f29b46d85e4ff104d8e7",
+    "tmp\\ros_acceptance\\autonomy-terrain-video-20261116\\candidate-sessions\\experiment-42555ed21b7c\\research\\autonomy-surface_view_v2-fad0ea02\\observations.npz": "4dde6dc59a414fef8d8ff6f54131ed8e20ec9f0f2c986aaf5eebf0dec6d81e6b",
+    "tmp\\ros_acceptance\\autonomy-terrain-video-20261116\\candidate\\case\\observer\\truth.jsonl": "3f58b8d8cfd4c34fc370e76d5e34cf3a4a6437e63f48f9a529f46d2bf379c92a"
+  }
+}

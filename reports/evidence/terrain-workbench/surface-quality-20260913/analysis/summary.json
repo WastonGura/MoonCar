@@ -1,0 +1,148 @@
+{
+  "status": "diagnostic_complete",
+  "accepted_accuracy": false,
+  "source": "/source/reports/evidence/terrain-workbench/projection-20260913/fixed-motion",
+  "input_sha256": {
+    "manifest.json": "654a825282451ae02be6fab3e7e1c4b55b74f61b4febadb613da027477283624",
+    "samples.npz": "c950fd7433eec3ad220fa3819a814fd87a32f80d9a50afaa034b311ec0109e93",
+    "survey_yard.sdf": "6f1c9e24fe0dc1b4b83c099a9235927f97fb9039a11cd273b3bcee3618ff0505",
+    "terrain_geometry.py": "9ef1c21dfb8d0503d99286a6bde35fb2f0a938dbc9bcbf923e5897fbb7f25ed4",
+    "terrain_node.py": "d3287b583df5b737f08e695bb18402b9eeef1f317e3c9a4e9f526d0d77ee204b"
+  },
+  "origin": [
+    3.5,
+    3.0
+  ],
+  "radius": 8.0,
+  "resolution": 0.25,
+  "frames": 147,
+  "observed_points": 352513,
+  "ray_matched": 352513,
+  "ray_missing": 0,
+  "ray_depth_rmse_m": 0.005591886336156846,
+  "point_categories": {
+    "curved_top": 4771,
+    "steep_side": 50668,
+    "ground": 293220,
+    "sloped_top": 3854
+  },
+  "groups": [
+    {
+      "category": "all",
+      "cells": 3228,
+      "observed": 1657,
+      "unobserved": 1571,
+      "invalid": 548,
+      "paired": 1095,
+      "single_surface_pairs": 1072,
+      "valid_fraction": 0.6692818346409173,
+      "height_rmse_m": 0.0007142136047719593,
+      "slope_mae_deg": 0.04237258383096989
+    },
+    {
+      "category": "ground",
+      "cells": 1487,
+      "observed": 1487,
+      "unobserved": 0,
+      "invalid": 418,
+      "paired": 1060,
+      "single_surface_pairs": 1060,
+      "valid_fraction": 0.718897108271688,
+      "height_rmse_m": 6.988587478943762e-07,
+      "slope_mae_deg": 0.0001269933919587473
+    },
+    {
+      "category": "sloped_top",
+      "cells": 36,
+      "observed": 36,
+      "unobserved": 0,
+      "invalid": 28,
+      "paired": 8,
+      "single_surface_pairs": 8,
+      "valid_fraction": 0.2222222222222222,
+      "height_rmse_m": 3.903887175308155e-07,
+      "slope_mae_deg": 7.871791708757847e-05
+    },
+    {
+      "category": "level_top",
+      "cells": 0,
+      "observed": 0,
+      "unobserved": 0,
+      "invalid": 0,
+      "paired": 0,
+      "single_surface_pairs": 0,
+      "valid_fraction": null,
+      "height_rmse_m": null,
+      "slope_mae_deg": null
+    },
+    {
+      "category": "curved_top",
+      "cells": 12,
+      "observed": 12,
+      "unobserved": 0,
+      "invalid": 7,
+      "paired": 4,
+      "single_surface_pairs": 4,
+      "valid_fraction": 0.4166666666666667,
+      "height_rmse_m": 0.0059241899798870585,
+      "slope_mae_deg": 2.470259162328107
+    },
+    {
+      "category": "steep_side",
+      "cells": 13,
+      "observed": 13,
+      "unobserved": 0,
+      "invalid": 13,
+      "paired": 0,
+      "single_surface_pairs": 0,
+      "valid_fraction": 0.0,
+      "height_rmse_m": null,
+      "slope_mae_deg": null
+    },
+    {
+      "category": "mixed",
+      "cells": 107,
+      "observed": 107,
+      "unobserved": 0,
+      "invalid": 80,
+      "paired": 23,
+      "single_surface_pairs": 0,
+      "valid_fraction": 0.2523364485981308,
+      "height_rmse_m": 0.004263984912084404,
+      "slope_mae_deg": 1.5818130394255057
+    },
+    {
+      "category": "no_visible_reference",
+      "cells": 1573,
+      "observed": 2,
+      "unobserved": 1571,
+      "invalid": 2,
+      "paired": 0,
+      "single_surface_pairs": 0,
+      "valid_fraction": 0.0,
+      "height_rmse_m": null,
+      "slope_mae_deg": null
+    }
+  ],
+  "high_q": {
+    "cells": 334,
+    "observed": 334,
+    "unobserved": 0,
+    "invalid": 16,
+    "paired": 316,
+    "single_surface_pairs": 307,
+    "valid_fraction": 0.9520958083832335,
+    "height_rmse_m": 0.0003859736841516596,
+    "slope_mae_deg": 0.03817007814340948
+  },
+  "limits": [
+    "Offline true-pose replay isolates geometry; not the online map or full pose accuracy.",
+    "Same rays and frame set; measured/reference voxelization and cell membership can differ.",
+    "Surface categories from independent expected ray hits; mixed faces retained separately.",
+    "Ground/observed Q counts use synchronized evaluator frames, not the mission keyframe schedule.",
+    "Missing and invalid fits remain in denominators; errors only for paired valid fits.",
+    "Mixed fitted-plane differences are representation diagnostics, never single-surface accuracy.",
+    "Q formula unchanged; correlated cells and one trajectory do not calibrate probability or establish causality.",
+    "Primitive surfaces differ from rendered triangle meshes. No material or traversability truth."
+  ]
+}

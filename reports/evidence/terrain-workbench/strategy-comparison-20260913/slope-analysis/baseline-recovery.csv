@@ -1,0 +1,9 @@
+﻿condition,category,baseline_cells,eligible,recovered,recovery_fraction
+stationary,all,117,63,0,0.0
+stationary,ground,36,17,0,0.0
+stationary,sloped_top,59,43,0,0.0
+stationary,mixed,22,3,0,0.0
+approach,all,117,63,42,0.6666666666666666
+approach,ground,34,15,7,0.4666666666666667
+approach,sloped_top,56,40,34,0.85
+approach,mixed,27,8,1,0.125

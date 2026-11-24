@@ -1,0 +1,162 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 550B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/mooncar-terrain:jazzy
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/3] FROM docker.io/library/mooncar-terrain:jazzy@sha256:065aeeaf2447399d53e4f665a83e321153c355f96d06690f3c0b729e4591aa0d
+#4 resolve docker.io/library/mooncar-terrain:jazzy@sha256:065aeeaf2447399d53e4f665a83e321153c355f96d06690f3c0b729e4591aa0d 0.0s done
+#4 DONE 0.1s
+
+#5 [2/3] RUN apt-get update && apt-get install -y --no-install-recommends python3-venv libmpich12     && rm -rf /var/lib/apt/lists/*     && ln -s /usr/lib/x86_64-linux-gnu/libmpich.so.12 /usr/local/lib/libmpi.so.12     && ldconfig     && python3 -m venv --system-site-packages /opt/mooncar-dem     && /opt/mooncar-dem/bin/pip install --no-cache-dir lammps==2025.7.22.4.0
+#5 2.096 Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+#5 2.229 Get:2 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+#5 3.019 Get:3 http://packages.ros.org/ros2/ubuntu noble InRelease [4676 B]
+#5 3.346 Get:4 http://packages.ros.org/ros2/ubuntu noble/main Sources [2171 kB]
+#5 3.595 Get:5 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1542 kB]
+#5 3.671 Get:6 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+#5 4.325 Get:7 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+#5 4.925 Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+#5 7.931 Get:9 http://packages.ros.org/ros2/ubuntu noble/main amd64 Packages [2051 kB]
+#5 8.228 Get:10 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+#5 8.384 Get:11 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1943 kB]
+#5 12.99 Get:12 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [50.0 kB]
+#5 14.06 Get:13 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1314 kB]
+#5 20.06 Get:14 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+#5 20.22 Get:15 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+#5 20.22 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2057 kB]
+#5 21.25 Get:17 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [2162 kB]
+#5 22.44 Get:18 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1637 kB]
+#5 23.58 Get:19 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [56.2 kB]
+#5 23.58 Get:20 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [49.0 kB]
+#5 23.58 Get:21 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [671 B]
+#5 23.58 Get:22 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [36.0 kB]
+#5 23.66 Fetched 37.3 MB in 23s (1626 kB/s)
+#5 23.66 Reading package lists...
+#5 24.80 Reading package lists...
+#5 25.67 Building dependency tree...
+#5 25.93 Reading state information...
+#5 26.33 The following additional packages will be installed:
+#5 26.33   libpython3.12-dev libpython3.12-minimal libpython3.12-stdlib
+#5 26.34   libpython3.12t64 python3-pip-whl python3-setuptools-whl python3.12
+#5 26.34   python3.12-dev python3.12-minimal python3.12-venv
+#5 26.34 Suggested packages:
+#5 26.34   python3.12-doc binfmt-support
+#5 26.41 The following NEW packages will be installed:
+#5 26.41   libmpich12 python3-pip-whl python3-setuptools-whl python3-venv
+#5 26.41   python3.12-venv
+#5 26.41 The following packages will be upgraded:
+#5 26.41   libpython3.12-dev libpython3.12-minimal libpython3.12-stdlib
+#5 26.41   libpython3.12t64 python3.12 python3.12-dev python3.12-minimal
+#5 27.41 7 upgraded, 5 newly installed, 0 to remove and 325 not upgraded.
+#5 27.41 Need to get 25.1 MB of archives.
+#5 27.41 After this operation, 45.2 MB of additional disk space will be used.
+#5 27.41 Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12-dev amd64 3.12.3-1ubuntu0.17 [498 kB]
+#5 29.66 Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-dev amd64 3.12.3-1ubuntu0.17 [5684 kB]
+#5 34.19 Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12t64 amd64 3.12.3-1ubuntu0.17 [2348 kB]
+#5 35.96 Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12 amd64 3.12.3-1ubuntu0.17 [651 kB]
+#5 36.53 Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-stdlib amd64 3.12.3-1ubuntu0.17 [2071 kB]
+#5 38.06 Get:6 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12-minimal amd64 3.12.3-1ubuntu0.17 [2335 kB]
+#5 39.95 Get:7 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-minimal amd64 3.12.3-1ubuntu0.17 [839 kB]
+#5 40.43 Get:8 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 python3-pip-whl all 24.0+dfsg-1ubuntu1.3 [1707 kB]
+#5 41.52 Get:9 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 python3-setuptools-whl all 68.1.2-2ubuntu1.2 [716 kB]
+#5 42.04 Get:10 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 python3.12-venv amd64 3.12.3-1ubuntu0.17 [5684 B]
+#5 42.04 Get:11 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 python3-venv amd64 3.12.3-0ubuntu2.1 [1032 B]
+#5 42.04 Get:12 http://archive.ubuntu.com/ubuntu noble/universe amd64 libmpich12 amd64 4.2.0-5build3 [8247 kB]
+#5 48.71 debconf: delaying package configuration, since apt-utils is not installed
+#5 48.79 Fetched 25.1 MB in 22s (1141 kB/s)
+#5 48.84 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 123304 files and directories currently installed.)
+#5 49.28 Preparing to unpack .../00-python3.12-dev_3.12.3-1ubuntu0.17_amd64.deb ...
+#5 49.29 Unpacking python3.12-dev (3.12.3-1ubuntu0.17) over (3.12.3-1ubuntu0.15) ...
+#5 49.36 Preparing to unpack .../01-libpython3.12-dev_3.12.3-1ubuntu0.17_amd64.deb ...
+#5 49.37 Unpacking libpython3.12-dev:amd64 (3.12.3-1ubuntu0.17) over (3.12.3-1ubuntu0.15) ...
+#5 50.05 Preparing to unpack .../02-libpython3.12t64_3.12.3-1ubuntu0.17_amd64.deb ...
+#5 50.07 Unpacking libpython3.12t64:amd64 (3.12.3-1ubuntu0.17) over (3.12.3-1ubuntu0.15) ...
+#5 50.30 Preparing to unpack .../03-python3.12_3.12.3-1ubuntu0.17_amd64.deb ...
+#5 50.43 Unpacking python3.12 (3.12.3-1ubuntu0.17) over (3.12.3-1ubuntu0.15) ...
+#5 50.50 Preparing to unpack .../04-libpython3.12-stdlib_3.12.3-1ubuntu0.17_amd64.deb ...
+#5 50.56 Unpacking libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.17) over (3.12.3-1ubuntu0.15) ...
+#5 51.36 Preparing to unpack .../05-python3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb ...
+#5 51.37 Unpacking python3.12-minimal (3.12.3-1ubuntu0.17) over (3.12.3-1ubuntu0.15) ...
+#5 51.60 Preparing to unpack .../06-libpython3.12-minimal_3.12.3-1ubuntu0.17_amd64.deb ...
+#5 51.70 Unpacking libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.17) over (3.12.3-1ubuntu0.15) ...
+#5 52.32 Selecting previously unselected package python3-pip-whl.
+#5 52.33 Preparing to unpack .../07-python3-pip-whl_24.0+dfsg-1ubuntu1.3_all.deb ...
+#5 52.33 Unpacking python3-pip-whl (24.0+dfsg-1ubuntu1.3) ...
+#5 52.37 Selecting previously unselected package python3-setuptools-whl.
+#5 52.38 Preparing to unpack .../08-python3-setuptools-whl_68.1.2-2ubuntu1.2_all.deb ...
+#5 52.38 Unpacking python3-setuptools-whl (68.1.2-2ubuntu1.2) ...
+#5 52.42 Selecting previously unselected package python3.12-venv.
+#5 52.43 Preparing to unpack .../09-python3.12-venv_3.12.3-1ubuntu0.17_amd64.deb ...
+#5 52.43 Unpacking python3.12-venv (3.12.3-1ubuntu0.17) ...
+#5 52.47 Selecting previously unselected package python3-venv.
+#5 52.48 Preparing to unpack .../10-python3-venv_3.12.3-0ubuntu2.1_amd64.deb ...
+#5 52.48 Unpacking python3-venv (3.12.3-0ubuntu2.1) ...
+#5 52.52 Selecting previously unselected package libmpich12:amd64.
+#5 52.53 Preparing to unpack .../11-libmpich12_4.2.0-5build3_amd64.deb ...
+#5 52.53 Unpacking libmpich12:amd64 (4.2.0-5build3) ...
+#5 52.76 Setting up python3-setuptools-whl (68.1.2-2ubuntu1.2) ...
+#5 52.77 Setting up python3-pip-whl (24.0+dfsg-1ubuntu1.3) ...
+#5 52.78 Setting up libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.17) ...
+#5 52.79 Setting up libmpich12:amd64 (4.2.0-5build3) ...
+#5 52.80 Setting up python3.12-minimal (3.12.3-1ubuntu0.17) ...
+#5 53.54 Setting up libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.17) ...
+#5 53.55 Setting up python3.12 (3.12.3-1ubuntu0.17) ...
+#5 54.36 Setting up libpython3.12t64:amd64 (3.12.3-1ubuntu0.17) ...
+#5 54.37 Setting up python3.12-venv (3.12.3-1ubuntu0.17) ...
+#5 54.43 Setting up libpython3.12-dev:amd64 (3.12.3-1ubuntu0.17) ...
+#5 54.44 Setting up python3-venv (3.12.3-0ubuntu2.1) ...
+#5 54.44 Setting up python3.12-dev (3.12.3-1ubuntu0.17) ...
+#5 54.45 Processing triggers for libc-bin (2.39-0ubuntu8.8) ...
+#5 60.22 Collecting lammps==2025.7.22.4.0
+#5 61.01   Downloading lammps-2025.7.22.4.0-py2.py3-none-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (23 kB)
+#5 61.67 Downloading lammps-2025.7.22.4.0-py2.py3-none-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (85.8 MB)
+#5 94.68    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 85.8/85.8 MB 4.0 MB/s eta 0:00:00
+#5 95.10 Installing collected packages: lammps
+#5 96.25 Successfully installed lammps-2025.7.22.4.0
+#5 DONE 96.5s
+
+#6 [3/3] WORKDIR /evidence
+#6 DONE 0.1s
+
+#7 exporting to image
+#7 exporting layers
+#7 exporting layers 14.6s done
+#7 exporting manifest sha256:48080004c621b260d9e33fcb95d6a7e8bea574bbcff48ca1e8533f0c14e25b34 0.0s done
+#7 exporting config sha256:f7fad8c83f93839d94374dbcdcae5f758b34be243e7680942bb40fbb649e7460 0.0s done
+#7 exporting attestation manifest sha256:ee02bab9dde6ac4505862d535e0e76aab5b6b94f7d15a1c1f05debc9783760e5 0.0s done
+#7 exporting manifest list sha256:91241f6e0239ff14bda48b8c056c02f55226a41b9b28b5950d7d8d9c61117a6c 0.0s done
+#7 naming to docker.io/library/mooncar-dem:lammps-2025.7.22.4 done
+#7 unpacking to docker.io/library/mooncar-dem:lammps-2025.7.22.4
+#7 unpacking to docker.io/library/mooncar-dem:lammps-2025.7.22.4 2.2s done
+#7 DONE 16.9s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/7rds7yyjyly51pdxw71kqlkmt

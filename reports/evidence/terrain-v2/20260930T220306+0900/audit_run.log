@@ -1,0 +1,100 @@
+{
+  "slots": [
+    {
+      "trial": "smoke2g",
+      "status": "raw_data_audited",
+      "exit_code": null
+    },
+    {
+      "trial": "funnel32g",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "funnel200g",
+      "status": "interrupted_for_compute_switch",
+      "exit_code": 130,
+      "raw_dump_sha256": "2cc0bff7feba427bed7535c5319ce21f45597d1d4c226acf3c7b8cd10e72f61c"
+    },
+    {
+      "trial": "grain8g_d2",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "grain8g_d2_half",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "grain8g_d1",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "height8g_075",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "height8g_125",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "funnel32g_half",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    }
+  ],
+  "measurements": [
+    {
+      "trial": "smoke2g",
+      "profile_mean_angle_deg": null,
+      "minimum_profile_r_squared": null,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "funnel32g",
+      "profile_mean_angle_deg": 18.463099954148227,
+      "minimum_profile_r_squared": 0.8770628352372106,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "grain8g_d2",
+      "profile_mean_angle_deg": 2.8256863362800173,
+      "minimum_profile_r_squared": 0.1488904096801209,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "grain8g_d2_half",
+      "profile_mean_angle_deg": 1.5856777376427913,
+      "minimum_profile_r_squared": 0.02162860475882422,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "grain8g_d1",
+      "profile_mean_angle_deg": 1.330322780209389,
+      "minimum_profile_r_squared": 0.020461950256031813,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "height8g_075",
+      "profile_mean_angle_deg": 3.6561478580866886,
+      "minimum_profile_r_squared": 0.19260050160249964,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "height8g_125",
+      "profile_mean_angle_deg": 1.1461718575381106,
+      "minimum_profile_r_squared": 0.0057971074201501605,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "funnel32g_half",
+      "profile_mean_angle_deg": 20.68202360351895,
+      "minimum_profile_r_squared": 0.9217452195390564,
+      "total_kinetic_stable": false
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "status": "diagnostic_complete",
+  "attempts": 8,
+  "qualified": 8,
+  "failed": 0,
+  "not_run": 0,
+  "freeze_unchanged": true,
+  "own_container_running": false,
+  "original_workbench_preserved": {
+    "Id": true,
+    "State": true,
+    "Config": true
+  },
+  "original_files_count": 496,
+  "authorized_tool_changes": [],
+  "unexpected_file_changes": [],
+  "old_archives": [
+    {
+      "name": "r5-turn-gate-validation-20261011",
+      "files": 2183,
+      "failures": []
+    },
+    {
+      "name": "r5-contact-geometry-20261011",
+      "files": 339,
+      "failures": []
+    },
+    {
+      "name": "r5-contact-geometry-20261011-02",
+      "files": 531,
+      "failures": []
+    }
+  ],
+  "frozen_snapshot_files": 140,
+  "snapshot_failures": [],
+  "regressions_passed": true,
+  "production_changed": false,
+  "whole_vehicle_accepted": false,
+  "passed": true
+}

@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "trial_count": 54,
+  "verified_file_hashes": 4119,
+  "reference_conditions": 6,
+  "frozen_source_files_per_trial": 7,
+  "issues": []
+}

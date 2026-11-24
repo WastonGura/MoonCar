@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-10",
+  "attempts": 12,
+  "qualified": 12,
+  "budget": 12,
+  "cause_confirmed": true,
+  "repair_verified": false,
+  "displacement_eliminated": false,
+  "production_changed": false,
+  "software_unique_passed": 389,
+  "software_initial_passed": 386,
+  "software_initial_skipped": 3,
+  "actual_preflight_skips_completed": 3,
+  "frontend_passed": 3,
+  "firmware_passed": true,
+  "new_tests_passed": 19,
+  "selected_images": 684,
+  "preparation_s": 642.7312092781067,
+  "max_round_wall_s": 123.6484169960022,
+  "original_files": {
+    "passed": true,
+    "checked": 399,
+    "changed": []
+  },
+  "workbench_preserved": true,
+  "own_container_stopped": true,
+  "own_container_id": "c3916635ca8b4f793935a79d96ab2fdd885aa632e31ab3bafb5d22d76c84eb42",
+  "workbench_id": "3186e022e013a682ebebb7e1089bfb1e0a842387ceaa65e9169a16d4133abd94",
+  "final_frozen_execution_passed": true
+}

@@ -1,0 +1,11 @@
+{
+  "mode": "feedback_observe",
+  "changes": [],
+  "production_defaults_changed": false,
+  "terrain_strategy": "baseline",
+  "maximum_new_worlds": 1,
+  "control_truth_inputs": false,
+  "physical_parameters_changed": false,
+  "actual_gui_video": false,
+  "video_timing_comparable_to_headless": false
+}

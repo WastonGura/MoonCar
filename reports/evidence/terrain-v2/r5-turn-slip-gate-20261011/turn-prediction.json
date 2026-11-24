@@ -1,0 +1,22 @@
+{
+  "frozen_before_simulation": true,
+  "evidence_basis": "81e23ee six-round original/slip/restore ramp contrast confirms always-on lateral compliance causes 158.886mm drift; previous fixed-slip axle tests reduce flat turn excursion to 0.173mm",
+  "single_candidate_difference": "mode always -> pure_turn in the test contact actuator, fixed10/0 and old axle factors retained",
+  "predicate": "Left/right average of real limited joint targets sum within1e-12 and difference above1e-12; includes original deceleration targets, no body truth",
+  "unchanged": "Mass, geometry, inertia, friction, normal-force estimates, DART, cloud D0, safety relay, command chain, sensors, sampling and resource limits",
+  "predictions": {
+    "always_and_restore_ramp_endpoint_abs_y_min_m": 0.10,
+    "pure_turn_ramp_straight_abs_y_max_m": 0.01,
+    "pure_turn_flat_and_v2_turn_excursion_max_m": 0.01,
+    "step_position_difference_max_m": 0.01,
+    "step_yaw_difference_max_rad": 0.01,
+    "meaning": "Existing engineering research screen and single-change contrast; not hardware or whole-vehicle acceptance"
+  },
+  "input_pair_distance_difference_max_m": 0.001,
+  "input_pair_angle_difference_max_rad": 0.002,
+  "contact_source": "Complete explicit per-step ECS states/force associations, unknown fails; source-empty not receiver loss",
+  "image_and_regular_capture_gates_unchanged": true,
+  "models_restore_byte_identical_to_always": true,
+  "stop_on_any_critical_qualification_or_prediction_failure": true,
+  "scope_not_released_to_production": true
+}

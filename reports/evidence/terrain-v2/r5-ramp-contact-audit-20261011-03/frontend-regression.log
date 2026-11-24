@@ -1,0 +1,10 @@
+Session order: newest first, full microseconds, UUID-independent, undated last.
+✔ web\session_order.test.mjs (69.8234ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 129.783

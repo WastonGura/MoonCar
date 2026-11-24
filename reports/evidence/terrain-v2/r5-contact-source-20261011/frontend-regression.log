@@ -1,0 +1,12 @@
+✔ buffered track preserves gaps and replay speed accounts for work already spent (1.5668ms)
+✔ complete replay persists, stays bounded, and never reuses a different archive version (68.2493ms)
+Session order: newest first, full microseconds, UUID-independent, undated last.
+✔ web\session_order.test.mjs (101.4559ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 172.7705

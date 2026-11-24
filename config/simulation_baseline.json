@@ -1,0 +1,13 @@
+{
+  "version": "2026-11-17-r5-window-v3",
+  "simulation_profile": "r5_support_v1",
+  "scene": "survey_v3_native",
+  "terrain_strategy": "elevation_neighborhood_v1",
+  "localization_mode": "rgbd_window",
+  "active_revisit": false,
+  "support_profile": "independent_linear_v1",
+  "physics_step_s": 0.00025,
+  "support_runtime": "/opt/mooncar/turn/r5-v2",
+  "hardware_calibrated": false,
+  "historical_tasks_without_profile": "legacy"
+}

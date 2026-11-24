@@ -1,0 +1,282 @@
+[
+  {
+    "wall_seconds": 0.07227054399845656,
+    "autonomy": "moving",
+    "elapsed": 13.3,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 0.38724627299961867,
+    "autonomy": "moving",
+    "elapsed": 13.4,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 0.7074022710003192,
+    "autonomy": "moving",
+    "elapsed": 13.5,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 1.0708771900026477,
+    "autonomy": "moving",
+    "elapsed": 13.5,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 1.459648083000502,
+    "autonomy": "moving",
+    "elapsed": 13.6,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 1.7746326300039073,
+    "autonomy": "moving",
+    "elapsed": 13.7,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 2.085911162001139,
+    "autonomy": "moving",
+    "elapsed": 13.7,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 2.3962679440010106,
+    "autonomy": "moving",
+    "elapsed": 13.8,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 2.763383645004069,
+    "autonomy": "moving",
+    "elapsed": 13.9,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 3.078639439001563,
+    "autonomy": "moving",
+    "elapsed": 13.9,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 3.3974696270015556,
+    "autonomy": "moving",
+    "elapsed": 14.0,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 3.761207027004275,
+    "autonomy": "moving",
+    "elapsed": 14.1,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 4.080099163998966,
+    "autonomy": "moving",
+    "elapsed": 14.1,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 4.3992293550036266,
+    "autonomy": "moving",
+    "elapsed": 14.2,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 4.714045730004727,
+    "autonomy": "moving",
+    "elapsed": 14.2,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 5.077993894999963,
+    "autonomy": "moving",
+    "elapsed": 14.3,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 5.391512211004738,
+    "autonomy": "moving",
+    "elapsed": 14.4,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 5.759729135002999,
+    "autonomy": "moving",
+    "elapsed": 14.4,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 6.07795643999998,
+    "autonomy": "moving",
+    "elapsed": 14.5,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 6.394291011005407,
+    "autonomy": "moving",
+    "elapsed": 14.6,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 6.757219219005492,
+    "autonomy": "moving",
+    "elapsed": 14.6,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 7.074562408000929,
+    "autonomy": "moving",
+    "elapsed": 14.7,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 7.407880930004467,
+    "autonomy": "moving",
+    "elapsed": 14.8,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 7.71705188100168,
+    "autonomy": "moving",
+    "elapsed": 14.8,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 8.078738740005065,
+    "autonomy": "moving",
+    "elapsed": 14.9,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 8.392695963004371,
+    "autonomy": "moving",
+    "elapsed": 14.9,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 8.701387865003198,
+    "autonomy": "moving",
+    "elapsed": 15.0,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 9.067917719003162,
+    "autonomy": "moving",
+    "elapsed": 15.1,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 9.37663288100157,
+    "autonomy": "moving",
+    "elapsed": 15.1,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 9.694637402004446,
+    "autonomy": "moving",
+    "elapsed": 15.2,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 10.06533419599873,
+    "autonomy": "moving",
+    "elapsed": 15.3,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 10.400048118004634,
+    "autonomy": "moving",
+    "elapsed": 15.3,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 10.713741407998896,
+    "autonomy": "moving",
+    "elapsed": 15.4,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 11.09970192900073,
+    "autonomy": "moving",
+    "elapsed": 15.4,
+    "map_fresh": true,
+    "motion": "executing",
+    "error": ""
+  },
+  {
+    "wall_seconds": 11.491521651005314,
+    "autonomy": "fault",
+    "elapsed": 15.5,
+    "map_fresh": false,
+    "motion": "cancelled",
+    "error": "导航地图失效，已停止运动"
+  }
+]

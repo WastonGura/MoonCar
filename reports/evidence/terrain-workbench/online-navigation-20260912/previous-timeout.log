@@ -1,0 +1,369 @@
+[bt_navigator-21] [INFO] [1789202939.321392789] [bt_navigator]: Begin navigating from current location (0.23, -2.80) to (5.30, -0.31)
+[controller_server-17] [INFO] [1789202939.413196991] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-17] [WARN] [1789202939.413360776] [controller_server]: No goal checker was specified in parameter 'current_goal_checker'. Server will use only plugin loaded goal_checker . This warning will appear once.
+[controller_server-17] [WARN] [1789202939.413382367] [controller_server]: No progress checker was specified in parameter 'current_progress_checker'. Server will use only plugin loaded progress_checker . This warning will appear once.
+[controller_server-17] [INFO] [1789202940.513531655] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202941.513527357] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202942.613537244] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202943.616008645] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202944.713779975] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202945.713521380] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202946.813553775] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202947.913515466] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202948.913538793] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202950.013527594] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202951.013559594] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202952.113560253] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202953.113534586] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202954.113521437] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202955.213553444] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202956.314072436] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202957.313524241] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202958.313603028] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202959.413564543] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202960.413600749] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202961.413640069] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202962.520216604] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202963.802488258] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202964.902671632] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202965.902499268] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202967.002512208] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202968.002492995] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202969.102499506] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202970.103881997] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202971.202542130] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202972.202480279] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202973.302900851] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202974.302769977] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202975.402475163] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202976.402474285] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202977.502597434] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202978.602610942] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202979.602490275] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202980.602486849] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202981.702473015] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202982.802485793] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202983.802487972] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202984.902500522] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202985.902495946] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202987.003498212] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202988.002482839] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202989.102486109] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202990.102495403] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202991.102483847] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202992.202516715] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202993.202567772] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202995.332045619] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202996.432032842] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202997.432028496] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202998.532006752] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789202999.531996053] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203000.631993275] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203001.632503705] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203002.732027461] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203003.832037738] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203004.832036556] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203005.932428713] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203006.932016288] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203007.932016118] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203009.032008358] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203010.032030092] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203011.132037873] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203012.132101843] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203013.131981249] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203014.232012112] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203015.232569959] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203016.332195721] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203017.332064822] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203018.432789148] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203019.432046277] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203020.432027662] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203021.532033697] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203022.532009885] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203023.534548706] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203024.632013291] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203025.714973878] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203026.985293911] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203028.084091080] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203029.184092735] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203030.184679423] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203031.285252192] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203032.284097431] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203033.384041818] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203034.384105738] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203035.384063375] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203036.484126553] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203037.484091505] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203038.484149177] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203039.584091118] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203040.684068535] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203041.684089226] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203042.684049030] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203043.785851434] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203044.784095513] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203045.884300751] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203046.884070934] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203047.984060073] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203048.984068504] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203050.084026576] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203051.084090749] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203052.184095546] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203053.184535020] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203054.284074425] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203055.284075877] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203056.284167428] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203058.509411889] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203059.609405709] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203060.609371214] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203061.709398004] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203062.709403682] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203063.809366750] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203064.809382878] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203065.909370887] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203066.909380862] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203068.009385550] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203069.009382281] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203070.109598219] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203071.109492321] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203072.209382654] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203073.209371203] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203074.309376536] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203075.309349655] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203076.409351713] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203077.409466381] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203078.509399105] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203079.509370097] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203080.609825150] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203081.609355764] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203082.609829099] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203083.711140251] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203084.709700237] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203085.809397216] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203086.810649942] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203087.909359907] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203089.922619419] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203091.020501842] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203092.020507945] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203093.120517259] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203094.120572714] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203095.226254481] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203096.220502242] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203097.320493046] [controller_server]: Passing new path to controller.
+[controller_server-17] [WARN] [1789203098.221162145] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [INFO] [1789203098.320501754] [controller_server]: Passing new path to controller.
+[controller_server-17] [WARN] [1789203098.320942277] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203098.420689064] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203098.520713919] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203098.620642582] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203098.721332474] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203098.820657843] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [INFO] [1789203099.420521301] [controller_server]: Passing new path to controller.
+[controller_server-17] [WARN] [1789203100.220686090] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203100.320726438] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [INFO] [1789203100.420489104] [controller_server]: Passing new path to controller.
+[controller_server-17] [WARN] [1789203100.420827291] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203100.520653388] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203100.620706777] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203100.720699297] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203100.820703919] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203100.920581851] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203101.020667698] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [WARN] [1789203101.121755959] [controller_server]: RegulatedPurePursuitController detected collision ahead!
+[controller_server-17] [ERROR] [1789203101.121825839] [controller_server]: Controller patience exceeded
+[controller_server-17] [WARN] [1789203101.121958950] [controller_server]: [follow_path] [ActionServer] Aborting handle.
+[controller_server-17] [INFO] [1789203101.195369115] [local_costmap.local_costmap]: Received request to clear entirely the local_costmap
+[controller_server-17] [INFO] [1789203101.197057485] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-17] [INFO] [1789203101.597339642] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203102.597326172] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203103.697398223] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203104.697343585] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203105.697336209] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203106.797330801] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203107.797293584] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203108.897337946] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203109.897348446] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203110.997307769] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203111.997323919] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203113.097327224] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203114.097537577] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203115.197269081] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203116.197368084] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203117.197284195] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203118.297345842] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203119.298326844] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203121.505247845] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203122.604983221] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203123.604969013] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203124.705894928] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203125.704973248] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203126.805030424] [controller_server]: Passing new path to controller.
+[controller_server-17] [INFO] [1789203127.804981670] [controller_server]: Passing new path to controller.
+[bt_navigator-21] [ERROR] [1789203128.429945326] [bt_navigator_navigate_to_pose_rclcpp_node]: Failed to get result for follow_path in node halt!
+[bt_navigator-21] [INFO] [1789203128.430232735] [bt_navigator]: [navigate_to_pose] [ActionServer] Client requested to cancel the goal. Cancelling.
+[bt_navigator-21] [INFO] [1789203128.430638946] [bt_navigator]: Goal canceled
+[controller_server-17] [INFO] [1789203128.505024744] [controller_server]: Cancellation was successful. Stopping the robot.
+[controller_server-17] [INFO] [1789203128.505115284] [controller_server]: [follow_path] [ActionServer] Client requested to cancel the goal. Cancelling.
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[smoother_server-18] [INFO] [1789203674.724813242] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[smoother_server-18] [INFO] [1789203674.724999666] [smoother_server]: Running Nav2 LifecycleNode rcl preshutdown (smoother_server)
+[smoother_server-18] [INFO] [1789203674.725283200] [smoother_server]: Deactivating
+[smoother_server-18] [INFO] [1789203674.725309107] [smoother_server]: Destroying bond (smoother_server) to lifecycle manager.
+[behavior_server-20] [INFO] [1789203674.724768927] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[behavior_server-20] [INFO] [1789203674.725049337] [behavior_server]: Running Nav2 LifecycleNode rcl preshutdown (behavior_server)
+[behavior_server-20] [INFO] [1789203674.725141782] [behavior_server]: Deactivating
+[behavior_server-20] [INFO] [1789203674.725194038] [behavior_server]: Destroying bond (behavior_server) to lifecycle manager.
+[bt_navigator-21] [INFO] [1789203674.724763654] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[bt_navigator-21] [INFO] [1789203674.724999578] [bt_navigator]: Running Nav2 LifecycleNode rcl preshutdown (bt_navigator)
+[bt_navigator-21] [INFO] [1789203674.725136684] [bt_navigator]: Deactivating
+[bt_navigator-21] [INFO] [1789203674.725175000] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.
+[robot_state_publisher-7] [INFO] [1789203674.724763970] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-23] [INFO] [1789203674.724775295] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-23] [INFO] [1789203674.725003799] [lifecycle_manager_localization]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_localization)
+[lifecycle_manager-23] [INFO] [1789203674.725067489] [lifecycle_manager_localization]: [34m[1mTerminating bond timer...[0m[0m
+[planner_server-19] [INFO] [1789203674.724764820] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planner_server-19] [INFO] [1789203674.725044432] [planner_server]: Running Nav2 LifecycleNode rcl preshutdown (planner_server)
+[planner_server-19] [INFO] [1789203674.725141056] [planner_server]: Deactivating
+[planner_server-19] [INFO] [1789203674.725209724] [global_costmap.global_costmap]: Deactivating
+[lifecycle_manager-24] [INFO] [1789203674.724837285] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-24] [INFO] [1789203674.725284256] [lifecycle_manager_navigation]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_navigation)
+[lifecycle_manager-24] [INFO] [1789203674.725356643] [lifecycle_manager_navigation]: [34m[1mTerminating bond timer...[0m[0m
+[ERROR] [python3-13]: process has died [pid 2600, exit code -2, cmd 'python3 /source/containers/capture_scene.py /evidence/frontend-experiments/experiment-458823bf9e4f'].
+[python3-13] Traceback (most recent call last):
+[python3-13]   File "/source/containers/capture_scene.py", line 18, in <module>
+[bridge_node-4] [INFO] [1789203674.724852604] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[throttle-5] [INFO] [1789203674.724970048] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[waypoint_follower-22] [INFO] [1789203674.725418432] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[waypoint_follower-22] [INFO] [1789203674.725489800] [waypoint_follower]: Running Nav2 LifecycleNode rcl preshutdown (waypoint_follower)
+[waypoint_follower-22] [INFO] [1789203674.725606711] [waypoint_follower]: Deactivating
+[waypoint_follower-22] [INFO] [1789203674.725642124] [waypoint_follower]: Destroying bond (waypoint_follower) to lifecycle manager.
+[controller_server-17] [INFO] [1789203674.725574815] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[controller_server-17] [INFO] [1789203674.725623738] [controller_server]: Running Nav2 LifecycleNode rcl preshutdown (controller_server)
+[controller_server-17] [INFO] [1789203674.725720536] [controller_server]: Deactivating
+[controller_server-17] [INFO] [1789203674.725752827] [controller_server]: Deactivating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-17] [INFO] [1789203674.725804495] [local_costmap.local_costmap]: Deactivating
+[amcl-16] [INFO] [1789203674.725613691] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[amcl-16] [INFO] [1789203674.725681082] [amcl]: Running Nav2 LifecycleNode rcl preshutdown (amcl)
+[amcl-16] [INFO] [1789203674.725778983] [amcl]: Deactivating
+[amcl-16] [INFO] [1789203674.725809271] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[INFO] [lifecycle_manager-24]: sending signal 'SIGINT' to process[lifecycle_manager-24]
+[INFO] [lifecycle_manager-23]: sending signal 'SIGINT' to process[lifecycle_manager-23]
+[INFO] [throttle-5]: process has finished cleanly [pid 2567]
+[INFO] [waypoint_follower-22]: sending signal 'SIGINT' to process[waypoint_follower-22]
+[INFO] [bt_navigator-21]: sending signal 'SIGINT' to process[bt_navigator-21]
+[INFO] [behavior_server-20]: sending signal 'SIGINT' to process[behavior_server-20]
+[ERROR] [lifecycle_manager-23]: process has died [pid 3108, exit code -2, cmd '/opt/ros/jazzy/lib/nav2_lifecycle_manager/lifecycle_manager --ros-args -r __node:=lifecycle_manager_localization --params-file /tmp/launch_params_a03bk5ud --params-file /tmp/launch_params_7q05vy87'].
+[INFO] [robot_state_publisher-7]: process has finished cleanly [pid 2570]
+[ERROR] [waypoint_follower-22]: process has died [pid 2999, exit code -2, cmd '/opt/ros/jazzy/lib/nav2_waypoint_follower/waypoint_follower --ros-args -r __node:=waypoint_follower --params-file /tmp/tmpz1j7bc0h.yaml --params-file /tmp/launch_params_j9csaxi_'].
+[INFO] [planner_server-19]: sending signal 'SIGINT' to process[planner_server-19]
+[INFO] [throttle-6]: process has finished cleanly [pid 2568]
+[INFO] [smoother_server-18]: sending signal 'SIGINT' to process[smoother_server-18]
+[INFO] [map_server-15]: process has finished cleanly [pid 2944]
+[ERROR] [behavior_server-20]: process has died [pid 2997, exit code -2, cmd '/opt/ros/jazzy/lib/nav2_behaviors/behavior_server --ros-args -r __node:=behavior_server --params-file /tmp/tmpz1j7bc0h.yaml --params-file /tmp/launch_params_odd48ouo'].
+[ERROR] [gazebo-3]: process has died [pid 2565, exit code -2, cmd 'ruby /opt/ros/jazzy/opt/gz_tools_vendor/bin/gz sim -r -v 2 --render-engine ogre --gui-config /evidence/frontend-experiments/experiment-458823bf9e4f/gui.config /work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/worlds/lunar_yard.sdf --force-version 8'].
+[INFO] [controller_server-17]: sending signal 'SIGINT' to process[controller_server-17]
+[ERROR] [smoother_server-18]: process has died [pid 2995, exit code -2, cmd '/opt/ros/jazzy/lib/nav2_smoother/smoother_server --ros-args -r __node:=smoother_server --params-file /tmp/tmpz1j7bc0h.yaml --params-file /tmp/launch_params_gds_by5g'].
+[INFO] [ekf_node-11]: process has finished cleanly [pid 2574]
+[INFO] [amcl-16]: sending signal 'SIGINT' to process[amcl-16]
+child process pid 2945 exit status already read:  will report returncode 255
+[ERROR] [amcl-16]: process has died [pid 2945, exit code 255, cmd '/opt/ros/jazzy/lib/nav2_amcl/amcl --ros-args -r __node:=amcl --params-file /tmp/tmpz1j7bc0h.yaml --params-file /tmp/launch_params__5fjvjkx'].
+[ERROR] [controller_server-17]: process has died [pid 2994, exit code -2, cmd '/opt/ros/jazzy/lib/nav2_controller/controller_server --ros-args -r __node:=controller_server --params-file /tmp/tmpz1j7bc0h.yaml --params-file /tmp/launch_params_s5nzhyrs'].
+[INFO] [scan_to_scan_filter_chain-8]: process has finished cleanly [pid 2571]
+[INFO] [terrain_node.py-1]: process has finished cleanly [pid 2563]
+[INFO] [map_recorder.py-12]: sending signal 'SIGINT' to process[map_recorder.py-12]
+[INFO] [lifecycle_manager-24]: process has finished cleanly [pid 3147]
+[INFO] [wheel_odometry.py-10]: sending signal 'SIGINT' to process[wheel_odometry.py-10]
+[INFO] [cmd_vel_safety_relay.py-9]: sending signal 'SIGINT' to process[cmd_vel_safety_relay.py-9]
+[ERROR] [map_recorder.py-12]: process has died [pid 2575, exit code -2, cmd '/work/ros2_ws/install/mooncar_terrain/lib/mooncar_terrain/map_recorder.py --ros-args --params-file /tmp/launch_params_u5uh28sh'].
+[ERROR] [wheel_odometry.py-10]: process has died [pid 2573, exit code -2, cmd '/work/ros2_ws/install/mooncar_control/lib/mooncar_control/wheel_odometry.py --ros-args -r __node:=mooncar_wheel_odometry --params-file /tmp/launch_params_uy_xkqq2'].
+[ERROR] [cmd_vel_safety_relay.py-9]: process has died [pid 2572, exit code -2, cmd '/work/ros2_ws/install/mooncar_control/lib/mooncar_control/cmd_vel_safety_relay.py --ros-args -r __node:=mooncar_cmd_vel_safety_relay --params-file /tmp/launch_params_zvubkypa'].
+[INFO] [bridge_node-4]: sending signal 'SIGINT' to process[bridge_node-4]
+[INFO] [keepout_node.py-2]: process has finished cleanly [pid 2564]
+[ekf_node-11] [INFO] [1789203674.725663573] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[scan_to_scan_filter_chain-8] [INFO] [1789203674.725715861] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[throttle-6] [INFO] [1789203674.726174953] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[map_server-15] [INFO] [1789203674.727089797] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[map_server-15] [INFO] [1789203674.727189056] [map_server]: Running Nav2 LifecycleNode rcl preshutdown (map_server)
+[map_server-15] [INFO] [1789203674.727250497] [map_server]: Deactivating
+[map_server-15] [INFO] [1789203674.727276459] [map_server]: Destroying bond (map_server) to lifecycle manager.
+[map_server-15] [INFO] [1789203674.737850763] [map_server]: Cleaning up
+[map_server-15] [INFO] [1789203674.737932940] [map_server]: Destroying bond (map_server) to lifecycle manager.
+[gazebo-3] [1;33m[GUI] [Wrn] [Application.cc:908] [0m[1;33m[QT] The X11 connection broke: I/O error (code 1)[0m[1;33m[0m
+[gazebo-3] XIO:  fatal IO error 17 (File exists) on X server ":105"
+[gazebo-3]       after 44100 requests (44100 known processed) with 0 events remaining.
+[amcl-16] [INFO] [1789203674.737777576] [amcl]: Cleaning up
+[python3-13]     time.sleep(.5)
+[python3-13] KeyboardInterrupt
+[bt_navigator-21] [INFO] [1789203674.745480155] [bt_navigator]: Cleaning up
+[waypoint_follower-22] [INFO] [1789203674.748192443] [waypoint_follower]: Cleaning up
+[smoother_server-18] [INFO] [1789203674.822033759] [smoother_server]: Cleaning up
+[behavior_server-20] [INFO] [1789203674.822073250] [behavior_server]: Cleaning up
+[controller_server-17] [INFO] [1789203674.822104534] [controller_server]: Destroying bond (controller_server) to lifecycle manager.
+[controller_server-17] [INFO] [1789203674.833146109] [controller_server]: Cleaning up
+[controller_server-17] [INFO] [1789203674.833188539] [controller_server]: Cleaning up controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-17] [INFO] [1789203674.833349486] [local_costmap.local_costmap]: Cleaning up
+[map_server-15] [INFO] [1789203674.826969124] [map_server]: Destroying
+[amcl-16] [INFO] [1789203674.837949625] [amcl]: Destroying bond (amcl) to lifecycle manager.
+[behavior_server-20] [INFO] [1789203674.843525359] [behavior_server]: Destroying bond (behavior_server) to lifecycle manager.
+[lifecycle_manager-23] [INFO] [1789203674.929197863] [lifecycle_manager_localization]: Destroying lifecycle_manager_localization
+[planner_server-19] [INFO] [1789203674.938916444] [planner_server]: Deactivating plugin GridBased of type NavfnPlanner
+[planner_server-19] [INFO] [1789203674.938972209] [planner_server]: Destroying bond (planner_server) to lifecycle manager.
+[smoother_server-18] [INFO] [1789203675.029672994] [smoother_server]: Destroying bond (smoother_server) to lifecycle manager.
+[planner_server-19] [INFO] [1789203675.033758690] [planner_server]: Cleaning up
+[smoother_server-18] [INFO] [1789203675.040399754] [smoother_server]: Destroying
+[amcl-16] [INFO] [1789203675.042810196] [amcl]: Destroying
+[wheel_odometry.py-10] Traceback (most recent call last):
+[wheel_odometry.py-10]   File "/work/ros2_ws/install/mooncar_control/lib/mooncar_control/wheel_odometry.py", line 131, in main
+[wheel_odometry.py-10]     rclpy.spin(node)
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+[wheel_odometry.py-10]     executor.spin_once()
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+[wheel_odometry.py-10]     self._spin_once_impl(timeout_sec)
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+[wheel_odometry.py-10]     handler, entity, node = self.wait_for_ready_callbacks(
+[wheel_odometry.py-10]                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+[wheel_odometry.py-10]     return next(self._cb_iter)
+[wheel_odometry.py-10]            ^^^^^^^^^^^^^^^^^^^
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 781, in _wait_for_ready_callbacks
+[wheel_odometry.py-10]     wait_set.wait(timeout_nsec)
+[wheel_odometry.py-10] KeyboardInterrupt
+[wheel_odometry.py-10] 
+[wheel_odometry.py-10] During handling of the above exception, another exception occurred:
+[wheel_odometry.py-10] 
+[wheel_odometry.py-10] Traceback (most recent call last):
+[wheel_odometry.py-10]   File "/work/ros2_ws/install/mooncar_control/lib/mooncar_control/wheel_odometry.py", line 138, in <module>
+[wheel_odometry.py-10]     main()
+[wheel_odometry.py-10]   File "/work/ros2_ws/install/mooncar_control/lib/mooncar_control/wheel_odometry.py", line 134, in main
+[wheel_odometry.py-10]     rclpy.shutdown()
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 134, in shutdown
+[wheel_odometry.py-10]     _shutdown(context=context)
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/utilities.py", line 82, in shutdown
+[wheel_odometry.py-10]     context.shutdown()
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/context.py", line 129, in shutdown
+[wheel_odometry.py-10]     self.__context.shutdown()
+[wheel_odometry.py-10] rclpy._rclpy_pybind11.RCLError: failed to shutdown: rcl_shutdown already called on the given context, at ./src/rcl/init.c:333
+[gazebo-3] XIO:  fatal IO error 22 (Invalid argument) on X server ":105"
+[gazebo-3]       after 23 requests (23 known processed) with 0 events remaining.
+[INFO] [planner_server-19]: process has finished cleanly [pid 2996]
+[waypoint_follower-22] [INFO] [1789203675.134099736] [waypoint_follower]: Destroying bond (waypoint_follower) to lifecycle manager.
+[waypoint_follower-22] [INFO] [1789203675.138595897] [waypoint_follower]: Destroying
+[behavior_server-20] [INFO] [1789203675.140336332] [behavior_server]: Destroying
+[planner_server-19] [INFO] [1789203675.143932768] [global_costmap.global_costmap]: Cleaning up
+[lifecycle_manager-24] [INFO] [1789203675.227590961] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planner_server-19] [INFO] [1789203675.232075082] [planner_server]: Cleaning up plugin GridBased of type NavfnPlanner
+[planner_server-19] [INFO] [1789203675.232412663] [planner_server]: Destroying plugin GridBased of type NavfnPlanner
+[lifecycle_manager-24] [INFO] [1789203675.244225498] [lifecycle_manager_navigation]: Destroying lifecycle_manager_navigation
+[controller_server-17] [INFO] [1789203675.327655738] [controller_server]: Destroying bond (controller_server) to lifecycle manager.
+[controller_server-17] [INFO] [1789203675.333582044] [local_costmap.local_costmap]: Destroying
+[INFO] [launch]: process[gazebo-3] was required: shutting down launched system
+[planner_server-19] [INFO] [1789203675.424774822] [planner_server]: Destroying bond (planner_server) to lifecycle manager.
+[planner_server-19] [INFO] [1789203675.426310860] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planner_server-19] [INFO] [1789203675.429720434] [global_costmap.global_costmap]: Destroying
+[planner_server-19] [INFO] [1789203675.444465074] [planner_server]: Destroying
+[bt_navigator-21] [INFO] [1789203675.530676982] [bt_navigator]: Completed Cleaning up
+[bt_navigator-21] [INFO] [1789203675.530728168] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.
+[bt_navigator-21] [INFO] [1789203675.531215322] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[bt_navigator-21] [INFO] [1789203675.531990265] [bt_navigator]: Destroying
+[ERROR] [launch]: Caught exception in launch (see debug for traceback): [Errno 2] No such file or directory: '/tmp/tmpz1j7bc0h.yaml'
+[INFO] [bt_navigator-21]: process has finished cleanly [pid 2998]
+[ERROR] [bridge_node-4]: process has died [pid 2566, exit code -11, cmd '/opt/ros/jazzy/lib/ros_gz_bridge/bridge_node --ros-args --log-level info --ros-args -r __node:=mooncar_gz_bridge -r __ns:=/ --params-file /tmp/launch_params_3oii83rd'].

@@ -1,0 +1,19 @@
+{
+  "common_valid_single_surface_cells": 1293,
+  "common_valid_single_surface_m2": 80.8125,
+  "meaning": "Both maps fitted valid heights at exactly the same non-mixed world cells; no registration",
+  "strategies": [
+    {
+      "strategy": "baseline",
+      "rmse_m": 0.0022848141350836934,
+      "mae_m": 0.0018594040673106536,
+      "p95_abs_m": 0.003346574826215108
+    },
+    {
+      "strategy": "candidate",
+      "rmse_m": 0.0018195516187770545,
+      "mae_m": 0.0008303275392707371,
+      "p95_abs_m": 0.00338602107698792
+    }
+  ]
+}

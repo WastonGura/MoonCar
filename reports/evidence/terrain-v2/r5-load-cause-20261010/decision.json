@@ -1,0 +1,15 @@
+{
+  "cause_confirmed": true,
+  "status": "com_influence_confirmed",
+  "repair_verified": false,
+  "turn_performance_accepted": false,
+  "production_changed": false,
+  "interpretation": "Test inertial COM intervention affects pivot selection",
+  "limitation": "Combined assembly inertia also changes; this does not alone prove a load-only mechanism, a DART defect, or real vehicle behavior",
+  "attempts": 12,
+  "qualified": 12,
+  "load_explanation_supported": true,
+  "load_only_cause_proven": false,
+  "displacement_eliminated": false,
+  "next_action": "Review physical mass placement and separately plan slip-aware estimation/control; no production publication"
+}

@@ -1,0 +1,9 @@
+﻿category,cells,observed,unobserved,invalid,paired,single_surface_pairs,valid_fraction,height_rmse_m,slope_mae_deg
+all,1258,171,1087,55,114,109,0.6783625730994152,0.0017601859099698508,0.3716618584841388
+ground,146,146,0,36,109,109,0.7534246575342466,2.649015073867957e-06,0.0009021320715903394
+sloped_top,0,0,0,0,0,0,,,
+level_top,0,0,0,0,0,0,,,
+curved_top,0,0,0,0,0,0,,,
+steep_side,0,0,0,0,0,0,,,
+mixed,24,24,0,18,5,0,0.25,0.008404763423311982,8.454223894277694
+no_visible_reference,1088,1,1087,1,0,0,0.0,,

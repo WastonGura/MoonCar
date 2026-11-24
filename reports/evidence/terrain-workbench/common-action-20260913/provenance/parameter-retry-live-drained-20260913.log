@@ -1,0 +1,1 @@
+{"events": [{"attempt": 1, "status": "response_timeout", "wall_seconds": 10.000718896000762}, {"attempt": 2, "status": "success", "value": 0.5, "wall_seconds": 0.0014491780020762235}], "requests": 2, "passed": true}

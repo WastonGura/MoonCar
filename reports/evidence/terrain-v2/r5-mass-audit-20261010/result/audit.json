@@ -1,0 +1,3716 @@
+{
+  "passed": true,
+  "coordinate_frame": "base_footprint",
+  "joint_positions": "all zero; wheels zero; gimbal zero",
+  "urdf": {
+    "total_mass_kg": 9.186,
+    "com_m": [
+      -0.006237889179185716,
+      0.0,
+      0.12798331700413673
+    ],
+    "inertia_kg_m2": [
+      [
+        0.09624401045999754,
+        0.0,
+        0.00461139845651671
+      ],
+      [
+        0.0,
+        0.12038050294600208,
+        0.0
+      ],
+      [
+        0.00461139845651671,
+        0.0,
+        0.16624531895267117
+      ]
+    ]
+  },
+  "sdf": {
+    "total_mass_kg": 9.186,
+    "com_m": [
+      -0.006237889179185711,
+      0.0,
+      0.1279833170041367
+    ],
+    "inertia_kg_m2": [
+      [
+        0.09624401045999759,
+        0.0,
+        0.0046113984565167125
+      ],
+      [
+        0.0,
+        0.12038050294600211,
+        0.0
+      ],
+      [
+        0.0046113984565167125,
+        0.0,
+        0.16624531895267117
+      ]
+    ]
+  },
+  "crosscheck": {
+    "passed": true,
+    "absolute_delta": {
+      "mass_kg": 0.0,
+      "com_m": [
+        4.336808689942018e-18,
+        0.0,
+        2.7755575615628914e-17
+      ],
+      "inertia_kg_m2": [
+        [
+          4.163336342344337e-17,
+          0.0,
+          2.6020852139652106e-18
+        ],
+        [
+          0.0,
+          2.7755575615628914e-17,
+          0.0
+        ],
+        [
+          2.6020852139652106e-18,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "tolerances": {
+      "mass_kg": 1e-06,
+      "com_each_axis_m": 1e-06,
+      "inertia_each_entry_kg_m2": 1e-08
+    }
+  },
+  "baseline_reproduced": true,
+  "hardware_com_confirmed": false,
+  "turn_displacement_repaired": false,
+  "simulation_attempts": 0,
+  "parts": [
+    {
+      "link": "base_link",
+      "mass_kg": 4.1,
+      "com_m": [
+        0.0,
+        0.0,
+        0.1
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.1
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          0.02354083333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.03717333333333333,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.05634083333333332
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          0.02354083333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.03717333333333333,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.05634083333333332
+        ]
+      ],
+      "local_com_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mount_chain": [
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "procurement",
+            "invalid-r5-fetch"
+          ],
+          "detail": "4.1 kg body + four 0.4 kg wheels = assumed 5.7 kg bare estimate. Motor/gearbox/encoder allocation not independently confirmed."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform box approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        0.0,
+        0.0,
+        0.044633137382974086
+      ],
+      "com_derivative_per_added_g_m": [
+        6.790647919862526e-07,
+        0.0,
+        -3.0463005665291454e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          0.0004463313738297409,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0004463313738297409,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0004463313738297409
+        ]
+      ]
+    },
+    {
+      "link": "battery_link",
+      "mass_kg": 3.05,
+      "com_m": [
+        -0.035,
+        0.0,
+        0.188
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.035
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.188
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          0.006964166666666666,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.009509137499999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.013380604166666666
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          0.006964166666666666,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.009509137499999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.013380604166666666
+        ]
+      ],
+      "local_com_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mount_chain": [
+        {
+          "child": "battery_link",
+          "parent": "base_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              -0.035
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.088
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "厂家标称",
+          "sources": [
+            "battery-manual"
+          ],
+          "detail": "P7120S 12 Ah nominal 3.05 kg; installed hardware/version not measured; charger excluded."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform box approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        -0.01162094491617679,
+        0.0,
+        0.06242107554974962
+      ],
+      "com_derivative_per_added_g_m": [
+        -3.131081082170073e-06,
+        0.0,
+        6.533494774206757e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          0.00033202699760505116,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00033202699760505116,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.00033202699760505116
+        ]
+      ]
+    },
+    {
+      "link": "front_left_wheel_link",
+      "mass_kg": 0.4,
+      "com_m": [
+        0.157,
+        0.16555,
+        0.076
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.157
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.16555
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.076
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011551999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011551999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "local_com_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mount_chain": [
+        {
+          "child": "front_left_wheel_link",
+          "parent": "base_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.157
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.16555
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              -0.024000000000000007
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "description"
+          ],
+          "detail": "0.4 kg each, provisional split, not four measured wheels."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform cylinder approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        0.006836490311343349,
+        0.007208795993903767,
+        0.0033093838449814936
+      ],
+      "com_derivative_per_added_g_m": [
+        1.7770290570344625e-05,
+        1.8021989984759418e-05,
+        -5.658972023093483e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          4.3544524276072285e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.3544524276072285e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          4.3544524276072285e-05
+        ]
+      ]
+    },
+    {
+      "link": "front_right_wheel_link",
+      "mass_kg": 0.4,
+      "com_m": [
+        0.157,
+        -0.16555,
+        0.076
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.157
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.16555
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.076
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011551999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011551999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "local_com_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mount_chain": [
+        {
+          "child": "front_right_wheel_link",
+          "parent": "base_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.157
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              -0.16555
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              -0.024000000000000007
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "description"
+          ],
+          "detail": "0.4 kg each, provisional split, not four measured wheels."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform cylinder approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        0.006836490311343349,
+        -0.007208795993903767,
+        0.0033093838449814936
+      ],
+      "com_derivative_per_added_g_m": [
+        1.7770290570344625e-05,
+        -1.8021989984759418e-05,
+        -5.658972023093483e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          4.3544524276072285e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.3544524276072285e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          4.3544524276072285e-05
+        ]
+      ]
+    },
+    {
+      "link": "rear_left_wheel_link",
+      "mass_kg": 0.4,
+      "com_m": [
+        -0.157,
+        0.16555,
+        0.076
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.157
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.16555
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.076
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011551999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011551999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "local_com_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mount_chain": [
+        {
+          "child": "rear_left_wheel_link",
+          "parent": "base_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              -0.157
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.16555
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              -0.024000000000000007
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "description"
+          ],
+          "detail": "0.4 kg each, provisional split, not four measured wheels."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform cylinder approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        -0.006836490311343349,
+        0.007208795993903767,
+        0.0033093838449814936
+      ],
+      "com_derivative_per_added_g_m": [
+        -1.641216098637212e-05,
+        1.8021989984759418e-05,
+        -5.658972023093483e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          4.3544524276072285e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.3544524276072285e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          4.3544524276072285e-05
+        ]
+      ]
+    },
+    {
+      "link": "rear_right_wheel_link",
+      "mass_kg": 0.4,
+      "com_m": [
+        -0.157,
+        -0.16555,
+        0.076
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.157
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.16555
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.076
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011551999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011551999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "local_com_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mount_chain": [
+        {
+          "child": "rear_right_wheel_link",
+          "parent": "base_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              -0.157
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              -0.16555
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              -0.024000000000000007
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "description"
+          ],
+          "detail": "0.4 kg each, provisional split, not four measured wheels."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform cylinder approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        -0.006836490311343349,
+        -0.007208795993903767,
+        0.0033093838449814936
+      ],
+      "com_derivative_per_added_g_m": [
+        -1.641216098637212e-05,
+        -1.8021989984759418e-05,
+        -5.658972023093483e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          4.3544524276072285e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.3544524276072285e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          4.3544524276072285e-05
+        ]
+      ]
+    },
+    {
+      "link": "lidar_link",
+      "mass_kg": 0.115,
+      "com_m": [
+        0.11,
+        0.0,
+        0.16065000000000002
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.11
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.16065000000000002
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          3.856534583333334e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          3.856534583333334e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          4.443829999999999e-05
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          3.856534583333334e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          3.856534583333334e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          4.443829999999999e-05
+        ]
+      ],
+      "local_com_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mount_chain": [
+        {
+          "child": "lidar_link",
+          "parent": "base_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.11
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.06065
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "厂家标称",
+          "sources": [
+            "s3-snapshot"
+          ],
+          "detail": "S3 nominal 115 g; kit adapter/cable/bracket not included in this body mass."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform cylinder approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        0.001377095580230786,
+        0.0,
+        0.0020111854996734163
+      ],
+      "com_derivative_per_added_g_m": [
+        1.2653808967906132e-05,
+        0.0,
+        3.556137926830316e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          1.2519050729370782e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.2519050729370782e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.2519050729370782e-05
+        ]
+      ]
+    },
+    {
+      "link": "camera_mount_link",
+      "mass_kg": 0.08,
+      "com_m": [
+        0.14,
+        0.0,
+        0.14
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.14
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.14
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          1.8500000000000006e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.8500000000000006e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          2.5e-05
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          1.8500000000000006e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.8500000000000006e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          2.5e-05
+        ]
+      ],
+      "local_com_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mount_chain": [
+        {
+          "child": "camera_mount_link",
+          "parent": "base_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.14
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.04
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "0.08 kg research gimbal bracket; no selected actuator in procurement."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform cylinder approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        0.0012192466797300242,
+        0.0,
+        0.0012192466797300242
+      ],
+      "com_derivative_per_added_g_m": [
+        1.5919648288611553e-05,
+        0.0,
+        1.3081518610780844e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          8.708904855214457e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          8.708904855214457e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          8.708904855214457e-06
+        ]
+      ]
+    },
+    {
+      "link": "camera_pan_link",
+      "mass_kg": 0.06,
+      "com_m": [
+        0.14,
+        0.0,
+        0.17000000000000004
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.14
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.15500000000000003
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          1.625e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.2250000000000001e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.625e-05
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          1.625e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.2250000000000001e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.625e-05
+        ]
+      ],
+      "local_com_m": [
+        0.0,
+        0.0,
+        0.015
+      ],
+      "mount_chain": [
+        {
+          "child": "camera_pan_link",
+          "parent": "camera_mount_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.015
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "camera_mount_link",
+          "parent": "base_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.14
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.04
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "0.06 kg research gimbal bracket; no selected actuator in procurement."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform box approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        0.0009144350097975181,
+        0.0,
+        0.0011103853690398436
+      ],
+      "com_derivative_per_added_g_m": [
+        1.5919648288611553e-05,
+        0.0,
+        4.573991181783509e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          6.531678641410843e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          6.531678641410843e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          6.531678641410843e-06
+        ]
+      ]
+    },
+    {
+      "link": "camera_tilt_link",
+      "mass_kg": 0.04,
+      "com_m": [
+        0.16500000000000004,
+        0.0,
+        0.18000000000000002
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.15500000000000003
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.18000000000000002
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          1.041666666666667e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          5.0833333333333335e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.1333333333333336e-05
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          1.041666666666667e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          5.0833333333333335e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.1333333333333336e-05
+        ]
+      ],
+      "local_com_m": [
+        0.01,
+        0.0,
+        0.0
+      ],
+      "mount_chain": [
+        {
+          "child": "camera_tilt_link",
+          "parent": "camera_pan_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.015
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.025
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "camera_pan_link",
+          "parent": "camera_mount_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.015
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "camera_mount_link",
+          "parent": "base_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.14
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.04
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "0.04 kg research gimbal bracket; no selected actuator in procurement."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform box approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        0.0007184846505551929,
+        0.0,
+        0.0007838014369693012
+      ],
+      "com_derivative_per_added_g_m": [
+        1.8641181055866077e-05,
+        0.0,
+        5.662604288685313e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          4.3544524276072285e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.3544524276072285e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          4.3544524276072285e-06
+        ]
+      ]
+    },
+    {
+      "link": "depth_camera_link",
+      "mass_kg": 0.061,
+      "com_m": [
+        0.17375000000000002,
+        0.0,
+        0.18000000000000002
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.17375000000000002
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.18000000000000002
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          4.6080416666666663e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          5.542104166666667e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          4.3651854166666664e-05
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          4.6080416666666663e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          5.542104166666667e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          4.3651854166666664e-05
+        ]
+      ],
+      "local_com_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mount_chain": [
+        {
+          "child": "depth_camera_link",
+          "parent": "camera_tilt_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.018750000000000003
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "camera_tilt_link",
+          "parent": "camera_pan_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.015
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.025
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "camera_pan_link",
+          "parent": "camera_mount_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.015
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "camera_mount_link",
+          "parent": "base_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.14
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.04
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "厂家标称",
+          "sources": [
+            "oak-record"
+          ],
+          "detail": "61 g historical official-store verification record; raw original unavailable, current page extraction does not re-confirm; AF/FF SKU awaits hardware."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform box approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        0.0011537938166775528,
+        0.0,
+        0.0011952971913781845
+      ],
+      "com_derivative_per_added_g_m": [
+        1.9593717524405153e-05,
+        0.0,
+        5.662604288685313e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          6.640539952101023e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          6.640539952101023e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          6.640539952101023e-06
+        ]
+      ]
+    },
+    {
+      "link": "imu_link",
+      "mass_kg": 0.08,
+      "com_m": [
+        0.0,
+        0.0,
+        0.1575
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.1575
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          1.1106666666666668e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0573333333333334e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.346666666666667e-06
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          1.1106666666666668e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0573333333333334e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.346666666666667e-06
+        ]
+      ],
+      "local_com_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mount_chain": [
+        {
+          "child": "imu_link",
+          "parent": "base_link",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.0575
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "child": "base_link",
+          "parent": "base_footprint",
+          "matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              0.0,
+              1.0,
+              0.1
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "provenance": {
+        "mass": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "SEN0374 model 80 g and 35 mm envelope are provisional; PCB thickness is not mass."
+        },
+        "local_com": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Uniform box approximation, not measured internal density"
+        },
+        "mount": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "gaps"
+          ],
+          "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+        },
+        "inertia": {
+          "classification": "工程假设",
+          "sources": [
+            "model",
+            "inertial-macros"
+          ],
+          "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+        }
+      },
+      "com_contribution_m": [
+        0.0,
+        0.0,
+        0.001371652514696277
+      ],
+      "com_derivative_per_added_g_m": [
+        6.790647919862526e-07,
+        0.0,
+        3.2132247981562453e-06
+      ],
+      "com_derivative_per_mount_mm_matrix_m": [
+        [
+          8.708904855214457e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          8.708904855214457e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          8.708904855214457e-06
+        ]
+      ]
+    }
+  ],
+  "sdf_parts": [
+    {
+      "link": "base_footprint",
+      "mass_kg": 7.425,
+      "com_m": [
+        -0.01116498316498316,
+        0.0,
+        0.1381380134680134
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          0.0442081681706987,
+          0.0,
+          0.005017136183501688
+        ],
+        [
+          0.0,
+          0.06615527856632158,
+          0.0
+        ],
+        [
+          0.005017136183501688,
+          0.0,
+          0.07556639536228954
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          0.0442081681706987,
+          0.0,
+          0.005017136183501688
+        ],
+        [
+          0.0,
+          0.06615527856632158,
+          0.0
+        ],
+        [
+          0.005017136183501688,
+          0.0,
+          0.07556639536228954
+        ]
+      ]
+    },
+    {
+      "link": "camera_pan_link",
+      "mass_kg": 0.06,
+      "com_m": [
+        0.14,
+        0.0,
+        0.16999999999999998
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.14
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.155
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          1.625e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.225e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.625e-05
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          1.625e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.225e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.625e-05
+        ]
+      ]
+    },
+    {
+      "link": "camera_tilt_link",
+      "mass_kg": 0.101,
+      "com_m": [
+        0.17028465346534657,
+        0.0,
+        0.18
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.15500000000000003
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.18
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          5.649708333333333e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.247506621287129e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.683481621287128e-05
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          5.649708333333333e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.247506621287129e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.683481621287128e-05
+        ]
+      ]
+    },
+    {
+      "link": "front_left_wheel_link",
+      "mass_kg": 0.4,
+      "com_m": [
+        0.157,
+        0.16555,
+        0.076
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.157
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.16555
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.076
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011552,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011552,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ]
+    },
+    {
+      "link": "front_right_wheel_link",
+      "mass_kg": 0.4,
+      "com_m": [
+        0.157,
+        -0.16555,
+        0.076
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.157
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.16555
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.076
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011552,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011552,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ]
+    },
+    {
+      "link": "rear_left_wheel_link",
+      "mass_kg": 0.4,
+      "com_m": [
+        -0.157,
+        0.16555,
+        0.076
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.157
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.16555
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.076
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011552,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011552,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ]
+    },
+    {
+      "link": "rear_right_wheel_link",
+      "mass_kg": 0.4,
+      "com_m": [
+        -0.157,
+        -0.16555,
+        0.076
+      ],
+      "link_pose_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.157
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.16555
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.076
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "centroidal_inertia_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011552,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ],
+      "inertial_rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "inertia_in_root_kg_m2": [
+        [
+          0.0006609333333333333,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0011552,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0006609333333333333
+        ]
+      ]
+    }
+  ],
+  "sensitivity_interpretation": "Differential per +1 g at fixed component centroid; translation per +1 mm along base_footprint axes of this component alone, no child linkage or finite intervention; not uncertainty bounds.",
+  "massless_frames": [
+    "base_footprint",
+    "lidar_scan_frame",
+    "depth_camera_optical_frame",
+    "rgb_camera_optical_frame"
+  ],
+  "procurement": [
+    {
+      "id": "01",
+      "name": "R5 四驱底盘；霍尔编码器／24V／27减速比；不含电池",
+      "quantity": 1,
+      "model_status": "归属待确认",
+      "nominal_mass_kg": null,
+      "detail": "Chassis and four wheels modeled using assumed split. Motors/gearboxes/encoders are abstracted into bare chassis; vendor 5.7 kg inclusion and boards not confirmed.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "02",
+      "name": "轮趣 P7120S 12Ah 磷酸铁锂电池＋原厂匹配充电器",
+      "quantity": 1,
+      "model_status": "独立建模",
+      "nominal_mass_kg": 3.05,
+      "detail": "Battery 3.05 kg body modeled; charger is external and excluded from vehicle mass.",
+      "source": "procurement",
+      "nominal_mass_scope": "per module only; not entire kit"
+    },
+    {
+      "id": "03",
+      "name": "轮趣 C50C 有刷控制板；不含驱动板，含配套OLED",
+      "quantity": 1,
+      "model_status": "归属待确认",
+      "nominal_mass_kg": null,
+      "detail": "C50C and bundled OLED have no independent mass links; bare-chassis estimate may/may not include them. Do not add before inclusion is checked.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "04",
+      "name": "轮趣 D50A 双路驱动；12.8A／4层PCB／防反接版",
+      "quantity": 2,
+      "model_status": "归属待确认",
+      "nominal_mass_kg": null,
+      "detail": "Two D50A boards have no independent mass links; bare-chassis inclusion unknown.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "05",
+      "name": "树莓派 5 8GB；DFR1119",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Pi 5 populated board, not modeled; mass and mounting unknown.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "06",
+      "name": "微雪 Pi 5 基础配件包；SKU 26258",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Package contains case/cooler/card potentially onboard plus reader/desktop supply/cables offboard; split assembly inventory before counting.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "07",
+      "name": "RPLIDAR S3 套装；DFR1097",
+      "quantity": 1,
+      "model_status": "独立建模",
+      "nominal_mass_kg": 0.115,
+      "detail": "S3 body only; kit USB adapter, wiring and mounts not fully accounted.",
+      "source": "procurement",
+      "nominal_mass_scope": "per module only; not entire kit"
+    },
+    {
+      "id": "08",
+      "name": "OAK-D-Lite；微雪 SKU 21545",
+      "quantity": 1,
+      "model_status": "独立建模",
+      "nominal_mass_kg": 0.061,
+      "detail": "Camera body only; actual variant, cable and mounting hardware need confirmation.",
+      "source": "procurement",
+      "nominal_mass_scope": "per module only; not entire kit"
+    },
+    {
+      "id": "09",
+      "name": "BNO055 九轴 IMU；SEN0374",
+      "quantity": 1,
+      "model_status": "独立建模",
+      "nominal_mass_kg": null,
+      "detail": "SEN0374 separate IMU, mass 80 g is assumption, not OAK internal IMU.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "10",
+      "name": "TFmini Plus 近距测距；SEN0309",
+      "quantity": 4,
+      "model_status": "未建模",
+      "nominal_mass_kg": 0.012,
+      "detail": "Four TFmini Plus: 12 g each nominal, total 48 g; positions and bracket/wiring mass absent.",
+      "source": "procurement",
+      "nominal_mass_scope": "per module only; not entire kit"
+    },
+    {
+      "id": "11",
+      "name": "明纬 DDR-60G-5；9-36V输入／5V 10.8A输出",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "DDR-60G-5 DC/DC power supply and mounting not modeled.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "12",
+      "name": "微雪 USB 3.2 Gen1 HUB HAT；SKU 17584",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "HUB HAT and mounting not modeled.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "13",
+      "name": "Gravity ±50A 电流模块；SEN0098-V2",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Current sensor and signal conditioning not modeled.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "14",
+      "name": "施耐德 XB2BS542C 急停按钮；1NC／旋转复位",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Emergency-stop button and panel not modeled.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "15",
+      "name": "TE EV200AAANA 直流接触器；线圈9-36V",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "EV200 contactor, bracket and wiring not modeled.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "16",
+      "name": "STLINK-V3MINIE 调试器；微雪 SKU 22943",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "STLINK is a bench tool, not counted onboard unless future assembly inventory specifies permanent installation.",
+      "source": "procurement",
+      "nominal_mass_scope": null,
+      "mass_missing": true
+    },
+    {
+      "id": "17",
+      "name": "配电安全包",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Distribution/fuse/enable/conditioning bundle: quantities and installed mass not frozen; avoid recounting items 14/15.",
+      "source": "procurement",
+      "mass_missing": true
+    },
+    {
+      "id": "18",
+      "name": "动力与信号线束",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Power and signal harnesses absent; no zero-mass assumption.",
+      "source": "procurement",
+      "mass_missing": true
+    },
+    {
+      "id": "19",
+      "name": "USB与供电线",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "USB and power cable bundle absent; bundled kit cables must not be counted twice.",
+      "source": "procurement",
+      "mass_missing": true
+    },
+    {
+      "id": "20",
+      "name": "安装与整套装配",
+      "quantity": 1,
+      "model_status": "归属待确认",
+      "nominal_mass_kg": null,
+      "detail": "Real mounting structures not frozen. Model has hypothetical gimbal 180 g, not proof that physical assembly hardware is included.",
+      "source": "procurement",
+      "mass_missing": true
+    }
+  ],
+  "conflicts": [
+    {
+      "topic": "bare mass / scope",
+      "alternatives": [
+        "conditional 5.7 kg procurement estimate",
+        "model split 4.1 + 4*.4 kg"
+      ],
+      "resolution": "not independently verified, not an actual numeric conflict; motor/gearbox/board inclusion unknown; no averaging"
+    },
+    {
+      "topic": "historical 8 kg target vs current model",
+      "alternatives": [
+        "historical maximum ready mass 8 kg",
+        "current incomplete model 9.186 kg"
+      ],
+      "resolution": "different requirement/status, not supplier mass; no unauthorized target change"
+    },
+    {
+      "topic": "old alternative motors vs R5",
+      "alternatives": [
+        "historical separately selected GMP motors",
+        "current complete R5 drivetrain"
+      ],
+      "resolution": "different procurement routes; never add alternative motor masses to R5"
+    },
+    {
+      "topic": "research gimbal vs purchase list",
+      "alternatives": [
+        "model includes 0.18 kg gimbal structures",
+        "current 20-item list has no gimbal actuator"
+      ],
+      "resolution": "research assumption; physical configuration undecided"
+    },
+    {
+      "topic": "OAK sales variant",
+      "alternatives": [
+        "procurement 2026-09-08 SKU 21545: sales version without IMU",
+        "current official OAK-D Lite page: BMI270",
+        "historical 61 g nominal record"
+      ],
+      "resolution": "variant mismatch unclosed; keep 61 g as historical nominal, not measured selected SKU; separate SEN0374 must not be substituted or removed; no extra internal IMU mass added"
+    }
+  ],
+  "measurement_priorities": [
+    {
+      "priority": 1,
+      "item": "裸底盘总质量及质量范围",
+      "method": "Confirm exact R5 24V/27 four-wheel version, packing list; weigh chassis with documented wheels/motors/gearboxes/boards inclusion; weigh each wheel and remaining body.",
+      "reason": "5.7 kg dominates modeled mass, split and inclusion lack evidence."
+    },
+    {
+      "priority": 2,
+      "item": "电池安装与局部质心",
+      "method": "Verify P7120S variant and weigh battery without charger; measure pose relative to base_footprint/axle midpoint; obtain CAD or balance-based local COM. Preserve uncertainty.",
+      "reason": "3.05 kg, about one third of model mass; mount is assumed."
+    },
+    {
+      "priority": 3,
+      "item": "车载 BOM 与遗漏部件",
+      "method": "Separate onboard/offboard/bundled items; weigh electronics, power/safety components, cables, brackets, four TFmini; record mounting XYZ and ownership to avoid double counts.",
+      "reason": "Unknown omitted masses cannot be bounded or set to zero; ordering is provisional."
+    },
+    {
+      "priority": 4,
+      "item": "云台与 IMU",
+      "method": "Decide actual gimbal architecture; weigh complete actuator/brackets/camera assembly and SEN0374; record mounts and density/centroid data.",
+      "reason": "180 g gimbal and 80 g IMU are engineering values."
+    },
+    {
+      "priority": 5,
+      "item": "独立整车载荷核对",
+      "method": "After fixed assembly, record total weight and per-wheel/front-rear static loads on level surface, axle geometry and device condition; derive horizontal COM with uncertainty. Do not infer vertical COM from level loads alone.",
+      "reason": "Independent closure check against component-derived COM; real measured loads are Earth-gravity observations, not lunar simulation validation."
+    }
+  ],
+  "input_sha256": {
+    "/evidence/models/mooncar_r5.urdf": "044b2c1e2847129300b230d877c458f9134ba9a540d2710bcee9b61b4ecf4b73",
+    "/evidence/models/mooncar_r5.sdf": "21f4f28b22e6f7ba2d21d03ab74a5a8bc7dc5c0411c7ec8bbf574d2b1ec5e22f",
+    "/evidence/catalog-ready/catalog.json": "8697c4dfedcb22e9dbe719845d41659198782d385116730e7a0005d2cff69912"
+  },
+  "conclusion": "模型自洽，真实质量分布未确认"
+}

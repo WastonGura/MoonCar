@@ -1,0 +1,368 @@
+{
+  "tested_commit": "a8a5cc51ca44c2f89795f66e3723ea60c35bc8c3",
+  "branch": "codex/terrain-mapping-workbench",
+  "worktree": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+  "common_git_directory": "D:\\Documents\\Projects\\Repositories\\MoonCar\\.git",
+  "identity": {
+    "git_commit": "a8a5cc51ca44c2f89795f66e3723ea60c35bc8c3",
+    "git_branch": "codex/terrain-mapping-workbench",
+    "source_root": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+    "product_clean": true,
+    "baseline": {
+      "version": "2026-11-04-r5-window",
+      "simulation_profile": "r5_support_v1",
+      "scene": "survey_v2_native",
+      "localization_mode": "rgbd_window",
+      "active_revisit": false,
+      "support_profile": "independent_linear_v1",
+      "physics_step_s": 0.00025,
+      "support_runtime": "/opt/mooncar/turn/r5-v2",
+      "hardware_calibrated": false,
+      "historical_tasks_without_profile": "legacy"
+    },
+    "source_digest": "869a492bfdcf63836f1ad8bed3301629476ae25e69ddd63f1cffd8ef5099db7c"
+  },
+  "installed_file_count": 120,
+  "runtime_image": "sha256:6dc9c3677650c1f238d54ca67859e637980fe7052c64430eb699b826da26285d",
+  "resources": {
+    "cpus": "0-5",
+    "cpu_quota": 6,
+    "memory_bytes": 6442450944
+  },
+  "tests": {
+    "control": {
+      "run": 13,
+      "passed": true
+    },
+    "navigation": {
+      "run": 10,
+      "passed": true
+    },
+    "terrain": {
+      "run": 390,
+      "passed": true
+    },
+    "gazebo": {
+      "run": 486,
+      "failures": 2,
+      "errors": 18,
+      "skipped": 13,
+      "passed": false
+    },
+    "slam": {
+      "run": 270,
+      "passed": true
+    },
+    "root": {
+      "run": 202,
+      "passed": true
+    },
+    "web": {
+      "run": 5,
+      "passed": true
+    },
+    "firmware": {
+      "passed": true
+    }
+  },
+  "previous_fixed_fixture_failures": 9,
+  "remaining_failures": [
+    {
+      "test": "ERROR: setUpClass (test_integral_contact.IntegralContactTest)",
+      "reason": "AttributeError: module 'numpy' has no attribute 'trapezoid'"
+    },
+    {
+      "test": "ERROR: test_actual_robot_state_publisher_tracks_passive_suspension (test_r5_robot_description.DescriptionTests.test_actual_robot_state_publisher_tracks_passive_suspension)",
+      "reason": "FileNotFoundError: [Errno 2] No such file or directory: '/diagnosis/after/suspended.urdf'"
+    },
+    {
+      "test": "ERROR: test_actual_tf_cadence_reproduces_20hz_gap_and_30hz_fixes_it (test_r5_robot_description.DescriptionTests.test_actual_tf_cadence_reproduces_20hz_gap_and_30hz_fixes_it)",
+      "reason": "FileNotFoundError: [Errno 2] No such file or directory: '/diagnosis/after/rigid.urdf'"
+    },
+    {
+      "test": "ERROR: test_missing_tf_feedback_is_not_compatibility_success (test_r5_robot_description.DescriptionTests.test_missing_tf_feedback_is_not_compatibility_success)",
+      "reason": "FileNotFoundError: [Errno 2] No such file or directory: '/diagnosis/after/suspended.urdf'"
+    },
+    {
+      "test": "ERROR: test_research_tf_rate_is_explicit_and_legacy_default_is_preserved (test_r5_robot_description.DescriptionTests.test_research_tf_rate_is_explicit_and_legacy_default_is_preserved)",
+      "reason": "FileNotFoundError: [Errno 2] No such file or directory: '/diagnosis/after/suspended.urdf'"
+    },
+    {
+      "test": "ERROR: test_rigid_description_rejected_for_suspension_before_simulation (test_r5_robot_description.DescriptionTests.test_rigid_description_rejected_for_suspension_before_simulation)",
+      "reason": "FileNotFoundError: [Errno 2] No such file or directory: '/diagnosis/prepared-fixed/manifest.json'"
+    },
+    {
+      "test": "ERROR: test_capacity_hash_or_version_failure_is_not_suppressed (test_r5_startup_guard.GuardTests.test_capacity_hash_or_version_failure_is_not_suppressed)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "ERROR: test_child_exit_rejects_ready (test_r5_startup_guard.GuardTests.test_child_exit_rejects_ready)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "ERROR: test_generation_rejects_changed_base_and_overwrite (test_r5_startup_guard.GuardTests.test_generation_rejects_changed_base_and_overwrite)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "ERROR: test_nonretryable_io_is_not_suppressed (test_r5_startup_guard.GuardTests.test_nonretryable_io_is_not_suppressed)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "ERROR: test_partial_receipt_remains_pending (test_r5_startup_guard.GuardTests.test_partial_receipt_remains_pending)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "ERROR: test_permanent_enodata_times_out_and_closes (test_r5_startup_guard.GuardTests.test_permanent_enodata_times_out_and_closes)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "ERROR: test_receipt_enodata_retries_and_traces (test_r5_startup_guard.GuardTests.test_receipt_enodata_retries_and_traces)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "ERROR: test_runtime_proof_enodata_never_reports_premature_ready (test_r5_startup_guard.GuardTests.test_runtime_proof_enodata_never_reports_premature_ready)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "ERROR: test_fixed24_matrix_and_pairing_unchanged (test_turn_gate_validation.EntryTests.test_fixed24_matrix_and_pairing_unchanged)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "ERROR: test_only_the_private_bridge_guard_is_redirected (test_turn_gate_validation.EntryTests.test_only_the_private_bridge_guard_is_redirected)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "ERROR: test_signature_mismatch_fails (test_turn_gate_validation.EntryTests.test_signature_mismatch_fails)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "ERROR: test_startup_root_error_is_retained (test_turn_gate_validation.EntryTests.test_startup_root_error_is_retained)",
+      "reason": "ValueError: Test guard requires the exact frozen production guard"
+    },
+    {
+      "test": "FAIL: test_unsupported_scene_step_rejected (test_axle_robustness.RobustnessTests.test_unsupported_scene_step_rejected)",
+      "reason": "AssertionError: ValueError not raised"
+    },
+    {
+      "test": "FAIL: test_real_ros_witness_sigint_without_any_simulator (test_probe_shutdown.ProbeShutdownTests.test_real_ros_witness_sigint_without_any_simulator)",
+      "reason": "AssertionError: 0 not greater than 0"
+    }
+  ],
+  "v2": {
+    "outcome": "failed",
+    "software": {
+      "verified": true,
+      "git_commit": "a8a5cc51ca44c2f89795f66e3723ea60c35bc8c3",
+      "git_branch": "codex/terrain-mapping-workbench",
+      "source_root": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+      "product_clean": true,
+      "baseline": {
+        "version": "2026-11-04-r5-window",
+        "simulation_profile": "r5_support_v1",
+        "scene": "survey_v2_native",
+        "localization_mode": "rgbd_window",
+        "active_revisit": false,
+        "support_profile": "independent_linear_v1",
+        "physics_step_s": 0.00025,
+        "support_runtime": "/opt/mooncar/turn/r5-v2",
+        "hardware_calibrated": false,
+        "historical_tasks_without_profile": "legacy"
+      },
+      "source_digest": "869a492bfdcf63836f1ad8bed3301629476ae25e69ddd63f1cffd8ef5099db7c"
+    },
+    "actions": [
+      {
+        "kind": "move",
+        "target": [
+          1.2,
+          0.0
+        ],
+        "phase": "failed",
+        "error": "Nav2 拒绝目标",
+        "pose": {
+          "x": 0.49987797388663685,
+          "y": 7.4992016243977e-06,
+          "z": 0.0025605894562161628,
+          "yaw": -8.059342550998218e-11
+        }
+      }
+    ],
+    "experiment": "experiment-daf08d0b8f4f",
+    "error": "RuntimeError('Action stopped: {\"kind\": \"move\", \"target\": [1.2, 0.0], \"phase\": \"failed\", \"error\": \"Nav2 拒绝目标\", \"pose\": {\"x\": 0.49987797388663685, \"y\": 7.4992016243977e-06, \"z\": 0.0025605894562161628, \"yaw\": -8.059342550998218e-11}}')",
+    "observer_exit": 0,
+    "elapsed_wall_s": 28.508036442000048
+  },
+  "v2_failure_evidence": {
+    "file": "tmp/ros_acceptance/frontend-experiments/experiment-daf08d0b8f4f/simulation.log",
+    "line": 252,
+    "message": "Action server is inactive. Rejecting the goal.",
+    "followed_by": "Activating bt_navigator"
+  },
+  "scope": "One startup/translation/turn integration smoke; no retry; no full coverage, endurance or slope acceptance claim",
+  "artifacts": {
+    "tmp/ros_acceptance/version-alignment-20261104/backend.log": {
+      "sha256": "8c293dc3e4ffae926da7e05f79a082816fb70c4e8d82ea872d1f49d399539684",
+      "bytes": 46
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/backend.pid": {
+      "sha256": "18c5032cfb59eab7b36164a6b47fad3f265876b6c47bdbcd9c62054311a06ced",
+      "bytes": 5
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/firmware-tests.log": {
+      "sha256": "b81d16e591c9b7b4a7ee47704f4c7b9c0321d36e46ee79b303ebfa176e46ade2",
+      "bytes": 77
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/git-history-tested.txt": {
+      "sha256": "656b477dba5f7ae4862329a99244932227731e469d9afd61fe752cb4f163eb2e",
+      "bytes": 6900
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/regression-failures.json": {
+      "sha256": "0e4726968c0ec33c033173d026fdd2f20d3a15d65ccec18d2427d2360a91bd36",
+      "bytes": 5010
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/root-tests.log": {
+      "sha256": "3532254d6b6c883c21906c223210cf4c053fc5112469fb696bc2145b9c8d5cf0",
+      "bytes": 39050
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/runtime-baseline.json": {
+      "sha256": "2657d2e8002d2357b05145458a953adce0d3d6f8a6b3f6299097ce07ccff6ad1",
+      "bytes": 34229
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/runtime-source.json": {
+      "sha256": "251afde7b3c0648f49e3fc7b36c35fc4f4da02c9e83909e4bf059f15ac728efa",
+      "bytes": 80469
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/slam-tests.log": {
+      "sha256": "cfd9a6ce252dcc3032eb2f7aa2b37277c1a6e57c5588bfc5e5bb40b8943a81f8",
+      "bytes": 49036
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/software-tests-first.log": {
+      "sha256": "daa3cd8cebb3f71651b86e6b04bfdd39d45d278c56980a7aadf69c2e8c017b7f",
+      "bytes": 239024
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/software-tests.log": {
+      "sha256": "7bd17ba0d2255799aa0a858f7f7fbc9cf52eba0312e14b5b8911bc5b82b193df",
+      "bytes": 162471
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/test_core": {
+      "sha256": "eac4972641538a853649347d1e6c9f1f5ead9d466daeebaf63be08373b6a9229",
+      "bytes": 45096
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-run.log": {
+      "sha256": "3cca89a283175c13f58fb4df8a16e5f1997401c36a43147fc9dc5161cc827612",
+      "bytes": 1312
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/web-tests.log": {
+      "sha256": "2ef6260d8635251fd10a49b150b5c34677e3056c04f73047654a21bbeb0c7215",
+      "bytes": 698
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/apply.json": {
+      "sha256": "6afcf1c27c873fdced17b1aa75b6c626c595678420131e16c8c9851864c6c224",
+      "bytes": 23
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/observer.log": {
+      "sha256": "c812f99e46e879e1018d4c3e0fe1f554f8370dfd0e3afec94e2762a4551a7ff3",
+      "bytes": 118
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/protocol.json": {
+      "sha256": "f47da9a555c9b6b28aa9108c28da47e4d5012d0739ebe287a3375478703558ec",
+      "bytes": 1477
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/ready.json": {
+      "sha256": "21f3d6d7d3acb86475d94bd97b2a03935b2583b9dddfd23c68c0e3a9355a0e73",
+      "bytes": 57359
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/result.json": {
+      "sha256": "014effaedddfad32eec60ba5d1994d9628fe0a5241e5c47a81694f83f6dbbad4",
+      "bytes": 1534
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/states.jsonl": {
+      "sha256": "e5e1362664105731076f1da9e10e57f3ad3d6b5801b18324c51a9d8159e48448",
+      "bytes": 305601
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/support-loaded.json": {
+      "sha256": "2468290d2ff640e8dd96732ff41ada9f3220375a9d68e5267dfd979fa0681836",
+      "bytes": 694
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/observer/alignment.jsonl": {
+      "sha256": "1cb4d76016bc1fb1c8eae973cce7d2ab2d6d851daa174af03483106fa059fd70",
+      "bytes": 678458
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/observer/complete.json": {
+      "sha256": "627c9ae0112942f4e5dd525517d9361fd967fe9fb449b56b41ac9115aaecdf77",
+      "bytes": 4933
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/observer/missing.jsonl": {
+      "sha256": "7d7c38060a3c404a90262a254d9c4a2c82dc35653cf2f7aea90dabf579cb9941",
+      "bytes": 36381
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/observer/observer-contract.json": {
+      "sha256": "f92c402508cad665e7f0bbb6c2b57e5dfd207c7caa2b77632436faf7f5723d4c",
+      "bytes": 1850
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/observer/ready.json": {
+      "sha256": "8356b48f585ed423a384cd847f6a3cd30777cbc3559ebe119aa3cbd19a9c0c01",
+      "bytes": 4061
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/observer/samples.jsonl": {
+      "sha256": "75ea159f332bbfd062a0e0b8c329e9d2f70a54d1c2eabac91a070dcdcb90d2ed",
+      "bytes": 2005078
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/observer/status.json": {
+      "sha256": "f0fc6b19f7352537bbb560b010610f9c850b3220e0eb75ad34aee1fcc3cc6c5d",
+      "bytes": 3986
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/observer/tf.jsonl": {
+      "sha256": "984cba06563b1e70beede5542923c58d1cbdb6bbc401d0126036e3d557a5aed7",
+      "bytes": 1018068
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/observer/truth-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tmp/ros_acceptance/version-alignment-20261104/v2-r5-run/observer/truth.jsonl": {
+      "sha256": "05a2f36b254f70b4ad6642e26406586d4a5ff693a1cf678c1442393c3d911f78",
+      "bytes": 363561
+    },
+    "tmp/ros_acceptance/frontend-experiments/experiment-daf08d0b8f4f/gui.config": {
+      "sha256": "2ddc8c4fba3910aef68a5c8f5cd28d8f7d7ac76c59151033fa1044c45feb8cd1",
+      "bytes": 2714
+    },
+    "tmp/ros_acceptance/frontend-experiments/experiment-daf08d0b8f4f/scene-setup.json": {
+      "sha256": "b06eb54ce2698f604f4acc98a976ad985ca2a8cc03674650a3b0454862c7793c",
+      "bytes": 1050
+    },
+    "tmp/ros_acceptance/frontend-experiments/experiment-daf08d0b8f4f/simulation.log": {
+      "sha256": "d4fc09fb9aa50e0c6b21096beb460e0db9fb03a56aa564490fe41faf9da07ad6",
+      "bytes": 51332
+    },
+    "tmp/ros_acceptance/frontend-experiments/experiment-daf08d0b8f4f/software.json": {
+      "sha256": "61b5fcb077dc2a8596350456921755053da9fe3a21da1af7d6fbc2d5fc63b0c2",
+      "bytes": 872
+    },
+    "tmp/ros_acceptance/frontend-experiments/experiment-daf08d0b8f4f/survey-20261104T071701146671Z.npz": {
+      "sha256": "de4bab471db22cbab1204bd90a6dbe0d70630ad3ab37b795282df275d1381a0a",
+      "bytes": 265457
+    },
+    "tmp/ros_acceptance/frontend-experiments/experiment-daf08d0b8f4f/survey_yard.sdf": {
+      "sha256": "5ea0b099bc0c98674434598558f7bb0c23f1deea528b1fdfd1e5ac6fed8f0d4d",
+      "bytes": 18101
+    },
+    "tmp/ros_acceptance/frontend-experiments/experiment-daf08d0b8f4f/task.json": {
+      "sha256": "a8dc2630282268089238087777d383183546781af3db3cc67c07f7e95a987846",
+      "bytes": 207
+    },
+    "tmp/ros_acceptance/frontend-experiments/experiment-daf08d0b8f4f/window-localization.jsonl": {
+      "sha256": "81435d54256196b7c8d1cd95782629ea474790f0ffde9d17c543f1e8054edf8e",
+      "bytes": 204010
+    },
+    "tmp/ros_acceptance/frontend-experiments/experiment-daf08d0b8f4f/support-runtime/loaded.json": {
+      "sha256": "2468290d2ff640e8dd96732ff41ada9f3220375a9d68e5267dfd979fa0681836",
+      "bytes": 694
+    },
+    "tmp/ros_acceptance/frontend-experiments/experiment-daf08d0b8f4f/support-runtime/loaded.world.sdf": {
+      "sha256": "b168020c91ade3f4f5b5797b4842e3ade130e143e0a9d9b2dc4ef3c9b8c0bc81",
+      "bytes": 18354
+    }
+  }
+}

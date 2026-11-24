@@ -1,0 +1,99 @@
+{
+  "status": "synchronized_pose_spot_check_only",
+  "partition": "mooncar-experiment-23b486559f42",
+  "ros_domain": "89",
+  "samples": [
+    {
+      "stamp": {
+        "sec": "1111",
+        "nsec": 18000000
+      },
+      "gazebo_model": {
+        "name": "mooncar",
+        "id": 196,
+        "position": {
+          "x": 10.348442301816341,
+          "y": 5.562384847071221,
+          "z": -8.623483560944199e-10
+        },
+        "orientation": {
+          "x": -3.2294668558793643e-10,
+          "y": 2.8847951066151516e-10,
+          "z": 0.7480526566912524,
+          "w": 0.6636393770845423
+        }
+      },
+      "map_base_footprint": {
+        "x": 10.341692618572752,
+        "y": 5.583048602259444,
+        "z": 0.0,
+        "yaw": 1.690245732468466
+      },
+      "xy_error_m": 0.02173819225160169,
+      "yaw_error_deg": 1.7895072859786332e-10
+    },
+    {
+      "stamp": {
+        "sec": "1111",
+        "nsec": 199000000
+      },
+      "gazebo_model": {
+        "name": "mooncar",
+        "id": 196,
+        "position": {
+          "x": 10.348442301816341,
+          "y": 5.562384847071221,
+          "z": -8.623483560944199e-10
+        },
+        "orientation": {
+          "x": -3.2294668558793643e-10,
+          "y": 2.8847951066151516e-10,
+          "z": 0.7480526566912524,
+          "w": 0.6636393770845423
+        }
+      },
+      "map_base_footprint": {
+        "x": 10.341692618572752,
+        "y": 5.583048602259444,
+        "z": 0.0,
+        "yaw": 1.6902457324634517
+      },
+      "xy_error_m": 0.02173819225160169,
+      "yaw_error_deg": -1.0835513688809909e-10
+    },
+    {
+      "stamp": {
+        "sec": "1111",
+        "nsec": 396000000
+      },
+      "gazebo_model": {
+        "name": "mooncar",
+        "id": 196,
+        "position": {
+          "x": 10.348442301816341,
+          "y": 5.562384847071221,
+          "z": -8.623483560944199e-10
+        },
+        "orientation": {
+          "x": -3.2294668558793643e-10,
+          "y": 2.8847951066151516e-10,
+          "z": 0.7480526566912524,
+          "w": 0.6636393770845423
+        }
+      },
+      "map_base_footprint": {
+        "x": 10.341692618572752,
+        "y": 5.583048602259444,
+        "z": 0.0,
+        "yaw": 1.6902457324625455
+      },
+      "xy_error_m": 0.02173819225160169,
+      "yaw_error_deg": -1.6027451150830955e-10
+    }
+  ],
+  "fitted_correction": false,
+  "limitations": [
+    "Three samples at the current position do not validate archived trajectories or global alignment.",
+    "XY/yaw use URDF model-root base_footprint convention; Z is retained but not accepted as height calibration."
+  ]
+}

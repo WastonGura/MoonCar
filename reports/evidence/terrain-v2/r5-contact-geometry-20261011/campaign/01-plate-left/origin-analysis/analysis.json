@@ -1,0 +1,304 @@
+{
+  "endpoint_displacement_m": 0.0001725557256167573,
+  "maximum_displacement_m": 0.0001725562688298195,
+  "path_length_m": 0.00017267760019794504,
+  "unwrapped_turn_rad": 3.5951260844005146,
+  "circle_fit": {
+    "center_world_m": [
+      -0.0011757830011585786,
+      4.378334916736815e-05
+    ],
+    "radius_m": 0.0011759639811738368,
+    "radial_residual_rms_m": 8.628639149830754e-08
+  },
+  "instantaneous_center_samples": 19978,
+  "instantaneous_center_median_world_m": [
+    -6.885224711682251e-06,
+    0.0001724185142656998
+  ],
+  "steady_body_velocity_mean_m_s": [
+    -5.0281898401713566e-11,
+    1.3799792946742825e-11
+  ],
+  "steady_yaw_rate_mean_rad_s": 0.1806641417844155,
+  "stop_extra_displacement_m": 5.721352352386835e-05,
+  "wheels": {
+    "front_left": {
+      "velocity_tracking_max_rad_s": 4.063810399301815e-11,
+      "actual_velocity_mean_rad_s": -0.4183484318465036,
+      "target_mean_rad_s": -0.418348431887124
+    },
+    "front_right": {
+      "velocity_tracking_max_rad_s": 4.0519643196290644e-11,
+      "actual_velocity_mean_rad_s": 0.4183484318466217,
+      "target_mean_rad_s": 0.418348431887124
+    },
+    "rear_left": {
+      "velocity_tracking_max_rad_s": 8.41094971448797e-11,
+      "actual_velocity_mean_rad_s": -0.45296735750247064,
+      "target_mean_rad_s": -0.4529673575865604
+    },
+    "rear_right": {
+      "velocity_tracking_max_rad_s": 8.411543683806144e-11,
+      "actual_velocity_mean_rad_s": 0.4529673575024648,
+      "target_mean_rad_s": 0.4529673575865604
+    }
+  },
+  "contacts": {
+    "front_left": {
+      "complete": true,
+      "samples": 16001,
+      "force_samples": 16001,
+      "max_gap_s": 0.0010000000000012221,
+      "force_mean_raw": [
+        0.29378591939856735,
+        -0.13446057375561513,
+        3.5718934779921057
+      ],
+      "maximum_depth_m": 1.1232962199292373e-09,
+      "normal_world_z_error_max": 0.0,
+      "action_reaction_residual_max": 0.0,
+      "frame": "Raw ContactSensor force; must independently verify backend frame and body ordering before interpretation"
+    },
+    "front_right": {
+      "complete": true,
+      "samples": 16001,
+      "force_samples": 16001,
+      "max_gap_s": 0.0010000000000012221,
+      "force_mean_raw": [
+        0.10934238218529957,
+        0.30402264180896055,
+        3.571894132776944
+      ],
+      "maximum_depth_m": 1.1232961852347678e-09,
+      "normal_world_z_error_max": 0.0,
+      "action_reaction_residual_max": 0.0,
+      "frame": "Raw ContactSensor force; must independently verify backend frame and body ordering before interpretation"
+    },
+    "rear_left": {
+      "complete": true,
+      "samples": 16001,
+      "force_samples": 16001,
+      "max_gap_s": 0.0010000000000012221,
+      "force_mean_raw": [
+        0.05892802486694055,
+        -0.7040569841695095,
+        3.868768278673557
+      ],
+      "maximum_depth_m": 1.133999699698407e-09,
+      "normal_world_z_error_max": 0.0,
+      "action_reaction_residual_max": 0.0,
+      "frame": "Raw ContactSensor force; must independently verify backend frame and body ordering before interpretation"
+    },
+    "rear_right": {
+      "complete": true,
+      "samples": 16001,
+      "force_samples": 16001,
+      "max_gap_s": 0.0010000000000012221,
+      "force_mean_raw": [
+        -0.4625540969541426,
+        0.5356782813033162,
+        3.8687641105573904
+      ],
+      "maximum_depth_m": 1.1339996164316801e-09,
+      "normal_world_z_error_max": 0.0,
+      "action_reaction_residual_max": 0.0,
+      "frame": "Raw ContactSensor force; must independently verify backend frame and body ordering before interpretation"
+    }
+  },
+  "gimbal_velocity_rms_rad_s": {
+    "camera_pan": 7.557304704845774e-18,
+    "camera_tilt": 5.040249540348148e-10
+  },
+  "world_pose_fields_present": true,
+  "geometry": {
+    "front_left": {
+      "center_body_mean_m": [
+        0.15700000000000444,
+        0.16555000000002393,
+        0.07600000000001622
+      ],
+      "center_body_range_m": [
+        4.996003610813204e-16,
+        3.608224830031759e-16,
+        1.3877787807814457e-16
+      ]
+    },
+    "front_right": {
+      "center_body_mean_m": [
+        0.1570000000000044,
+        -0.16555000000002393,
+        0.07600000000001622
+      ],
+      "center_body_range_m": [
+        3.885780586188048e-16,
+        4.996003610813204e-16,
+        1.3877787807814457e-16
+      ]
+    },
+    "rear_left": {
+      "center_body_mean_m": [
+        -0.1570000000000044,
+        0.16555000000002393,
+        0.07600000000001622
+      ],
+      "center_body_range_m": [
+        3.608224830031759e-16,
+        4.163336342344337e-16,
+        1.249000902703301e-16
+      ]
+    },
+    "rear_right": {
+      "center_body_mean_m": [
+        -0.15700000000000444,
+        -0.16555000000002393,
+        0.07600000000001622
+      ],
+      "center_body_range_m": [
+        4.440892098500626e-16,
+        3.608224830031759e-16,
+        1.249000902703301e-16
+      ]
+    }
+  },
+  "kinematic_slip": {
+    "front_left": {
+      "bottom_estimate_body_mean_m_s": [
+        0.0018855322603448155,
+        0.028364270119185696,
+        -6.43262306772368e-14
+      ],
+      "bottom_estimate_body_rms_m_s": [
+        0.001885532260344824,
+        0.028364270119185558,
+        6.60287439274445e-14
+      ],
+      "assumption": "Horizontal plane, bottom offset -radius; use raw contacts for pointwise verification"
+    },
+    "front_right": {
+      "bottom_estimate_body_mean_m_s": [
+        -0.001885532360917591,
+        0.028364270119185585,
+        6.432034891631335e-14
+      ],
+      "bottom_estimate_body_rms_m_s": [
+        0.001885532360917589,
+        0.028364270119185665,
+        6.603019351897603e-14
+      ],
+      "assumption": "Horizontal plane, bottom offset -radius; use raw contacts for pointwise verification"
+    },
+    "rear_left": {
+      "bottom_estimate_body_mean_m_s": [
+        0.004516570610198272,
+        -0.028364270092522063,
+        -1.540067927303694e-13
+      ],
+      "bottom_estimate_body_rms_m_s": [
+        0.004516570610198275,
+        0.028364270092521952,
+        1.5474361443851578e-13
+      ],
+      "assumption": "Horizontal plane, bottom offset -radius; use raw contacts for pointwise verification"
+    },
+    "rear_right": {
+      "bottom_estimate_body_mean_m_s": [
+        -0.004516570710761572,
+        -0.028364270092522043,
+        1.5401001697873164e-13
+      ],
+      "bottom_estimate_body_rms_m_s": [
+        0.0045165707107615895,
+        0.028364270092522036,
+        1.5472911911126549e-13
+      ],
+      "assumption": "Horizontal plane, bottom offset -radius; use raw contacts for pointwise verification"
+    }
+  },
+  "odometry": {
+    "ros_wheel_odom": {
+      "available": true,
+      "motion_start_sample_s": 5.202,
+      "motion_end_sample_s": 25.194,
+      "endpoint_position_error_m": 0.00017255572545157117,
+      "maximum_position_error_m": 0.00017255626882934337,
+      "endpoint_yaw_error_rad": 0.3846568998781188,
+      "odometry_turn_rad": 3.9786989994279263,
+      "odometry_displacement_m": 4.2260908278999644e-14,
+      "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+      "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+    },
+    "gz_native_odom": {
+      "available": true,
+      "motion_start_sample_s": 5.202,
+      "motion_end_sample_s": 25.194,
+      "endpoint_position_error_m": 0.00017255572541245826,
+      "maximum_position_error_m": 0.00017255626882851954,
+      "endpoint_yaw_error_rad": 0.22657611384239074,
+      "odometry_turn_rad": 3.820618213392198,
+      "odometry_displacement_m": 8.419017678908726e-14,
+      "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+      "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+    }
+  },
+  "center_of_mass_body_mean_m": [
+    -0.0062378896105332,
+    -2.201298501892078e-16,
+    0.12798293624145637
+  ],
+  "total_mass_kg": 9.186000000000003,
+  "contact_body_forces": {
+    "front_left": {
+      "mean_body_N": [
+        -0.34656354053049254,
+        -0.31864522789519173,
+        3.571893478003923
+      ],
+      "normal_mean_N": 3.571893477992094,
+      "contact_distance_to_wheel_center_range_m": [
+        0.0799885673683741,
+        0.08002401316462139
+      ],
+      "frame_status": "World-force interpretation conditional on archived gz-physics/Gazebo source audit"
+    },
+    "front_right": {
+      "mean_body_N": [
+        0.3464506194660364,
+        -0.31877211301256764,
+        3.5718941327651232
+      ],
+      "normal_mean_N": 3.571894132776946,
+      "contact_distance_to_wheel_center_range_m": [
+        0.07998856061306517,
+        0.08002401991693728
+      ],
+      "frame_status": "World-force interpretation conditional on archived gz-physics/Gazebo source audit"
+    },
+    "rear_left": {
+      "mean_body_N": [
+        -0.9786970859718774,
+        0.31888787183954004,
+        3.8687682787069284
+      ],
+      "normal_mean_N": 3.868768278673563,
+      "contact_distance_to_wheel_center_range_m": [
+        0.07998856061335699,
+        0.0800240199166438
+      ],
+      "frame_status": "World-force interpretation conditional on archived gz-physics/Gazebo source audit"
+    },
+    "rear_right": {
+      "mean_body_N": [
+        0.980680293581119,
+        0.31852912616981705,
+        3.8687641105239963
+      ],
+      "normal_mean_N": 3.8687641105574033,
+      "contact_distance_to_wheel_center_range_m": [
+        0.0799885673686657,
+        0.08002401316432771
+      ],
+      "frame_status": "World-force interpretation conditional on archived gz-physics/Gazebo source audit"
+    }
+  }
+}

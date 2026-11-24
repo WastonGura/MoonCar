@@ -1,0 +1,342 @@
+{
+  "development_only": true,
+  "scope": "All cells deficient in the first five-second pre-move prefix, frozen by observation time; new transit deficits are separate targets",
+  "trials": [
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "initial_targets": 131,
+      "candidates": [
+        {
+          "delta": 0.02,
+          "remaining_targets": 13,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.02,
+          "remaining_targets": 13,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": 0.04,
+          "remaining_targets": 13,
+          "marginal": 1,
+          "reason": "try_observation"
+        },
+        {
+          "delta": -0.04,
+          "remaining_targets": 13,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": 0.08,
+          "remaining_targets": 13,
+          "marginal": 1,
+          "reason": "try_observation"
+        },
+        {
+          "delta": -0.08,
+          "remaining_targets": 13,
+          "marginal": 1,
+          "reason": "try_observation"
+        }
+      ]
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "initial_targets": 131,
+      "candidates": [
+        {
+          "delta": 0.02,
+          "remaining_targets": 15,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.02,
+          "remaining_targets": 15,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": 0.04,
+          "remaining_targets": 15,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.04,
+          "remaining_targets": 15,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": 0.08,
+          "remaining_targets": 15,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.08,
+          "remaining_targets": 15,
+          "marginal": 1,
+          "reason": "try_observation"
+        }
+      ]
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "initial_targets": 129,
+      "candidates": [
+        {
+          "delta": 0.02,
+          "remaining_targets": 12,
+          "marginal": 1,
+          "reason": "try_observation"
+        },
+        {
+          "delta": -0.02,
+          "remaining_targets": 12,
+          "marginal": 1,
+          "reason": "try_observation"
+        },
+        {
+          "delta": 0.04,
+          "remaining_targets": 12,
+          "marginal": 1,
+          "reason": "try_observation"
+        },
+        {
+          "delta": -0.04,
+          "remaining_targets": 12,
+          "marginal": 1,
+          "reason": "try_observation"
+        },
+        {
+          "delta": 0.08,
+          "remaining_targets": 12,
+          "marginal": 1,
+          "reason": "try_observation"
+        },
+        {
+          "delta": -0.08,
+          "remaining_targets": 12,
+          "marginal": 2,
+          "reason": "try_observation"
+        }
+      ]
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "initial_targets": 129,
+      "candidates": [
+        {
+          "delta": 0.02,
+          "remaining_targets": 15,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.02,
+          "remaining_targets": 15,
+          "marginal": 1,
+          "reason": "try_observation"
+        },
+        {
+          "delta": 0.04,
+          "remaining_targets": 15,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.04,
+          "remaining_targets": 15,
+          "marginal": 1,
+          "reason": "try_observation"
+        },
+        {
+          "delta": 0.08,
+          "remaining_targets": 15,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.08,
+          "remaining_targets": 15,
+          "marginal": 1,
+          "reason": "try_observation"
+        }
+      ]
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "initial_targets": 131,
+      "candidates": [
+        {
+          "delta": 0.02,
+          "remaining_targets": 19,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.02,
+          "remaining_targets": 19,
+          "marginal": 2,
+          "reason": "try_observation"
+        },
+        {
+          "delta": 0.04,
+          "remaining_targets": 19,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.04,
+          "remaining_targets": 19,
+          "marginal": 2,
+          "reason": "try_observation"
+        },
+        {
+          "delta": 0.08,
+          "remaining_targets": 19,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.08,
+          "remaining_targets": 19,
+          "marginal": 2,
+          "reason": "try_observation"
+        }
+      ]
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "initial_targets": 131,
+      "candidates": [
+        {
+          "delta": 0.02,
+          "remaining_targets": 17,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.02,
+          "remaining_targets": 17,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": 0.04,
+          "remaining_targets": 17,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.04,
+          "remaining_targets": 17,
+          "marginal": 1,
+          "reason": "try_observation"
+        },
+        {
+          "delta": 0.08,
+          "remaining_targets": 17,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.08,
+          "remaining_targets": 17,
+          "marginal": 1,
+          "reason": "try_observation"
+        }
+      ]
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "initial_targets": 129,
+      "candidates": [
+        {
+          "delta": 0.02,
+          "remaining_targets": 9,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.02,
+          "remaining_targets": 9,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": 0.04,
+          "remaining_targets": 9,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.04,
+          "remaining_targets": 9,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": 0.08,
+          "remaining_targets": 9,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.08,
+          "remaining_targets": 9,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        }
+      ]
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "initial_targets": 129,
+      "candidates": [
+        {
+          "delta": 0.02,
+          "remaining_targets": 13,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.02,
+          "remaining_targets": 13,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": 0.04,
+          "remaining_targets": 13,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": -0.04,
+          "remaining_targets": 13,
+          "marginal": 0,
+          "reason": "no_modelled_marginal_support"
+        },
+        {
+          "delta": 0.08,
+          "remaining_targets": 13,
+          "marginal": 1,
+          "reason": "try_observation"
+        },
+        {
+          "delta": -0.08,
+          "remaining_targets": 13,
+          "marginal": 1,
+          "reason": "try_observation"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "sim_stamp": 42.504,
+  "elapsed_seconds": 33.153,
+  "phase": "observing",
+  "pose": {
+    "x": -14.999999999999886,
+    "y": -15.999999999999872,
+    "z": 0.0,
+    "yaw": 2.3316133101544363
+  },
+  "ready": true,
+  "motion_error": "",
+  "path_m": 3.1231488732159693e-13,
+  "diagnostics": {
+    "sim_stamp": 42.504,
+    "pose_error": "",
+    "navigation_ready": true,
+    "depth_age_wall_seconds": 0.289,
+    "depth_message": "Depth active; pose unchanged, redundant frame omitted",
+    "quality_age_wall_seconds": 1.296,
+    "quality_present": true,
+    "costmap_age_wall_seconds": 0.646,
+    "costmap_fresh": true,
+    "costmap_age_sim_seconds": 0.23199999999999932
+  },
+  "stop_diagnostics": null,
+  "roi_area_m2": 201.75,
+  "observed_area_m2": 82.6875,
+  "observed_fraction": 0.40985130111524165,
+  "quality_area_m2": 35.4048125,
+  "sufficient_area_m2": 11.375,
+  "mean_observed_quality": 0.4281761148904006,
+  "valid_surface_area_m2": 56.3125,
+  "frames": 35,
+  "quality_stamp": 40.4,
+  "scene_age_wall_seconds": 0.5866670608520508
+}

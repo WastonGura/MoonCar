@@ -1,0 +1,30 @@
+{
+  "version": "mooncar-evaluation-amendment-v1",
+  "created_utc": "2026-09-15T16:14:14.121623+00:00",
+  "evaluation_version": "mapping-acceptance-v1.1",
+  "simulation_rerun": false,
+  "source_campaign": "tmp/ros_acceptance/formal-strategy-20260915",
+  "reevaluation": "tmp/ros_acceptance/formal-strategy-20260915-reevaluated-v1_1-20260916",
+  "formal_report": "reports/evidence/terrain-workbench/formal-strategy-results-v1_1-20260916",
+  "failed_attempts_retained": [
+    "tmp/ros_acceptance/formal-strategy-20260915-reevaluated-v1_1",
+    "reports/evidence/terrain-workbench/formal-strategy-results-20260916"
+  ],
+  "source_sha256": {
+    "scripts/mapping_acceptance.py": "ad833a25f061773629fd7fb41c0af473efac91e7eb5d9d0dad7ad0c771efd461",
+    "scripts/report_mapping_acceptance.py": "d8bdfdc37f4a58f9242783fc2b8ad62c9ccfe9f57c96dcc5c7b758dff0b0a972",
+    "scripts/terrain_reference.py": "9f8a367e1ccb8ee55942d42471e6322665a350322836a96c018982c2ab732c69",
+    "ros2_ws/src/mooncar_terrain/tests/test_mapping_acceptance.py": "ecf15cc12d69a5044b7a661d762118b5117106c9c2321207fb6e190532b59af7",
+    "reports/evidence/terrain-workbench/formal-strategy-protocol-20260915/reevaluate_v1_1.py": "f41c4ad1f11f985f46f67a7a1bda050bd660086a41b053e1e63b331c0adf1756",
+    "reports/evidence/terrain-workbench/formal-strategy-protocol-20260915/report_v1_1.py": "326faa41ce15227c7aff940498f2c8298de86c7e78844c8c17ee9084e6930db7"
+  },
+  "evidence_sha256": {
+    "reevaluation_summary.json": "ee6036f6bb659afabda3ecdc69083ecd5cc372150b8012fc608258c4f7382792",
+    "reevaluation_trials.json": "7a90e4d5a6eea402c835ea4b0dc14ca08ed4d86d71edb1ef71c9cd4614d3707b",
+    "reevaluation_hashes.json": "bdd38ff092ac262cd5995b801b489bfb7e7fb247f5aed74fb7c88a32005df07c",
+    "formal_summary.json": "bf4092eb565a7436d616ec5c4dc79233ce126b49a1237a7b20edb07edb5ccc59",
+    "condition_summary.csv": "2feaf61ea172cfc0384375f08302d63185b72b7df5e9e63329b5e0b7310d9841",
+    "pairwise_tests.csv": "08b3270e97380d343b9505f75b81559d9e75527213f0b82dbddd3ab3f9903784",
+    "formal_hashes.json": "705e06120ea8446439da6122ccd9767b76c8dab9b19a7fedb787a01315e20920"
+  }
+}

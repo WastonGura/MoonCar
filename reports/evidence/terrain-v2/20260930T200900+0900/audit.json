@@ -1,0 +1,74 @@
+{
+  "completed_trials": 13,
+  "raw_force_counts": {
+    "slip_00": {
+      "x_force": 2001,
+      "z_force": 2001,
+      "ground_force": 2001
+    },
+    "slip_10": {
+      "x_force": 2001,
+      "z_force": 2001,
+      "ground_force": 2001
+    },
+    "slip_20": {
+      "x_force": 2001,
+      "z_force": 2001,
+      "ground_force": 2001
+    },
+    "slip_30": {
+      "x_force": 2001,
+      "z_force": 2001,
+      "ground_force": 2001
+    },
+    "slip_40": {
+      "x_force": 2001,
+      "z_force": 2001,
+      "ground_force": 2001
+    },
+    "slip_50": {
+      "x_force": 2001,
+      "z_force": 2001,
+      "ground_force": 2001
+    },
+    "ground_mu02_slip_00": {
+      "x_force": 2001,
+      "z_force": 2001,
+      "ground_force": 2001
+    },
+    "ground_mu02_slip_50": {
+      "x_force": 2001,
+      "z_force": 2001,
+      "ground_force": 2001
+    },
+    "ground_mu12_slip_00": {
+      "x_force": 2001,
+      "z_force": 2001,
+      "ground_force": 2001
+    },
+    "ground_mu12_slip_50": {
+      "x_force": 2001,
+      "z_force": 2001,
+      "ground_force": 2001
+    },
+    "slip_50_noground": {
+      "x_force": 1001,
+      "z_force": 1001,
+      "ground_force": 1001
+    },
+    "slip_50_known_force": {
+      "x_force": 1001,
+      "z_force": 1001,
+      "ground_force": 1001
+    },
+    "slip_50_long": {
+      "x_force": 6401,
+      "z_force": 6401,
+      "ground_force": 6401
+    }
+  },
+  "control_no_ground_fx_N": -9.656946472464987e-09,
+  "control_known_force_change_N": -4.990465315324589,
+  "timestamps_complete_100_Hz": true,
+  "parameter_fit_performed": false
+}

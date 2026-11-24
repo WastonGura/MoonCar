@@ -1,0 +1,215 @@
+{
+  "trials": [
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "nearest_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "coverage_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "coverage_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "nearest_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "coverage_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "nearest_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "nearest_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "coverage_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "nearest_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "coverage_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "coverage_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "nearest_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        0.0,
+        -3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    }
+  ],
+  "correction": "Original second start rejected by collision guard; corrected start prevalidated, failures retained",
+  "retry_note": "Additional unchanged-config surface trial after missing-archive startup; original failure retained at index 17"
+}

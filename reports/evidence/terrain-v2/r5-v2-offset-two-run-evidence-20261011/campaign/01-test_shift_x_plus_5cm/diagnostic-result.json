@@ -1,0 +1,31 @@
+{
+  "round_id": "01-test_shift_x_plus_5cm",
+  "eligible": true,
+  "checks": {
+    "data_complete": true,
+    "ground_contact_gate": true,
+    "stop_zero": true,
+    "observer_flush_confirmed": true,
+    "receiver_verified": true,
+    "raw_fixture_passed": true,
+    "capture_drained": true,
+    "image_content": true,
+    "origin_qualification": true,
+    "gate": true,
+    "allocation": true,
+    "contact_source": true,
+    "no_critical_errors": true,
+    "finite_geometry": true,
+    "valid_exit": true
+  },
+  "geometric_screen_passed": true,
+  "diagnostic_screen_exceeded": false,
+  "maximum_displacement_m": 0.00850125984193597,
+  "final_displacement_xy_m": [
+    -0.005138944344589329,
+    -0.0030269974053374854
+  ],
+  "vehicle_accepted": false,
+  "world_consumed": "/evidence/worlds/world_shift_x05.sdf",
+  "turn_slip_error": null
+}

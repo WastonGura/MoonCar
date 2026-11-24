@@ -1,0 +1,16 @@
+{
+  "scene": "survey_v2_native",
+  "bounds": [
+    -15,
+    -15,
+    15,
+    15
+  ],
+  "ground_grid_step_m": 0.05,
+  "ground_min_m": -0.26018299999999994,
+  "ground_max_m": 0.197862,
+  "actual_collision_triangles": true,
+  "scene_sha256": "08e9837e09b53e06fa0569423e0dc4775b1456508ca999cfef6fdf3444fb1555",
+  "purpose": "Offline environment reference only; not an observed map or navigation input",
+  "minor_rock_display": "Axis-aligned component bounds; minimum one display pixel"
+}

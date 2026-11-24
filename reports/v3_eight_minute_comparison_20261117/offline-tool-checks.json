@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": [
+    "compact_fields_preserved",
+    "command_values_preserved",
+    "exact_payload_byte_offset",
+    "no_future_receipt",
+    "no_future_sim",
+    "unknown_before_first_map",
+    "early_stop_not_extended",
+    "common_duration_uses_prefix",
+    "second_half_gain_from_real_boundary"
+  ]
+}

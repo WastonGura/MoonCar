@@ -1,0 +1,31 @@
+[
+  {
+    "experiment": "experiment-348f798f421b",
+    "split": "heldout_curved_region",
+    "frames": 54,
+    "baseline_frames": 9,
+    "baseline_last_stamp": 14.4,
+    "action_stamp": 16.088,
+    "motion_phase": "idle",
+    "planned_goal": [
+      -9.2,
+      6.45
+    ],
+    "initial_deficient": 95
+  },
+  {
+    "experiment": "experiment-77c20d5e42f8",
+    "split": "heldout_curved_region",
+    "frames": 54,
+    "baseline_frames": 9,
+    "baseline_last_stamp": 14.8,
+    "action_stamp": 16.206,
+    "motion_phase": "succeeded",
+    "planned_goal": [
+      -9.2,
+      6.45
+    ],
+    "initial_deficient": 95
+  }
+]
+Fixed-rule held-out geometry check complete

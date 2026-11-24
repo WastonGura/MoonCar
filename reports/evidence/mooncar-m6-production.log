@@ -1,0 +1,131 @@
+test_terrain_gate_and_invalid_command (test_safety_relay.RelayTests.test_terrain_gate_and_invalid_command) ... [INFO] [1788559679.969611570] [mooncar_cmd_vel_safety_relay]: Relaying /cmd_vel to /mooncar/cmd_vel_safe with timeout 0.50s
+ok
+test_real_c_core_over_virtual_uart (test_serial_protocol.ProtocolTests.test_real_c_core_over_virtual_uart) ... ok
+test_ros_bridge_arm_timeout_and_encoder_wrap (test_serial_protocol.ProtocolTests.test_ros_bridge_arm_timeout_and_encoder_wrap) ... ok
+test_stream_corruption_and_fragmentation (test_serial_protocol.ProtocolTests.test_stream_corruption_and_fragmentation) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.907s
+
+OK
+test_lifecycle_readiness_has_wall_deadline (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_readiness_has_wall_deadline) ... ok
+test_lifecycle_readiness_without_cli_polling (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_readiness_without_cli_polling) ... ok
+test_localization_quality_and_ground_truth (test_navigation_timeout.NavigationTimeoutTest.test_localization_quality_and_ground_truth) ... ok
+test_ros_timeout_cancels (test_navigation_timeout.NavigationTimeoutTest.test_ros_timeout_cancels) ... ok
+test_slow_simulation_can_finish_after_180_wall_seconds (test_navigation_timeout.NavigationTimeoutTest.test_slow_simulation_can_finish_after_180_wall_seconds) ... ok
+test_stopped_clock_cancels (test_navigation_timeout.NavigationTimeoutTest.test_stopped_clock_cancels) ... ok
+test_wall_limit_cancels_slow_clock (test_navigation_timeout.NavigationTimeoutTest.test_wall_limit_cancels_slow_clock) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.170s
+
+OK
+test_depth_padding_endian_units_and_invalid_input (test_geometry.GeometryTest.test_depth_padding_endian_units_and_invalid_input) ... ok
+test_flat_slope_roughness_step_and_pit (test_geometry.GeometryTest.test_flat_slope_roughness_step_and_pit) ... ok
+test_optical_transform (test_geometry.GeometryTest.test_optical_transform) ... ok
+test_scanline_is_unknown_not_a_vertical_obstacle (test_geometry.GeometryTest.test_scanline_is_unknown_not_a_vertical_obstacle) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.025s
+
+OK
+firmware core: CRC, framing, sequence, watchdog, estop, rollover, NaN passed
+Software regression checks passed.
+[1/4] Building MoonCar workspace
+Starting >>> mooncar_control
+Starting >>> mooncar_description
+Starting >>> mooncar_terrain
+Starting >>> mooncar_msgs
+Finished <<< mooncar_description [0.24s]
+Finished <<< mooncar_msgs [0.25s]
+Finished <<< mooncar_control [0.83s]
+Starting >>> mooncar_gazebo
+Starting >>> mooncar_bringup
+Finished <<< mooncar_terrain [0.86s]
+Finished <<< mooncar_gazebo [0.67s]
+Starting >>> mooncar_slam
+Finished <<< mooncar_bringup [0.73s]
+Finished <<< mooncar_slam [0.18s]
+Starting >>> mooncar_navigation
+Finished <<< mooncar_navigation [0.72s]
+
+Summary: 8 packages finished [2.66s]
+[2/4] Starting Gazebo, localization, Nav2, and RViz
+[3/4] Waiting for Nav2 lifecycle nodes
+[INFO] [1788559716.946998225] [mooncar_navigation_smoke_test]: Nav2 lifecycle nodes are active
+[4/4] Running obstacle-navigation goal
+[INFO] [1788559729.304801259] [mooncar_navigation_smoke_test]: Keepout detour passed; center clearance=1.33 m
+[INFO] [1788559732.018573384] [ros_gz_sim]: Entity creation successful.
+[INFO] [1788559734.168253395] [mooncar_navigation_smoke_test]: New obstacle replanning passed; clearance=0.99 m
+[INFO] [1788559735.447099202] [mooncar_navigation_smoke_test]: Sending goal x=1.50, y=0.00, yaw=0.00
+[INFO] [1788559750.481534047] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=3.2/180.0 s, wall elapsed=15.0 s, odom=(0.46, 0.00)
+[INFO] [1788559763.527337086] [mooncar_navigation_smoke_test]: Navigation smoke test complete; displacement=0.82 m
+[INFO] [1788559764.161571702] [mooncar_navigation_smoke_test]: Sending goal x=3.50, y=3.00, yaw=0.00
+[INFO] [1788559779.185019468] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=3.2/180.0 s, wall elapsed=15.0 s, odom=(0.87, 0.09)
+[INFO] [1788559794.185132817] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=6.5/180.0 s, wall elapsed=30.0 s, odom=(0.76, 0.51)
+[INFO] [1788559809.187116769] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=9.7/180.0 s, wall elapsed=45.0 s, odom=(0.36, 0.81)
+[INFO] [1788559824.190704128] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=12.8/180.0 s, wall elapsed=60.0 s, odom=(0.05, 1.21)
+[INFO] [1788559839.194716457] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=15.7/180.0 s, wall elapsed=75.0 s, odom=(-0.21, 1.59)
+[INFO] [1788559854.197065079] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=18.7/180.0 s, wall elapsed=90.0 s, odom=(-0.46, 1.98)
+[INFO] [1788559869.204663222] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=21.8/180.0 s, wall elapsed=105.0 s, odom=(-0.61, 2.47)
+[INFO] [1788559884.214957199] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=24.9/180.0 s, wall elapsed=120.0 s, odom=(-0.64, 2.96)
+[INFO] [1788559899.218527996] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=28.0/180.0 s, wall elapsed=135.0 s, odom=(-0.63, 3.21)
+[INFO] [1788559914.217704443] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=30.9/180.0 s, wall elapsed=150.0 s, odom=(-0.38, 3.53)
+[INFO] [1788559929.218364387] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=34.2/180.0 s, wall elapsed=165.0 s, odom=(0.10, 3.68)
+[INFO] [1788559944.218606933] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=37.4/180.0 s, wall elapsed=180.0 s, odom=(0.61, 3.65)
+[INFO] [1788559959.222040005] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=40.7/180.0 s, wall elapsed=195.0 s, odom=(1.14, 3.61)
+[INFO] [1788559974.229850495] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=43.9/180.0 s, wall elapsed=210.1 s, odom=(1.65, 3.59)
+[INFO] [1788559989.242123779] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=46.9/180.0 s, wall elapsed=225.1 s, odom=(2.14, 3.54)
+[INFO] [1788560004.246598787] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=50.1/180.0 s, wall elapsed=240.1 s, odom=(2.61, 3.35)
+[INFO] [1788560019.252968270] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=53.4/180.0 s, wall elapsed=255.1 s, odom=(2.85, 3.19)
+[INFO] [1788560022.032927870] [mooncar_navigation_smoke_test]: Navigation smoke test complete; displacement=3.78 m
+Traceback (most recent call last):
+  File "/home/homura/MoonCar/ros2_ws/install/mooncar_navigation/lib/mooncar_navigation/mission_smoke_test.py", line 196, in <module>
+    main()
+  File "/home/homura/MoonCar/ros2_ws/install/mooncar_navigation/lib/mooncar_navigation/mission_smoke_test.py", line 188, in main
+    node.run_mission()
+  File "/home/homura/MoonCar/ros2_ws/install/mooncar_navigation/lib/mooncar_navigation/mission_smoke_test.py", line 172, in run_mission
+    raise RuntimeError(f'Goal succeeded but Gazebo ground-truth error is {error:.2f} m')
+RuntimeError: Goal succeeded but Gazebo ground-truth error is 0.52 m
+[ros2run]: Process exited with failure 1
+Navigation acceptance failed. Launch log: /tmp/mooncar_m6_acceptance.log
+[controller_server-12] [INFO] [1788559983.793895631] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559984.788799745] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559985.888378279] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559986.895874969] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559987.890670570] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559988.890939971] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559989.898205418] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559990.994304943] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559991.988714407] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559992.988098829] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559993.990868813] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559995.012509514] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559996.088233818] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559997.088207089] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559998.090249114] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788559999.188664184] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560000.188785222] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560001.288833453] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560002.288231178] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560003.289300355] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560004.291716605] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560005.389556561] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560006.388623316] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560007.394562269] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560008.389420962] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560009.490258252] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560010.488461945] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560011.490423603] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560012.488841407] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560013.488543705] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560014.589321181] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560015.589019144] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560016.588314453] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560017.589264591] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560018.689431653] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560019.688947648] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560020.690981116] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560021.690326745] [controller_server]: Passing new path to controller.
+[controller_server-12] [INFO] [1788560021.992033680] [controller_server]: Reached the goal!
+[bt_navigator-16] [INFO] [1788560022.017013395] [bt_navigator]: Goal succeeded

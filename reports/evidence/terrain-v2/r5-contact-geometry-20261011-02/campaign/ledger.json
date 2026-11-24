@@ -1,0 +1,44 @@
+[
+  {
+    "name": "01-plate-left",
+    "profile": "plate",
+    "case": "left",
+    "angular": 0.2,
+    "started_wall": 1791678636.7114277,
+    "qualified": true,
+    "original_vehicle_screen_passed": true,
+    "maximum_displacement_m": 0.0001725562688298195,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 120.31071710586548,
+    "error": null
+  },
+  {
+    "name": "02-plate-right",
+    "profile": "plate",
+    "case": "right",
+    "angular": -0.2,
+    "started_wall": 1791678761.2115061,
+    "qualified": true,
+    "original_vehicle_screen_passed": true,
+    "maximum_displacement_m": 0.00017255625159969917,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 120.21425461769104,
+    "error": null
+  },
+  {
+    "name": "03-coplanar_mesh-left",
+    "profile": "coplanar_mesh",
+    "case": "left",
+    "angular": 0.2,
+    "started_wall": 1791678885.4315882,
+    "qualified": false,
+    "original_vehicle_screen_passed": false,
+    "maximum_displacement_m": Infinity,
+    "exit_code": 1,
+    "timed_out": false,
+    "wall_seconds": 18.64333200454712,
+    "error": "RuntimeError(\"RuntimeError('Runtime process exited')\")"
+  }
+]

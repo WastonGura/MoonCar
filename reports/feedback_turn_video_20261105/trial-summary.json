@@ -1,0 +1,232 @@
+{
+  "experiment": "experiment-448a7594983c",
+  "tested_commit": "304ff3473124bb0bbad55a0f1bb7711369ed0f27",
+  "source_digest": "b3923d07df710111f9c3ccd927130a83360d2e3e012069ee8539335f9b444862",
+  "outcome": "failed",
+  "turn_start_sim": 39.9555,
+  "turn_stop_sim": 41.00825,
+  "turn_sim_s": 1.052749999999996,
+  "completed_advance_actions": 3,
+  "turn_control_maximum_displacement_m": 0.031074158103202652,
+  "maximum_displacement_through_record_end_m": 0.03481881466679135,
+  "heading_change_until_command_stop_deg": 12.713350000242963,
+  "heading_change_through_record_end_deg": 14.022633335327168,
+  "measured_stop_body_xy": [
+    3.8026587813412682,
+    0.03462771585547125
+  ],
+  "controller_terminal": {
+    "event": "terminal",
+    "request_id": "3db5aaa8-0e10-4c0d-902c-78a837638081",
+    "status": "failed",
+    "reason": "predicted_obstacle_footprint",
+    "sim": 41.00825
+  },
+  "correction_started": false,
+  "max_command_linear_m_s": 0.0012378611496776392,
+  "max_command_angular_rad_s": 0.3,
+  "snapshot_read_errors": [],
+  "observer": {
+    "schema_version": 1,
+    "capture_completed": true,
+    "stop_reason": "SIGINT",
+    "errors": [],
+    "elapsed_wall_s": 170.58648294399973,
+    "ready": true,
+    "truth_rows": 8632,
+    "matched_rows": 8582,
+    "missing_rows": 50,
+    "truth_rows_accounted_for": true,
+    "reader_alive": false,
+    "gz_reader_exit_code": 0,
+    "start_sim_s": 0.9675,
+    "end_sim_s": 41.0825,
+    "final_status": {
+      "schema_version": 1,
+      "wall": 21612.093481947,
+      "elapsed_wall_s": 170.08984620099727,
+      "sim": 41.21475,
+      "counts": {
+        "/tf_static": 3,
+        "/mooncar/workbench/permit": 1692,
+        "/mooncar/cmd_vel_safe": 3484,
+        "/mooncar/clock_raw": 42419,
+        "/clock": 4009,
+        "/mooncar/laser_odometry/status": 3728,
+        "/mooncar/map/status": 318,
+        "truth": 8632,
+        "/mooncar/imu": 4025,
+        "/mooncar/scan": 403,
+        "/mooncar/scan_level": 184,
+        "/tf": 4425,
+        "/odom": 4020,
+        "/mooncar/laser_odometry": 400,
+        "/odometry/filtered": 400,
+        "matched": 8582,
+        "missing:tf_wait_wall_timeout": 50,
+        "/cmd_vel": 1026
+      },
+      "distinct_stamp_counts": {
+        "/mooncar/clock_raw": 42419,
+        "/clock": 4009,
+        "truth": 8632,
+        "/mooncar/scan": 403,
+        "/mooncar/scan_level": 184,
+        "/odom": 4020,
+        "/mooncar/laser_odometry": 400,
+        "/odometry/filtered": 400
+      },
+      "truth_count": 8632,
+      "matched_count": 8582,
+      "missing_count": 50,
+      "pending_truth": 0,
+      "pending_limit": 4096,
+      "match_wait_wall_s": 5.0,
+      "first_truth_stamp_ns": 967500000,
+      "last_truth_stamp_ns": 41082500000,
+      "first_clock_stamp_ns": 10000000,
+      "last_clock_stamp_ns": 41214750000,
+      "last_stamps_ns": {
+        "/mooncar/clock_raw": 41217750000,
+        "/clock": 41214750000,
+        "/mooncar/scan": 41100000000,
+        "/mooncar/scan_level": 19200000000,
+        "/odom": 41207750000,
+        "/mooncar/laser_odometry": 41100000000,
+        "/odometry/filtered": 41100000000
+      },
+      "live": {
+        "truth": {
+          "receipt_age_wall_s": 0.5964999869975145,
+          "distinct_stamps": 8632,
+          "live": true
+        },
+        "/mooncar/scan": {
+          "receipt_age_wall_s": 0.15748623800027417,
+          "distinct_stamps": 403,
+          "live": true
+        },
+        "/clock": {
+          "receipt_age_wall_s": 0.09789167899725726,
+          "distinct_stamps": 4009,
+          "live": true
+        }
+      },
+      "raw_observation_ready": true,
+      "quality": {
+        "schema_version": 1,
+        "session_id": "3944c433-49f6-4164-8c24-ce1d6322b78b",
+        "sequence": 3733,
+        "stamp": 41.205,
+        "accepted_stamp": 41.1,
+        "ready_since_stamp": 1.4,
+        "healthy": true,
+        "reason": "healthy",
+        "successful_streak": 3,
+        "localization_backend": "rgbd_window",
+        "active_revisit": false,
+        "counts": {
+          "imu_samples": 4025,
+          "depth_messages": 403,
+          "rgb_messages": 403,
+          "paired_exposures": 403,
+          "queued": 403,
+          "readiness_timeouts": 1,
+          "rejected": 1,
+          "plan_failures": 2,
+          "processed": 402,
+          "plan_outputs": 400,
+          "published": 400
+        },
+        "last_fit": {
+          "accepted": true,
+          "reason": "accepted",
+          "exposure_stamp": 41.1,
+          "position_std_m": [
+            0.00482013576428339,
+            0.004764552263823767,
+            0.00474111873915288
+          ],
+          "cache_version": 125,
+          "gauge_stamp_ns": 1100000000,
+          "covariance_kind": "model_conditional"
+        },
+        "truth_inputs": false,
+        "tf_published": true,
+        "imu_heading_reference": "startup",
+        "imu_heading_offset": 0.0,
+        "legacy_fallback": false
+      },
+      "transforms": {
+        "map/survey_odom": {
+          "stamp_ns": 0,
+          "xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "q": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "roll": 0.0,
+          "pitch": 0.0,
+          "yaw": 0.0
+        },
+        "survey_odom/odom": {
+          "stamp_ns": 0,
+          "xyz": [
+            0.0,
+            0.0,
+            1.7520000000000015e-05
+          ],
+          "q": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "roll": 0.0,
+          "pitch": 0.0,
+          "yaw": 0.0,
+          "setup_xy_error_m": 0.0,
+          "setup_yaw_error_rad": 0.0
+        },
+        "map/base_footprint": {
+          "stamp_ns": 41100000000,
+          "xyz": [
+            3.7722021339504055,
+            0.037820813261644076,
+            0.2688951779271222
+          ],
+          "q": [
+            0.0,
+            0.0,
+            0.11947573131706479,
+            0.9928371213981941
+          ],
+          "roll": 0.0,
+          "pitch": 0.0,
+          "yaw": 0.23952362908666286
+        }
+      },
+      "errors": []
+    },
+    "truth_used_by_control": false,
+    "coordinate_alignment_fitted": false,
+    "note": "Capture completion is an instrumentation result; it does not imply healthy localization, accurate poses, or mission scope completion."
+  },
+  "exits": {
+    "driver-exit.json": {
+      "exit_code": 1
+    },
+    "backend-exit.json": {
+      "exit_code": 0
+    },
+    "video-exit.json": {
+      "exit_code": 0
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "stop_validation_passed": false,
+  "rejections": [
+    "no_executable_candidate:visible_ramp_v1-repeat1-no_turn",
+    "no_executable_candidate:visible_ramp_v1-repeat1-turn",
+    "no_executable_candidate:visible_curve_v1-repeat1-turn",
+    "no_executable_candidate:visible_curve_v1-repeat1-no_turn",
+    "no_executable_candidate:visible_ramp_v1-repeat2-turn",
+    "no_executable_candidate:visible_ramp_v1-repeat2-no_turn",
+    "no_executable_candidate:visible_curve_v1-repeat2-no_turn",
+    "no_executable_candidate:visible_curve_v1-repeat2-turn",
+    "insufficient_actual_negative_probes",
+    "insufficient_matched_pairs"
+  ],
+  "execution": [],
+  "pairs": [],
+  "repeated_positive_net_scenes": [],
+  "online_policy_changed": false,
+  "online_ready": false,
+  "limits": "Engineering admission, not statistical significance. Hold snapshot/trajectory differ. Turn-only recovery is a warning, not cellwise causal truth."
+}

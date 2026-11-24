@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "new_simulations": 0,
+  "old_failure_not_relabelled": true,
+  "fixed_loader_only_verified": true,
+  "turning_cause_confirmed": false,
+  "results": [
+    {
+      "profile": "coplanar_mesh",
+      "old_rejected": true,
+      "fixed_accepted": true,
+      "vertices_unchanged": true,
+      "faces_unchanged": true,
+      "old_sha256": "4c1d1949944c26e289754142ca666d4bd95a4cd2f5802e2ec634b29664b79162",
+      "fixed_sha256": "948abedb38e104b74cc6809c12f317e2389878f0bd803b3fc9184076e5fb850b"
+    },
+    {
+      "profile": "mirrored_mesh",
+      "old_rejected": true,
+      "fixed_accepted": true,
+      "vertices_unchanged": true,
+      "faces_unchanged": true,
+      "old_sha256": "0015e1dea2c3cfc3f513ee4bc61616a5eaf25ed5e66446a539d7f5bc8c3864fb",
+      "fixed_sha256": "6155da3500ab83682065c8d792ca0df8ada95d9148bab8d9965ef60177f8a804"
+    }
+  ]
+}

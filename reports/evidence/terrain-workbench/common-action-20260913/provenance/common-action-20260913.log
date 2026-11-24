@@ -1,0 +1,9 @@
+START ramp-repeat3-hold
+{"condition": "approach", "experiment": "experiment-64ec3a34f637", "status": "completed", "capture_exit": 0}
+START ramp-repeat3-wide_turn
+{"condition": "approach", "experiment": "experiment-b3be8707a7b1", "status": "completed", "capture_exit": 0}
+START ramp-repeat3-advance
+{"condition": "approach", "experiment": "experiment-318049231643", "status": "completed", "capture_exit": 0}
+START ramp-repeat3-small_turn
+{"condition": "approach", "experiment": "experiment-c612422471a4", "status": "completed", "capture_exit": 0}
+FOUR SUPPLEMENTAL COMMON ACTION ATTEMPTS FINISHED

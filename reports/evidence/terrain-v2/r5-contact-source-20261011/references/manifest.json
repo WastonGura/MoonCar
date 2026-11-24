@@ -1,0 +1,12 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/gazebosim/gz-sim/gz-sim8_8.15.0/src/systems/contact/Contact.cc",
+    "file": "Contact.cc",
+    "sha256": "1488fa407e506d0e9afeda233c4a122ea278f11081b131aa0f09116ec1f423e7"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/gazebosim/gz-sim/gz-sim8_8.15.0/src/systems/physics/Physics.cc",
+    "file": "Physics.cc",
+    "sha256": "5d5c404151f8ae4f7825c43c571dc151c79b9a587c69db35996d7cabbc4e76e1"
+  }
+]

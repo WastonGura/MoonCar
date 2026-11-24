@@ -1,0 +1,84 @@
+visible_ramp_v1-repeat1-no_turn evaluated
+visible_ramp_v1-repeat1-turn evaluated
+visible_curve_v1-repeat1-turn evaluated
+visible_curve_v1-repeat1-no_turn evaluated
+visible_ramp_v1-repeat2-turn evaluated
+visible_ramp_v1-repeat2-no_turn evaluated
+visible_curve_v1-repeat2-no_turn evaluated
+visible_curve_v1-repeat2-turn evaluated
+{
+  "rejections": [
+    "false_skip_of_paired_recovery",
+    "residual_stop_and_turn_not_both_validated"
+  ],
+  "branches": {
+    "try_observation": 7,
+    "no_modelled_marginal_support": 0
+  },
+  "model_metrics": {
+    "scope": "all_decision_deficient",
+    "arm": "turn",
+    "rule": "swept_prediction",
+    "tp": 47,
+    "fp": 17,
+    "fn": 35,
+    "tn": 354,
+    "precision": 0.734375,
+    "recall": 0.573170731707317,
+    "meaning": "Hold-arm turn prediction is counterfactual; do not score it as executed-turn efficacy"
+  },
+  "pairs": [
+    {
+      "pair": "visible_curve_v1-repeat1",
+      "scope": "all_decision_deficient",
+      "status": "evaluated",
+      "common_remaining": 104,
+      "missing": 0,
+      "turn_only": 7,
+      "hold_only": 0,
+      "net_recovered": 7,
+      "would_turn": false,
+      "false_skip": true,
+      "no_positive_net": false
+    },
+    {
+      "pair": "visible_curve_v1-repeat2",
+      "scope": "all_decision_deficient",
+      "status": "evaluated",
+      "common_remaining": 109,
+      "missing": 0,
+      "turn_only": 15,
+      "hold_only": 0,
+      "net_recovered": 15,
+      "would_turn": true,
+      "false_skip": false,
+      "no_positive_net": false
+    },
+    {
+      "pair": "visible_ramp_v1-repeat1",
+      "scope": "all_decision_deficient",
+      "status": "evaluated",
+      "common_remaining": 65,
+      "missing": 0,
+      "turn_only": 13,
+      "hold_only": 0,
+      "net_recovered": 13,
+      "would_turn": true,
+      "false_skip": false,
+      "no_positive_net": false
+    },
+    {
+      "pair": "visible_ramp_v1-repeat2",
+      "scope": "all_decision_deficient",
+      "status": "evaluated",
+      "common_remaining": 55,
+      "missing": 0,
+      "turn_only": 17,
+      "hold_only": 0,
+      "net_recovered": 17,
+      "would_turn": true,
+      "false_skip": false,
+      "no_positive_net": false
+    }
+  ]
+}

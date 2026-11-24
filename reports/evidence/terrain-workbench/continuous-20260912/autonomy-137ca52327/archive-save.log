@@ -1,0 +1,5 @@
+requester: making request: std_srvs.srv.Trigger_Request()
+
+response:
+std_srvs.srv.Trigger_Response(success=True, message='/evidence/frontend-experiments/experiment-226fc790d974/survey-20260912T114452190290Z.npz')
+

@@ -1,0 +1,23 @@
+{
+  "sim_stamp": 230.168,
+  "elapsed_seconds": 15.519000000000005,
+  "phase": "fault",
+  "pose": {
+    "x": 10.34615486025793,
+    "y": 5.545937189438902,
+    "z": 0.0,
+    "yaw": 1.6893737579401111
+  },
+  "ready": false,
+  "motion_error": "导航地图失效，已停止运动",
+  "path_m": 0.5407715408151956,
+  "roi_area_m2": 313.9375,
+  "observed_area_m2": 192.1875,
+  "observed_fraction": 0.6121839538124627,
+  "quality_area_m2": 130.4073125,
+  "sufficient_area_m2": 96.6875,
+  "mean_observed_quality": 0.6785421138211382,
+  "frames": 311,
+  "quality_stamp": 229.4,
+  "scene_age_wall_seconds": 0.22237396240234375
+}

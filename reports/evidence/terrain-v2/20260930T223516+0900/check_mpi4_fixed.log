@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/evidence/pile.py", line 365, in <module>
+    assert WORLD_SIZE == args.expect_ranks, (WORLD_SIZE, args.expect_ranks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (1, 4)
+Traceback (most recent call last):
+  File "/evidence/pile.py", line 365, in <module>
+Traceback (most recent call last):
+  File "/evidence/pile.py", line 365, in <module>
+    assert WORLD_SIZE == args.expect_ranks, (WORLD_SIZE, args.expect_ranks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (1, 4)
+    assert WORLD_SIZE == args.expect_ranks, (WORLD_SIZE, args.expect_ranks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (1, 4)
+Traceback (most recent call last):
+  File "/evidence/pile.py", line 365, in <module>
+    assert WORLD_SIZE == args.expect_ranks, (WORLD_SIZE, args.expect_ranks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (1, 4)

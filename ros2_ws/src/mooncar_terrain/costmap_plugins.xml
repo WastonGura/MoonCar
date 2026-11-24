@@ -1,0 +1,5 @@
+<library path="mooncar_risk_overlay">
+  <class name="mooncar_terrain::RiskOverlay" type="mooncar_terrain::RiskOverlay" base_class_type="nav2_costmap_2d::Layer">
+    <description>Sparse additive terrain risks; unknown evidence never erases another layer.</description>
+  </class>
+</library>

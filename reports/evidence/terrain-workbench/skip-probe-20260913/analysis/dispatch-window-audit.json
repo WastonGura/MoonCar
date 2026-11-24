@@ -1,0 +1,5 @@
+{
+  "trials": [],
+  "pairs": [],
+  "meaning": "Supplemental fixed 10s window from command; excludes recovery while computing selection. Does not alter primary predeclared admission. Estimated pose drift and independent reset trajectories remain confounds."
+}

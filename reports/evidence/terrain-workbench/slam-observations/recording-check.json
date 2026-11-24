@@ -1,0 +1,14 @@
+{
+  "source": "Gazebo depth observations; simulation, not physical measurements",
+  "frame": "map",
+  "archive": "survey-20260909T143517827513Z.npz",
+  "frames": 37,
+  "voxel_points": 6010,
+  "elevation_cells": 394,
+  "valid_cells": 255,
+  "recorded_robot_poses": 37,
+  "camera_displacement": 0.7227250497892351,
+  "physical_hardware": false,
+  "ground_truth_used_for_mapping": false,
+  "passed": true
+}

@@ -1,0 +1,24 @@
+{
+  "sim_stamp": 40.499,
+  "elapsed_seconds": 32.362,
+  "phase": "moving",
+  "pose": {
+    "x": 0.10724722781399015,
+    "y": -2.59936590024548,
+    "z": 0.0,
+    "yaw": 1.5770073724700284
+  },
+  "ready": true,
+  "motion_error": "",
+  "path_m": 0.4200677433594986,
+  "roi_area_m2": 201.75,
+  "observed_area_m2": 100.3125,
+  "observed_fraction": 0.4972118959107807,
+  "quality_area_m2": 45.8105,
+  "sufficient_area_m2": 16.375,
+  "mean_observed_quality": 0.45667788161993766,
+  "valid_surface_area_m2": 72.5,
+  "frames": 53,
+  "quality_stamp": 39.3,
+  "scene_age_wall_seconds": 2.7135281562805176
+}

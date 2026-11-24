@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(mooncar_startup_node)
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+add_executable(rmw-node node.cc)
+ament_target_dependencies(rmw-node rclcpp)
+target_compile_features(rmw-node PRIVATE cxx_std_17)
+target_compile_options(rmw-node PRIVATE -Wall -Wextra -Werror)

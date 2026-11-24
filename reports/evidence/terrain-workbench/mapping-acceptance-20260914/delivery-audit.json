@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "requirements": {
+    "evaluation_spec": "docs/mapping_acceptance.md and validation-source/mapping_acceptance.md",
+    "frozen_reference_and_coordinates": "reference/ and capture-motion/approach/coordinate-contract.json; live audit checks passed",
+    "automatic_evaluator": "report-motion/source/; documented command reproduced all five primary metrics",
+    "visual_report": "both final PDFs rendered with Poppler and visually inspected; labels and raster maps correct",
+    "known_cases_and_real_record": "5 tests passed; validation.json; 53 real frames verified; failed attempt retained"
+  },
+  "evidence_hashes_checked": true,
+  "cell_csv_recounted": true,
+  "local_links_checked": true,
+  "simulator_stopped": true,
+  "scoring_status": "failed",
+  "boundary": "Evaluation tool delivered; simulation coverage failed target. Profile provisional and safety unverified."
+}

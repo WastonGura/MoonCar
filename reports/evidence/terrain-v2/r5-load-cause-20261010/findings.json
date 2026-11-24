@@ -1,0 +1,1750 @@
+{
+  "rounds": [
+    {
+      "name": "01-baseline-zero",
+      "stage": "baseline",
+      "angular": 0.0,
+      "qualified": true,
+      "endpoint_m": 1.9925926832545446e-14,
+      "maximum_m": 1.9925926832545446e-14,
+      "path_length_m": 1.9925926832545446e-14,
+      "actual_turn_rad": 2.3524362575181506e-18,
+      "stop_extra_m": 0.0,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.228,
+          "endpoint_position_error_m": 8.968474678031987e-14,
+          "maximum_position_error_m": 8.936608318827831e-14,
+          "endpoint_yaw_error_rad": 1.1543128212344498e-18,
+          "odometry_turn_rad": 1.1543128212344498e-18,
+          "odometry_displacement_m": 8.968474678031987e-14,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": 0.028000000000002245
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 8.952535523240007e-14,
+          "maximum_position_error_m": 8.952535523240007e-14,
+          "endpoint_yaw_error_rad": 1.9010337343909847e-18,
+          "odometry_turn_rad": 1.9010337343909847e-18,
+          "odometry_displacement_m": 8.952535523240007e-14,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "original",
+        "qualified": true,
+        "observed_initial_com_m": [
+          -0.0062378896105362205,
+          1.6634779447222992e-18,
+          0.12798294046230652
+        ],
+        "com_error_m": 3.7654207725663804e-07,
+        "static_front_N": 7.1450278202761055,
+        "static_rear_N": 7.736287798999439,
+        "rear_minus_front_N": 0.5912599787233335,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": null,
+        "icr_valid_fraction": 0.0,
+        "front_lateral_rms_m_s": 8.437975459885383e-15,
+        "rear_lateral_rms_m_s": 8.437975459885345e-15,
+        "support_exchange_prediction": null,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.572456440709417,
+            "steady_normal_N": 3.572456440709417,
+            "lateral_slip_rms_m_s": 8.43797545988538e-15,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725713795666882,
+            "steady_normal_N": 3.5725713795666887,
+            "lateral_slip_rms_m_s": 8.437975459885388e-15,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8680789394309754,
+            "steady_normal_N": 3.8680789394309745,
+            "lateral_slip_rms_m_s": 8.437975459885342e-15,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682088595684636,
+            "steady_normal_N": 3.868208859568463,
+            "lateral_slip_rms_m_s": 8.43797545988535e-15,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 2.7755575615628914e-17
+        }
+      },
+      "input_pairs": [],
+      "image_count": 58,
+      "sensor_intervals": {
+        "rgb": 1.0,
+        "depth": 1.0,
+        "scan": 0.5,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.053000000000000824,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 115.8404324054718,
+      "performance": {
+        "realtime_factor": 0.6853339654149558,
+        "cpu_core_mean": 3.6102331049309924,
+        "cpu_core_max": 4.077366384985919,
+        "memory_peak_bytes": 2030624768
+      },
+      "evidence_bytes": 225053401
+    },
+    {
+      "name": "02-baseline-left-1",
+      "stage": "baseline",
+      "angular": 0.2,
+      "qualified": true,
+      "endpoint_m": 0.31209996351986474,
+      "maximum_m": 0.3131430755668963,
+      "path_length_m": 0.5188652828677199,
+      "actual_turn_rad": 3.4577434742897903,
+      "stop_extra_m": 0.0027416481380231426,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.168,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121132336317494,
+          "maximum_position_error_m": 0.31314268187410815,
+          "endpoint_yaw_error_rad": 0.521999086856046,
+          "odometry_turn_rad": 3.9786999992275387,
+          "odometry_displacement_m": 6.261193621420784e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121132336317842,
+          "maximum_position_error_m": 0.31314278260659506,
+          "endpoint_yaw_error_rad": 0.5219980868978751,
+          "odometry_turn_rad": 3.9786989992693678,
+          "odometry_displacement_m": 6.568237694142543e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "original",
+        "qualified": true,
+        "observed_initial_com_m": [
+          -0.0062378896105362205,
+          1.6634779447222992e-18,
+          0.12798294046230652
+        ],
+        "com_error_m": 3.7654207725663804e-07,
+        "static_front_N": 7.1450278202761055,
+        "static_rear_N": 7.736287798999439,
+        "rear_minus_front_N": 0.5912599787233335,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": -0.15699998856797684,
+        "icr_valid_fraction": 1.0,
+        "front_lateral_rms_m_s": 0.054560737260481836,
+        "rear_lateral_rms_m_s": 4.998393217589318e-06,
+        "support_exchange_prediction": true,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.572456440709417,
+            "steady_normal_N": 3.5808140851955987,
+            "lateral_slip_rms_m_s": 0.05456573542423277,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725713795666882,
+            "steady_normal_N": 3.580814624533616,
+            "lateral_slip_rms_m_s": 0.054555738638820496,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8680789394309754,
+            "steady_normal_N": 3.8598453869772493,
+            "lateral_slip_rms_m_s": 4.996131401573138e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682088595684636,
+            "steady_normal_N": 3.859845903293541,
+            "lateral_slip_rms_m_s": 5.0006540105770785e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 2.2247786310271853e-16
+        }
+      },
+      "input_pairs": [],
+      "image_count": 56,
+      "sensor_intervals": {
+        "rgb": 1.1000000000000005,
+        "depth": 1.1000000000000005,
+        "scan": 0.6000000000000005,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.054999999999999716,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 118.09453916549683,
+      "performance": {
+        "realtime_factor": 0.6572320661805763,
+        "cpu_core_mean": 3.6328374359296123,
+        "cpu_core_max": 4.046161003203851,
+        "memory_peak_bytes": 2079797248
+      },
+      "evidence_bytes": 228966555
+    },
+    {
+      "name": "03-baseline-right-1",
+      "stage": "baseline",
+      "angular": -0.2,
+      "qualified": true,
+      "endpoint_m": 0.31209996348222024,
+      "maximum_m": 0.3131430755202439,
+      "path_length_m": 0.5188652828717464,
+      "actual_turn_rad": -3.457743474295003,
+      "stop_extra_m": 0.0027416481380487597,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.31211323359404974,
+          "maximum_position_error_m": 0.31314278256003386,
+          "endpoint_yaw_error_rad": -0.5219980868508767,
+          "odometry_turn_rad": -3.9786989992275767,
+          "odometry_displacement_m": 6.261965500600875e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121132335940652,
+          "maximum_position_error_m": 0.3131427825600465,
+          "endpoint_yaw_error_rad": -0.5219980868926695,
+          "odometry_turn_rad": -3.9786989992693695,
+          "odometry_displacement_m": 6.568671618772967e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "original",
+        "qualified": true,
+        "observed_initial_com_m": [
+          -0.0062378896105362205,
+          1.6634779447222992e-18,
+          0.12798294046230652
+        ],
+        "com_error_m": 3.7654207725663804e-07,
+        "static_front_N": 7.1450278202761055,
+        "static_rear_N": 7.736287798999439,
+        "rear_minus_front_N": 0.5912599787233335,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": -0.15699998856802336,
+        "icr_valid_fraction": 1.0,
+        "front_lateral_rms_m_s": 0.05456073726052972,
+        "rear_lateral_rms_m_s": 4.9983932176259986e-06,
+        "support_exchange_prediction": true,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.572456440709417,
+            "steady_normal_N": 3.580815495017576,
+            "lateral_slip_rms_m_s": 0.054555738638868395,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725713795666882,
+            "steady_normal_N": 3.580813214708708,
+            "lateral_slip_rms_m_s": 0.05456573542428063,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8680789394309754,
+            "steady_normal_N": 3.8598468973792945,
+            "lateral_slip_rms_m_s": 5.000654007892341e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682088595684636,
+            "steady_normal_N": 3.8598443928944253,
+            "lateral_slip_rms_m_s": 4.9961314043337e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 1.6653345369377348e-16
+        }
+      },
+      "input_pairs": [],
+      "image_count": 58,
+      "sensor_intervals": {
+        "rgb": 1.0,
+        "depth": 1.0,
+        "scan": 0.6000000000000005,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.054999999999999716,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 118.67274260520935,
+      "performance": {
+        "realtime_factor": 0.6605447926056511,
+        "cpu_core_mean": 3.6156771617905865,
+        "cpu_core_max": 4.033798720602011,
+        "memory_peak_bytes": 2152890368
+      },
+      "evidence_bytes": 229199477
+    },
+    {
+      "name": "04-baseline-left-2",
+      "stage": "baseline",
+      "angular": 0.2,
+      "qualified": true,
+      "endpoint_m": 0.31209996351986474,
+      "maximum_m": 0.3131430755668963,
+      "path_length_m": 0.5188652828677199,
+      "actual_turn_rad": 3.4577434742897903,
+      "stop_extra_m": 0.0027416481380231426,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121132336317686,
+          "maximum_position_error_m": 0.3131426818741277,
+          "endpoint_yaw_error_rad": 0.5219980868560832,
+          "odometry_turn_rad": 3.978698999227576,
+          "odometry_displacement_m": 6.261874207743469e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121132336317842,
+          "maximum_position_error_m": 0.31314278260659506,
+          "endpoint_yaw_error_rad": 0.5219980868978751,
+          "odometry_turn_rad": 3.9786989992693678,
+          "odometry_displacement_m": 6.568237694142543e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "original",
+        "qualified": true,
+        "observed_initial_com_m": [
+          -0.0062378896105362205,
+          1.6634779447222992e-18,
+          0.12798294046230652
+        ],
+        "com_error_m": 3.7654207725663804e-07,
+        "static_front_N": 7.1450278202761055,
+        "static_rear_N": 7.736287798999439,
+        "rear_minus_front_N": 0.5912599787233335,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": -0.15699998856797684,
+        "icr_valid_fraction": 1.0,
+        "front_lateral_rms_m_s": 0.054560737260481836,
+        "rear_lateral_rms_m_s": 4.998393217589318e-06,
+        "support_exchange_prediction": true,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.572456440709417,
+            "steady_normal_N": 3.5808140851955987,
+            "lateral_slip_rms_m_s": 0.05456573542423277,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725713795666882,
+            "steady_normal_N": 3.580814624533616,
+            "lateral_slip_rms_m_s": 0.054555738638820496,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8680789394309754,
+            "steady_normal_N": 3.8598453869772493,
+            "lateral_slip_rms_m_s": 4.996131401573138e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682088595684636,
+            "steady_normal_N": 3.859845903293541,
+            "lateral_slip_rms_m_s": 5.0006540105770785e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 2.2247786310271853e-16
+        }
+      },
+      "input_pairs": [
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        }
+      ],
+      "image_count": 56,
+      "sensor_intervals": {
+        "rgb": 1.1000000000000005,
+        "depth": 1.1000000000000005,
+        "scan": 0.6000000000000005,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.05600000000000005,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 118.0163083076477,
+      "performance": {
+        "realtime_factor": 0.6594091591108928,
+        "cpu_core_mean": 3.6145881554528563,
+        "cpu_core_max": 4.049505786827403,
+        "memory_peak_bytes": 2230038528
+      },
+      "evidence_bytes": 229013294
+    },
+    {
+      "name": "05-baseline-right-2",
+      "stage": "baseline",
+      "angular": -0.2,
+      "qualified": true,
+      "endpoint_m": 0.31209996348222024,
+      "maximum_m": 0.3131430755202439,
+      "path_length_m": 0.5188652828717464,
+      "actual_turn_rad": -3.457743474295003,
+      "stop_extra_m": 0.0027416481380487597,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.31211323359404974,
+          "maximum_position_error_m": 0.3131426818273607,
+          "endpoint_yaw_error_rad": -0.5219980868508771,
+          "odometry_turn_rad": -3.978698999227577,
+          "odometry_displacement_m": 6.261931563558698e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121132335940652,
+          "maximum_position_error_m": 0.3131427825600465,
+          "endpoint_yaw_error_rad": -0.5219980868926695,
+          "odometry_turn_rad": -3.9786989992693695,
+          "odometry_displacement_m": 6.568671618772967e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "original",
+        "qualified": true,
+        "observed_initial_com_m": [
+          -0.0062378896105362205,
+          1.6634779447222992e-18,
+          0.12798294046230652
+        ],
+        "com_error_m": 3.7654207725663804e-07,
+        "static_front_N": 7.1450278202761055,
+        "static_rear_N": 7.736287798999439,
+        "rear_minus_front_N": 0.5912599787233335,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": -0.15699998856802336,
+        "icr_valid_fraction": 1.0,
+        "front_lateral_rms_m_s": 0.05456073726052972,
+        "rear_lateral_rms_m_s": 4.9983932176259986e-06,
+        "support_exchange_prediction": true,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.572456440709417,
+            "steady_normal_N": 3.580815495017576,
+            "lateral_slip_rms_m_s": 0.054555738638868395,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725713795666882,
+            "steady_normal_N": 3.580813214708708,
+            "lateral_slip_rms_m_s": 0.05456573542428063,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8680789394309754,
+            "steady_normal_N": 3.8598468973792945,
+            "lateral_slip_rms_m_s": 5.000654007892341e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682088595684636,
+            "steady_normal_N": 3.8598443928944253,
+            "lateral_slip_rms_m_s": 4.9961314043337e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 1.6653345369377348e-16
+        }
+      },
+      "input_pairs": [
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        }
+      ],
+      "image_count": 58,
+      "sensor_intervals": {
+        "rgb": 1.0,
+        "depth": 1.0,
+        "scan": 0.5,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.053000000000000824,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 118.00687742233276,
+      "performance": {
+        "realtime_factor": 0.6630314819728096,
+        "cpu_core_mean": 3.604487216892477,
+        "cpu_core_max": 4.044593760339338,
+        "memory_peak_bytes": 2302533632
+      },
+      "evidence_bytes": 229285406
+    },
+    {
+      "name": "06-mirror-zero",
+      "stage": "mirror",
+      "angular": 0.0,
+      "qualified": true,
+      "endpoint_m": 1.8688322241367253e-14,
+      "maximum_m": 1.8688322241367253e-14,
+      "path_length_m": 1.8688322241367253e-14,
+      "actual_turn_rad": -2.810212455332395e-18,
+      "stop_extra_m": 0.0,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.168,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 6.541482680206344e-14,
+          "maximum_position_error_m": 6.541482680206344e-14,
+          "endpoint_yaw_error_rad": 2.956097409391327e-18,
+          "odometry_turn_rad": 1.4588495405893183e-19,
+          "odometry_displacement_m": 8.410314902580066e-14,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 8.396659038727226e-14,
+          "maximum_position_error_m": 8.396659038727226e-14,
+          "endpoint_yaw_error_rad": 6.591949190817998e-19,
+          "odometry_turn_rad": 6.591949190817998e-19,
+          "odometry_displacement_m": 8.396659038727226e-14,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "mirror_x",
+        "qualified": true,
+        "observed_initial_com_m": [
+          0.006237888747783509,
+          -1.3718998167053763e-18,
+          0.12798294044267805
+        ],
+        "com_error_m": 3.7656170576849687e-07,
+        "static_front_N": 7.736287939085356,
+        "static_rear_N": 7.1450289193617245,
+        "rear_minus_front_N": -0.5912590197236316,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": null,
+        "icr_valid_fraction": 0.0,
+        "front_lateral_rms_m_s": 8.437975459885366e-15,
+        "rear_lateral_rms_m_s": 8.437975459885366e-15,
+        "support_exchange_prediction": null,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.868080475592935,
+            "steady_normal_N": 3.8680804755929348,
+            "lateral_slip_rms_m_s": 8.43797545988538e-15,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682074634924204,
+            "steady_normal_N": 3.8682074634924195,
+            "lateral_slip_rms_m_s": 8.43797545988535e-15,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5724562668485995,
+            "steady_normal_N": 3.572456266848599,
+            "lateral_slip_rms_m_s": 8.437975459885342e-15,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725726525131245,
+            "steady_normal_N": 3.572572652513124,
+            "lateral_slip_rms_m_s": 8.437975459885388e-15,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 4.163336342344337e-17
+        }
+      },
+      "input_pairs": [],
+      "image_count": 56,
+      "sensor_intervals": {
+        "rgb": 1.1000000000000005,
+        "depth": 1.1000000000000005,
+        "scan": 0.5,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.054999999999999716,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 118.3176212310791,
+      "performance": {
+        "realtime_factor": 0.6838279885827835,
+        "cpu_core_mean": 3.416394455324501,
+        "cpu_core_max": 4.0299512319828725,
+        "memory_peak_bytes": 2364944384
+      },
+      "evidence_bytes": 224635034
+    },
+    {
+      "name": "07-mirror-left-1",
+      "stage": "mirror",
+      "angular": 0.2,
+      "qualified": true,
+      "endpoint_m": 0.31210050240488335,
+      "maximum_m": 0.3131386444341952,
+      "path_length_m": 0.518804274622329,
+      "actual_turn_rad": 3.457743472380888,
+      "stop_extra_m": 0.002741648130065395,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121137407238728,
+          "maximum_position_error_m": 0.31313842899427347,
+          "endpoint_yaw_error_rad": 0.5219980887636821,
+          "odometry_turn_rad": 3.978698999226856,
+          "odometry_displacement_m": 4.981450491146159e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121137407237631,
+          "maximum_position_error_m": 0.3131384289941578,
+          "endpoint_yaw_error_rad": 0.5219980887246103,
+          "odometry_turn_rad": 3.978698999187784,
+          "odometry_displacement_m": 5.984568097457885e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "mirror_x",
+        "qualified": true,
+        "observed_initial_com_m": [
+          0.006237888747783509,
+          -1.3718998167053763e-18,
+          0.12798294044267805
+        ],
+        "com_error_m": 3.7656170576849687e-07,
+        "static_front_N": 7.736287939085356,
+        "static_rear_N": 7.1450289193617245,
+        "rear_minus_front_N": -0.5912590197236316,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": 0.15699998898368167,
+        "icr_valid_fraction": 1.0,
+        "front_lateral_rms_m_s": 4.998393180338566e-06,
+        "rear_lateral_rms_m_s": 0.05456073730079158,
+        "support_exchange_prediction": true,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.868080475592935,
+            "steady_normal_N": 3.85945934156569,
+            "lateral_slip_rms_m_s": 5.000582899308133e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682074634924204,
+            "steady_normal_N": 3.8594568764231627,
+            "lateral_slip_rms_m_s": 4.996202501666365e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5724562668485995,
+            "steady_normal_N": 3.5812030494339884,
+            "lateral_slip_rms_m_s": 0.05455573867913584,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725726525131245,
+            "steady_normal_N": 3.581200732577165,
+            "lateral_slip_rms_m_s": 0.05456573546453691,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 2.2247786310271853e-16
+        }
+      },
+      "input_pairs": [
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        }
+      ],
+      "image_count": 56,
+      "sensor_intervals": {
+        "rgb": 1.1000000000000005,
+        "depth": 1.1000000000000005,
+        "scan": 0.6000000000000005,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.059,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 115.31862282752991,
+      "performance": {
+        "realtime_factor": 0.6820625170515202,
+        "cpu_core_mean": 3.609512030862722,
+        "cpu_core_max": 4.029340836313648,
+        "memory_peak_bytes": 2427412480
+      },
+      "evidence_bytes": 228812863
+    },
+    {
+      "name": "08-mirror-right-1",
+      "stage": "mirror",
+      "angular": -0.2,
+      "qualified": true,
+      "endpoint_m": 0.31210050244247733,
+      "maximum_m": 0.313138644480772,
+      "path_length_m": 0.5188042746183026,
+      "actual_turn_rad": -3.457743472375725,
+      "stop_extra_m": 0.002741648130039962,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.31211374076154097,
+          "maximum_position_error_m": 0.3131381486269248,
+          "endpoint_yaw_error_rad": -0.5219980887688367,
+          "odometry_turn_rad": -3.978698999226853,
+          "odometry_displacement_m": 4.981194147582413e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.31211374076143117,
+          "maximum_position_error_m": 0.3131384290406436,
+          "endpoint_yaw_error_rad": -0.5219980887305877,
+          "odometry_turn_rad": -3.978698999188604,
+          "odometry_displacement_m": 5.984566872482025e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "mirror_x",
+        "qualified": true,
+        "observed_initial_com_m": [
+          0.006237888747783509,
+          -1.3718998167053763e-18,
+          0.12798294044267805
+        ],
+        "com_error_m": 3.7656170576849687e-07,
+        "static_front_N": 7.736287939085356,
+        "static_rear_N": 7.1450289193617245,
+        "rear_minus_front_N": -0.5912590197236316,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": 0.15699998898364204,
+        "icr_valid_fraction": 1.0,
+        "front_lateral_rms_m_s": 4.998393180354654e-06,
+        "rear_lateral_rms_m_s": 0.05456073730074355,
+        "support_exchange_prediction": true,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.868080475592935,
+            "steady_normal_N": 3.8594578480821777,
+            "lateral_slip_rms_m_s": 4.996202499081994e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682074634924204,
+            "steady_normal_N": 3.8594583699037495,
+            "lateral_slip_rms_m_s": 5.000582901922402e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5724562668485995,
+            "steady_normal_N": 3.5812016226262515,
+            "lateral_slip_rms_m_s": 0.05456573546448881,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725726525131245,
+            "steady_normal_N": 3.581202159387827,
+            "lateral_slip_rms_m_s": 0.05455573867908788,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 2.2929868617541516e-16
+        }
+      },
+      "input_pairs": [
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        }
+      ],
+      "image_count": 56,
+      "sensor_intervals": {
+        "rgb": 1.1000000000000005,
+        "depth": 1.1000000000000005,
+        "scan": 0.5,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.05600000000000094,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 123.6484169960022,
+      "performance": {
+        "realtime_factor": 0.6691982381044294,
+        "cpu_core_mean": 3.6206908465023595,
+        "cpu_core_max": 4.061155223861344,
+        "memory_peak_bytes": 2506080256
+      },
+      "evidence_bytes": 228855621
+    },
+    {
+      "name": "09-mirror-left-2",
+      "stage": "mirror",
+      "angular": 0.2,
+      "qualified": true,
+      "endpoint_m": 0.31210050240488335,
+      "maximum_m": 0.3131386444341952,
+      "path_length_m": 0.518804274622329,
+      "actual_turn_rad": 3.457743472380888,
+      "stop_extra_m": 0.002741648130065395,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.228,
+          "endpoint_position_error_m": 0.31204190206717775,
+          "maximum_position_error_m": 0.31313814858022054,
+          "endpoint_yaw_error_rad": 0.522840641380343,
+          "odometry_turn_rad": 3.985120999225938,
+          "odometry_displacement_m": 4.976226547540038e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": 0.028000000000002245
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121137407237631,
+          "maximum_position_error_m": 0.3131384289941578,
+          "endpoint_yaw_error_rad": 0.5219980887246103,
+          "odometry_turn_rad": 3.978698999187784,
+          "odometry_displacement_m": 5.984568097457885e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "mirror_x",
+        "qualified": true,
+        "observed_initial_com_m": [
+          0.006237888747783509,
+          -1.3718998167053763e-18,
+          0.12798294044267805
+        ],
+        "com_error_m": 3.7656170576849687e-07,
+        "static_front_N": 7.736287939085356,
+        "static_rear_N": 7.1450289193617245,
+        "rear_minus_front_N": -0.5912590197236316,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": 0.15699998898368167,
+        "icr_valid_fraction": 1.0,
+        "front_lateral_rms_m_s": 4.998393180338566e-06,
+        "rear_lateral_rms_m_s": 0.05456073730079158,
+        "support_exchange_prediction": true,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.868080475592935,
+            "steady_normal_N": 3.85945934156569,
+            "lateral_slip_rms_m_s": 5.000582899308133e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682074634924204,
+            "steady_normal_N": 3.8594568764231627,
+            "lateral_slip_rms_m_s": 4.996202501666365e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5724562668485995,
+            "steady_normal_N": 3.5812030494339884,
+            "lateral_slip_rms_m_s": 0.05455573867913584,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725726525131245,
+            "steady_normal_N": 3.581200732577165,
+            "lateral_slip_rms_m_s": 0.05456573546453691,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 2.2247786310271853e-16
+        }
+      },
+      "input_pairs": [
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        }
+      ],
+      "image_count": 56,
+      "sensor_intervals": {
+        "rgb": 1.1000000000000005,
+        "depth": 1.1000000000000005,
+        "scan": 0.6000000000000005,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.05599999999999994,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 119.36348724365234,
+      "performance": {
+        "realtime_factor": 0.6471767998600373,
+        "cpu_core_mean": 3.6307297034496195,
+        "cpu_core_max": 4.0694583757692095,
+        "memory_peak_bytes": 2572918784
+      },
+      "evidence_bytes": 228923881
+    },
+    {
+      "name": "10-mirror-right-2",
+      "stage": "mirror",
+      "angular": -0.2,
+      "qualified": true,
+      "endpoint_m": 0.31210050244247733,
+      "maximum_m": 0.313138644480772,
+      "path_length_m": 0.5188042746183026,
+      "actual_turn_rad": -3.457743472375725,
+      "stop_extra_m": 0.002741648130039962,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.168,
+          "motion_end_sample_s": 25.228,
+          "endpoint_position_error_m": 0.31204190210443944,
+          "maximum_position_error_m": 0.3131384290407777,
+          "endpoint_yaw_error_rad": -0.522841641385491,
+          "odometry_turn_rad": -3.9851219992258975,
+          "odometry_displacement_m": 4.976660036900651e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": 0.028000000000002245
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.31211374076143117,
+          "maximum_position_error_m": 0.3131384290406436,
+          "endpoint_yaw_error_rad": -0.5219980887305877,
+          "odometry_turn_rad": -3.978698999188604,
+          "odometry_displacement_m": 5.984566872482025e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "mirror_x",
+        "qualified": true,
+        "observed_initial_com_m": [
+          0.006237888747783509,
+          -1.3718998167053763e-18,
+          0.12798294044267805
+        ],
+        "com_error_m": 3.7656170576849687e-07,
+        "static_front_N": 7.736287939085356,
+        "static_rear_N": 7.1450289193617245,
+        "rear_minus_front_N": -0.5912590197236316,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": 0.15699998898364204,
+        "icr_valid_fraction": 1.0,
+        "front_lateral_rms_m_s": 4.998393180354654e-06,
+        "rear_lateral_rms_m_s": 0.05456073730074355,
+        "support_exchange_prediction": true,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.868080475592935,
+            "steady_normal_N": 3.8594578480821777,
+            "lateral_slip_rms_m_s": 4.996202499081994e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682074634924204,
+            "steady_normal_N": 3.8594583699037495,
+            "lateral_slip_rms_m_s": 5.000582901922402e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5724562668485995,
+            "steady_normal_N": 3.5812016226262515,
+            "lateral_slip_rms_m_s": 0.05456573546448881,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725726525131245,
+            "steady_normal_N": 3.581202159387827,
+            "lateral_slip_rms_m_s": 0.05455573867908788,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 2.2929868617541516e-16
+        }
+      },
+      "input_pairs": [
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        }
+      ],
+      "image_count": 58,
+      "sensor_intervals": {
+        "rgb": 1.0,
+        "depth": 1.0,
+        "scan": 0.5,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.05500000000000149,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 115.55709791183472,
+      "performance": {
+        "realtime_factor": 0.6656352133802,
+        "cpu_core_mean": 3.6089089331373,
+        "cpu_core_max": 4.031171534367517,
+        "memory_peak_bytes": 2655232000
+      },
+      "evidence_bytes": 228863375
+    },
+    {
+      "name": "11-restore-left",
+      "stage": "restore",
+      "angular": 0.2,
+      "qualified": true,
+      "endpoint_m": 0.31209996351986474,
+      "maximum_m": 0.3131430755668963,
+      "path_length_m": 0.5188652828677199,
+      "actual_turn_rad": 3.4577434742897903,
+      "stop_extra_m": 0.0027416481380231426,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121132336317686,
+          "maximum_position_error_m": 0.31314278260658235,
+          "endpoint_yaw_error_rad": 0.5219980868560841,
+          "odometry_turn_rad": 3.9786989992275767,
+          "odometry_displacement_m": 6.261819391764689e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121132336317842,
+          "maximum_position_error_m": 0.31314278260659506,
+          "endpoint_yaw_error_rad": 0.5219980868978751,
+          "odometry_turn_rad": 3.9786989992693678,
+          "odometry_displacement_m": 6.568237694142543e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "original",
+        "qualified": true,
+        "observed_initial_com_m": [
+          -0.0062378896105362205,
+          1.6634779447222992e-18,
+          0.12798294046230652
+        ],
+        "com_error_m": 3.7654207725663804e-07,
+        "static_front_N": 7.1450278202761055,
+        "static_rear_N": 7.736287798999439,
+        "rear_minus_front_N": 0.5912599787233335,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": -0.15699998856797684,
+        "icr_valid_fraction": 1.0,
+        "front_lateral_rms_m_s": 0.054560737260481836,
+        "rear_lateral_rms_m_s": 4.998393217589318e-06,
+        "support_exchange_prediction": true,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.572456440709417,
+            "steady_normal_N": 3.5808140851955987,
+            "lateral_slip_rms_m_s": 0.05456573542423277,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725713795666882,
+            "steady_normal_N": 3.580814624533616,
+            "lateral_slip_rms_m_s": 0.054555738638820496,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8680789394309754,
+            "steady_normal_N": 3.8598453869772493,
+            "lateral_slip_rms_m_s": 4.996131401573138e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682088595684636,
+            "steady_normal_N": 3.859845903293541,
+            "lateral_slip_rms_m_s": 5.0006540105770785e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 2.2247786310271853e-16
+        }
+      },
+      "input_pairs": [
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        }
+      ],
+      "image_count": 58,
+      "sensor_intervals": {
+        "rgb": 1.0,
+        "depth": 1.0,
+        "scan": 0.5,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.05400000000000027,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 115.17021083831787,
+      "performance": {
+        "realtime_factor": 0.6733318553062666,
+        "cpu_core_mean": 3.606585013179792,
+        "cpu_core_max": 4.0727880854815455,
+        "memory_peak_bytes": 2732933120
+      },
+      "evidence_bytes": 229020109
+    },
+    {
+      "name": "12-restore-right",
+      "stage": "restore",
+      "angular": -0.2,
+      "qualified": true,
+      "endpoint_m": 0.31209996348222024,
+      "maximum_m": 0.3131430755202439,
+      "path_length_m": 0.5188652828717464,
+      "actual_turn_rad": -3.457743474295003,
+      "stop_extra_m": 0.0027416481380487597,
+      "last_second_stop_m": 0.0,
+      "odometry": {
+        "ros_wheel_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.168,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.31211323359403054,
+          "maximum_position_error_m": 0.3131427825600144,
+          "endpoint_yaw_error_rad": -0.5219990868508395,
+          "odometry_turn_rad": -3.9786999992275396,
+          "odometry_displacement_m": 6.261414790601965e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        },
+        "gz_native_odom": {
+          "available": true,
+          "motion_start_sample_s": 5.202,
+          "motion_end_sample_s": 25.194,
+          "endpoint_position_error_m": 0.3121132335940652,
+          "maximum_position_error_m": 0.3131427825600465,
+          "endpoint_yaw_error_rad": -0.5219980868926695,
+          "odometry_turn_rad": -3.9786989992693695,
+          "odometry_displacement_m": 6.568671618772967e-13,
+          "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+          "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+        }
+      },
+      "audit": {
+        "profile": "original",
+        "qualified": true,
+        "observed_initial_com_m": [
+          -0.0062378896105362205,
+          1.6634779447222992e-18,
+          0.12798294046230652
+        ],
+        "com_error_m": 3.7654207725663804e-07,
+        "static_front_N": 7.1450278202761055,
+        "static_rear_N": 7.736287798999439,
+        "rear_minus_front_N": 0.5912599787233335,
+        "weight_N": 14.881320000000004,
+        "static_load_sign_matches_prediction": true,
+        "icr_body_x_median_m": -0.15699998856802336,
+        "icr_valid_fraction": 1.0,
+        "front_lateral_rms_m_s": 0.05456073726052972,
+        "rear_lateral_rms_m_s": 4.9983932176259986e-06,
+        "support_exchange_prediction": true,
+        "zero_stability_passed": true,
+        "wheels": {
+          "front_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.572456440709417,
+            "steady_normal_N": 3.580815495017576,
+            "lateral_slip_rms_m_s": 0.054555738638868395,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "front_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.5725713795666882,
+            "steady_normal_N": 3.580813214708708,
+            "lateral_slip_rms_m_s": 0.05456573542428063,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_left": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8680789394309754,
+            "steady_normal_N": 3.8598468973792945,
+            "lateral_slip_rms_m_s": 5.000654007892341e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          },
+          "rear_right": {
+            "samples": 26001,
+            "max_gap_s": 0.001,
+            "static_normal_N": 3.8682088595684636,
+            "steady_normal_N": 3.8598443928944253,
+            "lateral_slip_rms_m_s": 4.9961314043337e-06,
+            "aggregation": "Point mean per wheel per source timestamp, then time RMS"
+          }
+        },
+        "steady_window_s": [
+          8.2,
+          24.2
+        ],
+        "static_window_s": [
+          2.2,
+          5.2
+        ],
+        "turn_performance_accepted": false,
+        "repair_verified": false,
+        "local_world_pose_audit": {
+          "samples": 8004,
+          "maximum_error_m": 1.6653345369377348e-16
+        }
+      },
+      "input_pairs": [
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        },
+        {
+          "passed": true,
+          "distance_difference_m": 0.0,
+          "turn_difference_rad": 0.0,
+          "duration_difference_s": 0.0
+        }
+      ],
+      "image_count": 58,
+      "sensor_intervals": {
+        "rgb": 1.0,
+        "depth": 1.0,
+        "scan": 0.5,
+        "imu": 0.010000000000001563,
+        "joints": 0.06800000000000139,
+        "truth": 0.010000000000001563
+      },
+      "safe_gap_s": 0.06199999999999939,
+      "paused_flush_passed": true,
+      "queues_drained": true,
+      "images_readable": true,
+      "runtime_receivers_verified": true,
+      "wall_seconds": 115.93707919120789,
+      "performance": {
+        "realtime_factor": 0.6658745637046478,
+        "cpu_core_mean": 3.623757632360014,
+        "cpu_core_max": 4.046627551268616,
+        "memory_peak_bytes": 2808299520
+      },
+      "evidence_bytes": 229252478
+    }
+  ],
+  "trajectory_comparisons": [
+    {
+      "one": "02-baseline-left-1",
+      "two": "04-baseline-left-2",
+      "maximum_path_difference_m": 0.0,
+      "endpoint_difference_m": 0.0,
+      "turn_difference_rad": 0.0
+    },
+    {
+      "one": "03-baseline-right-1",
+      "two": "05-baseline-right-2",
+      "maximum_path_difference_m": 0.0,
+      "endpoint_difference_m": 0.0,
+      "turn_difference_rad": 0.0
+    },
+    {
+      "one": "07-mirror-left-1",
+      "two": "09-mirror-left-2",
+      "maximum_path_difference_m": 0.0,
+      "endpoint_difference_m": 0.0,
+      "turn_difference_rad": 0.0
+    },
+    {
+      "one": "08-mirror-right-1",
+      "two": "10-mirror-right-2",
+      "maximum_path_difference_m": 0.0,
+      "endpoint_difference_m": 0.0,
+      "turn_difference_rad": 0.0
+    },
+    {
+      "one": "02-baseline-left-1",
+      "two": "11-restore-left",
+      "maximum_path_difference_m": 0.0,
+      "endpoint_difference_m": 0.0,
+      "turn_difference_rad": 0.0
+    },
+    {
+      "one": "03-baseline-right-1",
+      "two": "12-restore-right",
+      "maximum_path_difference_m": 0.0,
+      "endpoint_difference_m": 0.0,
+      "turn_difference_rad": 0.0
+    }
+  ],
+  "decision": {
+    "cause_confirmed": true,
+    "status": "com_influence_confirmed",
+    "repair_verified": false,
+    "turn_performance_accepted": false,
+    "production_changed": false,
+    "interpretation": "Test inertial COM intervention affects pivot selection",
+    "limitation": "Combined assembly inertia also changes; this does not alone prove a load-only mechanism, a DART defect, or real vehicle behavior"
+  },
+  "source": "Fresh matrix only; archived preflight observations excluded",
+  "total_images": 684,
+  "min_rtf": 0.6471767998600373,
+  "max_rtf": 0.6853339654149558,
+  "maximum_wall_seconds": 123.6484169960022
+}

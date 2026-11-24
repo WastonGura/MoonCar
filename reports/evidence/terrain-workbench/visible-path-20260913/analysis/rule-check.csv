@@ -1,0 +1,17 @@
+﻿scene,condition,experiment,scope,rule,cells,missing,tp,fp,fn,tn,precision,recall
+visible_ramp_v1,stationary,experiment-de36034fbaf0,all_initial_deficient,distance_direction_prediction,87,0,0,0,0,87,,
+visible_ramp_v1,stationary,experiment-de36034fbaf0,all_initial_deficient,path_prediction,87,0,0,0,0,87,,
+visible_ramp_v1,stationary,experiment-de36034fbaf0,pure_target_initial_deficient,distance_direction_prediction,39,0,0,0,0,39,,
+visible_ramp_v1,stationary,experiment-de36034fbaf0,pure_target_initial_deficient,path_prediction,39,0,0,0,0,39,,
+visible_ramp_v1,approach,experiment-622800100952,all_initial_deficient,distance_direction_prediction,87,0,24,5,44,14,0.8275862068965517,0.35294117647058826
+visible_ramp_v1,approach,experiment-622800100952,all_initial_deficient,path_prediction,87,0,31,5,37,14,0.8611111111111112,0.45588235294117646
+visible_ramp_v1,approach,experiment-622800100952,pure_target_initial_deficient,distance_direction_prediction,39,0,19,2,17,1,0.9047619047619048,0.5277777777777778
+visible_ramp_v1,approach,experiment-622800100952,pure_target_initial_deficient,path_prediction,39,0,24,2,12,1,0.9230769230769231,0.6666666666666666
+visible_curve_v1,stationary,experiment-7983ce4c6913,all_initial_deficient,distance_direction_prediction,71,0,0,0,0,71,,
+visible_curve_v1,stationary,experiment-7983ce4c6913,all_initial_deficient,path_prediction,71,0,0,0,0,71,,
+visible_curve_v1,stationary,experiment-7983ce4c6913,pure_target_initial_deficient,distance_direction_prediction,15,0,0,0,0,15,,
+visible_curve_v1,stationary,experiment-7983ce4c6913,pure_target_initial_deficient,path_prediction,15,0,0,0,0,15,,
+visible_curve_v1,approach,experiment-7c8a9a6d1f25,all_initial_deficient,distance_direction_prediction,71,0,14,2,36,19,0.875,0.28
+visible_curve_v1,approach,experiment-7c8a9a6d1f25,all_initial_deficient,path_prediction,71,0,19,3,31,18,0.8636363636363636,0.38
+visible_curve_v1,approach,experiment-7c8a9a6d1f25,pure_target_initial_deficient,distance_direction_prediction,15,0,4,0,10,1,1.0,0.2857142857142857
+visible_curve_v1,approach,experiment-7c8a9a6d1f25,pure_target_initial_deficient,path_prediction,15,0,8,1,6,0,0.8888888888888888,0.5714285714285714

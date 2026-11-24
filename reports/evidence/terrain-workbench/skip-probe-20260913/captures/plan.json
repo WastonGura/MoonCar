@@ -1,0 +1,189 @@
+{
+  "created_utc": "2026-09-13T12:09:09.708309+00:00",
+  "trials": [
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "pair": "visible_ramp_v1-repeat1",
+      "repeat": 1,
+      "arm": "no_turn",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "seconds": 60,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "pair": "visible_ramp_v1-repeat1",
+      "repeat": 1,
+      "arm": "turn",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "seconds": 60,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-repeat1-turn",
+      "pair": "visible_curve_v1-repeat1",
+      "repeat": 1,
+      "arm": "turn",
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "goal": [
+        -1.0,
+        1.8
+      ],
+      "seconds": 60,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "pair": "visible_curve_v1-repeat1",
+      "repeat": 1,
+      "arm": "no_turn",
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "goal": [
+        -1.0,
+        1.8
+      ],
+      "seconds": 60,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "pair": "visible_ramp_v1-repeat2",
+      "repeat": 2,
+      "arm": "turn",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "seconds": 60,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "pair": "visible_ramp_v1-repeat2",
+      "repeat": 2,
+      "arm": "no_turn",
+      "start": [
+        -1.4,
+        1.55,
+        -0.3
+      ],
+      "goal": [
+        -0.65,
+        1.3
+      ],
+      "seconds": 60,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "pair": "visible_curve_v1-repeat2",
+      "repeat": 2,
+      "arm": "no_turn",
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "goal": [
+        -1.0,
+        1.8
+      ],
+      "seconds": 60,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-repeat2-turn",
+      "pair": "visible_curve_v1-repeat2",
+      "repeat": 2,
+      "arm": "turn",
+      "start": [
+        -1.75,
+        2.2,
+        -0.4
+      ],
+      "goal": [
+        -1.0,
+        1.8
+      ],
+      "seconds": 60,
+      "observation_yaw": 0.0
+    }
+  ],
+  "arrival_wait": 5.0,
+  "gate_version": "v3",
+  "deltas": [
+    0.02,
+    -0.02,
+    0.04,
+    -0.04,
+    0.08,
+    -0.08
+  ],
+  "source_sha256": {
+    "scripts/skip_probe.py": "a896d96c6523258905bd035b121e05956c9849026203f58a2b80fc4a79b9c69f",
+    "scripts/swept_resampling.py": "2858307a8636fdf7dcbc800e8b64906414bfd918dc07b5120731f6fec31488b1",
+    "scripts/arrival_resampling.py": "cae46e86e9b4abfc33268dc305cc139a2f289a974b9a39850611416964532344",
+    "scripts/resampling_dataset.py": "6abc429cc48228781b44484eabdf144c6faae11fa00e94a049c36fef5c367a85",
+    "scripts/trajectory_evaluation.py": "63adcb4aaea8dd7c08e72ac05c3118d191806e0bab878f618bb4bd53be40d29e",
+    "scripts/capture_slope_resampling.py": "41e46a18e56901381755844a4ba1c386b99363e6c84c1f83db8d126eca6ab180",
+    "scripts/observation_path.py": "af3d01f56c0ccae98262c5d326b8f70fa23ffea72176b95874bfa89265ae8d93",
+    "scripts/experiment_motion.py": "59a67e5d05a0b657e9ce08ad8d783bf7e501d03849a156a92c41ee36b430479e",
+    "scripts/simulation_experiment.py": "c9f5bf8177ce2dbf07089aba7d6782f0c5d2bc2d90d566f47e8749915d63e1b4",
+    "scripts/autonomous_survey.py": "1b1ee3a62d418f44dd3c9ab62e4b4a5f931da62e6bc85b356281e00680d32202",
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_map.py": "d43e3abdee30d4b70701fef793d65f8067149ae9bfdcbf4ada3041b407a1a856",
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_geometry.py": "9ef1c21dfb8d0503d99286a6bde35fb2f0a938dbc9bcbf923e5897fbb7f25ed4",
+    "ros2_ws/src/mooncar_terrain/config/zones.yaml": "14ebe3f79a0337c6f9114631ce369375808d567b36b15a2cb185ef0aec40162e",
+    "ros2_ws/src/mooncar_terrain/tests/test_skip_probe.py": "25f263974050c020a0731c19b15c2d390c2c9e92582aee624e2458ae888b2d54",
+    "tmp/assess_skip_probe_validation.py": "99b82ca5cb2084d590d138627ca720889f3c65c8db39f550597119bed528f62e"
+  },
+  "admission": {
+    "min_executed_negative_probes": 4,
+    "min_pairs": 4,
+    "no_paired_extra_recovery": true
+  },
+  "limits": [
+    "Freeze all rules before capture. First nonempty deficient-cell snapshot candidate with zero modelled marginal support; test deltas in listed order. Both arms use same selection procedure. Hold arm never rotates.",
+    "Two scenes, two repeats, counterbalanced arm order; independently reset each run. 60 simulation seconds including 5 baseline and 5 arrival holding. Fixed candidate order; no retries chosen after outcomes.",
+    "Sensor-only checkpoint written before selection/action. Maximum selection age 5 simulation seconds and at least 8 remaining. No candidate, stale/low-budget, failed execution remain in denominator.",
+    "Admit only four actual nonzero executed skip probes with paired controls, no shared turn-only recovery. Executed direction same, >=half requested, error <=.02+.25*abs(requested). This is a conservative engineering screen, not significance.",
+    "Scene repeatability reported separately: positive net in both repeats is a repeatable warning. Adaptive view choices and independent trajectories limit causal attribution.",
+    "Truth never used in selection. Model, thresholds and online strategy unchanged. Never equate no modelled support with no hold recovery or completed exploration."
+  ]
+}

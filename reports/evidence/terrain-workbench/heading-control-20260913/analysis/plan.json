@@ -1,0 +1,91 @@
+{
+  "created_utc": "2026-09-13T09:04:21.579393+00:00",
+  "trials": [
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-no_turn",
+      "arm": "no_turn",
+      "start": [
+        0,
+        -1.0,
+        0.463648
+      ],
+      "goal": [
+        0.8,
+        -0.6
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_ramp_v1",
+      "folder": "visible_ramp_v1-turn",
+      "arm": "turn",
+      "start": [
+        0,
+        -1.0,
+        0.463648
+      ],
+      "goal": [
+        0.8,
+        -0.6
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-turn",
+      "arm": "turn",
+      "start": [
+        0,
+        1.0,
+        -0.463648
+      ],
+      "goal": [
+        0.8,
+        0.6
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    },
+    {
+      "scene": "visible_curve_v1",
+      "folder": "visible_curve_v1-no_turn",
+      "arm": "no_turn",
+      "start": [
+        0,
+        1.0,
+        -0.463648
+      ],
+      "goal": [
+        0.8,
+        0.6
+      ],
+      "seconds": 35,
+      "observation_yaw": 0.0
+    }
+  ],
+  "conditions": [
+    "approach"
+  ],
+  "source_sha256": {
+    "scripts/observation_path.py": "af3d01f56c0ccae98262c5d326b8f70fa23ffea72176b95874bfa89265ae8d93",
+    "scripts/resampling_dataset.py": "6abc429cc48228781b44484eabdf144c6faae11fa00e94a049c36fef5c367a85",
+    "scripts/capture_slope_resampling.py": "651a446ce4e5f863a2961ccdaddd790dfe8449cde167db2179da5808004cc253",
+    "scripts/path_resampling_evaluation.py": "b2b14b8bd0f8f6bfd5ed126a75c7853eaa96c288e1d3865a4a2bebda6ff8179d",
+    "scripts/experiment_motion.py": "59a67e5d05a0b657e9ce08ad8d783bf7e501d03849a156a92c41ee36b430479e",
+    "scripts/simulation_experiment.py": "c9f5bf8177ce2dbf07089aba7d6782f0c5d2bc2d90d566f47e8749915d63e1b4",
+    "scripts/autonomous_survey.py": "1b1ee3a62d418f44dd3c9ab62e4b4a5f931da62e6bc85b356281e00680d32202",
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_map.py": "d43e3abdee30d4b70701fef793d65f8067149ae9bfdcbf4ada3041b407a1a856"
+  },
+  "limits": [
+    "New starts, one fresh run per scene and arm; no statistical or strategy efficacy claim",
+    "35 simulation seconds per capture including 5 second baseline; no extra time for turn arm",
+    "Both arms query Nav2 before movement and share goal, navigation and sensor settings; turn arm alone executes final Spin to yaw zero",
+    "Primary paired outcome: recovered eligible cells in intersection of both initial baselines; pure target cells separately, exact initial state/point match diagnostic",
+    "Also record each full baseline, final valid area, missing labels, real capture windows, navigation/turn failures and time costs",
+    "No parameter fitting or threshold changes after outcomes; no-turn stays at arrival heading",
+    "Ground-truth geometry and poses evaluator-only, not features or movement control"
+  ]
+}

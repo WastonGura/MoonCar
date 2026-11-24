@@ -1,0 +1,12 @@
+{
+  "status": "diagnostic_complete",
+  "attempts": 8,
+  "limit": 8,
+  "production_changed": false,
+  "goal_achieved": false,
+  "geometric_failures": 0,
+  "mechanism_confirmed": false,
+  "repair_verified": false,
+  "whole_vehicle_accepted": false,
+  "freeze_unchanged": true
+}

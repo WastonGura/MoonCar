@@ -1,0 +1,139 @@
+{
+  "trials": [
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "nearest_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "coverage_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "coverage_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 1,
+      "strategy": "nearest_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "coverage_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "nearest_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "surface_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "nearest_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    },
+    {
+      "start": [
+        3.5,
+        -3.0,
+        0.0
+      ],
+      "repeat": 2,
+      "strategy": "coverage_view_v1",
+      "budget_seconds": 90,
+      "radius": 8
+    }
+  ],
+  "reset": "new Gazebo process and empty recorder/SLAM per trial",
+  "baseline": "wait for fresh localization and first archive; record actual initial cells",
+  "purpose": "pilot feasibility comparison; two repeats are not statistical validation"
+}

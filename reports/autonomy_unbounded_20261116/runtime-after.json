@@ -1,0 +1,515 @@
+{
+  "schema_version": 1,
+  "verified": true,
+  "identity": {
+    "git_commit": "e673a5e15f466c5013b78c9b3df2d3b7252b5e11",
+    "git_branch": "dev/terrain-mapping-workbench",
+    "source_root": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+    "product_clean": true,
+    "baseline": {
+      "version": "2026-11-04-r5-window",
+      "simulation_profile": "r5_support_v1",
+      "scene": "survey_v2_native",
+      "localization_mode": "rgbd_window",
+      "active_revisit": false,
+      "support_profile": "independent_linear_v1",
+      "physics_step_s": 0.00025,
+      "support_runtime": "/opt/mooncar/turn/r5-v2",
+      "hardware_calibrated": false,
+      "historical_tasks_without_profile": "legacy"
+    },
+    "source_digest": "7b0a7e801f62b982a1e09447fd05d4a37b9da47b31ab9167ab8a579a6ddceda6"
+  },
+  "installed": {
+    "scripts/rgbd_window_odometry.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/rgbd_window_odometry.py",
+      "sha256": "ffe0ff44db37826e33df33084aa468e22a563f9906647cdbbe6676e8b8634e72"
+    },
+    "scripts/rgbd_window_shadow.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/rgbd_window_shadow.py",
+      "sha256": "f720f185cedad7570f3786c43490a8d05fb7ec10c20826b0e619426c626efef8"
+    },
+    "scripts/localization_quality.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/localization_quality.py",
+      "sha256": "7cf5ce8e649dad4fa018f73015021e4fba4786d4d3236c956fcfd3e47e63e85e"
+    },
+    "scripts/offline_rgbd_window/async_processor.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/async_processor.py",
+      "sha256": "33fbc985d0cffc3b3f2122fb868f2304109b05eb53a29049399df48338e0fd74"
+    },
+    "scripts/offline_rgbd_window/compare_cached_query.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/compare_cached_query.py",
+      "sha256": "000a8f5f56881b9cc622616bce6c68fd159f1589ba8912f1b1f7712955a7fa58"
+    },
+    "scripts/offline_rgbd_window/core.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/core.py",
+      "sha256": "133179c8d6f0575db23669329c94f9c5466cd0dca538a8bbad2cbef7cceb648e"
+    },
+    "scripts/offline_rgbd_window/data.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/data.py",
+      "sha256": "62c1ef35a96fc8cc973a77c358ab5c99d39b22a167132949fe311c9e64cacbb1"
+    },
+    "scripts/offline_rgbd_window/evaluate_shadow.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/evaluate_shadow.py",
+      "sha256": "8ddb6ebc7a2531ccad4a061e27702cfa496da9735344f306c5c0cd173c9d5ac4"
+    },
+    "scripts/offline_rgbd_window/extract_query_clip.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/extract_query_clip.py",
+      "sha256": "7f68e247d9d58f3bef1003b2009ff3179ee019a5775c62468b23074416f87de4"
+    },
+    "scripts/offline_rgbd_window/frontend.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/frontend.py",
+      "sha256": "e3f0575dce0065eaa671874577f36b7580218e8a1864084a6eb7e3303cffb7be"
+    },
+    "scripts/offline_rgbd_window/navigation.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/navigation.py",
+      "sha256": "f06955e5f29a117c3cd34602856149098faef9288306762ab22110c0dda8df9c"
+    },
+    "scripts/offline_rgbd_window/online.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/online.py",
+      "sha256": "2658aabacbd835ed86f8d83af726cebfc916c9ddfae48bc5fec74ef671163907"
+    },
+    "scripts/offline_rgbd_window/query_cache.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/query_cache.py",
+      "sha256": "3fdcfc6d70a4b48e281216d3e2bc3eeed7289ee377920735f97a4177f547d25c"
+    },
+    "scripts/offline_rgbd_window/run.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/run.py",
+      "sha256": "a85e402e2177d1b8114607dc97865f08e63f35053e6eeaf7505d83d1f27367e9"
+    },
+    "scripts/offline_rgbd_window/summarize.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/summarize.py",
+      "sha256": "ce0f656baa7239fe50981be77cd7c7bb3d8a848bd28cc77eebe4de164fcbd5c8"
+    },
+    "scripts/offline_rgbd_window/transport_async.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/transport_async.py",
+      "sha256": "2666676c0d82ae528a8b510be29e305f4bead36f0e7411c5dc29e49ae599d08c"
+    },
+    "scripts/offline_rgbd_window/__init__.py": {
+      "installed": "/work/ros2_ws/install/mooncar_slam/lib/mooncar_slam/offline_rgbd_window/__init__.py",
+      "sha256": "5888a1a8a09f198bb8c4b56d686efba606f73a69df7e18e0fead23b4d1c77cff"
+    },
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_geometry.py": {
+      "installed": "/work/ros2_ws/install/mooncar_terrain/lib/mooncar_terrain/terrain_geometry.py",
+      "sha256": "ee70695e63e9e1f4dda4d5bd86fdb6625a6c02ac03f9ab5c9209b32aeab68778"
+    },
+    "scripts/literature_terrain.py": {
+      "installed": "/work/ros2_ws/install/mooncar_terrain/lib/mooncar_terrain/literature_terrain.py",
+      "sha256": "ff91ec40bb8d47568fee0b5cfb5d2282bc28cb2855ea2732d414adace0314a23"
+    },
+    "ros2_ws/src/mooncar_description/urdf/.gitkeep": {
+      "installed": "/work/ros2_ws/install/mooncar_description/share/mooncar_description/urdf/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ros2_ws/src/mooncar_description/urdf/mooncar.urdf.xacro": {
+      "installed": "/work/ros2_ws/install/mooncar_description/share/mooncar_description/urdf/mooncar.urdf.xacro",
+      "sha256": "22ec9c608299cbb5180306621bfe918aa0417210b2015916936c37933e4d6129"
+    },
+    "ros2_ws/src/mooncar_description/urdf/mooncar_r5.urdf.xacro": {
+      "installed": "/work/ros2_ws/install/mooncar_description/share/mooncar_description/urdf/mooncar_r5.urdf.xacro",
+      "sha256": "d68857bb67403a374be0111af86c87d3a732dc5b2d1c79f5f373f37a56f624c3"
+    },
+    "ros2_ws/src/mooncar_description/urdf/robot.sdf": {
+      "installed": "/work/ros2_ws/install/mooncar_description/share/mooncar_description/urdf/robot.sdf",
+      "sha256": "4956da6c7c3840a13e47e20abd844a9f4ebf68b797fe8ebd1f016398b48ddb81"
+    },
+    "ros2_ws/src/mooncar_description/urdf/common/gazebo_drive.xacro": {
+      "installed": "/work/ros2_ws/install/mooncar_description/share/mooncar_description/urdf/common/gazebo_drive.xacro",
+      "sha256": "8b211377b4cbf5e2b859f0520f0689a6e8cdf32550ca9523c2ff159ecc9d320d"
+    },
+    "ros2_ws/src/mooncar_description/urdf/common/gazebo_sensors.xacro": {
+      "installed": "/work/ros2_ws/install/mooncar_description/share/mooncar_description/urdf/common/gazebo_sensors.xacro",
+      "sha256": "048cca79715434dee8ec372dd9ef9fc2ebd8a1a1e8d7011bfa4c49ef37fa6f44"
+    },
+    "ros2_ws/src/mooncar_description/urdf/common/inertial_macros.xacro": {
+      "installed": "/work/ros2_ws/install/mooncar_description/share/mooncar_description/urdf/common/inertial_macros.xacro",
+      "sha256": "96fbba6291f631f0b83fd97068ff015fbf2eb14e8dc35462140573dd6fd8add1"
+    },
+    "ros2_ws/src/mooncar_description/urdf/common/materials.xacro": {
+      "installed": "/work/ros2_ws/install/mooncar_description/share/mooncar_description/urdf/common/materials.xacro",
+      "sha256": "4c59d0bf86933a22942d5a5b9c0875d373a2ded79bfee6ae1dcf01269886ff53"
+    },
+    "ros2_ws/src/mooncar_description/urdf/common/r5_suspension.xacro": {
+      "installed": "/work/ros2_ws/install/mooncar_description/share/mooncar_description/urdf/common/r5_suspension.xacro",
+      "sha256": "2dbde92dca954ae05c24ba3ea352450f05e87be0d580c5e3f128c51e60545f99"
+    },
+    "ros2_ws/src/mooncar_description/urdf/common/rover_macros.xacro": {
+      "installed": "/work/ros2_ws/install/mooncar_description/share/mooncar_description/urdf/common/rover_macros.xacro",
+      "sha256": "da4bb4128e5955b710fbc37443c7a6fde0500c702928c1b805b2c7fcd3550ad0"
+    },
+    "ros2_ws/src/mooncar_gazebo/launch/.gitkeep": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/launch/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ros2_ws/src/mooncar_gazebo/launch/camera_sensor_profile.py": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/launch/camera_sensor_profile.py",
+      "sha256": "e1c1543a12e920dd59759acc49ddb23105d788da71af81cf05d2c8c131c344c0"
+    },
+    "ros2_ws/src/mooncar_gazebo/launch/image_dds_guard.py": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/launch/image_dds_guard.py",
+      "sha256": "672b64f759817ef66e677fa17cc60461d7ce5f9c0c4e74dd8b043fe014bdda0f"
+    },
+    "ros2_ws/src/mooncar_gazebo/launch/image_dds_launch.py": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/launch/image_dds_launch.py",
+      "sha256": "5d4b6a5f7801d503f9fa0dbdb1605eb8a7cb774ce3afd9948956702b834f5d01"
+    },
+    "ros2_ws/src/mooncar_gazebo/launch/physics_guard.py": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/launch/physics_guard.py",
+      "sha256": "0e492eac4735c25abe6ac6bc5bcac208ad8e9d64f76bd5a898193af5ea9c2fe6"
+    },
+    "ros2_ws/src/mooncar_gazebo/launch/simulation.launch.py": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/launch/simulation.launch.py",
+      "sha256": "21960cdf579f4afcb0b961d290b46a3fbbe69d73c9decf3d22a6d89547c3f28a"
+    },
+    "ros2_ws/src/mooncar_gazebo/launch/support_profile.py": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/launch/support_profile.py",
+      "sha256": "5a785eb6b36cfd607a743ccc905a1af9ef568c6f2f3deb63a2d05be48efbf5cb"
+    },
+    "ros2_ws/src/mooncar_gazebo/launch/turn_guard.py": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/launch/turn_guard.py",
+      "sha256": "74ba9bc6107838b8509a4f88110977c34aac686409c17a135ad1b43ba9a079d3"
+    },
+    "ros2_ws/src/mooncar_gazebo/launch/turn_launch.py": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/launch/turn_launch.py",
+      "sha256": "089b773ca55f5f884dcb3f10bb5cd28f0adf812523f2f4433fc4158634a9e033"
+    },
+    "ros2_ws/src/mooncar_gazebo/launch/turn_model.py": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/launch/turn_model.py",
+      "sha256": "721c7639c2f50732598003e72548d3603358edda85866e2f4a0db3ec4201e2dd"
+    },
+    "ros2_ws/src/mooncar_gazebo/launch/turn_runtime.py": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/launch/turn_runtime.py",
+      "sha256": "193d0f137009b92b58c9b2ac134cc1b021dfafd0a8d0db6f092085067993be90"
+    },
+    "ros2_ws/src/mooncar_gazebo/config/.gitkeep": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/config/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ros2_ws/src/mooncar_gazebo/config/image_dds_defaults.json": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/config/image_dds_defaults.json",
+      "sha256": "f3c4413e4c7ac87afe0b0a44d17a5fad0abcebacb8d846dcc5d7f4b1e8dab97f"
+    },
+    "ros2_ws/src/mooncar_gazebo/config/laser_filter.yaml": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/config/laser_filter.yaml",
+      "sha256": "8a9b54fc837ede8619fb83c7f3d6c164f66238e4e68db8454c1053b21460abd3"
+    },
+    "ros2_ws/src/mooncar_gazebo/config/laser_filter_r5.yaml": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/config/laser_filter_r5.yaml",
+      "sha256": "d4a3b21fc1bf1f01c53c6dbfc56506d5f4227342488548c5b06a4e2b90f61e99"
+    },
+    "ros2_ws/src/mooncar_gazebo/config/ros_gz_bridge.yaml": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/config/ros_gz_bridge.yaml",
+      "sha256": "68e95fb8715946a5145b5c89107b41820caba10577d7b248ec0fba7846089e6f"
+    },
+    "ros2_ws/src/mooncar_gazebo/config/ros_gz_bridge_r5.yaml": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/config/ros_gz_bridge_r5.yaml",
+      "sha256": "509ed3ef9c6a3d5d906e2b4f899b69c3f05d414743f6669b53e750c1b9773647"
+    },
+    "ros2_ws/src/mooncar_gazebo/config/turn_defaults.json": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/config/turn_defaults.json",
+      "sha256": "c8e2fb1f67314067c0dd111708809338215a701f457b94aaca686d46e1cf7a63"
+    },
+    "ros2_ws/src/mooncar_gazebo/config/turn_release.json": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/config/turn_release.json",
+      "sha256": "5c4c3947f948099a92c2fc1de537b2b5171ce0a34e4b09eb68bbc968f5e2de87"
+    },
+    "ros2_ws/src/mooncar_gazebo/worlds/.gitkeep": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/worlds/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ros2_ws/src/mooncar_gazebo/worlds/lunar_yard.sdf": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/worlds/lunar_yard.sdf",
+      "sha256": "10bc39f514f3f617837edf142ec5454c214095ecfb25f5e87eb18b0bd106e7b6"
+    },
+    "ros2_ws/src/mooncar_gazebo/worlds/mooncar_curve_v2.sdf": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/worlds/mooncar_curve_v2.sdf",
+      "sha256": "057642bd743112521f8eef08b7e0d17d91a8336d0f1015d29932f72890c42231"
+    },
+    "ros2_ws/src/mooncar_gazebo/worlds/mooncar_ramp_v2.sdf": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/worlds/mooncar_ramp_v2.sdf",
+      "sha256": "516c14c62f745aba854a6a12771a4e80bd4ccf031ef4baaf7118f3e7892f8233"
+    },
+    "ros2_ws/src/mooncar_gazebo/worlds/mooncar_survey_v2.sdf": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/worlds/mooncar_survey_v2.sdf",
+      "sha256": "08e9837e09b53e06fa0569423e0dc4775b1456508ca999cfef6fdf3444fb1555"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/.gitkeep": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/boulder.obj",
+      "sha256": "de5dda8be5a555f774754af92f9b7cfa8d4a94861d4b8cbc599a499a1f6cc7ff"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder_00.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/boulder_00.obj",
+      "sha256": "de5dda8be5a555f774754af92f9b7cfa8d4a94861d4b8cbc599a499a1f6cc7ff"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder_01.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/boulder_01.obj",
+      "sha256": "58fd4d526a0d07f107add2ba179b789a547cccfb2bb2f1c8f88bf4c45124d804"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder_02.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/boulder_02.obj",
+      "sha256": "29257859503fffc14fa31d637290573fe70ef25592403bff7f1a79c75d1d7a61"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder_03.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/boulder_03.obj",
+      "sha256": "e4fbe8a7043d660cf45583a22e8ef6ae39bd81711635138d6f7d92f338950bf8"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder_04.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/boulder_04.obj",
+      "sha256": "f1eb5dfdd5feecf7428d691f1acd122bc7130d37422c035fb5dc0f0f0d2d7dfb"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder_05.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/boulder_05.obj",
+      "sha256": "861d49d6bf9d8d4b3dc6b16bd6d070bc52ef6c46e00e03034d2376555fdf85da"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/curve/class_mask.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/curve/class_mask.png",
+      "sha256": "5d9bd8eccc1a8dee16ec4d54eac7786e8c994597f11bf343e2cb2a4c46cc476a"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/curve/crater_floor.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/curve/crater_floor.obj",
+      "sha256": "dc18acbe59498e7eda39bdb28edff0c9e321fe23b34f38f47a48032ba8efaecc"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/curve/height_grid.npz": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/curve/height_grid.npz",
+      "sha256": "e7ee443b34c1b035e8b79ca77277c30d8895a6d18a254d72cb27db0dba53f8dd"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/curve/manifest.json": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/curve/manifest.json",
+      "sha256": "75f06b48b8cc7a9339bbcde60976ac48a9eb0256290c6e2e43204692237e31d3"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/curve/regolith_passable.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/curve/regolith_passable.obj",
+      "sha256": "244685f1d9d978a8c9314f27d6133891afb02612eb31d556ce31e9bac038fe2c"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/curve/rubble_gravel.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/curve/rubble_gravel.obj",
+      "sha256": "ca0d11cf26f4e5529e15eca2bcf22fb3f82e1756db67ce3f0d263578796015f8"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/curve/surface_pebbles.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/curve/surface_pebbles.obj",
+      "sha256": "e72db384b368d6d8a0f7e09c283bc116f6ca009e2bfad76df0f352a9cb0a05e3"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/class_mask.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/ramp/class_mask.png",
+      "sha256": "30bf13ce3485bb8fbce7e9a02d9fd07a7a1075ab0c33b4828c4dabf5d95cbab7"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/height_grid.npz": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/ramp/height_grid.npz",
+      "sha256": "b6363da46731895b035b09d58e26b94ba6bbc249fdbe61c8f4cbbfc00dc68c4a"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/manifest.json": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/ramp/manifest.json",
+      "sha256": "8edceac589efd4520903167fc066ed10feec704046a3c6c4c9fed1f8a5fa05d9"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/regolith_passable.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/ramp/regolith_passable.obj",
+      "sha256": "ac49ea41d8f42388ea253bc5f6711934009691eccf3b001957736abf670a7f20"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/rock_boulder.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/ramp/rock_boulder.obj",
+      "sha256": "069787ddc54c8a90211d4704d4f494251d58d624ec5febb1fc70f857a1017376"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/rubble_gravel.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/ramp/rubble_gravel.obj",
+      "sha256": "b592a4408d3556ae0bf8467b83a174a471840d20143abf579665ef82731294ec"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/sand_soft.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/ramp/sand_soft.obj",
+      "sha256": "6302ccdde179bb28ae904732486a07485582c7fb33fead69a675388d7778a8c5"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/surface_pebbles.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/ramp/surface_pebbles.obj",
+      "sha256": "61a495ff5831640a7bf58965050c2e0a557b0998b4dc8ef5dda0bb2b1bc5df3d"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/ce4_background_regolith_passable.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/ce4_background_regolith_passable.obj",
+      "sha256": "28c61234c23e6c6da92a94f1d7de42e2c842be21291d5986148fd61f7f6f270d"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/ce4_background_rubble_gravel.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/ce4_background_rubble_gravel.obj",
+      "sha256": "038e35ee15a76a865b037895e18a427392e9c7184051c32344af1818d3b04cb6"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/ce4_crater_patch.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/ce4_crater_patch.obj",
+      "sha256": "03e8b79aa7b479081c6351cf4d4c7042c97f121249bfb70af5098cf446496e04"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/class_mask.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/class_mask.png",
+      "sha256": "0d240fa3811152c9ee142cbb54ddb7c28c5760ac41ab8f80a76832dbca58eed7"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/crater_floor.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/crater_floor.obj",
+      "sha256": "c0f62d9167713f6b6edd553e4ab658dae9bfb2f2984aae629421dbc19b9057ed"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/height_grid.npz": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/height_grid.npz",
+      "sha256": "34c771aaf824d578023bbc31cec5fa644c85f71526f7d973108231b02c22f8be"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/manifest.json": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/manifest.json",
+      "sha256": "740fc5161f60855c25dd6d01308e1afd20d4b5f7b6f08a7a02243341e573f552"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/regolith_passable.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/regolith_passable.obj",
+      "sha256": "45bcbe650594eb12b1078e5f1f944b7171794275a696f1ac24b9ef20cd5a990c"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/rock_boulder.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/rock_boulder.obj",
+      "sha256": "c02f04ac0f018ac6509e88ca168ac5c69609cba3c60da06ba7d9167185593db5"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/rubble_gravel.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/rubble_gravel.obj",
+      "sha256": "6e8d1915b81031db500500c22e517bf729c2ea45433edd08b2ef040437c5ff32"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/sand_soft.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/sand_soft.obj",
+      "sha256": "ed9853dfa382a6dc822d6086ec9ddf5462d74ae9360c5d8e1dd543b03bded100"
+    },
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/survey/surface_pebbles.obj": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/models/terrain_v2/survey/surface_pebbles.obj",
+      "sha256": "2ea1ad8ab37f2fc3fd89d9684da48925c916d1bed5165d5a4561a478b328d143"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/terrain_materials_report.json": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/terrain_materials_report.json",
+      "sha256": "8797884ec1a7544e2b521b733abb198ce71c2d78a4a12d8d38e4d1f96b58ce48"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/preview/terrain_materials_preview.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/preview/terrain_materials_preview.png",
+      "sha256": "19d2d13dcbacf8029ef0d5b6ede499d254f495bfca8b3e53da525cec8cae73ee"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/crater_floor_albedo.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/crater_floor_albedo.png",
+      "sha256": "71300615b9f3703afd910430da5f64cd65e985bc928e440c66f3d847df629e48"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/crater_floor_normal.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/crater_floor_normal.png",
+      "sha256": "f95cbca7af1e5c3695fc45c77cd2105168649115f0e01046d1fce3875e450212"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/crater_floor_roughness.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/crater_floor_roughness.png",
+      "sha256": "4bbe17939350d22688304f7ad5ffc3d604b654d06b3ddedfbee2a5b092dd43a0"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/curve_surface_albedo.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/curve_surface_albedo.png",
+      "sha256": "dcc4ea1c49fb6a62d3fb8999f64554d3e9d676620664c2760cdadd0718a1db0c"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/curve_surface_normal.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/curve_surface_normal.png",
+      "sha256": "3fd1536a35fa8378cbde5b0e47d81b5f033814f14e0990e7da4a15d2e43b0d13"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/curve_surface_roughness.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/curve_surface_roughness.png",
+      "sha256": "af7b22a8efa37bfbb0706bac510e9e3731748ee6270bbec392fd6592dbebbc1c"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/ramp_surface_albedo.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/ramp_surface_albedo.png",
+      "sha256": "455fb098d432b7b6aafb15e84a4194101482f88fd398f06445d1ed848a28f74d"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/ramp_surface_normal.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/ramp_surface_normal.png",
+      "sha256": "18185280f3248a3246c9a26fa29851679f392b4fdb07f353af4018a99b3f0f59"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/ramp_surface_roughness.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/ramp_surface_roughness.png",
+      "sha256": "4bf957b313ae6ae9fab84baeb1f7bfb21065beb05ca951e0caea10af6bb902bc"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/regolith_passable_albedo.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/regolith_passable_albedo.png",
+      "sha256": "7a39a73884480b3dc802e23fc55d575e6eeaf6741c51cda117fa8810c73ca3a4"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/regolith_passable_normal.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/regolith_passable_normal.png",
+      "sha256": "7767372653f4dfa53fbb60b39ec16857286d03d89c19c1c0d1536899c7736c64"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/regolith_passable_roughness.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/regolith_passable_roughness.png",
+      "sha256": "64670b52e5deff893d9790b8f8dd5384be6ca9e330b182538c58620fa53ffb2b"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/rock_boulder_albedo.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/rock_boulder_albedo.png",
+      "sha256": "ae0726433fd056adb69a8767b7d7d4bd8030e35faf6e7ebba65bfd2a9cf88e4b"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/rock_boulder_normal.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/rock_boulder_normal.png",
+      "sha256": "9bcd55d4d21b0ee1ba8f9a49cdfde38f019d0cc9c8b6c043d87968463f4724aa"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/rock_boulder_roughness.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/rock_boulder_roughness.png",
+      "sha256": "9ca060e9b6504f6f8f735b538208968b76ef09861cbe976bb0630ddf29085ea4"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/rubble_gravel_albedo.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/rubble_gravel_albedo.png",
+      "sha256": "362b036455eb891a0ec32130696f5b50997754cfe08359da947ab88a8be121ff"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/rubble_gravel_normal.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/rubble_gravel_normal.png",
+      "sha256": "00ca5c8041f76b0310330ba1dd374ad0c65b17788979d11fc6881bb3c4a8538f"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/rubble_gravel_roughness.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/rubble_gravel_roughness.png",
+      "sha256": "aaf0c748962830d932bdd876f910a9480431d0171faf4d4bf1a6d947e0dce174"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/sand_soft_albedo.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/sand_soft_albedo.png",
+      "sha256": "c170567f57e402b4d042053c6290e930fcb3a8af04f4a661ce443cedce3b4ffc"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/sand_soft_normal.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/sand_soft_normal.png",
+      "sha256": "62b49e95068a4e282fc9b0b79816cc09023fe4096379a5618936fe13780f5f03"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/sand_soft_roughness.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/sand_soft_roughness.png",
+      "sha256": "7708c476689699bf98908af45706ec9e42b22d2393d6e7b9030372ab7e0acac8"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/survey_surface_albedo.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/survey_surface_albedo.png",
+      "sha256": "bd504f9a9709cecb594f99e61e56583c8da25e045203a296f6ac6622fe1f084d"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/survey_surface_normal.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/survey_surface_normal.png",
+      "sha256": "91a38c4e6243aba04efceb35a3a925865a922fcf2365474510601874f5a3a979"
+    },
+    "ros2_ws/src/mooncar_gazebo/materials/textures/survey_surface_roughness.png": {
+      "installed": "/work/ros2_ws/install/mooncar_gazebo/share/mooncar_gazebo/materials/textures/survey_surface_roughness.png",
+      "sha256": "acc86d779da3660f7500adfe2be60b892814646b5a84c3fdaeae2fa00ea20bab"
+    },
+    "ros2_ws/src/mooncar_navigation/launch/.gitkeep": {
+      "installed": "/work/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/launch/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ros2_ws/src/mooncar_navigation/launch/navigation.launch.py": {
+      "installed": "/work/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/launch/navigation.launch.py",
+      "sha256": "45c23f2a6e66827a19252d033eb344c353f09193e99187afeeb18aa748652548"
+    },
+    "ros2_ws/src/mooncar_navigation/launch/terrain_navigation.launch.py": {
+      "installed": "/work/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/launch/terrain_navigation.launch.py",
+      "sha256": "44aa7b4c0cc3bf75dd64683b73f3d3d8e5c53e5f7f7b246b293bd464cef4ba79"
+    },
+    "ros2_ws/src/mooncar_navigation/config/.gitkeep": {
+      "installed": "/work/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/config/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ros2_ws/src/mooncar_navigation/config/nav2_params.yaml": {
+      "installed": "/work/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/config/nav2_params.yaml",
+      "sha256": "8d4f2ca0f7df8bb9ae1d0c6d23ea787b52686cc2bfaff9d06116e279df499eaf"
+    },
+    "ros2_ws/src/mooncar_navigation/config/behavior_trees/navigate_to_pose_revisit.xml": {
+      "installed": "/work/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/config/behavior_trees/navigate_to_pose_revisit.xml",
+      "sha256": "d1dbdf5bf7873dccf76698e3d0c2ffb155fc6f443d48c28d0ff94bb765c7d364"
+    },
+    "ros2_ws/src/mooncar_navigation/config/behavior_trees/navigate_to_pose_workbench.xml": {
+      "installed": "/work/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/config/behavior_trees/navigate_to_pose_workbench.xml",
+      "sha256": "47d12ac93fc28e89df318177a316e992a75db98938e202ae76a13a1e229c5d46"
+    }
+  },
+  "support_libraries": {
+    "libode.so.8.0.2": "313dbad175a34e0fd0387792bc922766b5e7727c3883ede5b84322cd055140c7",
+    "libmooncar-axle-allocation.so": "d85a756cc12d950f92ba405c60bd45ba71c989ae4554c2bb05d14792905b069d",
+    "libmooncar-turn-slip-control.so": "b99d96651a8175e6b6eacfa10bd7b1d65eb88d61b56cbf802a036048d7dd726c"
+  },
+  "dart_sha256": "cfe9b7c6bf72c204645df81f1be7bc646ffbd342acea52c0684a1ad24848274c"
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/source/scripts/trajectory_evaluation.py", line 310, in <module>
+    if args.command=='capture': capture(args.folder,args.robot_sdf,args.world_sdf,args.seconds,args.raw_depth)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/source/scripts/trajectory_evaluation.py", line 212, in capture
+    if manifest['status']!='captured': raise RuntimeError(manifest.get('error','Capture failed'))
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError

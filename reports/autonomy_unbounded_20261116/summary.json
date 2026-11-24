@@ -1,0 +1,78 @@
+[
+  {
+    "strategy": "baseline",
+    "experiment": "experiment-766826188a9c",
+    "terrain_strategy": "baseline",
+    "tested_commit": "e673a5e15f466c5013b78c9b3df2d3b7252b5e11",
+    "radius": null,
+    "area_scope": "All unique actually observed projected cells; no distance or coordinate clipping",
+    "budget_seconds": 180.0,
+    "elapsed_seconds": 175.2,
+    "wall_seconds": 925.4472445849988,
+    "outcome": "budget_completed",
+    "reason": "剩余时间不足以完成下一候选观察动作",
+    "total_observed_m2": 218.125,
+    "newly_observed_m2": 204.875,
+    "sufficient_area_m2": 100.25,
+    "valid_surface_area_m2": 179.5625,
+    "max_distance_from_start_m": 4.43447822894769,
+    "truth_track_length_m": 12.000938098349469,
+    "chosen_actions": 13,
+    "successful_actions": 13,
+    "movement_actions": 9,
+    "localization_pauses": 0,
+    "xy_error_m": {
+      "median": 0.008395108475227946,
+      "p95": 0.022106736691950197,
+      "maximum": 0.02546496141574494
+    },
+    "quality_stamp": 175.9,
+    "recorded_depth_keyframes": 286,
+    "gui_captures": 2746,
+    "capture_error": null,
+    "camera_follow_confirmed": true,
+    "process_exits": {
+      "driver": 0,
+      "video": 0,
+      "backend": 0
+    }
+  },
+  {
+    "strategy": "candidate",
+    "experiment": "experiment-30668eb64280",
+    "terrain_strategy": "elevation_neighborhood_v1",
+    "tested_commit": "e673a5e15f466c5013b78c9b3df2d3b7252b5e11",
+    "radius": null,
+    "area_scope": "All unique actually observed projected cells; no distance or coordinate clipping",
+    "budget_seconds": 180.0,
+    "elapsed_seconds": 171.0,
+    "wall_seconds": 926.7333063220012,
+    "outcome": "budget_completed",
+    "reason": "剩余时间不足以完成下一候选观察动作",
+    "total_observed_m2": 214.375,
+    "newly_observed_m2": 201.125,
+    "sufficient_area_m2": 102.4375,
+    "valid_surface_area_m2": 180.8125,
+    "max_distance_from_start_m": 3.767184202029882,
+    "truth_track_length_m": 13.411891276482168,
+    "chosen_actions": 12,
+    "successful_actions": 12,
+    "movement_actions": 9,
+    "localization_pauses": 0,
+    "xy_error_m": {
+      "median": 0.014353557719128529,
+      "p95": 0.020196266554309932,
+      "maximum": 0.022378979274619744
+    },
+    "quality_stamp": 171.5,
+    "recorded_depth_keyframes": 293,
+    "gui_captures": 2751,
+    "capture_error": null,
+    "camera_follow_confirmed": true,
+    "process_exits": {
+      "driver": 0,
+      "video": 0,
+      "backend": 0
+    }
+  }
+]

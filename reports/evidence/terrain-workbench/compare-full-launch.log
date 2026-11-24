@@ -1,0 +1,262 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2026-09-09-15-39-24-465525-820fd683c147-41
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [terrain_node.py-1]: process started with pid [47]
+[INFO] [keepout_node.py-2]: process started with pid [48]
+[INFO] [gazebo-3]: process started with pid [49]
+[INFO] [bridge_node-4]: process started with pid [50]
+[INFO] [throttle-5]: process started with pid [51]
+[INFO] [throttle-6]: process started with pid [53]
+[INFO] [robot_state_publisher-7]: process started with pid [54]
+[INFO] [scan_to_scan_filter_chain-8]: process started with pid [55]
+[INFO] [cmd_vel_safety_relay.py-9]: process started with pid [56]
+[INFO] [wheel_odometry.py-10]: process started with pid [57]
+[INFO] [ekf_node-11]: process started with pid [58]
+[robot_state_publisher-7] [INFO] [1788968365.843929527] [robot_state_publisher]: Robot initialized
+[ekf_node-11] [INFO] [1788968366.514343753] [mooncar_ekf]: Waiting for clock to start...
+[cmd_vel_safety_relay.py-9] [INFO] [1788968367.069774046] [mooncar_cmd_vel_safety_relay]: Relaying /cmd_vel to /mooncar/cmd_vel_safe with timeout 0.50s
+[INFO] [create-12]: process started with pid [222]
+[bridge_node-4] [INFO] [1788968368.130196128] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [/clock (gz.msgs.Clock) -> /mooncar/clock_raw (rosgraph_msgs/msg/Clock)] (Lazy 0)
+[bridge_node-4] [INFO] [1788968368.133830671] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [/mooncar/scan (gz.msgs.LaserScan) -> /mooncar/scan_raw (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[bridge_node-4] [INFO] [1788968368.138869496] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [/mooncar/imu (gz.msgs.IMU) -> /mooncar/imu (sensor_msgs/msg/Imu)] (Lazy 0)
+[bridge_node-4] [INFO] [1788968368.141815523] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [/mooncar/depth (gz.msgs.Image) -> /mooncar/depth/image (sensor_msgs/msg/Image)] (Lazy 0)
+[bridge_node-4] [INFO] [1788968368.144829326] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [/mooncar/camera_info (gz.msgs.CameraInfo) -> /mooncar/depth/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 0)
+[bridge_node-4] [INFO] [1788968368.148085982] [mooncar_gz_bridge]: Creating ROS->GZ Bridge: [/mooncar/cmd_vel_safe (geometry_msgs/msg/Twist) -> /cmd_vel (gz.msgs.Twist)] (Lazy 0)
+[bridge_node-4] [INFO] [1788968368.150761229] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [joint_states (gz.msgs.Model) -> /mooncar/joint_states_raw (sensor_msgs/msg/JointState)] (Lazy 0)
+[bridge_node-4] [INFO] [1788968368.198455176] [mooncar_gz_bridge]: Passing message from ROS geometry_msgs/msg/Twist to Gazebo gz.msgs.Twist (showing msg only once per type)
+[create-12] [INFO] [1788968368.355465952] [spawn_mooncar]: Waiting messages on topic [/robot_description].
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mooncar"]/link[@name="base_footprint"]/sensor[@name="mooncar_depth_camera"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-3] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mooncar"]/link[@name="base_footprint"]/sensor[@name="mooncar_imu"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-3] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mooncar"]/link[@name="base_footprint"]/sensor[@name="mooncar_lidar"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[create-12] [INFO] [1788968368.685458143] [spawn_mooncar]: Entity creation successful.
+[INFO] [create-12]: process has finished cleanly [pid 222]
+[scan_to_scan_filter_chain-8] [WARN] [1788968369.744568170] [scan_to_scan_filter_chain]: diagnostic_updater: No HW_ID was set. This is probably a bug. Please report it. For devices that do not have a HW_ID, set this value to 'none'. This warning only occurs once all diagnostics are OK. It is okay to wait until the device is open before calling setHardwareID.
+[INFO] [map_server-13]: process started with pid [300]
+[INFO] [amcl-14]: process started with pid [301]
+[amcl-14] [INFO] [1788968370.882970631] [amcl]: 
+[amcl-14] 	amcl lifecycle node launched. 
+[amcl-14] 	Waiting on external lifecycle transitions to activate
+[amcl-14] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[amcl-14] [INFO] [1788968370.883959290] [amcl]: Creating
+[map_server-13] [INFO] [1788968370.891433149] [map_server]: 
+[map_server-13] 	map_server lifecycle node launched. 
+[map_server-13] 	Waiting on external lifecycle transitions to activate
+[map_server-13] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[map_server-13] [INFO] [1788968370.891650761] [map_server]: Creating
+[INFO] [controller_server-15]: process started with pid [355]
+[INFO] [smoother_server-16]: process started with pid [356]
+[INFO] [planner_server-17]: process started with pid [357]
+[INFO] [behavior_server-18]: process started with pid [358]
+[INFO] [bt_navigator-19]: process started with pid [359]
+[INFO] [waypoint_follower-20]: process started with pid [360]
+[waypoint_follower-20] [INFO] [1788968377.427886160] [waypoint_follower]: 
+[waypoint_follower-20] 	waypoint_follower lifecycle node launched. 
+[waypoint_follower-20] 	Waiting on external lifecycle transitions to activate
+[waypoint_follower-20] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[waypoint_follower-20] [INFO] [1788968377.469826649] [waypoint_follower]: Creating
+[behavior_server-18] [INFO] [1788968377.597183272] [behavior_server]: 
+[behavior_server-18] 	behavior_server lifecycle node launched. 
+[behavior_server-18] 	Waiting on external lifecycle transitions to activate
+[behavior_server-18] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-15] [INFO] [1788968377.884762102] [controller_server]: 
+[controller_server-15] 	controller_server lifecycle node launched. 
+[controller_server-15] 	Waiting on external lifecycle transitions to activate
+[controller_server-15] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-15] [INFO] [1788968377.896621967] [controller_server]: Creating controller server
+[controller_server-15] [INFO] [1788968377.989148494] [local_costmap.local_costmap]: 
+[controller_server-15] 	local_costmap lifecycle node launched. 
+[controller_server-15] 	Waiting on external lifecycle transitions to activate
+[controller_server-15] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-15] [INFO] [1788968377.990407180] [local_costmap.local_costmap]: Creating Costmap
+[bt_navigator-19] [INFO] [1788968378.087784836] [bt_navigator]: 
+[bt_navigator-19] 	bt_navigator lifecycle node launched. 
+[bt_navigator-19] 	Waiting on external lifecycle transitions to activate
+[bt_navigator-19] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[bt_navigator-19] [INFO] [1788968378.093174749] [bt_navigator]: Creating
+[smoother_server-16] [INFO] [1788968378.186670984] [smoother_server]: 
+[smoother_server-16] 	smoother_server lifecycle node launched. 
+[smoother_server-16] 	Waiting on external lifecycle transitions to activate
+[smoother_server-16] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[smoother_server-16] [INFO] [1788968378.192343137] [smoother_server]: Creating smoother server
+[planner_server-17] [INFO] [1788968378.206347004] [planner_server]: 
+[planner_server-17] 	planner_server lifecycle node launched. 
+[planner_server-17] 	Waiting on external lifecycle transitions to activate
+[planner_server-17] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-17] [INFO] [1788968378.209889065] [planner_server]: Creating
+[planner_server-17] [INFO] [1788968378.372636288] [global_costmap.global_costmap]: 
+[planner_server-17] 	global_costmap lifecycle node launched. 
+[planner_server-17] 	Waiting on external lifecycle transitions to activate
+[planner_server-17] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-17] [INFO] [1788968378.373951682] [global_costmap.global_costmap]: Creating Costmap
+[INFO] [lifecycle_manager-21]: process started with pid [470]
+[lifecycle_manager-21] [INFO] [1788968380.671851238] [lifecycle_manager_localization]: Creating
+[lifecycle_manager-21] [INFO] [1788968380.687450273] [lifecycle_manager_localization]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[lifecycle_manager-21] [INFO] [1788968382.694604934] [lifecycle_manager_localization]: Waiting for service map_server/get_state...
+[lifecycle_manager-21] [INFO] [1788968383.809735775] [lifecycle_manager_localization]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-21] [INFO] [1788968383.809817553] [lifecycle_manager_localization]: [34m[1mConfiguring map_server[0m[0m
+[map_server-13] [INFO] [1788968383.810402945] [map_server]: Configuring
+[map_server-13] [INFO] [1788968383.810508659] [map_io]: Loading yaml file: /work/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/maps/lunar_yard.yaml
+[map_server-13] [INFO] [1788968383.810907618] [map_io]: resolution: 0.05
+[map_server-13] [INFO] [1788968383.810922927] [map_io]: origin[0]: -7.744
+[map_server-13] [INFO] [1788968383.810928268] [map_io]: origin[1]: -5.809
+[map_server-13] [INFO] [1788968383.810931995] [map_io]: origin[2]: 0
+[map_server-13] [INFO] [1788968383.810935983] [map_io]: free_thresh: 0.196
+[map_server-13] [INFO] [1788968383.810939770] [map_io]: occupied_thresh: 0.65
+[map_server-13] [INFO] [1788968383.810944749] [map_io]: mode: trinary
+[map_server-13] [INFO] [1788968383.810949559] [map_io]: negate: 0
+[map_server-13] [INFO] [1788968383.811184922] [map_io]: Loading image_file: /work/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/maps/lunar_yard.pgm
+[map_server-13] [INFO] [1788968383.815464054] [map_io]: Read map /work/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/maps/lunar_yard.pgm: 314 X 238 map @ 0.05 m/cell
+[lifecycle_manager-21] [INFO] [1788968383.869561296] [lifecycle_manager_localization]: [34m[1mConfiguring amcl[0m[0m
+[amcl-14] [INFO] [1788968383.870323490] [amcl]: Configuring
+[amcl-14] [INFO] [1788968383.870465453] [amcl]: initTransforms
+[amcl-14] [INFO] [1788968383.898725691] [amcl]: initPubSub
+[amcl-14] [INFO] [1788968383.971521067] [amcl]: Subscribed to map topic.
+[lifecycle_manager-21] [INFO] [1788968383.988448380] [lifecycle_manager_localization]: [34m[1mActivating map_server[0m[0m
+[map_server-13] [INFO] [1788968383.989034595] [map_server]: Activating
+[map_server-13] [INFO] [1788968383.989485444] [map_server]: Creating bond (map_server) to lifecycle manager.
+[amcl-14] [INFO] [1788968383.990473263] [amcl]: Received a 314 X 238 map @ 0.050 m/pix
+[keepout_node.py-2] [INFO] [1788968384.093083361] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[lifecycle_manager-21] [INFO] [1788968384.096891389] [lifecycle_manager_localization]: Server map_server connected with bond.
+[lifecycle_manager-21] [INFO] [1788968384.096959932] [lifecycle_manager_localization]: [34m[1mActivating amcl[0m[0m
+[amcl-14] [INFO] [1788968384.097380081] [amcl]: Activating
+[amcl-14] [INFO] [1788968384.097423264] [amcl]: initialPoseReceived
+[amcl-14] [INFO] [1788968384.097532916] [amcl]: Setting pose (13.067000): 3.500 3.000 0.000
+[amcl-14] [INFO] [1788968384.098358316] [amcl]: Creating bond (amcl) to lifecycle manager.
+[amcl-14] [INFO] [1788968384.200825615] [amcl]: createLaserObject
+[lifecycle_manager-21] [INFO] [1788968384.211048751] [lifecycle_manager_localization]: Server amcl connected with bond.
+[lifecycle_manager-21] [INFO] [1788968384.211129827] [lifecycle_manager_localization]: [34m[1mManaged nodes are active[0m[0m
+[lifecycle_manager-21] [INFO] [1788968384.211144375] [lifecycle_manager_localization]: [34m[1mCreating bond timer...[0m[0m
+[amcl-14] [INFO] [1788968384.620587785] [amcl]: Message Filter dropping message: frame 'lidar_scan_frame' at time 13.000 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[INFO] [lifecycle_manager-22]: process started with pid [514]
+[lifecycle_manager-22] [INFO] [1788968385.867174318] [lifecycle_manager_navigation]: Creating
+[lifecycle_manager-22] [INFO] [1788968385.879489687] [lifecycle_manager_navigation]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[lifecycle_manager-22] [INFO] [1788968386.383279804] [lifecycle_manager_navigation]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-22] [INFO] [1788968386.383386169] [lifecycle_manager_navigation]: [34m[1mConfiguring controller_server[0m[0m
+[controller_server-15] [INFO] [1788968386.384663255] [controller_server]: Configuring controller interface
+[controller_server-15] [INFO] [1788968386.384706648] [controller_server]: getting progress checker plugins..
+[controller_server-15] [INFO] [1788968386.385328436] [controller_server]: getting goal checker plugins..
+[controller_server-15] [INFO] [1788968386.386305409] [controller_server]: Controller frequency set to 10.0000Hz
+[controller_server-15] [INFO] [1788968386.386449176] [local_costmap.local_costmap]: Configuring
+[controller_server-15] [INFO] [1788968386.475395882] [local_costmap.local_costmap]: Using plugin "obstacle_layer"
+[controller_server-15] [INFO] [1788968386.483933083] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[controller_server-15] [INFO] [1788968386.502108692] [local_costmap.local_costmap]: Initialized plugin "obstacle_layer"
+[controller_server-15] [INFO] [1788968386.502194958] [local_costmap.local_costmap]: Using plugin "terrain_obstacles"
+[controller_server-15] [INFO] [1788968386.503932085] [local_costmap.local_costmap]: Subscribed to Topics: terrain
+[controller_server-15] [INFO] [1788968386.512511332] [local_costmap.local_costmap]: Initialized plugin "terrain_obstacles"
+[controller_server-15] [INFO] [1788968386.512606254] [local_costmap.local_costmap]: Using plugin "terrain_zones"
+[controller_server-15] [INFO] [1788968386.515918677] [local_costmap.local_costmap]: Subscribing to the map topic (/mooncar/terrain/keepout) with transient local durability
+[controller_server-15] [INFO] [1788968386.521671087] [local_costmap.local_costmap]: Initialized plugin "terrain_zones"
+[controller_server-15] [INFO] [1788968386.521748105] [local_costmap.local_costmap]: Using plugin "inflation_layer"
+[controller_server-15] [INFO] [1788968386.523187905] [local_costmap.local_costmap]: Initialized plugin "inflation_layer"
+[controller_server-15] [INFO] [1788968386.767845767] [controller_server]: Created progress_checker : progress_checker of type nav2_controller::SimpleProgressChecker
+[controller_server-15] [INFO] [1788968386.767900908] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 314 X 238 at 0.050000 m/pix
+[controller_server-15] [INFO] [1788968386.768313659] [controller_server]: Controller Server has progress_checker  progress checkers available.
+[controller_server-15] [INFO] [1788968386.768928534] [controller_server]: Created goal checker : goal_checker of type nav2_controller::SimpleGoalChecker
+[controller_server-15] [INFO] [1788968386.775399212] [controller_server]: Controller Server has goal_checker  goal checkers available.
+[controller_server-15] [INFO] [1788968386.777479912] [controller_server]: Created controller : FollowPath of type nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-15] [INFO] [1788968386.901347294] [controller_server]: Controller Server has FollowPath  controllers available.
+[lifecycle_manager-22] [INFO] [1788968387.067672063] [lifecycle_manager_navigation]: [34m[1mConfiguring smoother_server[0m[0m
+[smoother_server-16] [INFO] [1788968387.068129284] [smoother_server]: Configuring smoother server
+[smoother_server-16] [INFO] [1788968387.108248135] [smoother_server]: Created smoother : simple_smoother of type nav2_smoother::SimpleSmoother
+[smoother_server-16] [INFO] [1788968387.110322632] [smoother_server]: Smoother Server has simple_smoother  smoothers available.
+[lifecycle_manager-22] [INFO] [1788968387.189670622] [lifecycle_manager_navigation]: [34m[1mConfiguring planner_server[0m[0m
+[planner_server-17] [INFO] [1788968387.190226954] [planner_server]: Configuring
+[planner_server-17] [INFO] [1788968387.190284224] [global_costmap.global_costmap]: Configuring
+[planner_server-17] [INFO] [1788968387.270319834] [global_costmap.global_costmap]: Using plugin "static_layer"
+[planner_server-17] [INFO] [1788968387.280808910] [global_costmap.global_costmap]: Subscribing to the map topic (/map) with transient local durability
+[planner_server-17] [INFO] [1788968387.287288527] [global_costmap.global_costmap]: Initialized plugin "static_layer"
+[planner_server-17] [INFO] [1788968387.287358542] [global_costmap.global_costmap]: Using plugin "obstacle_layer"
+[planner_server-17] [INFO] [1788968387.289808352] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[planner_server-17] [INFO] [1788968387.304812534] [global_costmap.global_costmap]: Initialized plugin "obstacle_layer"
+[planner_server-17] [INFO] [1788968387.304894572] [global_costmap.global_costmap]: Using plugin "terrain_obstacles"
+[planner_server-17] [INFO] [1788968387.306643142] [global_costmap.global_costmap]: Subscribed to Topics: terrain
+[planner_server-17] [INFO] [1788968387.317512987] [global_costmap.global_costmap]: Initialized plugin "terrain_obstacles"
+[planner_server-17] [INFO] [1788968387.317594093] [global_costmap.global_costmap]: Using plugin "terrain_zones"
+[planner_server-17] [INFO] [1788968387.367435365] [global_costmap.global_costmap]: Subscribing to the map topic (/mooncar/terrain/keepout) with transient local durability
+[planner_server-17] [INFO] [1788968387.370072737] [global_costmap.global_costmap]: Initialized plugin "terrain_zones"
+[planner_server-17] [INFO] [1788968387.370149625] [global_costmap.global_costmap]: Using plugin "inflation_layer"
+[planner_server-17] [INFO] [1788968387.372386095] [global_costmap.global_costmap]: Initialized plugin "inflation_layer"
+[planner_server-17] [INFO] [1788968387.585660444] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 314 X 238 at 0.050000 m/pix
+[planner_server-17] [INFO] [1788968387.586066586] [planner_server]: Created global planner plugin GridBased of type nav2_navfn_planner::NavfnPlanner
+[planner_server-17] [INFO] [1788968387.586162261] [planner_server]: Configuring plugin GridBased of type NavfnPlanner
+[planner_server-17] [INFO] [1788968387.588559009] [planner_server]: Planner Server has GridBased  planners available.
+[lifecycle_manager-22] [INFO] [1788968387.711227251] [lifecycle_manager_navigation]: [34m[1mConfiguring behavior_server[0m[0m
+[behavior_server-18] [INFO] [1788968387.714064441] [behavior_server]: Configuring
+[behavior_server-18] [INFO] [1788968387.775153036] [behavior_server]: Creating behavior plugin spin of type nav2_behaviors::Spin
+[behavior_server-18] [INFO] [1788968387.777112572] [behavior_server]: Creating behavior plugin backup of type nav2_behaviors::BackUp
+[behavior_server-18] [INFO] [1788968387.778910125] [behavior_server]: Creating behavior plugin drive_on_heading of type nav2_behaviors::DriveOnHeading
+[behavior_server-18] [INFO] [1788968387.780798143] [behavior_server]: Creating behavior plugin wait of type nav2_behaviors::Wait
+[behavior_server-18] [INFO] [1788968387.805139072] [behavior_server]: Configuring spin
+[behavior_server-18] [INFO] [1788968387.872754368] [behavior_server]: Configuring backup
+[behavior_server-18] [INFO] [1788968387.896977815] [behavior_server]: Configuring drive_on_heading
+[behavior_server-18] [INFO] [1788968387.916263143] [behavior_server]: Configuring wait
+[lifecycle_manager-22] [INFO] [1788968387.972935361] [lifecycle_manager_navigation]: [34m[1mConfiguring bt_navigator[0m[0m
+[bt_navigator-19] [INFO] [1788968387.973595677] [bt_navigator]: Configuring
+[bt_navigator-19] [INFO] [1788968387.995997723] [bt_navigator]: Creating navigator id navigate_to_pose of type nav2_bt_navigator::NavigateToPoseNavigator
+[bt_navigator-19] [INFO] [1788968388.315031196] [bt_navigator]: Creating navigator id navigate_through_poses of type nav2_bt_navigator::NavigateThroughPosesNavigator
+[lifecycle_manager-22] [INFO] [1788968388.495093476] [lifecycle_manager_navigation]: [34m[1mConfiguring waypoint_follower[0m[0m
+[waypoint_follower-20] [INFO] [1788968388.495614771] [waypoint_follower]: Configuring
+[waypoint_follower-20] [INFO] [1788968388.599891408] [waypoint_follower]: Created waypoint_task_executor : wait_at_waypoint of type nav2_waypoint_follower::WaitAtWaypoint
+[lifecycle_manager-22] [INFO] [1788968388.602531984] [lifecycle_manager_navigation]: [34m[1mActivating controller_server[0m[0m
+[controller_server-15] [INFO] [1788968388.603094626] [controller_server]: Activating
+[controller_server-15] [INFO] [1788968388.603149976] [local_costmap.local_costmap]: Activating
+[controller_server-15] [INFO] [1788968388.603159846] [local_costmap.local_costmap]: Checking transform
+[controller_server-15] [INFO] [1788968388.603399922] [local_costmap.local_costmap]: start
+[controller_server-15] [INFO] [1788968388.808520897] [controller_server]: Activating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-15] [INFO] [1788968388.808627598] [controller_server]: Creating bond (controller_server) to lifecycle manager.
+[lifecycle_manager-22] [INFO] [1788968388.926708805] [lifecycle_manager_navigation]: Server controller_server connected with bond.
+[lifecycle_manager-22] [INFO] [1788968388.926775388] [lifecycle_manager_navigation]: [34m[1mActivating smoother_server[0m[0m
+[smoother_server-16] [INFO] [1788968388.927224094] [smoother_server]: Activating
+[smoother_server-16] [INFO] [1788968388.927268963] [smoother_server]: Creating bond (smoother_server) to lifecycle manager.
+[lifecycle_manager-22] [INFO] [1788968389.047059408] [lifecycle_manager_navigation]: Server smoother_server connected with bond.
+[lifecycle_manager-22] [INFO] [1788968389.047124096] [lifecycle_manager_navigation]: [34m[1mActivating planner_server[0m[0m
+[planner_server-17] [INFO] [1788968389.047616138] [planner_server]: Activating
+[planner_server-17] [INFO] [1788968389.047664674] [global_costmap.global_costmap]: Activating
+[planner_server-17] [INFO] [1788968389.047675065] [global_costmap.global_costmap]: Checking transform
+[planner_server-17] [INFO] [1788968389.047867797] [global_costmap.global_costmap]: start
+[planner_server-17] [INFO] [1788968390.052961098] [planner_server]: Activating plugin GridBased of type NavfnPlanner
+[planner_server-17] [INFO] [1788968390.057440098] [planner_server]: Creating bond (planner_server) to lifecycle manager.
+[lifecycle_manager-22] [INFO] [1788968390.178416287] [lifecycle_manager_navigation]: Server planner_server connected with bond.
+[lifecycle_manager-22] [INFO] [1788968390.178514702] [lifecycle_manager_navigation]: [34m[1mActivating behavior_server[0m[0m
+[behavior_server-18] [INFO] [1788968390.179559366] [behavior_server]: Activating
+[behavior_server-18] [INFO] [1788968390.179597241] [behavior_server]: Activating spin
+[behavior_server-18] [INFO] [1788968390.179611890] [behavior_server]: Activating backup
+[behavior_server-18] [INFO] [1788968390.179621379] [behavior_server]: Activating drive_on_heading
+[behavior_server-18] [INFO] [1788968390.179630668] [behavior_server]: Activating wait
+[behavior_server-18] [INFO] [1788968390.179648884] [behavior_server]: Creating bond (behavior_server) to lifecycle manager.
+[lifecycle_manager-22] [INFO] [1788968390.299652953] [lifecycle_manager_navigation]: Server behavior_server connected with bond.
+[lifecycle_manager-22] [INFO] [1788968390.299786208] [lifecycle_manager_navigation]: [34m[1mActivating bt_navigator[0m[0m
+[bt_navigator-19] [INFO] [1788968390.300584943] [bt_navigator]: Activating
+[bt_navigator-19] [INFO] [1788968390.809943582] [bt_navigator]: Creating bond (bt_navigator) to lifecycle manager.
+[lifecycle_manager-22] [INFO] [1788968390.924973087] [lifecycle_manager_navigation]: Server bt_navigator connected with bond.
+[lifecycle_manager-22] [INFO] [1788968390.925068637] [lifecycle_manager_navigation]: [34m[1mActivating waypoint_follower[0m[0m
+[waypoint_follower-20] [INFO] [1788968390.925540052] [waypoint_follower]: Activating
+[waypoint_follower-20] [INFO] [1788968390.925585893] [waypoint_follower]: Creating bond (waypoint_follower) to lifecycle manager.
+[lifecycle_manager-22] [INFO] [1788968391.087258231] [lifecycle_manager_navigation]: Server waypoint_follower connected with bond.
+[lifecycle_manager-22] [INFO] [1788968391.087345695] [lifecycle_manager_navigation]: [34m[1mManaged nodes are active[0m[0m
+[lifecycle_manager-22] [INFO] [1788968391.087366155] [lifecycle_manager_navigation]: [34m[1mCreating bond timer...[0m[0m
+[controller_server-15] [INFO] [1788968398.181085659] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [INFO] [1788968408.281733562] [controller_server]: Reached the goal!
+[behavior_server-18] [INFO] [1788968408.313217890] [behavior_server]: Running spin
+[behavior_server-18] [INFO] [1788968408.313498635] [behavior_server]: Turning 0.78 for spin behavior.
+[behavior_server-18] [INFO] [1788968410.812368371] [behavior_server]: spin completed successfully
+[controller_server-15] [INFO] [1788968410.845296255] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-15] [INFO] [1788968414.745907740] [controller_server]: Reached the goal!
+[behavior_server-18] [INFO] [1788968414.785077871] [behavior_server]: Running spin
+[behavior_server-18] [INFO] [1788968414.785175741] [behavior_server]: Turning -0.69 for spin behavior.
+[behavior_server-18] [INFO] [1788968418.585570036] [behavior_server]: spin completed successfully

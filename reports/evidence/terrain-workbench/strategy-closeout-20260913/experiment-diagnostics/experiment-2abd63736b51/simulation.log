@@ -1,0 +1,741 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2026-09-13-14-46-35-778418-820fd683c147-140335
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [terrain_node.py-1]: process started with pid [140353]
+[INFO] [keepout_node.py-2]: process started with pid [140354]
+[INFO] [gazebo-3]: process started with pid [140355]
+[INFO] [bridge_node-4]: process started with pid [140356]
+[INFO] [throttle-5]: process started with pid [140357]
+[INFO] [throttle-6]: process started with pid [140358]
+[INFO] [robot_state_publisher-7]: process started with pid [140360]
+[INFO] [scan_to_scan_filter_chain-8]: process started with pid [140361]
+[INFO] [cmd_vel_safety_relay.py-9]: process started with pid [140362]
+[INFO] [wheel_odometry.py-10]: process started with pid [140383]
+[INFO] [ekf_node-11]: process started with pid [140384]
+[INFO] [static_transform_publisher-12]: process started with pid [140385]
+[INFO] [async_slam_toolbox_node-13]: process started with pid [140386]
+[INFO] [map_recorder.py-14]: process started with pid [140387]
+[INFO] [python3-15]: process started with pid [140388]
+[INFO] [python3-16]: process started with pid [140389]
+[robot_state_publisher-7] [INFO] [1789310799.117422223] [robot_state_publisher]: Robot initialized
+[static_transform_publisher-12] [INFO] [1789310799.296598259] [static_transform_publisher_hKrBs2PR4i4fCAyt]: Spinning until stopped - publishing transform
+[static_transform_publisher-12] translation: ('-15.000000', '-16.000000', '0.000000')
+[static_transform_publisher-12] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+[static_transform_publisher-12] from 'survey_odom' to 'odom'
+[ekf_node-11] [INFO] [1789310799.323868673] [mooncar_ekf]: Waiting for clock to start...
+[INFO] [create-17]: process started with pid [140579]
+[cmd_vel_safety_relay.py-9] [INFO] [1789310800.144832343] [mooncar_cmd_vel_safety_relay]: Relaying /cmd_vel to /mooncar/cmd_vel_safe with timeout 0.50s
+[async_slam_toolbox_node-13] [INFO] [1789310800.255083411] [slam_toolbox]: Configuring
+[async_slam_toolbox_node-13] [INFO] [1789310800.269088659] [slam_toolbox]: Using solver plugin solver_plugins::CeresSolver
+[async_slam_toolbox_node-13] [INFO] [1789310800.269891212] [slam_toolbox]: CeresSolver: Using SCHUR_JACOBI preconditioner.
+[INFO] [launch.user]: [LifecycleLaunch] Slamtoolbox node is activating.
+[async_slam_toolbox_node-13] [INFO] [1789310800.312298242] [slam_toolbox]: Activating
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[gazebo-3] [1;33m[Wrn] [SDFFeatures.cc:365] [0m[1;33mDART: Ellipsoid is not a supported collision geomerty[0m[1;33m primitive, using generated mesh of an ellipsoid instead[0m[1;33m[0m
+[create-17] [INFO] [1789310800.965279622] [spawn_mooncar]: Waiting messages on topic [/robot_description].
+[map_recorder.py-14] [INFO] [1789310801.044737978] [mooncar_map_recorder]: Observation archive: /evidence/frontend-experiments/experiment-2abd63736b51/survey-20260913T144640988298Z.npz
+[bridge_node-4] [INFO] [1789310801.120789634] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [/clock (gz.msgs.Clock) -> /mooncar/clock_raw (rosgraph_msgs/msg/Clock)] (Lazy 0)
+[bridge_node-4] [INFO] [1789310801.125351789] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [/mooncar/scan (gz.msgs.LaserScan) -> /mooncar/scan_raw (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[bridge_node-4] [INFO] [1789310801.130754651] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [/mooncar/imu (gz.msgs.IMU) -> /mooncar/imu (sensor_msgs/msg/Imu)] (Lazy 0)
+[bridge_node-4] [INFO] [1789310801.134542148] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [/mooncar/depth (gz.msgs.Image) -> /mooncar/depth/image (sensor_msgs/msg/Image)] (Lazy 0)
+[bridge_node-4] [INFO] [1789310801.138133129] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [/mooncar/camera_info (gz.msgs.CameraInfo) -> /mooncar/depth/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 0)
+[bridge_node-4] [INFO] [1789310801.141690511] [mooncar_gz_bridge]: Creating ROS->GZ Bridge: [/mooncar/cmd_vel_safe (geometry_msgs/msg/Twist) -> /cmd_vel (gz.msgs.Twist)] (Lazy 0)
+[bridge_node-4] [INFO] [1789310801.145024210] [mooncar_gz_bridge]: Creating GZ->ROS Bridge: [joint_states (gz.msgs.Model) -> /mooncar/joint_states_raw (sensor_msgs/msg/JointState)] (Lazy 0)
+[bridge_node-4] [INFO] [1789310801.175950912] [mooncar_gz_bridge]: Passing message from ROS geometry_msgs/msg/Twist to Gazebo gz.msgs.Twist (showing msg only once per type)
+[create-17] [INFO] [1789310801.289688816] [spawn_mooncar]: Entity creation successful.
+[gazebo-3] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mooncar"]/link[@name="base_footprint"]/sensor[@name="mooncar_depth_camera"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-3] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mooncar"]/link[@name="base_footprint"]/sensor[@name="mooncar_imu"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-3] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mooncar"]/link[@name="base_footprint"]/sensor[@name="mooncar_lidar"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[INFO] [create-17]: process has finished cleanly [pid 140579]
+[python3-15] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+[async_slam_toolbox_node-13] Registering sensor: [Custom Described Lidar]
+[scan_to_scan_filter_chain-8] [WARN] [1789310802.312300595] [scan_to_scan_filter_chain]: diagnostic_updater: No HW_ID was set. This is probably a bug. Please report it. For devices that do not have a HW_ID, set this value to 'none'. This warning only occurs once all diagnostics are OK. It is okay to wait until the device is open before calling setHardwareID.
+[keepout_node.py-2] [INFO] [1789310802.377576395] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[python3-15] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mooncar"]/link[@name="base_footprint"]/sensor[@name="mooncar_depth_camera"]/gz_frame_id:<data-string>:L379]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[python3-15] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mooncar"]/link[@name="base_footprint"]/sensor[@name="mooncar_imu"]/gz_frame_id:<data-string>:L428]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[python3-15] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mooncar"]/link[@name="base_footprint"]/sensor[@name="mooncar_lidar"]/gz_frame_id:<data-string>:L456]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[keepout_node.py-2] [INFO] [1789310804.330556549] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310806.355546721] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[INFO] [controller_server-18]: process started with pid [140802]
+[INFO] [smoother_server-19]: process started with pid [140803]
+[INFO] [planner_server-20]: process started with pid [140804]
+[INFO] [behavior_server-21]: process started with pid [140805]
+[INFO] [bt_navigator-22]: process started with pid [140806]
+[INFO] [waypoint_follower-23]: process started with pid [140807]
+[keepout_node.py-2] [INFO] [1789310808.358330589] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[planner_server-20] [INFO] [1789310809.084163608] [planner_server]: 
+[planner_server-20] 	planner_server lifecycle node launched. 
+[planner_server-20] 	Waiting on external lifecycle transitions to activate
+[planner_server-20] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-20] [INFO] [1789310809.086846268] [planner_server]: Creating
+[async_slam_toolbox_node-13] [INFO] [1789310809.264692751] [slam_toolbox]: Message Filter dropping message: frame 'lidar_scan_frame' at time 4.200 for reason 'discarding message because the queue is full'
+[planner_server-20] [INFO] [1789310809.272750739] [global_costmap.global_costmap]: 
+[planner_server-20] 	global_costmap lifecycle node launched. 
+[planner_server-20] 	Waiting on external lifecycle transitions to activate
+[planner_server-20] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[planner_server-20] [INFO] [1789310809.275995764] [global_costmap.global_costmap]: Creating Costmap
+[smoother_server-19] [INFO] [1789310809.353983629] [smoother_server]: 
+[smoother_server-19] 	smoother_server lifecycle node launched. 
+[smoother_server-19] 	Waiting on external lifecycle transitions to activate
+[smoother_server-19] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[smoother_server-19] [INFO] [1789310809.357736401] [smoother_server]: Creating smoother server
+[behavior_server-21] [INFO] [1789310809.361202745] [behavior_server]: 
+[behavior_server-21] 	behavior_server lifecycle node launched. 
+[behavior_server-21] 	Waiting on external lifecycle transitions to activate
+[behavior_server-21] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[bt_navigator-22] [INFO] [1789310809.477621637] [bt_navigator]: 
+[bt_navigator-22] 	bt_navigator lifecycle node launched. 
+[bt_navigator-22] 	Waiting on external lifecycle transitions to activate
+[bt_navigator-22] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[bt_navigator-22] [INFO] [1789310809.482027502] [bt_navigator]: Creating
+[controller_server-18] [INFO] [1789310809.760678723] [controller_server]: 
+[controller_server-18] 	controller_server lifecycle node launched. 
+[controller_server-18] 	Waiting on external lifecycle transitions to activate
+[controller_server-18] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-18] [INFO] [1789310809.771390926] [controller_server]: Creating controller server
+[controller_server-18] [INFO] [1789310809.971851145] [local_costmap.local_costmap]: 
+[controller_server-18] 	local_costmap lifecycle node launched. 
+[controller_server-18] 	Waiting on external lifecycle transitions to activate
+[controller_server-18] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[controller_server-18] [INFO] [1789310809.972943912] [local_costmap.local_costmap]: Creating Costmap
+[waypoint_follower-23] [INFO] [1789310810.190790555] [waypoint_follower]: 
+[waypoint_follower-23] 	waypoint_follower lifecycle node launched. 
+[waypoint_follower-23] 	Waiting on external lifecycle transitions to activate
+[waypoint_follower-23] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[waypoint_follower-23] [INFO] [1789310810.192421552] [waypoint_follower]: Creating
+[keepout_node.py-2] [INFO] [1789310810.356946980] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310812.355618761] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310814.355556538] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310816.355947836] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[INFO] [lifecycle_manager-24]: process started with pid [140910]
+[lifecycle_manager-24] [INFO] [1789310817.565445020] [lifecycle_manager_navigation]: Creating
+[lifecycle_manager-24] [INFO] [1789310817.963317056] [lifecycle_manager_navigation]: [34m[1mCreating and initializing lifecycle service clients[0m[0m
+[keepout_node.py-2] [INFO] [1789310818.356972761] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[lifecycle_manager-24] [INFO] [1789310819.981603228] [lifecycle_manager_navigation]: Waiting for service planner_server/get_state...
+[lifecycle_manager-24] [INFO] [1789310820.092479452] [lifecycle_manager_navigation]: [34m[1mStarting managed nodes bringup...[0m[0m
+[lifecycle_manager-24] [INFO] [1789310820.092604433] [lifecycle_manager_navigation]: [34m[1mConfiguring controller_server[0m[0m
+[controller_server-18] [INFO] [1789310820.093212487] [controller_server]: Configuring controller interface
+[controller_server-18] [INFO] [1789310820.093279346] [controller_server]: getting progress checker plugins..
+[controller_server-18] [INFO] [1789310820.151093993] [controller_server]: getting goal checker plugins..
+[controller_server-18] [INFO] [1789310820.152563299] [controller_server]: Controller frequency set to 10.0000Hz
+[controller_server-18] [INFO] [1789310820.152650828] [local_costmap.local_costmap]: Configuring
+[controller_server-18] [INFO] [1789310820.181809304] [local_costmap.local_costmap]: Using plugin "obstacle_layer"
+[controller_server-18] [INFO] [1789310820.191074088] [local_costmap.local_costmap]: Subscribed to Topics: scan
+[controller_server-18] [INFO] [1789310820.255834692] [local_costmap.local_costmap]: Initialized plugin "obstacle_layer"
+[controller_server-18] [INFO] [1789310820.255967368] [local_costmap.local_costmap]: Using plugin "terrain_obstacles"
+[controller_server-18] [INFO] [1789310820.257802919] [local_costmap.local_costmap]: Subscribed to Topics: terrain
+[controller_server-18] [INFO] [1789310820.266989708] [local_costmap.local_costmap]: Initialized plugin "terrain_obstacles"
+[controller_server-18] [INFO] [1789310820.267156629] [local_costmap.local_costmap]: Using plugin "terrain_zones"
+[controller_server-18] [INFO] [1789310820.270058102] [local_costmap.local_costmap]: Subscribing to the map topic (/mooncar/terrain/keepout) with transient local durability
+[controller_server-18] [INFO] [1789310820.275507906] [local_costmap.local_costmap]: Initialized plugin "terrain_zones"
+[controller_server-18] [INFO] [1789310820.275629951] [local_costmap.local_costmap]: Using plugin "inflation_layer"
+[controller_server-18] [INFO] [1789310820.278416642] [local_costmap.local_costmap]: Initialized plugin "inflation_layer"
+[keepout_node.py-2] [INFO] [1789310820.354181913] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310820.554116185] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 173 X 93 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310820.554559914] [controller_server]: Created progress_checker : progress_checker of type nav2_controller::SimpleProgressChecker
+[controller_server-18] [INFO] [1789310820.555175829] [controller_server]: Controller Server has progress_checker  progress checkers available.
+[controller_server-18] [INFO] [1789310820.556018069] [controller_server]: Created goal checker : goal_checker of type nav2_controller::PositionGoalChecker
+[controller_server-18] [INFO] [1789310820.556447716] [controller_server]: Controller Server has goal_checker  goal checkers available.
+[controller_server-18] [INFO] [1789310820.558189457] [controller_server]: Created controller : FollowPath of type nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-18] [INFO] [1789310820.593956341] [controller_server]: Controller Server has FollowPath  controllers available.
+[lifecycle_manager-24] [INFO] [1789310820.683073390] [lifecycle_manager_navigation]: [34m[1mConfiguring smoother_server[0m[0m
+[smoother_server-19] [INFO] [1789310820.683710145] [smoother_server]: Configuring smoother server
+[smoother_server-19] [INFO] [1789310820.761036549] [smoother_server]: Created smoother : simple_smoother of type nav2_smoother::SimpleSmoother
+[smoother_server-19] [INFO] [1789310820.765340660] [smoother_server]: Smoother Server has simple_smoother  smoothers available.
+[lifecycle_manager-24] [INFO] [1789310820.852217282] [lifecycle_manager_navigation]: [34m[1mConfiguring planner_server[0m[0m
+[planner_server-20] [INFO] [1789310820.854055373] [planner_server]: Configuring
+[planner_server-20] [INFO] [1789310820.854160495] [global_costmap.global_costmap]: Configuring
+[planner_server-20] [INFO] [1789310820.884176272] [global_costmap.global_costmap]: Using plugin "static_layer"
+[planner_server-20] [INFO] [1789310820.953500691] [global_costmap.global_costmap]: Subscribing to the map topic (/map) with transient local durability
+[planner_server-20] [INFO] [1789310820.958618281] [global_costmap.global_costmap]: Initialized plugin "static_layer"
+[planner_server-20] [INFO] [1789310820.958689929] [global_costmap.global_costmap]: Using plugin "obstacle_layer"
+[planner_server-20] [INFO] [1789310820.960995755] [global_costmap.global_costmap]: Subscribed to Topics: scan
+[planner_server-20] [INFO] [1789310820.971679665] [global_costmap.global_costmap]: Initialized plugin "obstacle_layer"
+[planner_server-20] [INFO] [1789310820.971819584] [global_costmap.global_costmap]: Using plugin "terrain_obstacles"
+[planner_server-20] [INFO] [1789310820.973396908] [global_costmap.global_costmap]: Subscribed to Topics: terrain
+[planner_server-20] [INFO] [1789310820.980402567] [global_costmap.global_costmap]: Initialized plugin "terrain_obstacles"
+[planner_server-20] [INFO] [1789310820.980482390] [global_costmap.global_costmap]: Using plugin "terrain_zones"
+[planner_server-20] [INFO] [1789310820.983073034] [global_costmap.global_costmap]: Subscribing to the map topic (/mooncar/terrain/keepout) with transient local durability
+[planner_server-20] [INFO] [1789310820.985744133] [global_costmap.global_costmap]: Initialized plugin "terrain_zones"
+[planner_server-20] [INFO] [1789310820.985822364] [global_costmap.global_costmap]: Using plugin "inflation_layer"
+[planner_server-20] [INFO] [1789310821.053143659] [global_costmap.global_costmap]: Initialized plugin "inflation_layer"
+[planner_server-20] [INFO] [1789310821.179407101] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 173 X 93 at 0.100000 m/pix
+[planner_server-20] [INFO] [1789310821.179931796] [planner_server]: Created global planner plugin GridBased of type nav2_navfn_planner::NavfnPlanner
+[planner_server-20] [INFO] [1789310821.179972755] [planner_server]: Configuring plugin GridBased of type NavfnPlanner
+[planner_server-20] [INFO] [1789310821.181479484] [planner_server]: Planner Server has GridBased  planners available.
+[lifecycle_manager-24] [INFO] [1789310821.289410682] [lifecycle_manager_navigation]: [34m[1mConfiguring behavior_server[0m[0m
+[behavior_server-21] [INFO] [1789310821.290016913] [behavior_server]: Configuring
+[behavior_server-21] [INFO] [1789310821.357273861] [behavior_server]: Creating behavior plugin spin of type nav2_behaviors::Spin
+[behavior_server-21] [INFO] [1789310821.360048058] [behavior_server]: Creating behavior plugin backup of type nav2_behaviors::BackUp
+[behavior_server-21] [INFO] [1789310821.361301549] [behavior_server]: Creating behavior plugin drive_on_heading of type nav2_behaviors::DriveOnHeading
+[behavior_server-21] [INFO] [1789310821.362437014] [behavior_server]: Creating behavior plugin wait of type nav2_behaviors::Wait
+[behavior_server-21] [INFO] [1789310821.382412293] [behavior_server]: Configuring spin
+[behavior_server-21] [INFO] [1789310821.467847096] [behavior_server]: Configuring backup
+[behavior_server-21] [INFO] [1789310821.489989745] [behavior_server]: Configuring drive_on_heading
+[behavior_server-21] [INFO] [1789310821.567892804] [behavior_server]: Configuring wait
+[lifecycle_manager-24] [INFO] [1789310821.653181879] [lifecycle_manager_navigation]: [34m[1mConfiguring bt_navigator[0m[0m
+[bt_navigator-22] [INFO] [1789310821.653822972] [bt_navigator]: Configuring
+[bt_navigator-22] [INFO] [1789310821.674172641] [bt_navigator]: Creating navigator id navigate_to_pose of type nav2_bt_navigator::NavigateToPoseNavigator
+[bt_navigator-22] [INFO] [1789310822.002717324] [bt_navigator]: Creating navigator id navigate_through_poses of type nav2_bt_navigator::NavigateThroughPosesNavigator
+[lifecycle_manager-24] [INFO] [1789310822.173991108] [lifecycle_manager_navigation]: [34m[1mConfiguring waypoint_follower[0m[0m
+[waypoint_follower-23] [INFO] [1789310822.174636279] [waypoint_follower]: Configuring
+[keepout_node.py-2] [INFO] [1789310822.356357558] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[waypoint_follower-23] [INFO] [1789310822.357886530] [waypoint_follower]: Created waypoint_task_executor : wait_at_waypoint of type nav2_waypoint_follower::WaitAtWaypoint
+[lifecycle_manager-24] [INFO] [1789310822.360754502] [lifecycle_manager_navigation]: [34m[1mActivating controller_server[0m[0m
+[controller_server-18] [INFO] [1789310822.361122878] [controller_server]: Activating
+[controller_server-18] [INFO] [1789310822.361172273] [local_costmap.local_costmap]: Activating
+[controller_server-18] [INFO] [1789310822.361184667] [local_costmap.local_costmap]: Checking transform
+[controller_server-18] [INFO] [1789310822.361550911] [local_costmap.local_costmap]: start
+[controller_server-18] [INFO] [1789310822.569103178] [controller_server]: Activating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-18] [INFO] [1789310822.569215965] [controller_server]: Creating bond (controller_server) to lifecycle manager.
+[lifecycle_manager-24] [INFO] [1789310822.681118037] [lifecycle_manager_navigation]: Server controller_server connected with bond.
+[lifecycle_manager-24] [INFO] [1789310822.681195967] [lifecycle_manager_navigation]: [34m[1mActivating smoother_server[0m[0m
+[smoother_server-19] [INFO] [1789310822.681687623] [smoother_server]: Activating
+[smoother_server-19] [INFO] [1789310822.681732850] [smoother_server]: Creating bond (smoother_server) to lifecycle manager.
+[lifecycle_manager-24] [INFO] [1789310822.796545241] [lifecycle_manager_navigation]: Server smoother_server connected with bond.
+[lifecycle_manager-24] [INFO] [1789310822.796628411] [lifecycle_manager_navigation]: [34m[1mActivating planner_server[0m[0m
+[planner_server-20] [INFO] [1789310822.797090561] [planner_server]: Activating
+[planner_server-20] [INFO] [1789310822.797140958] [global_costmap.global_costmap]: Activating
+[planner_server-20] [INFO] [1789310822.797152339] [global_costmap.global_costmap]: Checking transform
+[planner_server-20] [INFO] [1789310822.797361963] [global_costmap.global_costmap]: start
+[planner_server-20] [INFO] [1789310822.850691836] [planner_server]: Activating plugin GridBased of type NavfnPlanner
+[planner_server-20] [INFO] [1789310822.853238505] [planner_server]: Creating bond (planner_server) to lifecycle manager.
+[lifecycle_manager-24] [INFO] [1789310822.960815598] [lifecycle_manager_navigation]: Server planner_server connected with bond.
+[lifecycle_manager-24] [INFO] [1789310822.960893678] [lifecycle_manager_navigation]: [34m[1mActivating behavior_server[0m[0m
+[behavior_server-21] [INFO] [1789310822.963030509] [behavior_server]: Activating
+[behavior_server-21] [INFO] [1789310822.963075496] [behavior_server]: Activating spin
+[behavior_server-21] [INFO] [1789310822.963088240] [behavior_server]: Activating backup
+[behavior_server-21] [INFO] [1789310822.963096456] [behavior_server]: Activating drive_on_heading
+[behavior_server-21] [INFO] [1789310822.963151151] [behavior_server]: Activating wait
+[behavior_server-21] [INFO] [1789310822.963177241] [behavior_server]: Creating bond (behavior_server) to lifecycle manager.
+[lifecycle_manager-24] [INFO] [1789310823.077021861] [lifecycle_manager_navigation]: Server behavior_server connected with bond.
+[lifecycle_manager-24] [INFO] [1789310823.077115100] [lifecycle_manager_navigation]: [34m[1mActivating bt_navigator[0m[0m
+[bt_navigator-22] [INFO] [1789310823.077861626] [bt_navigator]: Activating
+[bt_navigator-22] [INFO] [1789310823.590864887] [bt_navigator]: Creating bond (bt_navigator) to lifecycle manager.
+[lifecycle_manager-24] [INFO] [1789310823.760693901] [lifecycle_manager_navigation]: Server bt_navigator connected with bond.
+[lifecycle_manager-24] [INFO] [1789310823.760758776] [lifecycle_manager_navigation]: [34m[1mActivating waypoint_follower[0m[0m
+[waypoint_follower-23] [INFO] [1789310823.761241915] [waypoint_follower]: Activating
+[waypoint_follower-23] [INFO] [1789310823.761293084] [waypoint_follower]: Creating bond (waypoint_follower) to lifecycle manager.
+[lifecycle_manager-24] [INFO] [1789310823.871013800] [lifecycle_manager_navigation]: Server waypoint_follower connected with bond.
+[lifecycle_manager-24] [INFO] [1789310823.871126867] [lifecycle_manager_navigation]: [34m[1mManaged nodes are active[0m[0m
+[lifecycle_manager-24] [INFO] [1789310823.871154931] [lifecycle_manager_navigation]: [34m[1mCreating bond timer...[0m[0m
+[keepout_node.py-2] [INFO] [1789310824.354003469] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310826.354881081] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310828.357608843] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310830.355209087] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310832.369384890] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310834.356335836] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310836.355663291] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310838.332498778] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310840.355243242] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310842.358033150] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310844.354587962] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310846.354702906] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310848.353572881] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310850.352458368] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[behavior_server-21] [INFO] [1789310851.454288928] [behavior_server]: Running spin
+[behavior_server-21] [INFO] [1789310851.454738433] [behavior_server]: Turning -0.79 for spin behavior.
+[keepout_node.py-2] [INFO] [1789310852.352818688] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310854.353129190] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310856.354063185] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[behavior_server-21] [INFO] [1789310856.955152942] [behavior_server]: spin completed successfully
+[keepout_node.py-2] [INFO] [1789310858.331140477] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310860.331305325] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310862.352606316] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310864.352118933] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[behavior_server-21] [INFO] [1789310865.866932838] [behavior_server]: Running spin
+[behavior_server-21] [INFO] [1789310865.867056737] [behavior_server]: Turning -1.55 for spin behavior.
+[keepout_node.py-2] [INFO] [1789310866.352893659] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310868.352720392] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310870.351532352] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310872.352044319] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310874.352344158] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[behavior_server-21] [INFO] [1789310875.267442961] [behavior_server]: spin completed successfully
+[keepout_node.py-2] [INFO] [1789310876.352980851] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310878.351287145] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310880.351005627] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310882.348963247] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[behavior_server-21] [INFO] [1789310884.059547050] [behavior_server]: Running spin
+[behavior_server-21] [INFO] [1789310884.059673664] [behavior_server]: Turning -0.76 for spin behavior.
+[keepout_node.py-2] [INFO] [1789310884.350340063] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310886.351194394] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310888.351294494] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[behavior_server-21] [INFO] [1789310889.260011178] [behavior_server]: spin completed successfully
+[keepout_node.py-2] [INFO] [1789310890.351094835] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310892.350654503] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310894.350550447] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310896.350187232] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[behavior_server-21] [INFO] [1789310898.248443004] [behavior_server]: Running spin
+[behavior_server-21] [INFO] [1789310898.248568436] [behavior_server]: Turning -0.76 for spin behavior.
+[keepout_node.py-2] [INFO] [1789310898.351208870] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310900.350494867] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310902.350548702] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[behavior_server-21] [INFO] [1789310903.848916400] [behavior_server]: spin completed successfully
+[keepout_node.py-2] [INFO] [1789310904.331897598] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310906.351722472] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310908.349080081] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310910.330904042] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310912.348511634] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[behavior_server-21] [INFO] [1789310912.882893788] [behavior_server]: Running spin
+[behavior_server-21] [INFO] [1789310912.883007367] [behavior_server]: Turning -1.54 for spin behavior.
+[keepout_node.py-2] [INFO] [1789310914.331339413] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310916.348635871] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310918.350498893] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310920.331006930] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310922.348827487] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[behavior_server-21] [INFO] [1789310922.683383926] [behavior_server]: spin completed successfully
+[keepout_node.py-2] [INFO] [1789310924.348465103] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310926.348926717] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310928.349514950] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789310930.349516725] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[bt_navigator-22] [INFO] [1789310931.187321721] [bt_navigator]: Begin navigating from current location (-15.00, -16.00) to (-13.50, -16.00)
+[controller_server-18] [INFO] [1789310931.246260613] [controller_server]: Received a goal, begin computing control effort.
+[controller_server-18] [WARN] [1789310931.246390374] [controller_server]: No goal checker was specified in parameter 'current_goal_checker'. Server will use only plugin loaded goal_checker . This warning will appear once.
+[controller_server-18] [WARN] [1789310931.246413669] [controller_server]: No progress checker was specified in parameter 'current_progress_checker'. Server will use only plugin loaded progress_checker . This warning will appear once.
+[controller_server-18] [INFO] [1789310932.346570654] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310932.348932622] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310933.346561992] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310934.346582992] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310934.349201508] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310934.356501113] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 173 X 94 at 0.100000 m/pix
+[planner_server-20] [INFO] [1789310934.795380750] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 173 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310935.446565832] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310936.349061722] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310936.356529523] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 175 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310936.446599787] [controller_server]: Passing new path to controller.
+[planner_server-20] [INFO] [1789310936.795366867] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 175 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310937.446590299] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310938.348853965] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310938.445248992] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310939.545247649] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310940.352829725] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310940.355249823] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 179 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310940.545271623] [controller_server]: Passing new path to controller.
+[planner_server-20] [INFO] [1789310940.794048204] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 179 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310941.645241460] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310942.348408946] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310942.645573924] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310943.645226010] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310944.347787210] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310944.355219146] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 181 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310944.745230689] [controller_server]: Passing new path to controller.
+[planner_server-20] [INFO] [1789310944.794051175] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 181 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310945.745262163] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310946.347157762] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310946.745279295] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310947.845251119] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310948.348541803] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310948.850036282] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310949.945858398] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310950.351098579] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310950.945245586] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310951.945252601] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310952.346905758] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310953.045254850] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310954.045246135] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310954.347361592] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310955.045237721] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310956.145239800] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310956.348834358] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310956.355228342] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 181 X 94 at 0.100000 m/pix
+[planner_server-20] [INFO] [1789310956.794079461] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 181 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310957.145215602] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310958.245246628] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310958.349034078] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310958.355156611] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 184 X 94 at 0.100000 m/pix
+[planner_server-20] [INFO] [1789310958.794065364] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 184 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310959.245265207] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310960.245428841] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310960.348225617] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310961.345241606] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310962.345248693] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310962.349383327] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310962.355141881] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 184 X 94 at 0.100000 m/pix
+[planner_server-20] [INFO] [1789310962.844032981] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 184 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310963.445292895] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310964.348434763] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310964.445222280] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310965.545258597] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310966.348488028] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310966.545230820] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310967.546545541] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310968.337429133] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310968.632572881] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310969.632646214] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310970.336399563] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310970.632589240] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310971.732880683] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310972.335438437] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310972.733372461] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310973.732548537] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310974.336327455] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310974.732576863] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310975.832683879] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310976.336147561] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310976.832622819] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310977.832677650] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310978.335458727] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310978.932567119] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310979.932622988] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310980.332334950] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310981.032556916] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310982.032562033] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310982.334550669] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310983.132611358] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310984.132618907] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310984.336590774] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310985.132546866] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310986.132547996] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310986.334222682] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310987.232991272] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310988.232565356] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310988.333859254] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310988.342519136] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 184 X 94 at 0.100000 m/pix
+[planner_server-20] [INFO] [1789310988.781357283] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 184 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310989.232545708] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310990.232565246] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310990.335305278] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310991.332577108] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310992.332551729] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310992.337538945] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310993.332629386] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310994.336388469] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310994.432585614] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310995.432570130] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310996.336289006] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310996.342466164] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 185 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310996.532583057] [controller_server]: Passing new path to controller.
+[planner_server-20] [INFO] [1789310996.781346219] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 185 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789310997.532545980] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789310998.367214289] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789310998.560322707] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789310999.560527470] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311000.364707107] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311000.560280833] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311001.560285215] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311002.368244517] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311002.663854920] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311003.660310556] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311004.363756821] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311004.760300947] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311005.760297648] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311006.365012484] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311006.760303189] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311007.860296861] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311008.364528165] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311008.860323575] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311009.860284472] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311010.366102824] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311010.960324277] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311011.960294602] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311012.366074212] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311012.960307199] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311014.060897850] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311014.364557862] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311015.060724141] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311016.060619558] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311016.363373776] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311017.060535421] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311018.161028505] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311018.365616741] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311019.160420780] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311020.160487059] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311020.365763658] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311021.260373897] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311022.260290573] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311022.364392255] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311023.360298336] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311024.360390545] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311024.363626060] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311025.360331706] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311026.365460772] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311026.464393534] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311027.460309539] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311028.337248987] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311028.496597496] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311029.497173272] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311030.337431551] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311030.406553721] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 185 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789311030.496571632] [controller_server]: Passing new path to controller.
+[planner_server-20] [INFO] [1789311030.645393343] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 185 X 94 at 0.100000 m/pix
+[controller_server-18] [INFO] [1789311031.596649662] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311032.332907121] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311032.596671144] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311033.596598071] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311034.335828554] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311034.696578716] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311035.696770269] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311036.333619115] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311036.696663030] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311037.796646186] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311038.333748064] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311038.796593517] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311039.896580706] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311040.334925529] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311040.896600528] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311041.896661719] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311042.335510225] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311042.996697943] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311043.996720647] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311044.333975034] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311044.998845789] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311046.096584908] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311046.336305553] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311047.096575747] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311048.096570457] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311048.334015587] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311049.196660549] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311050.196593176] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311050.334633952] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311051.296623765] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311052.297097421] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311052.334906290] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311053.296589905] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311054.296581106] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311054.334880146] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311055.396599541] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311056.334916964] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311056.396589270] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311057.396612604] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311058.339487151] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311058.522111965] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311059.522105612] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311060.336569763] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311060.522100894] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311061.622240447] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311062.334856981] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311062.622478409] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311063.626772932] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311064.336330282] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311064.622329825] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311065.722079831] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311066.336688152] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311066.726112862] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311067.722236257] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311068.334878567] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311068.822189366] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311069.822427584] [controller_server]: Passing new path to controller.
+[keepout_node.py-2] [INFO] [1789311070.335454835] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311070.823847434] [controller_server]: Passing new path to controller.
+[controller_server-18] [INFO] [1789311071.922088619] [controller_server]: Passing new path to controller.
+[bt_navigator-22] [ERROR] [1789311072.253870965] [bt_navigator_navigate_to_pose_rclcpp_node]: Failed to get result for follow_path in node halt!
+[bt_navigator-22] [INFO] [1789311072.254680187] [bt_navigator]: [navigate_to_pose] [ActionServer] Client requested to cancel the goal. Cancelling.
+[bt_navigator-22] [INFO] [1789311072.255005504] [bt_navigator]: Goal canceled
+[controller_server-18] [INFO] [1789311072.322097744] [controller_server]: Cancellation was successful. Stopping the robot.
+[controller_server-18] [INFO] [1789311072.322208783] [controller_server]: [follow_path] [ActionServer] Client requested to cancel the goal. Cancelling.
+[keepout_node.py-2] [INFO] [1789311072.334893133] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[controller_server-18] [INFO] [1789311072.531993623] [local_costmap.local_costmap]: StaticLayer: Resizing static layer to 186 X 94 at 0.100000 m/pix
+[planner_server-20] [INFO] [1789311072.570885943] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 186 X 94 at 0.100000 m/pix
+[keepout_node.py-2] [INFO] [1789311074.347325382] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789311076.336196916] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789311078.333969642] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789311080.335754304] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789311082.335350207] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789311084.334104811] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789311086.334206251] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789311088.334638880] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789311090.334870767] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789311092.334042514] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789311094.334249673] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[keepout_node.py-2] [INFO] [1789311096.341933234] [mooncar_keepout]: Published 2 operator-defined keepout zones
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[async_slam_toolbox_node-13] [INFO] [1789311097.739612964] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ERROR] [python3-16]: process has died [pid 140389, exit code -2, cmd 'python3 /source/containers/capture_scene.py /evidence/frontend-experiments/experiment-2abd63736b51'].
+[ERROR] [gazebo-3]: process has died [pid 140355, exit code -2, cmd 'ruby /opt/ros/jazzy/opt/gz_tools_vendor/bin/gz sim -r -s -v 2 --render-engine ogre /evidence/frontend-experiments/experiment-2abd63736b51/survey_yard.sdf --force-version 8'].
+[INFO] [throttle-5]: process has finished cleanly [pid 140357]
+[INFO] [robot_state_publisher-7]: process has finished cleanly [pid 140360]
+[INFO] [throttle-6]: process has finished cleanly [pid 140358]
+[INFO] [static_transform_publisher-12]: process has finished cleanly [pid 140385]
+[INFO] [waypoint_follower-23]: process has finished cleanly [pid 140807]
+[INFO] [ekf_node-11]: process has finished cleanly [pid 140384]
+[INFO] [smoother_server-19]: process has finished cleanly [pid 140803]
+[INFO] [scan_to_scan_filter_chain-8]: process has finished cleanly [pid 140361]
+[INFO] [behavior_server-21]: process has finished cleanly [pid 140805]
+[INFO] [async_slam_toolbox_node-13]: process has finished cleanly [pid 140386]
+[planner_server-20] [INFO] [1789311097.739501934] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planner_server-20] [INFO] [1789311097.739612673] [planner_server]: Running Nav2 LifecycleNode rcl preshutdown (planner_server)
+[planner_server-20] [INFO] [1789311097.739744727] [planner_server]: Deactivating
+[planner_server-20] [INFO] [1789311097.739784221] [global_costmap.global_costmap]: Deactivating
+[INFO] [keepout_node.py-2]: process has finished cleanly [pid 140354]
+[behavior_server-21] [INFO] [1789311097.739502835] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[behavior_server-21] [INFO] [1789311097.739611321] [behavior_server]: Running Nav2 LifecycleNode rcl preshutdown (behavior_server)
+[behavior_server-21] [INFO] [1789311097.739741040] [behavior_server]: Deactivating
+[behavior_server-21] [INFO] [1789311097.739963730] [behavior_server]: Destroying bond (behavior_server) to lifecycle manager.
+[behavior_server-21] [INFO] [1789311097.751023492] [behavior_server]: Cleaning up
+[smoother_server-19] [INFO] [1789311097.739502846] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[smoother_server-19] [INFO] [1789311097.739642431] [smoother_server]: Running Nav2 LifecycleNode rcl preshutdown (smoother_server)
+[smoother_server-19] [INFO] [1789311097.739746750] [smoother_server]: Deactivating
+[smoother_server-19] [INFO] [1789311097.739968328] [smoother_server]: Destroying bond (smoother_server) to lifecycle manager.
+[INFO] [cmd_vel_safety_relay.py-9]: process has finished cleanly [pid 140362]
+[ERROR] [wheel_odometry.py-10]: process has died [pid 140383, exit code 1, cmd '/work/ros2_ws/install/mooncar_control/lib/mooncar_control/wheel_odometry.py --ros-args -r __node:=mooncar_wheel_odometry --params-file /tmp/launch_params_0n3b4por'].
+[lifecycle_manager-24] [INFO] [1789311097.739451663] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[lifecycle_manager-24] [INFO] [1789311097.739644825] [lifecycle_manager_navigation]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_navigation)
+[lifecycle_manager-24] [INFO] [1789311097.739696068] [lifecycle_manager_navigation]: [34m[1mTerminating bond timer...[0m[0m
+[waypoint_follower-23] [INFO] [1789311097.739510383] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[waypoint_follower-23] [INFO] [1789311097.739642266] [waypoint_follower]: Running Nav2 LifecycleNode rcl preshutdown (waypoint_follower)
+[waypoint_follower-23] [INFO] [1789311097.739750732] [waypoint_follower]: Deactivating
+[waypoint_follower-23] [INFO] [1789311097.739791247] [waypoint_follower]: Destroying bond (waypoint_follower) to lifecycle manager.
+[waypoint_follower-23] [INFO] [1789311097.750335049] [waypoint_follower]: Cleaning up
+[bridge_node-4] [INFO] [1789311097.739870981] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[throttle-5] [INFO] [1789311097.739985853] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[bt_navigator-22] [INFO] [1789311097.739444130] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[bt_navigator-22] [INFO] [1789311097.740187763] [bt_navigator]: Running Nav2 LifecycleNode rcl preshutdown (bt_navigator)
+[bt_navigator-22] [INFO] [1789311097.740259899] [bt_navigator]: Deactivating
+[bt_navigator-22] [INFO] [1789311097.740299363] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.
+[python3-16] Traceback (most recent call last):
+[python3-16]   File "/source/containers/capture_scene.py", line 18, in <module>
+[python3-16]     time.sleep(.5)
+[python3-16] KeyboardInterrupt
+[static_transform_publisher-12] [INFO] [1789311097.740254651] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[controller_server-18] [INFO] [1789311097.740333774] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[controller_server-18] [INFO] [1789311097.740389434] [controller_server]: Running Nav2 LifecycleNode rcl preshutdown (controller_server)
+[controller_server-18] [INFO] [1789311097.740471026] [controller_server]: Deactivating
+[controller_server-18] [INFO] [1789311097.740496848] [controller_server]: Deactivating controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-18] [INFO] [1789311097.740522670] [local_costmap.local_costmap]: Deactivating
+[robot_state_publisher-7] [INFO] [1789311097.741528341] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ekf_node-11] [INFO] [1789311097.741991680] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [lifecycle_manager-24]: sending signal 'SIGINT' to process[lifecycle_manager-24]
+[INFO] [bt_navigator-22]: sending signal 'SIGINT' to process[bt_navigator-22]
+[ERROR] [lifecycle_manager-24]: process has died [pid 140910, exit code -2, cmd '/opt/ros/jazzy/lib/nav2_lifecycle_manager/lifecycle_manager --ros-args -r __node:=lifecycle_manager_navigation --params-file /tmp/launch_params_he6bh1eu --params-file /tmp/launch_params_7tegbgme'].
+[INFO] [planner_server-20]: sending signal 'SIGINT' to process[planner_server-20]
+[ERROR] [bt_navigator-22]: process has died [pid 140806, exit code -2, cmd '/opt/ros/jazzy/lib/nav2_bt_navigator/bt_navigator --ros-args -r __node:=bt_navigator --params-file /tmp/tmp4jylv3hi.yaml --params-file /tmp/launch_params_9yqseshy'].
+[INFO] [controller_server-18]: sending signal 'SIGINT' to process[controller_server-18]
+[INFO] [python3-15]: sending signal 'SIGINT' to process[python3-15]
+[ERROR] [controller_server-18]: process has died [pid 140802, exit code -2, cmd '/opt/ros/jazzy/lib/nav2_controller/controller_server --ros-args -r __node:=controller_server --params-file /tmp/tmp4jylv3hi.yaml --params-file /tmp/launch_params_9tz7mh3c'].
+[INFO] [map_recorder.py-14]: sending signal 'SIGINT' to process[map_recorder.py-14]
+[INFO] [terrain_node.py-1]: process has finished cleanly [pid 140353]
+[ERROR] [map_recorder.py-14]: process has died [pid 140387, exit code -2, cmd '/work/ros2_ws/install/mooncar_terrain/lib/mooncar_terrain/map_recorder.py --ros-args --params-file /tmp/launch_params_5xjsa2_g'].
+[INFO] [bridge_node-4]: sending signal 'SIGINT' to process[bridge_node-4]
+[throttle-6] [INFO] [1789311097.743355405] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[scan_to_scan_filter_chain-8] [INFO] [1789311097.743747629] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[bt_navigator-22] [INFO] [1789311097.751679843] [bt_navigator]: Cleaning up
+[smoother_server-19] [INFO] [1789311097.816353448] [smoother_server]: Cleaning up
+[smoother_server-19] [INFO] [1789311097.936474160] [smoother_server]: Destroying bond (smoother_server) to lifecycle manager.
+[smoother_server-19] [INFO] [1789311098.025178573] [smoother_server]: Destroying
+[async_slam_toolbox_node-13] Unregistering sensor: Custom Described Lidar
+[behavior_server-21] [INFO] [1789311097.829341332] [behavior_server]: Destroying bond (behavior_server) to lifecycle manager.
+[behavior_server-21] [INFO] [1789311098.218314843] [behavior_server]: Destroying
+[gazebo-3] XIO:  fatal IO error 22 (Invalid argument) on X server ":106"
+[gazebo-3]       after 23 requests (23 known processed) with 0 events remaining.
+[python3-15] [1;33m[GUI] [Wrn] [Application.cc:908] [0m[1;33m[QT] The X11 connection broke: I/O error (code 1)[0m[1;33m[0m
+[python3-15] XIO:  fatal IO error 17 (File exists) on X server ":106"
+[python3-15]       after 12655 requests (12655 known processed) with 0 events remaining.
+[python3-15] Stack trace (most recent call last) in thread 140799:
+[python3-15] #18   Object "[0xffffffffffffffff]", at 0xffffffffffffffff, in 
+[python3-15] #17   Object "/lib/x86_64-linux-gnu/libc.so.6", at 0x73e015546b63, in __clone
+[python3-15] #16   Object "/lib/x86_64-linux-gnu/libc.so.6", at 0x73e0154b9b83, in 
+[python3-15] #15   Object "/lib/x86_64-linux-gnu/libQt5Core.so.5", at 0x73e00ed5c673, in 
+[python3-15] #14   Object "/lib/x86_64-linux-gnu/libQt5Core.so.5", at 0x73e00ed5b36a, in QThread::exec()
+[python3-15] #13   Object "/lib/x86_64-linux-gnu/libQt5Core.so.5", at 0x73e00ef57a7a, in QEventLoop::exec(QFlags<QEventLoop::ProcessEventsFlag>)
+[python3-15] #12   Object "/lib/x86_64-linux-gnu/libQt5Core.so.5", at 0x73e00efb6278, in QEventDispatcherGlib::processEvents(QFlags<QEventLoop::ProcessEventsFlag>)
+[python3-15] #11   Object "/lib/x86_64-linux-gnu/libglib-2.0.so.0", at 0x73e00c960a22, in g_main_context_iteration
+[python3-15] #10   Object "/lib/x86_64-linux-gnu/libglib-2.0.so.0", at 0x73e00c9c0976, in 
+[python3-15] #9    Object "/lib/x86_64-linux-gnu/libglib-2.0.so.0", at 0x73e00c961584, in 
+[python3-15] #8    Object "/lib/x86_64-linux-gnu/libQt5Core.so.5", at 0x73e00efb6c0e, in 
+[python3-15] #7    Object "/lib/x86_64-linux-gnu/libQt5Core.so.5", at 0x73e00ef5c94a, in QCoreApplicationPrivate::sendPostedEvents(QObject*, int, QThreadData*)
+[python3-15] #6    Object "/lib/x86_64-linux-gnu/libQt5Core.so.5", at 0x73e00ef59117, in QCoreApplication::notifyInternal2(QObject*, QEvent*)
+[python3-15] #5    Object "/lib/x86_64-linux-gnu/libQt5Widgets.so.5", at 0x73e00e694d44, in QApplicationPrivate::notify_helper(QObject*, QEvent*)
+[python3-15] #4    Object "/lib/x86_64-linux-gnu/libQt5Core.so.5", at 0x73e00ef87342, in QObject::event(QEvent*)
+[python3-15] #3    Object "/opt/ros/jazzy/opt/gz_gui_vendor/lib/gz-gui-8/plugins/libMinimalScene.so", at 0x73dfec099d4b, in gz::gui::plugins::RenderThread::RenderNext(gz::gui::plugins::RenderSync*)
+[python3-15] #2    Object "/lib/x86_64-linux-gnu/libQt5Gui.so.5", at 0x73e00d5c338e, in QOpenGLContext::doneCurrent()
+[python3-15] #1    Object "/lib/x86_64-linux-gnu/libQt5Gui.so.5", at 0x73e00d5c1de9, in QOpenGLContextPrivate::setCurrentContext(QOpenGLContext*)
+[python3-15] #0    Object "/lib/x86_64-linux-gnu/libQt5Core.so.5", at 0x73e00ed61ac3, in QThreadStorageData::get() const
+[python3-15] Segmentation fault (Address not mapped to object [(nil)])
+[controller_server-18] [INFO] [1789311097.928828796] [controller_server]: Destroying bond (controller_server) to lifecycle manager.
+[controller_server-18] [INFO] [1789311097.939997868] [controller_server]: Cleaning up
+[controller_server-18] [INFO] [1789311097.940141640] [controller_server]: Cleaning up controller: FollowPath of type regulated_pure_pursuit_controller::RegulatedPurePursuitController
+[controller_server-18] [INFO] [1789311097.940229682] [local_costmap.local_costmap]: Cleaning up
+[controller_server-18] [INFO] [1789311098.320706200] [controller_server]: Destroying bond (controller_server) to lifecycle manager.
+[controller_server-18] [INFO] [1789311098.336615372] [local_costmap.local_costmap]: Destroying
+[controller_server-18] [INFO] [1789311098.420557535] [controller_server]: Destroying
+[waypoint_follower-23] [INFO] [1789311097.931766279] [waypoint_follower]: Destroying bond (waypoint_follower) to lifecycle manager.
+[waypoint_follower-23] [INFO] [1789311098.020991438] [waypoint_follower]: Destroying
+[wheel_odometry.py-10] Traceback (most recent call last):
+[wheel_odometry.py-10]   File "/work/ros2_ws/install/mooncar_control/lib/mooncar_control/wheel_odometry.py", line 131, in main
+[wheel_odometry.py-10]     rclpy.spin(node)
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+[wheel_odometry.py-10]     executor.spin_once()
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+[wheel_odometry.py-10]     self._spin_once_impl(timeout_sec)
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+[wheel_odometry.py-10]     handler, entity, node = self.wait_for_ready_callbacks(
+[wheel_odometry.py-10]                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+[wheel_odometry.py-10]     return next(self._cb_iter)
+[wheel_odometry.py-10]            ^^^^^^^^^^^^^^^^^^^
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 781, in _wait_for_ready_callbacks
+[wheel_odometry.py-10]     wait_set.wait(timeout_nsec)
+[wheel_odometry.py-10] KeyboardInterrupt
+[wheel_odometry.py-10] 
+[wheel_odometry.py-10] During handling of the above exception, another exception occurred:
+[wheel_odometry.py-10] 
+[wheel_odometry.py-10] Traceback (most recent call last):
+[wheel_odometry.py-10]   File "/work/ros2_ws/install/mooncar_control/lib/mooncar_control/wheel_odometry.py", line 138, in <module>
+[wheel_odometry.py-10]     main()
+[wheel_odometry.py-10]   File "/work/ros2_ws/install/mooncar_control/lib/mooncar_control/wheel_odometry.py", line 134, in main
+[wheel_odometry.py-10]     rclpy.shutdown()
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 134, in shutdown
+[wheel_odometry.py-10]     _shutdown(context=context)
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/utilities.py", line 82, in shutdown
+[wheel_odometry.py-10]     context.shutdown()
+[wheel_odometry.py-10]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/context.py", line 129, in shutdown
+[wheel_odometry.py-10]     self.__context.shutdown()
+[wheel_odometry.py-10] rclpy._rclpy_pybind11.RCLError: failed to shutdown: rcl_shutdown already called on the given context, at ./src/rcl/init.c:333
+[lifecycle_manager-24] [INFO] [1789311098.327275386] [lifecycle_manager_navigation]: Destroying lifecycle_manager_navigation
+[INFO] [launch]: process[gazebo-3] was required: shutting down launched system
+[bt_navigator-22] [INFO] [1789311098.451414555] [bt_navigator]: Completed Cleaning up
+[bt_navigator-22] [INFO] [1789311098.451505292] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.
+[bt_navigator-22] [INFO] [1789311098.461153045] [bt_navigator]: Destroying
+[planner_server-20] [INFO] [1789311098.566070957] [planner_server]: Deactivating plugin GridBased of type NavfnPlanner
+[planner_server-20] [INFO] [1789311098.566123852] [planner_server]: Destroying bond (planner_server) to lifecycle manager.
+[planner_server-20] [INFO] [1789311098.576388068] [planner_server]: Cleaning up
+[planner_server-20] [INFO] [1789311098.583074158] [global_costmap.global_costmap]: Cleaning up
+[planner_server-20] [INFO] [1789311098.587075588] [planner_server]: Cleaning up plugin GridBased of type NavfnPlanner
+[planner_server-20] [INFO] [1789311098.587360218] [planner_server]: Destroying plugin GridBased of type NavfnPlanner
+[ERROR] [launch]: Caught exception in launch (see debug for traceback): Cannot shutdown a ROS adapter that is not running
+[planner_server-20] [INFO] [1789311098.601866802] [planner_server]: Destroying bond (planner_server) to lifecycle manager.
+[planner_server-20] [INFO] [1789311098.603258858] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planner_server-20] [INFO] [1789311098.605203101] [global_costmap.global_costmap]: Destroying
+[planner_server-20] [INFO] [1789311098.612405421] [planner_server]: Destroying
+[INFO] [planner_server-20]: process has finished cleanly [pid 140804]
+[ERROR] [bridge_node-4]: process has died [pid 140356, exit code -11, cmd '/opt/ros/jazzy/lib/ros_gz_bridge/bridge_node --ros-args --log-level info --ros-args -r __node:=mooncar_gz_bridge -r __ns:=/ --params-file /tmp/launch_params_jvwgpkla'].
+[ERROR] [python3-15]: process[python3-15] failed to terminate '5' seconds after receiving 'SIGINT', escalating to 'SIGTERM'
+[INFO] [python3-15]: sending signal 'SIGTERM' to process[python3-15]
+[ERROR] [python3-15]: process has died [pid 140388, exit code -11, cmd 'python3 /source/containers/start_scene_gui.py /evidence/frontend-experiments/experiment-2abd63736b51'].

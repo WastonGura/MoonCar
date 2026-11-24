@@ -1,0 +1,292 @@
+{
+  "tested_commit": "454f3d098b3157b1561f5983173d126a75643262",
+  "experiment": "experiment-3bd33fb4e761",
+  "actual_scene_bounds_m": [
+    -15,
+    -15,
+    15,
+    15
+  ],
+  "visibility_assumed_bounds_m": [
+    -25.0,
+    -25.0,
+    25.0,
+    25.0
+  ],
+  "scoring_boundary_occurrences": 2,
+  "never_observed_outside_scene_cells": 0,
+  "first_capacity_warning_elapsed_seconds": 359.8035,
+  "pre_capacity_all_outside_example": {
+    "action": 24,
+    "kind": "advance",
+    "started_seconds": 355.69374999999997,
+    "ended_seconds": 374.7,
+    "target": [
+      12.669,
+      -14.261
+    ],
+    "yaw_degrees": 45.0,
+    "predicted_new_m2": 2.312,
+    "outside_scene_predicted_new_m2": 2.3125,
+    "all_predicted_new_outside": true,
+    "actual_new_total_m2": 0.0625,
+    "actual_new_in_predicted_view_m2": 0.0,
+    "motion_success": true,
+    "motion_stop": null,
+    "decision_before_capacity": true,
+    "selected_score": 0.1132910016060509,
+    "feasible_moves": 81
+  },
+  "late_motion": {
+    "window_elapsed_seconds": [
+      315.0,
+      473.4
+    ],
+    "sample_interval_s": 0.1,
+    "min_xy": [
+      10.686059527074157,
+      -14.205641270663039
+    ],
+    "max_xy": [
+      13.579487219325829,
+      -12.428960000718119
+    ],
+    "path_length_m": 8.456855451048357
+  },
+  "late_actions": [
+    {
+      "action": 21,
+      "kind": "turn",
+      "started_seconds": 315.39374999999995,
+      "ended_seconds": 321.8,
+      "target": [
+        10.681,
+        -12.381
+      ],
+      "yaw_degrees": 0.0,
+      "predicted_new_m2": 1.75,
+      "outside_scene_predicted_new_m2": 0.625,
+      "all_predicted_new_outside": false,
+      "actual_new_total_m2": 1.0,
+      "actual_new_in_predicted_view_m2": 0.8125,
+      "motion_success": true,
+      "motion_stop": null,
+      "decision_before_capacity": true,
+      "selected_score": 0.32765880810977754,
+      "feasible_moves": 100
+    },
+    {
+      "action": 22,
+      "kind": "advance",
+      "started_seconds": 322.0175,
+      "ended_seconds": 340.5,
+      "target": [
+        11.743,
+        -13.414
+      ],
+      "yaw_degrees": 45.0,
+      "predicted_new_m2": 3.062,
+      "outside_scene_predicted_new_m2": 2.4375,
+      "all_predicted_new_outside": false,
+      "actual_new_total_m2": 0.4375,
+      "actual_new_in_predicted_view_m2": 0.375,
+      "motion_success": true,
+      "motion_stop": null,
+      "decision_before_capacity": true,
+      "selected_score": 0.17464836315174742,
+      "feasible_moves": 100
+    },
+    {
+      "action": 23,
+      "kind": "turn",
+      "started_seconds": 340.5055,
+      "ended_seconds": 355.6,
+      "target": [
+        11.589,
+        -13.239
+      ],
+      "yaw_degrees": -135.0,
+      "predicted_new_m2": 1.188,
+      "outside_scene_predicted_new_m2": 0.375,
+      "all_predicted_new_outside": false,
+      "actual_new_total_m2": 1.625,
+      "actual_new_in_predicted_view_m2": 0.8125,
+      "motion_success": true,
+      "motion_stop": null,
+      "decision_before_capacity": true,
+      "selected_score": 0.14740783663815257,
+      "feasible_moves": 82
+    },
+    {
+      "action": 24,
+      "kind": "advance",
+      "started_seconds": 355.69374999999997,
+      "ended_seconds": 374.7,
+      "target": [
+        12.669,
+        -14.261
+      ],
+      "yaw_degrees": 45.0,
+      "predicted_new_m2": 2.312,
+      "outside_scene_predicted_new_m2": 2.3125,
+      "all_predicted_new_outside": true,
+      "actual_new_total_m2": 0.0625,
+      "actual_new_in_predicted_view_m2": 0.0,
+      "motion_success": true,
+      "motion_stop": null,
+      "decision_before_capacity": true,
+      "selected_score": 0.1132910016060509,
+      "feasible_moves": 81
+    },
+    {
+      "action": 25,
+      "kind": "turn",
+      "started_seconds": 374.69374999999997,
+      "ended_seconds": 381.1,
+      "target": [
+        12.499,
+        -14.114
+      ],
+      "yaw_degrees": 0.0,
+      "predicted_new_m2": 0.688,
+      "outside_scene_predicted_new_m2": 0.6875,
+      "all_predicted_new_outside": true,
+      "actual_new_total_m2": 0.0,
+      "actual_new_in_predicted_view_m2": 0.0,
+      "motion_success": true,
+      "motion_stop": null,
+      "decision_before_capacity": false,
+      "selected_score": 0.10382667462406255,
+      "feasible_moves": 60
+    },
+    {
+      "action": 26,
+      "kind": "advance",
+      "started_seconds": 381.2235,
+      "ended_seconds": 403.2,
+      "target": [
+        13.561,
+        -13.054
+      ],
+      "yaw_degrees": -135.0,
+      "predicted_new_m2": 2.062,
+      "outside_scene_predicted_new_m2": 2.0625,
+      "all_predicted_new_outside": true,
+      "actual_new_total_m2": 0.0,
+      "actual_new_in_predicted_view_m2": 0.0,
+      "motion_success": true,
+      "motion_stop": null,
+      "decision_before_capacity": false,
+      "selected_score": 0.09148479428173757,
+      "feasible_moves": 60
+    },
+    {
+      "action": 27,
+      "kind": "turn",
+      "started_seconds": 403.2475,
+      "ended_seconds": 416.7,
+      "target": [
+        13.461,
+        -13.276
+      ],
+      "yaw_degrees": 45.0,
+      "predicted_new_m2": 0.75,
+      "outside_scene_predicted_new_m2": 0.75,
+      "all_predicted_new_outside": true,
+      "actual_new_total_m2": 0.0,
+      "actual_new_in_predicted_view_m2": 0.0,
+      "motion_success": true,
+      "motion_stop": null,
+      "decision_before_capacity": false,
+      "selected_score": 0.08090000374500594,
+      "feasible_moves": 46
+    },
+    {
+      "action": 28,
+      "kind": "turn",
+      "started_seconds": 416.6995,
+      "ended_seconds": 425.5,
+      "target": [
+        13.454,
+        -13.289
+      ],
+      "yaw_degrees": -45.0,
+      "predicted_new_m2": 0.625,
+      "outside_scene_predicted_new_m2": 0.625,
+      "all_predicted_new_outside": true,
+      "actual_new_total_m2": 0.0,
+      "actual_new_in_predicted_view_m2": 0.0,
+      "motion_success": true,
+      "motion_stop": null,
+      "decision_before_capacity": false,
+      "selected_score": 0.07597893514177607,
+      "feasible_moves": 46
+    },
+    {
+      "action": 29,
+      "kind": "advance",
+      "started_seconds": 425.7,
+      "ended_seconds": 458.3,
+      "target": [
+        10.449,
+        -13.308
+      ],
+      "yaw_degrees": 0.0,
+      "predicted_new_m2": 2.125,
+      "outside_scene_predicted_new_m2": 2.0625,
+      "all_predicted_new_outside": false,
+      "actual_new_total_m2": 0.0,
+      "actual_new_in_predicted_view_m2": 0.0,
+      "motion_success": true,
+      "motion_stop": null,
+      "decision_before_capacity": false,
+      "selected_score": 0.07068272791523884,
+      "feasible_moves": 46
+    },
+    {
+      "action": 30,
+      "kind": "advance",
+      "started_seconds": 458.45824999999996,
+      "ended_seconds": 473.2,
+      "target": [
+        12.092,
+        -13.324
+      ],
+      "yaw_degrees": -45.0,
+      "predicted_new_m2": 1.625,
+      "outside_scene_predicted_new_m2": 1.625,
+      "all_predicted_new_outside": true,
+      "actual_new_total_m2": 0.0,
+      "actual_new_in_predicted_view_m2": 0.0,
+      "motion_success": true,
+      "motion_stop": null,
+      "decision_before_capacity": false,
+      "selected_score": 0.1148245723042665,
+      "feasible_moves": 8
+    }
+  ],
+  "confirmed_mechanisms": [
+    "Visibility rewards include cells outside physical scene; motion execution still checks actual task region",
+    "Same surface_view_v2 planner is used with both terrain classification strategies",
+    "Ordinary action success records motion success even when measured map gain is zero",
+    "Measured gain/residual are recorded but not used to down-rank failed view predictions",
+    "History excludes nearby matching orientations, allowing different headings and nearby moves",
+    "Wider boundary fallback is only attempted when ordinary candidate selection has no positive candidate",
+    "Capacity rejection freezes the measured map later; it cannot explain the earlier out-of-scene rewards alone"
+  ],
+  "limits": [
+    "No new simulation and no controller or planner mutation",
+    "Outside predictions are per-action values, not unique cumulative area",
+    "Final map is used only to verify outside cells were never observed; recorded expected_new is used for each historical decision",
+    "No counterfactual claim that removing capacity alone or clipping rewards guarantees full-field coverage",
+    "Existing resource-isolation limitation remains; geometric boundary mismatch is directly inspectable in saved decisions"
+  ],
+  "input_sha256": {
+    "reports\\v3_eight_minute_comparison_20261117\\candidate-result.json": "7877c6bcc81d0126ff38ed280631568899e007f84e9e48ff21b6e376dd66d7f4",
+    "reports\\v3_eight_minute_comparison_20261117\\candidate-map.json": "c2e4e174a21037483a278c0a3a5c327ef8f1de5d03b348cc7b30d3461ed895dc",
+    "reports\\v3_eight_minute_comparison_20261117\\reference-metadata.json": "8ad1576308d4555445516897a0beafe24bebbf46f887b225e896c598840efd8b",
+    "reports\\v3_eight_minute_comparison_20261117\\long-run-summary.json": "2bf2db6fa8c0192c1822b76070939254caa565dfbab1b870f07ed92a5a77dfae",
+    "scripts\\autonomous_survey.py": "6c7c0019fc280762fa704fd47922e3cf40eace8e05520a95fdceb2fec6bb7215",
+    "tmp\\ros_acceptance\\v3-eight-minute-comparison-20261117\\candidate\\case\\observer\\truth.jsonl": "d077415ac98d03530f7c9e15784f75a31e5ba0c7fd443afb6f4327fe17493385"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "results": [
+    {
+      "name": "03-pure_turn-flat-1000us-left-1",
+      "physical_round_passed": true,
+      "source_point_rows": 160000,
+      "motion_steps": 20000,
+      "all_contact_normals_unit": true,
+      "maximum_normal_difference_rad": 0.0,
+      "maximum_normal_difference_deg": 0.0,
+      "tilted_point_count": 0,
+      "tilted_step_count": 0,
+      "point_count_histogram": {
+        "8": 20000
+      },
+      "maximum_ground_projection_distance_m": 7.124938819491611e-09,
+      "maximum_center_displacement_m": 0.0001725562688298195,
+      "actual_other_collision_ids": [
+        7
+      ],
+      "other_collision_scoped_name": "Not in archived ECS identity registry; association is geometric projection",
+      "mu": 0.8,
+      "mu2": 0.72,
+      "source_empty_forces_not_imputed": true
+    },
+    {
+      "name": "14-pure_turn-ramp-1000us-left",
+      "physical_round_passed": false,
+      "source_point_rows": 179033,
+      "motion_steps": 20000,
+      "all_contact_normals_unit": true,
+      "maximum_normal_difference_rad": 0.0038738603792990395,
+      "maximum_normal_difference_deg": 0.22195585015678324,
+      "tilted_point_count": 970,
+      "tilted_step_count": 495,
+      "point_count_histogram": {
+        "4": 3,
+        "6": 30,
+        "7": 9,
+        "8": 13238,
+        "9": 808,
+        "10": 3979,
+        "11": 369,
+        "12": 587,
+        "13": 114,
+        "14": 276,
+        "15": 29,
+        "16": 558
+      },
+      "maximum_ground_projection_distance_m": 2.507152473479879e-06,
+      "maximum_center_displacement_m": 0.010285963351157402,
+      "actual_other_collision_ids": [
+        7
+      ],
+      "other_collision_scoped_name": "Not in archived ECS identity registry; association is geometric projection",
+      "mu": 0.8,
+      "mu2": 0.72,
+      "source_empty_forces_not_imputed": true,
+      "intersecting_faces": 12,
+      "all_local_vertex_heights_zero": true,
+      "local_triangle_normal_range": {
+        "0": [
+          0.0,
+          0.0
+        ],
+        "1": [
+          0.0,
+          0.0
+        ],
+        "2": [
+          1.0,
+          1.0
+        ]
+      },
+      "coplanar_internal_edges": 13,
+      "median_seam_distance_all_points_m": 0.028717253238197234,
+      "median_seam_distance_tilted_points_m": 2.8284271247470562e-05,
+      "tilted_points_within_1mm_seam_fraction": 0.6257731958762887,
+      "seam_categories": {
+        "shared_indices": {
+          "edges": 6,
+          "median_tilted_distance_m": 3.6661808728284936e-05,
+          "tilted_within_1mm_fraction": 0.5938144329896907
+        },
+        "duplicated_indices": {
+          "edges": 7,
+          "median_tilted_distance_m": 0.039171869310491825,
+          "tilted_within_1mm_fraction": 0.031958762886597936
+        }
+      },
+      "tilted_nearest_shared_fraction": 0.9649484536082474,
+      "tilted_nearest_duplicated_fraction": 0.03505154639175258,
+      "tilted_nearest_tie_fraction": 0.0
+    }
+  ],
+  "input_hashes": {
+    "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\ros2_ws\\src\\mooncar_gazebo\\models\\terrain_v2\\ramp\\regolith_passable.obj": "ac49ea41d8f42388ea253bc5f6711934009691eccf3b001957736abf670a7f20",
+    "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\scripts\\r5_origin_analysis.py": "5408923446c31e77913f1fd4b2f66bb9dc340f404fca954f9431079af21a6df2",
+    "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\03-pure_turn-flat-1000us-left-1\\result.json": "3d669229f48b29fcde7ccc6ec6dba560d7f509fe64b3f467cbffd50e3065962e",
+    "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\03-pure_turn-flat-1000us-left-1\\world.sdf": "ca1ff264c89d0191e10797ac2f9e2bec534b9549da410bda9b27d03204d28024",
+    "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\03-pure_turn-flat-1000us-left-1\\physics-steps.csv": "0586a0bfb065143e30592cd1db8187fcf692df213abed8afad5edde9b53ea0ed",
+    "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\03-pure_turn-flat-1000us-left-1\\03-pure_turn-flat-1000us-left-1-contact-steps.csv": "bcdd8e4d3210ad89db129485162f1e8fdb22922f9020d377cd550bede7236bea",
+    "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\14-pure_turn-ramp-1000us-left\\result.json": "ce267242d367cd0c53d6cafab72be3a01f16bad68958d9a79569fdfecf195105",
+    "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\14-pure_turn-ramp-1000us-left\\world.sdf": "66fe1f48d7fa99ed36da56d082ea59782c14d47b55ece5c2163437f5ff3efeb8",
+    "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\14-pure_turn-ramp-1000us-left\\physics-steps.csv": "8b23a536daf1dfc0a959faa76de05d398fc04524fde8c28faeb2a6488f1cf0fb",
+    "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-turn-gate-validation-20261011\\campaign\\14-pure_turn-ramp-1000us-left\\14-pure_turn-ramp-1000us-left-contact-steps.csv": "cc3af4d64ce5b1e8aae354b38ad51a79402e7c7f53400f4a6562ecfca59ee1b3"
+  },
+  "new_simulations": 0,
+  "old_records_changed": false,
+  "mechanism_confirmed": false,
+  "fix_verified": false,
+  "production_changed": false
+}

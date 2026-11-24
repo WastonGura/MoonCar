@@ -1,0 +1,3180 @@
+{
+  "status": "captured",
+  "frames": 65,
+  "dropped_selected_frames": 2,
+  "duration": 34.7,
+  "xy_rmse_m": 0.025649090607715887,
+  "xy_max_m": 0.09827190925162785,
+  "robot_z_max_abs_m": 8.677502525901028e-10,
+  "camera_z_max_abs_m": 9.369046649609913e-10,
+  "yaw_max_abs_deg": 0.009126153560019508,
+  "extrinsic_max_abs_matrix_difference": 4.897249272772797e-12,
+  "sampled_truth_path_m": 0.7254891131364967,
+  "ground_points": 128706,
+  "correction_fitted": false,
+  "accepted_global_accuracy": false,
+  "true_pose_ground_rmse_m": 2.5553322796367856e-07,
+  "true_pose_ground_bias_m": -1.3353194050300988e-08,
+  "map_pose_ground_rmse_m": 2.556341657721611e-07,
+  "map_pose_ground_bias_m": -1.2476201340688458e-08,
+  "interior_points": 125271,
+  "true_pose_interior_rmse_m": 2.5566047667265447e-07,
+  "true_pose_interior_bias_m": -9.784412898823974e-09,
+  "map_pose_interior_rmse_m": 2.557764831427976e-07,
+  "map_pose_interior_bias_m": -8.913129376494429e-09,
+  "interior_spatial_margin_m": 0.25,
+  "limitations": [
+    "One controlled trajectory, not global or hardware calibration.",
+    "Truth interpolation requires bracketing gap <= 0.05 simulation seconds; rejected samples are retained in drops.json.",
+    "Ground subset uses independent world XY top-surface identity; no height-error rejection. Points are temporally correlated.",
+    "Interior subset additionally excludes non-plane visual AABBs inflated by 0.25 m; excluded footprint points remain in full-ground statistics.",
+    "True-pose reprojection isolates pose contribution but still includes sensor projection/rendering errors; no depth image refit.",
+    "Fixed camera extrinsics come from the converted simulator model, not fitted against observed ground."
+  ]
+}
+Replayed 1/65 synchronized frames
+Replayed 41/65 synchronized frames
+[
+  {
+    "category": "all",
+    "cells": 1258,
+    "observed": 266,
+    "unobserved": 992,
+    "invalid": 46,
+    "paired": 220,
+    "single_surface_pairs": 205,
+    "valid_fraction": 0.8270676691729323,
+    "height_rmse_m": 0.00014089592997721133,
+    "slope_mae_deg": 0.023545141289433705
+  },
+  {
+    "category": "ground",
+    "cells": 194,
+    "observed": 194,
+    "unobserved": 0,
+    "invalid": 37,
+    "paired": 157,
+    "single_surface_pairs": 157,
+    "valid_fraction": 0.8092783505154639,
+    "height_rmse_m": 4.929285751122826e-07,
+    "slope_mae_deg": 4.919854872178704e-05
+  },
+  {
+    "category": "sloped_top",
+    "cells": 56,
+    "observed": 56,
+    "unobserved": 0,
+    "invalid": 8,
+    "paired": 48,
+    "single_surface_pairs": 48,
+    "valid_fraction": 0.8571428571428571,
+    "height_rmse_m": 2.5276744109773716e-07,
+    "slope_mae_deg": 8.872840912373577e-05
+  },
+  {
+    "category": "level_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "curved_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "steep_side",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "mixed",
+    "cells": 16,
+    "observed": 16,
+    "unobserved": 0,
+    "invalid": 1,
+    "paired": 15,
+    "single_surface_pairs": 0,
+    "valid_fraction": 0.9375,
+    "height_rmse_m": 0.0005395877848931361,
+    "slope_mae_deg": 0.3445298631925437
+  },
+  {
+    "category": "no_visible_reference",
+    "cells": 992,
+    "observed": 0,
+    "unobserved": 992,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  }
+]
+{
+  "status": "captured",
+  "frames": 63,
+  "dropped_selected_frames": 1,
+  "duration": 34.7,
+  "xy_rmse_m": 0.04202787865388255,
+  "xy_max_m": 0.0693960442056643,
+  "robot_z_max_abs_m": 8.670447091851774e-10,
+  "camera_z_max_abs_m": 9.467782113858902e-10,
+  "yaw_max_abs_deg": 0.20003269971278903,
+  "extrinsic_max_abs_matrix_difference": 4.897082739319103e-12,
+  "sampled_truth_path_m": 0.7424525154187338,
+  "ground_points": 122359,
+  "correction_fitted": false,
+  "accepted_global_accuracy": false,
+  "true_pose_ground_rmse_m": 3.670745378664972e-07,
+  "true_pose_ground_bias_m": -2.3626914412933526e-07,
+  "map_pose_ground_rmse_m": 3.6660899930661104e-07,
+  "map_pose_ground_bias_m": -2.3554544288370804e-07,
+  "interior_points": 116574,
+  "true_pose_interior_rmse_m": 3.705698327396451e-07,
+  "true_pose_interior_bias_m": -2.383748822081506e-07,
+  "map_pose_interior_rmse_m": 3.7010657778875877e-07,
+  "map_pose_interior_bias_m": -2.3765852899855672e-07,
+  "interior_spatial_margin_m": 0.25,
+  "limitations": [
+    "One controlled trajectory, not global or hardware calibration.",
+    "Truth interpolation requires bracketing gap <= 0.05 simulation seconds; rejected samples are retained in drops.json.",
+    "Ground subset uses independent world XY top-surface identity; no height-error rejection. Points are temporally correlated.",
+    "Interior subset additionally excludes non-plane visual AABBs inflated by 0.25 m; excluded footprint points remain in full-ground statistics.",
+    "True-pose reprojection isolates pose contribution but still includes sensor projection/rendering errors; no depth image refit.",
+    "Fixed camera extrinsics come from the converted simulator model, not fitted against observed ground."
+  ]
+}
+Replayed 1/63 synchronized frames
+Replayed 41/63 synchronized frames
+[
+  {
+    "category": "all",
+    "cells": 1258,
+    "observed": 285,
+    "unobserved": 973,
+    "invalid": 49,
+    "paired": 236,
+    "single_surface_pairs": 221,
+    "valid_fraction": 0.8280701754385965,
+    "height_rmse_m": 0.00010851238805062488,
+    "slope_mae_deg": 0.01983807182851073
+  },
+  {
+    "category": "ground",
+    "cells": 213,
+    "observed": 213,
+    "unobserved": 0,
+    "invalid": 44,
+    "paired": 169,
+    "single_surface_pairs": 169,
+    "valid_fraction": 0.7934272300469484,
+    "height_rmse_m": 4.199088150943671e-07,
+    "slope_mae_deg": 6.548794496422103e-05
+  },
+  {
+    "category": "sloped_top",
+    "cells": 57,
+    "observed": 57,
+    "unobserved": 0,
+    "invalid": 5,
+    "paired": 52,
+    "single_surface_pairs": 52,
+    "valid_fraction": 0.9122807017543859,
+    "height_rmse_m": 5.082807312477902e-07,
+    "slope_mae_deg": 0.00016867072956573158
+  },
+  {
+    "category": "level_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "curved_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "steep_side",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "mixed",
+    "cells": 15,
+    "observed": 15,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 15,
+    "single_surface_pairs": 0,
+    "valid_fraction": 1.0,
+    "height_rmse_m": 0.00043041392637363783,
+    "slope_mae_deg": 0.3107964407261441
+  },
+  {
+    "category": "no_visible_reference",
+    "cells": 973,
+    "observed": 0,
+    "unobserved": 973,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  }
+]
+{
+  "status": "captured",
+  "frames": 62,
+  "dropped_selected_frames": 1,
+  "duration": 34.5,
+  "xy_rmse_m": 0.02776141822275807,
+  "xy_max_m": 0.041074315167875075,
+  "robot_z_max_abs_m": 8.679899065652277e-10,
+  "camera_z_max_abs_m": 9.849563109565196e-10,
+  "yaw_max_abs_deg": 0.052709742699592464,
+  "extrinsic_max_abs_matrix_difference": 4.897082739319103e-12,
+  "sampled_truth_path_m": 0.6421024142412296,
+  "ground_points": 127778,
+  "correction_fitted": false,
+  "accepted_global_accuracy": false,
+  "true_pose_ground_rmse_m": 5.855908424569228e-06,
+  "true_pose_ground_bias_m": -2.1336094027354942e-07,
+  "map_pose_ground_rmse_m": 5.855874720490455e-06,
+  "map_pose_ground_bias_m": -2.1261655761870152e-07,
+  "interior_points": 117317,
+  "true_pose_interior_rmse_m": 2.7989916538274507e-07,
+  "true_pose_interior_bias_m": -1.7782049457762433e-07,
+  "map_pose_interior_rmse_m": 2.793864860773573e-07,
+  "map_pose_interior_bias_m": -1.7708322998327222e-07,
+  "interior_spatial_margin_m": 0.25,
+  "limitations": [
+    "One controlled trajectory, not global or hardware calibration.",
+    "Truth interpolation requires bracketing gap <= 0.05 simulation seconds; rejected samples are retained in drops.json.",
+    "Ground subset uses independent world XY top-surface identity; no height-error rejection. Points are temporally correlated.",
+    "Interior subset additionally excludes non-plane visual AABBs inflated by 0.25 m; excluded footprint points remain in full-ground statistics.",
+    "True-pose reprojection isolates pose contribution but still includes sensor projection/rendering errors; no depth image refit.",
+    "Fixed camera extrinsics come from the converted simulator model, not fitted against observed ground."
+  ]
+}
+Replayed 1/62 synchronized frames
+Replayed 41/62 synchronized frames
+[
+  {
+    "category": "all",
+    "cells": 1258,
+    "observed": 226,
+    "unobserved": 1032,
+    "invalid": 39,
+    "paired": 187,
+    "single_surface_pairs": 173,
+    "valid_fraction": 0.827433628318584,
+    "height_rmse_m": 0.0005187744510494851,
+    "slope_mae_deg": 0.05417013176283182
+  },
+  {
+    "category": "ground",
+    "cells": 182,
+    "observed": 182,
+    "unobserved": 0,
+    "invalid": 30,
+    "paired": 152,
+    "single_surface_pairs": 152,
+    "valid_fraction": 0.8351648351648352,
+    "height_rmse_m": 5.366256581062527e-05,
+    "slope_mae_deg": 0.005153024341137956
+  },
+  {
+    "category": "sloped_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "level_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "curved_top",
+    "cells": 30,
+    "observed": 28,
+    "unobserved": 2,
+    "invalid": 7,
+    "paired": 21,
+    "single_surface_pairs": 21,
+    "valid_fraction": 0.75,
+    "height_rmse_m": 0.0013279435143264014,
+    "slope_mae_deg": 0.17938146511563674
+  },
+  {
+    "category": "steep_side",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "mixed",
+    "cells": 14,
+    "observed": 14,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 14,
+    "single_surface_pairs": 0,
+    "valid_fraction": 1.0,
+    "height_rmse_m": 0.0009583062662515783,
+    "slope_mae_deg": 0.39853886945487205
+  },
+  {
+    "category": "no_visible_reference",
+    "cells": 1032,
+    "observed": 2,
+    "unobserved": 1030,
+    "invalid": 2,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": 0.0,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  }
+]
+{
+  "status": "captured",
+  "frames": 63,
+  "dropped_selected_frames": 1,
+  "duration": 34.6,
+  "xy_rmse_m": 0.014864709167755882,
+  "xy_max_m": 0.03088022837975176,
+  "robot_z_max_abs_m": 8.676205590706427e-10,
+  "camera_z_max_abs_m": 9.42806305248567e-10,
+  "yaw_max_abs_deg": 0.20264621453067477,
+  "extrinsic_max_abs_matrix_difference": 4.897082739319103e-12,
+  "sampled_truth_path_m": 0.629629750384471,
+  "ground_points": 127864,
+  "correction_fitted": false,
+  "accepted_global_accuracy": false,
+  "true_pose_ground_rmse_m": 6.429971141730621e-06,
+  "true_pose_ground_bias_m": -1.3163927768212824e-07,
+  "map_pose_ground_rmse_m": 6.429948754097989e-06,
+  "map_pose_ground_bias_m": -1.307705524889683e-07,
+  "interior_points": 115852,
+  "true_pose_interior_rmse_m": 1.9690544975690786e-07,
+  "true_pose_interior_bias_m": -1.021366511415569e-07,
+  "map_pose_interior_rmse_m": 1.9639630105507492e-07,
+  "map_pose_interior_bias_m": -1.0129250562233207e-07,
+  "interior_spatial_margin_m": 0.25,
+  "limitations": [
+    "One controlled trajectory, not global or hardware calibration.",
+    "Truth interpolation requires bracketing gap <= 0.05 simulation seconds; rejected samples are retained in drops.json.",
+    "Ground subset uses independent world XY top-surface identity; no height-error rejection. Points are temporally correlated.",
+    "Interior subset additionally excludes non-plane visual AABBs inflated by 0.25 m; excluded footprint points remain in full-ground statistics.",
+    "True-pose reprojection isolates pose contribution but still includes sensor projection/rendering errors; no depth image refit.",
+    "Fixed camera extrinsics come from the converted simulator model, not fitted against observed ground."
+  ]
+}
+Replayed 1/63 synchronized frames
+Replayed 41/63 synchronized frames
+[
+  {
+    "category": "all",
+    "cells": 1258,
+    "observed": 218,
+    "unobserved": 1040,
+    "invalid": 40,
+    "paired": 178,
+    "single_surface_pairs": 165,
+    "valid_fraction": 0.8165137614678899,
+    "height_rmse_m": 0.0005339968344807951,
+    "slope_mae_deg": 0.06100712799471128
+  },
+  {
+    "category": "ground",
+    "cells": 178,
+    "observed": 178,
+    "unobserved": 0,
+    "invalid": 34,
+    "paired": 144,
+    "single_surface_pairs": 144,
+    "valid_fraction": 0.8089887640449438,
+    "height_rmse_m": 3.884759295058922e-05,
+    "slope_mae_deg": 0.008946899674627778
+  },
+  {
+    "category": "sloped_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "level_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "curved_top",
+    "cells": 28,
+    "observed": 27,
+    "unobserved": 1,
+    "invalid": 6,
+    "paired": 21,
+    "single_surface_pairs": 21,
+    "valid_fraction": 0.7777777777777778,
+    "height_rmse_m": 0.0013717571936431173,
+    "slope_mae_deg": 0.26047952265031205
+  },
+  {
+    "category": "steep_side",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "mixed",
+    "cells": 13,
+    "observed": 13,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 13,
+    "single_surface_pairs": 0,
+    "valid_fraction": 1.0,
+    "height_rmse_m": 0.0009208598386013771,
+    "slope_mae_deg": 0.3154496349427428
+  },
+  {
+    "category": "no_visible_reference",
+    "cells": 1039,
+    "observed": 0,
+    "unobserved": 1039,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  }
+]
+{
+  "status": "captured",
+  "frames": 63,
+  "dropped_selected_frames": 2,
+  "duration": 34.6,
+  "xy_rmse_m": 0.04109105272512311,
+  "xy_max_m": 0.06697804793557542,
+  "robot_z_max_abs_m": 8.655114096867735e-10,
+  "camera_z_max_abs_m": 9.291739322403458e-10,
+  "yaw_max_abs_deg": 0.07195530976942045,
+  "extrinsic_max_abs_matrix_difference": 4.897009880933112e-12,
+  "sampled_truth_path_m": 0.7179250897406603,
+  "ground_points": 122060,
+  "correction_fitted": false,
+  "accepted_global_accuracy": false,
+  "true_pose_ground_rmse_m": 7.41123571626025e-05,
+  "true_pose_ground_bias_m": 1.9156104773106502e-07,
+  "map_pose_ground_rmse_m": 7.411236062277993e-05,
+  "map_pose_ground_bias_m": 1.9229848090207978e-07,
+  "interior_points": 117408,
+  "true_pose_interior_rmse_m": 2.788796425608608e-07,
+  "true_pose_interior_bias_m": -1.7417195852357162e-07,
+  "map_pose_interior_rmse_m": 2.7843446574821484e-07,
+  "map_pose_interior_bias_m": -1.7343914565314538e-07,
+  "interior_spatial_margin_m": 0.25,
+  "limitations": [
+    "One controlled trajectory, not global or hardware calibration.",
+    "Truth interpolation requires bracketing gap <= 0.05 simulation seconds; rejected samples are retained in drops.json.",
+    "Ground subset uses independent world XY top-surface identity; no height-error rejection. Points are temporally correlated.",
+    "Interior subset additionally excludes non-plane visual AABBs inflated by 0.25 m; excluded footprint points remain in full-ground statistics.",
+    "True-pose reprojection isolates pose contribution but still includes sensor projection/rendering errors; no depth image refit.",
+    "Fixed camera extrinsics come from the converted simulator model, not fitted against observed ground."
+  ]
+}
+Replayed 1/63 synchronized frames
+Replayed 41/63 synchronized frames
+[
+  {
+    "category": "all",
+    "cells": 1258,
+    "observed": 274,
+    "unobserved": 984,
+    "invalid": 50,
+    "paired": 223,
+    "single_surface_pairs": 208,
+    "valid_fraction": 0.8175182481751825,
+    "height_rmse_m": 0.00013873891652381733,
+    "slope_mae_deg": 0.026655445512967887
+  },
+  {
+    "category": "ground",
+    "cells": 202,
+    "observed": 202,
+    "unobserved": 0,
+    "invalid": 41,
+    "paired": 160,
+    "single_surface_pairs": 160,
+    "valid_fraction": 0.7970297029702971,
+    "height_rmse_m": 6.235852387454227e-05,
+    "slope_mae_deg": 0.011146323941870307
+  },
+  {
+    "category": "sloped_top",
+    "cells": 56,
+    "observed": 56,
+    "unobserved": 0,
+    "invalid": 8,
+    "paired": 48,
+    "single_surface_pairs": 48,
+    "valid_fraction": 0.8571428571428571,
+    "height_rmse_m": 4.649701496473477e-07,
+    "slope_mae_deg": 0.0001316391633689462
+  },
+  {
+    "category": "level_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "curved_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "steep_side",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "mixed",
+    "cells": 16,
+    "observed": 16,
+    "unobserved": 0,
+    "invalid": 1,
+    "paired": 15,
+    "single_surface_pairs": 0,
+    "valid_fraction": 0.9375,
+    "height_rmse_m": 0.0004946533152449158,
+    "slope_mae_deg": 0.2769622559233921
+  },
+  {
+    "category": "no_visible_reference",
+    "cells": 984,
+    "observed": 0,
+    "unobserved": 984,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  }
+]
+{
+  "status": "captured",
+  "frames": 63,
+  "dropped_selected_frames": 1,
+  "duration": 34.7,
+  "xy_rmse_m": 0.0825129122391958,
+  "xy_max_m": 0.09977597510859267,
+  "robot_z_max_abs_m": 8.656050419485864e-10,
+  "camera_z_max_abs_m": 9.263470546194696e-10,
+  "yaw_max_abs_deg": 0.2568286648792027,
+  "extrinsic_max_abs_matrix_difference": 4.897082739319103e-12,
+  "sampled_truth_path_m": 0.7180664202931917,
+  "ground_points": 126326,
+  "correction_fitted": false,
+  "accepted_global_accuracy": false,
+  "true_pose_ground_rmse_m": 1.9385671171061098e-07,
+  "true_pose_ground_bias_m": -1.3875527080126066e-07,
+  "map_pose_ground_rmse_m": 1.932288718496345e-07,
+  "map_pose_ground_bias_m": -1.3788829237560188e-07,
+  "interior_points": 123457,
+  "true_pose_interior_rmse_m": 1.9014478008442505e-07,
+  "true_pose_interior_bias_m": -1.3553714664075118e-07,
+  "map_pose_interior_rmse_m": 1.8952656948450406e-07,
+  "map_pose_interior_bias_m": -1.3467459787106912e-07,
+  "interior_spatial_margin_m": 0.25,
+  "limitations": [
+    "One controlled trajectory, not global or hardware calibration.",
+    "Truth interpolation requires bracketing gap <= 0.05 simulation seconds; rejected samples are retained in drops.json.",
+    "Ground subset uses independent world XY top-surface identity; no height-error rejection. Points are temporally correlated.",
+    "Interior subset additionally excludes non-plane visual AABBs inflated by 0.25 m; excluded footprint points remain in full-ground statistics.",
+    "True-pose reprojection isolates pose contribution but still includes sensor projection/rendering errors; no depth image refit.",
+    "Fixed camera extrinsics come from the converted simulator model, not fitted against observed ground."
+  ]
+}
+Replayed 1/63 synchronized frames
+Replayed 41/63 synchronized frames
+[
+  {
+    "category": "all",
+    "cells": 1258,
+    "observed": 279,
+    "unobserved": 979,
+    "invalid": 58,
+    "paired": 221,
+    "single_surface_pairs": 205,
+    "valid_fraction": 0.7921146953405018,
+    "height_rmse_m": 0.00011155025263302518,
+    "slope_mae_deg": 0.019684200897521997
+  },
+  {
+    "category": "ground",
+    "cells": 208,
+    "observed": 208,
+    "unobserved": 0,
+    "invalid": 51,
+    "paired": 157,
+    "single_surface_pairs": 157,
+    "valid_fraction": 0.7548076923076923,
+    "height_rmse_m": 3.9505414060013604e-07,
+    "slope_mae_deg": 5.1758524251821345e-05
+  },
+  {
+    "category": "sloped_top",
+    "cells": 55,
+    "observed": 55,
+    "unobserved": 0,
+    "invalid": 7,
+    "paired": 48,
+    "single_surface_pairs": 48,
+    "valid_fraction": 0.8727272727272727,
+    "height_rmse_m": 2.9315474020442123e-07,
+    "slope_mae_deg": 0.00015682098588452412
+  },
+  {
+    "category": "level_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "curved_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "steep_side",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "mixed",
+    "cells": 16,
+    "observed": 16,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 16,
+    "single_surface_pairs": 0,
+    "valid_fraction": 1.0,
+    "height_rmse_m": 0.00041457627320437633,
+    "slope_mae_deg": 0.270909681420148
+  },
+  {
+    "category": "no_visible_reference",
+    "cells": 979,
+    "observed": 0,
+    "unobserved": 979,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  }
+]
+{
+  "status": "captured",
+  "frames": 63,
+  "dropped_selected_frames": 1,
+  "duration": 34.300000000000004,
+  "xy_rmse_m": 0.038708147811323555,
+  "xy_max_m": 0.045323158049607445,
+  "robot_z_max_abs_m": 8.677044516291097e-10,
+  "camera_z_max_abs_m": 1.0045554943438617e-09,
+  "yaw_max_abs_deg": 0.20225455772917725,
+  "extrinsic_max_abs_matrix_difference": 4.896916205865409e-12,
+  "sampled_truth_path_m": 0.6377873918015512,
+  "ground_points": 128306,
+  "correction_fitted": false,
+  "accepted_global_accuracy": false,
+  "true_pose_ground_rmse_m": 2.1285834752700625e-07,
+  "true_pose_ground_bias_m": -7.614914815052524e-08,
+  "map_pose_ground_rmse_m": 2.123975695689189e-07,
+  "map_pose_ground_bias_m": -7.506069599637374e-08,
+  "interior_points": 114184,
+  "true_pose_interior_rmse_m": 1.8322145888861397e-07,
+  "true_pose_interior_bias_m": -5.956009552440665e-08,
+  "map_pose_interior_rmse_m": 1.8287996910842151e-07,
+  "map_pose_interior_bias_m": -5.8531325255035186e-08,
+  "interior_spatial_margin_m": 0.25,
+  "limitations": [
+    "One controlled trajectory, not global or hardware calibration.",
+    "Truth interpolation requires bracketing gap <= 0.05 simulation seconds; rejected samples are retained in drops.json.",
+    "Ground subset uses independent world XY top-surface identity; no height-error rejection. Points are temporally correlated.",
+    "Interior subset additionally excludes non-plane visual AABBs inflated by 0.25 m; excluded footprint points remain in full-ground statistics.",
+    "True-pose reprojection isolates pose contribution but still includes sensor projection/rendering errors; no depth image refit.",
+    "Fixed camera extrinsics come from the converted simulator model, not fitted against observed ground."
+  ]
+}
+Replayed 1/63 synchronized frames
+Replayed 41/63 synchronized frames
+[
+  {
+    "category": "all",
+    "cells": 1258,
+    "observed": 212,
+    "unobserved": 1046,
+    "invalid": 36,
+    "paired": 175,
+    "single_surface_pairs": 161,
+    "valid_fraction": 0.8301886792452831,
+    "height_rmse_m": 0.0004732882888869123,
+    "slope_mae_deg": 0.05472556306258995
+  },
+  {
+    "category": "ground",
+    "cells": 172,
+    "observed": 172,
+    "unobserved": 0,
+    "invalid": 28,
+    "paired": 144,
+    "single_surface_pairs": 144,
+    "valid_fraction": 0.8372093023255814,
+    "height_rmse_m": 4.608395747624847e-07,
+    "slope_mae_deg": 4.5628961459393624e-05
+  },
+  {
+    "category": "sloped_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "level_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "curved_top",
+    "cells": 24,
+    "observed": 23,
+    "unobserved": 1,
+    "invalid": 5,
+    "paired": 17,
+    "single_surface_pairs": 17,
+    "valid_fraction": 0.782608695652174,
+    "height_rmse_m": 0.001225874534121317,
+    "slope_mae_deg": 0.23289893857843022
+  },
+  {
+    "category": "steep_side",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "mixed",
+    "cells": 15,
+    "observed": 15,
+    "unobserved": 0,
+    "invalid": 1,
+    "paired": 14,
+    "single_surface_pairs": 0,
+    "valid_fraction": 0.9333333333333333,
+    "height_rmse_m": 0.0009875374437715808,
+    "slope_mae_deg": 0.4007943578335555
+  },
+  {
+    "category": "no_visible_reference",
+    "cells": 1047,
+    "observed": 2,
+    "unobserved": 1045,
+    "invalid": 2,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": 0.0,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  }
+]
+{
+  "status": "captured",
+  "frames": 63,
+  "dropped_selected_frames": 1,
+  "duration": 34.6,
+  "xy_rmse_m": 0.00845314638095931,
+  "xy_max_m": 0.03371034487033032,
+  "robot_z_max_abs_m": 8.680096780567097e-10,
+  "camera_z_max_abs_m": 1.1612088235413154e-09,
+  "yaw_max_abs_deg": 0.2579128563634166,
+  "extrinsic_max_abs_matrix_difference": 4.896961308675785e-12,
+  "sampled_truth_path_m": 0.6079166177062681,
+  "ground_points": 129746,
+  "correction_fitted": false,
+  "accepted_global_accuracy": false,
+  "true_pose_ground_rmse_m": 3.29533792159728e-05,
+  "true_pose_ground_bias_m": -8.050913685418035e-07,
+  "map_pose_ground_rmse_m": 3.295335508014898e-05,
+  "map_pose_ground_bias_m": -8.043182975373861e-07,
+  "interior_points": 120284,
+  "true_pose_interior_rmse_m": 3.6883545712911424e-07,
+  "true_pose_interior_bias_m": -2.2871135348322907e-07,
+  "map_pose_interior_rmse_m": 3.6830380625328135e-07,
+  "map_pose_interior_bias_m": -2.279472485540763e-07,
+  "interior_spatial_margin_m": 0.25,
+  "limitations": [
+    "One controlled trajectory, not global or hardware calibration.",
+    "Truth interpolation requires bracketing gap <= 0.05 simulation seconds; rejected samples are retained in drops.json.",
+    "Ground subset uses independent world XY top-surface identity; no height-error rejection. Points are temporally correlated.",
+    "Interior subset additionally excludes non-plane visual AABBs inflated by 0.25 m; excluded footprint points remain in full-ground statistics.",
+    "True-pose reprojection isolates pose contribution but still includes sensor projection/rendering errors; no depth image refit.",
+    "Fixed camera extrinsics come from the converted simulator model, not fitted against observed ground."
+  ]
+}
+Replayed 1/63 synchronized frames
+Replayed 41/63 synchronized frames
+[
+  {
+    "category": "all",
+    "cells": 1258,
+    "observed": 221,
+    "unobserved": 1037,
+    "invalid": 38,
+    "paired": 181,
+    "single_surface_pairs": 169,
+    "valid_fraction": 0.8280542986425339,
+    "height_rmse_m": 0.0005467311525746101,
+    "slope_mae_deg": 0.06720023612331456
+  },
+  {
+    "category": "ground",
+    "cells": 180,
+    "observed": 180,
+    "unobserved": 0,
+    "invalid": 32,
+    "paired": 146,
+    "single_surface_pairs": 146,
+    "valid_fraction": 0.8222222222222222,
+    "height_rmse_m": 4.6168533938069433e-07,
+    "slope_mae_deg": 4.0520704531755396e-05
+  },
+  {
+    "category": "sloped_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "level_top",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "curved_top",
+    "cells": 27,
+    "observed": 26,
+    "unobserved": 1,
+    "invalid": 3,
+    "paired": 23,
+    "single_surface_pairs": 23,
+    "valid_fraction": 0.8846153846153846,
+    "height_rmse_m": 0.0013981376042689886,
+    "slope_mae_deg": 0.204883821648723
+  },
+  {
+    "category": "steep_side",
+    "cells": 0,
+    "observed": 0,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": null,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  },
+  {
+    "category": "mixed",
+    "cells": 12,
+    "observed": 12,
+    "unobserved": 0,
+    "invalid": 0,
+    "paired": 12,
+    "single_surface_pairs": 0,
+    "valid_fraction": 1.0,
+    "height_rmse_m": 0.0008728990929260544,
+    "slope_mae_deg": 0.620416568128139
+  },
+  {
+    "category": "no_visible_reference",
+    "cells": 1039,
+    "observed": 3,
+    "unobserved": 1036,
+    "invalid": 3,
+    "paired": 0,
+    "single_surface_pairs": 0,
+    "valid_fraction": 0.0,
+    "height_rmse_m": null,
+    "slope_mae_deg": null
+  }
+]
+[
+  {
+    "scene": "visible_ramp_v1",
+    "folder": "visible_ramp_v1-repeat1-no_turn",
+    "condition": "approach",
+    "experiment": "experiment-baa6ebe5e4eb",
+    "split": "prospective_independent_world",
+    "frames": 65,
+    "baseline_frames": 9,
+    "baseline_last_stamp": 16.1,
+    "action_stamp": 17.777,
+    "motion_phase": "succeeded",
+    "planned_goal": [
+      -0.3,
+      1.0
+    ],
+    "initial_deficient": 121,
+    "path_deviation_max_m": 0.12057117293034882,
+    "tangent_yaw_deviation_max_deg": 30.85835546358419,
+    "tangent_yaw_semantics": "Post-action true heading deviation from start-goal line, including final turn; not a predictor input",
+    "path_deviation_semantics": "Post-action true XY distance to pre-action route; not a predictor input",
+    "query_before_motion": true,
+    "query_completed_sim_stamp": 17.777,
+    "observation_reached": null,
+    "observation_yaw_error_rad": null,
+    "observation_hold_sim_seconds": null,
+    "pure_target_baseline_cells": 46,
+    "pure_target_deficient_cells": 46
+  },
+  {
+    "scene": "visible_ramp_v1",
+    "folder": "visible_ramp_v1-repeat1-turn",
+    "condition": "approach",
+    "experiment": "experiment-2607cc3cf93e",
+    "split": "prospective_independent_world",
+    "frames": 63,
+    "baseline_frames": 10,
+    "baseline_last_stamp": 15.7,
+    "action_stamp": 16.761,
+    "motion_phase": "succeeded",
+    "planned_goal": [
+      -0.3,
+      1.0
+    ],
+    "initial_deficient": 121,
+    "path_deviation_max_m": 0.10445160149502708,
+    "tangent_yaw_deviation_max_deg": 35.67017569290499,
+    "tangent_yaw_semantics": "Post-action true heading deviation from start-goal line, including final turn; not a predictor input",
+    "path_deviation_semantics": "Post-action true XY distance to pre-action route; not a predictor input",
+    "query_before_motion": true,
+    "query_completed_sim_stamp": 16.761,
+    "observation_reached": true,
+    "observation_yaw_error_rad": 0.015230397206391211,
+    "observation_hold_sim_seconds": 20.157,
+    "pure_target_baseline_cells": 46,
+    "pure_target_deficient_cells": 46
+  },
+  {
+    "scene": "visible_curve_v1",
+    "folder": "visible_curve_v1-repeat1-turn",
+    "condition": "approach",
+    "experiment": "experiment-ee557ce32859",
+    "split": "prospective_independent_world",
+    "frames": 62,
+    "baseline_frames": 9,
+    "baseline_last_stamp": 16.7,
+    "action_stamp": 18.077,
+    "motion_phase": "succeeded",
+    "planned_goal": [
+      -0.8,
+      1.6
+    ],
+    "initial_deficient": 117,
+    "path_deviation_max_m": 0.0782724638236873,
+    "tangent_yaw_deviation_max_deg": 17.51602890368341,
+    "tangent_yaw_semantics": "Post-action true heading deviation from start-goal line, including final turn; not a predictor input",
+    "path_deviation_semantics": "Post-action true XY distance to pre-action route; not a predictor input",
+    "query_before_motion": true,
+    "query_completed_sim_stamp": 18.077,
+    "observation_reached": true,
+    "observation_yaw_error_rad": 0.0007326992591175747,
+    "observation_hold_sim_seconds": 21.221,
+    "pure_target_baseline_cells": 26,
+    "pure_target_deficient_cells": 20
+  },
+  {
+    "scene": "visible_curve_v1",
+    "folder": "visible_curve_v1-repeat1-no_turn",
+    "condition": "approach",
+    "experiment": "experiment-502f834ea0a7",
+    "split": "prospective_independent_world",
+    "frames": 63,
+    "baseline_frames": 9,
+    "baseline_last_stamp": 15.3,
+    "action_stamp": 16.678,
+    "motion_phase": "succeeded",
+    "planned_goal": [
+      -0.8,
+      1.6
+    ],
+    "initial_deficient": 117,
+    "path_deviation_max_m": 0.06904999256209722,
+    "tangent_yaw_deviation_max_deg": 14.432599267020226,
+    "tangent_yaw_semantics": "Post-action true heading deviation from start-goal line, including final turn; not a predictor input",
+    "path_deviation_semantics": "Post-action true XY distance to pre-action route; not a predictor input",
+    "query_before_motion": true,
+    "query_completed_sim_stamp": 16.678,
+    "observation_reached": null,
+    "observation_yaw_error_rad": null,
+    "observation_hold_sim_seconds": null,
+    "pure_target_baseline_cells": 26,
+    "pure_target_deficient_cells": 20
+  },
+  {
+    "scene": "visible_ramp_v1",
+    "folder": "visible_ramp_v1-repeat2-turn",
+    "condition": "approach",
+    "experiment": "experiment-e9097adbf361",
+    "split": "prospective_independent_world",
+    "frames": 63,
+    "baseline_frames": 9,
+    "baseline_last_stamp": 16.3,
+    "action_stamp": 17.998,
+    "motion_phase": "succeeded",
+    "planned_goal": [
+      -0.3,
+      1.0
+    ],
+    "initial_deficient": 121,
+    "path_deviation_max_m": 0.08377470924705097,
+    "tangent_yaw_deviation_max_deg": 30.820167889686857,
+    "tangent_yaw_semantics": "Post-action true heading deviation from start-goal line, including final turn; not a predictor input",
+    "path_deviation_semantics": "Post-action true XY distance to pre-action route; not a predictor input",
+    "query_before_motion": true,
+    "query_completed_sim_stamp": 17.998,
+    "observation_reached": true,
+    "observation_yaw_error_rad": 0.008804509936478659,
+    "observation_hold_sim_seconds": 20.025,
+    "pure_target_baseline_cells": 46,
+    "pure_target_deficient_cells": 46
+  },
+  {
+    "scene": "visible_ramp_v1",
+    "folder": "visible_ramp_v1-repeat2-no_turn",
+    "condition": "approach",
+    "experiment": "experiment-1a60b19ba566",
+    "split": "prospective_independent_world",
+    "frames": 63,
+    "baseline_frames": 10,
+    "baseline_last_stamp": 16.4,
+    "action_stamp": 17.578,
+    "motion_phase": "succeeded",
+    "planned_goal": [
+      -0.3,
+      1.0
+    ],
+    "initial_deficient": 121,
+    "path_deviation_max_m": 0.12409166606082293,
+    "tangent_yaw_deviation_max_deg": 35.21218063044243,
+    "tangent_yaw_semantics": "Post-action true heading deviation from start-goal line, including final turn; not a predictor input",
+    "path_deviation_semantics": "Post-action true XY distance to pre-action route; not a predictor input",
+    "query_before_motion": true,
+    "query_completed_sim_stamp": 17.578,
+    "observation_reached": null,
+    "observation_yaw_error_rad": null,
+    "observation_hold_sim_seconds": null,
+    "pure_target_baseline_cells": 46,
+    "pure_target_deficient_cells": 46
+  },
+  {
+    "scene": "visible_curve_v1",
+    "folder": "visible_curve_v1-repeat2-no_turn",
+    "condition": "approach",
+    "experiment": "experiment-6526cf6eeb8a",
+    "split": "prospective_independent_world",
+    "frames": 63,
+    "baseline_frames": 9,
+    "baseline_last_stamp": 15.5,
+    "action_stamp": 16.72,
+    "motion_phase": "succeeded",
+    "planned_goal": [
+      -0.8,
+      1.6
+    ],
+    "initial_deficient": 117,
+    "path_deviation_max_m": 0.09113765624214692,
+    "tangent_yaw_deviation_max_deg": 11.202789931538868,
+    "tangent_yaw_semantics": "Post-action true heading deviation from start-goal line, including final turn; not a predictor input",
+    "path_deviation_semantics": "Post-action true XY distance to pre-action route; not a predictor input",
+    "query_before_motion": true,
+    "query_completed_sim_stamp": 16.72,
+    "observation_reached": null,
+    "observation_yaw_error_rad": null,
+    "observation_hold_sim_seconds": null,
+    "pure_target_baseline_cells": 26,
+    "pure_target_deficient_cells": 20
+  },
+  {
+    "scene": "visible_curve_v1",
+    "folder": "visible_curve_v1-repeat2-turn",
+    "condition": "approach",
+    "experiment": "experiment-5dbf867bf5f8",
+    "split": "prospective_independent_world",
+    "frames": 63,
+    "baseline_frames": 9,
+    "baseline_last_stamp": 16.5,
+    "action_stamp": 17.959,
+    "motion_phase": "succeeded",
+    "planned_goal": [
+      -0.8,
+      1.6
+    ],
+    "initial_deficient": 117,
+    "path_deviation_max_m": 0.071418342608802,
+    "tangent_yaw_deviation_max_deg": 17.164335344331715,
+    "tangent_yaw_semantics": "Post-action true heading deviation from start-goal line, including final turn; not a predictor input",
+    "path_deviation_semantics": "Post-action true XY distance to pre-action route; not a predictor input",
+    "query_before_motion": true,
+    "query_completed_sim_stamp": 17.959,
+    "observation_reached": true,
+    "observation_yaw_error_rad": 0.011597412475929677,
+    "observation_hold_sim_seconds": 21.509,
+    "pure_target_baseline_cells": 26,
+    "pure_target_deficient_cells": 20
+  }
+]
+{
+  "trials": [
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scene": "visible_ramp_v1",
+      "experiment": "experiment-baa6ebe5e4eb",
+      "status": "evaluated",
+      "frames": 65,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 12,
+        "arrival": 22,
+        "decision": 24,
+        "post_turn": null,
+        "final": 65
+      },
+      "stage_last_stamps": {
+        "baseline": 16.1,
+        "preaction": 17.6,
+        "arrival": 22.7,
+        "decision": 23.7,
+        "post_turn": null,
+        "final": 46.2
+      },
+      "action_stamp": 17.777,
+      "arrival_event_stamp": 23.18,
+      "decision_event_stamp": 24.187,
+      "turn_event_stamp": null,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 11,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.6337623637225445,
+          "angle_rad": 0.816881181861272,
+          "remaining_seconds": 22.313,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 127,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.6337623637225445,
+          "angle_rad": 0.816881181861272,
+          "remaining_seconds": 22.313,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scene": "visible_ramp_v1",
+      "experiment": "experiment-2607cc3cf93e",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 10,
+        "preaction": 12,
+        "arrival": 21,
+        "decision": 23,
+        "post_turn": 27,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 15.7,
+        "preaction": 16.7,
+        "arrival": 21.5,
+        "decision": 22.6,
+        "post_turn": 25.1,
+        "final": 45.6
+      },
+      "action_stamp": 16.761,
+      "arrival_event_stamp": 22.051,
+      "decision_event_stamp": 23.059,
+      "turn_event_stamp": 25.443,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 7,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.794746535036421,
+          "angle_rad": 0.8973732675182106,
+          "remaining_seconds": 22.840999999999998,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 133,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.794746535036421,
+          "angle_rad": 0.8973732675182106,
+          "remaining_seconds": 22.840999999999998,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scene": "visible_curve_v1",
+      "experiment": "experiment-ee557ce32859",
+      "status": "evaluated",
+      "frames": 62,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 20,
+        "decision": 21,
+        "post_turn": 24,
+        "final": 62
+      },
+      "stage_last_stamps": {
+        "baseline": 16.7,
+        "preaction": 17.8,
+        "arrival": 22.8,
+        "decision": 23.3,
+        "post_turn": 25.0,
+        "final": 46.5
+      },
+      "action_stamp": 18.077,
+      "arrival_event_stamp": 22.877,
+      "decision_event_stamp": 23.883,
+      "turn_event_stamp": 25.279,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 22,
+          "opportunity_cells": [],
+          "estimated_seconds": 3.8941493238288096,
+          "angle_rad": 0.4470746619144048,
+          "remaining_seconds": 23.117,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 100,
+          "opportunity_cells": [
+            [
+              14,
+              6
+            ],
+            [
+              19,
+              6
+            ]
+          ],
+          "estimated_seconds": 3.8941493238288096,
+          "angle_rad": 0.4470746619144048,
+          "remaining_seconds": 23.117,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scene": "visible_curve_v1",
+      "experiment": "experiment-502f834ea0a7",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 19,
+        "decision": 21,
+        "post_turn": null,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 15.3,
+        "preaction": 16.3,
+        "arrival": 21.0,
+        "decision": 22.1,
+        "post_turn": null,
+        "final": 45.2
+      },
+      "action_stamp": 16.678,
+      "arrival_event_stamp": 21.546,
+      "decision_event_stamp": 22.547,
+      "turn_event_stamp": null,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 20,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.060392071676854,
+          "angle_rad": 0.530196035838427,
+          "remaining_seconds": 23.053,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 114,
+          "opportunity_cells": [
+            [
+              15,
+              6
+            ],
+            [
+              16,
+              6
+            ],
+            [
+              19,
+              6
+            ]
+          ],
+          "estimated_seconds": 4.060392071676854,
+          "angle_rad": 0.530196035838427,
+          "remaining_seconds": 23.053,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scene": "visible_ramp_v1",
+      "experiment": "experiment-e9097adbf361",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 22,
+        "decision": 23,
+        "post_turn": 27,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 16.3,
+        "preaction": 17.5,
+        "arrival": 23.2,
+        "decision": 23.8,
+        "post_turn": 25.9,
+        "final": 46.5
+      },
+      "action_stamp": 17.998,
+      "arrival_event_stamp": 23.301,
+      "decision_event_stamp": 24.308,
+      "turn_event_stamp": 26.475,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 9,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.632428098977692,
+          "angle_rad": 0.8162140494888459,
+          "remaining_seconds": 22.592,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 131,
+          "opportunity_cells": [
+            [
+              10,
+              9
+            ]
+          ],
+          "estimated_seconds": 4.632428098977692,
+          "angle_rad": 0.8162140494888459,
+          "remaining_seconds": 22.592,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scene": "visible_ramp_v1",
+      "experiment": "experiment-1a60b19ba566",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 10,
+        "preaction": 11,
+        "arrival": 21,
+        "decision": 23,
+        "post_turn": null,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 16.4,
+        "preaction": 17.0,
+        "arrival": 22.8,
+        "decision": 23.8,
+        "post_turn": null,
+        "final": 46.2
+      },
+      "action_stamp": 17.578,
+      "arrival_event_stamp": 22.873,
+      "decision_event_stamp": 23.878,
+      "turn_event_stamp": null,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 8,
+          "opportunity_cells": [],
+          "estimated_seconds": 4.785738391670513,
+          "angle_rad": 0.8928691958352566,
+          "remaining_seconds": 22.622,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 152,
+          "opportunity_cells": [
+            [
+              16,
+              4
+            ],
+            [
+              20,
+              4
+            ]
+          ],
+          "estimated_seconds": 4.785738391670513,
+          "angle_rad": 0.8928691958352566,
+          "remaining_seconds": 22.622,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scene": "visible_curve_v1",
+      "experiment": "experiment-6526cf6eeb8a",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 20,
+        "decision": 22,
+        "post_turn": null,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 15.5,
+        "preaction": 16.6,
+        "arrival": 21.5,
+        "decision": 22.5,
+        "post_turn": null,
+        "final": 45.2
+      },
+      "action_stamp": 16.72,
+      "arrival_event_stamp": 21.656,
+      "decision_event_stamp": 22.664,
+      "turn_event_stamp": null,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 23,
+          "opportunity_cells": [],
+          "estimated_seconds": 3.8879827953920354,
+          "angle_rad": 0.44399139769601775,
+          "remaining_seconds": 23.235999999999997,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 105,
+          "opportunity_cells": [
+            [
+              14,
+              6
+            ]
+          ],
+          "estimated_seconds": 3.8879827953920354,
+          "angle_rad": 0.44399139769601775,
+          "remaining_seconds": 23.235999999999997,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scene": "visible_curve_v1",
+      "experiment": "experiment-5dbf867bf5f8",
+      "status": "evaluated",
+      "frames": 63,
+      "stage_frames": {
+        "baseline": 9,
+        "preaction": 11,
+        "arrival": 19,
+        "decision": 21,
+        "post_turn": 24,
+        "final": 63
+      },
+      "stage_last_stamps": {
+        "baseline": 16.5,
+        "preaction": 17.7,
+        "arrival": 22.3,
+        "decision": 23.3,
+        "post_turn": 24.9,
+        "final": 46.5
+      },
+      "action_stamp": 17.959,
+      "arrival_event_stamp": 22.62,
+      "decision_event_stamp": 23.624,
+      "turn_event_stamp": 24.991,
+      "decisions": {
+        "focus": {
+          "version": "arrival-recheck-v1",
+          "turn": false,
+          "reason": "no_predicted_remaining_recovery",
+          "remaining_deficient": 23,
+          "opportunity_cells": [],
+          "estimated_seconds": 3.8247365643737976,
+          "angle_rad": 0.41236828218689886,
+          "remaining_seconds": 23.276,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        },
+        "all_observed": {
+          "version": "arrival-recheck-v1",
+          "turn": true,
+          "reason": "try_observation",
+          "remaining_deficient": 100,
+          "opportunity_cells": [
+            [
+              19,
+              6
+            ]
+          ],
+          "estimated_seconds": 3.8247365643737976,
+          "angle_rad": 0.41236828218689886,
+          "remaining_seconds": 23.276,
+          "meaning": "Resampling-only suggestion; skipping this heading does not end exploration"
+        }
+      }
+    }
+  ],
+  "groups": [
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 109,
+      "gained": 109,
+      "lost": 0,
+      "net": 109
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 121,
+      "valid_before": 109,
+      "valid_after": 110,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 121,
+      "valid_before": 110,
+      "valid_after": 110,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 121,
+      "valid_before": 109,
+      "valid_after": 110,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 121,
+      "valid_before": 110,
+      "valid_after": 110,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 43,
+      "gained": 43,
+      "lost": 0,
+      "net": 43
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 44,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 46,
+      "valid_before": 44,
+      "valid_after": 44,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 44,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 46,
+      "valid_before": 44,
+      "valid_after": 44,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 110,
+      "gained": 110,
+      "lost": 0,
+      "net": 110
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 121,
+      "valid_before": 110,
+      "valid_after": 114,
+      "gained": 4,
+      "lost": 0,
+      "net": 4
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "post_turn",
+      "cells": 121,
+      "valid_before": 114,
+      "valid_after": 116,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 121,
+      "valid_before": 116,
+      "valid_after": 116,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 121,
+      "valid_before": 110,
+      "valid_after": 116,
+      "gained": 6,
+      "lost": 0,
+      "net": 6
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 121,
+      "valid_before": 114,
+      "valid_after": 116,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 43,
+      "gained": 43,
+      "lost": 0,
+      "net": 43
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 45,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "post_turn",
+      "cells": 46,
+      "valid_before": 45,
+      "valid_after": 45,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 46,
+      "valid_before": 45,
+      "valid_after": 45,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 45,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 46,
+      "valid_before": 45,
+      "valid_after": 45,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 93,
+      "gained": 93,
+      "lost": 0,
+      "net": 93
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 117,
+      "valid_before": 93,
+      "valid_after": 95,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "post_turn",
+      "cells": 117,
+      "valid_before": 95,
+      "valid_after": 96,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 117,
+      "valid_before": 96,
+      "valid_after": 96,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 117,
+      "valid_before": 93,
+      "valid_after": 96,
+      "gained": 3,
+      "lost": 0,
+      "net": 3
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 117,
+      "valid_before": 95,
+      "valid_after": 96,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 17,
+      "gained": 17,
+      "lost": 0,
+      "net": 17
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "post_turn",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 89,
+      "gained": 89,
+      "lost": 0,
+      "net": 89
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 117,
+      "valid_before": 89,
+      "valid_after": 97,
+      "gained": 8,
+      "lost": 0,
+      "net": 8
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 117,
+      "valid_before": 97,
+      "valid_after": 97,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 117,
+      "valid_before": 89,
+      "valid_after": 97,
+      "gained": 8,
+      "lost": 0,
+      "net": 8
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 117,
+      "valid_before": 97,
+      "valid_after": 97,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 16,
+      "gained": 16,
+      "lost": 0,
+      "net": 16
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 20,
+      "valid_before": 16,
+      "valid_after": 17,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 20,
+      "valid_before": 16,
+      "valid_after": 17,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 20,
+      "valid_before": 17,
+      "valid_after": 17,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 111,
+      "gained": 111,
+      "lost": 0,
+      "net": 111
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 121,
+      "valid_before": 111,
+      "valid_after": 112,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "post_turn",
+      "cells": 121,
+      "valid_before": 112,
+      "valid_after": 113,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 121,
+      "valid_before": 113,
+      "valid_after": 113,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 121,
+      "valid_before": 111,
+      "valid_after": 113,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 121,
+      "valid_before": 112,
+      "valid_after": 113,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 43,
+      "gained": 43,
+      "lost": 0,
+      "net": 43
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 43,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "post_turn",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 43,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 43,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 43,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 43,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 121,
+      "valid_before": 0,
+      "valid_after": 111,
+      "gained": 111,
+      "lost": 0,
+      "net": 111
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 121,
+      "valid_before": 111,
+      "valid_after": 113,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 121,
+      "valid_before": 113,
+      "valid_after": 113,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 121,
+      "valid_before": 111,
+      "valid_after": 113,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 121,
+      "valid_before": 113,
+      "valid_after": 113,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 46,
+      "valid_before": 0,
+      "valid_after": 43,
+      "gained": 43,
+      "lost": 0,
+      "net": 43
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 44,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 46,
+      "valid_before": 44,
+      "valid_after": 44,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 46,
+      "valid_before": 43,
+      "valid_after": 44,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 46,
+      "valid_before": 44,
+      "valid_after": 44,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 92,
+      "gained": 92,
+      "lost": 0,
+      "net": 92
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 117,
+      "valid_before": 92,
+      "valid_after": 94,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 117,
+      "valid_before": 94,
+      "valid_after": 94,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 117,
+      "valid_before": 92,
+      "valid_after": 94,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 117,
+      "valid_before": 94,
+      "valid_after": 94,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 18,
+      "gained": 18,
+      "lost": 0,
+      "net": 18
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "preaction",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "arrival",
+      "cells": 117,
+      "valid_before": 0,
+      "valid_after": 93,
+      "gained": 93,
+      "lost": 0,
+      "net": 93
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "decision",
+      "cells": 117,
+      "valid_before": 93,
+      "valid_after": 94,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "post_turn",
+      "cells": 117,
+      "valid_before": 94,
+      "valid_after": 96,
+      "gained": 2,
+      "lost": 0,
+      "net": 2
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "final",
+      "cells": 117,
+      "valid_before": 96,
+      "valid_after": 97,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "after_arrival_total",
+      "cells": 117,
+      "valid_before": 93,
+      "valid_after": 97,
+      "gained": 4,
+      "lost": 0,
+      "net": 4
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "initial_deficient",
+      "stage": "after_decision_total",
+      "cells": 117,
+      "valid_before": 94,
+      "valid_after": 97,
+      "gained": 3,
+      "lost": 0,
+      "net": 3
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "preaction",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "arrival",
+      "cells": 20,
+      "valid_before": 0,
+      "valid_after": 18,
+      "gained": 18,
+      "lost": 0,
+      "net": 18
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "decision",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "post_turn",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 18,
+      "gained": 0,
+      "lost": 0,
+      "net": 0
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "final",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 19,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "after_arrival_total",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 19,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "scope": "pure_target",
+      "stage": "after_decision_total",
+      "cells": 20,
+      "valid_before": 18,
+      "valid_after": 19,
+      "gained": 1,
+      "lost": 0,
+      "net": 1
+    }
+  ]
+}
+{
+  "trials": [
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "arm": "no_turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 11,
+      "opportunity_cells": [],
+      "estimated_seconds": 4.6337623637225445,
+      "angle_rad": 0.816881181861272,
+      "remaining_seconds": 22.313,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 0,
+      "missed_recovery_cells": 0,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.4870000000000019
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "arm": "turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 7,
+      "opportunity_cells": [],
+      "estimated_seconds": 4.794746535036421,
+      "angle_rad": 0.8973732675182106,
+      "remaining_seconds": 22.840999999999998,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 2,
+      "missed_recovery_cells": 2,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.45899999999999963
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "arm": "turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 22,
+      "opportunity_cells": [],
+      "estimated_seconds": 3.8941493238288096,
+      "angle_rad": 0.4470746619144048,
+      "remaining_seconds": 23.117,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 1,
+      "missed_recovery_cells": 1,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.5829999999999984
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "arm": "no_turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 20,
+      "opportunity_cells": [],
+      "estimated_seconds": 4.060392071676854,
+      "angle_rad": 0.530196035838427,
+      "remaining_seconds": 23.053,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 0,
+      "missed_recovery_cells": 0,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.4469999999999992
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "arm": "turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 9,
+      "opportunity_cells": [],
+      "estimated_seconds": 4.632428098977692,
+      "angle_rad": 0.8162140494888459,
+      "remaining_seconds": 22.592,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 1,
+      "missed_recovery_cells": 1,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.5079999999999991
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "arm": "no_turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 8,
+      "opportunity_cells": [],
+      "estimated_seconds": 4.785738391670513,
+      "angle_rad": 0.8928691958352566,
+      "remaining_seconds": 22.622,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 0,
+      "missed_recovery_cells": 0,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.0779999999999994
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "arm": "no_turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 23,
+      "opportunity_cells": [],
+      "estimated_seconds": 3.8879827953920354,
+      "angle_rad": 0.44399139769601775,
+      "remaining_seconds": 23.235999999999997,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 0,
+      "missed_recovery_cells": 0,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.16400000000000148
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "arm": "turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 23,
+      "opportunity_cells": [],
+      "estimated_seconds": 3.8247365643737976,
+      "angle_rad": 0.41236828218689886,
+      "remaining_seconds": 23.276,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 3,
+      "missed_recovery_cells": 3,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.32399999999999807
+    }
+  ],
+  "pairs": [
+    {
+      "pair": "visible_curve_v1-repeat1",
+      "scope": "all_common_remaining",
+      "common_remaining": 17,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 1,
+      "net_recovered": 1,
+      "turn_only": 1,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_curve_v1-repeat1",
+      "scope": "pure_target",
+      "common_remaining": 2,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 0,
+      "net_recovered": 0,
+      "turn_only": 0,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_curve_v1-repeat2",
+      "scope": "all_common_remaining",
+      "common_remaining": 22,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 2,
+      "net_recovered": 2,
+      "turn_only": 2,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_curve_v1-repeat2",
+      "scope": "pure_target",
+      "common_remaining": 2,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 1,
+      "net_recovered": 1,
+      "turn_only": 1,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_ramp_v1-repeat1",
+      "scope": "all_common_remaining",
+      "common_remaining": 6,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 2,
+      "net_recovered": 2,
+      "turn_only": 2,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_ramp_v1-repeat1",
+      "scope": "pure_target",
+      "common_remaining": 0,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 0,
+      "net_recovered": 0,
+      "turn_only": 0,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_ramp_v1-repeat2",
+      "scope": "all_common_remaining",
+      "common_remaining": 6,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 1,
+      "net_recovered": 1,
+      "turn_only": 1,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_ramp_v1-repeat2",
+      "scope": "pure_target",
+      "common_remaining": 1,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 0,
+      "net_recovered": 0,
+      "turn_only": 0,
+      "no_turn_only": 0
+    }
+  ],
+  "rejections": [
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "reason": "zero_opportunity_but_later_recovery",
+      "cells": 2
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "reason": "zero_opportunity_but_later_recovery",
+      "cells": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "reason": "zero_opportunity_but_later_recovery",
+      "cells": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "reason": "zero_opportunity_but_later_recovery",
+      "cells": 3
+    },
+    {
+      "pair": "visible_curve_v1-repeat1",
+      "reason": "skip_would_miss_paired_turn_only_recovery",
+      "cells": 1
+    },
+    {
+      "pair": "visible_curve_v1-repeat2",
+      "reason": "skip_would_miss_paired_turn_only_recovery",
+      "cells": 2
+    },
+    {
+      "pair": "visible_ramp_v1-repeat1",
+      "reason": "skip_would_miss_paired_turn_only_recovery",
+      "cells": 2
+    },
+    {
+      "pair": "visible_ramp_v1-repeat2",
+      "reason": "skip_would_miss_paired_turn_only_recovery",
+      "cells": 1
+    },
+    {
+      "reason": "both_decision_branches_not_validated",
+      "try_turn": 0,
+      "skip_turn": 8
+    }
+  ]
+}
+ALL ARRIVAL ANALYSIS FINISHED

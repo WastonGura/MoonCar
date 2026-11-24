@@ -1,0 +1,128 @@
+{
+  "scope": "Offline AST hook replay only; no ROS imports, Docker, Gazebo or physical trials",
+  "declared_shift_world": {
+    "pose": "0.05 0 .03 0 0 0",
+    "contact_observer_count": 1,
+    "step_observer_count": 1
+  },
+  "after_actual_prepare_wrappers": {
+    "pose": "0.05 0 .03 0 0 0",
+    "contact_observer_count": 1,
+    "step_observer_count": 1
+  },
+  "after_runtime_observer_injection": {
+    "pose": "0.05 0 .03 0 0 0",
+    "contact_observer_count": 1,
+    "step_observer_count": 1
+  },
+  "qualification_from_old_round": {
+    "round_id": "offline-test",
+    "eligible": true,
+    "checks": {
+      "data_complete": true,
+      "ground_contact_gate": true,
+      "stop_zero": true,
+      "observer_flush_confirmed": true,
+      "receiver_verified": true,
+      "raw_fixture_passed": true,
+      "capture_drained": true,
+      "image_content": true,
+      "origin_qualification": true,
+      "gate": true,
+      "allocation": true,
+      "contact_source": true,
+      "no_critical_errors": true,
+      "finite_geometry": true,
+      "valid_exit": true
+    },
+    "geometric_screen_passed": false,
+    "diagnostic_screen_exceeded": true,
+    "maximum_displacement_m": 0.010285963351157402,
+    "final_displacement_xy_m": [
+      -0.005904746014633648,
+      -0.008422292832953582
+    ],
+    "vehicle_accepted": false,
+    "world_consumed": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011\\worlds\\world_shift_x05.sdf",
+    "turn_slip_error": "ValueError('Existing 1 cm turn screen failed')"
+  },
+  "qualification_with_image_content_failure": {
+    "round_id": "offline-test",
+    "eligible": false,
+    "checks": {
+      "data_complete": true,
+      "ground_contact_gate": true,
+      "stop_zero": true,
+      "observer_flush_confirmed": true,
+      "receiver_verified": true,
+      "raw_fixture_passed": true,
+      "capture_drained": true,
+      "image_content": false,
+      "origin_qualification": true,
+      "gate": true,
+      "allocation": true,
+      "contact_source": true,
+      "no_critical_errors": true,
+      "finite_geometry": true,
+      "valid_exit": true
+    },
+    "geometric_screen_passed": false,
+    "diagnostic_screen_exceeded": true,
+    "maximum_displacement_m": 0.010285963351157402,
+    "final_displacement_xy_m": [
+      -0.005904746014633648,
+      -0.008422292832953582
+    ],
+    "vehicle_accepted": false,
+    "world_consumed": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011\\worlds\\world_shift_x05.sdf",
+    "turn_slip_error": "ValueError('Existing 1 cm turn screen failed')"
+  },
+  "qualification_with_origin_qualification_failure": {
+    "round_id": "offline-test",
+    "eligible": false,
+    "checks": {
+      "data_complete": true,
+      "ground_contact_gate": true,
+      "stop_zero": true,
+      "observer_flush_confirmed": true,
+      "receiver_verified": true,
+      "raw_fixture_passed": true,
+      "capture_drained": true,
+      "image_content": true,
+      "origin_qualification": false,
+      "gate": true,
+      "allocation": true,
+      "contact_source": true,
+      "no_critical_errors": true,
+      "finite_geometry": true,
+      "valid_exit": true
+    },
+    "geometric_screen_passed": false,
+    "diagnostic_screen_exceeded": true,
+    "maximum_displacement_m": 0.010285963351157402,
+    "final_displacement_xy_m": [
+      -0.005904746014633648,
+      -0.008422292832953582
+    ],
+    "vehicle_accepted": false,
+    "world_consumed": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011\\worlds\\world_shift_x05.sdf",
+    "turn_slip_error": "ValueError('Existing 1 cm turn screen failed')"
+  },
+  "mounted_evidence_dependencies": {
+    "observer": true,
+    "contact-observer": true,
+    "allocator": true,
+    "allocator-models/manifest.json": true,
+    "turn-slip": true,
+    "turn-models/pure_turn.sdf": true,
+    "slip-models/manifest.json": true,
+    "test-startup/image_dds_guard.py": true
+  },
+  "executed_source_sha256": {
+    "reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011\\check_r5_v2_offset_round.py": "96d2846d069f490c67579a8cebbf5bf56d33d9c143d4824302bb8b1c8b4e330a",
+    "reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011\\run_diagnosis_campaign.py": "78fa2c5bbc459fb22e31a72013c835097b55e84ff48904df77cfcbf131916ff4",
+    "scripts\\check_r5_turn_slip_round.py": "e7063d6a179f2d472cb252d6106288d0a38fd3c285ded3de9ee8153c38557d57",
+    "scripts\\check_r5_origin_round.py": "8cdbd9e17c15e84548f16b2da28cc18f41690c98a37ed5baf3f18b27dabf6d95",
+    "scripts\\check_r5_runtime.py": "7f89180bd5848503e61a5b046f4086eee138d6696a13452eb9c9c6d033ccd27a"
+  }
+}

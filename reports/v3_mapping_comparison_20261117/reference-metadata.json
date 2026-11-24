@@ -1,0 +1,46 @@
+{
+  "bounds": [
+    -15,
+    -15,
+    15,
+    15
+  ],
+  "frame": "map/world (declared initial placement)",
+  "resolution": 0.25,
+  "fine_sample_m": 0.05,
+  "reference": "Actual V3 triangular ground and highest rock/pebble collision surface at XY",
+  "mixed_policy": "5x5 samples with different exposed surface owners; material changes are not mixed",
+  "sample_policy": "Unregistered cell-centre estimated plane height minus exact reference centre height",
+  "alignment": "No ICP, no truth pose substitution, no fitted vertical offset, no filling",
+  "ground_grid_vs_collision_max_vertex_error_m": 6.106226635438361e-14,
+  "exposed_rock_cells": 181,
+  "rock_models": {
+    "1": "boulder_01",
+    "2": "boulder_02",
+    "3": "boulder_03",
+    "4": "boulder_04",
+    "5": "boulder_05",
+    "6": "surface_pebbles_ground"
+  },
+  "limitations": [
+    "2.5D comparison cannot represent vertical or multiple surfaces",
+    "Mixed detection samples at 5 cm and can miss sub-sample features",
+    "Single-surface slope reference is a 5x5 least-squares fit, not a sensor sample fit"
+  ],
+  "inputs": {
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder_00.obj": "de5dda8be5a555f774754af92f9b7cfa8d4a94861d4b8cbc599a499a1f6cc7ff",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder_01.obj": "58fd4d526a0d07f107add2ba179b789a547cccfb2bb2f1c8f88bf4c45124d804",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder_02.obj": "29257859503fffc14fa31d637290573fe70ef25592403bff7f1a79c75d1d7a61",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder_04.obj": "f1eb5dfdd5feecf7428d691f1acd122bc7130d37422c035fb5dc0f0f0d2d7dfb",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder_05.obj": "861d49d6bf9d8d4b3dc6b16bd6d070bc52ef6c46e00e03034d2376555fdf85da",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v3/survey/crater_floor.obj": "6df44e7dd0b64dadabf805369874ecbd26f55433161a4c0f2eee1985d6ecbbbd",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v3/survey/height_grid.npz": "6ff2866e5ca60715e054dce4976ff24574eda894a37d4d5cff5542a5137417a4",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v3/survey/manifest.json": "102d2f8e03dfe56c7c9d67fabb51af2c9df81c4149c0219bb8156a5bad6070fc",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v3/survey/regolith_passable.obj": "c4326b8d3f8b1f291137151a94df4c02045ed041ad0c8217b36726080e4b48df",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v3/survey/rock_boulder.obj": "8470d35204348e41c50dcfce49913c3780b933bf9b3601c56c9cf499ddf9f094",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v3/survey/rubble_gravel.obj": "4f5a03abb40244b4ebe8354f8aac47c58c1884f9c0c12c9d21398bfe70e6e58a",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v3/survey/sand_soft.obj": "a661a269fd5837d7dc0d509f416704a88d9ec4305474011a5999f85d1b6f4810",
+    "ros2_ws/src/mooncar_gazebo/models/terrain_v3/survey/surface_pebbles.obj": "7f30bd9b994c6654fddc2a401cefb8b14df86defe14f6728e1afef91307df288",
+    "ros2_ws/src/mooncar_gazebo/worlds/mooncar_survey_v3.sdf": "c51a010d456cd4ad6ce78e36d0958be84ae4bd6ad2193cdfd533cadef2b1eae4"
+  }
+}

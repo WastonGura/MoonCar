@@ -1,0 +1,9 @@
+﻿pair,scope,common_remaining,missing_pairs,no_turn_recovered,turn_recovered,net_recovered,turn_only,no_turn_only
+visible_curve_v1-repeat1,all_common_remaining,17,0,0,1,1,1,0
+visible_curve_v1-repeat1,pure_target,2,0,0,0,0,0,0
+visible_curve_v1-repeat2,all_common_remaining,22,0,0,2,2,2,0
+visible_curve_v1-repeat2,pure_target,2,0,0,1,1,1,0
+visible_ramp_v1-repeat1,all_common_remaining,6,0,0,2,2,2,0
+visible_ramp_v1-repeat1,pure_target,0,0,0,0,0,0,0
+visible_ramp_v1-repeat2,all_common_remaining,6,0,0,1,1,1,0
+visible_ramp_v1-repeat2,pure_target,1,0,0,0,0,0,0

@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(mooncar_image_observer LANGUAGES CXX)
+find_package(gz-transport13 REQUIRED)
+find_package(gz-msgs10 REQUIRED)
+add_executable(mooncar-image-observer ImageObserver.cc)
+target_link_libraries(mooncar-image-observer PRIVATE gz-transport13::core gz-msgs10::gz-msgs10)
+target_compile_features(mooncar-image-observer PRIVATE cxx_std_17)
+target_compile_options(mooncar-image-observer PRIVATE -Wall -Wextra -Werror)

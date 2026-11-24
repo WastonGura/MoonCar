@@ -1,0 +1,84 @@
+{
+  "finished_at": "2026-10-20T01:47:35.561391+09:00",
+  "source_baseline_reports_unchanged": true,
+  "protected_files": 677,
+  "evidence_paths_and_logical_bytes_preserved": true,
+  "evidence_files": 117439,
+  "evidence_logical_bytes": 248444683980,
+  "merged_duplicate_files": 2230,
+  "deduplicated_bytes": 94438779572,
+  "hardlinked_archival_file_groups_read_only": 666,
+  "lossless_compression_bytes_saved": 77799872078,
+  "compression_errors": [],
+  "compression_content_samples_unchanged": true,
+  "historical_evidence_verification": {
+    "laser-localization-20261020": {
+      "files_verified": 3765,
+      "all_content_sha256_unchanged": true
+    },
+    "live-gazebo-turn-localization-20261019": {
+      "files_verified": 911,
+      "all_content_sha256_unchanged": true
+    },
+    "live-gazebo-nav2-first-goal-20261019": {
+      "files_verified": 764,
+      "all_content_sha256_unchanged": true
+    },
+    "live-gazebo-time-sync-20261019": {
+      "files_verified": 611,
+      "all_content_sha256_unchanged": true
+    }
+  },
+  "removed_mooncar_containers": 70,
+  "removed_container_writable_bytes": 201566347264,
+  "removed_exclusive_cache_record_ids": [
+    "bwkcwqerbtp6n3rmbz4hnw59h"
+  ],
+  "other_container_ids_and_status_unchanged": true,
+  "all_images_unchanged": true,
+  "all_volumes_unchanged": true,
+  "other_build_cache_records_preserved": true,
+  "unrelated_running_services": [
+    {
+      "name": "/guranovel-v012-real-backend-1",
+      "health": "healthy"
+    },
+    {
+      "name": "/guranovel-v012-real-db-1",
+      "health": "healthy"
+    }
+  ],
+  "drive_measurements": {
+    "C": {
+      "free_before": 266743128064,
+      "free_after": 266489106432,
+      "observed_free_space_increase": -254021632
+    },
+    "D": {
+      "free_before": 116639002624,
+      "free_after": 285978595328,
+      "observed_free_space_increase": 169339592704
+    }
+  },
+  "docker_vhdx_file_length_before": 220145385472,
+  "docker_vhdx_file_length_after": 220145385472,
+  "docker_offline_compaction_performed": false,
+  "virtualenv_deletion_blocked_and_preserved": true,
+  "simulations_or_builds_started": false,
+  "first_readonly_drive_observation_free_bytes": {
+    "C": 276453703680,
+    "D": 116626751488
+  },
+  "drive_changes_since_first_readonly_observation": {
+    "C": {
+      "free_before": 276453703680,
+      "free_after": 266489106432,
+      "observed_free_space_increase": -9964597248
+    },
+    "D": {
+      "free_before": 116626751488,
+      "free_after": 285978595328,
+      "observed_free_space_increase": 169351843840
+    }
+  }
+}

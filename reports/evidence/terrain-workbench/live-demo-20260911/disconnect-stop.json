@@ -1,0 +1,35 @@
+{
+  "enabled": true,
+  "phase": "recording",
+  "error": "",
+  "task": {
+    "version": 1,
+    "region": [
+      -1.27,
+      -2.38,
+      8.81,
+      7.39
+    ],
+    "start": [
+      3.5,
+      3.0,
+      0.0
+    ],
+    "id": "experiment-808b6be2c81a"
+  },
+  "motion": {
+    "active": false,
+    "phase": "cancelled",
+    "error": "页面失联，已停止运动",
+    "pose": {
+      "x": 5.913022696161377,
+      "y": 2.9930264102419715,
+      "z": 0.0,
+      "yaw": 0.02799549365269262
+    },
+    "ready": true,
+    "depth_active": true,
+    "depth_message": "Depth frame recorded; historical pose errors are not corrected by loop closure"
+  },
+  "session": "experiment-808b6be2c81a/survey-20260910T150046318054Z.npz"
+}

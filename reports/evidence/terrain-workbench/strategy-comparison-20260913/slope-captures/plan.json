@@ -1,0 +1,38 @@
+{
+  "original_plan": {
+    "start": [
+      6.5,
+      -2.0,
+      2.4
+    ],
+    "goal": [
+      5.9,
+      -1.4
+    ],
+    "seconds": 45,
+    "baseline_seconds": 5,
+    "conditions": [
+      "stationary",
+      "approach"
+    ],
+    "limits": "One paired mechanism trial; not strategy efficacy or physical validation"
+  },
+  "retry_plan": {
+    "start": [
+      6.5,
+      -2.0,
+      2.4
+    ],
+    "goal": [
+      5.9,
+      -1.4
+    ],
+    "seconds": 45,
+    "baseline_seconds": 5,
+    "conditions": [
+      "approach"
+    ],
+    "limits": "One paired mechanism trial; not strategy efficacy or physical validation"
+  },
+  "note": "Stationary capture retained; failed pre-motion approach capture retained separately; same settings used for approach retry"
+}

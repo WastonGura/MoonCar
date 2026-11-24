@@ -1,0 +1,288 @@
+{
+  "trials": [
+    {
+      "folder": "visible_ramp_v1-repeat1-no_turn",
+      "arm": "no_turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 11,
+      "opportunity_cells": [],
+      "estimated_seconds": 4.6337623637225445,
+      "angle_rad": 0.816881181861272,
+      "remaining_seconds": 22.313,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 0,
+      "missed_recovery_cells": 0,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.4870000000000019
+    },
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "arm": "turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 7,
+      "opportunity_cells": [],
+      "estimated_seconds": 4.794746535036421,
+      "angle_rad": 0.8973732675182106,
+      "remaining_seconds": 22.840999999999998,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 2,
+      "missed_recovery_cells": 2,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.45899999999999963
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "arm": "turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 22,
+      "opportunity_cells": [],
+      "estimated_seconds": 3.8941493238288096,
+      "angle_rad": 0.4470746619144048,
+      "remaining_seconds": 23.117,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 1,
+      "missed_recovery_cells": 1,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.5829999999999984
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-no_turn",
+      "arm": "no_turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 20,
+      "opportunity_cells": [],
+      "estimated_seconds": 4.060392071676854,
+      "angle_rad": 0.530196035838427,
+      "remaining_seconds": 23.053,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 0,
+      "missed_recovery_cells": 0,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.4469999999999992
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "arm": "turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 9,
+      "opportunity_cells": [],
+      "estimated_seconds": 4.632428098977692,
+      "angle_rad": 0.8162140494888459,
+      "remaining_seconds": 22.592,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 1,
+      "missed_recovery_cells": 1,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.5079999999999991
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-no_turn",
+      "arm": "no_turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 8,
+      "opportunity_cells": [],
+      "estimated_seconds": 4.785738391670513,
+      "angle_rad": 0.8928691958352566,
+      "remaining_seconds": 22.622,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 0,
+      "missed_recovery_cells": 0,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.0779999999999994
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-no_turn",
+      "arm": "no_turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 23,
+      "opportunity_cells": [],
+      "estimated_seconds": 3.8879827953920354,
+      "angle_rad": 0.44399139769601775,
+      "remaining_seconds": 23.235999999999997,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 0,
+      "missed_recovery_cells": 0,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.16400000000000148
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "arm": "turn",
+      "version": "arrival-recheck-v1",
+      "turn": false,
+      "reason": "no_predicted_remaining_recovery",
+      "remaining_deficient": 23,
+      "opportunity_cells": [],
+      "estimated_seconds": 3.8247365643737976,
+      "angle_rad": 0.41236828218689886,
+      "remaining_seconds": 23.276,
+      "meaning": "Resampling-only suggestion; skipping this heading does not end exploration",
+      "post_decision_recovered": 3,
+      "missed_recovery_cells": 3,
+      "observation_executed_ok": true,
+      "decision_data_age": 0.32399999999999807
+    }
+  ],
+  "pairs": [
+    {
+      "pair": "visible_curve_v1-repeat1",
+      "scope": "all_common_remaining",
+      "common_remaining": 17,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 1,
+      "net_recovered": 1,
+      "turn_only": 1,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_curve_v1-repeat1",
+      "scope": "pure_target",
+      "common_remaining": 2,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 0,
+      "net_recovered": 0,
+      "turn_only": 0,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_curve_v1-repeat2",
+      "scope": "all_common_remaining",
+      "common_remaining": 22,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 2,
+      "net_recovered": 2,
+      "turn_only": 2,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_curve_v1-repeat2",
+      "scope": "pure_target",
+      "common_remaining": 2,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 1,
+      "net_recovered": 1,
+      "turn_only": 1,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_ramp_v1-repeat1",
+      "scope": "all_common_remaining",
+      "common_remaining": 6,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 2,
+      "net_recovered": 2,
+      "turn_only": 2,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_ramp_v1-repeat1",
+      "scope": "pure_target",
+      "common_remaining": 0,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 0,
+      "net_recovered": 0,
+      "turn_only": 0,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_ramp_v1-repeat2",
+      "scope": "all_common_remaining",
+      "common_remaining": 6,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 1,
+      "net_recovered": 1,
+      "turn_only": 1,
+      "no_turn_only": 0
+    },
+    {
+      "pair": "visible_ramp_v1-repeat2",
+      "scope": "pure_target",
+      "common_remaining": 1,
+      "missing_pairs": 0,
+      "no_turn_recovered": 0,
+      "turn_recovered": 0,
+      "net_recovered": 0,
+      "turn_only": 0,
+      "no_turn_only": 0
+    }
+  ],
+  "rejections": [
+    {
+      "folder": "visible_ramp_v1-repeat1-turn",
+      "reason": "zero_opportunity_but_later_recovery",
+      "cells": 2
+    },
+    {
+      "folder": "visible_curve_v1-repeat1-turn",
+      "reason": "zero_opportunity_but_later_recovery",
+      "cells": 1
+    },
+    {
+      "folder": "visible_ramp_v1-repeat2-turn",
+      "reason": "zero_opportunity_but_later_recovery",
+      "cells": 1
+    },
+    {
+      "folder": "visible_curve_v1-repeat2-turn",
+      "reason": "zero_opportunity_but_later_recovery",
+      "cells": 3
+    },
+    {
+      "pair": "visible_curve_v1-repeat1",
+      "reason": "skip_would_miss_paired_turn_only_recovery",
+      "cells": 1
+    },
+    {
+      "pair": "visible_curve_v1-repeat2",
+      "reason": "skip_would_miss_paired_turn_only_recovery",
+      "cells": 2
+    },
+    {
+      "pair": "visible_ramp_v1-repeat1",
+      "reason": "skip_would_miss_paired_turn_only_recovery",
+      "cells": 2
+    },
+    {
+      "pair": "visible_ramp_v1-repeat2",
+      "reason": "skip_would_miss_paired_turn_only_recovery",
+      "cells": 1
+    },
+    {
+      "reason": "both_decision_branches_not_validated",
+      "try_turn": 0,
+      "skip_turn": 8
+    }
+  ],
+  "shadow_check_passed": false,
+  "decision_coverage": {
+    "try_turn": 0,
+    "skip_turn": 8
+  },
+  "online_policy_changed": false,
+  "limits": [
+    "Both arms are actually executed independently of the gate; this is shadow validation, not a deployed adaptive experiment.",
+    "Post-decision recovery can also occur while holding; it contradicts a zero-recovery prediction but does not prove a causal turn benefit.",
+    "Common decision-time cohorts can differ from common initial cohorts. Geometry, ranges and two repeats remain limited."
+  ]
+}

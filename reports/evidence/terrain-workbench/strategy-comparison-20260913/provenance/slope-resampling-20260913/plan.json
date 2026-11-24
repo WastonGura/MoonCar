@@ -1,0 +1,18 @@
+{
+  "start": [
+    6.5,
+    -2.0,
+    2.4
+  ],
+  "goal": [
+    5.9,
+    -1.4
+  ],
+  "seconds": 45,
+  "baseline_seconds": 5,
+  "conditions": [
+    "stationary",
+    "approach"
+  ],
+  "limits": "One paired mechanism trial; not strategy efficacy or physical validation"
+}

@@ -1,0 +1,108 @@
+{
+  "selected": null,
+  "candidates": [
+    {
+      "delta": 0.02,
+      "yaw": -1.179098011020699,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.04,
+        "remaining_seconds": 42.5,
+        "angle_rad": 0.020000000000000018,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 182,
+      "marginal_cells": 11
+    },
+    {
+      "delta": -0.02,
+      "yaw": -1.219098011020699,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.04,
+        "remaining_seconds": 42.5,
+        "angle_rad": 0.020000000000000018,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 182,
+      "marginal_cells": 19
+    },
+    {
+      "delta": 0.04,
+      "yaw": -1.159098011020699,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.08,
+        "remaining_seconds": 42.5,
+        "angle_rad": 0.040000000000000036,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 182,
+      "marginal_cells": 25
+    },
+    {
+      "delta": -0.04,
+      "yaw": -1.239098011020699,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.08,
+        "remaining_seconds": 42.5,
+        "angle_rad": 0.040000000000000036,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 182,
+      "marginal_cells": 31
+    },
+    {
+      "delta": 0.08,
+      "yaw": -1.119098011020699,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.16,
+        "remaining_seconds": 42.5,
+        "angle_rad": 0.08000000000000008,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 182,
+      "marginal_cells": 22
+    },
+    {
+      "delta": -0.08,
+      "yaw": -1.279098011020699,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.16,
+        "remaining_seconds": 42.5,
+        "angle_rad": 0.08000000000000008,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 182,
+      "marginal_cells": 30
+    }
+  ],
+  "feature_stamp": 29.2,
+  "completed_sim_stamp": 30.875,
+  "feature_age_seconds": 1.6750000000000007,
+  "remaining_seconds": 40.825,
+  "executable": false,
+  "checkpoint_sha256": "31ff8168722fc004ea9d9949246db61c5735722408a52cfb89384c3dc1a8eaab",
+  "reason": "no_candidate_or_stale_or_low_budget"
+}

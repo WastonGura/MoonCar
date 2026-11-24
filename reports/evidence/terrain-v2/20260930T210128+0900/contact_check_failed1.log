@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/evidence/pile.py", line 206, in <module>
+    print(json.dumps(self_check(), indent=2))
+                     ^^^^^^^^^^^^
+  File "/evidence/pile.py", line 33, in self_check
+    engine.commands_string(f"""units si
+  File "/opt/mooncar-dem/lib/python3.12/site-packages/lammps/core.py", line 873, in commands_string
+    with ExceptionCheck(self):
+  File "/opt/mooncar-dem/lib/python3.12/site-packages/lammps/core.py", line 59, in __exit__
+    raise self.lmp._lammps_exception
+Exception: ERROR: Cannot use coeff_restitution model with a cohesive normal model, jkr (src/src/GRANULAR/granular_model.cpp:271)
+Last input line: pair_coeff * * jkr 50000000.0 0.3 0.25 0.05 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution

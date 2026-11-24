@@ -1,0 +1,58 @@
+[
+  {
+    "name": "01-baseline-left",
+    "profile": "baseline",
+    "contact": {
+      "qualified": true,
+      "steady_rear_minus_front_min_N": 0.5580625805064403,
+      "steady_rear_minus_front_max_N": 0.5580625805840294,
+      "steady_front_heavier_fraction": 0.0,
+      "icr_body_x_median_m": -0.15699998856797684,
+      "front_lateral_rms_m_s": 0.054560737260481836,
+      "rear_lateral_rms_m_s": 4.998393217589318e-06,
+      "interpretation": "Load sign reversal is not itself support exchange or a drift repair"
+    }
+  },
+  {
+    "name": "02-baseline-right",
+    "profile": "baseline",
+    "contact": {
+      "qualified": true,
+      "steady_rear_minus_front_min_N": 0.5580625805073689,
+      "steady_rear_minus_front_max_N": 0.5580625805827584,
+      "steady_front_heavier_fraction": 0.0,
+      "icr_body_x_median_m": -0.15699998856802336,
+      "front_lateral_rms_m_s": 0.05456073726052972,
+      "rear_lateral_rms_m_s": 4.9983932176259986e-06,
+      "interpretation": "Load sign reversal is not itself support exchange or a drift repair"
+    }
+  },
+  {
+    "name": "03-load_dither-left",
+    "profile": "load_dither",
+    "contact": {
+      "qualified": true,
+      "steady_rear_minus_front_min_N": -3.3853299174767226,
+      "steady_rear_minus_front_max_N": 4.489900856104603,
+      "steady_front_heavier_fraction": 0.4065625,
+      "icr_body_x_median_m": -0.15334985618540903,
+      "front_lateral_rms_m_s": 0.05611430658435349,
+      "rear_lateral_rms_m_s": 0.001199576786518781,
+      "interpretation": "Load sign reversal is not itself support exchange or a drift repair"
+    }
+  },
+  {
+    "name": "04-load_dither-right",
+    "profile": "load_dither",
+    "contact": {
+      "qualified": true,
+      "steady_rear_minus_front_min_N": -3.3850404414467237,
+      "steady_rear_minus_front_max_N": 4.489934068535542,
+      "steady_front_heavier_fraction": 0.4086875,
+      "icr_body_x_median_m": -0.15302107376840335,
+      "front_lateral_rms_m_s": 0.05628328991153473,
+      "rear_lateral_rms_m_s": 0.0012980784682775721,
+      "interpretation": "Load sign reversal is not itself support exchange or a drift repair"
+    }
+  }
+]

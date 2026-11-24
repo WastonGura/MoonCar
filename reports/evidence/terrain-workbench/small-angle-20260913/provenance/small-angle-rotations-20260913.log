@@ -1,0 +1,46 @@
+[
+  {
+    "folder": "visible_ramp_v1-repeat1-turn",
+    "requested": 0.02,
+    "backend_estimated_delta": 0.029747960542318323,
+    "before_stamp": 27.9,
+    "after_stamp": 29.1,
+    "decision_stamp": 28.001,
+    "turn_end_stamp": 28.372,
+    "estimated_robot_delta": 0.042473034968943835,
+    "truth_robot_delta": 0.042469958030972754
+  },
+  {
+    "folder": "visible_curve_v1-repeat1-turn",
+    "requested": 0.08,
+    "backend_estimated_delta": 0.08239152548492745,
+    "before_stamp": 28.2,
+    "after_stamp": 29.7,
+    "decision_stamp": 28.232,
+    "turn_end_stamp": 28.797,
+    "estimated_robot_delta": 0.10073562870413932,
+    "truth_robot_delta": 0.10073407356485065
+  },
+  {
+    "folder": "visible_ramp_v1-repeat2-turn",
+    "requested": 0.02,
+    "backend_estimated_delta": 0.021926092187923074,
+    "before_stamp": 27.2,
+    "after_stamp": 28.7,
+    "decision_stamp": 27.648,
+    "turn_end_stamp": 27.951,
+    "estimated_robot_delta": 0.03540578656888105,
+    "truth_robot_delta": 0.035404557445199436
+  },
+  {
+    "folder": "visible_curve_v1-repeat2-turn",
+    "requested": 0.08,
+    "backend_estimated_delta": 0.08837006720285212,
+    "before_stamp": 29.0,
+    "after_stamp": 30.6,
+    "decision_stamp": 29.254,
+    "turn_end_stamp": 29.868,
+    "estimated_robot_delta": 0.10612261111935462,
+    "truth_robot_delta": 0.1061195370967919
+  }
+]

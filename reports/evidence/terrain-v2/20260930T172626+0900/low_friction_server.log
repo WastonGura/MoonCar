@@ -1,0 +1,87 @@
+[1;32m[Msg] [0m[1;32mGazebo Sim Server v[0m[1;32m8.11.0[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mLoading SDF world file[[0m[1;32m/evidence/low_friction.sdf[0m[1;32m].[0m
+[1;33mWarning [Utils.cc:132][0m [/sdf/world[@name="mooncar_ramp_v2"]/model[@name="mooncar_r5"]/link[@name="base_footprint"]/sensor[@name="mooncar_imu"]/gz_frame_id:/evidence/low_friction.sdf:L439]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[1;33mWarning [Utils.cc:132][0m [/sdf/world[@name="mooncar_ramp_v2"]/model[@name="mooncar_r5"]/link[@name="base_footprint"]/sensor[@name="mooncar_lidar"]/gz_frame_id:/evidence/low_friction.sdf:L467]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[1;33mWarning [Utils.cc:132][0m [/sdf/world[@name="mooncar_ramp_v2"]/model[@name="mooncar_r5"]/link[@name="camera_tilt_link"]/sensor[@name="mooncar_depth_camera"]/gz_frame_id:/evidence/low_friction.sdf:L670]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[1;33mWarning [Utils.cc:132][0m [/sdf/world[@name="mooncar_ramp_v2"]/model[@name="mooncar_r5"]/link[@name="camera_tilt_link"]/sensor[@name="mooncar_rgb_camera"]/gz_frame_id:/evidence/low_friction.sdf:L690]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[1;32m[Msg] [0m[1;32mServing entity system service on [[0m[1;32m/[0m[1;32mentity/system/add[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mCreate[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/create_multiple[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mCreate[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/create_multiple/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mRemove[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/remove[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mRemove[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/remove/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_pose[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_pose/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_pose_vector[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_pose_vector/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mLight configuration[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/light_config[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mLight configuration[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/light_config/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPhysics[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_physics[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPhysics[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_physics/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mSphericalCoordinates[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_spherical_coordinates[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mSphericalCoordinates[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_spherical_coordinates/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mEnable collision[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/enable_collision[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mEnable collision[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/enable_collision/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mDisable collision[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/disable_collision[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mDisable collision[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/disable_collision/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/visual_config[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/visual_config/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/wheel_slip[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/wheel_slip/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mDiffDrive subscribing to twist messages on [[0m[1;32m/cmd_vel[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mJointPositionController subscribing to Double messages on [[0m[1;32m/mooncar/cmd_camera_pan[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mJointPositionController subscribing to Double messages on [[0m[1;32m/mooncar/cmd_camera_tilt[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mLoaded level [[0m[1;32mdefault[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mServing world controls on [[0m[1;32m/world/mooncar_ramp_v2[0m[1;32m/control], [[0m[1;32m/world/mooncar_ramp_v2[0m[1;32m/control/state] and [[0m[1;32m/world/mooncar_ramp_v2[0m[1;32m/playback/[1;33m[Wrn] [OBJLoader.cc:202] [0m[1;33mMissing material for shape[[0m[1;33m] [0m[1;33min OBJ file[[0m[1;33m/source/ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/regolith_passable.obj[0m[1;33m][0m[1;33m[0m
+[1;33m[Wrn] [OBJLoader.cc:202] [0m[1;33mMissing material for shape[[0m[1;33m] [0m[1;33min OBJ file[[0m[1;33m/source/ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/sand_soft.obj[0m[1;33m][0m[1;33m[0m
+[1;33m[Wrn] [OBJLoader.cc:202] [0m[1;33mMissing material for shape[[0m[1;33m] [0m[1;33min OBJ file[[0m[1;33m/source/ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/rubble_gravel.obj[0m[1;33m][0m[1;33m[0m
+[1;33m[Wrn] [OBJLoader.cc:202] [0m[1;33mMissing material for shape[[0m[1;33m] [0m[1;33min OBJ file[[0m[1;33m/source/ros2_ws/src/mooncar_gazebo/models/terrain_v2/ramp/rock_boulder.obj[0m[1;33m][0m[1;33m[0m
+[1;33m[Wrn] [OBJLoader.cc:202] [0m[1;33mMissing material for shape[[0m[1;33m] [0m[1;33min OBJ file[[0m[1;33m/source/ros2_ws/src/mooncar_gazebo/models/terrain_v2/boulder.obj[0m[1;33m][0m[1;33m[0m
+[1;33m[Wrn] [Ogre2RenderEngine.cc:551] [0m[1;33mUnable to open display: [0m[1;33m. Trying to run in headless mode.[0m[1;33m[0m
+[1;33m[Wrn] [Ogre2Camera.cc:423] [0m[1;33mOgre2Camera::SetVisibilityMask: Mask bits [0m[1;33mc0000000[0m[1;33m are set but will be ignored as they conflict with the [0m[1;33mreserved bits used internally by the ogre2 backend.[0m[1;33m[0m
+control][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mServing GUI information on [[0m[1;32m/world/mooncar_ramp_v2[0m[1;32m/[0m[1;32mgui/info[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mWorld [[0m[1;32mmooncar_ramp_v2[0m[1;32m] initialized with [[0m[1;32mmooncar_v2_physics[0m[1;32m] physics profile.[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mServing world SDF generation service on [[0m[1;32m/world/mooncar_ramp_v2[0m[1;32m/[0m[1;32mgenerate_world_sdf[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mServing world names on [[0m[1;32m/gazebo/worlds[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mResource path add service on [[0m[1;32m/gazebo/resource_paths/add[0m[1;32m].[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mResource path get service on [[0m[1;32m/gazebo/resource_paths/get[0m[1;32m].[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mResource path resolve service on [[0m[1;32m/gazebo/resource_paths/resolve[0m[1;32m].[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mResource paths published on [[0m[1;32m/gazebo/resource_paths[0m[1;32m].[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mServer control service on [[0m[1;32m/server_control[0m[1;32m].[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mFound no publishers on /stats, adding root stats topic[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mFound no publishers on /clock, adding root clock topic[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mLoading plugin [[0m[1;32mgz-rendering-ogre2[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mServing scene information on [[0m[1;32m/world/mooncar_ramp_v2[0m[1;32m/[0m[1;32mscene/info[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mServing graph information on [[0m[1;32m/world/mooncar_ramp_v2[0m[1;32m/[0m[1;32mscene/graph[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mServing full state on [[0m[1;32m/world/mooncar_ramp_v2[0m[1;32m/[0m[1;32mstate[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mServing full state (async) on [[0m[1;32m/world/mooncar_ramp_v2[0m[1;32m/[0m[1;32mstate_async[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPublishing scene information on [[0m[1;32m/world/mooncar_ramp_v2/scene/info[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPublishing entity deletions on [[0m[1;32m/world/mooncar_ramp_v2/scene/deletion[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPublishing state changes on [[0m[1;32m/world/mooncar_ramp_v2/state[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPublishing pose messages on [[0m[1;32m/world/mooncar_ramp_v2[0m[1;32m/[0m[1;32mpose/info[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPublishing dynamic pose messages on [[0m[1;32m/world/mooncar_ramp_v2[0m[1;32m/[0m[1;32mdynamic_pose/info[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mCreate[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/create_multiple[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mCreate[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/create_multiple/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mRemove[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/remove[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mRemove[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/remove/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_pose[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_pose/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_pose_vector[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_pose_vector/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mLight configuration[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/light_config[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mLight configuration[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/light_config/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPhysics[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_physics[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mPhysics[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_physics/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mSphericalCoordinates[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_spherical_coordinates[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mSphericalCoordinates[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/set_spherical_coordinates/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mEnable collision[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/enable_collision[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mEnable collision[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/enable_collision/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mDisable collision[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/disable_collision[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mDisable collision[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/disable_collision/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/visual_config[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/visual_config/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/wheel_slip[0m[1;32m] (async)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/mooncar_ramp_v2/wheel_slip/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mDiffDrive subscribing to twist messages on [[0m[1;32m/cmd_vel[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mJointPositionController subscribing to Double messages on [[0m[1;32m/mooncar/cmd_camera_pan[0m[1;32m][0m[1;32m[0m
+[1;32m[Msg] [0m[1;32mJointPositionController subscribing to Double messages on [[0m[1;32m/mooncar/cmd_camera_tilt[0m[1;32m][0m[1;32m[0m

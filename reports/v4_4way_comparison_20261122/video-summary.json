@@ -1,0 +1,39 @@
+{
+  "video": "v4-4way-comparison.mp4",
+  "frames": 5860,
+  "fps": 12,
+  "seconds": 488.3333333333333,
+  "leading_holds": [
+    5,
+    0,
+    4,
+    15
+  ],
+  "trailing_holds": [
+    265,
+    0,
+    101,
+    113
+  ],
+  "probe": {
+    "programs": [],
+    "streams": [
+      {
+        "width": 2560,
+        "height": 1260,
+        "r_frame_rate": "12/1",
+        "nb_frames": "5860"
+      }
+    ],
+    "format": {
+      "duration": "488.333333"
+    }
+  },
+  "full_decode_exit": 0,
+  "map_future_data_violations": 0,
+  "height_range_m": [
+    -0.35,
+    0.3
+  ],
+  "sha256": "ab85794c6522ae84a22ac02a76752cf4b618288e46900162826cf8245cac50b9"
+}

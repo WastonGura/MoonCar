@@ -1,0 +1,115 @@
+{
+  "step_comparisons": [
+    {
+      "first": "03-pure_turn-flat-1000us-left-1",
+      "second": "07-pure_turn-flat-500us-left-1",
+      "comparison": {
+        "passed": true,
+        "valid": true,
+        "position_difference_m": 3.1029522117012926e-07,
+        "yaw_difference_rad": 4.344034264303076e-05,
+        "duration_difference_s": 0.0,
+        "wheel_budget_difference": {
+          "linear_difference_m": 0.0,
+          "angular_difference_rad": 0.0
+        }
+      }
+    },
+    {
+      "first": "04-pure_turn-flat-1000us-right-1",
+      "second": "08-pure_turn-flat-500us-right-1",
+      "comparison": {
+        "passed": true,
+        "valid": true,
+        "position_difference_m": 3.1035695463712177e-07,
+        "yaw_difference_rad": 4.344034165981725e-05,
+        "duration_difference_s": 0.0,
+        "wheel_budget_difference": {
+          "linear_difference_m": 0.0,
+          "angular_difference_rad": 0.0
+        }
+      }
+    },
+    {
+      "first": "05-pure_turn-flat-1000us-left-2",
+      "second": "09-pure_turn-flat-500us-left-2",
+      "comparison": {
+        "passed": true,
+        "valid": true,
+        "position_difference_m": 3.1029522117012926e-07,
+        "yaw_difference_rad": 4.344034264303076e-05,
+        "duration_difference_s": 0.0,
+        "wheel_budget_difference": {
+          "linear_difference_m": 0.0,
+          "angular_difference_rad": 0.0
+        }
+      }
+    },
+    {
+      "first": "06-pure_turn-flat-1000us-right-2",
+      "second": "10-pure_turn-flat-500us-right-2",
+      "comparison": {
+        "passed": true,
+        "valid": true,
+        "position_difference_m": 3.1035695463712177e-07,
+        "yaw_difference_rad": 4.344034165981725e-05,
+        "duration_difference_s": 0.0,
+        "wheel_budget_difference": {
+          "linear_difference_m": 0.0,
+          "angular_difference_rad": 0.0
+        }
+      }
+    }
+  ],
+  "repeat_inputs": [
+    {
+      "first": "03-pure_turn-flat-1000us-left-1",
+      "second": "05-pure_turn-flat-1000us-left-2",
+      "comparison": {
+        "passed": true,
+        "distance_difference_m": 0.0,
+        "turn_difference_rad": 0.0,
+        "duration_difference_s": 0.0
+      }
+    },
+    {
+      "first": "04-pure_turn-flat-1000us-right-1",
+      "second": "06-pure_turn-flat-1000us-right-2",
+      "comparison": {
+        "passed": true,
+        "distance_difference_m": 0.0,
+        "turn_difference_rad": 0.0,
+        "duration_difference_s": 0.0
+      }
+    },
+    {
+      "first": "07-pure_turn-flat-500us-left-1",
+      "second": "09-pure_turn-flat-500us-left-2",
+      "comparison": {
+        "passed": true,
+        "distance_difference_m": 0.0,
+        "turn_difference_rad": 0.0,
+        "duration_difference_s": 0.0
+      }
+    },
+    {
+      "first": "08-pure_turn-flat-500us-right-1",
+      "second": "10-pure_turn-flat-500us-right-2",
+      "comparison": {
+        "passed": true,
+        "distance_difference_m": 0.0,
+        "turn_difference_rad": 0.0,
+        "duration_difference_s": 0.0
+      }
+    }
+  ],
+  "straight_input": {
+    "passed": true,
+    "distance_difference_m": 0.0,
+    "turn_difference_rad": 0.0,
+    "duration_difference_s": 0.0
+  },
+  "all_completed_pairs_passed": true,
+  "matrix_passed": false,
+  "reason": "Round11 startup failed; no static/scenes/restore completion; comparisons are not overall acceptance"
+}

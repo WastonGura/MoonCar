@@ -1,0 +1,9 @@
+{
+  "status": "stopped",
+  "attempts": 11,
+  "limit": 24,
+  "production_changed": false,
+  "goal_achieved": false,
+  "reason": "RuntimeError('Critical qualification failed; no rerun: 11-pure_turn-flat-500us-zero')",
+  "freeze_unchanged": true
+}

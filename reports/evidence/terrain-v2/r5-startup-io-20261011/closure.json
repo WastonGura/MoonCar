@@ -1,0 +1,14 @@
+{
+  "new_simulations": 0,
+  "original_enodata_cause_confirmed": false,
+  "test_guard_unit_tests": 8,
+  "entry_tests": 4,
+  "native_runtime_passed": true,
+  "production_guard_changed": false,
+  "old_files_checked": 456,
+  "old_files_changed": [],
+  "original_workbench_unchanged": true,
+  "container_id": "1ca661838555f17271e7b64ccc3fd00978d1937a9a12eeb263ac93f13339019a",
+  "container_stopped": true,
+  "stock_bridge_close_issue_unresolved": true
+}

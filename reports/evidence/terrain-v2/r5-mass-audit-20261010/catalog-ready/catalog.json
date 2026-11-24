@@ -1,0 +1,816 @@
+{
+  "version": 1,
+  "reviewed_date_jst": "2026-10-10",
+  "sources": {
+    "model": {
+      "original_path": "/source/ros2_ws/src/mooncar_description/urdf/mooncar_r5.urdf.xacro",
+      "snapshot": "model.xacro",
+      "sha256": "b1a2c00d23730e50b9d2956eae2460d77e603ca1728b6d86234755d49b192cd7",
+      "document_date": null,
+      "version": "current working tree",
+      "locator": "R5-MASS / MOUNTS / GIMBAL / UNMODELED-PAYLOAD",
+      "url": null,
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "inertial-macros": {
+      "original_path": "/source/ros2_ws/src/mooncar_description/urdf/common/inertial_macros.xacro",
+      "snapshot": "inertial-macros.xacro",
+      "sha256": "96fbba6291f631f0b83fd97068ff015fbf2eb14e8dc35462140573dd6fd8add1",
+      "document_date": null,
+      "version": "current working tree",
+      "locator": "box_inertial / cylinder_inertial",
+      "url": null,
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "description": {
+      "original_path": "/source/ros2_ws/src/mooncar_description/README.md",
+      "snapshot": "description.md",
+      "sha256": "75447f9ab65054bd89ac87ef56674a7c2543beb85ca31823b970d133e223a504",
+      "document_date": "2026-10-02",
+      "version": "R5 proposal",
+      "locator": "R5 proposal model",
+      "url": null,
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "gaps": {
+      "original_path": "/source/docs/hardware_parameter_gaps.md",
+      "snapshot": "gaps.md",
+      "sha256": "4cfe5f49e08978f3a822204453944d6d7ee54b8d07b0add9091204181ca19f97",
+      "document_date": "2026-10-02",
+      "version": "hardware gap audit",
+      "locator": "R5-MASS / MOUNTS / GIMBAL",
+      "url": null,
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "procurement": {
+      "original_path": "/hardware/reports/procurement_2026-09-07/MoonCar_国内器件推荐清单_2026-09-08.md",
+      "snapshot": "procurement.md",
+      "sha256": "813af419e5996b8703c3361441c46d7281fc358ea7a41d2b5fb4c0d0dc22acfc",
+      "document_date": "2026-09-08",
+      "version": "v2, proposed, not frozen or purchased",
+      "locator": "20 rows; size/weight clause 72",
+      "url": null,
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "selection-history": {
+      "original_path": "/hardware/reports/procurement_2026-09-07/MoonCar_整车约束与动力轮系选型补充_2026-09-08.md",
+      "snapshot": "selection-history.md",
+      "sha256": "5cc8345fdf3fca89320ecfd4a3444487e2290b16297085d4ee49db8f10eca7ac",
+      "document_date": "2026-09-08",
+      "version": "historical drivetrain route, withdrawn as procurement mainline",
+      "locator": "8 kg goal / alternative motors, not current R5",
+      "url": null,
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "battery-manual": {
+      "original_path": "/hardware/tmp/pdfs/wheeltec_24v_battery_manual.pdf",
+      "snapshot": "battery-manual.pdf",
+      "sha256": "29d61c232052dace7349b435a29070142d4290eb21476f4cf060e00928340f78",
+      "document_date": null,
+      "version": "archived WHEELTEC 24 V manual, revision not printed in reviewed table",
+      "locator": "PDF page 12, P7120S column, dimensions and weight; visually checked",
+      "url": "https://wheeltec.net/24-DC.pdf",
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "s3-snapshot": {
+      "original_path": "/source/reports/evidence/terrain-v2/20261001T031600+0900/slamtec-spec-lines.txt",
+      "snapshot": "s3-snapshot.txt",
+      "sha256": "c477ad4aedcebffe74f31705053b2fa9445b5dc43c2918febd305bd2a42c598c",
+      "document_date": "2026-10-01",
+      "version": "official page snapshot; current live parser omits dimensions",
+      "locator": "lines 107-109: 115 g, 55.6 x 55.6 x 41.3 mm",
+      "url": "https://www.slamtec.com/en/s3/spec",
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "oak-record": {
+      "original_path": "/source/reports/evidence/terrain-v2/20261001T212454+0900/sources/luxonis-store-verified-values.json",
+      "snapshot": "oak-record.json",
+      "sha256": "ad0089b3d682a77b69674cb7fda5166244282494846350aa7d42c46701ca3671",
+      "document_date": "2026-10-01",
+      "version": "reviewer transcription, raw store fetch 429 retained previously",
+      "locator": "manufacturer_values.mass_g=61; dimensions_mm; weaker than original raw snapshot",
+      "url": "https://checkout.luxonis.com/products/oak-d-lite-1",
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "invalid-r5-fetch": {
+      "original_path": "/source/reports/evidence/terrain-v2/20261002T021949+0900/sources/r5-jd-lines.txt",
+      "snapshot": "invalid-r5-fetch.txt",
+      "sha256": "4a39f496c3da6bae467dc038480794081b2216ed569f48115573175eda955cce",
+      "document_date": "2026-10-02",
+      "version": "homepage response, rejected as R5 specification evidence",
+      "locator": "no valid corresponding R5 mass breakdown",
+      "url": "https://item.jd.com/10045479429161.html",
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "excluded-r550": {
+      "original_path": "/source/reports/evidence/terrain-v2/20261002T021949+0900/sources/wheeltec-r550-text.txt",
+      "snapshot": "excluded-r550.txt",
+      "sha256": "db58bae48f345a9c414d63be34aa115a8e903534ee9dd077139f57c34c2a541a",
+      "document_date": "2026-10-02",
+      "version": "R550 educational robot; not selected R5",
+      "locator": "excluded vehicle identity",
+      "url": null,
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "pi-mechanical": {
+      "original_path": "/source/reports/evidence/terrain-v2/20261002T021949+0900/sources/pi5-mechanical.pdf",
+      "snapshot": "pi-mechanical.pdf",
+      "sha256": "5dd680d6c1f5e7aa9c7b020695e315d04aac862df82ff01d4e9041cd0668d7f2",
+      "document_date": null,
+      "version": "archived official mechanical drawing",
+      "locator": "page 1; dimensions do not establish populated mass/installation",
+      "url": "https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-mechanical-drawing.pdf",
+      "reviewed_date_jst": "2026-10-10"
+    },
+    "live-check": {
+      "snapshot": "live-check.json",
+      "sha256": "64ed8dedb55bd67f634387d04b439f89bdf69ba3ec37589d0a3b773149044b65",
+      "reviewed_date_jst": "2026-10-10",
+      "document_date": null,
+      "version": "current page extraction; no hidden content guessed",
+      "locator": "records"
+    }
+  },
+  "links": {
+    "base_link": {
+      "mass": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "procurement",
+          "invalid-r5-fetch"
+        ],
+        "detail": "4.1 kg body + four 0.4 kg wheels = assumed 5.7 kg bare estimate. Motor/gearbox/encoder allocation not independently confirmed."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform box approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+      }
+    },
+    "battery_link": {
+      "mass": {
+        "classification": "厂家标称",
+        "sources": [
+          "battery-manual"
+        ],
+        "detail": "P7120S 12 Ah nominal 3.05 kg; installed hardware/version not measured; charger excluded."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform box approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+      }
+    },
+    "lidar_link": {
+      "mass": {
+        "classification": "厂家标称",
+        "sources": [
+          "s3-snapshot"
+        ],
+        "detail": "S3 nominal 115 g; kit adapter/cable/bracket not included in this body mass."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform cylinder approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+      }
+    },
+    "depth_camera_link": {
+      "mass": {
+        "classification": "厂家标称",
+        "sources": [
+          "oak-record"
+        ],
+        "detail": "61 g historical official-store verification record; raw original unavailable, current page extraction does not re-confirm; AF/FF SKU awaits hardware."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform box approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+      }
+    },
+    "imu_link": {
+      "mass": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "SEN0374 model 80 g and 35 mm envelope are provisional; PCB thickness is not mass."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform box approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+      }
+    },
+    "front_left_wheel_link": {
+      "mass": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "description"
+        ],
+        "detail": "0.4 kg each, provisional split, not four measured wheels."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform cylinder approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+      }
+    },
+    "front_right_wheel_link": {
+      "mass": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "description"
+        ],
+        "detail": "0.4 kg each, provisional split, not four measured wheels."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform cylinder approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+      }
+    },
+    "rear_left_wheel_link": {
+      "mass": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "description"
+        ],
+        "detail": "0.4 kg each, provisional split, not four measured wheels."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform cylinder approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+      }
+    },
+    "rear_right_wheel_link": {
+      "mass": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "description"
+        ],
+        "detail": "0.4 kg each, provisional split, not four measured wheels."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform cylinder approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+      }
+    },
+    "camera_mount_link": {
+      "mass": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "0.08 kg research gimbal bracket; no selected actuator in procurement."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform cylinder approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous cylinder tensor; not CAD or measured tensor"
+      }
+    },
+    "camera_pan_link": {
+      "mass": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "0.06 kg research gimbal bracket; no selected actuator in procurement."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform box approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+      }
+    },
+    "camera_tilt_link": {
+      "mass": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "0.04 kg research gimbal bracket; no selected actuator in procurement."
+      },
+      "local_com": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Uniform box approximation, not measured internal density"
+      },
+      "mount": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "gaps"
+        ],
+        "detail": "Nominal URDF joint arrangement; no confirmed assembly drawing"
+      },
+      "inertia": {
+        "classification": "工程假设",
+        "sources": [
+          "model",
+          "inertial-macros"
+        ],
+        "detail": "Analytic homogeneous box tensor; not CAD or measured tensor"
+      }
+    }
+  },
+  "procurement": [
+    {
+      "id": "01",
+      "name": "R5 四驱底盘；霍尔编码器／24V／27减速比；不含电池",
+      "quantity": 1,
+      "model_status": "归属待确认",
+      "nominal_mass_kg": null,
+      "detail": "Chassis and four wheels modeled using assumed split. Motors/gearboxes/encoders are abstracted into bare chassis; vendor 5.7 kg inclusion and boards not confirmed.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "02",
+      "name": "轮趣 P7120S 12Ah 磷酸铁锂电池＋原厂匹配充电器",
+      "quantity": 1,
+      "model_status": "独立建模",
+      "nominal_mass_kg": 3.05,
+      "detail": "Battery 3.05 kg body modeled; charger is external and excluded from vehicle mass.",
+      "source": "procurement",
+      "nominal_mass_scope": "per module only; not entire kit"
+    },
+    {
+      "id": "03",
+      "name": "轮趣 C50C 有刷控制板；不含驱动板，含配套OLED",
+      "quantity": 1,
+      "model_status": "归属待确认",
+      "nominal_mass_kg": null,
+      "detail": "C50C and bundled OLED have no independent mass links; bare-chassis estimate may/may not include them. Do not add before inclusion is checked.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "04",
+      "name": "轮趣 D50A 双路驱动；12.8A／4层PCB／防反接版",
+      "quantity": 2,
+      "model_status": "归属待确认",
+      "nominal_mass_kg": null,
+      "detail": "Two D50A boards have no independent mass links; bare-chassis inclusion unknown.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "05",
+      "name": "树莓派 5 8GB；DFR1119",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Pi 5 populated board, not modeled; mass and mounting unknown.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "06",
+      "name": "微雪 Pi 5 基础配件包；SKU 26258",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Package contains case/cooler/card potentially onboard plus reader/desktop supply/cables offboard; split assembly inventory before counting.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "07",
+      "name": "RPLIDAR S3 套装；DFR1097",
+      "quantity": 1,
+      "model_status": "独立建模",
+      "nominal_mass_kg": 0.115,
+      "detail": "S3 body only; kit USB adapter, wiring and mounts not fully accounted.",
+      "source": "procurement",
+      "nominal_mass_scope": "per module only; not entire kit"
+    },
+    {
+      "id": "08",
+      "name": "OAK-D-Lite；微雪 SKU 21545",
+      "quantity": 1,
+      "model_status": "独立建模",
+      "nominal_mass_kg": 0.061,
+      "detail": "Camera body only; actual variant, cable and mounting hardware need confirmation.",
+      "source": "procurement",
+      "nominal_mass_scope": "per module only; not entire kit"
+    },
+    {
+      "id": "09",
+      "name": "BNO055 九轴 IMU；SEN0374",
+      "quantity": 1,
+      "model_status": "独立建模",
+      "nominal_mass_kg": null,
+      "detail": "SEN0374 separate IMU, mass 80 g is assumption, not OAK internal IMU.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "10",
+      "name": "TFmini Plus 近距测距；SEN0309",
+      "quantity": 4,
+      "model_status": "未建模",
+      "nominal_mass_kg": 0.012,
+      "detail": "Four TFmini Plus: 12 g each nominal, total 48 g; positions and bracket/wiring mass absent.",
+      "source": "procurement",
+      "nominal_mass_scope": "per module only; not entire kit"
+    },
+    {
+      "id": "11",
+      "name": "明纬 DDR-60G-5；9-36V输入／5V 10.8A输出",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "DDR-60G-5 DC/DC power supply and mounting not modeled.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "12",
+      "name": "微雪 USB 3.2 Gen1 HUB HAT；SKU 17584",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "HUB HAT and mounting not modeled.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "13",
+      "name": "Gravity ±50A 电流模块；SEN0098-V2",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Current sensor and signal conditioning not modeled.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "14",
+      "name": "施耐德 XB2BS542C 急停按钮；1NC／旋转复位",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Emergency-stop button and panel not modeled.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "15",
+      "name": "TE EV200AAANA 直流接触器；线圈9-36V",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "EV200 contactor, bracket and wiring not modeled.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "16",
+      "name": "STLINK-V3MINIE 调试器；微雪 SKU 22943",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "STLINK is a bench tool, not counted onboard unless future assembly inventory specifies permanent installation.",
+      "source": "procurement",
+      "nominal_mass_scope": null
+    },
+    {
+      "id": "17",
+      "name": "配电安全包",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Distribution/fuse/enable/conditioning bundle: quantities and installed mass not frozen; avoid recounting items 14/15.",
+      "source": "procurement"
+    },
+    {
+      "id": "18",
+      "name": "动力与信号线束",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "Power and signal harnesses absent; no zero-mass assumption.",
+      "source": "procurement"
+    },
+    {
+      "id": "19",
+      "name": "USB与供电线",
+      "quantity": 1,
+      "model_status": "未建模",
+      "nominal_mass_kg": null,
+      "detail": "USB and power cable bundle absent; bundled kit cables must not be counted twice.",
+      "source": "procurement"
+    },
+    {
+      "id": "20",
+      "name": "安装与整套装配",
+      "quantity": 1,
+      "model_status": "归属待确认",
+      "nominal_mass_kg": null,
+      "detail": "Real mounting structures not frozen. Model has hypothetical gimbal 180 g, not proof that physical assembly hardware is included.",
+      "source": "procurement"
+    }
+  ],
+  "conflicts": [
+    {
+      "topic": "bare mass / scope",
+      "alternatives": [
+        "conditional 5.7 kg procurement estimate",
+        "model split 4.1 + 4*.4 kg"
+      ],
+      "resolution": "not independently verified, not an actual numeric conflict; motor/gearbox/board inclusion unknown; no averaging"
+    },
+    {
+      "topic": "historical 8 kg target vs current model",
+      "alternatives": [
+        "historical maximum ready mass 8 kg",
+        "current incomplete model 9.186 kg"
+      ],
+      "resolution": "different requirement/status, not supplier mass; no unauthorized target change"
+    },
+    {
+      "topic": "old alternative motors vs R5",
+      "alternatives": [
+        "historical separately selected GMP motors",
+        "current complete R5 drivetrain"
+      ],
+      "resolution": "different procurement routes; never add alternative motor masses to R5"
+    },
+    {
+      "topic": "research gimbal vs purchase list",
+      "alternatives": [
+        "model includes 0.18 kg gimbal structures",
+        "current 20-item list has no gimbal actuator"
+      ],
+      "resolution": "research assumption; physical configuration undecided"
+    },
+    {
+      "topic": "OAK sales variant",
+      "alternatives": [
+        "procurement 2026-09-08 SKU 21545: sales version without IMU",
+        "current official OAK-D Lite page: BMI270",
+        "historical 61 g nominal record"
+      ],
+      "resolution": "variant mismatch unclosed; keep 61 g as historical nominal, not measured selected SKU; separate SEN0374 must not be substituted or removed; no extra internal IMU mass added"
+    }
+  ],
+  "measurement_priorities": [
+    {
+      "priority": 1,
+      "item": "裸底盘总质量及质量范围",
+      "method": "Confirm exact R5 24V/27 four-wheel version, packing list; weigh chassis with documented wheels/motors/gearboxes/boards inclusion; weigh each wheel and remaining body.",
+      "reason": "5.7 kg dominates modeled mass, split and inclusion lack evidence."
+    },
+    {
+      "priority": 2,
+      "item": "电池安装与局部质心",
+      "method": "Verify P7120S variant and weigh battery without charger; measure pose relative to base_footprint/axle midpoint; obtain CAD or balance-based local COM. Preserve uncertainty.",
+      "reason": "3.05 kg, about one third of model mass; mount is assumed."
+    },
+    {
+      "priority": 3,
+      "item": "车载 BOM 与遗漏部件",
+      "method": "Separate onboard/offboard/bundled items; weigh electronics, power/safety components, cables, brackets, four TFmini; record mounting XYZ and ownership to avoid double counts.",
+      "reason": "Unknown omitted masses cannot be bounded or set to zero; ordering is provisional."
+    },
+    {
+      "priority": 4,
+      "item": "云台与 IMU",
+      "method": "Decide actual gimbal architecture; weigh complete actuator/brackets/camera assembly and SEN0374; record mounts and density/centroid data.",
+      "reason": "180 g gimbal and 80 g IMU are engineering values."
+    },
+    {
+      "priority": 5,
+      "item": "独立整车载荷核对",
+      "method": "After fixed assembly, record total weight and per-wheel/front-rear static loads on level surface, axle geometry and device condition; derive horizontal COM with uncertainty. Do not infer vertical COM from level loads alone.",
+      "reason": "Independent closure check against component-derived COM; real measured loads are Earth-gravity observations, not lunar simulation validation."
+    }
+  ],
+  "interpretation": "Source audit only. No full hardware measurements, no mass redistribution, no new simulation."
+}

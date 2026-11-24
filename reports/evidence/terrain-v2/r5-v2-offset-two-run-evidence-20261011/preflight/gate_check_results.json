@@ -1,0 +1,155 @@
+{
+  "timestamp": "2026-10-11T23:33:00+09:00",
+  "container_name": "mooncar-r5-v2-offset-two-run-20261011",
+  "image_name": "mooncar-terrain:r5-image-dds-20261008",
+  "gates": {
+    "gate1_frozen_manifest_assets": {
+      "passed": true,
+      "assets_verified_count": 17,
+      "details": {
+        "campaign_plan.json": {
+          "exists": true,
+          "expected_sha": "c81e8591aac8b107ff122560cd074a43b9b457f76b29b15cb3b53bc338c834a6",
+          "actual_sha": "c81e8591aac8b107ff122560cd074a43b9b457f76b29b15cb3b53bc338c834a6",
+          "passed": true
+        },
+        "check_r5_v2_offset_round.py": {
+          "exists": true,
+          "expected_sha": "96d2846d069f490c67579a8cebbf5bf56d33d9c143d4824302bb8b1c8b4e330a",
+          "actual_sha": "96d2846d069f490c67579a8cebbf5bf56d33d9c143d4824302bb8b1c8b4e330a",
+          "passed": true
+        },
+        "DIAGNOSIS_PLAN.md": {
+          "exists": true,
+          "expected_sha": "69fc081661204ae4dfe7039fbea010fb2118147ccd1ff5b9a3a7cd078ff63451",
+          "actual_sha": "69fc081661204ae4dfe7039fbea010fb2118147ccd1ff5b9a3a7cd078ff63451",
+          "passed": true
+        },
+        "evaluate_diagnosis_run.py": {
+          "exists": true,
+          "expected_sha": "b1abfc021b39714a436c3582a35c5a2299a9bafc83d8d183a73285ea60d1a946",
+          "actual_sha": "b1abfc021b39714a436c3582a35c5a2299a9bafc83d8d183a73285ea60d1a946",
+          "passed": true
+        },
+        "README.md": {
+          "exists": true,
+          "expected_sha": "5d3177f4b58fafa8c8fa22e08a136744d1d4e6aaa27483c69db26206c235f6a9",
+          "actual_sha": "5d3177f4b58fafa8c8fa22e08a136744d1d4e6aaa27483c69db26206c235f6a9",
+          "passed": true
+        },
+        "run_diagnosis_campaign.py": {
+          "exists": true,
+          "expected_sha": "78fa2c5bbc459fb22e31a72013c835097b55e84ff48904df77cfcbf131916ff4",
+          "actual_sha": "78fa2c5bbc459fb22e31a72013c835097b55e84ff48904df77cfcbf131916ff4",
+          "passed": true
+        },
+        "test_execution_mock.py": {
+          "exists": true,
+          "expected_sha": "f623d33aa45a7267da40c2fa14352a6287e143d7e24672294e045e50ae0bf6b1",
+          "actual_sha": "f623d33aa45a7267da40c2fa14352a6287e143d7e24672294e045e50ae0bf6b1",
+          "passed": true
+        },
+        "worlds/world_restore_x00.sdf": {
+          "exists": true,
+          "expected_sha": "e71ea47b0a77507a96db84301a4dd1951115cbebf05b550032062e028abea3c7",
+          "actual_sha": "e71ea47b0a77507a96db84301a4dd1951115cbebf05b550032062e028abea3c7",
+          "passed": true
+        },
+        "worlds/world_shift_x05.sdf": {
+          "exists": true,
+          "expected_sha": "8b549b1bd531cf67a076dab6a7e9bcd068d59edabb067a850904f128d51c3c0f",
+          "actual_sha": "8b549b1bd531cf67a076dab6a7e9bcd068d59edabb067a850904f128d51c3c0f",
+          "passed": true
+        },
+        "allocator/libmooncar-axle-allocation.so": {
+          "exists": true,
+          "expected_sha": "8ebba20c5a5c13b2b9878ed55ea595fffcf887024a37adc7b0fdb3f98b13dbc6",
+          "actual_sha": "8ebba20c5a5c13b2b9878ed55ea595fffcf887024a37adc7b0fdb3f98b13dbc6",
+          "passed": true
+        },
+        "allocator-models/manifest.json": {
+          "exists": true,
+          "expected_sha": "b06857dc09bc5e76774630434887a4a9ec7c71e161b74301bf85bb1a97e84954",
+          "actual_sha": "b06857dc09bc5e76774630434887a4a9ec7c71e161b74301bf85bb1a97e84954",
+          "passed": true
+        },
+        "contact-observer/libmooncar-contact-observer.so": {
+          "exists": true,
+          "expected_sha": "aca7e0c371d98395c792ff7d5cfd11c01bc826c08c6b355197fc9fa1c75c0707",
+          "actual_sha": "aca7e0c371d98395c792ff7d5cfd11c01bc826c08c6b355197fc9fa1c75c0707",
+          "passed": true
+        },
+        "observer/libmooncar-origin-observer.so": {
+          "exists": true,
+          "expected_sha": "1337a2b62ee7f7de93dd94122b585b2566511380d75920062189c2bc37e5b724",
+          "actual_sha": "1337a2b62ee7f7de93dd94122b585b2566511380d75920062189c2bc37e5b724",
+          "passed": true
+        },
+        "slip-models/manifest.json": {
+          "exists": true,
+          "expected_sha": "7951841803af7019634edbc0d2d2e0008cd759af82959755ad3605e7f858e6c2",
+          "actual_sha": "7951841803af7019634edbc0d2d2e0008cd759af82959755ad3605e7f858e6c2",
+          "passed": true
+        },
+        "test-startup/image_dds_guard.py": {
+          "exists": true,
+          "expected_sha": "d58d594762d2983441463cf80dc83ce1e8ffbe40258eff7cdb4453e1a4752204",
+          "actual_sha": "d58d594762d2983441463cf80dc83ce1e8ffbe40258eff7cdb4453e1a4752204",
+          "passed": true
+        },
+        "turn-models/pure_turn.sdf": {
+          "exists": true,
+          "expected_sha": "5c19449015582b0c7fd9045f6e1da7d4268fa0e600548dca969707b2483deb0d",
+          "actual_sha": "5c19449015582b0c7fd9045f6e1da7d4268fa0e600548dca969707b2483deb0d",
+          "passed": true
+        },
+        "turn-slip/libmooncar-turn-slip-control.so": {
+          "exists": true,
+          "expected_sha": "5890720ab18ece5aa3cff35e0a6c9693b9757b1a38f36850c5cb5e5e23f20487",
+          "actual_sha": "5890720ab18ece5aa3cff35e0a6c9693b9757b1a38f36850c5cb5e5e23f20487",
+          "passed": true
+        }
+      }
+    },
+    "gate2_clean_output_directories": {
+      "passed": true,
+      "run1_dir": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-two-run-evidence-20261011\\campaign\\01-test_shift_x_plus_5cm",
+      "run1_exists": false,
+      "run2_dir": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-two-run-evidence-20261011\\campaign\\02-restore_x_0",
+      "run2_exists": false
+    },
+    "gate3_sdf_structure": {
+      "passed": true,
+      "shift_world": {
+        "path": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011\\worlds\\world_shift_x05.sdf",
+        "state": {
+          "pose": "0.05 0 .03 0 0 0",
+          "contact_observer_count": 1,
+          "step_observer_count": 1
+        },
+        "passed": true
+      },
+      "restore_world": {
+        "path": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping\\reports\\evidence\\terrain-v2\\r5-v2-offset-diagnosis-prep-20261011\\worlds\\world_restore_x00.sdf",
+        "state": {
+          "pose": "0 0 .03 0 0 0",
+          "contact_observer_count": 1,
+          "step_observer_count": 1
+        },
+        "passed": true
+      }
+    },
+    "gate4_frozen_execution_sources": {
+      "passed": true,
+      "sources": {
+        "check_r5_v2_offset_round.py": "96d2846d069f490c67579a8cebbf5bf56d33d9c143d4824302bb8b1c8b4e330a",
+        "evaluate_diagnosis_run.py": "b1abfc021b39714a436c3582a35c5a2299a9bafc83d8d183a73285ea60d1a946",
+        "scripts/check_r5_turn_slip_round.py": "e7063d6a179f2d472cb252d6106288d0a38fd3c285ded3de9ee8153c38557d57",
+        "scripts/check_r5_turn_gate_validation.py": "fa43f8994ec38a9942f42042e752f410b479785b639a3f0355b07379f7b037b8",
+        "scripts/check_r5_origin_round.py": "8cdbd9e17c15e84548f16b2da28cc18f41690c98a37ed5baf3f18b27dabf6d95",
+        "scripts/check_r5_runtime.py": "7f89180bd5848503e61a5b046f4086eee138d6696a13452eb9c9c6d033ccd27a"
+      }
+    }
+  },
+  "all_gates_passed": true
+}

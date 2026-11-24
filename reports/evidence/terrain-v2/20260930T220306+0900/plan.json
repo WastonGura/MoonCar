@@ -1,0 +1,24 @@
+{
+  "batch": "20260930T220306+0900",
+  "purpose": "apparatus, mass, step, grain-size and outlet-height checks; no friction optimisation",
+  "shared": {"seed": 123457, "max_seconds": 8, "mu": 0.65, "rolling_mu": 0.15, "wall_mu": 0.65, "wall_rolling_mu": 0.15},
+  "cases": [
+    {"name": "smoke2g", "mass_g": 2, "diameter_mm": 2, "dt_s": 0.000008, "max_seconds": 2, "note": "initial functional smoke, gate opened after fixed 0.24 s dwell; excluded from angle comparisons"},
+    {"name": "funnel32g", "mass_g": 32, "diameter_mm": 2, "dt_s": 0.000008, "outlet_height_m": 0.10},
+    {"name": "funnel200g", "mass_g": 200, "diameter_mm": 2, "dt_s": 0.000008, "outlet_height_m": 0.10},
+    {"name": "grain8g_d2", "mass_g": 8, "diameter_mm": 2, "dt_s": 0.000008, "outlet_height_m": 0.10},
+    {"name": "grain8g_d2_half", "mass_g": 8, "diameter_mm": 2, "dt_s": 0.000004, "outlet_height_m": 0.10},
+    {"name": "grain8g_d1", "mass_g": 8, "diameter_mm": 1, "dt_s": 0.000004, "outlet_height_m": 0.10},
+    {"name": "height8g_075", "mass_g": 8, "diameter_mm": 2, "dt_s": 0.000008, "outlet_height_m": 0.075},
+    {"name": "height8g_125", "mass_g": 8, "diameter_mm": 2, "dt_s": 0.000008, "outlet_height_m": 0.125},
+    {"name": "funnel32g_half", "mass_g": 32, "diameter_mm": 2, "dt_s": 0.000004, "outlet_height_m": 0.10,
+     "supplement_reason": "8 g / 2 mm upper outlines were nearly flat with low R2; add a 32 g step check, unchanged geometry and contact inputs"}
+  ],
+  "limits": [
+    "Grain-size and height checks use 8 g to bound compute cost; they do not establish 200 g convergence",
+    "Half-step d2 trial separates step influence from grain-size change",
+    "All comparisons use one seed and are not independent repetition estimates",
+    "34.3 degrees is a literature reference only; no result-based parameter tuning",
+    "Rotation and translation reported separately; geometric stop does not mean rotational rest"
+  ]
+}

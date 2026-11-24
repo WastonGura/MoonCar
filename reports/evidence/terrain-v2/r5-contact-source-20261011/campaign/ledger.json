@@ -1,0 +1,74 @@
+[
+  {
+    "name": "01-original-zero",
+    "profile": "original",
+    "case": "zero",
+    "linear": 0.0,
+    "started_wall": 1791647184.7420642,
+    "qualified": true,
+    "exit_code": 0,
+    "wall_seconds": 152.2073049545288,
+    "timed_out": false,
+    "error": null
+  },
+  {
+    "name": "02-original-straight-1",
+    "profile": "original",
+    "case": "straight-1",
+    "linear": 0.1,
+    "started_wall": 1791647339.5374093,
+    "qualified": true,
+    "exit_code": 0,
+    "wall_seconds": 131.6952726840973,
+    "timed_out": false,
+    "error": null
+  },
+  {
+    "name": "03-original-straight-2",
+    "profile": "original",
+    "case": "straight-2",
+    "linear": 0.1,
+    "started_wall": 1791647474.0452611,
+    "qualified": true,
+    "exit_code": 0,
+    "wall_seconds": 140.78377103805542,
+    "timed_out": false,
+    "error": null
+  },
+  {
+    "name": "04-slip-straight-1",
+    "profile": "slip",
+    "case": "straight-1",
+    "linear": 0.1,
+    "started_wall": 1791647617.5685136,
+    "qualified": true,
+    "exit_code": 0,
+    "wall_seconds": 129.15275526046753,
+    "timed_out": false,
+    "error": null
+  },
+  {
+    "name": "05-slip-straight-2",
+    "profile": "slip",
+    "case": "straight-2",
+    "linear": 0.1,
+    "started_wall": 1791647749.42766,
+    "qualified": true,
+    "exit_code": 0,
+    "wall_seconds": 131.6771879196167,
+    "timed_out": false,
+    "error": null
+  },
+  {
+    "name": "06-restore-straight",
+    "profile": "restore",
+    "case": "straight",
+    "linear": 0.1,
+    "started_wall": 1791647884.1051986,
+    "qualified": true,
+    "exit_code": 0,
+    "wall_seconds": 149.71015453338623,
+    "timed_out": false,
+    "error": null
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "simulation_limit": 24,
+  "wall_seconds_per_attempt": 600,
+  "preparation_seconds_limit": 2700,
+  "test_copies_only": true,
+  "fresh_independent_count": true,
+  "old_results_not_reused": true,
+  "no_reruns_after_freeze": true,
+  "no_parameter_search": true,
+  "physical_candidate_unchanged_from_338fcaf": true,
+  "startup_difference": "244d47e test-only bounded ENODATA retry and traceback; original10s bound, semantic proofs and runtime libraries unchanged",
+  "stop_on_critical_failure": true,
+  "production_model_and_guard_unchanged": true,
+  "remaining_stock_bridge_shutdown_issue_recorded_separately": true
+}

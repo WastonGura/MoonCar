@@ -1,0 +1,50 @@
+{
+  "check_preparation.py": {
+    "size_bytes": 4089,
+    "sha256": "5c0a22685158de765075798f1ba01b0a363a666b83c8a46f2b81641220c33cf5"
+  },
+  "GEMINI_IMPLEMENTATION_TASK.md": {
+    "size_bytes": 2540,
+    "sha256": "8c10fb73649fd6467708915e10f326f63a5d9c095cd94ea0a6b3e32d486a26d9"
+  },
+  "README.md": {
+    "size_bytes": 3196,
+    "sha256": "ec3cb1522d6166d8d4b96438ca2a88aaddc53de35fa1b831cde1ff3022532521"
+  },
+  "review-results.json": {
+    "size_bytes": 4319,
+    "sha256": "e87c91798e3df1e316ac96bddabdebf85ace875868fdfd9b2d34930dca9a53fa"
+  },
+  "synthetic-complete\\physics-steps.csv": {
+    "size_bytes": 997,
+    "sha256": "1faa10285a79367ce3a73ef5f93bb14ace26a93dd34e2a24b8ba45e14fb19fcd"
+  },
+  "synthetic-complete\\synthetic-contact-steps.csv": {
+    "size_bytes": 656,
+    "sha256": "523494878b2227ac4f087adfdd2c0291ddd8fd2dc3c8ecc5d0dcf3f977ba74ab"
+  },
+  "synthetic-explicit_empty\\physics-steps.csv": {
+    "size_bytes": 997,
+    "sha256": "1faa10285a79367ce3a73ef5f93bb14ace26a93dd34e2a24b8ba45e14fb19fcd"
+  },
+  "synthetic-explicit_empty\\synthetic-contact-steps.csv": {
+    "size_bytes": 656,
+    "sha256": "3a130addf7ee79590902903337f7cad3b9009ddccf9cde7ef1cafa84275dfa33"
+  },
+  "synthetic-missing\\physics-steps.csv": {
+    "size_bytes": 997,
+    "sha256": "1faa10285a79367ce3a73ef5f93bb14ace26a93dd34e2a24b8ba45e14fb19fcd"
+  },
+  "synthetic-missing\\synthetic-contact-steps.csv": {
+    "size_bytes": 506,
+    "sha256": "f3ba4043d8807a3cc5e3f5bbe134b714cba4bce6b74b00bd2e39aa9efe283b5b"
+  },
+  "synthetic-unknown\\physics-steps.csv": {
+    "size_bytes": 997,
+    "sha256": "1faa10285a79367ce3a73ef5f93bb14ace26a93dd34e2a24b8ba45e14fb19fcd"
+  },
+  "synthetic-unknown\\synthetic-contact-steps.csv": {
+    "size_bytes": 659,
+    "sha256": "49c34d2a37abbc81aaf855aff429830e1309f09c237f2efdc6c4f54be587ede0"
+  }
+}

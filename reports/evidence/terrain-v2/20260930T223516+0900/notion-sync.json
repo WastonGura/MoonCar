@@ -1,0 +1,12 @@
+{
+  "page_id": "3e83a561-9879-81fa-b938-fd7cc4ac966f",
+  "section": "10 固定漏斗、200 g 工程检查及步长重复（2026-09-30）",
+  "method": "exact unique trailing paragraph anchor, append only",
+  "verification": "fetch after write; previous entire content body equals prefix before new section",
+  "previous_chapters_preserved": true,
+  "new_formula_and_table_verified": true,
+  "verified_strings": ["28.4262°", "20.7004°", "21.3707°", "0.6704°", "0.8665°", "K_{\\rm rot}", "10.5 失败保留"],
+  "local_section_file": "notion-calculation-section.md",
+  "verification_date_local": "2026-09-30",
+  "timezone": "Asia/Tokyo"
+}

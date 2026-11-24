@@ -1,0 +1,10 @@
+{
+  "purpose": "Held-out curved ridge geometry in another part of the same world; not an independent-world generalization claim",
+  "start": [-9.8, 6.8, -0.528074],
+  "goal": [-9.2, 6.45],
+  "seconds": 30,
+  "conditions": ["stationary", "approach"],
+  "rules": "Keep resampling_dataset.py direction and range opportunity rules unchanged; no threshold tuning after this trial",
+  "labels": "Sensor-only valid fit; independent curved geometry is an evaluation setup choice, not an online truth feature",
+  "failures": "Retain startup, sensor and motion failures; no silent retry or zero fill"
+}

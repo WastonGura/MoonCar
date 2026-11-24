@@ -1,0 +1,25 @@
+test_both_mesh_diagonals_have_identical_horizontal_support (test_ramp_contact_audit.RampContactAuditTests.test_both_mesh_diagonals_have_identical_horizontal_support) ... D:\Documents\Projects\Repositories\MoonCar-mapping\scripts\audit_r5_ramp_contact.py:27: ResourceWarning: unclosed file <_io.TextIOWrapper name='C:\\Users\\jiker\\AppData\\Local\\Temp\\tmp2_6nczy5\\False' mode='r' encoding='cp65001'>
+  for line in Path(path).open():
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\Documents\Projects\Repositories\MoonCar-mapping\scripts\audit_r5_ramp_contact.py:27: ResourceWarning: unclosed file <_io.TextIOWrapper name='C:\\Users\\jiker\\AppData\\Local\\Temp\\tmp2_6nczy5\\True' mode='r' encoding='cp65001'>
+  for line in Path(path).open():
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_both_triangles_and_shared_edge_project_to_plane (test_ramp_contact_audit.RampContactAuditTests.test_both_triangles_and_shared_edge_project_to_plane) ... ok
+test_coordinate_adjacency_ignores_obj_vertex_duplication (test_ramp_contact_audit.RampContactAuditTests.test_coordinate_adjacency_ignores_obj_vertex_duplication) ... ok
+test_degenerate_or_reversed_face_fails (test_ramp_contact_audit.RampContactAuditTests.test_degenerate_or_reversed_face_fails) ... ok
+test_fixture_replacement_preserves_vehicle_and_friction (test_ramp_contact_audit.RampContactAuditTests.test_fixture_replacement_preserves_vehicle_and_friction) ... ok
+test_non_coplanar_edge_is_not_reported_as_internal_flat_seam (test_ramp_contact_audit.RampContactAuditTests.test_non_coplanar_edge_is_not_reported_as_internal_flat_seam) ... ok
+test_normal_angle_known_and_unknown (test_ramp_contact_audit.RampContactAuditTests.test_normal_angle_known_and_unknown) ... ok
+test_outside_and_nonfinite_points_fail (test_ramp_contact_audit.RampContactAuditTests.test_outside_and_nonfinite_points_fail) ... ok
+test_overlapping_surfaces_are_not_silently_selected (test_ramp_contact_audit.RampContactAuditTests.test_overlapping_surfaces_are_not_silently_selected) ... ok
+test_plate_link_and_collision_offsets_are_composed (test_ramp_contact_audit.RampContactAuditTests.test_plate_link_and_collision_offsets_are_composed) ... ok
+test_shared_and_coincident_disconnected_edges_are_distinguished (test_ramp_contact_audit.RampContactAuditTests.test_shared_and_coincident_disconnected_edges_are_distinguished) ... ok
+test_sloped_face_does_not_become_horizontal (test_ramp_contact_audit.RampContactAuditTests.test_sloped_face_does_not_become_horizontal) ... ok
+test_tilted_or_named_frame_plate_fails (test_ramp_contact_audit.RampContactAuditTests.test_tilted_or_named_frame_plate_fails) ... ok
+test_world_transform_is_not_ignored (test_ramp_contact_audit.RampContactAuditTests.test_world_transform_is_not_ignored) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.214s
+
+OK

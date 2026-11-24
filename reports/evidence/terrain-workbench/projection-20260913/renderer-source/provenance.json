@@ -1,0 +1,6 @@
+{
+  "path": "/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz/gz-rendering8/ogre2/media/materials/programs/GLSL",
+  "package": "ros-jazzy-gz-rendering-vendor",
+  "version": "0.0.7-1noble.20260425.063708",
+  "note": "Installed Ogre2 shaders reconstruct depth using interpolated cameraDir. Pixel-center mismatch inferred from matched raw captures; not a claim about all Gazebo cameras."
+}

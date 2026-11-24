@@ -1,0 +1,23 @@
+units si
+atom_style sphere
+boundary m m f
+newton off
+region domain block -0.15 0.15 -0.15 0.15 -0.005 0.25 units box
+create_box 1 domain
+comm_modify vel yes
+neighbor 0.0005 bin
+neigh_modify delay 0 every 1 check yes
+pair_style granular
+pair_coeff * * hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution
+fix floor all wall/gran granular hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution zplane 0 NULL
+fix integrator all nve/sphere
+fix gravity all gravity 9.81 vector 0 0 -1
+region outlet cylinder z 0 0 0.008 0.10 0.13 units box
+fix feed all pour 2883 1 123457 region outlet diam one 0.002 dens 2650.0 2650.0 vol 0.25 100
+timestep 8e-06
+compute kinetic all ke
+thermo 10000
+thermo_style custom step time atoms c_kinetic
+thermo_modify lost error
+dump trajectory all custom 10000 prototype32g_open_boundary/particles.dump id type x y z vx vy vz radius
+dump_modify trajectory sort id

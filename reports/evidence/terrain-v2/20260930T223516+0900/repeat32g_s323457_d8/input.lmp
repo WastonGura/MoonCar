@@ -1,0 +1,56 @@
+units si
+atom_style sphere
+atom_modify map array
+boundary m m f
+newton off
+region domain block -0.15 0.15 -0.15 0.15 -0.005 0.25 units box
+create_box 1 domain
+comm_modify vel yes
+neighbor 0.0005 bin
+neigh_modify delay 0 every 1 check yes
+pair_style granular
+pair_coeff * * hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution
+fix floor all wall/gran granular hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution zplane 0 NULL
+region funnel cone z 0 0 0.008 0.06 0.1 0.18 open 1 open 2 units box
+fix funnel_wall all wall/gran/region granular hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution region funnel
+fix gate all wall/gran granular hertz/material 50000000.0 0.3 0.25 tangential mindlin NULL 1.0 0.65 rolling sds 1000 0 0.15 damping coeff_restitution zplane 0.1 NULL
+fix integrator all nve/sphere
+fix gravity all gravity 9.81 vector 0 0 -1
+region feed_zone cylinder z 0 0 0.04 0.185 0.205 units box
+fix feed all pour 2883 1 323457 region feed_zone diam one 0.002 dens 2650.0 2650.0 vol 0.25 100
+timestep 8e-06
+compute kinetic all ke
+compute rotation all erotate/sphere
+thermo 10000
+thermo_style custom step time atoms c_kinetic c_rotation
+thermo_modify lost error
+dump trajectory all custom 10000 repeat32g_s323457_d8/particles.dump id type x y z vx vy vz omegax omegay omegaz radius
+dump_modify trajectory sort id
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+
+# At time 0.56
+unfix gate
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no
+run 10000 pre yes post no

@@ -1,0 +1,26 @@
+{
+  "scope": "offline survey planner and mission unit tests; no ROS/Gazebo or hardware acceptance",
+  "created_utc": "2026-11-15T18:05:21.517021+00:00",
+  "suites": [
+    "test_autonomous_survey.py",
+    "test_survey_recovery.py",
+    "test_planner_v3_features.py",
+    "test_raycasting_visibility.py",
+    "test_localization_revisit.py",
+    "test_localization_revisit_integration.py",
+    "test_localization_revisit_retirement.py",
+    "test_localization_revisit_retirement_integration.py",
+    "test_localization_revisit_nearby.py",
+    "test_localization_revisit_nearby_integration.py",
+    "test_localization_revisit_displacement.py",
+    "test_localization_revisit_old_anchor.py",
+    "test_localization_revisit_capture.py",
+    "test_localization_revisit_candidates.py",
+    "test_localization_revisit_precision.py"
+  ],
+  "tests_run": 160,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "passed": true
+}

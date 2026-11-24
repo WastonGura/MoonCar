@@ -1,0 +1,110 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 199B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/mooncar-dem:lammps-2025.7.22.4
+#2 DONE 0.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/mooncar-dem:lammps-2025.7.22.4@sha256:91241f6e0239ff14bda48b8c056c02f55226a41b9b28b5950d7d8d9c61117a6c
+#4 resolve docker.io/library/mooncar-dem:lammps-2025.7.22.4@sha256:91241f6e0239ff14bda48b8c056c02f55226a41b9b28b5950d7d8d9c61117a6c 0.0s done
+#4 DONE 0.1s
+
+#5 [2/2] RUN apt-get update && apt-get install -y --no-install-recommends mpich && rm -rf /var/lib/apt/lists/*
+#5 1.574 Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+#5 2.329 Get:2 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+#5 2.580 Get:3 http://packages.ros.org/ros2/ubuntu noble InRelease [4676 B]
+#5 2.861 Get:4 http://packages.ros.org/ros2/ubuntu noble/main Sources [2171 kB]
+#5 3.565 Get:5 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1943 kB]
+#5 4.733 Get:6 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+#5 5.264 Get:7 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+#5 6.175 Get:8 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+#5 7.016 Get:9 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+#5 11.29 Get:10 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1314 kB]
+#5 12.73 Get:11 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+#5 13.39 Get:12 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+#5 17.21 Get:13 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1542 kB]
+#5 18.33 Get:14 http://packages.ros.org/ros2/ubuntu noble/main amd64 Packages [2051 kB]
+#5 20.13 Get:15 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [50.0 kB]
+#5 158.5 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [2162 kB]
+#5 205.6 Get:17 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2057 kB]
+#5 252.8 Get:18 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [56.2 kB]
+#5 253.0 Get:19 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1637 kB]
+#5 266.3 Get:20 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [49.0 kB]
+#5 267.0 Get:21 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [36.0 kB]
+#5 267.8 Get:22 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [671 B]
+#5 267.9 Fetched 37.3 MB in 4min 28s (139 kB/s)
+#5 267.9 Reading package lists...
+#5 268.9 Reading package lists...
+#5 269.8 Building dependency tree...
+#5 270.1 Reading state information...
+#5 270.5 The following additional packages will be installed:
+#5 270.5   hwloc-nox libslurm40t64
+#5 270.5 Suggested packages:
+#5 270.5   mpich-doc
+#5 270.5 Recommended packages:
+#5 270.5   libmpich-dev
+#5 270.5 The following NEW packages will be installed:
+#5 270.5   hwloc-nox libslurm40t64 mpich
+#5 271.8 0 upgraded, 3 newly installed, 0 to remove and 325 not upgraded.
+#5 271.8 Need to get 976 kB of archives.
+#5 271.8 After this operation, 2922 kB of additional disk space will be used.
+#5 271.8 Get:1 http://archive.ubuntu.com/ubuntu noble/universe amd64 libslurm40t64 amd64 23.11.4-1.2ubuntu5 [553 kB]
+#5 277.2 Get:2 http://archive.ubuntu.com/ubuntu noble/universe amd64 hwloc-nox amd64 2.10.0-1build1 [221 kB]
+#5 279.6 Get:3 http://archive.ubuntu.com/ubuntu noble/universe amd64 mpich amd64 4.2.0-5build3 [202 kB]
+#5 281.3 debconf: delaying package configuration, since apt-utils is not installed
+#5 281.3 Fetched 976 kB in 10s (93.9 kB/s)
+#5 281.4 Selecting previously unselected package libslurm40t64.
+#5 281.4 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 123331 files and directories currently installed.)
+#5 281.9 Preparing to unpack .../libslurm40t64_23.11.4-1.2ubuntu5_amd64.deb ...
+#5 281.9 Unpacking libslurm40t64 (23.11.4-1.2ubuntu5) ...
+#5 282.0 Selecting previously unselected package hwloc-nox.
+#5 282.0 Preparing to unpack .../hwloc-nox_2.10.0-1build1_amd64.deb ...
+#5 282.0 Unpacking hwloc-nox (2.10.0-1build1) ...
+#5 282.1 Selecting previously unselected package mpich.
+#5 282.1 Preparing to unpack .../mpich_4.2.0-5build3_amd64.deb ...
+#5 282.1 Unpacking mpich (4.2.0-5build3) ...
+#5 282.2 Setting up libslurm40t64 (23.11.4-1.2ubuntu5) ...
+#5 282.2 Setting up hwloc-nox (2.10.0-1build1) ...
+#5 282.2 Setting up mpich (4.2.0-5build3) ...
+#5 282.2 Processing triggers for libc-bin (2.39-0ubuntu8.8) ...
+#5 DONE 283.5s
+
+#6 exporting to image
+#6 exporting layers
+#6 exporting layers 0.3s done
+#6 exporting manifest sha256:c05bc39e2b493b3591cd4ac46477e1b1742cac5ad733d2da00cb9a449c4b520b 0.0s done
+#6 exporting config sha256:7a21532d887cfa67ae47b97a8b719b84144806ce3f1e4a839c42d369e3df0d34 0.0s done
+#6 exporting attestation manifest sha256:bc7b5c2aeb8ad8e495dbaf78bb82e79dfe099e155e781dbc53a0df588924a4fd 0.0s done
+#6 exporting manifest list sha256:d435fb74367e02d9bf624b0277fcb338484dfd4684f41b4a9d987bcd796166ef 0.0s done
+#6 naming to docker.io/library/mooncar-dem:mpich-2025.7.22.4 done
+#6 unpacking to docker.io/library/mooncar-dem:mpich-2025.7.22.4 0.1s done
+#6 DONE 0.5s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/i8cbnkbge7wyg7pbhf9lunqq8

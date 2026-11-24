@@ -1,0 +1,93 @@
+{
+  "world_sha256": "08e9837e09b53e06fa0569423e0dc4775b1456508ca999cfef6fdf3444fb1555",
+  "manifest_sha256": "740fc5161f60855c25dd6d01308e1afd20d4b5f7b6f08a7a02243341e573f552",
+  "method": "Actual collision triangles; shared-edge height and one-sided slope; 2 cm edge sampling",
+  "scope": "Offline geometry audit, not contact/traction validation; 18 degrees is current terrain classifier threshold",
+  "patches": [
+    {
+      "patch": "measured_patch",
+      "center_m": [
+        4.8,
+        3.6
+      ],
+      "size_m": 4.8,
+      "sampled_edge_points": 960,
+      "edge_height_gap_m": {
+        "median": 7.278333333330918e-05,
+        "p95": 0.00021506499999998335,
+        "maximum": 0.00029499999999999665
+      },
+      "inside_edge_slope_deg": {
+        "median": 1.905408244752231,
+        "p95": 6.0979463094621105,
+        "maximum": 7.409019411651036
+      },
+      "outside_edge_slope_deg": {
+        "median": 0.5888851975097518,
+        "p95": 1.084953911735349,
+        "maximum": 1.165542997031726
+      },
+      "edge_slope_magnitude_difference_deg": {
+        "median": 1.3349467243160107,
+        "p95": 5.793584665839557,
+        "maximum": 6.778831156309764
+      },
+      "blend_band_area_m2": 6.230000000000002,
+      "blend_band_over_18deg_area_m2": 0.046250000000000006,
+      "blend_band_slope_deg": {
+        "median": 4.894034947286768,
+        "p95": 14.18378110943044,
+        "maximum": 22.65296407364432
+      },
+      "steepest_band_xy_m": [
+        2.6333333333333333,
+        4.916666666666667
+      ]
+    },
+    {
+      "patch": "measured_background_patch",
+      "center_m": [
+        6.0,
+        -5.1
+      ],
+      "size_m": 6.0,
+      "sampled_edge_points": 1200,
+      "edge_height_gap_m": {
+        "median": 1.666666666674116e-07,
+        "p95": 5.666666666337026e-07,
+        "maximum": 8.333333333335885e-07
+      },
+      "inside_edge_slope_deg": {
+        "median": 6.824644049918339,
+        "p95": 16.024388957662275,
+        "maximum": 17.43445805569465
+      },
+      "outside_edge_slope_deg": {
+        "median": 0.6580415748491403,
+        "p95": 1.1879984736225448,
+        "maximum": 1.2465775842936297
+      },
+      "edge_slope_magnitude_difference_deg": {
+        "median": 6.063741312315517,
+        "p95": 15.4777350462047,
+        "maximum": 17.059975564010934
+      },
+      "blend_band_area_m2": 7.909999999999997,
+      "blend_band_over_18deg_area_m2": 3.0275000000000043,
+      "blend_band_slope_deg": {
+        "median": 14.042099966370913,
+        "p95": 39.843360006864515,
+        "maximum": 49.82600337837796
+      },
+      "steepest_band_xy_m": [
+        3.1833333333333336,
+        -7.883333333333333
+      ],
+      "unblended_source_same_cell_slopes_deg": [
+        6.10510704252012,
+        5.635790252487651
+      ],
+      "unblended_source_sha256": "c2d1b97c657ac2e73e20fcde24b38406e4a9ebf86a37e09895207410d6bfe691"
+    }
+  ]
+}

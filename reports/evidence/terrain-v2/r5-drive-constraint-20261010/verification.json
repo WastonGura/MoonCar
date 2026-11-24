@@ -1,0 +1,21 @@
+{
+  "original_files_checked": 419,
+  "original_files_changed": [],
+  "source_archive_sha256": "0d95b1dd3ea8c6f558535efe5fab6ecf5af947902a4367982e6fabd586752266",
+  "archived_shape_sources": [
+    {
+      "member": "gz-physics-gz-physics7_7.8.0/dartsim/src/ShapeFeatures.cc",
+      "sha256": "4cea8adb9c9cd3801ad41bf6e2806e81987ed86a1aa6912e1e99ca781b4a6d6f",
+      "has_slip_compliance": true
+    },
+    {
+      "member": "gz-physics-gz-physics7_7.8.0/dartsim/src/ShapeFeatures.hh",
+      "sha256": "b56d4cb8221d71927890395f09bffd148f5da648c13963021faa6fa0d804e78a",
+      "has_slip_compliance": true
+    }
+  ],
+  "new_gazebo_attempts": 0,
+  "patch_applied": false,
+  "goal_achieved": false,
+  "required_authorization": "test-only contact model change; pending explicit answer"
+}

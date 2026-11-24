@@ -1,0 +1,10 @@
+{
+  "stage": "after_six_trials_final_stop",
+  "runner": "tmp/run_closeout.py",
+  "exit_code": 1,
+  "exception": "ValueError: HTTP 400: {\"error\": \"正在切换实验，请等待完成\"}",
+  "location": "/source/tmp/run_closeout.py line 62, request('stop', {}) in finally",
+  "cause": "The existing run() had already requested asynchronous stop; the wrapper immediately requested stop again while the stop worker was still alive.",
+  "trial_effect": "All six declared trials already had terminal states and captured numerical reports. No trial was rerun or replaced.",
+  "recovery": "Wait for stopped through existing state API, verify frozen source hashes, then run the existing offline report command. Preserve the original executed wrapper in source-before.zip; do not run this one-off wrapper again."
+}

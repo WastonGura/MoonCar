@@ -1,0 +1,40 @@
+{
+  "completed_utc": "2026-09-13T15:13:10.120804+00:00",
+  "attempts": 6,
+  "numerical_reports": 6,
+  "all_reports_complete_without_runtime_failure": true,
+  "orchestration_exit_code": 1,
+  "offline_report_recovery": true,
+  "consistent_descriptive_advantage": false,
+  "per_start": [
+    {
+      "start": [
+        -15.0,
+        -16.0,
+        0.0
+      ],
+      "primary": {
+        "nearest_view_v1": 107.3125,
+        "coverage_view_v1": 112.8125,
+        "surface_view_v1": 105.25
+      },
+      "surface_exceeds_both": false
+    },
+    {
+      "start": [
+        15.0,
+        16.0,
+        3.141592653589793
+      ],
+      "primary": {
+        "coverage_view_v1": 108.375,
+        "surface_view_v1": 109.75,
+        "nearest_view_v1": 113.4375
+      },
+      "surface_exceeds_both": false
+    }
+  ],
+  "significance_established": false,
+  "v5_validated": false,
+  "automatic_followup": false
+}

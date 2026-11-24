@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/evidence/pile.py", line 344, in <module>
+    run(args)
+  File "/evidence/pile.py", line 253, in run
+    engine.command(f"run {interval} pre yes post no")
+  File "/opt/mooncar-dem/lib/python3.12/site-packages/lammps/core.py", line 834, in command
+    self.lib.lammps_command(self.lmp, newcmd)
+KeyboardInterrupt

@@ -1,0 +1,1462 @@
+{
+  "protocol": "/source/docs/camera_mode_comparison_plan_20261104.md",
+  "roi_coordinates": "map; initial map gauge follows world yaw and origin; no fitted trajectory alignment",
+  "arms": [
+    {
+      "mode": "fixed",
+      "experiment": "experiment-87ae029097e0",
+      "outcome": "passed",
+      "completed_actions": 6,
+      "planned_actions": 6,
+      "software": {
+        "verified": true,
+        "git_commit": "7db785ca7bf0804702fac3bb7fc18c94cd143b15",
+        "git_branch": "dev/terrain-mapping-workbench",
+        "source_root": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+        "product_clean": true,
+        "baseline": {
+          "version": "2026-11-04-r5-window",
+          "simulation_profile": "r5_support_v1",
+          "scene": "survey_v2_native",
+          "localization_mode": "rgbd_window",
+          "active_revisit": false,
+          "support_profile": "independent_linear_v1",
+          "physics_step_s": 0.00025,
+          "support_runtime": "/opt/mooncar/turn/r5-v2",
+          "hardware_calibrated": false,
+          "historical_tasks_without_profile": "legacy"
+        },
+        "source_digest": "6f44eb9760f03c10f2af5c5705f2ce3c23e1fb55de44a3041fd127b18dcfdbe8"
+      },
+      "preparation_sim_s": 3.64025,
+      "preparation_wall_s": 16.28548330400008,
+      "task_sim_s": 54.659749999999995,
+      "task_wall_s_approx": 239.9407087260006,
+      "collection_wall_s": 288.20231956299995,
+      "formal_task": {
+        "start_sim": 9.01975,
+        "end_sim": 63.6795,
+        "duration_sim_s": 54.659749999999995,
+        "truth_samples": 13485,
+        "path_m": 5.496180783481506,
+        "net_translation_m": 4.143904262059752,
+        "maximum_drift_m": 4.143936926284934,
+        "yaw_change_deg": -24.021407683954553,
+        "maximum_yaw_change_deg": 90.83461348980588,
+        "max_tilt_deg": 10.096738286996993,
+        "start_xy": [
+          2.4048635127841163e-08,
+          1.2700826900991328e-15
+        ],
+        "end_xy": [
+          4.142502827566684,
+          0.10776388988005602
+        ]
+      },
+      "observation": {
+        "start_sim": 39.891,
+        "end_sim": 55.17675,
+        "duration_sim_s": 15.28575,
+        "truth_samples": 3764,
+        "path_m": 0.7114026601358245,
+        "net_translation_m": 0.6733031253575289,
+        "maximum_drift_m": 0.6733031441916166,
+        "yaw_change_deg": -0.6361438214364541,
+        "maximum_yaw_change_deg": 91.16905087733961,
+        "max_tilt_deg": 9.375953664981415,
+        "start_xy": [
+          3.8052280150931375,
+          0.0070598000752079984
+        ],
+        "end_xy": [
+          3.196287290139665,
+          0.29433717842121654
+        ]
+      },
+      "observation_safe_commands": {
+        "count": 1343,
+        "max_abs_linear": 0.0,
+        "max_abs_angular": 0.3
+      },
+      "observation_gimbal_feedback_range_rad": {
+        "minimum": [
+          -1.1533031663446221e-12,
+          -0.2608863522631336
+        ],
+        "maximum": [
+          1.0277990836473984e-11,
+          -0.2607888966263803
+        ]
+      },
+      "actions": [
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            1.0,
+            0.0
+          ],
+          "started_seconds": 3.64025,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 1.0,
+            "y": 0.0
+          },
+          "end_sim": 14.1975,
+          "physical": {
+            "start_sim": 9.01975,
+            "end_sim": 14.1975,
+            "duration_sim_s": 5.17775,
+            "truth_samples": 1323,
+            "path_m": 0.7665927899248659,
+            "net_translation_m": 0.7665917597062077,
+            "maximum_drift_m": 0.7665917597062077,
+            "yaw_change_deg": -0.05342708039383626,
+            "maximum_yaw_change_deg": 0.19707824333411306,
+            "max_tilt_deg": 1.2784605173601773,
+            "start_xy": [
+              2.4048635127841163e-08,
+              1.2700826900991328e-15
+            ],
+            "end_xy": [
+              0.7665900589886686,
+              -0.001626155004390528
+            ]
+          },
+          "goal_distance_m": 0.23341560561156038
+        },
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            2.5,
+            0.0
+          ],
+          "started_seconds": 10.820250000000001,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 2.5,
+            "y": 0.0
+          },
+          "end_sim": 25.9815,
+          "physical": {
+            "start_sim": 16.19975,
+            "end_sim": 25.9815,
+            "duration_sim_s": 9.781749999999999,
+            "truth_samples": 2440,
+            "path_m": 1.5018950774506723,
+            "net_translation_m": 1.5018863813833594,
+            "maximum_drift_m": 1.5018863813833594,
+            "yaw_change_deg": 0.20604778565192194,
+            "maximum_yaw_change_deg": 0.506450542604374,
+            "max_tilt_deg": 5.719601637580559,
+            "start_xy": [
+              0.7776100869749782,
+              -0.00163661200355212
+            ],
+            "end_xy": [
+              2.2794787400543424,
+              0.005660749326309482
+            ]
+          },
+          "goal_distance_m": 0.2205939032950721
+        },
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            4.0,
+            0.0
+          ],
+          "started_seconds": 22.61675,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 4.0,
+            "y": 0.0
+          },
+          "end_sim": 37.86325,
+          "physical": {
+            "start_sim": 27.99625,
+            "end_sim": 37.86325,
+            "duration_sim_s": 9.867,
+            "truth_samples": 2425,
+            "path_m": 1.5048305867393856,
+            "net_translation_m": 1.5045920138932058,
+            "maximum_drift_m": 1.5045920138932058,
+            "yaw_change_deg": -0.48552944493226835,
+            "maximum_yaw_change_deg": 1.3978413588593694,
+            "max_tilt_deg": 9.435183765752871,
+            "start_xy": [
+              2.2894024310174874,
+              0.005686890757715643
+            ],
+            "end_xy": [
+              3.793993757176215,
+              0.007125473092612865
+            ]
+          },
+          "goal_distance_m": 0.20612943615399965
+        },
+        {
+          "kind": "turn",
+          "action": [
+            "turn",
+            1.5707963267948966
+          ],
+          "started_seconds": 34.5115,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "yaw": 1.5707963267948966
+          },
+          "end_sim": 45.189,
+          "physical": {
+            "start_sim": 39.891,
+            "end_sim": 45.189,
+            "duration_sim_s": 5.298000000000002,
+            "truth_samples": 1303,
+            "path_m": 0.33583599577686324,
+            "net_translation_m": 0.31787290835266585,
+            "maximum_drift_m": 0.31787290835266585,
+            "yaw_change_deg": 90.93471750815893,
+            "maximum_yaw_change_deg": 90.93471750815893,
+            "max_tilt_deg": 9.375953664981415,
+            "start_xy": [
+              3.8052280150931375,
+              0.0070598000752079984
+            ],
+            "end_xy": [
+              3.5209183165040714,
+              0.14922583382721472
+            ]
+          }
+        },
+        {
+          "kind": "turn",
+          "action": [
+            "turn",
+            0.0
+          ],
+          "started_seconds": 41.83925,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "yaw": 0.0
+          },
+          "end_sim": 53.16275,
+          "physical": {
+            "start_sim": 47.21875,
+            "end_sim": 53.16275,
+            "duration_sim_s": 5.944000000000003,
+            "truth_samples": 1490,
+            "path_m": 0.3140404316095907,
+            "net_translation_m": 0.3009026356527402,
+            "maximum_drift_m": 0.3009026356527402,
+            "yaw_change_deg": -91.67540710217898,
+            "maximum_yaw_change_deg": 91.67540710217898,
+            "max_tilt_deg": 8.875430617383058,
+            "start_xy": [
+              3.4594907573875537,
+              0.1483366673816884
+            ],
+            "end_xy": [
+              3.1963412730832146,
+              0.29426385831307755
+            ]
+          }
+        },
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            4.3,
+            0.0
+          ],
+          "started_seconds": 49.79725,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 4.3,
+            "y": 0.0
+          },
+          "end_sim": 61.70025,
+          "physical": {
+            "start_sim": 55.17675,
+            "end_sim": 61.70025,
+            "duration_sim_s": 6.5234999999999985,
+            "truth_samples": 1586,
+            "path_m": 0.9711491062272843,
+            "net_translation_m": 0.9567209490161982,
+            "maximum_drift_m": 0.9567209490161982,
+            "yaw_change_deg": -23.002555357362073,
+            "maximum_yaw_change_deg": 23.002555357362073,
+            "max_tilt_deg": 10.096738286996993,
+            "start_xy": [
+              3.196287290139665,
+              0.29433717842121654
+            ],
+            "end_xy": [
+              4.13529554512218,
+              0.11109288420950585
+            ]
+          },
+          "goal_distance_m": 0.1986685339418062
+        }
+      ],
+      "camera": [
+        {
+          "start_sim": 39.891,
+          "end_sim": 45.189,
+          "new_frames": 12,
+          "points": 88015,
+          "optical_azimuth_deg": [
+            6.274288699084088,
+            14.123561290220573,
+            22.000290910702414,
+            29.870277900895328,
+            37.73764110108376,
+            45.600014152328924,
+            53.38939871109853,
+            60.062788067616644,
+            66.76639336589048,
+            72.99876021784988,
+            78.79749523783363,
+            84.68102927864011
+          ]
+        },
+        {
+          "start_sim": 47.21875,
+          "end_sim": 53.16275,
+          "new_frames": 13,
+          "points": 97303,
+          "optical_azimuth_deg": [
+            82.86387592265679,
+            75.58152101713348,
+            69.75886437813381,
+            63.641038496300155,
+            55.93871550684449,
+            48.67058281104294,
+            42.75169294950335,
+            36.09229586313657,
+            29.133312191685675,
+            22.178106600285876,
+            15.231517575993905,
+            10.022122945570326,
+            3.088682816435442
+          ]
+        }
+      ],
+      "maps": {
+        "formal_start": {
+          "requested_sim": 9.01975,
+          "observed_until_sim": 8.3,
+          "task_ended_before_horizon": false,
+          "frames": 5,
+          "points": 49270,
+          "rois": {
+            "task": {
+              "roi_area_m2": 56.0,
+              "observed_area_m2": 22.9375,
+              "observed_fraction": 0.4095982142857143,
+              "valid_surface_area_m2": 15.75,
+              "quality_area_m2": 9.231250000000001,
+              "mean_observed_quality": 0.4024523160762942
+            },
+            "side": {
+              "roi_area_m2": 4.5,
+              "observed_area_m2": 3.6875,
+              "observed_fraction": 0.8194444444444444,
+              "valid_surface_area_m2": 3.0625,
+              "quality_area_m2": 1.50625,
+              "mean_observed_quality": 0.4084745762711864
+            }
+          }
+        },
+        "equal_40s": {
+          "requested_sim": 49.01975,
+          "observed_until_sim": 48.7,
+          "task_ended_before_horizon": false,
+          "frames": 80,
+          "points": 675370,
+          "rois": {
+            "task": {
+              "roi_area_m2": 56.0,
+              "observed_area_m2": 29.5625,
+              "observed_fraction": 0.5279017857142857,
+              "valid_surface_area_m2": 27.3125,
+              "quality_area_m2": 21.37775,
+              "mean_observed_quality": 0.7231374207188161,
+              "observed_gain_m2": 6.625,
+              "valid_surface_gain_m2": 11.5625
+            },
+            "side": {
+              "roi_area_m2": 4.5,
+              "observed_area_m2": 4.5,
+              "observed_fraction": 1.0,
+              "valid_surface_area_m2": 4.5,
+              "quality_area_m2": 3.9756875000000003,
+              "mean_observed_quality": 0.8834861111111112,
+              "observed_gain_m2": 0.8125,
+              "valid_surface_gain_m2": 1.4375
+            }
+          }
+        },
+        "task_end": {
+          "requested_sim": 63.6795,
+          "observed_until_sim": 61.5,
+          "task_ended_before_horizon": false,
+          "frames": 105,
+          "points": 855706,
+          "rois": {
+            "task": {
+              "roi_area_m2": 56.0,
+              "observed_area_m2": 29.5625,
+              "observed_fraction": 0.5279017857142857,
+              "valid_surface_area_m2": 27.5,
+              "quality_area_m2": 21.7309375,
+              "mean_observed_quality": 0.7350845665961946,
+              "observed_gain_m2": 6.625,
+              "valid_surface_gain_m2": 11.75
+            },
+            "side": {
+              "roi_area_m2": 4.5,
+              "observed_area_m2": 4.5,
+              "observed_fraction": 1.0,
+              "valid_surface_area_m2": 4.5,
+              "quality_area_m2": 4.0109375,
+              "mean_observed_quality": 0.8913194444444446,
+              "observed_gain_m2": 0.8125,
+              "valid_surface_gain_m2": 1.4375
+            }
+          }
+        }
+      },
+      "formal_xy_error_m": {
+        "count": 13485,
+        "mean": 0.022685652420206082,
+        "p95": 0.04002062433199223,
+        "maximum": 0.04086557535820123
+      },
+      "phase_xy_error_m": {
+        "approach": {
+          "count": 7671,
+          "mean": 0.01467814340281128,
+          "p95": 0.03292807240201327,
+          "maximum": 0.03395888252515426
+        },
+        "observation": {
+          "count": 3764,
+          "mean": 0.0311105561289352,
+          "p95": 0.0336983596231665,
+          "maximum": 0.03409531202641119
+        },
+        "continuation": {
+          "count": 2050,
+          "mean": 0.037180415402049555,
+          "p95": 0.0406007312744389,
+          "maximum": 0.04086557535820123
+        },
+        "equal_40s": {
+          "count": 9922,
+          "mean": 0.018563309398300434,
+          "p95": 0.03345020324662916,
+          "maximum": 0.03409531202641119
+        }
+      },
+      "formal_received_to_publish_wall_s": {
+        "count": 546,
+        "mean": 0.12921595565934063,
+        "p95": 0.17257178474999998,
+        "maximum": 0.225483406
+      },
+      "formal_publication_gap_sim_s": {
+        "count": 545,
+        "mean": 0.09994128440366973,
+        "p95": 0.12194999999999964,
+        "maximum": 0.14374999999999716
+      },
+      "formal_plan_counts": {
+        "processed": 546,
+        "output": 546,
+        "published": 546,
+        "failures": {}
+      },
+      "localization_rss_mib": {
+        "count": 49,
+        "mean": 362.5974968112245,
+        "p95": 387.18984375,
+        "maximum": 389.5078125
+      },
+      "primary_run_end": null,
+      "navigation_rejections": {
+        "closing": 1
+      },
+      "max_health_fault_counter": 0,
+      "pauses": [],
+      "observer": {
+        "schema_version": 1,
+        "capture_completed": true,
+        "stop_reason": "SIGINT",
+        "errors": [],
+        "elapsed_wall_s": 285.4517558709995,
+        "ready": true,
+        "truth_rows": 15529,
+        "matched_rows": 15460,
+        "missing_rows": 69,
+        "truth_rows_accounted_for": true,
+        "reader_alive": false,
+        "gz_reader_exit_code": 0,
+        "start_sim_s": 1.19075,
+        "end_sim_s": 63.81325,
+        "final_status": {
+          "schema_version": 1,
+          "wall": 7039.39817393,
+          "elapsed_wall_s": 285.08111772399934,
+          "sim": 63.90375,
+          "counts": {
+            "/mooncar/workbench/permit": 2851,
+            "/tf_static": 3,
+            "/mooncar/cmd_vel_safe": 5782,
+            "/clock": 6195,
+            "/mooncar/laser_odometry/status": 6246,
+            "/mooncar/clock_raw": 93136,
+            "/mooncar/map/status": 457,
+            "truth": 15529,
+            "/mooncar/imu": 6273,
+            "/mooncar/scan": 628,
+            "/mooncar/scan_level": 182,
+            "/tf": 6897,
+            "/odom": 6271,
+            "/mooncar/laser_odometry": 625,
+            "/odometry/filtered": 625,
+            "matched": 15460,
+            "missing:tf_wait_wall_timeout": 64,
+            "/cmd_vel": 1880,
+            "missing:capture_ended_without_matching_tf": 5
+          },
+          "distinct_stamp_counts": {
+            "/clock": 6195,
+            "/mooncar/clock_raw": 93136,
+            "truth": 15529,
+            "/mooncar/scan": 628,
+            "/mooncar/scan_level": 182,
+            "/odom": 6271,
+            "/mooncar/laser_odometry": 625,
+            "/odometry/filtered": 625
+          },
+          "truth_count": 15529,
+          "matched_count": 15460,
+          "missing_count": 69,
+          "pending_truth": 0,
+          "pending_limit": 4096,
+          "match_wait_wall_s": 5.0,
+          "first_truth_stamp_ns": 1190750000,
+          "last_truth_stamp_ns": 63813250000,
+          "first_clock_stamp_ns": 70500000,
+          "last_clock_stamp_ns": 63903750000,
+          "last_stamps_ns": {
+            "/clock": 63903750000,
+            "/mooncar/clock_raw": 63918750000,
+            "/mooncar/scan": 63800000000,
+            "/mooncar/scan_level": 19200000000,
+            "/odom": 63911000000,
+            "/mooncar/laser_odometry": 63800000000,
+            "/odometry/filtered": 63800000000
+          },
+          "live": {
+            "truth": {
+              "receipt_age_wall_s": 0.5384213110000928,
+              "distinct_stamps": 15529,
+              "live": true
+            },
+            "/mooncar/scan": {
+              "receipt_age_wall_s": 0.43251995199989324,
+              "distinct_stamps": 628,
+              "live": true
+            },
+            "/clock": {
+              "receipt_age_wall_s": 0.07926701599990338,
+              "distinct_stamps": 6195,
+              "live": true
+            }
+          },
+          "raw_observation_ready": true,
+          "quality": {
+            "schema_version": 1,
+            "session_id": "5378bb69-f1fa-405f-8336-a2ba7edc596e",
+            "sequence": 6253,
+            "stamp": 63.90375,
+            "accepted_stamp": 63.8,
+            "ready_since_stamp": 1.6,
+            "healthy": true,
+            "reason": "healthy",
+            "successful_streak": 3,
+            "localization_backend": "rgbd_window",
+            "active_revisit": false,
+            "counts": {
+              "imu_samples": 6273,
+              "depth_messages": 628,
+              "rgb_messages": 628,
+              "paired_exposures": 628,
+              "queued": 628,
+              "readiness_timeouts": 2,
+              "rejected": 2,
+              "plan_failures": 2,
+              "processed": 626,
+              "plan_outputs": 625,
+              "published": 625
+            },
+            "last_fit": {
+              "accepted": true,
+              "reason": "accepted",
+              "exposure_stamp": 63.8,
+              "position_std_m": [
+                0.005050948159208206,
+                0.004914501183711152,
+                0.004826754712505209
+              ],
+              "cache_version": 195,
+              "gauge_stamp_ns": 1300000000,
+              "covariance_kind": "model_conditional"
+            },
+            "truth_inputs": false,
+            "tf_published": true,
+            "imu_heading_reference": "startup",
+            "imu_heading_offset": 0.0,
+            "legacy_fallback": false
+          },
+          "transforms": {
+            "map/survey_odom": {
+              "stamp_ns": 0,
+              "xyz": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "q": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0.0
+            },
+            "survey_odom/odom": {
+              "stamp_ns": 0,
+              "xyz": [
+                0.0,
+                0.0,
+                1.7520000000000015e-05
+              ],
+              "q": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0.0,
+              "setup_xy_error_m": 0.0,
+              "setup_yaw_error_rad": 0.0
+            },
+            "map/base_footprint": {
+              "stamp_ns": 63800000000,
+              "xyz": [
+                4.102452641171688,
+                0.10325650753476559,
+                0.31902232339937314
+              ],
+              "q": [
+                0.0,
+                0.0,
+                -0.20809438529437227,
+                0.9781087499910004
+              ],
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": -0.419252579855996
+            }
+          },
+          "errors": []
+        },
+        "truth_used_by_control": false,
+        "coordinate_alignment_fitted": false,
+        "note": "Capture completion is an instrumentation result; it does not imply healthy localization, accurate poses, or mission scope completion."
+      },
+      "snapshot_read_errors": [],
+      "driver_exit": {
+        "exit_code": 0
+      },
+      "backend_exit": {
+        "exit_code": 0
+      },
+      "observer_exit": 0,
+      "lifecycle_exit": 0,
+      "archive_sha256": "5863de18df6fd50a6319422727de5c7ee615adbcf986be8340cc508d18690678",
+      "archive": "/evidence/camera-mode-comparison-20261104/sessions/experiment-87ae029097e0/research/autonomy-surface_view_v2-c9804f53/observations.npz"
+    },
+    {
+      "mode": "gimbal",
+      "experiment": "experiment-68e87579e830",
+      "outcome": "passed",
+      "completed_actions": 6,
+      "planned_actions": 6,
+      "software": {
+        "verified": true,
+        "git_commit": "7db785ca7bf0804702fac3bb7fc18c94cd143b15",
+        "git_branch": "dev/terrain-mapping-workbench",
+        "source_root": "D:\\Documents\\Projects\\Repositories\\MoonCar-mapping",
+        "product_clean": true,
+        "baseline": {
+          "version": "2026-11-04-r5-window",
+          "simulation_profile": "r5_support_v1",
+          "scene": "survey_v2_native",
+          "localization_mode": "rgbd_window",
+          "active_revisit": false,
+          "support_profile": "independent_linear_v1",
+          "physics_step_s": 0.00025,
+          "support_runtime": "/opt/mooncar/turn/r5-v2",
+          "hardware_calibrated": false,
+          "historical_tasks_without_profile": "legacy"
+        },
+        "source_digest": "6f44eb9760f03c10f2af5c5705f2ce3c23e1fb55de44a3041fd127b18dcfdbe8"
+      },
+      "preparation_sim_s": 3.5642500000000004,
+      "preparation_wall_s": 16.125492936999763,
+      "task_sim_s": 48.33575,
+      "task_wall_s_approx": 230.25187043200003,
+      "collection_wall_s": 278.56097351100016,
+      "formal_task": {
+        "start_sim": 9.02425,
+        "end_sim": 57.36,
+        "duration_sim_s": 48.33575,
+        "truth_samples": 12883,
+        "path_m": 4.120167770594491,
+        "net_translation_m": 4.119597671864441,
+        "maximum_drift_m": 4.119634203632316,
+        "yaw_change_deg": -0.11128579585109882,
+        "maximum_yaw_change_deg": 1.6704377658449414,
+        "max_tilt_deg": 10.544005281175645,
+        "start_xy": [
+          2.3674637344661464e-08,
+          1.2717552665050177e-15
+        ],
+        "end_xy": [
+          4.119596866617147,
+          0.002613359720420492
+        ]
+      },
+      "observation": {
+        "start_sim": 40.037,
+        "end_sim": 53.16475,
+        "duration_sim_s": 13.127749999999999,
+        "truth_samples": 3422,
+        "path_m": 1.0507069434041893e-05,
+        "net_translation_m": 5.660451983100344e-06,
+        "maximum_drift_m": 5.660451983100344e-06,
+        "yaw_change_deg": 0.0007034454685782966,
+        "maximum_yaw_change_deg": 0.0007067003642645126,
+        "max_tilt_deg": 9.37386637318788,
+        "start_xy": [
+          3.8224850410048523,
+          0.003016381255380898
+        ],
+        "end_xy": [
+          3.8224796430414587,
+          0.0030180849888853767
+        ]
+      },
+      "observation_safe_commands": {
+        "count": 1226,
+        "max_abs_linear": 0.0,
+        "max_abs_angular": 0.0
+      },
+      "observation_gimbal_feedback_range_rad": {
+        "minimum": [
+          0.00025593991872732767,
+          -0.2608096550019596
+        ],
+        "maximum": [
+          1.5699596180280602,
+          -0.26078695977333594
+        ]
+      },
+      "actions": [
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            1.0,
+            0.0
+          ],
+          "started_seconds": 3.5642500000000004,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 1.0,
+            "y": 0.0
+          },
+          "end_sim": 14.20425,
+          "physical": {
+            "start_sim": 9.02425,
+            "end_sim": 14.20425,
+            "duration_sim_s": 5.18,
+            "truth_samples": 1413,
+            "path_m": 0.768971562103092,
+            "net_translation_m": 0.7689703222586151,
+            "maximum_drift_m": 0.7689703222586151,
+            "yaw_change_deg": 0.0425033838870678,
+            "maximum_yaw_change_deg": 0.1426194200538816,
+            "max_tilt_deg": 1.2791839459897942,
+            "start_xy": [
+              2.3674637344661464e-08,
+              1.2717552665050177e-15
+            ],
+            "end_xy": [
+              0.768969627849212,
+              -0.0010508901542938735
+            ]
+          },
+          "goal_distance_m": 0.23103276223567948
+        },
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            2.5,
+            0.0
+          ],
+          "started_seconds": 10.756,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 2.5,
+            "y": 0.0
+          },
+          "end_sim": 25.99575,
+          "physical": {
+            "start_sim": 16.216,
+            "end_sim": 25.99575,
+            "duration_sim_s": 9.77975,
+            "truth_samples": 2426,
+            "path_m": 1.5025964160152885,
+            "net_translation_m": 1.502573190575144,
+            "maximum_drift_m": 1.502573190575144,
+            "yaw_change_deg": 0.08537025041334607,
+            "maximum_yaw_change_deg": 0.7658265086544584,
+            "max_tilt_deg": 5.723957258090992,
+            "start_xy": [
+              0.779750262021466,
+              -0.0010430753761815085
+            ],
+            "end_xy": [
+              2.282311474646864,
+              0.00495653701642552
+            ]
+          },
+          "goal_distance_m": 0.21774494558914134
+        },
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            4.0,
+            0.0
+          ],
+          "started_seconds": 22.555999999999997,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 4.0,
+            "y": 0.0
+          },
+          "end_sim": 37.99825,
+          "physical": {
+            "start_sim": 28.016,
+            "end_sim": 37.99825,
+            "duration_sim_s": 9.98225,
+            "truth_samples": 2467,
+            "path_m": 1.520863848120705,
+            "net_translation_m": 1.5205473809793109,
+            "maximum_drift_m": 1.5205473809793109,
+            "yaw_change_deg": -0.5777865263741947,
+            "maximum_yaw_change_deg": 1.544510262258587,
+            "max_tilt_deg": 9.435077729597639,
+            "start_xy": [
+              2.2913687332907533,
+              0.00497642886142435
+            ],
+            "end_xy": [
+              3.8119149561871746,
+              0.0030997726680632083
+            ]
+          },
+          "goal_distance_m": 0.18811058528606553
+        },
+        {
+          "kind": "gimbal_observe",
+          "action": [
+            "gimbal",
+            1.5707963267948966,
+            -0.2618
+          ],
+          "started_seconds": 34.577,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "use_pan_tilt": true,
+            "pan": 1.5707963267948966,
+            "tilt": -0.2618
+          },
+          "end_sim": 44.593,
+          "physical": {
+            "start_sim": 40.037,
+            "end_sim": 44.593,
+            "duration_sim_s": 4.5560000000000045,
+            "truth_samples": 1129,
+            "path_m": 4.900693740706993e-06,
+            "net_translation_m": 2.411273136197023e-06,
+            "maximum_drift_m": 2.411273136197023e-06,
+            "yaw_change_deg": 0.0002367521027088634,
+            "maximum_yaw_change_deg": 0.0002367521027088634,
+            "max_tilt_deg": 9.367517542327644,
+            "start_xy": [
+              3.8224850410048523,
+              0.003016381255380898
+            ],
+            "end_xy": [
+              3.82248263542122,
+              0.003016546801523689
+            ]
+          }
+        },
+        {
+          "kind": "gimbal_observe",
+          "action": [
+            "gimbal",
+            0.0,
+            -0.2618
+          ],
+          "started_seconds": 41.146,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "use_pan_tilt": true,
+            "pan": 0.0,
+            "tilt": -0.2618
+          },
+          "end_sim": 51.1555,
+          "physical": {
+            "start_sim": 46.606,
+            "end_sim": 51.1555,
+            "duration_sim_s": 4.549500000000002,
+            "truth_samples": 1187,
+            "path_m": 5.5520596963154775e-06,
+            "net_translation_m": 3.3235415047479964e-06,
+            "maximum_drift_m": 3.3235415047479964e-06,
+            "yaw_change_deg": 0.00046742198299661595,
+            "maximum_yaw_change_deg": 0.0004676510013277236,
+            "max_tilt_deg": 9.37386637318788,
+            "start_xy": [
+              3.822482599018696,
+              0.003016547376884217
+            ],
+            "end_xy": [
+              3.8224796466389828,
+              0.003018073608243861
+            ]
+          }
+        },
+        {
+          "kind": "advance",
+          "action": [
+            "move",
+            4.3,
+            0.0
+          ],
+          "started_seconds": 47.70475,
+          "outcome": "succeeded",
+          "success": true,
+          "decision": {
+            "estimated_seconds": 30.0,
+            "x": 4.3,
+            "y": 0.0
+          },
+          "end_sim": 55.35325,
+          "physical": {
+            "start_sim": 53.16475,
+            "end_sim": 55.35325,
+            "duration_sim_s": 2.1885000000000048,
+            "truth_samples": 1038,
+            "path_m": 0.28602297064737886,
+            "net_translation_m": 0.2860216233006789,
+            "maximum_drift_m": 0.2860216233006789,
+            "yaw_change_deg": 0.33964411776499287,
+            "maximum_yaw_change_deg": 0.3396454791480877,
+            "max_tilt_deg": 10.544005281175645,
+            "start_xy": [
+              3.8224796430414587,
+              0.0030180849888853767
+            ],
+            "end_xy": [
+              4.108501009420894,
+              0.002634718328352684
+            ]
+          },
+          "goal_distance_m": 0.19151711446626982
+        }
+      ],
+      "camera": [
+        {
+          "start_sim": 40.037,
+          "end_sim": 44.593,
+          "new_frames": 11,
+          "points": 80648,
+          "optical_azimuth_deg": [
+            8.134683376805686,
+            15.759635436482974,
+            23.93105017906142,
+            31.371413376683698,
+            39.267994921723634,
+            47.07958813133834,
+            54.81239415285153,
+            62.69123696275131,
+            70.5977082950648,
+            78.38923499189062,
+            86.23935059371283
+          ]
+        },
+        {
+          "start_sim": 46.606,
+          "end_sim": 51.1555,
+          "new_frames": 12,
+          "points": 86934,
+          "optical_azimuth_deg": [
+            78.0530579333057,
+            69.90435026937266,
+            63.97614710316607,
+            56.171725064248754,
+            50.71688315070227,
+            42.79838866022781,
+            36.945945085139655,
+            31.043532092328977,
+            23.31553454721731,
+            17.23059077029961,
+            9.6884462459821,
+            3.8990117907587156
+          ]
+        }
+      ],
+      "maps": {
+        "formal_start": {
+          "requested_sim": 9.02425,
+          "observed_until_sim": 8.2,
+          "task_ended_before_horizon": false,
+          "frames": 5,
+          "points": 49185,
+          "rois": {
+            "task": {
+              "roi_area_m2": 56.0,
+              "observed_area_m2": 21.875,
+              "observed_fraction": 0.390625,
+              "valid_surface_area_m2": 16.625,
+              "quality_area_m2": 10.0375,
+              "mean_observed_quality": 0.4588571428571429
+            },
+            "side": {
+              "roi_area_m2": 4.5,
+              "observed_area_m2": 3.75,
+              "observed_fraction": 0.8333333333333334,
+              "valid_surface_area_m2": 3.0625,
+              "quality_area_m2": 1.609375,
+              "mean_observed_quality": 0.42916666666666664
+            }
+          }
+        },
+        "equal_40s": {
+          "requested_sim": 49.02425,
+          "observed_until_sim": 48.9,
+          "task_ended_before_horizon": false,
+          "frames": 80,
+          "points": 672155,
+          "rois": {
+            "task": {
+              "roi_area_m2": 56.0,
+              "observed_area_m2": 28.5625,
+              "observed_fraction": 0.5100446428571429,
+              "valid_surface_area_m2": 25.125,
+              "quality_area_m2": 19.5835,
+              "mean_observed_quality": 0.685636761487965,
+              "observed_gain_m2": 6.6875,
+              "valid_surface_gain_m2": 8.5
+            },
+            "side": {
+              "roi_area_m2": 4.5,
+              "observed_area_m2": 4.5,
+              "observed_fraction": 1.0,
+              "valid_surface_area_m2": 4.375,
+              "quality_area_m2": 3.4215,
+              "mean_observed_quality": 0.7603333333333334,
+              "observed_gain_m2": 0.75,
+              "valid_surface_gain_m2": 1.3125
+            }
+          }
+        },
+        "task_end": {
+          "requested_sim": 57.36,
+          "observed_until_sim": 55.4,
+          "task_ended_before_horizon": false,
+          "frames": 91,
+          "points": 749511,
+          "rois": {
+            "task": {
+              "roi_area_m2": 56.0,
+              "observed_area_m2": 28.5625,
+              "observed_fraction": 0.5100446428571429,
+              "valid_surface_area_m2": 25.1875,
+              "quality_area_m2": 19.635125000000002,
+              "mean_observed_quality": 0.6874442013129104,
+              "observed_gain_m2": 6.6875,
+              "valid_surface_gain_m2": 8.5625
+            },
+            "side": {
+              "roi_area_m2": 4.5,
+              "observed_area_m2": 4.5,
+              "observed_fraction": 1.0,
+              "valid_surface_area_m2": 4.375,
+              "quality_area_m2": 3.4215,
+              "mean_observed_quality": 0.7603333333333334,
+              "observed_gain_m2": 0.75,
+              "valid_surface_gain_m2": 1.3125
+            }
+          }
+        }
+      },
+      "formal_xy_error_m": {
+        "count": 12883,
+        "mean": 0.030854212360469733,
+        "p95": 0.052981314925772856,
+        "maximum": 0.05374223743278573
+      },
+      "phase_xy_error_m": {
+        "approach": {
+          "count": 7787,
+          "mean": 0.01985241893361558,
+          "p95": 0.04671655931648503,
+          "maximum": 0.04780898513816457
+        },
+        "observation": {
+          "count": 3422,
+          "mean": 0.04618681897586482,
+          "p95": 0.04724620156986619,
+          "maximum": 0.04740542607866198
+        },
+        "continuation": {
+          "count": 1674,
+          "mean": 0.05068861234674886,
+          "p95": 0.05349697713720735,
+          "maximum": 0.05374223743278573
+        },
+        "equal_40s": {
+          "count": 10011,
+          "mean": 0.025687308738734947,
+          "p95": 0.04713738165164759,
+          "maximum": 0.04780898513816457
+        }
+      },
+      "formal_received_to_publish_wall_s": {
+        "count": 483,
+        "mean": 0.13598539034989648,
+        "p95": 0.19134281709999998,
+        "maximum": 0.341087984
+      },
+      "formal_publication_gap_sim_s": {
+        "count": 482,
+        "mean": 0.09995435684647304,
+        "p95": 0.12173749999999899,
+        "maximum": 0.1545000000000023
+      },
+      "formal_plan_counts": {
+        "processed": 483,
+        "output": 483,
+        "published": 483,
+        "failures": {}
+      },
+      "localization_rss_mib": {
+        "count": 47,
+        "mean": 368.770196143617,
+        "p95": 386.66796875,
+        "maximum": 388.67578125
+      },
+      "primary_run_end": {
+        "type": "run_end",
+        "complete": true,
+        "sim_ns": 57875750000,
+        "finished_wall_ns": 7343194380488,
+        "counts": {
+          "imu_samples": 5687,
+          "depth_messages": 569,
+          "rgb_messages": 569,
+          "paired_exposures": 569,
+          "queued": 569,
+          "readiness_timeouts": 1,
+          "rejected": 1,
+          "plan_failures": 3,
+          "processed": 568,
+          "plan_outputs": 566,
+          "published": 566
+        },
+        "fault": null,
+        "axes": "initial_body_yaw",
+        "gauge_stamp_ns": 1200000000,
+        "initial_imu_yaw_rad": 0.0,
+        "imu_header_summary": {
+          "callbacks_received": 5687,
+          "callbacks_finished": 5687,
+          "accepted": 5687,
+          "rejected": 0,
+          "first_stamp_ns": 1019500000,
+          "last_stamp_ns": 57870000000,
+          "maximum_gap_ns": 10000000,
+          "gaps_over_30ms": 0,
+          "gaps_over_60ms": 0
+        },
+        "remaining_unmatched": {
+          "rgb": 0,
+          "depth": 0
+        },
+        "worker_terminal": true,
+        "epoch": "2b7591cd-2af5-4bea-b253-ea7fd2f31c75"
+      },
+      "navigation_rejections": {},
+      "max_health_fault_counter": 0,
+      "pauses": [],
+      "observer": {
+        "schema_version": 1,
+        "capture_completed": true,
+        "stop_reason": "SIGINT",
+        "errors": [],
+        "elapsed_wall_s": 275.6872845300004,
+        "ready": true,
+        "truth_rows": 14966,
+        "matched_rows": 14896,
+        "missing_rows": 70,
+        "truth_rows_accounted_for": true,
+        "reader_alive": false,
+        "gz_reader_exit_code": 0,
+        "start_sim_s": 1.0195,
+        "end_sim_s": 57.47175,
+        "final_status": {
+          "schema_version": 1,
+          "wall": 7341.341248438,
+          "elapsed_wall_s": 275.3373269619997,
+          "sim": 57.551,
+          "counts": {
+            "/mooncar/workbench/permit": 2733,
+            "/tf_static": 3,
+            "/mooncar/cmd_vel_safe": 5615,
+            "/mooncar/map/status": 471,
+            "/mooncar/clock_raw": 79550,
+            "/clock": 5626,
+            "/mooncar/laser_odometry/status": 5984,
+            "/mooncar/imu": 5655,
+            "truth": 14966,
+            "/mooncar/scan": 566,
+            "/mooncar/scan_level": 183,
+            "/tf": 6216,
+            "/odom": 5652,
+            "/mooncar/laser_odometry": 563,
+            "/odometry/filtered": 563,
+            "matched": 14896,
+            "missing:tf_wait_wall_timeout": 70,
+            "/cmd_vel": 1314
+          },
+          "distinct_stamp_counts": {
+            "/mooncar/clock_raw": 79550,
+            "/clock": 5626,
+            "truth": 14966,
+            "/mooncar/scan": 566,
+            "/mooncar/scan_level": 183,
+            "/odom": 5652,
+            "/mooncar/laser_odometry": 563,
+            "/odometry/filtered": 563
+          },
+          "truth_count": 14966,
+          "matched_count": 14896,
+          "missing_count": 70,
+          "pending_truth": 0,
+          "pending_limit": 4096,
+          "match_wait_wall_s": 5.0,
+          "first_truth_stamp_ns": 1019500000,
+          "last_truth_stamp_ns": 57471750000,
+          "first_clock_stamp_ns": 10000000,
+          "last_clock_stamp_ns": 57551000000,
+          "last_stamps_ns": {
+            "/mooncar/clock_raw": 57557000000,
+            "/clock": 57551000000,
+            "/mooncar/scan": 57500000000,
+            "/mooncar/scan_level": 19200000000,
+            "/odom": 57549750000,
+            "/mooncar/laser_odometry": 57500000000,
+            "/odometry/filtered": 57500000000
+          },
+          "live": {
+            "truth": {
+              "receipt_age_wall_s": 0.5727346979992944,
+              "distinct_stamps": 14966,
+              "live": true
+            },
+            "/mooncar/scan": {
+              "receipt_age_wall_s": 0.199976207999498,
+              "distinct_stamps": 566,
+              "live": true
+            },
+            "/clock": {
+              "receipt_age_wall_s": 0.074743985999703,
+              "distinct_stamps": 5626,
+              "live": true
+            }
+          },
+          "raw_observation_ready": true,
+          "quality": {
+            "schema_version": 1,
+            "session_id": "2b7591cd-2af5-4bea-b253-ea7fd2f31c75",
+            "sequence": 6021,
+            "stamp": 57.551,
+            "accepted_stamp": 57.5,
+            "ready_since_stamp": 1.5,
+            "healthy": true,
+            "reason": "healthy",
+            "successful_streak": 3,
+            "localization_backend": "rgbd_window",
+            "active_revisit": false,
+            "counts": {
+              "imu_samples": 5655,
+              "depth_messages": 566,
+              "rgb_messages": 566,
+              "paired_exposures": 566,
+              "queued": 566,
+              "readiness_timeouts": 1,
+              "rejected": 1,
+              "plan_failures": 2,
+              "processed": 564,
+              "plan_outputs": 563,
+              "published": 563
+            },
+            "last_fit": {
+              "accepted": true,
+              "reason": "accepted",
+              "exposure_stamp": 57.5,
+              "position_std_m": [
+                0.0048803445493448136,
+                0.0048035396642412955,
+                0.004776063661854224
+              ],
+              "cache_version": 196,
+              "gauge_stamp_ns": 1200000000,
+              "covariance_kind": "model_conditional"
+            },
+            "truth_inputs": false,
+            "tf_published": true,
+            "imu_heading_reference": "startup",
+            "imu_heading_offset": 0.0,
+            "legacy_fallback": false
+          },
+          "transforms": {
+            "map/survey_odom": {
+              "stamp_ns": 0,
+              "xyz": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "q": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0.0
+            },
+            "survey_odom/odom": {
+              "stamp_ns": 0,
+              "xyz": [
+                0.0,
+                0.0,
+                1.7520000000000015e-05
+              ],
+              "q": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0.0,
+              "setup_xy_error_m": 0.0,
+              "setup_yaw_error_rad": 0.0
+            },
+            "map/base_footprint": {
+              "stamp_ns": 57500000000,
+              "xyz": [
+                4.066398242536452,
+                0.00025293930651652563,
+                0.31413629635665197
+              ],
+              "q": [
+                0.0,
+                0.0,
+                -0.0009711427730783928,
+                0.999999528440746
+              ],
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": -0.0019422858514577509
+            }
+          },
+          "errors": []
+        },
+        "truth_used_by_control": false,
+        "coordinate_alignment_fitted": false,
+        "note": "Capture completion is an instrumentation result; it does not imply healthy localization, accurate poses, or mission scope completion."
+      },
+      "snapshot_read_errors": [
+        {
+          "wall": 7288.836603367,
+          "path": "/evidence/camera-mode-comparison-20261104/gimbal/case/lifecycle/latest.json",
+          "error": "OSError(61, 'No data available')"
+        }
+      ],
+      "driver_exit": {
+        "exit_code": 0
+      },
+      "backend_exit": {
+        "exit_code": 0
+      },
+      "observer_exit": 0,
+      "lifecycle_exit": 0,
+      "archive_sha256": "056cac5d761072be20c00140c10de0ff48f146af86a36be412713c1cd8319a4e",
+      "archive": "/evidence/camera-mode-comparison-20261104/sessions/experiment-68e87579e830/research/autonomy-surface_view_v2-81eb335d/observations.npz"
+    }
+  ]
+}

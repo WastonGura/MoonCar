@@ -1,0 +1,3 @@
+﻿condition,status,frames,baseline_frames,motion_phase,intervention_completed,elapsed_seconds,true_path_m,slope_observed,slope_invalid,slope_paired,slope_height_rmse_m,slope_mae_deg
+stationary,captured,80,9,idle,True,44.8,2.3302309395400824e-14,59,43,16,1.6965447440425745e-07,1.2521979136814743e-05
+approach,captured,82,10,succeeded,True,44.4,0.7138451836198796,69,14,55,7.604558127978218e-07,6.601970239886027e-05

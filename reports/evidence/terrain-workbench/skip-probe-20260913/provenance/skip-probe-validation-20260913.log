@@ -1,0 +1,17 @@
+START visible_ramp_v1-repeat1-no_turn
+{"condition": "approach", "experiment": "experiment-524e61a9a1c0", "status": "completed", "capture_exit": 0}
+START visible_ramp_v1-repeat1-turn
+{"condition": "approach", "experiment": "experiment-d374f69fdb0c", "status": "completed", "capture_exit": 0}
+START visible_curve_v1-repeat1-turn
+{"condition": "approach", "experiment": "experiment-ca9e30bd5b9e", "status": "completed", "capture_exit": 0}
+START visible_curve_v1-repeat1-no_turn
+{"condition": "approach", "experiment": "experiment-fe4d253208f4", "status": "completed", "capture_exit": 0}
+START visible_ramp_v1-repeat2-turn
+{"condition": "approach", "experiment": "experiment-8ef2dddbf5b3", "status": "completed", "capture_exit": 0}
+START visible_ramp_v1-repeat2-no_turn
+{"condition": "approach", "experiment": "experiment-0598635ef7b9", "status": "completed", "capture_exit": 0}
+START visible_curve_v1-repeat2-no_turn
+{"condition": "approach", "experiment": "experiment-685b930bc01c", "status": "completed", "capture_exit": 0}
+START visible_curve_v1-repeat2-turn
+{"condition": "approach", "experiment": "experiment-5b5d7cb662c1", "status": "completed", "capture_exit": 0}
+ALL SKIP PROBE ATTEMPTS FINISHED

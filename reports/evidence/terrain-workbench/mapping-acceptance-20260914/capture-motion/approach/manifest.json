@@ -1,0 +1,53 @@
+{
+  "status": "captured",
+  "seconds": 30.0,
+  "partition": "mooncar-experiment-3b4a4ec6c97f",
+  "domain": 89,
+  "raw_depth": true,
+  "max_truth_gap_seconds": 0.05,
+  "observation_interval_seconds": 0.5,
+  "correction_fitted": false,
+  "truth_method": "Gazebo dynamic model poses; linear translation and shortest-arc quaternion interpolation",
+  "camera_method": "Converted simulator SDF sensor pose plus explicit Gazebo-to-optical axis convention",
+  "camera_extrinsic": [
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.435
+    ],
+    [
+      -1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      -1.0,
+      0.0,
+      0.235
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "optical_frame": "depth_camera_optical_frame",
+  "parameter_reads": [
+    {
+      "attempt": 1,
+      "status": "success",
+      "value": 0.5,
+      "wall_seconds": 0.8631227540026885
+    }
+  ],
+  "projection_pixel_offset": 0.5,
+  "frames": 53,
+  "dropped_selected_frames": 2,
+  "wall_seconds": 87.13112025300507,
+  "first_stamp": 11.4,
+  "last_stamp": 41.0
+}

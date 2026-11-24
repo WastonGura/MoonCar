@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "absolute_delta": {
+    "mass_kg": 0.0,
+    "com_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "inertia_kg_m2": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "tolerances": {
+    "mass_kg": 1e-06,
+    "com_each_axis_m": 1e-06,
+    "inertia_each_entry_kg_m2": 1e-08
+  }
+}

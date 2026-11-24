@@ -1,0 +1,70 @@
+{
+  "campaign_plan.json": {
+    "size_bytes": 3554,
+    "sha256": "c81e8591aac8b107ff122560cd074a43b9b457f76b29b15cb3b53bc338c834a6"
+  },
+  "check_r5_v2_offset_round.py": {
+    "size_bytes": 6115,
+    "sha256": "96d2846d069f490c67579a8cebbf5bf56d33d9c143d4824302bb8b1c8b4e330a"
+  },
+  "DIAGNOSIS_PLAN.md": {
+    "size_bytes": 6527,
+    "sha256": "69fc081661204ae4dfe7039fbea010fb2118147ccd1ff5b9a3a7cd078ff63451"
+  },
+  "evaluate_diagnosis_run.py": {
+    "size_bytes": 19438,
+    "sha256": "b1abfc021b39714a436c3582a35c5a2299a9bafc83d8d183a73285ea60d1a946"
+  },
+  "README.md": {
+    "size_bytes": 2600,
+    "sha256": "5d3177f4b58fafa8c8fa22e08a136744d1d4e6aaa27483c69db26206c235f6a9"
+  },
+  "run_diagnosis_campaign.py": {
+    "size_bytes": 10710,
+    "sha256": "78fa2c5bbc459fb22e31a72013c835097b55e84ff48904df77cfcbf131916ff4"
+  },
+  "test_execution_mock.py": {
+    "size_bytes": 6158,
+    "sha256": "f623d33aa45a7267da40c2fa14352a6287e143d7e24672294e045e50ae0bf6b1"
+  },
+  "worlds/world_restore_x00.sdf": {
+    "size_bytes": 72504,
+    "sha256": "e71ea47b0a77507a96db84301a4dd1951115cbebf05b550032062e028abea3c7"
+  },
+  "worlds/world_shift_x05.sdf": {
+    "size_bytes": 72547,
+    "sha256": "8b549b1bd531cf67a076dab6a7e9bcd068d59edabb067a850904f128d51c3c0f"
+  },
+  "allocator/libmooncar-axle-allocation.so": {
+    "size_bytes": 1011040,
+    "sha256": "8ebba20c5a5c13b2b9878ed55ea595fffcf887024a37adc7b0fdb3f98b13dbc6"
+  },
+  "allocator-models/manifest.json": {
+    "size_bytes": 890,
+    "sha256": "b06857dc09bc5e76774630434887a4a9ec7c71e161b74301bf85bb1a97e84954"
+  },
+  "contact-observer/libmooncar-contact-observer.so": {
+    "size_bytes": 1780184,
+    "sha256": "aca7e0c371d98395c792ff7d5cfd11c01bc826c08c6b355197fc9fa1c75c0707"
+  },
+  "observer/libmooncar-origin-observer.so": {
+    "size_bytes": 2357584,
+    "sha256": "1337a2b62ee7f7de93dd94122b585b2566511380d75920062189c2bc37e5b724"
+  },
+  "slip-models/manifest.json": {
+    "size_bytes": 1713,
+    "sha256": "7951841803af7019634edbc0d2d2e0008cd759af82959755ad3605e7f858e6c2"
+  },
+  "test-startup/image_dds_guard.py": {
+    "size_bytes": 7360,
+    "sha256": "d58d594762d2983441463cf80dc83ce1e8ffbe40258eff7cdb4453e1a4752204"
+  },
+  "turn-models/pure_turn.sdf": {
+    "size_bytes": 53441,
+    "sha256": "5c19449015582b0c7fd9045f6e1da7d4268fa0e600548dca969707b2483deb0d"
+  },
+  "turn-slip/libmooncar-turn-slip-control.so": {
+    "size_bytes": 1712384,
+    "sha256": "5890720ab18ece5aa3cff35e0a6c9693b9757b1a38f36850c5cb5e5e23f20487"
+  }
+}

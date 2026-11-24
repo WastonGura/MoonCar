@@ -1,0 +1,24 @@
+{
+  "status": "Conditional analytic restriction; not a proof against every nonstationary controller",
+  "assumption": "Rear axle remains laterally stuck, fixed nonsteering wheel axes, constant body longitudinal velocity and yaw rate",
+  "formula": {
+    "body_lateral_velocity": "vy = axle_half_spacing * omega",
+    "icr_body_x": "-axle_half_spacing",
+    "center_trajectory_radius": "sqrt(axle_half_spacing**2 + (vx/omega)**2) >= axle_half_spacing"
+  },
+  "axle_half_spacing_m": 0.157,
+  "minimum_center_excursion_for_half_turn_m": 0.314,
+  "static_longitudinal_offset_can_center_turn": false,
+  "wheel_yaw_tracking_alone_can_center_turn": false,
+  "nonstationary_controllers_ruled_out": false,
+  "warning": "No DART defect or hardware equivalence proven; the dither is only one rejected candidate",
+  "source": {
+    "version": "installed DART 6.13.2",
+    "url": "https://raw.githubusercontent.com/dartsim/dart/v6.13.2/dart/constraint/ContactConstraint.cpp",
+    "tangential_friction_bounds_lines": [
+      353,
+      361
+    ],
+    "independent_tangent_impulse_bounds": true
+  }
+}

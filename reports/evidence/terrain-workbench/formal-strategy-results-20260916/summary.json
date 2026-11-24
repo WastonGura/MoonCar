@@ -1,0 +1,48 @@
+{
+  "version": "mooncar-formal-strategy-results-v1",
+  "evaluation_version": "mapping-acceptance-v1.1",
+  "trial_count": 54,
+  "condition_count": 6,
+  "repeats_per_condition_strategy": 3,
+  "overall_equal_condition_mean_S": {
+    "nearest_view_v1": 42.03961930299714,
+    "coverage_view_v1": 41.69686481945872,
+    "surface_view_v1": 42.00279569859954
+  },
+  "terminal_statuses": {
+    "failed": 54
+  },
+  "acceptance_statuses": {
+    "failed": 54
+  },
+  "pairwise_tests": [
+    {
+      "left": "nearest_view_v1",
+      "right": "coverage_view_v1",
+      "conditions": 6,
+      "mean_S_difference_left_minus_right": 0.3427544835384199,
+      "median_S_difference_left_minus_right": -1.344435921245644,
+      "raw_exact_p": 0.875,
+      "holm_adjusted_p": 1
+    },
+    {
+      "left": "nearest_view_v1",
+      "right": "surface_view_v1",
+      "conditions": 6,
+      "mean_S_difference_left_minus_right": 0.036823604397598096,
+      "median_S_difference_left_minus_right": 0.06855686178796105,
+      "raw_exact_p": 0.90625,
+      "holm_adjusted_p": 1
+    },
+    {
+      "left": "coverage_view_v1",
+      "right": "surface_view_v1",
+      "conditions": 6,
+      "mean_S_difference_left_minus_right": -0.3059308791408218,
+      "median_S_difference_left_minus_right": 0.23134837763494787,
+      "raw_exact_p": 0.78125,
+      "holm_adjusted_p": 1
+    }
+  ],
+  "interpretation": "Descriptive comparison of six predefined conditions; no universal superiority claim."
+}

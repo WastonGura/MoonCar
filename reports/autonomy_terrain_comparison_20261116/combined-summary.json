@@ -1,0 +1,39 @@
+{
+  "video": "v2-autonomy-side-by-side.mp4",
+  "left": "baseline",
+  "right": "elevation_neighborhood_v1",
+  "fps": 20,
+  "frames": 3649,
+  "seconds": 182.45,
+  "common_sim_start": 0.3185,
+  "leading_hold_frames": [
+    0,
+    4
+  ],
+  "trailing_hold_frames": [
+    103,
+    0
+  ],
+  "alignment_rounding_error_seconds": [
+    0.0,
+    0.000250000000000028
+  ],
+  "policy": "Complete original videos retained; shared simulation clock, endpoint holds only.",
+  "complete_decode_exit": 0,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 2560,
+        "height": 1072,
+        "r_frame_rate": "20/1",
+        "nb_frames": "3649"
+      }
+    ],
+    "format": {
+      "duration": "182.450000"
+    }
+  },
+  "sha256": "e1982e4abf20c5fa9acb423601bbdd230ef997078bc03635a40e61af44c40f1c"
+}

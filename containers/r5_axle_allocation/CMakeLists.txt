@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+project(mooncar_axle_allocation LANGUAGES CXX)
+find_package(gz-sim8 REQUIRED)
+add_library(mooncar-axle-allocation SHARED AxleAllocation.cc)
+target_link_libraries(mooncar-axle-allocation PRIVATE gz-sim8::gz-sim8)
+target_compile_features(mooncar-axle-allocation PRIVATE cxx_std_17)
+target_compile_options(mooncar-axle-allocation PRIVATE -Wall -Wextra -Werror)

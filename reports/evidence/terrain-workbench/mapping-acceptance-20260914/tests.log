@@ -1,0 +1,10 @@
+test_known_maps_and_evidence (test_mapping_acceptance.AcceptanceTest.test_known_maps_and_evidence) ... ok
+test_real_input_adapter_guards (test_mapping_acceptance.AcceptanceTest.test_real_input_adapter_guards) ... ok
+test_runner_domain_is_checked_before_start (test_mapping_acceptance.AcceptanceTest.test_runner_domain_is_checked_before_start) ... ok
+test_geometry_and_denominators (test_terrain_reference.ReferenceTests.test_geometry_and_denominators) ... ok
+test_bracket_rotation_and_optical_height (test_trajectory_evaluation.TrajectoryTests.test_bracket_rotation_and_optical_height) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.142s
+
+OK

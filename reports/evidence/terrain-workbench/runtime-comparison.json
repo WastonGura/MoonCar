@@ -1,0 +1,62 @@
+{
+  "source": "Gazebo execution, timestamped sensor archive and Nav2; no physical hardware",
+  "archive_sha256": "60ba0bfef36bf82cc8d0b7f4ce1a75ddf358934b9ff3f96272183cda47c38d9a",
+  "initial_spawn": [
+    3.5,
+    3.0,
+    0.0
+  ],
+  "goal": [
+    4.875,
+    3.125
+  ],
+  "same_world_reset_per_mode": true,
+  "controller": "Nav2 FollowPath RPP and Spin",
+  "physical_footprint_m": [
+    0.86,
+    0.72
+  ],
+  "planning_margin_per_side_m": 0.15,
+  "trials_per_mode": 1,
+  "results": [
+    {
+      "mode": "fixed",
+      "passed": true,
+      "initial_pose": {
+        "x": 3.500000000000343,
+        "y": 2.9999999999999116,
+        "z": 0.0,
+        "yaw": -2.4802382370125997e-12
+      },
+      "planned_length_m": 1.426776695296457,
+      "localized_track_length_m": 1.3729563645214304,
+      "wall_seconds": 24.21775094199984,
+      "planning_wall_seconds_sampled": 4.291290078000202,
+      "predicted_max_pitch_rad": 0.32613619004691985,
+      "predicted_max_roll_rad": 0.15633709834509044,
+      "minimum_footprint_support": 1.0,
+      "ground_truth_error_m": 0.08802040425395923,
+      "safe_commands_zero": true
+    },
+    {
+      "mode": "full",
+      "passed": true,
+      "initial_pose": {
+        "x": 3.500000000000343,
+        "y": 2.9999999999999116,
+        "z": 0.0,
+        "yaw": 1.0032419339722765e-11
+      },
+      "planned_length_m": 1.426776695296457,
+      "localized_track_length_m": 1.3899888776854679,
+      "wall_seconds": 24.239638727000056,
+      "planning_wall_seconds_sampled": 4.03130172300007,
+      "predicted_max_pitch_rad": 0.3261361900481544,
+      "predicted_max_roll_rad": 0.15633709834509044,
+      "minimum_footprint_support": 1.0,
+      "ground_truth_error_m": 0.09015366526475739,
+      "safe_commands_zero": true
+    }
+  ],
+  "limits": "One short route per mode verifies execution only. Wall time is host-load dependent. Pitch/roll below are terrain predictions, not measured IMU values. No efficacy claim."
+}

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/evidence/pile.py", line 210, in <module>
+    run(args)
+  File "/evidence/pile.py", line 161, in run
+    engine.command(f"run {interval} pre yes post no")
+  File "/opt/mooncar-dem/lib/python3.12/site-packages/lammps/core.py", line 833, in command
+    with ExceptionCheck(self):
+  File "/opt/mooncar-dem/lib/python3.12/site-packages/lammps/core.py", line 59, in __exit__
+    raise self.lmp._lammps_exception
+Exception: ERROR: Lost atoms: original 1742 current 1741
+For more information see https://docs.lammps.org/err0008 (src/src/thermo.cpp:526)

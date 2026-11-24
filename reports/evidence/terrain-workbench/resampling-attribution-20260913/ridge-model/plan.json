@@ -1,0 +1,13 @@
+{
+  "trials": [
+    {"folder": "/evidence/ridge-heldout-20260913", "condition": "stationary", "goal": [-9.2,6.45], "split": "heldout_curved_region"},
+    {"folder": "/evidence/ridge-heldout-20260913", "condition": "approach", "goal": [-9.2,6.45], "split": "heldout_curved_region"}
+  ],
+  "limits": [
+    "Different curved ridge and starting point within the same world, not an independent-world generalization test.",
+    "Both captures have 30 simulation-second budgets and fresh resets; baseline cells/timing may differ.",
+    "Rules unchanged before reading these outcomes; no probability fitting or online policy update.",
+    "Sensor-derived fit recovery is not accuracy, traversability or a surface truth label.",
+    "Cells and frames are correlated; these two trajectories are not a statistical sample of environments."
+  ]
+}

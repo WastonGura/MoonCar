@@ -1,0 +1,92 @@
+test_terrain_gate_and_invalid_command (test_safety_relay.RelayTests.test_terrain_gate_and_invalid_command) ... [INFO] [1788964585.210153627] [mooncar_cmd_vel_safety_relay]: Relaying /cmd_vel to /mooncar/cmd_vel_safe with timeout 0.50s
+ok
+test_real_c_core_over_virtual_uart (test_serial_protocol.ProtocolTests.test_real_c_core_over_virtual_uart) ... ok
+test_ros_bridge_arm_timeout_and_encoder_wrap (test_serial_protocol.ProtocolTests.test_ros_bridge_arm_timeout_and_encoder_wrap) ... ok
+test_stream_corruption_and_fragmentation (test_serial_protocol.ProtocolTests.test_stream_corruption_and_fragmentation) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.645s
+
+OK
+test_joint_rate_uses_message_time_and_resets (test_navigation_timeout.NavigationTimeoutTest.test_joint_rate_uses_message_time_and_resets) ... ok
+test_lifecycle_queries_are_limited_to_one_per_second (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_queries_are_limited_to_one_per_second) ... ok
+test_lifecycle_readiness_has_wall_deadline (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_readiness_has_wall_deadline) ... ok
+test_lifecycle_readiness_without_cli_polling (test_navigation_timeout.NavigationTimeoutTest.test_lifecycle_readiness_without_cli_polling) ... ok
+test_localization_quality_and_ground_truth (test_navigation_timeout.NavigationTimeoutTest.test_localization_quality_and_ground_truth) ... ok
+test_ros_timeout_cancels (test_navigation_timeout.NavigationTimeoutTest.test_ros_timeout_cancels) ... ok
+test_scan_self_filter_matches_navigation_footprint (test_navigation_timeout.NavigationTimeoutTest.test_scan_self_filter_matches_navigation_footprint) ... ok
+test_slow_simulation_can_finish_after_180_wall_seconds (test_navigation_timeout.NavigationTimeoutTest.test_slow_simulation_can_finish_after_180_wall_seconds) ... ok
+test_stopped_clock_cancels (test_navigation_timeout.NavigationTimeoutTest.test_stopped_clock_cancels) ... ok
+test_wall_limit_cancels_slow_clock (test_navigation_timeout.NavigationTimeoutTest.test_wall_limit_cancels_slow_clock) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.084s
+
+OK
+test_expired_browser_lease_withholds_motion_even_with_valid_pose (test_execution_safety.ExecutionSafetyTests.test_expired_browser_lease_withholds_motion_even_with_valid_pose) ... ok
+test_primitives_preserve_turns_and_reject_curves (test_execution_safety.ExecutionSafetyTests.test_primitives_preserve_turns_and_reject_curves) ... ok
+test_replan_confirms_cancellation_before_new_route (test_execution_safety.ExecutionSafetyTests.test_replan_confirms_cancellation_before_new_route) ... ok
+test_depth_padding_endian_units_and_invalid_input (test_geometry.GeometryTest.test_depth_padding_endian_units_and_invalid_input) ... ok
+test_flat_slope_roughness_step_and_pit (test_geometry.GeometryTest.test_flat_slope_roughness_step_and_pit) ... ok
+test_keepout_does_not_clear_unknown_and_respects_map_rotation (test_geometry.GeometryTest.test_keepout_does_not_clear_unknown_and_respects_map_rotation) ... ok
+test_optical_transform (test_geometry.GeometryTest.test_optical_transform) ... ok
+test_scanline_is_unknown_not_a_vertical_obstacle (test_geometry.GeometryTest.test_scanline_is_unknown_not_a_vertical_obstacle) ... ok
+test_action_result_and_missing_costmap_failure (test_planner_action.PlannerActionTests.test_action_result_and_missing_costmap_failure) ... ok
+test_robot_pose_is_distinct_from_camera_and_survives_reload (test_terrain_map.TerrainMapTests.test_robot_pose_is_distinct_from_camera_and_survives_reload) ... ok
+test_rotation_negative_cells_and_empty_archive (test_terrain_map.TerrainMapTests.test_rotation_negative_cells_and_empty_archive) ... ok
+test_transform_fusion_archive_replay_and_export (test_terrain_map.TerrainMapTests.test_transform_fusion_archive_replay_and_export) ... ok
+test_unknown_degenerate_multilevel_and_rejected_input (test_terrain_map.TerrainMapTests.test_unknown_degenerate_multilevel_and_rejected_input) ... ok
+test_directional_slope_and_unknown_footprint (test_terrain_planner.PlannerTests.test_directional_slope_and_unknown_footprint) ... ok
+test_exact_endpoints_and_explicit_checked_turns (test_terrain_planner.PlannerTests.test_exact_endpoints_and_explicit_checked_turns) ... ok
+test_routes_and_support_ablation (test_terrain_planner.PlannerTests.test_routes_and_support_ablation) ... ok
+test_wall_step_failure_and_budget (test_terrain_planner.PlannerTests.test_wall_step_failure_and_budget) ... ok
+test_archive_replay_bad_input_and_origin (test_workbench_api.WorkbenchApiTests.test_archive_replay_bad_input_and_origin) ... 127.0.0.1 - - [09/Sep/2026 14:36:30] "GET /api/map?session=../test.npz HTTP/1.1" 400 -
+127.0.0.1 - - [09/Sep/2026 14:36:30] "GET /api/map?session=broken.npz HTTP/1.1" 400 -
+127.0.0.1 - - [09/Sep/2026 14:36:30] "GET /api/map?session=test.npz&frame=9 HTTP/1.1" 400 -
+127.0.0.1 - - [09/Sep/2026 14:36:30] "GET /vendor/../../docs/requirements.md HTTP/1.1" 400 -
+127.0.0.1 - - [09/Sep/2026 14:36:30] "POST /api/plan HTTP/1.1" 403 -
+ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.675s
+
+OK
+firmware core: CRC, framing, sequence, watchdog, estop, rollover, NaN passed
+Software regression checks passed.
+[1/4] Building MoonCar workspace
+Starting >>> mooncar_control
+Starting >>> mooncar_description
+Starting >>> mooncar_terrain
+Starting >>> mooncar_msgs
+Finished <<< mooncar_description [0.13s]
+Finished <<< mooncar_control [0.15s]
+Starting >>> mooncar_gazebo
+Starting >>> mooncar_bringup
+Finished <<< mooncar_terrain [0.16s]
+Finished <<< mooncar_msgs [0.17s]
+Finished <<< mooncar_bringup [0.13s]
+Finished <<< mooncar_gazebo [0.14s]
+Starting >>> mooncar_slam
+Finished <<< mooncar_slam [0.11s]
+Starting >>> mooncar_navigation
+Finished <<< mooncar_navigation [0.10s]
+
+Summary: 8 packages finished [0.62s]
+[2/4] Starting simulation (Gazebo GUI: false, RViz: false)
+[3/4] Waiting for Nav2 lifecycle nodes
+[INFO] [1788964619.665099728] [mooncar_navigation_smoke_test]: Nav2 lifecycle nodes are active
+[4/4] Running obstacle-navigation goal
+[INFO] [1788964622.966932751] [mooncar_navigation_smoke_test]: Keepout detour passed; center clearance=1.25 m
+[INFO] [1788964624.159344206] [ros_gz_sim]: Entity creation successful.
+[INFO] [1788964624.936112334] [mooncar_navigation_smoke_test]: New obstacle replanning passed; clearance=0.87 m
+[INFO] [1788964625.522891033] [mooncar_navigation_smoke_test]: Sending goal x=1.50, y=0.00, yaw=0.00
+[INFO] [1788964633.432523050] [mooncar_navigation_smoke_test]: Navigation smoke test complete; displacement=0.92 m
+[INFO] [1788964633.689371154] [mooncar_navigation_smoke_test]: Sending goal x=3.50, y=3.00, yaw=0.00
+[INFO] [1788964648.692635610] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=15.2/180.0 s, wall elapsed=15.0 s, odom=(0.13, 1.63)
+[INFO] [1788964663.868055130] [mooncar_navigation_smoke_test]: Navigating: ROS elapsed=30.0/180.0 s, wall elapsed=30.0 s, odom=(2.29, 2.48)
+[INFO] [1788964672.517660631] [mooncar_navigation_smoke_test]: Navigation smoke test complete; displacement=3.62 m
+[INFO] [1788964672.789635463] [mooncar_navigation_smoke_test]: M6 acceptance passed. Evidence: /evidence/m6-01.json
+
+M6 acceptance passed.
+Map: /work/ros2_ws/install/mooncar_navigation/share/mooncar_navigation/maps/lunar_yard.yaml
+Launch log: /tmp/mooncar_m6_acceptance.log

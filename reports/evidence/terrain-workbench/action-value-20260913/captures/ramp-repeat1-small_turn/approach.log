@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/source/scripts/trajectory_evaluation.py", line 310, in <module>
+    if args.command=='capture': capture(args.folder,args.robot_sdf,args.world_sdf,args.seconds,args.raw_depth)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/source/scripts/trajectory_evaluation.py", line 137, in capture
+    raise RuntimeError('Terrain pixel offset is not declared as a double')
+RuntimeError: Terrain pixel offset is not declared as a double

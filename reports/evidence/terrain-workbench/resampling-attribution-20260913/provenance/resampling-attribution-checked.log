@@ -1,0 +1,108 @@
+[
+  {
+    "experiment": "experiment-b7460b2b0851",
+    "condition": "stationary",
+    "frames": 80,
+    "baseline_frames": 9,
+    "begin_index": 9,
+    "settled_index": 9,
+    "motion_start_pose_stamp": null,
+    "settled_pose_stamp": 14.8,
+    "arrival_definition": "post-hoc stable suffix within .03m/.03rad of final estimated pose; not Nav2 event",
+    "single_transit_false_negative_counts": [],
+    "estimated_translation_m": 0.0
+  },
+  {
+    "experiment": "experiment-300a6f2d306c",
+    "condition": "approach",
+    "frames": 82,
+    "baseline_frames": 9,
+    "begin_index": 12,
+    "settled_index": 21,
+    "motion_start_pose_stamp": 16.6,
+    "settled_pose_stamp": 21.4,
+    "arrival_definition": "post-hoc stable suffix within .03m/.03rad of final estimated pose; not Nav2 event",
+    "single_transit_false_negative_counts": [
+      {
+        "frame": 12,
+        "stamp": 16.6,
+        "recovered": 6
+      },
+      {
+        "frame": 13,
+        "stamp": 17.1,
+        "recovered": 9
+      },
+      {
+        "frame": 14,
+        "stamp": 17.6,
+        "recovered": 6
+      },
+      {
+        "frame": 15,
+        "stamp": 18.2,
+        "recovered": 7
+      },
+      {
+        "frame": 16,
+        "stamp": 18.7,
+        "recovered": 8
+      },
+      {
+        "frame": 17,
+        "stamp": 19.2,
+        "recovered": 10
+      },
+      {
+        "frame": 18,
+        "stamp": 19.8,
+        "recovered": 8
+      },
+      {
+        "frame": 19,
+        "stamp": 20.4,
+        "recovered": 9
+      },
+      {
+        "frame": 20,
+        "stamp": 20.9,
+        "recovered": 9
+      }
+    ],
+    "estimated_translation_m": 0.7112687435415422
+  },
+  {
+    "experiment": "experiment-9d39b7482383",
+    "condition": "approach",
+    "frames": 53,
+    "baseline_frames": 9,
+    "begin_index": 12,
+    "settled_index": 16,
+    "motion_start_pose_stamp": 17.6,
+    "settled_pose_stamp": 19.8,
+    "arrival_definition": "post-hoc stable suffix within .03m/.03rad of final estimated pose; not Nav2 event",
+    "single_transit_false_negative_counts": [
+      {
+        "frame": 12,
+        "stamp": 17.6,
+        "recovered": 6
+      },
+      {
+        "frame": 13,
+        "stamp": 18.2,
+        "recovered": 19
+      },
+      {
+        "frame": 14,
+        "stamp": 18.7,
+        "recovered": 16
+      },
+      {
+        "frame": 15,
+        "stamp": 19.2,
+        "recovered": 18
+      }
+    ],
+    "estimated_translation_m": 0.3227883084296107
+  }
+]

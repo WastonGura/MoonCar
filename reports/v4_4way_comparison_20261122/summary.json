@@ -1,0 +1,418 @@
+[
+  {
+    "frames": 579,
+    "stamp": 458.3,
+    "total_observed_m2": 489.1875,
+    "valid_surface_m2": 447.3125,
+    "observed_inside_reference_m2": 489.1875,
+    "invalid_inside_reference_m2": 41.875,
+    "outside_reference_cells": 0,
+    "outside_valid_cells": 0,
+    "mixed_valid_cells": 30,
+    "single_surface": {
+      "count": 7127,
+      "mae_m": 0.00062826460857015,
+      "rmse_m": 0.0013211215668278297,
+      "p95_abs_m": 0.002012447330351357,
+      "signed_mean_m": 7.40715178253007e-05
+    },
+    "all_valid_including_mixed": {
+      "count": 7157,
+      "mae_m": 0.0007099111282098652,
+      "rmse_m": 0.0027764721494290606,
+      "p95_abs_m": 0.002128051299785205,
+      "signed_mean_m": 4.093369356548118e-05
+    },
+    "slope_mae_degrees": 0.11759373015894363,
+    "key": "coverage_v3_gimbal",
+    "label": "coverage_v3 (云台)",
+    "strategy": "coverage_v3_gimbal",
+    "terrain_strategy": "elevation_neighborhood_v1",
+    "camera_mode": "gimbal",
+    "autonomy_strategy": "coverage_view_v3",
+    "experiment": "experiment-390adcb2c83f",
+    "tested_commit": "c86f12794d3de756276ae2491178106a477de2f6",
+    "outcome": "budget_completed",
+    "reason": "候选计算后剩余时间不足以完成下一观察动作",
+    "budget_seconds": 480.0,
+    "elapsed_seconds": 458.4,
+    "wall_seconds": 2273.591544099996,
+    "realtime_factor": 0.20161932832199117,
+    "radius": null,
+    "terminal_receipt_wall": 43706.670679987,
+    "snapshot_receipt_wall": 43695.789723438,
+    "initial_received_observed_m2": 17.5,
+    "new_observed_since_start_m2": 471.6875,
+    "actions": 25,
+    "successful_actions": 25,
+    "move_actions": 25,
+    "chassis_turn_phases": 22,
+    "gimbal_selected_actions": 0,
+    "global_frontier_switches": 0,
+    "localization_pauses": 0,
+    "premature_ready_samples": 8,
+    "path_length_m": 45.40886525290137,
+    "max_distance_from_start_m": 13.450812478469947,
+    "localization_xy_p95_m": 0.060852242834096244,
+    "localization_xy_max_m": 0.06299266667047003,
+    "gimbal": {
+      "samples": 4799,
+      "pan_range_deg": [
+        -0.0,
+        0.0
+      ],
+      "tilt_range_deg": [
+        -29.93,
+        -0.0
+      ],
+      "startup_actions": 3,
+      "frontier_actions": 0
+    },
+    "localization": {
+      "plan_status": {
+        "solved": 4584
+      },
+      "longest_no_solution_frames": 0,
+      "spread_retry": {}
+    },
+    "archive": {
+      "frames": 579,
+      "raw_points": 7681347,
+      "segments": 2,
+      "mission_frames": 576,
+      "mission_raw_points": 7654710,
+      "first_part_end_sim": 251.5,
+      "last_stamp_sim": 458.3
+    },
+    "capture": {
+      "actual_screen_capture": true,
+      "frame_count": 6778,
+      "width": 1120,
+      "height": 760,
+      "nominal_cfr_fps": 3,
+      "encoder_exit": 0,
+      "error": null,
+      "experiment": "experiment-390adcb2c83f",
+      "captured_display": ":101",
+      "timing": "Use frames.jsonl for actual wall timing; CFR video is a frame sequence, not a precise wall clock.",
+      "truth_used_by_control": false
+    },
+    "process_exits": {
+      "driver": 0,
+      "video": 0,
+      "backend": 0
+    }
+  },
+  {
+    "frames": 651,
+    "stamp": 481.1,
+    "total_observed_m2": 504.3125,
+    "valid_surface_m2": 463.3125,
+    "observed_inside_reference_m2": 504.3125,
+    "invalid_inside_reference_m2": 41.0,
+    "outside_reference_cells": 0,
+    "outside_valid_cells": 0,
+    "mixed_valid_cells": 32,
+    "single_surface": {
+      "count": 7381,
+      "mae_m": 0.0007585156591078492,
+      "rmse_m": 0.001499401422407517,
+      "p95_abs_m": 0.0024991560900657593,
+      "signed_mean_m": 0.0001697840949945054
+    },
+    "all_valid_including_mixed": {
+      "count": 7413,
+      "mae_m": 0.0008553467999235429,
+      "rmse_m": 0.0029568246338332244,
+      "p95_abs_m": 0.0026715275164057206,
+      "signed_mean_m": 0.00015831850538896956
+    },
+    "slope_mae_degrees": 0.11076181519009644,
+    "key": "surface_v3_gimbal",
+    "label": "surface_v3 (云台)",
+    "strategy": "surface_v3_gimbal",
+    "terrain_strategy": "elevation_neighborhood_v1",
+    "camera_mode": "gimbal",
+    "autonomy_strategy": "surface_view_v3",
+    "experiment": "experiment-f72c3d5cdb58",
+    "tested_commit": "c86f12794d3de756276ae2491178106a477de2f6",
+    "outcome": "budget_completed",
+    "reason": "剩余时间不足以完成下一候选观察动作",
+    "budget_seconds": 480.0,
+    "elapsed_seconds": 480.6,
+    "wall_seconds": 2541.486633050001,
+    "realtime_factor": 0.1891019192271883,
+    "radius": null,
+    "terminal_receipt_wall": 41388.680849287,
+    "snapshot_receipt_wall": 41376.437132407,
+    "initial_received_observed_m2": 17.5,
+    "new_observed_since_start_m2": 486.8125,
+    "actions": 20,
+    "successful_actions": 20,
+    "move_actions": 19,
+    "chassis_turn_phases": 18,
+    "gimbal_selected_actions": 1,
+    "global_frontier_switches": 0,
+    "localization_pauses": 0,
+    "premature_ready_samples": 8,
+    "path_length_m": 49.59384280992887,
+    "max_distance_from_start_m": 15.13254891284136,
+    "localization_xy_p95_m": 0.0617539770136945,
+    "localization_xy_max_m": 0.06284680087734934,
+    "gimbal": {
+      "samples": 5372,
+      "pan_range_deg": [
+        -0.0,
+        91.15
+      ],
+      "tilt_range_deg": [
+        -29.93,
+        -0.0
+      ],
+      "startup_actions": 3,
+      "frontier_actions": 0
+    },
+    "localization": {
+      "plan_status": {
+        "solved": 4806
+      },
+      "longest_no_solution_frames": 0,
+      "spread_retry": {}
+    },
+    "archive": {
+      "frames": 651,
+      "raw_points": 8612613,
+      "segments": 2,
+      "mission_frames": 648,
+      "mission_raw_points": 8585976,
+      "first_part_end_sim": 221.2,
+      "last_stamp_sim": 481.1
+    },
+    "capture": {
+      "actual_screen_capture": true,
+      "frame_count": 7577,
+      "width": 1120,
+      "height": 760,
+      "nominal_cfr_fps": 3,
+      "encoder_exit": 0,
+      "error": null,
+      "experiment": "experiment-f72c3d5cdb58",
+      "captured_display": ":101",
+      "timing": "Use frames.jsonl for actual wall timing; CFR video is a frame sequence, not a precise wall clock.",
+      "truth_used_by_control": false
+    },
+    "process_exits": {
+      "driver": 0,
+      "video": 0,
+      "backend": 0
+    }
+  },
+  {
+    "frames": 646,
+    "stamp": 472.3,
+    "total_observed_m2": 478.3125,
+    "valid_surface_m2": 448.6875,
+    "observed_inside_reference_m2": 478.3125,
+    "invalid_inside_reference_m2": 29.625,
+    "outside_reference_cells": 0,
+    "outside_valid_cells": 0,
+    "mixed_valid_cells": 23,
+    "single_surface": {
+      "count": 7156,
+      "mae_m": 0.0017224728733026683,
+      "rmse_m": 0.0019471401507161728,
+      "p95_abs_m": 0.002534386037008335,
+      "signed_mean_m": -0.0015391925585331024
+    },
+    "all_valid_including_mixed": {
+      "count": 7179,
+      "mae_m": 0.0017701573590394883,
+      "rmse_m": 0.0025482397000067374,
+      "p95_abs_m": 0.002547710242135913,
+      "signed_mean_m": -0.0015421422086116252
+    },
+    "slope_mae_degrees": 0.08162203740996755,
+    "key": "hybrid_v4_fixed",
+    "label": "hybrid_v4 (无云台)",
+    "strategy": "hybrid_v4_fixed",
+    "terrain_strategy": "elevation_neighborhood_v1",
+    "camera_mode": "fixed",
+    "autonomy_strategy": "hybrid_frontier_v4",
+    "experiment": "experiment-338802cb51de",
+    "tested_commit": "c86f12794d3de756276ae2491178106a477de2f6",
+    "outcome": "budget_completed",
+    "reason": "剩余时间不足以完成下一候选观察动作",
+    "budget_seconds": 480.0,
+    "elapsed_seconds": 472.2,
+    "wall_seconds": 2467.6527213730005,
+    "realtime_factor": 0.19135593753130228,
+    "radius": null,
+    "terminal_receipt_wall": 46604.994198718,
+    "snapshot_receipt_wall": 46592.243043163,
+    "initial_received_observed_m2": 21.0625,
+    "new_observed_since_start_m2": 457.25,
+    "actions": 24,
+    "successful_actions": 24,
+    "move_actions": 24,
+    "chassis_turn_phases": 9,
+    "gimbal_selected_actions": 0,
+    "global_frontier_switches": 5,
+    "localization_pauses": 0,
+    "premature_ready_samples": 9,
+    "path_length_m": 60.9583021736577,
+    "max_distance_from_start_m": 16.726494774617038,
+    "localization_xy_p95_m": 0.0489608538833226,
+    "localization_xy_max_m": 0.05225737897335698,
+    "gimbal": {
+      "samples": 5270,
+      "pan_range_deg": [
+        -0.0,
+        0.0
+      ],
+      "tilt_range_deg": [
+        -28.01,
+        -27.96
+      ],
+      "startup_actions": 0,
+      "frontier_actions": 0
+    },
+    "localization": {
+      "plan_status": {
+        "solved": 4722
+      },
+      "longest_no_solution_frames": 0,
+      "spread_retry": {}
+    },
+    "archive": {
+      "frames": 646,
+      "raw_points": 9167449,
+      "segments": 2,
+      "mission_frames": 643,
+      "mission_raw_points": 9123723,
+      "first_part_end_sim": 228.6,
+      "last_stamp_sim": 472.3
+    },
+    "capture": {
+      "actual_screen_capture": true,
+      "frame_count": 7358,
+      "width": 1120,
+      "height": 760,
+      "nominal_cfr_fps": 3,
+      "encoder_exit": 0,
+      "error": null,
+      "experiment": "experiment-338802cb51de",
+      "captured_display": ":101",
+      "timing": "Use frames.jsonl for actual wall timing; CFR video is a frame sequence, not a precise wall clock.",
+      "truth_used_by_control": false
+    },
+    "process_exits": {
+      "driver": 0,
+      "video": 0,
+      "backend": 0
+    }
+  },
+  {
+    "frames": 694,
+    "stamp": 471.9,
+    "total_observed_m2": 550.75,
+    "valid_surface_m2": 495.0625,
+    "observed_inside_reference_m2": 550.75,
+    "invalid_inside_reference_m2": 55.6875,
+    "outside_reference_cells": 0,
+    "outside_valid_cells": 0,
+    "mixed_valid_cells": 30,
+    "single_surface": {
+      "count": 7891,
+      "mae_m": 0.0010708675901280296,
+      "rmse_m": 0.0014959460221184247,
+      "p95_abs_m": 0.0027042247854337405,
+      "signed_mean_m": 0.0007369304977660865
+    },
+    "all_valid_including_mixed": {
+      "count": 7921,
+      "mae_m": 0.0011652769225450406,
+      "rmse_m": 0.003043233107485322,
+      "p95_abs_m": 0.0027476149217254,
+      "signed_mean_m": 0.0007246757581422754
+    },
+    "slope_mae_degrees": 0.09495240854176892,
+    "key": "hybrid_v41_gimbal",
+    "label": "hybrid_v4.1 (有云台)",
+    "strategy": "hybrid_v41_gimbal",
+    "terrain_strategy": "elevation_neighborhood_v1",
+    "camera_mode": "gimbal",
+    "autonomy_strategy": "hybrid_frontier_v4",
+    "experiment": "experiment-f18308667236",
+    "tested_commit": "0778a0f3c8b5d80549d06984713f0b6fcac690f9",
+    "outcome": "budget_completed",
+    "reason": "剩余时间不足以完成下一候选观察动作",
+    "budget_seconds": 480.0,
+    "elapsed_seconds": 471.2,
+    "wall_seconds": 3324.220869921,
+    "realtime_factor": 0.14174750067410474,
+    "radius": null,
+    "terminal_receipt_wall": 3390.926221365,
+    "snapshot_receipt_wall": 3388.606700799,
+    "initial_received_observed_m2": 17.5,
+    "new_observed_since_start_m2": 533.25,
+    "actions": 27,
+    "successful_actions": 27,
+    "move_actions": 26,
+    "chassis_turn_phases": 0,
+    "gimbal_selected_actions": 27,
+    "global_frontier_switches": 1,
+    "localization_pauses": 0,
+    "premature_ready_samples": 6,
+    "path_length_m": 58.94412830563106,
+    "max_distance_from_start_m": 14.602273738027497,
+    "localization_xy_p95_m": 0.059435263821020025,
+    "localization_xy_max_m": 0.06431459065120367,
+    "gimbal": {
+      "samples": 6695,
+      "pan_range_deg": [
+        -34.85,
+        85.54
+      ],
+      "tilt_range_deg": [
+        -29.93,
+        -0.0
+      ],
+      "startup_actions": 3,
+      "frontier_actions": 0
+    },
+    "localization": {
+      "plan_status": {
+        "solved": 4712
+      },
+      "longest_no_solution_frames": 0,
+      "spread_retry": {}
+    },
+    "archive": {
+      "frames": 694,
+      "raw_points": 9231389,
+      "segments": 2,
+      "mission_frames": 691,
+      "mission_raw_points": 9204752,
+      "first_part_end_sim": 217.1,
+      "last_stamp_sim": 471.9
+    },
+    "capture": {
+      "actual_screen_capture": true,
+      "frame_count": 9910,
+      "width": 1120,
+      "height": 760,
+      "nominal_cfr_fps": 3,
+      "encoder_exit": 0,
+      "error": null,
+      "experiment": "experiment-f18308667236",
+      "captured_display": ":101",
+      "timing": "Use frames.jsonl for actual wall timing; CFR video is a frame sequence, not a precise wall clock.",
+      "truth_used_by_control": false
+    },
+    "process_exits": {
+      "driver": 0,
+      "video": 0,
+      "backend": 0
+    }
+  }
+]

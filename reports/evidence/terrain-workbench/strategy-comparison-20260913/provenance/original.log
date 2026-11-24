@@ -1,0 +1,32 @@
+Trial 1/12 {'start': [3.5, 3.0, 0.0], 'repeat': 1, 'strategy': 'nearest_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, 3.0, 0.0], "repeat": 1, "strategy": "nearest_view_v1", "budget_seconds": 90, "radius": 8, "index": 1, "status": "budget_reached", "experiment": "experiment-a93dc053f485", "archive": "autonomy-2c83e31518.json", "reason": "时间预算已用尽，已停止运动并保留采集档案", "folder": "/evidence/frontend-experiments/experiment-a93dc053f485/research/autonomy-2c83e31518"}
+Trial 2/12 {'start': [3.5, 3.0, 0.0], 'repeat': 1, 'strategy': 'coverage_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, 3.0, 0.0], "repeat": 1, "strategy": "coverage_view_v1", "budget_seconds": 90, "radius": 8, "index": 2, "status": "no_candidates", "experiment": "experiment-11ae1100fd3f", "archive": "autonomy-7abc58e2da.json", "reason": "当前预算内没有新的安全候选观察位置；不代表整个环境已探测完毕", "folder": "/evidence/frontend-experiments/experiment-11ae1100fd3f/research/autonomy-7abc58e2da"}
+Trial 3/12 {'start': [3.5, 3.0, 0.0], 'repeat': 1, 'strategy': 'surface_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, 3.0, 0.0], "repeat": 1, "strategy": "surface_view_v1", "budget_seconds": 90, "radius": 8, "index": 3, "status": "no_candidates", "experiment": "experiment-41f7fa512ec0", "archive": "autonomy-dc2e24a2fa.json", "reason": "当前预算内没有新的安全候选观察位置；不代表整个环境已探测完毕", "folder": "/evidence/frontend-experiments/experiment-41f7fa512ec0/research/autonomy-dc2e24a2fa"}
+Trial 4/12 {'start': [3.5, -3.0, 0.0], 'repeat': 1, 'strategy': 'coverage_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, -3.0, 0.0], "repeat": 1, "strategy": "coverage_view_v1", "budget_seconds": 90, "radius": 8, "index": 4, "status": "trial_failed", "error": "HTTP Error 400: Bad Request"}
+Trial 5/12 {'start': [3.5, -3.0, 0.0], 'repeat': 1, 'strategy': 'surface_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, -3.0, 0.0], "repeat": 1, "strategy": "surface_view_v1", "budget_seconds": 90, "radius": 8, "index": 5, "status": "trial_failed", "error": "HTTP Error 400: Bad Request"}
+Trial 6/12 {'start': [3.5, -3.0, 0.0], 'repeat': 1, 'strategy': 'nearest_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, -3.0, 0.0], "repeat": 1, "strategy": "nearest_view_v1", "budget_seconds": 90, "radius": 8, "index": 6, "status": "trial_failed", "error": "HTTP Error 400: Bad Request"}
+Trial 7/12 {'start': [3.5, 3.0, 0.0], 'repeat': 2, 'strategy': 'coverage_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, 3.0, 0.0], "repeat": 2, "strategy": "coverage_view_v1", "budget_seconds": 90, "radius": 8, "index": 7, "status": "no_candidates", "experiment": "experiment-070cd9c45b32", "archive": "autonomy-d539fa8f24.json", "reason": "当前预算内没有新的安全候选观察位置；不代表整个环境已探测完毕", "folder": "/evidence/frontend-experiments/experiment-070cd9c45b32/research/autonomy-d539fa8f24"}
+Trial 8/12 {'start': [3.5, 3.0, 0.0], 'repeat': 2, 'strategy': 'surface_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, 3.0, 0.0], "repeat": 2, "strategy": "surface_view_v1", "budget_seconds": 90, "radius": 8, "index": 8, "status": "budget_reached", "experiment": "experiment-040fe2633b4e", "archive": "autonomy-ceb4ef1672.json", "reason": "时间预算已用尽，已停止运动并保留采集档案", "folder": "/evidence/frontend-experiments/experiment-040fe2633b4e/research/autonomy-ceb4ef1672"}
+Trial 9/12 {'start': [3.5, 3.0, 0.0], 'repeat': 2, 'strategy': 'nearest_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, 3.0, 0.0], "repeat": 2, "strategy": "nearest_view_v1", "budget_seconds": 90, "radius": 8, "index": 9, "status": "no_candidates", "experiment": "experiment-33e968dbfe29", "archive": "autonomy-4523abf581.json", "reason": "当前预算内没有新的安全候选观察位置；不代表整个环境已探测完毕", "folder": "/evidence/frontend-experiments/experiment-33e968dbfe29/research/autonomy-4523abf581"}
+Trial 10/12 {'start': [3.5, -3.0, 0.0], 'repeat': 2, 'strategy': 'surface_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, -3.0, 0.0], "repeat": 2, "strategy": "surface_view_v1", "budget_seconds": 90, "radius": 8, "index": 10, "status": "trial_failed", "error": "HTTP Error 400: Bad Request"}
+Trial 11/12 {'start': [3.5, -3.0, 0.0], 'repeat': 2, 'strategy': 'nearest_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, -3.0, 0.0], "repeat": 2, "strategy": "nearest_view_v1", "budget_seconds": 90, "radius": 8, "index": 11, "status": "trial_failed", "error": "HTTP Error 400: Bad Request"}
+Trial 12/12 {'start': [3.5, -3.0, 0.0], 'repeat': 2, 'strategy': 'coverage_view_v1', 'budget_seconds': 90, 'radius': 8}
+{"start": [3.5, -3.0, 0.0], "repeat": 2, "strategy": "coverage_view_v1", "budget_seconds": 90, "radius": 8, "index": 12, "status": "trial_failed", "error": "HTTP Error 400: Bad Request"}
+Traceback (most recent call last):
+  File "/source/scripts/compare_survey_strategies.py", line 78, in <module>
+    **{k:v for k,v in r.items() if k not in ('index','start','repeat','summary')},**r.get('summary',{})) for r in results])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/source/scripts/compare_survey_strategies.py", line 70, in run
+    else:row['report_error']='Report missing at deadline'
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: dict() got multiple values for keyword argument 'strategy'

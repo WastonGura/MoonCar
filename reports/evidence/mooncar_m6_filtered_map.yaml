@@ -1,0 +1,7 @@
+image: mooncar_m6_filtered_map.pgm
+mode: trinary
+resolution: 0.050
+origin: [-7.243, -5.731, 0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196

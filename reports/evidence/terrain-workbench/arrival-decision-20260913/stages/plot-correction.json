@@ -1,0 +1,6 @@
+{
+  "reason": "Presentation-only correction: map axes include negative-X starts; bar labels have headroom. Quantitative gate JSON unchanged byte for byte.",
+  "assessment_sha256": "f75b3bc2985f76168f962ea2d50f853556373e4ae2c0ecf11a45931583c5f8ea",
+  "assessment_source_sha256": "d0038a4d19a7d6dd840bbcb6aea0c9100c66e33325d67faf3d4019ed40b84f20",
+  "path_plot_source_sha256": "94cc3fd4a8923e90651b23cc2d02aa53b45c825ea03054292b9fca318739f16b"
+}

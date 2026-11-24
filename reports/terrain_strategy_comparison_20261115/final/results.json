@@ -1,0 +1,980 @@
+{
+  "protocol": {
+    "baseline_commit": "5fe51ab",
+    "tested_commit": "6a5416e81659d45fd3bffe43515fc4c673248d24",
+    "archives": {
+      "tmp\\ros_acceptance\\turn-minimap-video-20261111\\sessions\\experiment-d0fa4fb37388\\survey-20261111T042738561263Z.npz": "4b9854055d739e2096cde047a7a9aab7eb8e39a6e507d227703820740c2ec38d",
+      "tmp\\ros_acceptance\\turn-minimap-video-20261111\\retry-sessions\\experiment-78d0b0570521\\survey-20261111T043230276576Z.npz": "4bc3f25288b8cf285e6d9f81887deae2ccbc761bbc4620d0827ab4b540e4189d"
+    },
+    "source_sha256": {
+      "scripts\\literature_terrain.py": "ff91ec40bb8d47568fee0b5cfb5d2282bc28cb2855ea2732d414adace0314a23",
+      "scripts\\compare_terrain_strategies.py": "d1eed8b4396df0a0ebddd34bc9bbc7bc8a0754cecf58f4b7d455863e80bab3b4",
+      "ros2_ws\\src\\mooncar_terrain\\scripts\\terrain_geometry.py": "ee70695e63e9e1f4dda4d5bd86fdb6625a6c02ac03f9ab5c9209b32aeab68778"
+    },
+    "parameters": {
+      "output_resolution": 0.2,
+      "fine_resolution": 0.05,
+      "normal_radius": 0.36,
+      "max_age_s": 5.0,
+      "slope_deg": 18.0,
+      "roughness_m": 0.04,
+      "step_m": 0.18,
+      "drop_m": 0.12
+    },
+    "localization": "same archived corrected sensor/robot poses",
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1"
+    },
+    "scope": "Offline terrain classification. Movement and safety-check implementations are excluded from this A/B.",
+    "limitations": "Keyframes omit some online depth frames. No calibrated pose/depth covariance is present. Known-cell metrics exclude unknown, which is reported separately."
+  },
+  "datasets": [
+    {
+      "archive": "tmp\\ros_acceptance\\turn-minimap-video-20261111\\sessions\\experiment-d0fa4fb37388\\survey-20261111T042738561263Z.npz",
+      "frames": 15,
+      "candidate_peak_fine_cells": 5860,
+      "baseline": {
+        "classified": 1653,
+        "hazard": 0,
+        "observed_unknown": 4000,
+        "timing": {
+          "mean_ms": 94.82970666649635,
+          "p95_ms": 109.63557000141006,
+          "max_ms": 126.08619999809889
+        },
+        "target": [
+          {
+            "frame": 0,
+            "stamp": 0.7,
+            "status": "unknown"
+          },
+          {
+            "frame": 1,
+            "stamp": 0.9,
+            "status": "unknown"
+          },
+          {
+            "frame": 2,
+            "stamp": 1.0,
+            "status": "unknown"
+          },
+          {
+            "frame": 3,
+            "stamp": 4.3,
+            "status": "unknown"
+          },
+          {
+            "frame": 4,
+            "stamp": 4.7,
+            "status": "unknown"
+          },
+          {
+            "frame": 5,
+            "stamp": 5.9,
+            "status": "passable",
+            "slope": 12.434621399491322,
+            "roughness": 4.2653022888734005e-05,
+            "reason": 0
+          },
+          {
+            "frame": 6,
+            "stamp": 6.3,
+            "status": "unknown"
+          },
+          {
+            "frame": 7,
+            "stamp": 6.8,
+            "status": "unknown"
+          },
+          {
+            "frame": 8,
+            "stamp": 7.2,
+            "status": "unknown"
+          },
+          {
+            "frame": 9,
+            "stamp": 8.0,
+            "status": "unknown"
+          },
+          {
+            "frame": 10,
+            "stamp": 8.9,
+            "status": "unknown"
+          },
+          {
+            "frame": 11,
+            "stamp": 9.3,
+            "status": "unknown"
+          },
+          {
+            "frame": 12,
+            "stamp": 10.2,
+            "status": "unknown"
+          },
+          {
+            "frame": 13,
+            "stamp": 10.9,
+            "status": "unknown"
+          },
+          {
+            "frame": 14,
+            "stamp": 11.5,
+            "status": "unknown"
+          }
+        ],
+        "target_counts": {
+          "passable": 1,
+          "hazard": 0,
+          "unknown": 14
+        }
+      },
+      "candidate": {
+        "classified": 5418,
+        "hazard": 0,
+        "observed_unknown": 235,
+        "timing": {
+          "mean_ms": 294.3190800004231,
+          "p95_ms": 364.70754999900237,
+          "max_ms": 380.9051999996882
+        },
+        "target": [
+          {
+            "frame": 0,
+            "stamp": 0.7,
+            "status": "passable",
+            "slope": 8.55936701211471,
+            "roughness": 0.0023609054438017084,
+            "reason": 0
+          },
+          {
+            "frame": 1,
+            "stamp": 0.9,
+            "status": "passable",
+            "slope": 8.55932043282415,
+            "roughness": 0.0023608968550590265,
+            "reason": 0
+          },
+          {
+            "frame": 2,
+            "stamp": 1.0,
+            "status": "passable",
+            "slope": 8.559307949780585,
+            "roughness": 0.002360892932376275,
+            "reason": 0
+          },
+          {
+            "frame": 3,
+            "stamp": 4.3,
+            "status": "passable",
+            "slope": 8.499281050658121,
+            "roughness": 0.003290525405979079,
+            "reason": 0
+          },
+          {
+            "frame": 4,
+            "stamp": 4.7,
+            "status": "passable",
+            "slope": 8.437457078020804,
+            "roughness": 0.0031285048460073413,
+            "reason": 0
+          },
+          {
+            "frame": 5,
+            "stamp": 5.9,
+            "status": "passable",
+            "slope": 8.443539573487124,
+            "roughness": 0.003216077121796492,
+            "reason": 0
+          },
+          {
+            "frame": 6,
+            "stamp": 6.3,
+            "status": "passable",
+            "slope": 8.384927013581398,
+            "roughness": 0.003557773696139059,
+            "reason": 0
+          },
+          {
+            "frame": 7,
+            "stamp": 6.8,
+            "status": "passable",
+            "slope": 8.385538371923804,
+            "roughness": 0.0034630039777159235,
+            "reason": 0
+          },
+          {
+            "frame": 8,
+            "stamp": 7.2,
+            "status": "passable",
+            "slope": 8.39051848521141,
+            "roughness": 0.0034027220917654238,
+            "reason": 0
+          },
+          {
+            "frame": 9,
+            "stamp": 8.0,
+            "status": "passable",
+            "slope": 8.407433257831409,
+            "roughness": 0.003195549352161029,
+            "reason": 0
+          },
+          {
+            "frame": 10,
+            "stamp": 8.9,
+            "status": "passable",
+            "slope": 8.438828060228332,
+            "roughness": 0.0031428618271612213,
+            "reason": 0
+          },
+          {
+            "frame": 11,
+            "stamp": 9.3,
+            "status": "passable",
+            "slope": 8.44155380722577,
+            "roughness": 0.0030779410150277614,
+            "reason": 0
+          },
+          {
+            "frame": 12,
+            "stamp": 10.2,
+            "status": "passable",
+            "slope": 8.448786717247458,
+            "roughness": 0.0027669765618407944,
+            "reason": 0
+          },
+          {
+            "frame": 13,
+            "stamp": 10.9,
+            "status": "passable",
+            "slope": 8.460565591678716,
+            "roughness": 0.0027565960154082273,
+            "reason": 0
+          },
+          {
+            "frame": 14,
+            "stamp": 11.5,
+            "status": "passable",
+            "slope": 8.452222104361946,
+            "roughness": 0.002763870669832797,
+            "reason": 0
+          }
+        ],
+        "target_counts": {
+          "passable": 15,
+          "hazard": 0,
+          "unknown": 0
+        }
+      }
+    },
+    {
+      "archive": "tmp\\ros_acceptance\\turn-minimap-video-20261111\\retry-sessions\\experiment-78d0b0570521\\survey-20261111T043230276576Z.npz",
+      "frames": 64,
+      "candidate_peak_fine_cells": 7004,
+      "baseline": {
+        "classified": 4858,
+        "hazard": 1,
+        "observed_unknown": 9275,
+        "timing": {
+          "mean_ms": 57.69531562481234,
+          "p95_ms": 110.62145499890902,
+          "max_ms": 120.52610000318964
+        },
+        "target": [
+          {
+            "frame": 0,
+            "stamp": 0.9,
+            "status": "unknown"
+          },
+          {
+            "frame": 1,
+            "stamp": 1.1,
+            "status": "unknown"
+          },
+          {
+            "frame": 2,
+            "stamp": 1.2,
+            "status": "unknown"
+          },
+          {
+            "frame": 3,
+            "stamp": 5.5,
+            "status": "unknown"
+          },
+          {
+            "frame": 4,
+            "stamp": 5.9,
+            "status": "unknown"
+          },
+          {
+            "frame": 5,
+            "stamp": 6.9,
+            "status": "unknown"
+          },
+          {
+            "frame": 6,
+            "stamp": 7.3,
+            "status": "unknown"
+          },
+          {
+            "frame": 7,
+            "stamp": 7.7,
+            "status": "unknown"
+          },
+          {
+            "frame": 8,
+            "stamp": 8.2,
+            "status": "unknown"
+          },
+          {
+            "frame": 9,
+            "stamp": 8.7,
+            "status": "unknown"
+          },
+          {
+            "frame": 10,
+            "stamp": 9.2,
+            "status": "passable",
+            "slope": 1.989215766413089,
+            "roughness": 1.896722367725963e-08,
+            "reason": 0
+          },
+          {
+            "frame": 11,
+            "stamp": 9.6,
+            "status": "unknown"
+          },
+          {
+            "frame": 12,
+            "stamp": 10.0,
+            "status": "unknown"
+          },
+          {
+            "frame": 13,
+            "stamp": 10.4,
+            "status": "unknown"
+          },
+          {
+            "frame": 14,
+            "stamp": 10.9,
+            "status": "unknown"
+          },
+          {
+            "frame": 15,
+            "stamp": 11.4,
+            "status": "unknown"
+          },
+          {
+            "frame": 16,
+            "stamp": 13.9,
+            "status": "unknown"
+          },
+          {
+            "frame": 17,
+            "stamp": 14.4,
+            "status": "unknown"
+          },
+          {
+            "frame": 18,
+            "stamp": 14.8,
+            "status": "passable",
+            "slope": 14.600860301550535,
+            "roughness": 3.1757079781925574e-05,
+            "reason": 0
+          },
+          {
+            "frame": 19,
+            "stamp": 15.3,
+            "status": "unknown"
+          },
+          {
+            "frame": 20,
+            "stamp": 15.8,
+            "status": "passable",
+            "slope": 14.476121936172339,
+            "roughness": 3.392131632704867e-05,
+            "reason": 0
+          },
+          {
+            "frame": 21,
+            "stamp": 16.2,
+            "status": "passable",
+            "slope": 11.954806582695694,
+            "roughness": 0.00018199835505855558,
+            "reason": 0
+          },
+          {
+            "frame": 22,
+            "stamp": 16.6,
+            "status": "unknown"
+          },
+          {
+            "frame": 23,
+            "stamp": 17.0,
+            "status": "passable",
+            "slope": 9.084805645574365,
+            "roughness": 0.0017625076104345568,
+            "reason": 0
+          },
+          {
+            "frame": 24,
+            "stamp": 17.4,
+            "status": "unknown"
+          },
+          {
+            "frame": 25,
+            "stamp": 17.8,
+            "status": "unknown"
+          },
+          {
+            "frame": 26,
+            "stamp": 18.3,
+            "status": "passable",
+            "slope": 9.07017632359419,
+            "roughness": 0.0016912192320899435,
+            "reason": 0
+          },
+          {
+            "frame": 27,
+            "stamp": 18.8,
+            "status": "unknown"
+          },
+          {
+            "frame": 28,
+            "stamp": 19.2,
+            "status": "unknown"
+          },
+          {
+            "frame": 29,
+            "stamp": 19.6,
+            "status": "passable",
+            "slope": 9.210402335343561,
+            "roughness": 0.002032034858639076,
+            "reason": 0
+          },
+          {
+            "frame": 30,
+            "stamp": 20.1,
+            "status": "passable",
+            "slope": 8.725511993152546,
+            "roughness": 0.0006257382398882046,
+            "reason": 0
+          },
+          {
+            "frame": 31,
+            "stamp": 20.6,
+            "status": "passable",
+            "slope": 9.124221667480416,
+            "roughness": 0.0014798912746728217,
+            "reason": 0
+          },
+          {
+            "frame": 32,
+            "stamp": 21.0,
+            "status": "passable",
+            "slope": 8.668617442608255,
+            "roughness": 0.0007881987045756868,
+            "reason": 0
+          },
+          {
+            "frame": 33,
+            "stamp": 21.4,
+            "status": "hazard",
+            "slope": 21.516746389619687,
+            "roughness": 3.247342214105446e-05,
+            "reason": 1
+          },
+          {
+            "frame": 34,
+            "stamp": 21.8,
+            "status": "unknown"
+          }
+        ],
+        "target_counts": {
+          "passable": 10,
+          "hazard": 1,
+          "unknown": 24
+        }
+      },
+      "candidate": {
+        "classified": 13916,
+        "hazard": 0,
+        "observed_unknown": 217,
+        "timing": {
+          "mean_ms": 202.20775312526484,
+          "p95_ms": 370.1091450011518,
+          "max_ms": 392.6444000026095
+        },
+        "target": [
+          {
+            "frame": 0,
+            "stamp": 0.9,
+            "status": "passable",
+            "slope": 8.55936360993357,
+            "roughness": 0.002360904547058076,
+            "reason": 0
+          },
+          {
+            "frame": 1,
+            "stamp": 1.1,
+            "status": "passable",
+            "slope": 8.559318819521392,
+            "roughness": 0.0023608957907103796,
+            "reason": 0
+          },
+          {
+            "frame": 2,
+            "stamp": 1.2,
+            "status": "passable",
+            "slope": 8.559306994490758,
+            "roughness": 0.0023608922807516427,
+            "reason": 0
+          },
+          {
+            "frame": 3,
+            "stamp": 5.5,
+            "status": "passable",
+            "slope": 8.574570772659841,
+            "roughness": 0.0024431563734886607,
+            "reason": 0
+          },
+          {
+            "frame": 4,
+            "stamp": 5.9,
+            "status": "passable",
+            "slope": 8.693497183183373,
+            "roughness": 0.004694713014327546,
+            "reason": 0
+          },
+          {
+            "frame": 5,
+            "stamp": 6.9,
+            "status": "passable",
+            "slope": 8.621304738330478,
+            "roughness": 0.0047565293196566855,
+            "reason": 0
+          },
+          {
+            "frame": 6,
+            "stamp": 7.3,
+            "status": "passable",
+            "slope": 8.667500675748508,
+            "roughness": 0.005022654442971314,
+            "reason": 0
+          },
+          {
+            "frame": 7,
+            "stamp": 7.7,
+            "status": "passable",
+            "slope": 8.68853537092548,
+            "roughness": 0.004950510243475046,
+            "reason": 0
+          },
+          {
+            "frame": 8,
+            "stamp": 8.2,
+            "status": "passable",
+            "slope": 8.705015389760309,
+            "roughness": 0.004953569730247821,
+            "reason": 0
+          },
+          {
+            "frame": 9,
+            "stamp": 8.7,
+            "status": "passable",
+            "slope": 8.719452368322838,
+            "roughness": 0.004797725130588391,
+            "reason": 0
+          },
+          {
+            "frame": 10,
+            "stamp": 9.2,
+            "status": "passable",
+            "slope": 8.724516272925904,
+            "roughness": 0.004697177369135038,
+            "reason": 0
+          },
+          {
+            "frame": 11,
+            "stamp": 9.6,
+            "status": "passable",
+            "slope": 8.755082716587053,
+            "roughness": 0.004481678367810256,
+            "reason": 0
+          },
+          {
+            "frame": 12,
+            "stamp": 10.0,
+            "status": "passable",
+            "slope": 8.709073112871826,
+            "roughness": 0.004069645341924196,
+            "reason": 0
+          },
+          {
+            "frame": 13,
+            "stamp": 10.4,
+            "status": "passable",
+            "slope": 8.69743742067051,
+            "roughness": 0.003798750750792898,
+            "reason": 0
+          },
+          {
+            "frame": 14,
+            "stamp": 10.9,
+            "status": "passable",
+            "slope": 8.628369886380733,
+            "roughness": 0.0037464288650225297,
+            "reason": 0
+          },
+          {
+            "frame": 15,
+            "stamp": 11.4,
+            "status": "passable",
+            "slope": 8.57942055286549,
+            "roughness": 0.003627348929562177,
+            "reason": 0
+          },
+          {
+            "frame": 16,
+            "stamp": 13.9,
+            "status": "passable",
+            "slope": 8.631351052670498,
+            "roughness": 0.003881726362459171,
+            "reason": 0
+          },
+          {
+            "frame": 17,
+            "stamp": 14.4,
+            "status": "passable",
+            "slope": 8.564061463683979,
+            "roughness": 0.0035960383903929087,
+            "reason": 0
+          },
+          {
+            "frame": 18,
+            "stamp": 14.8,
+            "status": "passable",
+            "slope": 8.579379789872158,
+            "roughness": 0.0036170054197917326,
+            "reason": 0
+          },
+          {
+            "frame": 19,
+            "stamp": 15.3,
+            "status": "passable",
+            "slope": 8.614535163154168,
+            "roughness": 0.003366756293211213,
+            "reason": 0
+          },
+          {
+            "frame": 20,
+            "stamp": 15.8,
+            "status": "passable",
+            "slope": 8.576654895927549,
+            "roughness": 0.0030940957250614885,
+            "reason": 0
+          },
+          {
+            "frame": 21,
+            "stamp": 16.2,
+            "status": "passable",
+            "slope": 8.55820254896651,
+            "roughness": 0.0031156538009099025,
+            "reason": 0
+          },
+          {
+            "frame": 22,
+            "stamp": 16.6,
+            "status": "passable",
+            "slope": 8.557951692502362,
+            "roughness": 0.0030520963935879567,
+            "reason": 0
+          },
+          {
+            "frame": 23,
+            "stamp": 17.0,
+            "status": "passable",
+            "slope": 8.580478715772795,
+            "roughness": 0.0030210430905481616,
+            "reason": 0
+          },
+          {
+            "frame": 24,
+            "stamp": 17.4,
+            "status": "passable",
+            "slope": 8.557486238411427,
+            "roughness": 0.0030229199423350713,
+            "reason": 0
+          },
+          {
+            "frame": 25,
+            "stamp": 17.8,
+            "status": "passable",
+            "slope": 8.552984486343746,
+            "roughness": 0.0029857116804888175,
+            "reason": 0
+          },
+          {
+            "frame": 26,
+            "stamp": 18.3,
+            "status": "passable",
+            "slope": 8.554627300562009,
+            "roughness": 0.002956111238182674,
+            "reason": 0
+          },
+          {
+            "frame": 27,
+            "stamp": 18.8,
+            "status": "passable",
+            "slope": 8.552548569839363,
+            "roughness": 0.0029381448276787647,
+            "reason": 0
+          },
+          {
+            "frame": 28,
+            "stamp": 19.2,
+            "status": "passable",
+            "slope": 8.550983142022805,
+            "roughness": 0.002927335536057702,
+            "reason": 0
+          },
+          {
+            "frame": 29,
+            "stamp": 19.6,
+            "status": "passable",
+            "slope": 8.536843825115662,
+            "roughness": 0.0029247386089638282,
+            "reason": 0
+          },
+          {
+            "frame": 30,
+            "stamp": 20.1,
+            "status": "passable",
+            "slope": 8.528767290193167,
+            "roughness": 0.0029015844658437304,
+            "reason": 0
+          },
+          {
+            "frame": 31,
+            "stamp": 20.6,
+            "status": "passable",
+            "slope": 8.524418635022226,
+            "roughness": 0.0028888961675237962,
+            "reason": 0
+          },
+          {
+            "frame": 32,
+            "stamp": 21.0,
+            "status": "passable",
+            "slope": 8.518579579873514,
+            "roughness": 0.0029153191985416076,
+            "reason": 0
+          },
+          {
+            "frame": 33,
+            "stamp": 21.4,
+            "status": "passable",
+            "slope": 8.52719414705474,
+            "roughness": 0.002886038456865224,
+            "reason": 0
+          },
+          {
+            "frame": 34,
+            "stamp": 21.8,
+            "status": "passable",
+            "slope": 8.524215093339945,
+            "roughness": 0.0028697076767946837,
+            "reason": 0
+          }
+        ],
+        "target_counts": {
+          "passable": 35,
+          "hazard": 0,
+          "unknown": 0
+        }
+      }
+    }
+  ],
+  "synthetic_checks": [
+    {
+      "scene": "flat",
+      "baseline": {
+        "known": 16,
+        "hazard": 0,
+        "reasons": [
+          0
+        ],
+        "matches_expected": true
+      },
+      "candidate": {
+        "known": 16,
+        "hazard": 0,
+        "reasons": [
+          0
+        ],
+        "matches_expected": true
+      },
+      "expected": "passable"
+    },
+    {
+      "scene": "gentle_10deg",
+      "baseline": {
+        "known": 16,
+        "hazard": 0,
+        "reasons": [
+          0
+        ],
+        "matches_expected": true
+      },
+      "candidate": {
+        "known": 16,
+        "hazard": 0,
+        "reasons": [
+          0
+        ],
+        "matches_expected": true
+      },
+      "expected": "passable"
+    },
+    {
+      "scene": "steep_25deg",
+      "baseline": {
+        "known": 16,
+        "hazard": 16,
+        "reasons": [
+          1
+        ],
+        "matches_expected": true
+      },
+      "candidate": {
+        "known": 16,
+        "hazard": 16,
+        "reasons": [
+          1
+        ],
+        "matches_expected": true
+      },
+      "expected": "hazard"
+    },
+    {
+      "scene": "raised_25cm",
+      "baseline": {
+        "known": 8,
+        "hazard": 8,
+        "reasons": [
+          4,
+          8
+        ],
+        "matches_expected": true
+      },
+      "candidate": {
+        "known": 8,
+        "hazard": 8,
+        "reasons": [
+          7,
+          11
+        ],
+        "matches_expected": true
+      },
+      "expected": "hazard"
+    },
+    {
+      "scene": "drop_25cm",
+      "baseline": {
+        "known": 8,
+        "hazard": 8,
+        "reasons": [
+          4,
+          8
+        ],
+        "matches_expected": true
+      },
+      "candidate": {
+        "known": 8,
+        "hazard": 8,
+        "reasons": [
+          7,
+          11
+        ],
+        "matches_expected": true
+      },
+      "expected": "hazard"
+    },
+    {
+      "scene": "rough_6cm_rms",
+      "baseline": {
+        "known": 16,
+        "hazard": 16,
+        "reasons": [
+          2
+        ],
+        "matches_expected": true
+      },
+      "candidate": {
+        "known": 16,
+        "hazard": 16,
+        "reasons": [
+          2
+        ],
+        "matches_expected": true
+      },
+      "expected": "hazard"
+    },
+    {
+      "scene": "single_scanline",
+      "baseline": {
+        "known": 0,
+        "hazard": 0,
+        "reasons": [],
+        "matches_expected": true
+      },
+      "candidate": {
+        "known": 0,
+        "hazard": 0,
+        "reasons": [],
+        "matches_expected": true
+      },
+      "expected": "unknown"
+    },
+    {
+      "scene": "isolated_obstacle_25cm",
+      "baseline": {
+        "known": 1,
+        "hazard": 1,
+        "reasons": [
+          1
+        ],
+        "matches_expected": true
+      },
+      "candidate": {
+        "known": 1,
+        "hazard": 1,
+        "reasons": [
+          4
+        ],
+        "matches_expected": true
+      },
+      "expected": "hazard"
+    },
+    {
+      "scene": "isolated_drop_25cm",
+      "baseline": {
+        "known": 1,
+        "hazard": 1,
+        "reasons": [
+          1
+        ],
+        "matches_expected": true
+      },
+      "candidate": {
+        "known": 1,
+        "hazard": 1,
+        "reasons": [
+          8
+        ],
+        "matches_expected": true
+      },
+      "expected": "hazard"
+    }
+  ]
+}

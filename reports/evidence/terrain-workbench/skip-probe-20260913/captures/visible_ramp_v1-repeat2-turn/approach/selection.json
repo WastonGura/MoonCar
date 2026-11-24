@@ -1,0 +1,108 @@
+{
+  "selected": null,
+  "candidates": [
+    {
+      "delta": 0.02,
+      "yaw": -0.6124870084165047,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.04,
+        "remaining_seconds": 43.599999999999994,
+        "angle_rad": 0.020000000000000018,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 115,
+      "marginal_cells": 5
+    },
+    {
+      "delta": -0.02,
+      "yaw": -0.6524870084165046,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.04,
+        "remaining_seconds": 43.599999999999994,
+        "angle_rad": 0.019999999999999907,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 115,
+      "marginal_cells": 12
+    },
+    {
+      "delta": 0.04,
+      "yaw": -0.5924870084165047,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.08,
+        "remaining_seconds": 43.599999999999994,
+        "angle_rad": 0.040000000000000036,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 115,
+      "marginal_cells": 9
+    },
+    {
+      "delta": -0.04,
+      "yaw": -0.6724870084165048,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.08,
+        "remaining_seconds": 43.599999999999994,
+        "angle_rad": 0.040000000000000036,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 115,
+      "marginal_cells": 16
+    },
+    {
+      "delta": 0.08,
+      "yaw": -0.5524870084165048,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.16,
+        "remaining_seconds": 43.599999999999994,
+        "angle_rad": 0.07999999999999996,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 115,
+      "marginal_cells": 8
+    },
+    {
+      "delta": -0.08,
+      "yaw": -0.7124870084165047,
+      "gate": {
+        "version": "swept-support-v3",
+        "turn": true,
+        "reason": "try_observation",
+        "estimated_seconds": 3.16,
+        "remaining_seconds": 43.599999999999994,
+        "angle_rad": 0.07999999999999996,
+        "meaning": "Extra support relative to holding; skip does not mean zero hold recovery or completed exploration",
+        "sampled_poses": 2
+      },
+      "deficient_cells": 115,
+      "marginal_cells": 19
+    }
+  ],
+  "feature_stamp": 27.2,
+  "completed_sim_stamp": 28.476,
+  "feature_age_seconds": 1.2759999999999998,
+  "remaining_seconds": 42.324,
+  "executable": false,
+  "checkpoint_sha256": "fa4727cd86b120c35edae72c24f6d8e4d112c879de478ed81583d7918997c8e5",
+  "reason": "no_candidate_or_stale_or_low_budget"
+}

@@ -1,0 +1,238 @@
+[
+  {
+    "name": "01-baseline-left",
+    "profile": "baseline",
+    "qualified": true,
+    "wall_s": 102.67289090156555,
+    "physical_steps": 20000,
+    "motion_s": 20.0,
+    "wheel_linear_integral_m": 0.0,
+    "wheel_angular_integral_rad": 4.000000000000002,
+    "outcome": {
+      "endpoint_displacement_m": 0.31209996351986474,
+      "maximum_displacement_m": 0.3131430755668963,
+      "path_length_m": 0.5188652828677199,
+      "unwrapped_turn_rad": 3.4577434742897903,
+      "circle_fit": {
+        "center_world_m": [
+          -0.1544091898411382,
+          -0.02362048949028958
+        ],
+        "radius_m": 0.15687909307678524,
+        "radial_residual_rms_m": 0.00011907612221475832
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.15432446308340628,
+        -0.023761803345750385
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "qualified": true,
+      "steady_rear_minus_front_min_N": 0.5580625805064403,
+      "steady_rear_minus_front_max_N": 0.5580625805840294,
+      "steady_front_heavier_fraction": 0.0,
+      "icr_body_x_median_m": -0.15699998856797684,
+      "front_lateral_rms_m_s": 0.054560737260481836,
+      "rear_lateral_rms_m_s": 4.998393217589318e-06,
+      "interpretation": "Load sign reversal is not itself support exchange or a drift repair"
+    },
+    "wheel_velocity_error_max_rad_s": 8.92088625192855e-11,
+    "performance": {
+      "realtime_factor": 0.6244979594133426,
+      "cpu_core_mean": 3.6665467990967406,
+      "cpu_core_max": 4.088206931822756,
+      "memory_peak_bytes": 1974693888
+    },
+    "evidence_bytes": 197362779,
+    "sensor_max_gaps_s": {
+      "rgb": 1.0,
+      "depth": 1.0,
+      "scan": 0.5,
+      "imu": 0.010000000000001563,
+      "joints": 0.06800000000000139,
+      "truth": 0.010000000000001563
+    },
+    "safe_max_gap_s": 0.052000000000003155,
+    "stop_drift_last_second_m": 0.0
+  },
+  {
+    "name": "02-baseline-right",
+    "profile": "baseline",
+    "qualified": true,
+    "wall_s": 101.87229943275452,
+    "physical_steps": 20000,
+    "motion_s": 20.0,
+    "wheel_linear_integral_m": 0.0,
+    "wheel_angular_integral_rad": -4.000000000000002,
+    "outcome": {
+      "endpoint_displacement_m": 0.31209996348222024,
+      "maximum_displacement_m": 0.3131430755202439,
+      "path_length_m": 0.5188652828717464,
+      "unwrapped_turn_rad": -3.457743474295003,
+      "circle_fit": {
+        "center_world_m": [
+          -0.1544091898567532,
+          0.023620489395159826
+        ],
+        "radius_m": 0.15687909302438885,
+        "radial_residual_rms_m": 0.00011907611002090024
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.15432446313170345,
+        0.02376180327129046
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "qualified": true,
+      "steady_rear_minus_front_min_N": 0.5580625805073689,
+      "steady_rear_minus_front_max_N": 0.5580625805827584,
+      "steady_front_heavier_fraction": 0.0,
+      "icr_body_x_median_m": -0.15699998856802336,
+      "front_lateral_rms_m_s": 0.05456073726052972,
+      "rear_lateral_rms_m_s": 4.9983932176259986e-06,
+      "interpretation": "Load sign reversal is not itself support exchange or a drift repair"
+    },
+    "wheel_velocity_error_max_rad_s": 8.920825189662196e-11,
+    "performance": {
+      "realtime_factor": 0.6282324489490521,
+      "cpu_core_mean": 3.6634658297975613,
+      "cpu_core_max": 4.097735582784658,
+      "memory_peak_bytes": 2078523392
+    },
+    "evidence_bytes": 197470359,
+    "sensor_max_gaps_s": {
+      "rgb": 1.1000000000000005,
+      "depth": 1.1000000000000005,
+      "scan": 0.5,
+      "imu": 0.010000000000001563,
+      "joints": 0.06800000000000139,
+      "truth": 0.010000000000001563
+    },
+    "safe_max_gap_s": 0.05300000000000005,
+    "stop_drift_last_second_m": 0.0
+  },
+  {
+    "name": "03-load_dither-left",
+    "profile": "load_dither",
+    "qualified": true,
+    "wall_s": 103.3111503124237,
+    "physical_steps": 20000,
+    "motion_s": 20.0,
+    "wheel_linear_integral_m": 0.00029499999999986503,
+    "wheel_angular_integral_rad": 4.000000000000001,
+    "outcome": {
+      "endpoint_displacement_m": 0.29988762151801085,
+      "maximum_displacement_m": 0.30542584596741446,
+      "path_length_m": 0.591052457301064,
+      "unwrapped_turn_rad": 3.6081628765326252,
+      "circle_fit": {
+        "center_world_m": [
+          -0.1492866323997446,
+          -0.025313483714875306
+        ],
+        "radius_m": 0.1529822728946788,
+        "radial_residual_rms_m": 0.0009049479917288299
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.14647676828436307,
+        -0.022074405986495765
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "qualified": true,
+      "steady_rear_minus_front_min_N": -3.3853299174767226,
+      "steady_rear_minus_front_max_N": 4.489900856104603,
+      "steady_front_heavier_fraction": 0.4065625,
+      "icr_body_x_median_m": -0.15334985618540903,
+      "front_lateral_rms_m_s": 0.05611430658435349,
+      "rear_lateral_rms_m_s": 0.001199576786518781,
+      "interpretation": "Load sign reversal is not itself support exchange or a drift repair"
+    },
+    "wheel_velocity_error_max_rad_s": 1.7584489420130467e-10,
+    "performance": {
+      "realtime_factor": 0.6115635744243422,
+      "cpu_core_mean": 3.67085994024741,
+      "cpu_core_max": 4.05870798523284,
+      "memory_peak_bytes": 2146263040
+    },
+    "evidence_bytes": 198064381,
+    "sensor_max_gaps_s": {
+      "rgb": 1.0,
+      "depth": 1.0,
+      "scan": 0.6000000000000005,
+      "imu": 0.010000000000001563,
+      "joints": 0.06800000000000139,
+      "truth": 0.010000000000001563
+    },
+    "safe_max_gap_s": 0.05499999999999994,
+    "stop_drift_last_second_m": 0.0
+  },
+  {
+    "name": "04-load_dither-right",
+    "profile": "load_dither",
+    "qualified": true,
+    "wall_s": 103.24033904075623,
+    "physical_steps": 20000,
+    "motion_s": 20.0,
+    "wheel_linear_integral_m": 3.90000000001175e-05,
+    "wheel_angular_integral_rad": -4.000000000000001,
+    "outcome": {
+      "endpoint_displacement_m": 0.2972024868488748,
+      "maximum_displacement_m": 0.30277067596152707,
+      "path_length_m": 0.5922765502323563,
+      "unwrapped_turn_rad": -3.6204121232554165,
+      "circle_fit": {
+        "center_world_m": [
+          -0.1469820681293113,
+          0.02462407588085458
+        ],
+        "radius_m": 0.1519911637604565,
+        "radial_residual_rms_m": 0.0009906021311412972
+      },
+      "instantaneous_center_samples": 19977,
+      "instantaneous_center_median_world_m": [
+        -0.14241021404368517,
+        0.021332278726016285
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "qualified": true,
+      "steady_rear_minus_front_min_N": -3.3850404414467237,
+      "steady_rear_minus_front_max_N": 4.489934068535542,
+      "steady_front_heavier_fraction": 0.4086875,
+      "icr_body_x_median_m": -0.15302107376840335,
+      "front_lateral_rms_m_s": 0.05628328991153473,
+      "rear_lateral_rms_m_s": 0.0012980784682775721,
+      "interpretation": "Load sign reversal is not itself support exchange or a drift repair"
+    },
+    "wheel_velocity_error_max_rad_s": 1.7939560947866084e-10,
+    "performance": {
+      "realtime_factor": 0.6161833158144177,
+      "cpu_core_mean": 3.6645400628411657,
+      "cpu_core_max": 4.079405673847967,
+      "memory_peak_bytes": 2224091136
+    },
+    "evidence_bytes": 198131883,
+    "sensor_max_gaps_s": {
+      "rgb": 1.0,
+      "depth": 1.0,
+      "scan": 0.6000000000000005,
+      "imu": 0.010000000000001563,
+      "joints": 0.06800000000000139,
+      "truth": 0.010000000000001563
+    },
+    "safe_max_gap_s": 0.054000000000002046,
+    "stop_drift_last_second_m": 0.0
+  }
+]

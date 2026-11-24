@@ -1,0 +1,7 @@
+﻿folder,model,predicted_recovery_cells,tp,fp,fn,precommand_resolved_or_changed,predicted_new_area,joint_predicted_rank
+ramp-repeat1-wide_turn,v4_swept_support,24,20,4,13,0,,
+ramp-repeat1-advance,legacy_path_opportunity_not_v4,36,22,14,20,0,,
+ramp-repeat2-advance,legacy_path_opportunity_not_v4,39,16,23,20,0,,
+ramp-repeat2-wide_turn,v4_swept_support,15,11,4,13,0,,
+ramp-repeat2-small_turn,v4_swept_support,6,3,3,3,0,,
+ramp-repeat2-hold,v4_observed_only_hold,0,0,0,0,0,,

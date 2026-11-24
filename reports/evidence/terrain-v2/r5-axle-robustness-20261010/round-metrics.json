@@ -1,0 +1,3004 @@
+[
+  {
+    "name": "01-flat-1000us-straight-1",
+    "scene": "flat",
+    "step": 0.001,
+    "case": "straight-1",
+    "linear": 0.1,
+    "angular": 0.0,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 146.69899106025696,
+    "trajectory": {
+      "endpoint_displacement_m": 1.9899499938251801,
+      "maximum_displacement_m": 1.9899499938251801,
+      "path_length_m": 1.9899499938251801,
+      "unwrapped_turn_rad": -8.906053252546349e-14,
+      "circle_fit": null,
+      "instantaneous_center_samples": 0,
+      "instantaneous_center_median_world_m": null,
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": null,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 2.749736684039233e-14,
+          "force_compliance_residual_rms_m_s": 2.517061997720364e-14,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 2.7487207686071546e-14,
+          "force_compliance_residual_rms_m_s": 2.518399224303459e-14,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 3.000567182801447e-14,
+          "force_compliance_residual_rms_m_s": 2.5254249198776238e-14,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 3.008306059117931e-14,
+          "force_compliance_residual_rms_m_s": 2.534127325870621e-14,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 2.000000000000001,
+        "angular_integral_rad": 0.0,
+        "active_start_s": 5.202,
+        "active_end_s": 25.401
+      },
+      "front_rear_targets_match": true,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 2.000000000000001,
+      "angular_integral_rad": 0.0,
+      "enabled": true,
+      "applied_steps": 0,
+      "allocation_path": "/work/01-flat-1000us-straight-1-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 2.8854967475810784e-08,
+      "front_right": 2.885496663599964e-08,
+      "rear_left": 2.8854967187578846e-08,
+      "rear_right": 2.885496683896799e-08
+    },
+    "turn_screen_passed": null,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.202,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 4.939091813316311e-07,
+        "maximum_position_error_m": 4.97899054133135e-07,
+        "endpoint_yaw_error_rad": 8.866039996388247e-14,
+        "odometry_turn_rad": 2.6196367803938497e-18,
+        "odometry_displacement_m": 1.9893494999160042,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.202,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 4.939091817757203e-07,
+        "maximum_position_error_m": 4.989343007001006e-07,
+        "endpoint_yaw_error_rad": 8.865742473187505e-14,
+        "odometry_turn_rad": -3.555952270261193e-19,
+        "odometry_displacement_m": 1.9893494999160037,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.5950641746401236,
+      "cpu_core_mean": 3.6425194669343677,
+      "cpu_core_max": 4.056797683485026,
+      "memory_peak_bytes": 2029154304
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 1.6798185325997072e-09,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.001,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 512,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.05299999999999727,
+    "local_evidence_bytes": 236432295
+  },
+  {
+    "name": "02-flat-1000us-straight-2",
+    "scene": "flat",
+    "step": 0.001,
+    "case": "straight-2",
+    "linear": 0.1,
+    "angular": 0.0,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 146.7551372051239,
+    "trajectory": {
+      "endpoint_displacement_m": 1.9899499938251801,
+      "maximum_displacement_m": 1.9899499938251801,
+      "path_length_m": 1.9899499938251801,
+      "unwrapped_turn_rad": -8.906053252546349e-14,
+      "circle_fit": null,
+      "instantaneous_center_samples": 0,
+      "instantaneous_center_median_world_m": null,
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": null,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 2.749736684039233e-14,
+          "force_compliance_residual_rms_m_s": 2.517061997720364e-14,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 2.7487207686071546e-14,
+          "force_compliance_residual_rms_m_s": 2.518399224303459e-14,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 3.000567182801447e-14,
+          "force_compliance_residual_rms_m_s": 2.5254249198776238e-14,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 3.008306059117931e-14,
+          "force_compliance_residual_rms_m_s": 2.534127325870621e-14,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 2.000000000000001,
+        "angular_integral_rad": 0.0,
+        "active_start_s": 5.202,
+        "active_end_s": 25.401
+      },
+      "front_rear_targets_match": true,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 2.000000000000001,
+      "angular_integral_rad": 0.0,
+      "enabled": true,
+      "applied_steps": 0,
+      "allocation_path": "/work/02-flat-1000us-straight-2-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 2.8854967475810784e-08,
+      "front_right": 2.885496663599964e-08,
+      "rear_left": 2.8854967187578846e-08,
+      "rear_right": 2.885496683896799e-08
+    },
+    "turn_screen_passed": null,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.168,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 6.09079142677916e-09,
+        "maximum_position_error_m": 6.09079142677916e-09,
+        "endpoint_yaw_error_rad": 8.865642799306832e-14,
+        "odometry_turn_rad": 9.82363792647694e-19,
+        "odometry_displacement_m": 1.989349999915997,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.202,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 4.939091817757203e-07,
+        "maximum_position_error_m": 4.989343007001006e-07,
+        "endpoint_yaw_error_rad": 8.865742473187505e-14,
+        "odometry_turn_rad": -3.555952270261193e-19,
+        "odometry_displacement_m": 1.9893494999160037,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.5982246943941886,
+      "cpu_core_mean": 3.6593116754985178,
+      "cpu_core_max": 4.07139173585251,
+      "memory_peak_bytes": 2138152960
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 1.6798185325997072e-09,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.001,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 512,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.053000000000000824,
+    "local_evidence_bytes": 236359108
+  },
+  {
+    "name": "03-flat-1000us-left-1",
+    "scene": "flat",
+    "step": 0.001,
+    "case": "left-1",
+    "linear": 0.0,
+    "angular": 0.2,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 147.2542643547058,
+    "trajectory": {
+      "endpoint_displacement_m": 0.00017255572561676328,
+      "maximum_displacement_m": 0.00017255626882982898,
+      "path_length_m": 0.00017267760019794501,
+      "unwrapped_turn_rad": 3.5951260844005146,
+      "circle_fit": {
+        "center_world_m": [
+          -0.0011757830011570314,
+          4.378334916740456e-05
+        ],
+        "radius_m": 0.0011759639811722883,
+        "radial_residual_rms_m": 8.628639149847362e-08
+      },
+      "instantaneous_center_samples": 19978,
+      "instantaneous_center_median_world_m": [
+        -6.885224711725223e-06,
+        0.00017241851426572614
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -3.010573434029079e-11,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028369673130545284,
+          "force_compliance_residual_rms_m_s": 1.0975498136744767e-05,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028358866182048543,
+          "force_compliance_residual_rms_m_s": 1.0974185978520934e-05,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028358866155406576,
+          "force_compliance_residual_rms_m_s": 2.1139861262091483e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028369673103821835,
+          "force_compliance_residual_rms_m_s": 2.1171238119204304e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 0.0,
+        "angular_integral_rad": 4.000000000000002,
+        "active_start_s": 5.202,
+        "active_end_s": 25.401
+      },
+      "front_rear_targets_match": false,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 0.0,
+      "angular_integral_rad": 4.000000000000002,
+      "enabled": true,
+      "applied_steps": 20199,
+      "allocation_path": "/work/03-flat-1000us-left-1-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 0.0018906559678655479,
+      "front_right": 0.0018804072559039675,
+      "rear_left": 0.004511445233946493,
+      "rear_right": 0.0045216941469579395
+    },
+    "turn_screen_passed": true,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.168,
+        "motion_end_sample_s": 25.228,
+        "endpoint_position_error_m": 0.0001744104104961655,
+        "maximum_position_error_m": 0.0001725562687636553,
+        "endpoint_yaw_error_rad": 0.38527877095024543,
+        "odometry_turn_rad": 3.98512199942712,
+        "odometry_displacement_m": 4.2179192457425606e-14,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": 0.028000000000002245
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.202,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 0.00017255572541246438,
+        "maximum_position_error_m": 0.00017255626882852908,
+        "endpoint_yaw_error_rad": 0.22657611384239074,
+        "odometry_turn_rad": 3.820618213392198,
+        "odometry_displacement_m": 8.419017279109746e-14,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.5890996393136071,
+      "cpu_core_mean": 3.6509805835893494,
+      "cpu_core_max": 4.080562226774011,
+      "memory_peak_bytes": 2212597760
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 5.929101754362781e-11,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.001,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 507,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.053999999999998494,
+    "local_evidence_bytes": 238874726
+  },
+  {
+    "name": "04-flat-1000us-left-2",
+    "scene": "flat",
+    "step": 0.001,
+    "case": "left-2",
+    "linear": 0.0,
+    "angular": 0.2,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 148.258620262146,
+    "trajectory": {
+      "endpoint_displacement_m": 0.00017255572561676328,
+      "maximum_displacement_m": 0.00017255626882982898,
+      "path_length_m": 0.00017267760019794501,
+      "unwrapped_turn_rad": 3.5951260844005146,
+      "circle_fit": {
+        "center_world_m": [
+          -0.0011757830011570314,
+          4.378334916740456e-05
+        ],
+        "radius_m": 0.0011759639811722883,
+        "radial_residual_rms_m": 8.628639149847362e-08
+      },
+      "instantaneous_center_samples": 19978,
+      "instantaneous_center_median_world_m": [
+        -6.885224711725223e-06,
+        0.00017241851426572614
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -3.010573434029079e-11,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028369673130545284,
+          "force_compliance_residual_rms_m_s": 1.0975498136744767e-05,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028358866182048543,
+          "force_compliance_residual_rms_m_s": 1.0974185978520934e-05,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028358866155406576,
+          "force_compliance_residual_rms_m_s": 2.1139861262091483e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028369673103821835,
+          "force_compliance_residual_rms_m_s": 2.1171238119204304e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 0.0,
+        "angular_integral_rad": 4.000000000000002,
+        "active_start_s": 5.202,
+        "active_end_s": 25.401
+      },
+      "front_rear_targets_match": false,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 0.0,
+      "angular_integral_rad": 4.000000000000002,
+      "enabled": true,
+      "applied_steps": 20199,
+      "allocation_path": "/work/04-flat-1000us-left-2-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 0.0018906559678655479,
+      "front_right": 0.0018804072559039675,
+      "rear_left": 0.004511445233946493,
+      "rear_right": 0.0045216941469579395
+    },
+    "turn_screen_passed": true,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.202,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 0.00017255572545157608,
+        "maximum_position_error_m": 0.00017255626882935294,
+        "endpoint_yaw_error_rad": 0.38465689987811835,
+        "odometry_turn_rad": 3.978698999427926,
+        "odometry_displacement_m": 4.226287732300063e-14,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.202,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 0.00017255572541246438,
+        "maximum_position_error_m": 0.00017255626882852908,
+        "endpoint_yaw_error_rad": 0.22657611384239074,
+        "odometry_turn_rad": 3.820618213392198,
+        "odometry_displacement_m": 8.419017279109746e-14,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.5741029848881213,
+      "cpu_core_mean": 3.660813148810689,
+      "cpu_core_max": 4.0792478066919795,
+      "memory_peak_bytes": 2285092864
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 5.929101754362781e-11,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.001,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 514,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.0519999999999996,
+    "local_evidence_bytes": 238879393
+  },
+  {
+    "name": "05-flat-1000us-right-1",
+    "scene": "flat",
+    "step": 0.001,
+    "case": "right-1",
+    "linear": 0.0,
+    "angular": -0.2,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 146.14488863945007,
+    "trajectory": {
+      "endpoint_displacement_m": 0.0001725557824534519,
+      "maximum_displacement_m": 0.0001725562515996823,
+      "path_length_m": 0.00017267756935991402,
+      "unwrapped_turn_rad": -3.5951260843943684,
+      "circle_fit": {
+        "center_world_m": [
+          -0.0011758085891110262,
+          -4.3782153011147645e-05
+        ],
+        "radius_m": 0.0011759895444222405,
+        "radial_residual_rms_m": 8.627986129498674e-08
+      },
+      "instantaneous_center_samples": 19978,
+      "instantaneous_center_median_world_m": [
+        -6.885230378911647e-06,
+        -0.00017241867572598962
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -3.007716615203829e-11,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028358866181958715,
+          "force_compliance_residual_rms_m_s": 1.0974125089019448e-05,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.02836967313045549,
+          "force_compliance_residual_rms_m_s": 1.0975559025183767e-05,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.02836967310385512,
+          "force_compliance_residual_rms_m_s": 2.1171299127082273e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028358866155439873,
+          "force_compliance_residual_rms_m_s": 2.1139800255087974e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 0.0,
+        "angular_integral_rad": -4.000000000000002,
+        "active_start_s": 5.202,
+        "active_end_s": 25.401
+      },
+      "front_rear_targets_match": false,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 0.0,
+      "angular_integral_rad": -4.000000000000002,
+      "enabled": true,
+      "applied_steps": 20199,
+      "allocation_path": "/work/05-flat-1000us-right-1-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 0.0018804072555143176,
+      "front_right": 0.0018906559683237703,
+      "rear_left": 0.004521694146563579,
+      "rear_right": 0.004511445234400516
+    },
+    "turn_screen_passed": true,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.202,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 0.00017255578239308206,
+        "maximum_position_error_m": 0.00017255625159898387,
+        "endpoint_yaw_error_rad": -0.3846568998844906,
+        "odometry_turn_rad": -3.9786989994281545,
+        "odometry_displacement_m": 8.726581854925417e-15,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.202,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 0.00017255578238900083,
+        "maximum_position_error_m": 0.0001725562515974758,
+        "endpoint_yaw_error_rad": -0.22657611384923457,
+        "odometry_turn_rad": -3.8206182133928985,
+        "odometry_displacement_m": 1.862888681678753e-14,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.5798690875486655,
+      "cpu_core_mean": 3.671649167867514,
+      "cpu_core_max": 4.065959163837599,
+      "memory_peak_bytes": 2380988416
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 5.929101754362781e-11,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.001,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 506,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.05299999999999999,
+    "local_evidence_bytes": 239095702
+  },
+  {
+    "name": "06-flat-1000us-right-2",
+    "scene": "flat",
+    "step": 0.001,
+    "case": "right-2",
+    "linear": 0.0,
+    "angular": -0.2,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 148.18532800674438,
+    "trajectory": {
+      "endpoint_displacement_m": 0.0001725557824534519,
+      "maximum_displacement_m": 0.0001725562515996823,
+      "path_length_m": 0.00017267756935991402,
+      "unwrapped_turn_rad": -3.5951260843943684,
+      "circle_fit": {
+        "center_world_m": [
+          -0.0011758085891110262,
+          -4.3782153011147645e-05
+        ],
+        "radius_m": 0.0011759895444222405,
+        "radial_residual_rms_m": 8.627986129498674e-08
+      },
+      "instantaneous_center_samples": 19978,
+      "instantaneous_center_median_world_m": [
+        -6.885230378911647e-06,
+        -0.00017241867572598962
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -3.007716615203829e-11,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028358866181958715,
+          "force_compliance_residual_rms_m_s": 1.0974125089019448e-05,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.02836967313045549,
+          "force_compliance_residual_rms_m_s": 1.0975559025183767e-05,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.02836967310385512,
+          "force_compliance_residual_rms_m_s": 2.1171299127082273e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 0.028358866155439873,
+          "force_compliance_residual_rms_m_s": 2.1139800255087974e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 0.0,
+        "angular_integral_rad": -4.000000000000002,
+        "active_start_s": 5.202,
+        "active_end_s": 25.401
+      },
+      "front_rear_targets_match": false,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 0.0,
+      "angular_integral_rad": -4.000000000000002,
+      "enabled": true,
+      "applied_steps": 20199,
+      "allocation_path": "/work/06-flat-1000us-right-2-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 0.0018804072555143176,
+      "front_right": 0.0018906559683237703,
+      "rear_left": 0.004521694146563579,
+      "rear_right": 0.004511445234400516
+    },
+    "turn_screen_passed": true,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.202,
+        "motion_end_sample_s": 25.228,
+        "endpoint_position_error_m": 0.0001744104665473564,
+        "maximum_position_error_m": 0.00017255625159898444,
+        "endpoint_yaw_error_rad": -0.38527777095667304,
+        "odometry_turn_rad": -3.9851209994273873,
+        "odometry_displacement_m": 8.5989448348424e-15,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": 0.028000000000002245
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.202,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 0.00017255578238900083,
+        "maximum_position_error_m": 0.0001725562515974758,
+        "endpoint_yaw_error_rad": -0.22657611384923457,
+        "odometry_turn_rad": -3.8206182133928985,
+        "odometry_displacement_m": 1.862888681678753e-14,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.5631399849523306,
+      "cpu_core_mean": 3.6736982628130987,
+      "cpu_core_max": 4.0568062202423825,
+      "memory_peak_bytes": 2455396352
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 6.772279443479492e-14,
+      "yaw_change_rad": 6.0867190612668985e-21,
+      "max_tilt_rad": 5.929101754362781e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -6.651829718279336e-14,
+          -2.2041368462802832e-20,
+          -1.4318643101722553e-05
+        ],
+        "rpy": [
+          5.835778453778923e-16,
+          -4.913731649033758e-11,
+          2.9659771320961045e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          1.2044972520003062e-15,
+          -9.041764263804055e-21,
+          -8.595923225038085e-07
+        ],
+        "rpy": [
+          8.122512290121742e-15,
+          -3.459716545960548e-11,
+          3.3802039821890795e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 5.929101754362781e-11,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.001,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 514,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.053000000000000824,
+    "local_evidence_bytes": 239220086
+  },
+  {
+    "name": "07-flat-500us-zero",
+    "scene": "flat",
+    "step": 0.0005,
+    "case": "zero",
+    "linear": 0.0,
+    "angular": 0.0,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 254.2804946899414,
+    "trajectory": {
+      "endpoint_displacement_m": 5.7516960931582866e-15,
+      "maximum_displacement_m": 5.7516960931582866e-15,
+      "path_length_m": 5.7516960931582866e-15,
+      "unwrapped_turn_rad": 1.367412817740438e-18,
+      "circle_fit": null,
+      "instantaneous_center_samples": 0,
+      "instantaneous_center_median_world_m": null,
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": null,
+      "relations": {
+        "front_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 2.329236686986367e-14,
+          "force_compliance_residual_rms_m_s": 2.3292366869863668e-14,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 2.3292366869863536e-14,
+          "force_compliance_residual_rms_m_s": 2.3292366869863536e-14,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 2.329236686986367e-14,
+          "force_compliance_residual_rms_m_s": 2.3292366869863668e-14,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 2.3292366869863536e-14,
+          "force_compliance_residual_rms_m_s": 2.3292366869863536e-14,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "linear_integral_m": 0.0,
+        "angular_integral_rad": 0.0
+      },
+      "front_rear_targets_match": true,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 0.0,
+      "angular_integral_rad": 0.0,
+      "enabled": true,
+      "applied_steps": 0,
+      "allocation_path": "/work/07-flat-500us-zero-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 1.077594149999832e-25,
+      "front_right": 1.0775938811693524e-25,
+      "rear_left": 2.3292366869770378e-14,
+      "rear_right": 2.3292366869770378e-14
+    },
+    "turn_screen_passed": null,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.192,
+        "endpoint_position_error_m": 1.9783904599360823e-14,
+        "maximum_position_error_m": 1.9783904599360823e-14,
+        "endpoint_yaw_error_rad": -1.456114701202823e-18,
+        "odometry_turn_rad": -8.870188346238497e-20,
+        "odometry_displacement_m": 2.553560063081058e-14,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.007999999999999119
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.192,
+        "endpoint_position_error_m": 1.9783907813965718e-14,
+        "maximum_position_error_m": 1.9783907813965718e-14,
+        "endpoint_yaw_error_rad": -1.6316830858699951e-18,
+        "odometry_turn_rad": -2.6427026812955707e-19,
+        "odometry_displacement_m": 2.5535603845415474e-14,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.007999999999999119
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.37876234842246054,
+      "cpu_core_mean": 3.5870035043508484,
+      "cpu_core_max": 3.8630294154701983,
+      "memory_peak_bytes": 2537320448
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 3.0690309739777585e-15,
+      "yaw_change_rad": 1.471155791001179e-20,
+      "max_tilt_rad": 3.789119115530054e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -2.6329239544927067e-15,
+          -8.071893518620413e-21,
+          -8.602613217216941e-05
+        ],
+        "rpy": [
+          -1.0173436437256924e-19,
+          -3.188155564759076e-11,
+          5.708953284315487e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          4.361070194684012e-16,
+          2.0375770174729945e-21,
+          -1.0909169585835669e-07
+        ],
+        "rpy": [
+          8.592561940181451e-15,
+          -8.286176419701275e-12,
+          4.2377974933143077e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 3.789119115530054e-11,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.0005,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 535,
+        "max_gap_s": 0.06700000000000195,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.0329999999999977,
+    "local_evidence_bytes": 439376368
+  },
+  {
+    "name": "08-flat-500us-straight-1",
+    "scene": "flat",
+    "step": 0.0005,
+    "case": "straight-1",
+    "linear": 0.1,
+    "angular": 0.0,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 259.29338574409485,
+    "trajectory": {
+      "endpoint_displacement_m": 1.9899749969128553,
+      "maximum_displacement_m": 1.9899749969128553,
+      "path_length_m": 1.9899749969128553,
+      "unwrapped_turn_rad": -8.900067208225751e-14,
+      "circle_fit": null,
+      "instantaneous_center_samples": 0,
+      "instantaneous_center_median_world_m": null,
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": null,
+      "relations": {
+        "front_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 4.8393499380497e-14,
+          "force_compliance_residual_rms_m_s": 4.710337029153148e-14,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 4.8186276409480697e-14,
+          "force_compliance_residual_rms_m_s": 4.690417023721283e-14,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 5.015537331630362e-14,
+          "force_compliance_residual_rms_m_s": 4.746231770534744e-14,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 5.003429383750365e-14,
+          "force_compliance_residual_rms_m_s": 4.733970809448968e-14,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 2.000000000000001,
+        "angular_integral_rad": 0.0,
+        "active_start_s": 5.201,
+        "active_end_s": 25.400499999999997
+      },
+      "front_rear_targets_match": true,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 2.000000000000001,
+      "angular_integral_rad": 0.0,
+      "enabled": true,
+      "applied_steps": 0,
+      "allocation_path": "/work/08-flat-500us-straight-1-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 7.2137901654710835e-09,
+      "front_right": 7.2137894447628226e-09,
+      "rear_left": 7.213790284840619e-09,
+      "rear_right": 7.2137892585979816e-09
+    },
+    "turn_screen_passed": null,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.2255,
+        "endpoint_position_error_m": 2.6637356764929597e-09,
+        "maximum_position_error_m": 3.0449202048715528e-09,
+        "endpoint_yaw_error_rad": 9.055616245536042e-14,
+        "odometry_turn_rad": -4.0931824693653825e-18,
+        "odometry_displacement_m": 1.9923656249572232,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": 0.025500000000000966
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.192,
+        "endpoint_position_error_m": 3.0443529919365357e-09,
+        "maximum_position_error_m": 3.04492753234351e-09,
+        "endpoint_yaw_error_rad": 8.846116634591534e-14,
+        "odometry_turn_rad": 1.2797878871878234e-19,
+        "odometry_displacement_m": 1.9891749999572244,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.007999999999999119
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.3701007901737924,
+      "cpu_core_mean": 3.566847091888323,
+      "cpu_core_max": 3.857715099309845,
+      "memory_peak_bytes": 2693730304
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 3.0690309739777585e-15,
+      "yaw_change_rad": 1.471155791001179e-20,
+      "max_tilt_rad": 3.789119115530054e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -2.6329239544927067e-15,
+          -8.071893518620413e-21,
+          -8.602613217216941e-05
+        ],
+        "rpy": [
+          -1.0173436437256924e-19,
+          -3.188155564759076e-11,
+          5.708953284315487e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          4.361070194684012e-16,
+          2.0375770174729945e-21,
+          -1.0909169585835669e-07
+        ],
+        "rpy": [
+          8.592561940181451e-15,
+          -8.286176419701275e-12,
+          4.2377974933143077e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 4.757623368663656e-10,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.0005,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 535,
+        "max_gap_s": 0.06700000000000106,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.031000000000000583,
+    "local_evidence_bytes": 447890824
+  },
+  {
+    "name": "09-flat-500us-straight-2",
+    "scene": "flat",
+    "step": 0.0005,
+    "case": "straight-2",
+    "linear": 0.1,
+    "angular": 0.0,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 257.73240399360657,
+    "trajectory": {
+      "endpoint_displacement_m": 1.9899749969128553,
+      "maximum_displacement_m": 1.9899749969128553,
+      "path_length_m": 1.9899749969128553,
+      "unwrapped_turn_rad": -8.900067208225751e-14,
+      "circle_fit": null,
+      "instantaneous_center_samples": 0,
+      "instantaneous_center_median_world_m": null,
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": false
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": null,
+      "relations": {
+        "front_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 4.8393499380497e-14,
+          "force_compliance_residual_rms_m_s": 4.710337029153148e-14,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 4.8186276409480697e-14,
+          "force_compliance_residual_rms_m_s": 4.690417023721283e-14,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 5.015537331630362e-14,
+          "force_compliance_residual_rms_m_s": 4.746231770534744e-14,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 5.003429383750365e-14,
+          "force_compliance_residual_rms_m_s": 4.733970809448968e-14,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 2.000000000000001,
+        "angular_integral_rad": 0.0,
+        "active_start_s": 5.201,
+        "active_end_s": 25.400499999999997
+      },
+      "front_rear_targets_match": true,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 2.000000000000001,
+      "angular_integral_rad": 0.0,
+      "enabled": true,
+      "applied_steps": 0,
+      "allocation_path": "/work/09-flat-500us-straight-2-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 7.2137901654710835e-09,
+      "front_right": 7.2137894447628226e-09,
+      "rear_left": 7.213790284840619e-09,
+      "rear_right": 7.2137892585979816e-09
+    },
+    "turn_screen_passed": null,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.226,
+        "motion_end_sample_s": 25.192,
+        "endpoint_position_error_m": 2.656128872421878e-09,
+        "maximum_position_error_m": 2.6567088529191647e-09,
+        "endpoint_yaw_error_rad": 8.824083487249928e-14,
+        "odometry_turn_rad": 1.964727585295389e-18,
+        "odometry_displacement_m": 1.9890092499572951,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.007999999999999119
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.192,
+        "endpoint_position_error_m": 3.0443529919365357e-09,
+        "maximum_position_error_m": 3.04492753234351e-09,
+        "endpoint_yaw_error_rad": 8.846116634591534e-14,
+        "odometry_turn_rad": 1.2797878871878234e-19,
+        "odometry_displacement_m": 1.9891749999572244,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.007999999999999119
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.3721717818625234,
+      "cpu_core_mean": 3.5730408075334528,
+      "cpu_core_max": 3.8492302792715507,
+      "memory_peak_bytes": 2846588928
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 3.0690309739777585e-15,
+      "yaw_change_rad": 1.471155791001179e-20,
+      "max_tilt_rad": 3.789119115530054e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -2.6329239544927067e-15,
+          -8.071893518620413e-21,
+          -8.602613217216941e-05
+        ],
+        "rpy": [
+          -1.0173436437256924e-19,
+          -3.188155564759076e-11,
+          5.708953284315487e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          4.361070194684012e-16,
+          2.0375770174729945e-21,
+          -1.0909169585835669e-07
+        ],
+        "rpy": [
+          8.592561940181451e-15,
+          -8.286176419701275e-12,
+          4.2377974933143077e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 4.757623368663656e-10,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.0005,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 530,
+        "max_gap_s": 0.06700000000000195,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.03200000000000003,
+    "local_evidence_bytes": 447857694
+  },
+  {
+    "name": "10-flat-500us-left-1",
+    "scene": "flat",
+    "step": 0.0005,
+    "case": "left-1",
+    "linear": 0.0,
+    "angular": 0.2,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 264.3225214481354,
+    "trajectory": {
+      "endpoint_displacement_m": 0.0001728660148034465,
+      "maximum_displacement_m": 0.00017286634084997388,
+      "path_length_m": 0.00017298732197842807,
+      "unwrapped_turn_rad": 3.5951695247431577,
+      "circle_fit": {
+        "center_world_m": [
+          -0.0011789914322087678,
+          4.3842159019164506e-05
+        ],
+        "radius_m": 0.001179170431667666,
+        "radial_residual_rms_m": 8.625006026275912e-08
+      },
+      "instantaneous_center_samples": 39956,
+      "instantaneous_center_median_world_m": [
+        -6.895635489089948e-06,
+        0.0001727284486477145
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -1.4423650113288879e-11,
+      "relations": {
+        "front_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028366958200968847,
+          "force_compliance_residual_rms_m_s": 5.487683802410509e-06,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.02836155473169977,
+          "force_compliance_residual_rms_m_s": 5.487141314678915e-06,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028361554710506394,
+          "force_compliance_residual_rms_m_s": 1.0569987443047911e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028366958179765187,
+          "force_compliance_residual_rms_m_s": 1.0585562207846634e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 0.0,
+        "angular_integral_rad": 4.000000000000002,
+        "active_start_s": 5.201,
+        "active_end_s": 25.400499999999997
+      },
+      "front_rear_targets_match": false,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 0.0,
+      "angular_integral_rad": 4.000000000000002,
+      "enabled": true,
+      "applied_steps": 40399,
+      "allocation_path": "/work/10-flat-500us-left-1-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 0.0018881085843042897,
+      "front_right": 0.0018829842335029968,
+      "rear_left": 0.004514022466467761,
+      "rear_right": 0.004519146918745154
+    },
+    "turn_screen_passed": true,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.2255,
+        "endpoint_position_error_m": 0.00017443812966388487,
+        "maximum_position_error_m": 0.00017286634083020464,
+        "endpoint_yaw_error_rad": 0.3852427233798359,
+        "odometry_turn_rad": 3.984731249710083,
+        "odometry_displacement_m": 7.361045121033942e-16,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": 0.025500000000000966
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.192,
+        "endpoint_position_error_m": 0.00017286601464934633,
+        "maximum_position_error_m": 0.00017286634084503114,
+        "endpoint_yaw_error_rad": 0.22655886765853953,
+        "odometry_turn_rad": 3.8202830799629695,
+        "odometry_displacement_m": 3.6804667499611e-15,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.007999999999999119
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.33676867099589297,
+      "cpu_core_mean": 3.578005732289071,
+      "cpu_core_max": 3.8692290834095835,
+      "memory_peak_bytes": 3017097216
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 3.0690309739777585e-15,
+      "yaw_change_rad": 1.471155791001179e-20,
+      "max_tilt_rad": 3.789119115530054e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -2.6329239544927067e-15,
+          -8.071893518620413e-21,
+          -8.602613217216941e-05
+        ],
+        "rpy": [
+          -1.0173436437256924e-19,
+          -3.188155564759076e-11,
+          5.708953284315487e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          4.361070194684012e-16,
+          2.0375770174729945e-21,
+          -1.0909169585835669e-07
+        ],
+        "rpy": [
+          8.592561940181451e-15,
+          -8.286176419701275e-12,
+          4.2377974933143077e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 3.789119115530054e-11,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.0005,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 56,
+        "max_gap_s": 0.6000000000000005,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 532,
+        "max_gap_s": 0.06700000000000195,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.031500000000001194,
+    "local_evidence_bytes": 453126938
+  },
+  {
+    "name": "11-flat-500us-left-2",
+    "scene": "flat",
+    "step": 0.0005,
+    "case": "left-2",
+    "linear": 0.0,
+    "angular": 0.2,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 265.22693848609924,
+    "trajectory": {
+      "endpoint_displacement_m": 0.0001728660148034465,
+      "maximum_displacement_m": 0.00017286634084997388,
+      "path_length_m": 0.00017298732197842807,
+      "unwrapped_turn_rad": 3.5951695247431577,
+      "circle_fit": {
+        "center_world_m": [
+          -0.0011789914322087678,
+          4.3842159019164506e-05
+        ],
+        "radius_m": 0.001179170431667666,
+        "radial_residual_rms_m": 8.625006026275912e-08
+      },
+      "instantaneous_center_samples": 39956,
+      "instantaneous_center_median_world_m": [
+        -6.895635489089948e-06,
+        0.0001727284486477145
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -1.4423650113288879e-11,
+      "relations": {
+        "front_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028366958200968847,
+          "force_compliance_residual_rms_m_s": 5.487683802410509e-06,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.02836155473169977,
+          "force_compliance_residual_rms_m_s": 5.487141314678915e-06,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028361554710506394,
+          "force_compliance_residual_rms_m_s": 1.0569987443047911e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028366958179765187,
+          "force_compliance_residual_rms_m_s": 1.0585562207846634e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 0.0,
+        "angular_integral_rad": 4.000000000000002,
+        "active_start_s": 5.201,
+        "active_end_s": 25.400499999999997
+      },
+      "front_rear_targets_match": false,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 0.0,
+      "angular_integral_rad": 4.000000000000002,
+      "enabled": true,
+      "applied_steps": 40399,
+      "allocation_path": "/work/11-flat-500us-left-2-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 0.0018881085843042897,
+      "front_right": 0.0018829842335029968,
+      "rear_left": 0.004514022466467761,
+      "rear_right": 0.004519146918745154
+    },
+    "turn_screen_passed": true,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.2255,
+        "endpoint_position_error_m": 0.0001744381296638845,
+        "maximum_position_error_m": 0.00017286634084444786,
+        "endpoint_yaw_error_rad": 0.38524272337983545,
+        "odometry_turn_rad": 3.9847312497100824,
+        "odometry_displacement_m": 7.363805126068621e-16,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": 0.025500000000000966
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.192,
+        "endpoint_position_error_m": 0.00017286601464934633,
+        "maximum_position_error_m": 0.00017286634084503114,
+        "endpoint_yaw_error_rad": 0.22655886765853953,
+        "odometry_turn_rad": 3.8202830799629695,
+        "odometry_displacement_m": 3.6804667499611e-15,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.007999999999999119
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.3659615161985706,
+      "cpu_core_mean": 3.2617054922541784,
+      "cpu_core_max": 3.833265189579214,
+      "memory_peak_bytes": 3173888000
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 3.0690309739777585e-15,
+      "yaw_change_rad": 1.471155791001179e-20,
+      "max_tilt_rad": 3.789119115530054e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -2.6329239544927067e-15,
+          -8.071893518620413e-21,
+          -8.602613217216941e-05
+        ],
+        "rpy": [
+          -1.0173436437256924e-19,
+          -3.188155564759076e-11,
+          5.708953284315487e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          4.361070194684012e-16,
+          2.0375770174729945e-21,
+          -1.0909169585835669e-07
+        ],
+        "rpy": [
+          8.592561940181451e-15,
+          -8.286176419701275e-12,
+          4.2377974933143077e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 3.789119115530054e-11,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.0005,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 532,
+        "max_gap_s": 0.06700000000000017,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.03200000000000003,
+    "local_evidence_bytes": 452843463
+  },
+  {
+    "name": "12-flat-500us-right-1",
+    "scene": "flat",
+    "step": 0.0005,
+    "case": "right-1",
+    "linear": 0.0,
+    "angular": -0.2,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 259.2629175186157,
+    "trajectory": {
+      "endpoint_displacement_m": 0.0001728661327095735,
+      "maximum_displacement_m": 0.0001728663697545633,
+      "path_length_m": 0.00017298727505827587,
+      "unwrapped_turn_rad": -3.5951695247360274,
+      "circle_fit": {
+        "center_world_m": [
+          -0.0011790376326375953,
+          -4.383994514064775e-05
+        ],
+        "radius_m": 0.0011792165862498517,
+        "radial_residual_rms_m": 8.623803484914563e-08
+      },
+      "instantaneous_center_samples": 39956,
+      "instantaneous_center_median_world_m": [
+        -6.8956590711176e-06,
+        -0.00017272876901467906
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -1.4352582847725128e-11,
+      "relations": {
+        "front_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028361554731604594,
+          "force_compliance_residual_rms_m_s": 5.486997301356141e-06,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028366958200873614,
+          "force_compliance_residual_rms_m_s": 5.487827811537971e-06,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028366958179784418,
+          "force_compliance_residual_rms_m_s": 1.0585706341237906e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028361554710525524,
+          "force_compliance_residual_rms_m_s": 1.0569843313933032e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 0.0,
+        "angular_integral_rad": -4.000000000000002,
+        "active_start_s": 5.201,
+        "active_end_s": 25.400499999999997
+      },
+      "front_rear_targets_match": false,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 0.0,
+      "angular_integral_rad": -4.000000000000002,
+      "enabled": true,
+      "applied_steps": 40399,
+      "allocation_path": "/work/12-flat-500us-right-1-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 0.0018829842328741079,
+      "front_right": 0.0018881085850133551,
+      "rear_left": 0.004519146918111211,
+      "rear_right": 0.004514022467181869
+    },
+    "turn_screen_passed": true,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.192,
+        "endpoint_position_error_m": 0.00017286613273883588,
+        "maximum_position_error_m": 0.00017286636975402762,
+        "endpoint_yaw_error_rad": -0.38462578741315534,
+        "odometry_turn_rad": -3.9783499997104568,
+        "odometry_displacement_m": 3.149599727226289e-15,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.007999999999999119
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.192,
+        "endpoint_position_error_m": 0.00017286613273692397,
+        "maximum_position_error_m": 0.00017286636975211522,
+        "endpoint_yaw_error_rad": -0.226558867666387,
+        "odometry_turn_rad": -3.8202830799636884,
+        "odometry_displacement_m": 7.47223431792556e-15,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.007999999999999119
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.3655770317258907,
+      "cpu_core_mean": 3.5622995183831176,
+      "cpu_core_max": 3.854959842035856,
+      "memory_peak_bytes": 3332694016
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 3.0690309739777585e-15,
+      "yaw_change_rad": 1.471155791001179e-20,
+      "max_tilt_rad": 3.789119115530054e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -2.6329239544927067e-15,
+          -8.071893518620413e-21,
+          -8.602613217216941e-05
+        ],
+        "rpy": [
+          -1.0173436437256924e-19,
+          -3.188155564759076e-11,
+          5.708953284315487e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          4.361070194684012e-16,
+          2.0375770174729945e-21,
+          -1.0909169585835669e-07
+        ],
+        "rpy": [
+          8.592561940181451e-15,
+          -8.286176419701275e-12,
+          4.2377974933143077e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 3.789119115530054e-11,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.0005,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 537,
+        "max_gap_s": 0.06700000000000195,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.03249999999999886,
+    "local_evidence_bytes": 453281338
+  },
+  {
+    "name": "13-flat-500us-right-2",
+    "scene": "flat",
+    "step": 0.0005,
+    "case": "right-2",
+    "linear": 0.0,
+    "angular": -0.2,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 258.7559220790863,
+    "trajectory": {
+      "endpoint_displacement_m": 0.0001728661327095735,
+      "maximum_displacement_m": 0.0001728663697545633,
+      "path_length_m": 0.00017298727505827587,
+      "unwrapped_turn_rad": -3.5951695247360274,
+      "circle_fit": {
+        "center_world_m": [
+          -0.0011790376326375953,
+          -4.383994514064775e-05
+        ],
+        "radius_m": 0.0011792165862498517,
+        "radial_residual_rms_m": 8.623803484914563e-08
+      },
+      "instantaneous_center_samples": 39956,
+      "instantaneous_center_median_world_m": [
+        -6.8956590711176e-06,
+        -0.00017272876901467906
+      ],
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": -1.4352582847725128e-11,
+      "relations": {
+        "front_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028361554731604594,
+          "force_compliance_residual_rms_m_s": 5.486997301356141e-06,
+          "backend_relation_passed": true
+        },
+        "front_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028366958200873614,
+          "force_compliance_residual_rms_m_s": 5.487827811537971e-06,
+          "backend_relation_passed": true
+        },
+        "rear_left": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028366958179784418,
+          "force_compliance_residual_rms_m_s": 1.0585706341237906e-05,
+          "backend_relation_passed": true
+        },
+        "rear_right": {
+          "contact_samples": 32000,
+          "lateral_speed_rms_m_s": 0.028361554710525524,
+          "force_compliance_residual_rms_m_s": 1.0569843313933032e-05,
+          "backend_relation_passed": true
+        }
+      },
+      "backend_effect_verified": true,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "continuous": true,
+        "direction_and_acceleration_valid": true,
+        "front_rear_targets_match": true,
+        "zero_tail": true,
+        "linear_integral_m": 0.0,
+        "angular_integral_rad": -4.000000000000002,
+        "active_start_s": 5.201,
+        "active_end_s": 25.400499999999997
+      },
+      "front_rear_targets_match": false,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 0.0,
+      "angular_integral_rad": -4.000000000000002,
+      "enabled": true,
+      "applied_steps": 40399,
+      "allocation_path": "/work/13-flat-500us-right-2-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 0.0018829842328741079,
+      "front_right": 0.0018881085850133551,
+      "rear_left": 0.004519146918111211,
+      "rear_right": 0.004514022467181869
+    },
+    "turn_screen_passed": true,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.226,
+        "motion_end_sample_s": 25.192,
+        "endpoint_position_error_m": 0.00017193222517109425,
+        "maximum_position_error_m": 0.00017193246225665222,
+        "endpoint_yaw_error_rad": -0.3845937385472169,
+        "odometry_turn_rad": -3.9780184997108217,
+        "odometry_displacement_m": 3.188602442191608e-15,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.007999999999999119
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.1925,
+        "motion_end_sample_s": 25.192,
+        "endpoint_position_error_m": 0.00017286613273692397,
+        "maximum_position_error_m": 0.00017286636975211522,
+        "endpoint_yaw_error_rad": -0.226558867666387,
+        "odometry_turn_rad": -3.8202830799636884,
+        "odometry_displacement_m": 7.47223431792556e-15,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.007999999999999119
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.36310121698965736,
+      "cpu_core_mean": 3.559022657865507,
+      "cpu_core_max": 3.8505042464102135,
+      "memory_peak_bytes": 3487346688
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 3.0690309739777585e-15,
+      "yaw_change_rad": 1.471155791001179e-20,
+      "max_tilt_rad": 3.789119115530054e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -2.6329239544927067e-15,
+          -8.071893518620413e-21,
+          -8.602613217216941e-05
+        ],
+        "rpy": [
+          -1.0173436437256924e-19,
+          -3.188155564759076e-11,
+          5.708953284315487e-20
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          4.361070194684012e-16,
+          2.0375770174729945e-21,
+          -1.0909169585835669e-07
+        ],
+        "rpy": [
+          8.592561940181451e-15,
+          -8.286176419701275e-12,
+          4.2377974933143077e-20
+        ]
+      }
+    },
+    "max_tilt_rad": 3.789119115530054e-11,
+    "actual_selection": {
+      "scene": "flat",
+      "step": 0.0005,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 28,
+        "max_gap_s": 1.1000000000000005,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 539,
+        "max_gap_s": 0.06700000000000017,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.032500000000002416,
+    "local_evidence_bytes": 453299134
+  },
+  {
+    "name": "14-ramp-1000us-zero",
+    "scene": "ramp",
+    "step": 0.001,
+    "case": "zero",
+    "linear": 0.0,
+    "angular": 0.0,
+    "qualified": true,
+    "error": null,
+    "wall_seconds": 173.28817486763,
+    "trajectory": {
+      "endpoint_displacement_m": 1.9899660780488352e-14,
+      "maximum_displacement_m": 1.9899660780488352e-14,
+      "path_length_m": 1.9899660780488352e-14,
+      "unwrapped_turn_rad": -6.851346254209048e-20,
+      "circle_fit": null,
+      "instantaneous_center_samples": 0,
+      "instantaneous_center_median_world_m": null,
+      "maximum_center_excursion_gate_m": 0.01,
+      "center_excursion_passed": true
+    },
+    "contact": {
+      "contacts_qualified": true,
+      "icr_body_x_median_m": null,
+      "relations": {
+        "front_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 1.6875950919693682e-14,
+          "force_compliance_residual_rms_m_s": 1.6875950919693707e-14,
+          "backend_relation_passed": false
+        },
+        "front_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 2.418857543775082e-25,
+          "force_compliance_residual_rms_m_s": 1.0643586176937519e-23,
+          "backend_relation_passed": false
+        },
+        "rear_left": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 1.6875950919890235e-14,
+          "force_compliance_residual_rms_m_s": 1.6875950919891355e-14,
+          "backend_relation_passed": false
+        },
+        "rear_right": {
+          "contact_samples": 16000,
+          "lateral_speed_rms_m_s": 2.239725574148489e-25,
+          "force_compliance_residual_rms_m_s": 4.399460078021424e-24,
+          "backend_relation_passed": false
+        }
+      },
+      "backend_effect_verified": false,
+      "old_load_hypothesis_not_used_for_slip_verdict": true
+    },
+    "allocation": {
+      "passed": true,
+      "driver_allocation_verified": true,
+      "mean_side_targets_preserved": true,
+      "native_target_budget": {
+        "passed": true,
+        "linear_integral_m": 0.0,
+        "angular_integral_rad": 0.0
+      },
+      "front_rear_targets_match": true,
+      "direction_and_acceleration_valid": true,
+      "continuous": true,
+      "zero_tail": true,
+      "linear_integral_m": 0.0,
+      "angular_integral_rad": 0.0,
+      "enabled": true,
+      "applied_steps": 0,
+      "allocation_path": "/work/14-ramp-1000us-zero-axle-commands.csv",
+      "raw_targets_preserved": true
+    },
+    "longitudinal_slip_rms_m_s": {
+      "front_left": 1.1517588715707115e-14,
+      "front_right": 1.1517588715787049e-14,
+      "rear_left": 8.189379683020269e-26,
+      "rear_right": 2.820792181439039e-25
+    },
+    "turn_screen_passed": null,
+    "odometry": {
+      "ros_wheel_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.168,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 6.976890468906906e-14,
+        "maximum_position_error_m": 6.976890468906906e-14,
+        "endpoint_yaw_error_rad": -1.186241472296126e-18,
+        "odometry_turn_rad": -1.2547549348382165e-18,
+        "odometry_displacement_m": 8.966855461292133e-14,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      },
+      "gz_native_odom": {
+        "available": true,
+        "motion_start_sample_s": 5.202,
+        "motion_end_sample_s": 25.194,
+        "endpoint_position_error_m": 8.952333361341581e-14,
+        "maximum_position_error_m": 8.952333361341581e-14,
+        "endpoint_yaw_error_rad": -2.4972159140513737e-18,
+        "odometry_turn_rad": -2.4972159140513737e-18,
+        "odometry_displacement_m": 8.952333361341581e-14,
+        "alignment": "Rigid SE(2) alignment at nearest actual pre-motion sample; no truth fed back",
+        "sample_offset_from_motion_endpoint_s": -0.006000000000000227
+      }
+    },
+    "performance": {
+      "realtime_factor": 0.4238388398002576,
+      "cpu_core_mean": 3.5565265745403543,
+      "cpu_core_max": 4.055358487422248,
+      "memory_peak_bytes": 3792908288
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 5.398841168825829e-14,
+      "yaw_change_rad": 1.2762792330416608e-17,
+      "max_tilt_rad": 8.444671452321917e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -5.319066159804815e-14,
+          3.336222063105635e-17,
+          -1.4318205816098985e-05
+        ],
+        "rpy": [
+          -8.444671452321917e-11,
+          -5.4334456979570864e-11,
+          -2.2942279954001358e-18
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          7.963271133911257e-16,
+          4.253398880979576e-16,
+          -8.593470259598383e-07
+        ],
+        "rpy": [
+          -4.9039274618227494e-11,
+          -3.602421635803563e-11,
+          -1.5057020325816744e-17
+        ]
+      }
+    },
+    "max_tilt_rad": 8.444671452321917e-11,
+    "actual_selection": {
+      "scene": "ramp",
+      "step": 0.001,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 508,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.051000000000000156,
+    "local_evidence_bytes": 271915766
+  },
+  {
+    "name": "15-ramp-1000us-straight",
+    "scene": "ramp",
+    "step": 0.001,
+    "case": "straight",
+    "linear": 0.1,
+    "angular": 0.0,
+    "qualified": false,
+    "error": null,
+    "wall_seconds": 104.15282559394836,
+    "trajectory": {},
+    "contact": null,
+    "allocation": null,
+    "longitudinal_slip_rms_m_s": null,
+    "turn_screen_passed": null,
+    "odometry": null,
+    "performance": {
+      "realtime_factor": 0.4459337851990464,
+      "cpu_core_mean": 3.5527893696909434,
+      "cpu_core_max": 4.108373987863039,
+      "memory_peak_bytes": 3869245440
+    },
+    "stop_drift_last_second_m": 0.0,
+    "parked": {
+      "passed": true,
+      "drift_m": 5.398841168825829e-14,
+      "yaw_change_rad": 1.2762792330416608e-17,
+      "max_tilt_rad": 8.444671452321917e-11,
+      "max_truth_gap_s": 0.010000000000000675,
+      "samples": 500,
+      "first": {
+        "t": 0.2,
+        "xyz": [
+          -5.319066159804815e-14,
+          3.336222063105635e-17,
+          -1.4318205816098985e-05
+        ],
+        "rpy": [
+          -8.444671452321917e-11,
+          -5.4334456979570864e-11,
+          -2.2942279954001358e-18
+        ]
+      },
+      "last": {
+        "t": 5.19,
+        "xyz": [
+          7.963271133911257e-16,
+          4.253398880979576e-16,
+          -8.593470259598383e-07
+        ],
+        "rpy": [
+          -4.9039274618227494e-11,
+          -3.602421635803563e-11,
+          -1.5057020325816744e-17
+        ]
+      }
+    },
+    "max_tilt_rad": 0.07601108966994552,
+    "actual_selection": {
+      "scene": "ramp",
+      "step": 0.001,
+      "actual_config_and_step_verified": true,
+      "scope": "Test candidate only; not production or whole-vehicle acceptance",
+      "fixture_adapter": "Explicit scene/step selection; no observed record normalization"
+    },
+    "sensor_cadence": {
+      "rgb": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "depth": {
+        "passed": true,
+        "samples": 29,
+        "max_gap_s": 1.0,
+        "files_present": true
+      },
+      "scan": {
+        "passed": true,
+        "samples": 57,
+        "max_gap_s": 0.5,
+        "files_present": true
+      },
+      "imu": {
+        "passed": true,
+        "samples": 2821,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      },
+      "joints": {
+        "passed": true,
+        "samples": 513,
+        "max_gap_s": 0.06800000000000139,
+        "files_present": true
+      },
+      "truth": {
+        "passed": true,
+        "samples": 2820,
+        "max_gap_s": 0.010000000000001563,
+        "files_present": true
+      }
+    },
+    "safe_gap_s": 0.05200000000000138,
+    "local_evidence_bytes": 204908928
+  }
+]

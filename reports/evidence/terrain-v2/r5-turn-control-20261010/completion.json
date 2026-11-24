@@ -1,0 +1,41 @@
+{
+  "phase_complete": true,
+  "goal_achieved": false,
+  "turn_displacement_repaired": false,
+  "candidate_status": "rejected",
+  "simulation_attempts": 4,
+  "qualified_attempts": 4,
+  "source_frozen_unchanged": true,
+  "production_changed": false,
+  "physical_parameters_changed": false,
+  "new_tests": 7,
+  "software_test_counts": [
+    7,
+    10,
+    129,
+    277
+  ],
+  "software_tests": 423,
+  "software_skipped": 0,
+  "software_passed": true,
+  "frontend_tests": 3,
+  "frontend_passed": true,
+  "firmware_passed": true,
+  "preservation": {
+    "original_files": 413,
+    "changed_original_files": [],
+    "python_syntax_files": 89,
+    "passed": true
+  },
+  "limitations": [
+    "One left/right candidate run each; no repeatability claim",
+    "1 cm screening gate is an engineering probe choice, not real vehicle acceptance",
+    "Current hardware mass distribution remains unconfirmed",
+    "No conclusion that all control-only methods are impossible"
+  ],
+  "next_work": "Read-only drive controllability/contact-model audit; no physical or production change authorized",
+  "own_container_stopped": true,
+  "workbench_unchanged": true,
+  "own_container_id": "68f08d537161afd3b6e4886641292db24f53a3fec2e3421441de980d8dbe8e63",
+  "image_id": "sha256:f819df21c8584f8a3d1eee315106779e9b380f10cf43fdc8b7aa15c6bdec6ee3"
+}

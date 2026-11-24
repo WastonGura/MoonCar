@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "changed": [],
+  "raw_comparison_false_reason": "Matrix tuples deserialize as lists; canonical comparison preserves exact values"
+}

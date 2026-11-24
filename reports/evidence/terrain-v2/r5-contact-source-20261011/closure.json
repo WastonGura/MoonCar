@@ -1,0 +1,28 @@
+{
+  "status": "diagnostic_complete",
+  "attempts": 6,
+  "qualified": 6,
+  "failed": 0,
+  "remaining_matrix_not_run": 0,
+  "stop_reason": null,
+  "frozen_execution_unchanged": true,
+  "causal_prediction_supported": true,
+  "input_pairs_passed": true,
+  "production_model_and_defaults_changed": false,
+  "whole_vehicle_accepted": false,
+  "v2_robustness_verified": false,
+  "regressions_passed": true,
+  "own_container": {
+    "id": "56d7e41acf8e4d95cb07c226f3977e5e03088c13b7505bf8bfd7fc2dd952cf50",
+    "status": "exited",
+    "running": false,
+    "oom_killed": false,
+    "exit_code": 137
+  },
+  "original_workbench": {
+    "id": "3186e022e013a682ebebb7e1089bfb1e0a842387ceaa65e9169a16d4133abd94",
+    "id_unchanged": true,
+    "state_unchanged": true,
+    "config_unchanged": true
+  }
+}

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MoonCar · 地图与导航</title><link rel="stylesheet" href="/style.css">
+  <script type="importmap">{"imports":{"three":"/vendor/build/three.module.js","three/addons/":"/vendor/examples/jsm/"}}</script>
+</head>
+<body>
+  <header><div><b>MOONCAR</b><span>地图与导航工作台</span></div><span id="connection" role="status">正在连接本地档案服务</span></header>
+  <main>
+    <aside class="controls">
+      <h1>地形档案</h1>
+      <section id="autonomy-controls">
+        <h2>自主探测</h2>
+        <label>探测策略<select id="survey-strategy"><option value="nearest_view_v1">就近观察</option><option value="coverage_view_v1">覆盖优先</option><option value="surface_view_v1" selected>地表补采</option></select></label>
+        <p class="note">三种策略共用导航与安全限制。地表补采仅对采样不足的格子尝试换方向观察；陡面和高残差格子不奖励。</p>
+        <div class="coordinate-fields">
+          <label>时间（仿真秒）<input id="survey-budget" aria-label="时间预算（仿真秒）" type="number" min="15" max="1800" step="1" value="180" required></label>
+          <label>距起点最远（米）<input id="survey-radius" type="number" min="2" max="25" step="any" value="10" required></label>
+        </div>
+        <button id="survey-start" class="primary" disabled>从当前位置自主探测</button>
+        <button id="survey-stop" disabled>停止自主探测</button>
+        <p id="survey-state" class="note" role="status">等待仿真与传感器就绪。</p>
+        <p class="note">无需画矩形或指定终点。自动选择前进、转向与换位补采；达到预算后停车。关闭网页后任务仍在后端运行，请保留服务窗口。</p>
+      </section>
+      <details id="experiment-panel">
+        <summary>仿真实验设置</summary>
+        <form id="experiment-form">
+          <p class="note">草稿坐标：米；朝向：0° 向东，90° 向北。虚线框和箭头是任务设置。</p>
+          <div class="actions"><button type="button" id="draw-region">拖动画区域</button><button type="button" id="place-spawn">放置车辆</button></div>
+          <p class="note">左键拖动绘制 · 滚轮缩放 · 右键平移</p>
+          <div class="coordinate-fields">
+            <label>左下 X<input id="region-x0" type="number" min="-25" max="25" step="any" value="-1" required></label>
+            <label>左下 Y<input id="region-y0" type="number" min="-25" max="25" step="any" value="-2" required></label>
+            <label>右上 X<input id="region-x1" type="number" min="-25" max="25" step="any" value="6" required></label>
+            <label>右上 Y<input id="region-y1" type="number" min="-25" max="25" step="any" value="4" required></label>
+            <label>起点 X<input id="spawn-x" type="number" min="-25" max="25" step="any" value="0.5" required></label>
+            <label>起点 Y<input id="spawn-y" type="number" min="-25" max="25" step="any" value="0" required></label>
+          </div>
+          <label>实际起始朝向（°）<input id="spawn-yaw" type="number" min="-180" max="180" step="any" value="0" required></label>
+          <label class="check"><input id="show-experiment" type="checkbox">显示任务草稿</label>
+          <div class="actions"><button type="button" id="fit-experiment">查看区域</button><button type="button" id="full-region">选择 50×50 米全场</button><button type="button" id="save-experiment">保存任务</button><button type="button" id="load-experiment">载入任务</button></div>
+          <input id="experiment-file" type="file" accept=".json,application/json" hidden>
+          <button id="apply-experiment" class="primary" type="submit" disabled>应用起点并采集</button>
+          <p class="note">启动 50×50 米场地与在线建图，车辆先保持静止；保留旧记录。随后可启动自主探测或手动导航。</p>
+          <button id="stop-experiment" type="button" disabled>结束当前实验</button>
+          <p id="experiment-state" class="note" role="status">正在检查仿真服务…</p>
+        </form>
+      </details>
+      <section id="live-motion" hidden>
+        <h2>手动导航采集</h2>
+        <div class="coordinate-fields">
+          <label>目标 X（米）<input id="drive-x" type="number" min="-25" max="25" step="any" value="4.8"></label>
+          <label>目标 Y（米）<input id="drive-y" type="number" min="-25" max="25" step="any" value="3"></label>
+        </div>
+        <button id="pick-drive-goal">在地图上点选目标</button>
+        <button id="drive-start" class="primary" disabled>开始导航并采集</button>
+        <button id="drive-stop" disabled>停止移动</button>
+        <p id="drive-state" class="note" role="status">等待仿真。</p>
+        <p class="note">手动模式导航到指定目标，沿途采集。接近区域边界或本页面失联会停止；自主模式由后端预算控制。</p>
+      </section>
+      <label for="session">采集记录</label><select id="session"><option value="">请选择记录</option></select>
+      <p id="source" class="note">加载的是车辆观测档案，三维场景模型不作为建图结果。</p>
+      <div class="actions"><button id="refresh">刷新列表</button><a id="download" aria-disabled="true">下载档案</a></div>
+      <label class="check"><input id="live" type="checkbox">跟随采集更新</label>
+      <p id="live-status" class="note">离线回放；实时模式读取采集节点定期保存的档案。</p>
+      <p id="cache-status" class="note" role="status">选择档案后自动准备回放缓存。</p>
+      <h2>地图图层</h2>
+      <label class="check"><input id="quality-mode" type="checkbox" checked>采样质量热力图</label>
+      <p id="quality-legend" class="note">浅灰 0% → 深灰 100%。表示格内覆盖与观察方向的充分程度，不是准确率或安全概率；只为可表达的地表着色。</p>
+      <label class="check"><input id="surface" type="checkbox" checked>地表高程</label>
+      <label class="check"><input id="cloud" type="checkbox" checked>观测点云</label>
+      <label class="check"><input id="hazards" type="checkbox" checked>几何风险</label>
+      <label class="check"><input id="track" type="checkbox" checked>采集轨迹</label>
+      <label class="check"><input id="vehicle" type="checkbox" checked>车辆位置与朝向</label>
+      <label class="check"><input id="routes" type="checkbox" checked>对比路线</label>
+      <p class="note">空白表示未观测。地表为单层高程表达；观测支持度不等于安全概率。</p>
+      <h2>路线设置</h2>
+      <div class="actions"><button id="pick-start">选择起点</button><button id="pick-goal">选择终点</button></div>
+      <label for="heading">起始朝向</label><select id="heading"><option value="0">向东 +X</option><option value="1.57079632679">向北 +Y</option><option value="3.14159265359">向西 −X</option><option value="-1.57079632679">向南 −Y</option></select>
+      <p id="endpoints" class="note">在已观测地表上选择起点与终点。</p>
+      <button id="plan" class="primary" disabled>对比路径规划</button>
+      <p class="note">当前为离线研究路线，不发送车辆运动指令。车辆尺寸与通行阈值尚需实测标定。</p>
+      <section id="navigation-controls" hidden>
+        <h2>车辆导航</h2>
+        <label for="navigation-mode">执行算法</label><select id="navigation-mode"><option value="full">方向与观测支持度</option><option value="fixed">固定地形代价</option></select>
+        <button id="navigate" class="primary" disabled>从车辆当前位置执行</button>
+        <button id="cancel-navigation" disabled>取消任务</button>
+        <p id="navigation-state" class="note" role="status">等待车辆状态。</p>
+        <p class="note">执行前从当前车位重新规划。页面需保持连接，连接失效会取消任务。</p>
+      </section>
+    </aside>
+    <section class="map-area" aria-label="三维地图">
+      <div class="map-toolbar"><span id="map-info">尚未加载地图</span><div><button id="fit">适应地图</button><button id="top">俯视</button><button id="capture">保存图片</button></div></div>
+      <div id="scene-comparison">
+        <section id="gazebo-scene" hidden aria-label="Gazebo 仿真现场">
+          <div class="scene-heading"><b>Gazebo 仿真现场</b><span id="scene-status">等待仿真画面</span></div>
+          <div class="scene-image"><img id="gazebo-image" alt="实际 Gazebo 运行画面" hidden></div>
+          <p class="note">现场画面仅供对照；下方 / 右侧地图来自车载传感器观测。</p>
+        </section>
+        <div class="observed-scene"><div class="scene-heading"><b>传感器采集成果</b><span>随采集档案更新</span></div><div id="viewport"><div id="empty">等待车辆观测到地形</div></div></div>
+      </div>
+      <div id="message" role="status">左键旋转 · 右键平移 · 滚轮缩放 · 点击地表查看详情</div>
+      <footer>
+        <button id="play" disabled>播放</button>
+        <label for="playback-speed" class="sr-only">播放速度</label>
+        <select id="playback-speed" title="播放速度"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="4">4×</option></select>
+        <div class="playback-seek">
+          <label for="timeline" class="sr-only">采集回放</label>
+          <div class="timeline-rail"><div id="buffered-track" aria-hidden="true"></div><input id="timeline" type="range" min="0" max="0" value="0" disabled aria-describedby="buffered-label"></div>
+          <span id="buffered-label">灰色：已缓存 0%</span>
+        </div>
+        <output id="frame-label">0 / 0 帧</output>
+      </footer>
+    </section>
+    <aside class="details">
+      <h2>自主决策</h2><p id="survey-reason" class="note">启动后显示下一观察位置及选择原因。</p><p id="survey-result" class="note"></p><p class="note">虚线圆：活动距离限制；目标处箭头：下一观察朝向。</p>
+      <h2>地形详情</h2><div id="cell-detail" class="note">点击地表，查看这一位置的观测结果。</div>
+      <h2>实际导航</h2><button id="fit-navigation">查看导航全貌</button><p id="actual-navigation" class="note">等待导航路径。</p><p id="navigation-bounds" class="note">等待导航地图。</p>
+      <h2>离线路线对照</h2><div id="results" class="note">相同地图、车辆约束与运动集合；仅改变地形代价模型。</div>
+      <h2>显示说明</h2><p class="note">灰色地表随高度变化。深色方框为风险提示。虚线为固定地形代价路线，实线为方向与支持度路线。</p>
+      <p class="note">支持旋转、放大及俯视。回放仅包含当时已经收到的观测，不提前显示后续地形。</p>
+    </aside>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

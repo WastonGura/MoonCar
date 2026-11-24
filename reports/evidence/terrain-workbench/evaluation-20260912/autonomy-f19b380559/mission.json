@@ -1,0 +1,19 @@
+{
+  "active": false,
+  "phase": "fault",
+  "reason": "自主探测已停止：导航地图未更新",
+  "origin": [
+    3.4999999999999223,
+    2.9999999999998703
+  ],
+  "budget_seconds": 15,
+  "radius": 6,
+  "started": 23.596,
+  "elapsed_seconds": 2.0,
+  "history": [],
+  "decision": null,
+  "archive": "autonomy-f19b380559.json",
+  "metrics_version": "survey-metrics-v1",
+  "evidence_folder": "experiment-448dc3b1957c/research/autonomy-f19b380559",
+  "remaining_seconds": 13.0
+}

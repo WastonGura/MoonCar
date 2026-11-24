@@ -1,0 +1,19 @@
+{
+  "resources": true,
+  "libraries": true,
+  "allocator_models": true,
+  "fixed_contact_models": true,
+  "allocator_source": true,
+  "slip_observer_source": true,
+  "allocator_library": true,
+  "model": true,
+  "contact_source": true,
+  "contact_library": true,
+  "contact_models": true,
+  "turn_library": true,
+  "turn_source": true,
+  "turn_models": true,
+  "turn_prediction": true,
+  "turn_shells": true,
+  "turn_tests": true
+}

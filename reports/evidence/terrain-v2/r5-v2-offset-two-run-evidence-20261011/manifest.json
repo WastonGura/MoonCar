@@ -1,0 +1,98 @@
+{
+  "analysis/comparison_data.json": {
+    "size_bytes": 4740,
+    "sha256": "009437f375d3990274fc5cfda451fe53f1e45a049118b5b227aa959ef26e05b5"
+  },
+  "analysis/event_timeline_comparison.png": {
+    "size_bytes": 844207,
+    "sha256": "8d772bba7f6c695536b0649d26c8082a520fc8f078f278fffd2654d4d75e3696"
+  },
+  "analysis/generate_comparison_artifacts.py": {
+    "size_bytes": 17298,
+    "sha256": "498245be07d455508ae9fddb8c57314c9e9dd54b74005013ad0af7b4b75cc609"
+  },
+  "analysis/trajectory_comparison.png": {
+    "size_bytes": 360770,
+    "sha256": "6e901ca7e8d2bba7411ae12d15ff775a576d0b7e1085d306f46ef638670f4df3"
+  },
+  "campaign/01-test_shift_x_plus_5cm/bridge.yaml": {
+    "size_bytes": 1883,
+    "sha256": "73a89414a65ca0d8813a764a17841767309a94f4ca658b4c2d337bfccb5fa354"
+  },
+  "campaign/01-test_shift_x_plus_5cm/config.json": {
+    "size_bytes": 2314,
+    "sha256": "47ab423642c7340b6e16984366696ce4ff0011ba27d27356cc53cf2c7c466a7d"
+  },
+  "campaign/01-test_shift_x_plus_5cm/diagnostic-result.json": {
+    "size_bytes": 841,
+    "sha256": "4f33c7e8915eb30bbac09d4c00062c7f165001629bdf00d419601a6f15ff2f45"
+  },
+  "campaign/01-test_shift_x_plus_5cm/evaluation.json": {
+    "size_bytes": 75295,
+    "sha256": "9fb9c59a6817558753a348361a840d97be1f28a9c0ac366c8d33f9da9cee778b"
+  },
+  "campaign/01-test_shift_x_plus_5cm/result.json": {
+    "size_bytes": 404609,
+    "sha256": "76ea115ff6506a88453accfc0352e098fd80d82e64e060c43ae817b009faa959"
+  },
+  "campaign/01-test_shift_x_plus_5cm/robot.yaml": {
+    "size_bytes": 39558,
+    "sha256": "4f3825a129ebd93d3d527148def8ef47d5d93c339c430de4816ea4688577d614"
+  },
+  "campaign/02-restore_x_0/bridge.yaml": {
+    "size_bytes": 1883,
+    "sha256": "73a89414a65ca0d8813a764a17841767309a94f4ca658b4c2d337bfccb5fa354"
+  },
+  "campaign/02-restore_x_0/config.json": {
+    "size_bytes": 2304,
+    "sha256": "199ab9288c392825a7362a985abc1a92f9672268c7738024ebeb66e52018edc5"
+  },
+  "campaign/02-restore_x_0/diagnostic-result.json": {
+    "size_bytes": 877,
+    "sha256": "077079418d093ed2d92a902608765c78a9269c5d59dcc393dc6ac829ce5fcbdd"
+  },
+  "campaign/02-restore_x_0/evaluation.json": {
+    "size_bytes": 100903,
+    "sha256": "dccc34bf594d420dfbccf644d5951417a6cf018df7a575325c77e617ff105411"
+  },
+  "campaign/02-restore_x_0/result.json": {
+    "size_bytes": 407032,
+    "sha256": "01e3ff47c83eb469520afdd0ab12cb402ebb19e65174e1f903ffc3d155d850f3"
+  },
+  "campaign/02-restore_x_0/robot.yaml": {
+    "size_bytes": 39558,
+    "sha256": "4f3825a129ebd93d3d527148def8ef47d5d93c339c430de4816ea4688577d614"
+  },
+  "preflight/01-test_shift_x_plus_5cm.log": {
+    "size_bytes": 137181,
+    "sha256": "a6e4cc86ad2754a5974d4a8907673e34cd07bafbbd68f7ff8339217e74c0cd19"
+  },
+  "preflight/02-restore_x_0.log": {
+    "size_bytes": 137849,
+    "sha256": "847c882fa9d6274be1197526bb5eccc92d0faac188d425f531f162af3a8c2e87"
+  },
+  "preflight/container-start.json": {
+    "size_bytes": 8965,
+    "sha256": "6868e44daf30611bab2979903fc34ce1feb22712164a5de5b348ed1194c01d3d"
+  },
+  "preflight/container-stop.json": {
+    "size_bytes": 8773,
+    "sha256": "530f1a7c720385ec7b6f2a77b5a62d0f75ecd786b15bb509d16b08c2295f47ab"
+  },
+  "preflight/gate_check_results.json": {
+    "size_bytes": 7457,
+    "sha256": "cd3a0043252b3492e1f8d86fef6691984665a93e9584bbd1da5b9f117d134ba5"
+  },
+  "preflight/preflight_gate_check.py": {
+    "size_bytes": 5091,
+    "sha256": "7ab82c4b4ec09bc3f0edff8b39588583a1c34f4fe9b2d7a9210422481c5eddc3"
+  },
+  "preflight/run_two_run_campaign.py": {
+    "size_bytes": 7229,
+    "sha256": "7cfc04d5fe5f148a4ccd315004bb39a884bb5c50a670cf3ec906f831e7968a1c"
+  },
+  "RESULT.md": {
+    "size_bytes": 17633,
+    "sha256": "507e746aadfdfbd0c8c9b28aa960db06739b48e8f76ba43659a206c2d2dfc114"
+  }
+}

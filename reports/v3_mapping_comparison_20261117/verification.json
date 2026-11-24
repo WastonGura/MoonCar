@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "audited_map_displays": 7224,
+  "future_data_violations": 0,
+  "source_videos": [
+    {
+      "strategy": "baseline",
+      "audited_frames": 3624,
+      "future_data_violations": 0,
+      "complete_decode_exit": 0,
+      "video": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 1280,
+            "height": 1072,
+            "r_frame_rate": "20/1",
+            "nb_frames": "3624"
+          }
+        ],
+        "format": {
+          "duration": "181.200000"
+        }
+      }
+    },
+    {
+      "strategy": "candidate",
+      "audited_frames": 3622,
+      "future_data_violations": 0,
+      "complete_decode_exit": 0,
+      "video": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 1280,
+            "height": 1072,
+            "r_frame_rate": "20/1",
+            "nb_frames": "3622"
+          }
+        ],
+        "format": {
+          "duration": "181.100000"
+        }
+      }
+    }
+  ],
+  "verified_product_sources": 679,
+  "verified_install_files": 134,
+  "frozen_runtime_unchanged": true,
+  "final_statistics_match_video_snapshot": true
+}

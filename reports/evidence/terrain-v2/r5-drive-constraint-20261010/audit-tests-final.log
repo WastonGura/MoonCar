@@ -1,0 +1,12 @@
+test_actual_frozen_model_is_read_only (test_drive_constraint_audit.DriveConstraintAuditTests.test_actual_frozen_model_is_read_only) ... ok
+test_constant_longitudinal_control_does_not_remove_anchor_radius (test_drive_constraint_audit.DriveConstraintAuditTests.test_constant_longitudinal_control_does_not_remove_anchor_radius) ... ok
+test_existing_slip_plugin_not_silently_overwritten (test_drive_constraint_audit.DriveConstraintAuditTests.test_existing_slip_plugin_not_silently_overwritten) ... ok
+test_invalid_force_and_geometry_fail (test_drive_constraint_audit.DriveConstraintAuditTests.test_invalid_force_and_geometry_fail) ... ok
+test_mass_shift_loads_and_weight_conservation (test_drive_constraint_audit.DriveConstraintAuditTests.test_mass_shift_loads_and_weight_conservation) ... ok
+test_proposal_does_not_mutate_model_or_drop_existing_plugins (test_drive_constraint_audit.DriveConstraintAuditTests.test_proposal_does_not_mutate_model_or_drop_existing_plugins) ... ok
+test_speed_dependent_proposal_restores_static_compliance (test_drive_constraint_audit.DriveConstraintAuditTests.test_speed_dependent_proposal_restores_static_compliance) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.012s
+
+OK

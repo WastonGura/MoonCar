@@ -1,0 +1,15 @@
+{
+  "matrix": [
+    "plate L/R",
+    "coplanar mesh L/R",
+    "mirrored diagonals L/R",
+    "restore plate L/R"
+  ],
+  "upper_surface_z_m": 0,
+  "step_s": 0.001,
+  "no_parameter_search": true,
+  "hypothesis": "Coplanar mesh internal edges alter contacts and residual translation",
+  "support_requires": "Valid input and capture in all rounds, restored plate reproduces plate; mesh representation/diagonal orientation changes contact geometry and displacement",
+  "limitation": "Representation effect does not alone prove erroneous normals are the sole cause or a DART/ODE defect",
+  "budget": 8
+}

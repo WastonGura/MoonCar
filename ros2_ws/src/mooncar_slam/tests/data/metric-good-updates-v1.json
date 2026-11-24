@@ -1,0 +1,572 @@
+{
+  "frozen_module_sha256": "1a54ce05d1ce9e1cd2bc3ffd5494abe0a97796e3d22ead9796f5e6a9a931a4ee",
+  "rng_seed": 125,
+  "noise_sigma_m": 0.01,
+  "rows": [
+    {
+      "stamp": 1.0,
+      "accepted": false,
+      "reason": "bootstrap"
+    },
+    {
+      "stamp": 1.1,
+      "accepted": false,
+      "reason": "bootstrap"
+    },
+    {
+      "stamp": 1.2,
+      "accepted": false,
+      "reason": "bootstrap"
+    },
+    {
+      "stamp": 1.3,
+      "accepted": false,
+      "reason": "bootstrap"
+    },
+    {
+      "stamp": 1.4,
+      "accepted": false,
+      "reason": "bootstrap"
+    },
+    {
+      "stamp": 1.5,
+      "accepted": false,
+      "reason": "bootstrap"
+    },
+    {
+      "stamp": 1.6,
+      "accepted": false,
+      "reason": "bootstrap"
+    },
+    {
+      "stamp": 1.7000000000000002,
+      "accepted": false,
+      "reason": "bootstrap"
+    },
+    {
+      "stamp": 1.8,
+      "accepted": false,
+      "reason": "bootstrap"
+    },
+    {
+      "stamp": 1.9,
+      "accepted": true,
+      "reason": "initialized",
+      "xy": [
+        0.0,
+        0.0
+      ],
+      "covariance": [
+        [
+          0.0004,
+          0.0
+        ],
+        [
+          0.0,
+          0.0004
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 2.0,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 2.1,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0029105066327882105,
+        2.443730968555957e-05
+      ],
+      "covariance": [
+        [
+          0.00040479666498000863,
+          -2.916311796181801e-07
+        ],
+        [
+          -2.9163117961818006e-07,
+          0.00040664183621503045
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 2.2,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 2.3,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0037434363494262737,
+        -0.00047725430660500656
+      ],
+      "covariance": [
+        [
+          0.0004023938606592432,
+          -1.6667545870512057e-07
+        ],
+        [
+          -1.6667545870512051e-07,
+          0.00040333600134710625
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 2.4000000000000004,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 2.5,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0028139575258275653,
+        0.0014276462469939746
+      ],
+      "covariance": [
+        [
+          0.00040293406398477785,
+          -3.40158080669667e-06
+        ],
+        [
+          -3.40158080669667e-06,
+          0.00041129675775143144
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 2.6,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 2.7,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0024381208505829138,
+        0.002965553818672158
+      ],
+      "covariance": [
+        [
+          0.0004035909225565094,
+          -3.7314892540790887e-06
+        ],
+        [
+          -3.7314892540790887e-06,
+          0.0004094608249113609
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 2.8,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 2.9000000000000004,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0016678548277134372,
+        0.004941894107021804
+      ],
+      "covariance": [
+        [
+          0.00040269399122245684,
+          -1.0097406238578302e-06
+        ],
+        [
+          -1.0097406238578302e-06,
+          0.00040326606069839146
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 3.0,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 3.1,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0011741061972936615,
+        0.0046871206726259084
+      ],
+      "covariance": [
+        [
+          0.0004034098618459405,
+          -7.758438896510393e-07
+        ],
+        [
+          -7.758438896510393e-07,
+          0.00040248841486745734
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 3.2,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 3.3000000000000003,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0016481942666971233,
+        0.0050482403921005585
+      ],
+      "covariance": [
+        [
+          0.0004017852575969017,
+          7.62178926728432e-08
+        ],
+        [
+          7.621789267284321e-08,
+          0.0004024378305996575
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 3.4000000000000004,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 3.5,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.002058070442221689,
+        0.006547177910461128
+      ],
+      "covariance": [
+        [
+          0.0004065411945011615,
+          4.023258821793774e-06
+        ],
+        [
+          4.023258821793774e-06,
+          0.0004056846636888409
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 3.6,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 3.7,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0021844430211599873,
+        0.007957370939670218
+      ],
+      "covariance": [
+        [
+          0.0004047917709126428,
+          -3.81998506937054e-06
+        ],
+        [
+          -3.81998506937054e-06,
+          0.0004065731861955297
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 3.8000000000000003,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 3.9000000000000004,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0018829691103937046,
+        0.00931258803556237
+      ],
+      "covariance": [
+        [
+          0.00040209081668469515,
+          -2.695147533005438e-07
+        ],
+        [
+          -2.6951475330054377e-07,
+          0.0004022929139236912
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 4.0,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 4.1,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0012662945319402044,
+        0.010685644308511865
+      ],
+      "covariance": [
+        [
+          0.0004034761938409526,
+          2.6361543854045072e-06
+        ],
+        [
+          2.6361543854045072e-06,
+          0.0004068511558392155
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 4.2,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 4.300000000000001,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0005913281126656062,
+        0.011595007384822414
+      ],
+      "covariance": [
+        [
+          0.00040809276507596686,
+          -3.692347662022333e-06
+        ],
+        [
+          -3.692347662022333e-06,
+          0.0004046630081726614
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 4.4,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 4.5,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        -0.00010019177988881885,
+        0.01239248819489163
+      ],
+      "covariance": [
+        [
+          0.00040228604286912043,
+          6.213367410360436e-07
+        ],
+        [
+          6.213367410360436e-07,
+          0.00040398757343868225
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 4.6,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 4.7,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        -0.0002244680469562392,
+        0.01223987674969502
+      ],
+      "covariance": [
+        [
+          0.00040549875122711156,
+          8.823196249422124e-07
+        ],
+        [
+          8.823196249422123e-07,
+          0.00040263036307807733
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 4.800000000000001,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 4.9,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.001839295784497453,
+        0.013220187102377675
+      ],
+      "covariance": [
+        [
+          0.0004044906412636785,
+          2.948394689524606e-06
+        ],
+        [
+          2.948394689524606e-06,
+          0.0004054525074363626
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 5.0,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 5.1000000000000005,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0019714275443087504,
+        0.014904893846753592
+      ],
+      "covariance": [
+        [
+          0.0004016252678152674,
+          -3.401697180648065e-07
+        ],
+        [
+          -3.401697180648065e-07,
+          0.0004053836675342585
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 5.2,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 5.3,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0018049435296654162,
+        0.016400491039758713
+      ],
+      "covariance": [
+        [
+          0.0004044314052206948,
+          -2.197239714569872e-06
+        ],
+        [
+          -2.197239714569872e-06,
+          0.00040385899157690153
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 5.4,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 5.5,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.00038047988645381874,
+        0.01676662864334752
+      ],
+      "covariance": [
+        [
+          0.00040210064851765696,
+          5.328790089798227e-08
+        ],
+        [
+          5.328790089798227e-08,
+          0.00040241731650245263
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 5.6000000000000005,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 5.7,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0011772264713682833,
+        0.017629077157411566
+      ],
+      "covariance": [
+        [
+          0.0004034276350263963,
+          8.49258068612992e-07
+        ],
+        [
+          8.49258068612992e-07,
+          0.0004028839438039261
+        ]
+      ],
+      "inliers": 36
+    },
+    {
+      "stamp": 5.800000000000001,
+      "accepted": false,
+      "reason": "stationary_hold"
+    },
+    {
+      "stamp": 5.9,
+      "accepted": true,
+      "reason": "accepted",
+      "xy": [
+        0.0018968973079262926,
+        0.017901332251607328
+      ],
+      "covariance": [
+        [
+          0.0004039324495972001,
+          1.6087176072367012e-06
+        ],
+        [
+          1.6087176072367012e-06,
+          0.0004035780668281987
+        ]
+      ],
+      "inliers": 36
+    }
+  ]
+}

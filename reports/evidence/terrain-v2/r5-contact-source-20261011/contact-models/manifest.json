@@ -1,0 +1,9 @@
+{
+  "single_difference": "Native WheelSlip10/0 enabled or absent; axle allocator identical and inactive during straight",
+  "models": {
+    "original": "f1e4c353ce55b8530289d10806d7452986b13a38081cbfb89000584bf8a153db",
+    "slip": "d765ca1c9c93f9aa837ae128321b9fb14b43b9ecc9e58567121be391eec3d1c4",
+    "restore": "f1e4c353ce55b8530289d10806d7452986b13a38081cbfb89000584bf8a153db"
+  },
+  "production_changed": false
+}

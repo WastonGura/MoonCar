@@ -1,0 +1,18 @@
+{
+  "no_gazebo": true,
+  "physics_attempts": 0,
+  "trace_changes_exception_flow": false,
+  "guard_source_unchanged": true,
+  "bridge_capacity_unchanged": true,
+  "results": [
+    {
+      "attempt": 1,
+      "code": -11,
+      "ready": true,
+      "wall_seconds": 1.202426256997569
+    }
+  ],
+  "trace_errors": [],
+  "observed_enodata": false,
+  "verdict": "Reproduced only if exact ENODATA trace present; old failed round remains failed"
+}

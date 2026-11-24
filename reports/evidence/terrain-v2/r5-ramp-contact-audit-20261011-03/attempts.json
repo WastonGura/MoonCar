@@ -1,0 +1,18 @@
+[
+  {
+    "directory": "r5-ramp-contact-audit-20261011",
+    "status": "failed_before_analysis",
+    "reason": "Initial offline plate helper rejected archived link Z offset",
+    "new_simulations": 0
+  },
+  {
+    "directory": "r5-ramp-contact-audit-20261011-02",
+    "status": "completed_offline",
+    "new_simulations": 0
+  },
+  {
+    "directory": "r5-ramp-contact-audit-20261011-03",
+    "status": "completed_offline_with_seam_classification",
+    "new_simulations": 0
+  }
+]

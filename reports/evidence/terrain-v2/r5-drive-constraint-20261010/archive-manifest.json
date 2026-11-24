@@ -1,0 +1,18 @@
+{
+  "scripts/audit_r5_drive_constraints.py": "2df86d27f28e50c761c39c7efa6952b96bb332af4dc328ba8b38984264e55d85",
+  "ros2_ws/src/mooncar_gazebo/tests/test_drive_constraint_audit.py": "cdc041e110b85a97f7a7bcca0f322ff6554b0d86217917d33061d0f2dd602f27",
+  "docs/work_logs/2026-10-10-r5-drive-constraint-audit.md": "883bc2b379f61d5b8357a2d7a4c279abd6d0619fd7649cee58fe5d4c2f31aa9b",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/audit-ready.log": "f40a06b5b41b5a994f988d6a9679d8c5abce92ee30c81e147ef67870997f0820",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/audit-tests-final.log": "78d976618d9c64a39a69352e269411d2f947c62905c1a6c9fac23396555f8945",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/audit-tests-initial-failure.log": "a18845d7cc2af706f6a88ddb33034440ecd16c4eba5670514be064e3741d3997",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/audit-tests.log": "78d976618d9c64a39a69352e269411d2f947c62905c1a6c9fac23396555f8945",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/audit.log": "f40a06b5b41b5a994f988d6a9679d8c5abce92ee30c81e147ef67870997f0820",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/preservation-before.json": "291d4446d1a46a1f7f312eb31627ed92fc5f7a2304391bedefed98c8f2e027be",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/README.md": "4ae3e5aa060ddd6b81e8a88046f221545e717ed0cf5ff18534feca8111a4656b",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/stage.json": "16c9b8e8840e95c2a2975925ded1c0fa35069177429f7e12de4b2efbc6ef054c",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/verification.json": "2d17d79fa7bb53e854b66e4fa6ddc3c2cd00f7659f8cb16e51b2da3857f375d3",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/result/audit.json": "f40a06b5b41b5a994f988d6a9679d8c5abce92ee30c81e147ef67870997f0820",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/result/UNAPPLIED-wheel-slip.patch": "cb7a2870a25eac2f0e46bb13ea143dfae1bb156eb83bf969dc3043d0121597c1",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/result-ready/audit.json": "f40a06b5b41b5a994f988d6a9679d8c5abce92ee30c81e147ef67870997f0820",
+  "reports/evidence/terrain-v2/r5-drive-constraint-20261010/result-ready/UNAPPLIED-wheel-slip.patch": "c6208d3e9ab4d706043d0303394fd219b71af887e0ab7bce31b093da8f31733d"
+}

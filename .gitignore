@@ -17,3 +17,16 @@ __pycache__/
 .vscode/
 .idea/
 known_hosts_vm
+web/node_modules/
+tmp/
+containers/runtime/
+
+# Downloaded research sources stay local; URLs and checksums are tracked.
+ros2_ws/src/mooncar_gazebo/data/terrain_sources/*.mat
+reports/evidence/terrain-v2/*/sources/*.tif
+reports/evidence/terrain-v2/*/references/*.pdf
+
+# New raw experiments and research build trees are retained locally, with
+# versioned reports and SHA256 inventories. Existing tracked evidence stays tracked.
+/reports/evidence/
+/output/

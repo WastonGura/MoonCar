@@ -1,0 +1,57 @@
+{
+  "purpose": "Runner integration smoke only; not a strategy comparison",
+  "failed_attempt": {
+    "path": "tmp/ros_acceptance/strategy-runner-smoke-20260914",
+    "status": "trial_failed",
+    "reason": "recording manifest was read before final first_stamp was written",
+    "retained": true
+  },
+  "successful_attempt": {
+    "path": "tmp/ros_acceptance/strategy-runner-smoke2-20260914",
+    "strategy": "nearest_view_v1",
+    "scene": "visible_ramp_v1",
+    "budget_seconds": 15,
+    "terminal_status": "no_candidates",
+    "frames": 26,
+    "evidence_verified": true,
+    "C_obs": 0.14563716258631512,
+    "C": 0.08380414312617702,
+    "P": 1.0,
+    "S": 8.380414312617702,
+    "height_rmse_m": 0.00026519292640409165,
+    "slope_mae_deg": 0.03476142183952112,
+    "interpretation": "failed the provisional coverage gate; validates orchestration only"
+  },
+  "headless_batch_check": {
+    "failed_attempt_path": "tmp/ros_acceptance/strategy-runner-headless-smoke-20260915",
+    "failed_attempt_reason": "configured CJK font path did not exist inside the container",
+    "successful_attempt_path": "tmp/ros_acceptance/strategy-runner-headless-smoke2-20260915",
+    "capture_gui": false,
+    "strategy": "nearest_view_v1",
+    "scene": "visible_ramp_v1",
+    "budget_seconds": 15,
+    "wall_seconds": 82.9,
+    "capture_wall_seconds": 25.593412083995645,
+    "frames": 20,
+    "evidence_verified": true,
+    "C": 0.06936597614563716,
+    "P": 1.0,
+    "S": 6.936597614563716,
+    "interpretation": "headless orchestration and evaluation verified; performance evidence only"
+  },
+  "evidence_sha256": {
+    "tmp/ros_acceptance/strategy-runner-smoke-20260914/trials.json": "c7797e934831874bf2dd70411d4b972f26d628e2713d9b2e510a9904483f14d1",
+    "tmp/ros_acceptance/strategy-runner-smoke2-20260914/trials.json": "0b49b60ffc749e284f70590d05008a0fca079b057b657563d62aa5e1f88f0b76",
+    "tmp/ros_acceptance/strategy-runner-smoke2-20260914/captures/trial-01/manifest.json": "175321bf15b459fb0bf012b904fa99ac18c6809aee93f05cc5e7edecb27869cc",
+    "tmp/ros_acceptance/strategy-runner-smoke2-20260914/evaluations/trial-01/summary.json": "0033d20586bbbcf2abdea694c93963831126ccf34976964caec32cf88b4edd12",
+    "tmp/ros_acceptance/strategy-runner-smoke2-20260914/comparison.csv": "949a3d10bb4f2b7b05144c7b564300bed8e5f4629cb1ae4e8b52ab04118bce18",
+    "tmp/ros_acceptance/strategy-runner-headless-smoke-20260915/trials.json": "4856c936df90bdec1b14e8b4dd804e8bc249f8bdee90237cfd65fed5ddb6b103",
+    "tmp/ros_acceptance/strategy-runner-headless-smoke2-20260915/trials.json": "4c1d309d1083bb83bf330ba5038a7f82593b6c160bef9410d25db5d0a6a81c0a",
+    "tmp/ros_acceptance/strategy-runner-headless-smoke2-20260915/captures/trial-01/manifest.json": "70e8b8cb1613c3724259f06ef5fe663aa076c7cabfd7895315003ca21e40826a",
+    "tmp/ros_acceptance/strategy-runner-headless-smoke2-20260915/captures/trial-01/coordinate-contract.json": "3df5bb8c6f1ddbe5e81390e49b83d64a92e54b10063a0a3da2b928454623e2a7",
+    "tmp/ros_acceptance/strategy-runner-headless-smoke2-20260915/evaluations/trial-01/summary.json": "21fad8bd0b6c4fc67b885104d1a8b98944d289790dddb43bfcca41dba83300e6",
+    "tmp/ros_acceptance/strategy-runner-headless-smoke2-20260915/comparison.csv": "aa83c266d205e637d23d4d1540fd326458c8ad5bd07615741ae3606599510451",
+    "tmp/ros_acceptance/formal-strategy-20260914/ABORTED.json": "d25dcfbefdfacbacc3d6162845ac8c3a25ee5e0c2c2e27a1d92413bdbb72eebe",
+    "tmp/ros_acceptance/formal-strategy-20260914/survey/trials.json": "451e7b4aa16b3665e610bffd9f63eb997f148da732f8ca28781577192a829849"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "mode": "autonomy",
+  "changes": [],
+  "production_defaults_changed": false,
+  "terrain_strategy": "elevation_neighborhood_v1",
+  "survey_budget": 180.0,
+  "radius": 8.0,
+  "wall_budget": 1800.0,
+  "maximum_new_worlds": 1,
+  "control_truth_inputs": false,
+  "physical_parameters_changed": false,
+  "actual_gui_video": true,
+  "video_timing_comparable_to_headless": false
+}

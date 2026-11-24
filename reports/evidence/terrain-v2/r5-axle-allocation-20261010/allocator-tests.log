@@ -1,0 +1,14 @@
+test_bad_or_excessive_estimates_rejected (test_axle_allocation.AxleAllocationTests.test_bad_or_excessive_estimates_rejected) ... ok
+test_derived_factors_preserve_budget_and_equal_compliance (test_axle_allocation.AxleAllocationTests.test_derived_factors_preserve_budget_and_equal_compliance) ... ok
+test_forged_observer_targets_fail (test_axle_allocation.AxleAllocationTests.test_forged_observer_targets_fail) ... ok
+test_independent_logged_targets_match_actual_and_preserve_means (test_axle_allocation.AxleAllocationTests.test_independent_logged_targets_match_actual_and_preserve_means) ... ok
+test_model_only_enable_flag_changes_and_restore_exact (test_axle_allocation.AxleAllocationTests.test_model_only_enable_flag_changes_and_restore_exact) ... ok
+test_only_pure_turn_changes_actual_targets (test_axle_allocation.AxleAllocationTests.test_only_pure_turn_changes_actual_targets) ... ok
+test_source_timestamp_mismatch_fails (test_axle_allocation.AxleAllocationTests.test_source_timestamp_mismatch_fails) ... ok
+test_unknown_native_order_nonfinite_fail (test_axle_allocation.AxleAllocationTests.test_unknown_native_order_nonfinite_fail) ... ok
+test_wrong_flags_and_lost_step_fail (test_axle_allocation.AxleAllocationTests.test_wrong_flags_and_lost_step_fail) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.052s
+
+OK

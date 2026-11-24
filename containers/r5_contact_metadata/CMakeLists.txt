@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+project(mooncar_contact_metadata LANGUAGES CXX)
+find_package(gz-sim8 REQUIRED)
+add_library(mooncar-contact-metadata SHARED ContactMetadata.cc)
+target_link_libraries(mooncar-contact-metadata PRIVATE gz-sim8::gz-sim8)
+target_compile_features(mooncar-contact-metadata PRIVATE cxx_std_17)
+target_compile_options(mooncar-contact-metadata PRIVATE -Wall -Wextra -Werror)

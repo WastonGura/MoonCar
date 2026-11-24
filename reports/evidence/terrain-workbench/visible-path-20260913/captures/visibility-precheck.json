@@ -1,0 +1,49 @@
+[
+  {
+    "scene": "visible_ramp_v1",
+    "phase": "start",
+    "point_categories": {
+      "sloped_top": 406,
+      "ground": 1766,
+      "steep_side": 38
+    },
+    "target": "sloped_top",
+    "pure_target_cells": 46,
+    "camera_height": 0.235
+  },
+  {
+    "scene": "visible_ramp_v1",
+    "phase": "goal",
+    "point_categories": {
+      "sloped_top": 982,
+      "ground": 1130,
+      "steep_side": 87
+    },
+    "target": "sloped_top",
+    "pure_target_cells": 40,
+    "camera_height": 0.235
+  },
+  {
+    "scene": "visible_curve_v1",
+    "phase": "start",
+    "point_categories": {
+      "curved_top": 387,
+      "ground": 1798
+    },
+    "target": "curved_top",
+    "pure_target_cells": 23,
+    "camera_height": 0.235
+  },
+  {
+    "scene": "visible_curve_v1",
+    "phase": "goal",
+    "point_categories": {
+      "curved_top": 881,
+      "steep_side": 20,
+      "ground": 1285
+    },
+    "target": "curved_top",
+    "pure_target_cells": 19,
+    "camera_height": 0.235
+  }
+]

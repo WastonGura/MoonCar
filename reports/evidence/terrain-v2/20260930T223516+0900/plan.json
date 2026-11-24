@@ -1,0 +1,147 @@
+{
+  "batch": "20260930T223516+0900",
+  "purpose": "MPI collection verification and separate 200 g engineering-funnel trial, unchanged physical inputs",
+  "cases": [
+    {
+      "name": "smoke2g_rank1",
+      "mass_g": 2,
+      "diameter_mm": 2,
+      "dt_s": 8e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 1
+    },
+    {
+      "name": "smoke2g_rank4",
+      "mass_g": 2,
+      "diameter_mm": 2,
+      "dt_s": 8e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4,
+      "role": "failed MPI initialisation; preserved, not a valid 4-rank trial"
+    },
+    {
+      "name": "smoke2g_rank4_fixed",
+      "mass_g": 2,
+      "diameter_mm": 2,
+      "dt_s": 8e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4
+    },
+    {
+      "name": "funnel200g",
+      "mass_g": 200,
+      "diameter_mm": 2,
+      "dt_s": 8e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4
+    },
+    {
+      "name": "repeat32g_s123457_d8",
+      "mass_g": 32,
+      "diameter_mm": 2,
+      "dt_s": 8e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4,
+      "seed": 123457,
+      "supplement_reason": "Separate paired step effect from initial-placement variation after serial 32g single-seed angle difference 2.22deg"
+    },
+    {
+      "name": "repeat32g_s123457_d4",
+      "mass_g": 32,
+      "diameter_mm": 2,
+      "dt_s": 4e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4,
+      "seed": 123457,
+      "supplement_reason": "Separate paired step effect from initial-placement variation after serial 32g single-seed angle difference 2.22deg"
+    },
+    {
+      "name": "repeat32g_s223457_d8",
+      "mass_g": 32,
+      "diameter_mm": 2,
+      "dt_s": 8e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4,
+      "seed": 223457,
+      "supplement_reason": "Separate paired step effect from initial-placement variation after serial 32g single-seed angle difference 2.22deg"
+    },
+    {
+      "name": "repeat32g_s223457_d4",
+      "mass_g": 32,
+      "diameter_mm": 2,
+      "dt_s": 4e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4,
+      "seed": 223457,
+      "supplement_reason": "Separate paired step effect from initial-placement variation after serial 32g single-seed angle difference 2.22deg"
+    },
+    {
+      "name": "repeat32g_s323457_d8",
+      "mass_g": 32,
+      "diameter_mm": 2,
+      "dt_s": 8e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4,
+      "seed": 323457,
+      "supplement_reason": "Separate paired step effect from initial-placement variation after serial 32g single-seed angle difference 2.22deg"
+    },
+    {
+      "name": "repeat32g_s323457_d4",
+      "mass_g": 32,
+      "diameter_mm": 2,
+      "dt_s": 4e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4,
+      "seed": 323457,
+      "supplement_reason": "Separate paired step effect from initial-placement variation after serial 32g single-seed angle difference 2.22deg"
+    },
+    {
+      "name": "repeat32g_s423457_d8",
+      "mass_g": 32,
+      "diameter_mm": 2,
+      "dt_s": 8e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4,
+      "seed": 423457,
+      "supplement_reason": "Separate paired step effect from initial-placement variation after serial 32g single-seed angle difference 2.22deg"
+    },
+    {
+      "name": "repeat32g_s423457_d4",
+      "mass_g": 32,
+      "diameter_mm": 2,
+      "dt_s": 4e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4,
+      "seed": 423457,
+      "supplement_reason": "Separate paired step effect from initial-placement variation after serial 32g single-seed angle difference 2.22deg"
+    },
+    {
+      "name": "repeat32g_s523457_d8",
+      "mass_g": 32,
+      "diameter_mm": 2,
+      "dt_s": 8e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4,
+      "seed": 523457,
+      "supplement_reason": "Separate paired step effect from initial-placement variation after serial 32g single-seed angle difference 2.22deg"
+    },
+    {
+      "name": "repeat32g_s523457_d4",
+      "mass_g": 32,
+      "diameter_mm": 2,
+      "dt_s": 4e-06,
+      "outlet_height_m": 0.1,
+      "mpi_ranks": 4,
+      "seed": 523457,
+      "supplement_reason": "Separate paired step effect from initial-placement variation after serial 32g single-seed angle difference 2.22deg"
+    }
+  ],
+  "limits": [
+    "This is a new execution version, not a continuation or additional repeat of serial batch 20260930T220306+0900",
+    "Contact and geometry inputs unchanged; MPI decomposition may change floating point trajectories",
+    "Global particle arrays collected by native gather_atoms; only rank 0 writes files",
+    "200 g trial has one seed; five paired seeds apply only to 32 g. Paper funnel dimensions and wall coefficients remain unverified",
+    "No parameter fitting and no R5 scene update",
+    "Paired 32g repeats are numerical initial-placement repeats, not physical experiments; no acceptance threshold is fitted from these results"
+  ]
+}

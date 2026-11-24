@@ -1,0 +1,79 @@
+{
+  "version": "mooncar-research-freeze-v3",
+  "frozen_utc": "2026-09-14T15:52:01.918811Z",
+  "repository": {
+    "branch": "codex/terrain-mapping-workbench",
+    "base_commit": "db1851ef9ac69ed40d5caa9cdb1f637b7e00a804",
+    "working_tree": "contains preserved tracked and untracked project work; this manifest identifies the reviewed files without committing them"
+  },
+  "source_archive_sha256": "eb164cd4c7c6b556c1f5b9f722cc7cabfb53e9f7cf3e23ad06dcf041f8aaf3eb",
+  "scope": {
+    "online_strategies": [
+      "nearest_view_v1",
+      "coverage_view_v1",
+      "surface_view_v1"
+    ],
+    "offline_models": "excluded from the online comparison freeze",
+    "hardware_acceptance": "not claimed",
+    "formal_comparison_ready": false,
+    "formal_campaign_started": true,
+    "remaining_requirement": "complete the frozen six-trial headless pipeline check, then freeze a feasible replacement formal protocol before any comparison run",
+    "formal_campaign_status": "54-trial campaign aborted due to host performance; all evidence retained and excluded from formal comparison"
+  },
+  "evaluation": {
+    "version": "mapping-acceptance-v1",
+    "coverage": "estimated_area_m2 / evaluable_area_m2",
+    "precision": "qualified_area_m2 / estimated_area_m2",
+    "score": "100 * coverage * precision",
+    "height_error_limit_m": 0.05,
+    "slope_error_limit_deg": 5.0,
+    "coverage_gate": 0.8,
+    "precision_gate": 0.9,
+    "status": "implemented and verified on one moving-capture sample; thresholds remain provisional simulation criteria"
+  },
+  "verification": {
+    "terrain_tests": "55 passed in 13.238 s",
+    "control_tests": "4 passed in 4.665 s",
+    "replay_cache_tests": "2 passed",
+    "javascript_syntax": "web/app.js and web/experiment_editor.js passed node --check",
+    "existing_mapping_evidence_hashes": "89 checked, 0 mismatches",
+    "existing_strategy_closeout": "6 retained attempts and 6 numerical reports passed check_evidence.py",
+    "strategy_runner_smoke": "one retained timing failure, then one 15-second nearest_view_v1 run completed with 26 synchronized frames and evaluable mapping-acceptance-v1 output",
+    "long_simulation_run": "not run during this freeze review",
+    "terrain_and_control_tests": "62 passed in 29.38 s",
+    "headless_batch_smoke": "15-second nearest_view_v1 run: GUI disabled, 20 raw-depth frames, coordinate contract and mapping-acceptance output verified; 82.9 wall seconds",
+    "performance_diagnosis": "container limited to four CPU cores, no GPU device request, inherited software OpenGL; --gpus all still reported Mesa llvmpipe for EGL"
+  },
+  "source_sha256": {
+    "scripts/autonomous_survey.py": "1b1ee3a62d418f44dd3c9ab62e4b4a5f931da62e6bc85b356281e00680d32202",
+    "scripts/compare_survey_strategies.py": "7e908efa4bc36d35b1e2640ec2f952ed0d876168c29f9122ce8a6a039d01414d",
+    "scripts/survey_evaluation.py": "004780a0d96f23b751ef8a5ef783730187dbdbc9847d2f84ca3fee30e8dd9f23",
+    "scripts/simulation_experiment.py": "e760cda5b97733442cddbb5a0c80b6e1a520aed9b0f282ed64d22ce00390b2dc",
+    "scripts/experiment_motion.py": "59a67e5d05a0b657e9ce08ad8d783bf7e501d03849a156a92c41ee36b430479e",
+    "scripts/map_workbench.py": "e2b3b0b44372a40172525ea214513d7cc9fa8a3dee9bc88f96843113cf975e50",
+    "scripts/mapping_acceptance.py": "df87081e629f30c125c8ca11de0ca9028d69c7f56753abbfd90a1ae720b809ff",
+    "scripts/report_mapping_acceptance.py": "d8bdfdc37f4a58f9242783fc2b8ad62c9ccfe9f57c96dcc5c7b758dff0b0a972",
+    "scripts/terrain_reference.py": "9f8a367e1ccb8ee55942d42471e6322665a350322836a96c018982c2ab732c69",
+    "scripts/trajectory_evaluation.py": "d9c08844c5517a86382752e62f3b790b65426c2790bc05e3c871baa6dff43f9f",
+    "ros2_ws/src/mooncar_control/scripts/cmd_vel_safety_relay.py": "2b04e9ef035ee872f4e3085b2375a6c3c4e21071daecf687656fb485e12b5bea",
+    "ros2_ws/src/mooncar_navigation/config/nav2_params.yaml": "2319a682b7485a229f12fd8f8e2557f220cda76c586be63f2bf0d7ae9b3dcef8",
+    "ros2_ws/src/mooncar_navigation/launch/navigation.launch.py": "156c27e89f0bc00bd2e64ee8587c7f89c89d146e8e2b5552089c1a53022f17db",
+    "ros2_ws/src/mooncar_navigation/launch/terrain_navigation.launch.py": "cc6f010a7012f7a90bcb70810adfd6179bf23e43f6b42cc6a601792afc52afb3",
+    "ros2_ws/src/mooncar_gazebo/launch/simulation.launch.py": "7c91f99552bef7f941b747e585dbf7bc2ed3e69c4986a0b7562eb8c25904c89f",
+    "ros2_ws/src/mooncar_terrain/launch/record_map.launch.py": "6a59afa00215336419c24534a4d9f92ffc0fd5ebd374d07501279a1dc59794c6",
+    "ros2_ws/src/mooncar_terrain/scripts/map_recorder.py": "b78501a1da98bb7e42efe407730216a1592d147d984ef54ad0ab9fca347e1153",
+    "ros2_ws/src/mooncar_terrain/scripts/navigation_gateway.py": "47e4254c86fa73974f08c119baa42429289b7cda87853a01e02380e0ddcdcca0",
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_geometry.py": "9ef1c21dfb8d0503d99286a6bde35fb2f0a938dbc9bcbf923e5897fbb7f25ed4",
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_map.py": "d43e3abdee30d4b70701fef793d65f8067149ae9bfdcbf4ada3041b407a1a856",
+    "ros2_ws/src/mooncar_terrain/scripts/terrain_node.py": "d3287b583df5b737f08e695bb18402b9eeef1f317e3c9a4e9f526d0d77ee204b",
+    "containers/experiment.launch.py": "8fcecdcbe9b24e5e91e3a10b55c5f1c88e97f9e295fe5614c47ac517d929fbfd",
+    "docs/autonomous_survey.md": "49aad286ed63d0a13ac14172a1bbcbc5103b18b08747100285eed727e714b1c0",
+    "docs/mapping_acceptance.md": "d95d6d513591d4866b586779195c6e3e3c7fe977421723f8858350487fcdcbc4",
+    "docs/survey_evaluation.md": "813b33e2e8bd7f5f1aaac1b53afba9c8a98aac105447eb65d3dac9aa79019fb5",
+    "ros2_ws/src/mooncar_control/tests/test_safety_relay.py": "3f528bfa2e5f7f97f38d4176583ddb7ea3696447b2ff1b1c1e47a315ad8344c2",
+    "ros2_ws/src/mooncar_terrain/tests/test_autonomous_survey.py": "3dd29dad6d236f5b16f8ca1af149fc64011b314a1f41e6a47400a8a3b776f2cd",
+    "ros2_ws/src/mooncar_terrain/tests/test_mapping_acceptance.py": "69508ee7736409f039310783c617e85986de348b56b02cfecdfc119f0b9d70e9",
+    "ros2_ws/src/mooncar_terrain/tests/test_simulation_experiment.py": "5acff448aa96587f247c3e5879c8293a63e23622cb0d0d17d7d9b9f05688e196",
+    "ros2_ws/src/mooncar_terrain/tests/test_trajectory_evaluation.py": "012859c8713a2d551471ce9b84cc54234bb161f02995c2f28b62b92580321fb3"
+  }
+}

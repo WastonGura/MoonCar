@@ -1,0 +1,1 @@
+{"name": "01-plate-left", "profile": "plate", "case": "left", "angular": 0.2, "started_wall": 1791672656.898197, "qualified": false, "original_vehicle_screen_passed": true, "maximum_displacement_m": 0.0001725562688298195, "exit_code": 0, "timed_out": false, "wall_seconds": 120.20594096183777, "error": null}

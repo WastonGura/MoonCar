@@ -1,0 +1,154 @@
+{
+  "slots": [
+    {
+      "trial": "smoke2g_rank1",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "smoke2g_rank4",
+      "status": "failed",
+      "exit_code": 1
+    },
+    {
+      "trial": "smoke2g_rank4_fixed",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "funnel200g",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "repeat32g_s123457_d8",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "repeat32g_s123457_d4",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "repeat32g_s223457_d8",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "repeat32g_s223457_d4",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "repeat32g_s323457_d8",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "repeat32g_s323457_d4",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "repeat32g_s423457_d8",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "repeat32g_s423457_d4",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "repeat32g_s523457_d8",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    },
+    {
+      "trial": "repeat32g_s523457_d4",
+      "status": "raw_data_audited",
+      "exit_code": 0
+    }
+  ],
+  "measurements": [
+    {
+      "trial": "smoke2g_rank1",
+      "profile_mean_angle_deg": null,
+      "minimum_profile_r_squared": null,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "smoke2g_rank4_fixed",
+      "profile_mean_angle_deg": null,
+      "minimum_profile_r_squared": null,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "funnel200g",
+      "profile_mean_angle_deg": 28.426187143496676,
+      "minimum_profile_r_squared": 0.9752641219470158,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "repeat32g_s123457_d8",
+      "profile_mean_angle_deg": 19.79781155691971,
+      "minimum_profile_r_squared": 0.8981782931213608,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "repeat32g_s123457_d4",
+      "profile_mean_angle_deg": 20.62174811166316,
+      "minimum_profile_r_squared": 0.9191862852169747,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "repeat32g_s223457_d8",
+      "profile_mean_angle_deg": 20.837146926756514,
+      "minimum_profile_r_squared": 0.8755677897781863,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "repeat32g_s223457_d4",
+      "profile_mean_angle_deg": 21.204505985598104,
+      "minimum_profile_r_squared": 0.849969539385185,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "repeat32g_s323457_d8",
+      "profile_mean_angle_deg": 20.08135851006159,
+      "minimum_profile_r_squared": 0.9184462970616365,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "repeat32g_s323457_d4",
+      "profile_mean_angle_deg": 22.18580893036708,
+      "minimum_profile_r_squared": 0.9565941905484043,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "repeat32g_s423457_d8",
+      "profile_mean_angle_deg": 21.097299881997536,
+      "minimum_profile_r_squared": 0.8061255577501637,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "repeat32g_s423457_d4",
+      "profile_mean_angle_deg": 21.06910120176886,
+      "minimum_profile_r_squared": 0.9224378822395254,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "repeat32g_s523457_d8",
+      "profile_mean_angle_deg": 21.6881675024266,
+      "minimum_profile_r_squared": 0.917099715499458,
+      "total_kinetic_stable": false
+    },
+    {
+      "trial": "repeat32g_s523457_d4",
+      "profile_mean_angle_deg": 21.77239315958094,
+      "minimum_profile_r_squared": 0.9329090824459721,
+      "total_kinetic_stable": false
+    }
+  ]
+}

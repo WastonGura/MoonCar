@@ -1,0 +1,150 @@
+[
+  {
+    "name": "01-plate-left",
+    "profile": "plate",
+    "case": "left",
+    "angular": 0.2,
+    "started_wall": 1791698366.296524,
+    "qualified": true,
+    "original_vehicle_screen_passed": true,
+    "maximum_displacement_m": 0.0001725562688298195,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 113.25003695487976,
+    "error": null
+  },
+  {
+    "name": "02-plate-right",
+    "profile": "plate",
+    "case": "right",
+    "angular": -0.2,
+    "started_wall": 1791698483.3590188,
+    "qualified": true,
+    "original_vehicle_screen_passed": true,
+    "maximum_displacement_m": 0.00017255625159969917,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 124.19188213348389,
+    "error": null
+  },
+  {
+    "name": "03-coplanar_mesh-left",
+    "profile": "coplanar_mesh",
+    "case": "left",
+    "angular": 0.2,
+    "started_wall": 1791698612.0043643,
+    "qualified": true,
+    "original_vehicle_screen_passed": true,
+    "maximum_displacement_m": 0.00088699927962369,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 157.77221870422363,
+    "error": null,
+    "corresponding_input_pair": {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  },
+  {
+    "name": "04-coplanar_mesh-right",
+    "profile": "coplanar_mesh",
+    "case": "right",
+    "angular": -0.2,
+    "started_wall": 1791698774.9942677,
+    "qualified": true,
+    "original_vehicle_screen_passed": true,
+    "maximum_displacement_m": 0.0021689532434050886,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 164.83661317825317,
+    "error": null,
+    "corresponding_input_pair": {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  },
+  {
+    "name": "05-mirrored_mesh-left",
+    "profile": "mirrored_mesh",
+    "case": "left",
+    "angular": 0.2,
+    "started_wall": 1791698945.0068486,
+    "qualified": true,
+    "original_vehicle_screen_passed": true,
+    "maximum_displacement_m": 0.0021708596832744043,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 164.83074498176575,
+    "error": null,
+    "corresponding_input_pair": {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  },
+  {
+    "name": "06-mirrored_mesh-right",
+    "profile": "mirrored_mesh",
+    "case": "right",
+    "angular": -0.2,
+    "started_wall": 1791699114.915926,
+    "qualified": true,
+    "original_vehicle_screen_passed": true,
+    "maximum_displacement_m": 0.0019787358754334416,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 164.3491485118866,
+    "error": null,
+    "corresponding_input_pair": {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  },
+  {
+    "name": "07-restore_plate-left",
+    "profile": "restore_plate",
+    "case": "left",
+    "angular": 0.2,
+    "started_wall": 1791699284.5572765,
+    "qualified": true,
+    "original_vehicle_screen_passed": true,
+    "maximum_displacement_m": 0.0001725562688298195,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 121.67588829994202,
+    "error": null,
+    "corresponding_input_pair": {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  },
+  {
+    "name": "08-restore_plate-right",
+    "profile": "restore_plate",
+    "case": "right",
+    "angular": -0.2,
+    "started_wall": 1791699410.1189685,
+    "qualified": true,
+    "original_vehicle_screen_passed": true,
+    "maximum_displacement_m": 0.00017255625159969917,
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_seconds": 121.68383932113647,
+    "error": null,
+    "corresponding_input_pair": {
+      "passed": true,
+      "distance_difference_m": 0.0,
+      "turn_difference_rad": 0.0,
+      "duration_difference_s": 0.0
+    }
+  }
+]

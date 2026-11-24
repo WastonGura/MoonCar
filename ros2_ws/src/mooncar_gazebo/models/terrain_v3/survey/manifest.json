@@ -1,0 +1,679 @@
+{
+  "version": "terrain-v3-continuous-v1",
+  "world": "mooncar_survey_v3.sdf",
+  "size_m": 30.0,
+  "grid_step_m": 0.1,
+  "height_min_m": -0.307756,
+  "height_max_m": 0.212975,
+  "construction": {
+    "method": "Global screened minimum-curvature residual",
+    "energy": "||L c||^2 + (grid_step/influence_length)^4 ||c||^2, fixed measured cores and protected zones",
+    "influence_length_m": 2.5,
+    "relative_linear_residual": 8.653678522786803e-15,
+    "measured_inputs": [
+      {
+        "name": "fresh_crater",
+        "center_m": [
+          4.8,
+          3.6
+        ],
+        "size_m": 4.8,
+        "source_sha256": "d4729312dc9248211e355676fba0258bb330efb9efa2107ceb83bd46acc05c5f",
+        "scope": "Original-scale 5 cm source sampled at shared 10 cm grid; no vertical scaling"
+      },
+      {
+        "name": "measured_background",
+        "center_m": [
+          6.0,
+          -5.1
+        ],
+        "size_m": 6.0,
+        "source_sha256": "c2d1b97c657ac2e73e20fcde24b38406e4a9ebf86a37e09895207410d6bfe691",
+        "scope": "Original-scale 5 cm source sampled at shared 10 cm grid; no vertical scaling"
+      }
+    ],
+    "unknown_vertices": 78241,
+    "fixed_vertices": 12360
+  },
+  "seed": 20261117,
+  "class_parameters": {
+    "regolith_passable": {
+      "id": 0,
+      "mu": 0.8,
+      "mu2": 0.72
+    },
+    "sand_soft": {
+      "id": 1,
+      "mu": 0.52,
+      "mu2": 0.48
+    },
+    "rubble_gravel": {
+      "id": 2,
+      "mu": 0.9,
+      "mu2": 0.82
+    },
+    "rock_boulder": {
+      "id": 3,
+      "mu": 1.0,
+      "mu2": 0.92
+    },
+    "crater_floor": {
+      "id": 4,
+      "mu": 0.64,
+      "mu2": 0.58
+    }
+  },
+  "mesh_parts": {
+    "regolith_passable": {
+      "vertices": 85317,
+      "triangles": 168818,
+      "projected_area_m2": 844.0900000000001
+    },
+    "sand_soft": {
+      "vertices": 1733,
+      "triangles": 3280,
+      "projected_area_m2": 16.400000000000002
+    },
+    "rubble_gravel": {
+      "vertices": 3311,
+      "triangles": 6096,
+      "projected_area_m2": 30.480000000000008
+    },
+    "rock_boulder": {
+      "vertices": 105,
+      "triangles": 166,
+      "projected_area_m2": 0.8300000000000002
+    },
+    "crater_floor": {
+      "vertices": 885,
+      "triangles": 1640,
+      "projected_area_m2": 8.200000000000001
+    }
+  },
+  "boulders": [
+    {
+      "name": "boulder_01",
+      "position_m": [
+        -3.2,
+        4.5,
+        0.11318400000000002
+      ],
+      "radii_m": [
+        0.215,
+        0.215,
+        0.15
+      ],
+      "variant": 4,
+      "class_id": 3,
+      "ground_z_m": 0.015684000000000014
+    },
+    {
+      "name": "boulder_02",
+      "position_m": [
+        1.7,
+        7.0,
+        0.118235
+      ],
+      "radii_m": [
+        0.17,
+        0.17,
+        0.12
+      ],
+      "variant": 5,
+      "class_id": 3,
+      "ground_z_m": 0.040235000000000014
+    },
+    {
+      "name": "boulder_03",
+      "position_m": [
+        7.2,
+        3.0,
+        0.034532000000000146
+      ],
+      "radii_m": [
+        0.135,
+        0.135,
+        0.1
+      ],
+      "variant": 0,
+      "class_id": 3,
+      "ground_z_m": -0.03046799999999986
+    },
+    {
+      "name": "boulder_04",
+      "position_m": [
+        -7.4,
+        -1.5,
+        0.08792799999999999
+      ],
+      "radii_m": [
+        0.13,
+        0.13,
+        0.1
+      ],
+      "variant": 1,
+      "class_id": 3,
+      "ground_z_m": 0.022927999999999987
+    },
+    {
+      "name": "boulder_05",
+      "position_m": [
+        4.0,
+        -7.4,
+        -0.11608100000000013
+      ],
+      "radii_m": [
+        0.12,
+        0.12,
+        0.09
+      ],
+      "variant": 2,
+      "class_id": 3,
+      "ground_z_m": -0.17458100000000012
+    }
+  ],
+  "pebbles": [
+    {
+      "position_m": [
+        -3.8923737373896388,
+        6.393539762599284,
+        0.11569185756418451
+      ],
+      "ground_z_m": 0.11766616043816887,
+      "diameter_m": 0.07897211495937445,
+      "variant": 1,
+      "yaw_rad": 4.274773874825677,
+      "exposed_vertex_range_m": [
+        -0.021649285406744254,
+        0.017836772072942972
+      ]
+    },
+    {
+      "position_m": [
+        2.035313201493347,
+        -3.4006400432387838,
+        -0.007375676891279353
+      ],
+      "ground_z_m": -0.005758082476713072,
+      "diameter_m": 0.06470377658265122,
+      "variant": 4,
+      "yaw_rad": 5.6498770322629035,
+      "exposed_vertex_range_m": [
+        -0.017816235900063548,
+        0.014535652391262066
+      ]
+    },
+    {
+      "position_m": [
+        1.5876315154812912,
+        -4.529382878344323,
+        -0.0387372531996218
+      ],
+      "ground_z_m": -0.03694168805455459,
+      "diameter_m": 0.07182260580268818,
+      "variant": 4,
+      "yaw_rad": 1.8831544066521886,
+      "exposed_vertex_range_m": [
+        -0.019716077414551877,
+        0.01619522548679221
+      ]
+    },
+    {
+      "position_m": [
+        -4.329849453421331,
+        4.963907615265682,
+        0.07766567588309964
+      ],
+      "ground_z_m": 0.07915497048452981,
+      "diameter_m": 0.05957178405720694,
+      "variant": 2,
+      "yaw_rad": 0.8912484826990774,
+      "exposed_vertex_range_m": [
+        -0.016596706863669416,
+        0.013507033754474054
+      ]
+    },
+    {
+      "position_m": [
+        -4.317254759375601,
+        6.676164422895401,
+        0.028986662198111416
+      ],
+      "ground_z_m": 0.03022261298477405,
+      "diameter_m": 0.049438031466505314,
+      "variant": 4,
+      "yaw_rad": 2.501422835957203,
+      "exposed_vertex_range_m": [
+        -0.01403184489238915,
+        0.01225758652881899
+      ]
+    },
+    {
+      "position_m": [
+        -6.8231601960560955,
+        4.733482142940237,
+        0.12523366010751036
+      ],
+      "ground_z_m": 0.1275949555178917,
+      "diameter_m": 0.09445181641525431,
+      "variant": 0,
+      "yaw_rad": 1.8370699556604764,
+      "exposed_vertex_range_m": [
+        -0.028004633256603018,
+        0.020940951864910212
+      ]
+    },
+    {
+      "position_m": [
+        -4.013406316342094,
+        5.692588126749013,
+        0.10929556286671982
+      ],
+      "ground_z_m": 0.11070421225383341,
+      "diameter_m": 0.05634597548454349,
+      "variant": 1,
+      "yaw_rad": 0.033856852276958914,
+      "exposed_vertex_range_m": [
+        -0.015635462242555687,
+        0.012537525499716068
+      ]
+    },
+    {
+      "position_m": [
+        -4.8612805251601765,
+        8.262827567226706,
+        0.02352582951468947
+      ],
+      "ground_z_m": 0.024585679647681755,
+      "diameter_m": 0.042394005319691425,
+      "variant": 4,
+      "yaw_rad": 1.9227303357729577,
+      "exposed_vertex_range_m": [
+        -0.01154750757969943,
+        0.009649495080146283
+      ]
+    },
+    {
+      "position_m": [
+        -7.920347281521504,
+        5.362797776269145,
+        0.11920313656272923
+      ],
+      "ground_z_m": 0.12025900004805214,
+      "diameter_m": 0.04223453941291665,
+      "variant": 0,
+      "yaw_rad": 5.083980400775521,
+      "exposed_vertex_range_m": [
+        -0.011737020962612144,
+        0.01021888257920215
+      ]
+    },
+    {
+      "position_m": [
+        -5.572756706669417,
+        8.9332627602614,
+        0.08543178113222995
+      ],
+      "ground_z_m": 0.08658603188987621,
+      "diameter_m": 0.046170030305850464,
+      "variant": 2,
+      "yaw_rad": 4.141797054667714,
+      "exposed_vertex_range_m": [
+        -0.012654055945799679,
+        0.010430959207125556
+      ]
+    },
+    {
+      "position_m": [
+        -6.2206845050667265,
+        9.408582336139263,
+        0.10021964786495689
+      ],
+      "ground_z_m": 0.10113326095807336,
+      "diameter_m": 0.036544523724658884,
+      "variant": 0,
+      "yaw_rad": 2.902324912599442,
+      "exposed_vertex_range_m": [
+        -0.01016184837125067,
+        0.008863898439791948
+      ]
+    },
+    {
+      "position_m": [
+        1.5039846841462985,
+        -4.32652990913707,
+        -0.029134614183323127
+      ],
+      "ground_z_m": -0.028338793493459427,
+      "diameter_m": 0.03183282759454803,
+      "variant": 1,
+      "yaw_rad": 0.6791628218236408,
+      "exposed_vertex_range_m": [
+        -0.008758088808617526,
+        0.007158324988656488
+      ]
+    },
+    {
+      "position_m": [
+        -6.432253640899809,
+        4.907410339818151,
+        0.12977927559468175
+      ],
+      "ground_z_m": 0.131273757035676,
+      "diameter_m": 0.059779257639770274,
+      "variant": 1,
+      "yaw_rad": 2.774018981051532,
+      "exposed_vertex_range_m": [
+        -0.01655816059526806,
+        0.013331468224617074
+      ]
+    },
+    {
+      "position_m": [
+        -6.527875677264245,
+        4.913959451338546,
+        0.13147082476666982
+      ],
+      "ground_z_m": 0.1323467015843954,
+      "diameter_m": 0.03503507270902288,
+      "variant": 2,
+      "yaw_rad": 1.9375725065635234,
+      "exposed_vertex_range_m": [
+        -0.00972220188808895,
+        0.007795334466422499
+      ]
+    },
+    {
+      "position_m": [
+        -4.191904100958284,
+        8.088028144271194,
+        0.10654269129022577
+      ],
+      "ground_z_m": 0.108172487108321,
+      "diameter_m": 0.0651918327238094,
+      "variant": 5,
+      "yaw_rad": 6.183248348236826,
+      "exposed_vertex_range_m": [
+        -0.017886360936935394,
+        0.015334752589677453
+      ]
+    },
+    {
+      "position_m": [
+        2.17777028015768,
+        -5.527190333676566,
+        -0.08548868650927846
+      ],
+      "ground_z_m": -0.08426041472644087,
+      "diameter_m": 0.04913087131350338,
+      "variant": 5,
+      "yaw_rad": 1.103800731792171,
+      "exposed_vertex_range_m": [
+        -0.013524893026206375,
+        0.011040542630545316
+      ]
+    },
+    {
+      "position_m": [
+        -4.580419318082529,
+        5.720907340173113,
+        0.07483601300902239
+      ],
+      "ground_z_m": 0.07667246472855713,
+      "diameter_m": 0.07345806878138963,
+      "variant": 4,
+      "yaw_rad": 5.13925842314657,
+      "exposed_vertex_range_m": [
+        -0.01966555947615605,
+        0.017063474914538773
+      ]
+    },
+    {
+      "position_m": [
+        1.241899326719558,
+        -5.374080652669422,
+        -0.07138109349453484
+      ],
+      "ground_z_m": -0.06999120350313533,
+      "diameter_m": 0.05559559965598053,
+      "variant": 2,
+      "yaw_rad": 4.195403948862164,
+      "exposed_vertex_range_m": [
+        -0.015275857952138509,
+        0.012521941875851754
+      ]
+    },
+    {
+      "position_m": [
+        1.5292335325602977,
+        -5.437824547533832,
+        -0.08010086560201637
+      ],
+      "ground_z_m": -0.07764279202421405,
+      "diameter_m": 0.09832294311209316,
+      "variant": 0,
+      "yaw_rad": 4.019891396593401,
+      "exposed_vertex_range_m": [
+        -0.026752534975264475,
+        0.02210608201999081
+      ]
+    },
+    {
+      "position_m": [
+        -4.419168412431334,
+        5.623442976258406,
+        0.10626657385084444
+      ],
+      "ground_z_m": 0.10783058197623195,
+      "diameter_m": 0.0625603250155004,
+      "variant": 2,
+      "yaw_rad": 0.7990651725149256,
+      "exposed_vertex_range_m": [
+        -0.017015031090262644,
+        0.014265131417487559
+      ]
+    },
+    {
+      "position_m": [
+        -5.066276178368916,
+        4.585375641362835,
+        0.09730522875340032
+      ],
+      "ground_z_m": 0.09850060151999239,
+      "diameter_m": 0.04781491066368283,
+      "variant": 3,
+      "yaw_rad": 5.523017106775922,
+      "exposed_vertex_range_m": [
+        -0.013041116785329543,
+        0.010866338546511867
+      ]
+    },
+    {
+      "position_m": [
+        -5.038446138010689,
+        8.402848320706877,
+        0.02227701359422584
+      ],
+      "ground_z_m": 0.02475698987888682,
+      "diameter_m": 0.09919905138643918,
+      "variant": 4,
+      "yaw_rad": 4.376050070224974,
+      "exposed_vertex_range_m": [
+        -0.02863969393163255,
+        0.022164298149299735
+      ]
+    },
+    {
+      "position_m": [
+        -7.174536447810116,
+        9.100744350977331,
+        0.11112756672919016
+      ],
+      "ground_z_m": 0.11213077378110078,
+      "diameter_m": 0.04012828207642495,
+      "variant": 3,
+      "yaw_rad": 0.8735654671635465,
+      "exposed_vertex_range_m": [
+        -0.010949871258235488,
+        0.009198902594986832
+      ]
+    },
+    {
+      "position_m": [
+        -7.770030259398889,
+        7.098221194660818,
+        0.0689235232775919
+      ],
+      "ground_z_m": 0.07033554002343156,
+      "diameter_m": 0.056480669833586745,
+      "variant": 1,
+      "yaw_rad": 1.3946799534703382,
+      "exposed_vertex_range_m": [
+        -0.0170073383756556,
+        0.012690925585413734
+      ]
+    },
+    {
+      "position_m": [
+        -4.463080011914862,
+        4.886030244255511,
+        0.08315981668538215
+      ],
+      "ground_z_m": 0.08537980772558469,
+      "diameter_m": 0.08879964160810161,
+      "variant": 1,
+      "yaw_rad": 3.7169411052529533,
+      "exposed_vertex_range_m": [
+        -0.02444596136548561,
+        0.019953859438565195
+      ]
+    },
+    {
+      "position_m": [
+        -3.899897836308844,
+        6.882777811951987,
+        0.10903170910642569
+      ],
+      "ground_z_m": 0.1114312322021654,
+      "diameter_m": 0.0959809238295883,
+      "variant": 2,
+      "yaw_rad": 2.9734196647570843,
+      "exposed_vertex_range_m": [
+        -0.026409678233915074,
+        0.021580783680879068
+      ]
+    },
+    {
+      "position_m": [
+        -7.941047662812513,
+        7.936747290279392,
+        0.13659256294683353
+      ],
+      "ground_z_m": 0.13896681671247876,
+      "diameter_m": 0.09497015062580907,
+      "variant": 1,
+      "yaw_rad": 4.231174431468604,
+      "exposed_vertex_range_m": [
+        -0.0262669014250339,
+        0.021218173887870645
+      ]
+    },
+    {
+      "position_m": [
+        -7.57288032213671,
+        8.82302866898819,
+        0.11616382362985239
+      ],
+      "ground_z_m": 0.11716186598484035,
+      "diameter_m": 0.039921694199518215,
+      "variant": 2,
+      "yaw_rad": 4.781865776763269,
+      "exposed_vertex_range_m": [
+        -0.011020096653821171,
+        0.00894075044593795
+      ]
+    },
+    {
+      "position_m": [
+        -5.311924175455312,
+        4.715971736468353,
+        0.12614581985723683
+      ],
+      "ground_z_m": 0.12748811873936933,
+      "diameter_m": 0.05369195528529998,
+      "variant": 4,
+      "yaw_rad": 0.2680763142891256,
+      "exposed_vertex_range_m": [
+        -0.01472415177731265,
+        0.012121825865337332
+      ]
+    },
+    {
+      "position_m": [
+        -4.639312075318007,
+        8.522958577283477,
+        0.09697515111284251
+      ],
+      "ground_z_m": 0.09840023593455606,
+      "diameter_m": 0.057003392868541884,
+      "variant": 4,
+      "yaw_rad": 4.856003973758142,
+      "exposed_vertex_range_m": [
+        -0.015682222582047448,
+        0.012819473852223498
+      ]
+    },
+    {
+      "position_m": [
+        -5.673870854263902,
+        9.079423781832746,
+        0.10440917785800985
+      ],
+      "ground_z_m": 0.10587597237281691,
+      "diameter_m": 0.058671780592282466,
+      "variant": 0,
+      "yaw_rad": 3.1754343863886767,
+      "exposed_vertex_range_m": [
+        -0.01655458222040597,
+        0.01308083056024395
+      ]
+    }
+  ],
+  "surface_atlas": {
+    "version": "continuous-atlas-v1",
+    "seed": 20261006,
+    "pixels_per_m": 128,
+    "size_px": 3840,
+    "blend_sigma_m": 0.15,
+    "uv": "southwest=(0,0), northeast=(1,1)",
+    "status": "procedural appearance; not measured lunar reflectance"
+  },
+  "preserved_v2_world_sha256": "08e9837e09b53e06fa0569423e0dc4775b1456508ca999cfef6fdf3444fb1555",
+  "source_manifest_sha256": "740fc5161f60855c25dd6d01308e1afd20d4b5f7b6f08a7a02243341e573f552",
+  "world_sha256": "c51a010d456cd4ad6ce78e36d0958be84ae4bd6ad2193cdfd533cadef2b1eae4",
+  "generator_sha256": "dceddf275174f25a8dad1f009f66efce8dd3a9704514dfda54b16d097caad609",
+  "mesh_sha256": {
+    "crater_floor.obj": "6df44e7dd0b64dadabf805369874ecbd26f55433161a4c0f2eee1985d6ecbbbd",
+    "regolith_passable.obj": "c4326b8d3f8b1f291137151a94df4c02045ed041ad0c8217b36726080e4b48df",
+    "rock_boulder.obj": "8470d35204348e41c50dcfce49913c3780b933bf9b3601c56c9cf499ddf9f094",
+    "rubble_gravel.obj": "4f5a03abb40244b4ebe8354f8aac47c58c1884f9c0c12c9d21398bfe70e6e58a",
+    "sand_soft.obj": "a661a269fd5837d7dc0d509f416704a88d9ec4305474011a5999f85d1b6f4810",
+    "surface_pebbles.obj": "7f30bd9b994c6654fddc2a401cefb8b14df86defe14f6728e1afef91307df288"
+  },
+  "grid_sha256": "6ff2866e5ca60715e054dce4976ff24574eda894a37d4d5cff5542a5137417a4",
+  "class_mask_sha256": "5e5b49d038636f4ac3bf1272baca9f3b9668e4164360561851f0f9e0c4e9344e",
+  "shared_rock_sha256": {
+    "boulder_00.obj": "de5dda8be5a555f774754af92f9b7cfa8d4a94861d4b8cbc599a499a1f6cc7ff",
+    "boulder_01.obj": "58fd4d526a0d07f107add2ba179b789a547cccfb2bb2f1c8f88bf4c45124d804",
+    "boulder_02.obj": "29257859503fffc14fa31d637290573fe70ef25592403bff7f1a79c75d1d7a61",
+    "boulder_03.obj": "e4fbe8a7043d660cf45583a22e8ef6ae39bd81711635138d6f7d92f338950bf8",
+    "boulder_04.obj": "f1eb5dfdd5feecf7428d691f1acd122bc7130d37422c035fb5dc0f0f0d2d7dfb",
+    "boulder_05.obj": "861d49d6bf9d8d4b3dc6b16bd6d070bc52ef6c46e00e03034d2376555fdf85da"
+  },
+  "texture_sha256": {
+    "survey_v3_surface_albedo.png": "dbdee2febf143b1a3e2c78688f7fc26ea6b44b9669d59c575c81068f4b7f6be7",
+    "survey_v3_surface_normal.png": "137a0ca43cab5eca4016f5c2a458727bb8526c821b3ba4e5b2836f77a0ffead2",
+    "survey_v3_surface_roughness.png": "b25640d6a2590574e5df9cd439ffd865bf42e2b08a6456fcd40cdfc16af99a5c"
+  },
+  "scope": "Engineered continuous simulation scene with measured shape cores; contact parameters remain engineering assumptions"
+}

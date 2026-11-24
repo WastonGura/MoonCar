@@ -1,0 +1,24 @@
+	linux-vdso.so.1 (0x0000718e033a4000)
+	librclcpp.so => /opt/ros/jazzy/lib/librclcpp.so (0x0000718e03103000)
+	librcutils.so => /opt/ros/jazzy/lib/librcutils.so (0x0000718e030e3000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x0000718e02e4c000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x0000718e02e1e000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000718e02c0b000)
+	liblibstatistics_collector.so => not found
+	librcl.so => not found
+	librcl_yaml_param_parser.so => not found
+	librosgraph_msgs__rosidl_typesupport_cpp.so => not found
+	libstatistics_msgs__rosidl_typesupport_cpp.so => not found
+	libtracetools.so => not found
+	librcl_logging_interface.so => not found
+	librmw_implementation.so => not found
+	libament_index_cpp.so => not found
+	libtype_description_interfaces__rosidl_typesupport_c.so => not found
+	librcl_interfaces__rosidl_typesupport_cpp.so => not found
+	librmw.so => not found
+	librosidl_dynamic_typesupport.so => not found
+	librosidl_typesupport_introspection_cpp.so => not found
+	librcpputils.so => not found
+	librosidl_runtime_c.so => not found
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x0000718e02b1a000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000718e033a6000)

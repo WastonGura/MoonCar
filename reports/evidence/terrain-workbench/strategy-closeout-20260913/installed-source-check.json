@@ -1,0 +1,27 @@
+{
+  "matched": 53,
+  "missing": [
+    "mooncar_terrain/tests/test_arrival_resampling.py",
+    "mooncar_terrain/tests/test_autonomous_survey.py",
+    "mooncar_terrain/tests/test_capture_startup.py",
+    "mooncar_terrain/tests/test_depth_projection_evaluation.py",
+    "mooncar_terrain/tests/test_experiment_motion.py",
+    "mooncar_terrain/tests/test_heading_control.py",
+    "mooncar_terrain/tests/test_observation_path.py",
+    "mooncar_terrain/tests/test_resampling_attribution.py",
+    "mooncar_terrain/tests/test_resampling_dataset.py",
+    "mooncar_terrain/tests/test_simulation_experiment.py",
+    "mooncar_terrain/tests/test_skip_probe.py",
+    "mooncar_terrain/tests/test_surface_quality_evaluation.py",
+    "mooncar_terrain/tests/test_survey_evaluation.py",
+    "mooncar_terrain/tests/test_survey_polling.py",
+    "mooncar_terrain/tests/test_swept_resampling.py",
+    "mooncar_terrain/tests/test_terrain_reference.py",
+    "mooncar_terrain/tests/test_trajectory_evaluation.py"
+  ],
+  "mismatched": [
+    "mooncar_terrain/tests/test_geometry.py",
+    "mooncar_terrain/tests/test_terrain_map.py",
+    "mooncar_terrain/tests/test_workbench_api.py"
+  ]
+}

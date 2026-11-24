@@ -1,0 +1,109 @@
+﻿
+Microsoft DiskPart version 10.0.26100.1150
+
+Copyright (C) Microsoft Corporation.
+On computer: HOMURA
+
+DiskPart successfully selected the virtual disk file.
+
+Device type ID: 0 (Unknown)
+Vendor ID: {00000000-0000-0000-0000-000000000000} (Unknown)
+State: Added
+Virtual size: 1024 GB
+Physical size:  205 GB
+Filename: C:\Users\jiker\AppData\Local\Docker\wsl\disk\docker_data.vhdx
+Is Child: No
+Parent Filename: 
+Associated disk#: Not found.
+
+
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   10 percent completed
+   11 percent completed
+   11 percent completed
+   12 percent completed
+   14 percent completed
+   20 percent completed
+   20 percent completed
+   35 percent completed
+   36 percent completed
+   73 percent completed
+   74 percent completed
+   75 percent completed
+   76 percent completed
+   77 percent completed
+   77 percent completed
+   78 percent completed
+   78 percent completed
+   79 percent completed
+   79 percent completed
+   80 percent completed
+   81 percent completed
+   81 percent completed
+   82 percent completed
+   83 percent completed
+   84 percent completed
+   84 percent completed
+   85 percent completed
+   87 percent completed
+   88 percent completed
+   91 percent completed
+   91 percent completed
+   91 percent completed
+   93 percent completed
+   93 percent completed
+   93 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   98 percent completed
+   99 percent completed
+  100 percent completed
+
+
+DiskPart successfully compacted the virtual disk file.
+
+Device type ID: 0 (Unknown)
+Vendor ID: {00000000-0000-0000-0000-000000000000} (Unknown)
+State: Added
+Virtual size: 1024 GB
+Physical size:   17 GB
+Filename: C:\Users\jiker\AppData\Local\Docker\wsl\disk\docker_data.vhdx
+Is Child: No
+Parent Filename: 
+Associated disk#: Not found.
+
+Leaving DiskPart...

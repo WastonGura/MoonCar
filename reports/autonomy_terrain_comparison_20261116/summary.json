@@ -1,0 +1,106 @@
+[
+  {
+    "strategy": "baseline",
+    "experiment": "experiment-371c002dfcbb",
+    "terrain_strategy": "baseline",
+    "tested_commit": "d359750fc9fb1952944d9f691d3050a8b884b3fb",
+    "outcome": "budget_completed",
+    "phase": "budget_reached",
+    "reason": "剩余时间不足以完成下一候选观察动作",
+    "budget_seconds": 180.0,
+    "elapsed_seconds": 169.6,
+    "wall_seconds": 945.906508221,
+    "chosen_actions": 11,
+    "successful_actions": 11,
+    "movement_actions": 8,
+    "localization_pauses": 0,
+    "truth_track_length_m_sampled_10hz": 10.72727389275624,
+    "coverage": {
+      "roi_area_m2": 201.75,
+      "observed_area_m2": 160.625,
+      "observed_fraction": 0.7961586121437423,
+      "quality_area_m2": 111.04375,
+      "sufficient_area_m2": 86.3125,
+      "mean_observed_quality": 0.6913229571984436,
+      "valid_surface_area_m2": 145.625,
+      "frames": 310,
+      "quality_stamp": 170.8
+    },
+    "coverage_scope": "Start-relative 8 m disk only; excludes sensor observations beyond this disk.",
+    "full_world_coverage": {
+      "world_bounds": [
+        -15,
+        -15,
+        15,
+        15
+      ],
+      "observed_area_m2": 182.5,
+      "sufficient_area_m2": 86.875,
+      "valid_surface_area_m2": 157.5
+    },
+    "xy_error_m": {
+      "median": 0.01165589596262779,
+      "p95": 0.020998424970238242,
+      "maximum": 0.023960930775645786
+    },
+    "actual_gui_captures": 2807,
+    "capture_error": null,
+    "encoder_exit": 0,
+    "video_process_exit": 0,
+    "driver_exit": 0,
+    "backend_exit": 0,
+    "camera_follow_confirmed": true
+  },
+  {
+    "strategy": "candidate",
+    "experiment": "experiment-42555ed21b7c",
+    "terrain_strategy": "elevation_neighborhood_v1",
+    "tested_commit": "d359750fc9fb1952944d9f691d3050a8b884b3fb",
+    "outcome": "budget_completed",
+    "phase": "budget_reached",
+    "reason": "剩余时间不足以完成下一候选观察动作",
+    "budget_seconds": 180.0,
+    "elapsed_seconds": 175.2,
+    "wall_seconds": 952.0670696689995,
+    "chosen_actions": 11,
+    "successful_actions": 11,
+    "movement_actions": 10,
+    "localization_pauses": 0,
+    "truth_track_length_m_sampled_10hz": 16.119074894376272,
+    "coverage": {
+      "roi_area_m2": 201.75,
+      "observed_area_m2": 159.25,
+      "observed_fraction": 0.7893432465923172,
+      "quality_area_m2": 118.67693750000001,
+      "sufficient_area_m2": 111.25,
+      "mean_observed_quality": 0.7452240973312403,
+      "valid_surface_area_m2": 149.0,
+      "frames": 310,
+      "quality_stamp": 175.0
+    },
+    "coverage_scope": "Start-relative 8 m disk only; excludes sensor observations beyond this disk.",
+    "full_world_coverage": {
+      "world_bounds": [
+        -15,
+        -15,
+        15,
+        15
+      ],
+      "observed_area_m2": 210.6875,
+      "sufficient_area_m2": 116.375,
+      "valid_surface_area_m2": 180.3125
+    },
+    "xy_error_m": {
+      "median": 0.017059696463435983,
+      "p95": 0.03145382798270375,
+      "maximum": 0.03237914981994024
+    },
+    "actual_gui_captures": 2824,
+    "capture_error": null,
+    "encoder_exit": 0,
+    "video_process_exit": 0,
+    "driver_exit": 0,
+    "backend_exit": 0,
+    "camera_follow_confirmed": true
+  }
+]

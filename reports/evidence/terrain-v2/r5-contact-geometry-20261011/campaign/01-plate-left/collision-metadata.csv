@@ -1,0 +1,15 @@
+iteration,t_ns,kind,entity,value
+1,1000000,collision_detector,1,ode
+1,1000000,collision,7,r5_check::plate::surface::plate
+1,1000000,collision,23,r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__base_link_collision
+1,1000000,collision,24,r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__battery_link_collision_1
+1,1000000,collision,25,r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__camera_mount_link_collision_2
+1,1000000,collision,26,r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__imu_link_collision_3
+1,1000000,collision,27,r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__lidar_link_collision_4
+1,1000000,collision,32,r5_check::mooncar::camera_pan_link::camera_pan_link_collision
+1,1000000,collision,39,r5_check::mooncar::camera_tilt_link::camera_tilt_link_collision
+1,1000000,collision,40,r5_check::mooncar::camera_tilt_link::camera_tilt_link_fixed_joint_lump__depth_camera_link_collision_1
+1,1000000,collision,55,r5_check::mooncar::front_left_wheel_link::front_left_wheel_link_collision
+1,1000000,collision,69,r5_check::mooncar::front_right_wheel_link::front_right_wheel_link_collision
+1,1000000,collision,83,r5_check::mooncar::rear_left_wheel_link::rear_left_wheel_link_collision
+1,1000000,collision,97,r5_check::mooncar::rear_right_wheel_link::rear_right_wheel_link_collision

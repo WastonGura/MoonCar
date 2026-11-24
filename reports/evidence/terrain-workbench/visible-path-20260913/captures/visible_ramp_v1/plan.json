@@ -1,0 +1,30 @@
+{
+  "start": [
+    0,
+    -0.6,
+    0.463648
+  ],
+  "goal": [
+    0.8,
+    -0.2
+  ],
+  "seconds": 25,
+  "baseline_seconds": 5,
+  "conditions": [
+    "stationary",
+    "approach"
+  ],
+  "scene": "visible_ramp_v1",
+  "planned_path": [
+    [
+      0,
+      -0.6
+    ],
+    [
+      0.8,
+      -0.2
+    ]
+  ],
+  "path_kind": "Predeclared straight segment; not a queried Nav2 global path",
+  "limits": "One paired mechanism trial; not strategy efficacy or physical validation"
+}

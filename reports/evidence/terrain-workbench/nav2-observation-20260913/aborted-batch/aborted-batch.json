@@ -1,0 +1,20 @@
+{
+  "reason": "within_region imported from wrong module before any move; aborted remaining trials to fix wiring",
+  "last_task": {
+    "version": 1,
+    "region": [
+      -25.0,
+      -25.0,
+      25.0,
+      25.0
+    ],
+    "start": [
+      0.0,
+      0.6,
+      -0.463648
+    ],
+    "scene": "visible_curve_v1",
+    "id": "experiment-13c89b8018dd"
+  },
+  "last_motion": "idle"
+}

@@ -1,0 +1,12 @@
+{
+  "executed_nonzero_skip_probes": [],
+  "unprobed_skip_suggestions": [
+    "visible_ramp_v1-repeat2-no_turn"
+  ],
+  "stop_validation_sufficient": false,
+  "online_ready": false,
+  "reasons": [
+    "no_executed_nonzero_skip_probe"
+  ],
+  "meaning": "Passing branch counts across different arms does not test the skipped action. Same-condition paired runs can produce different decisions. Do not modify the frozen admission verdict."
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "strategy": "baseline",
+    "archive_reproduces_complete_cell_set": true,
+    "total_observed_m2": 218.125,
+    "common_elapsed_seconds": 171.0,
+    "common_elapsed_total_observed_m2": 218.125,
+    "archive_sha256": "47dddc08c5b71e5d047047575df31157f079f192e4f35f629e1e639ab9fd59a2",
+    "quality_sha256": "4ec575fceb027458213e7345222b4c82dab8fb43321c60cab19ea7f3899ba1d4"
+  },
+  {
+    "strategy": "candidate",
+    "archive_reproduces_complete_cell_set": true,
+    "total_observed_m2": 214.375,
+    "common_elapsed_seconds": 171.0,
+    "common_elapsed_total_observed_m2": 214.375,
+    "archive_sha256": "2450349142503444150c025b06554fe25c0e5e93aef4a0d4a6a2281de571c7fb",
+    "quality_sha256": "6bb02d0deca957818157a0cb7d313f1ff66a7d583823129cd574af45479bf7fd"
+  }
+]

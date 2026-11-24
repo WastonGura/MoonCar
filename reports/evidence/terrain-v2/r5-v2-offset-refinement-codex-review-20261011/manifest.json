@@ -1,0 +1,18 @@
+{
+  "GEMINI_NEXT_TASK.md": {
+    "size_bytes": 2385,
+    "sha256": "634a9ae29a0b293357c46fb78f9fc8eb324f4ccc0a604f742dbdb0e643e63595"
+  },
+  "geometry_review.py": {
+    "size_bytes": 5331,
+    "sha256": "5572360be2760e6f895b3c7f10608886a007c416afadcf6b96a038619e640591"
+  },
+  "geometry-results.json": {
+    "size_bytes": 3420,
+    "sha256": "c5c25678f2d22ca290c8fd3d2f46749b072ca002e2c50bedf8d87f2e95a53743"
+  },
+  "README.md": {
+    "size_bytes": 3305,
+    "sha256": "be21764ee0c00c661efbe155f25b7ac237bff62df86590e2738790ee0f7a43c6"
+  }
+}

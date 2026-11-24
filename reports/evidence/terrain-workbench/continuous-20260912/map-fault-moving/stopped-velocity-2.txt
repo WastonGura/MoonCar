@@ -1,0 +1,15 @@
+A message was lost!!!
+	total count change:2
+	total count: 2---
+A message was lost!!!
+	total count change:4
+	total count: 6---
+linear:
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.0
+---

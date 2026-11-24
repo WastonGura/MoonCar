@@ -1,0 +1,6 @@
+{
+  "saved_utc": "2026-09-13T10:13:05.882260+00:00",
+  "reason": "Assessment implementation now explicitly rejects an unsuccessful final observation heading even if the recorder completed. This implements the existing execution-failure criterion; candidate model, capture plan and thresholds unchanged. Original assessment draft retained.",
+  "file": "assessment-source/assess_arrival_gate-final.py",
+  "sha256": "28913ecf1bbcaa00a480f9adc93de9e929150112a81050badbb3e59ba437f504"
+}

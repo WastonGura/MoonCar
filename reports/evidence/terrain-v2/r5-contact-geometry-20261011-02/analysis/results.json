@@ -1,0 +1,198 @@
+{
+  "matrix_complete": false,
+  "attempts": 3,
+  "qualified": 2,
+  "results": [
+    {
+      "name": "01-plate-left",
+      "profile": "plate",
+      "case": "left",
+      "qualified": true,
+      "geometric_screen_passed": true,
+      "motion_steps": 20000,
+      "trajectory": {
+        "endpoint_displacement_m": 0.0001725557256167573,
+        "maximum_displacement_m": 0.0001725562688298195,
+        "path_length_m": 0.00017267760019794504,
+        "unwrapped_turn_rad": 3.5951260844005146,
+        "circle_fit": {
+          "center_world_m": [
+            -0.0011757830011585786,
+            4.378334916736815e-05
+          ],
+          "radius_m": 0.0011759639811738368,
+          "radial_residual_rms_m": 8.628639149830754e-08
+        },
+        "instantaneous_center_samples": 19978,
+        "instantaneous_center_median_world_m": [
+          -6.885224711682251e-06,
+          0.0001724185142656998
+        ],
+        "maximum_center_excursion_gate_m": 0.01,
+        "center_excursion_passed": true
+      },
+      "maximum_displacement_m": 0.0001725562688298195,
+      "endpoint_xy_m": [
+        -6.88511702013566e-06,
+        0.0001724183099521181
+      ],
+      "max_normal_angle_rad": 0.0,
+      "max_normal_angle_deg": 0.0,
+      "tilted_point_count": 0,
+      "tilted_step_count": 0,
+      "positive_contact_points": 160000,
+      "contact_count_range": [
+        8,
+        8
+      ],
+      "source_empty_steps": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "maximum_contact_height_distance_m": 7.124938819491611e-09,
+      "metadata": {
+        "collision_detector": "ode",
+        "collision_detector_available": true,
+        "other_collisions": {
+          "7": "r5_check::plate::surface::plate"
+        },
+        "collision_registry": {
+          "7": "r5_check::plate::surface::plate",
+          "23": "r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__base_link_collision",
+          "24": "r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__battery_link_collision_1",
+          "25": "r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__camera_mount_link_collision_2",
+          "26": "r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__imu_link_collision_3",
+          "27": "r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__lidar_link_collision_4",
+          "32": "r5_check::mooncar::camera_pan_link::camera_pan_link_collision",
+          "39": "r5_check::mooncar::camera_tilt_link::camera_tilt_link_collision",
+          "40": "r5_check::mooncar::camera_tilt_link::camera_tilt_link_fixed_joint_lump__depth_camera_link_collision_1",
+          "55": "r5_check::mooncar::front_left_wheel_link::front_left_wheel_link_collision",
+          "69": "r5_check::mooncar::front_right_wheel_link::front_right_wheel_link_collision",
+          "83": "r5_check::mooncar::rear_left_wheel_link::rear_left_wheel_link_collision",
+          "97": "r5_check::mooncar::rear_right_wheel_link::rear_right_wheel_link_collision"
+        },
+        "no_state_changes": true
+      },
+      "performance": {
+        "realtime_factor": 0.6296563230840584,
+        "cpu_core_mean": 3.6181624955891443,
+        "cpu_core_max": 4.059431248831537,
+        "memory_peak_bytes": 1871773696
+      }
+    },
+    {
+      "name": "02-plate-right",
+      "profile": "plate",
+      "case": "right",
+      "qualified": true,
+      "geometric_screen_passed": true,
+      "motion_steps": 20000,
+      "trajectory": {
+        "endpoint_displacement_m": 0.00017255578245342775,
+        "maximum_displacement_m": 0.00017255625159969917,
+        "path_length_m": 0.00017267756935997544,
+        "unwrapped_turn_rad": -3.5951260843943684,
+        "circle_fit": {
+          "center_world_m": [
+            -0.0011758085890924048,
+            -4.3782153011838526e-05
+          ],
+          "radius_m": 0.0011759895444036304,
+          "radial_residual_rms_m": 8.627986129900855e-08
+        },
+        "instantaneous_center_samples": 19978,
+        "instantaneous_center_median_world_m": [
+          -6.885230378861504e-06,
+          -0.00017241867572575446
+        ],
+        "maximum_center_excursion_gate_m": 0.01,
+        "center_excursion_passed": true
+      },
+      "maximum_displacement_m": 0.00017255625159969917,
+      "endpoint_xy_m": [
+        -6.885013181089186e-06,
+        -0.0001724183709806206
+      ],
+      "max_normal_angle_rad": 0.0,
+      "max_normal_angle_deg": 0.0,
+      "tilted_point_count": 0,
+      "tilted_step_count": 0,
+      "positive_contact_points": 160000,
+      "contact_count_range": [
+        8,
+        8
+      ],
+      "source_empty_steps": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "maximum_contact_height_distance_m": 7.124938819491611e-09,
+      "metadata": {
+        "collision_detector": "ode",
+        "collision_detector_available": true,
+        "other_collisions": {
+          "7": "r5_check::plate::surface::plate"
+        },
+        "collision_registry": {
+          "7": "r5_check::plate::surface::plate",
+          "23": "r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__base_link_collision",
+          "24": "r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__battery_link_collision_1",
+          "25": "r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__camera_mount_link_collision_2",
+          "26": "r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__imu_link_collision_3",
+          "27": "r5_check::mooncar::base_footprint::base_footprint_fixed_joint_lump__lidar_link_collision_4",
+          "32": "r5_check::mooncar::camera_pan_link::camera_pan_link_collision",
+          "39": "r5_check::mooncar::camera_tilt_link::camera_tilt_link_collision",
+          "40": "r5_check::mooncar::camera_tilt_link::camera_tilt_link_fixed_joint_lump__depth_camera_link_collision_1",
+          "55": "r5_check::mooncar::front_left_wheel_link::front_left_wheel_link_collision",
+          "69": "r5_check::mooncar::front_right_wheel_link::front_right_wheel_link_collision",
+          "83": "r5_check::mooncar::rear_left_wheel_link::rear_left_wheel_link_collision",
+          "97": "r5_check::mooncar::rear_right_wheel_link::rear_right_wheel_link_collision"
+        },
+        "no_state_changes": true
+      },
+      "performance": {
+        "realtime_factor": 0.6182650568307786,
+        "cpu_core_mean": 3.6217536709561133,
+        "cpu_core_max": 4.074848266196913,
+        "memory_peak_bytes": 2061836288
+      }
+    },
+    {
+      "name": "03-coplanar_mesh-left",
+      "profile": "coplanar_mesh",
+      "case": "left",
+      "qualified": false,
+      "maximum_displacement_m": null,
+      "max_normal_angle_deg": null,
+      "tilted_step_count": null,
+      "error": "RuntimeError('Runtime process exited')",
+      "motion_not_completed": true
+    }
+  ],
+  "restoration": [],
+  "input_hashes": {
+    "campaign/01-plate-left/result.json": "537806fd35117c6bcb78df2ecee1ace43f3e8350f800a35d577faae3e30c8616",
+    "campaign/01-plate-left/diagnostic-result.json": "468bcafe47a905dcc41ee155d49607d850e56cea2349dfe58789431ecb5d1e81",
+    "campaign/01-plate-left/world.sdf": "fb6ae06a4ffd14a883f406dcee63efc65c4eedd4d103f02d1beebc23483859eb",
+    "campaign/01-plate-left/physics-steps.csv": "e9c5b3b64c93f7529e35dad45629fc34181f43ab4b063c31b055e6b82dacc728",
+    "campaign/01-plate-left/01-plate-left-contact-steps.csv": "bcdd8e4d3210ad89db129485162f1e8fdb22922f9020d377cd550bede7236bea",
+    "campaign/01-plate-left/actual-diagnostic-libraries.json": "f83c1e2814b5593bc9259c997d16af684707e9205dc6f1483c73259ab31c9497",
+    "campaign/01-plate-left/collision-metadata.csv": "c2c4c9198a9011b5932cc7c295bbf7fcf978555bf87ca29def1703acaafd6014",
+    "campaign/02-plate-right/result.json": "f5e911bc66e83ddf9820dd29902cd72467f0d3aa712f4723f6bce07a2f06e08c",
+    "campaign/02-plate-right/diagnostic-result.json": "490b9a6ef3b69e029dba1f643f1f8b5700950a44f3f160bab3c9529f1034c74a",
+    "campaign/02-plate-right/world.sdf": "624bf2c86a2cb338bcb0e2e562a6bbb6246797a50cd6c9729b6c46c766158797",
+    "campaign/02-plate-right/physics-steps.csv": "ff68d1165f1f4fb0b96f7b191596a2c8209218982e6fc91c073f26a7aedb2ce7",
+    "campaign/02-plate-right/02-plate-right-contact-steps.csv": "2be749f7a6cc4b84f5af2f37e0f7558d645dd87a55133da6fab67702a10ac81d",
+    "campaign/02-plate-right/actual-diagnostic-libraries.json": "aba09ccc370279525f77f2a8016dfa8f3fb4a289e53e4a98bebe3018d1cab158",
+    "campaign/02-plate-right/collision-metadata.csv": "c2c4c9198a9011b5932cc7c295bbf7fcf978555bf87ca29def1703acaafd6014"
+  },
+  "sole_normal_mechanism_confirmed": false,
+  "software_defect_confirmed": false,
+  "repair_verified": false,
+  "production_changed": false,
+  "whole_vehicle_accepted": false
+}

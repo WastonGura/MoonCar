@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "first_incomplete": true,
+  "second_complete": true,
+  "new_simulations": 0,
+  "no_world": true,
+  "no_ros_init": true
+}
